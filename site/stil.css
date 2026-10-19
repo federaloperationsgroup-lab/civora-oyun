@@ -1246,6 +1246,8 @@ img { max-width: 100%; display: block; }
 /* ---------- Şehrim: Evim ve Seyahat (D-082) ---------- */
 .rota { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 2px 0 14px; }
 .rota > .ik { width: 14px; height: 14px; color: var(--soluk-2); }
+.rota-hat { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--orman-acik); color: var(--orman); }
+.rota-hat .ik { width: 14px; height: 14px; }
 .yol-ulke > .ust-yazi { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 .odul .rozet-cephe { color: var(--mercan-2); }
 .mekan-bant + .izgara { margin-top: 0; }
@@ -1307,6 +1309,8 @@ img { max-width: 100%; display: block; }
 .konum-yazi { stroke: #C65A3B; stroke-width: 4px; }
 .e-konum { background: var(--mercan); color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; display: flex; gap: 5px; align-items: center; box-shadow: 0 6px 16px -6px rgba(198, 90, 59, 0.8); }
 .e-konum .ik { width: 13px; height: 13px; }
+.e-santiye { background: #E0A23A; color: #2F2410; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 999px; display: flex; gap: 5px; align-items: center; box-shadow: 0 6px 16px -6px rgba(224, 162, 58, 0.8); }
+.e-santiye .ik { width: 12px; height: 12px; }
 .liste-satir[aria-current="true"] { background: var(--orman-acik); border-radius: 12px; }
 /* Bölge kartı: masaüstünde görünüm düğmelerinin altında; telefonda haritanın altında (başparmağa yakın, harita görünür kalır). */
 .harita-kart { position: absolute; top: 84px; left: var(--kenar); width: min(380px, calc(100% - 32px)); max-height: calc(100% - 102px); overflow: auto; border-radius: var(--r-m); }
@@ -1766,3 +1770,89 @@ a.deger { color: inherit; text-decoration: none; }
 .un-liste { list-style: none; margin: 0; padding: 0; }
 .un-sira { font-weight: 800; font-size: 17px; width: 40px; height: 40px; border-radius: 12px; }
 .un-liste .liste-satir.ben { box-shadow: inset 3px 0 0 var(--altin); }
+
+/* ---------- İşbirliği (D-107, coop-1.0.0): ortaklar, maddeler, büyükelçilik ve şantiye (3B ya da 2B) ---------- */
+.is-maddeler { display: grid; gap: 8px; }
+.is-madde { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px; border-radius: 12px; background: var(--kagit-2); }
+.is-madde .kucuk { margin: 2px 0 0; }
+.elcilik-sahne, .santiye-sahne { height: 240px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #EAF1F2 0%, #D7E3D2 55%, #BFD0B3 100%); }
+.santiye-sahne { background: radial-gradient(120% 100% at 50% 0%, #F1ECDF 0%, #DCD3BC 55%, #C7BA98 100%); }
+.elcilik-sahne[data-mod="2b"], .santiye-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.elcilik-sahne .yukleniyor, .santiye-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #F1EBDD, #D9CCB2 70%); z-index: 1; }
+@media (max-width: 860px) { .elcilik-sahne, .santiye-sahne { height: 200px; } }
+.elcilik-2b, .santiye-2b { padding: 8px; }
+.elcilik-2b svg, .santiye-2b svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+.elcilik2b-gok { fill: #DCE9EC; }
+.elcilik2b-zemin { fill: #8FAE6F; }
+.elcilik2b-basamak { fill: #D9CCB2; }
+.elcilik2b-duvar { fill: #EFE6D4; stroke: #D9CCB2; stroke-width: 1; }
+.elcilik2b-kolon { fill: #F7F2E6; stroke: #D9CCB2; stroke-width: 0.8; }
+.elcilik2b-alinlik { fill: #EFE6D4; stroke: #CDBFA3; stroke-width: 1.2; }
+.elcilik2b-kapi { fill: #4E3826; }
+.elcilik2b-kapi.kapali { fill: #2F2B28; }
+.elcilik2b-lamba { fill: #E9E1CF; stroke: #CDBFA3; stroke-width: 1; }
+.elcilik2b-lamba.yanik { fill: #FFD27A; filter: drop-shadow(0 0 4px #FFD27A); }
+.elcilik2b-direk { stroke: #B8B3AA; stroke-width: 2.5; }
+.elcilik2b-direk.bos { stroke-dasharray: 3 3; }
+.elcilik2b-bayrak { stroke: rgba(0, 0, 0, 0.25); stroke-width: 0.8; }
+.elcilik2b-serit { fill: rgba(255, 255, 255, 0.9); }
+.elcilik2b-cit { fill: #2F2B28; }
+.santiye2b-gok { fill: #EFE9DA; }
+.santiye2b-arazi { opacity: 0.6; }
+.santiye2b-sinir { stroke: #FFF6E4; stroke-width: 2; stroke-dasharray: 3 3; }
+.santiye2b-su { fill: #6FA9B8; }
+.santiye2b-travers { fill: #7A5B3F; }
+.santiye2b-travers.iz { fill: none; stroke: #9C8F78; stroke-width: 0.8; stroke-dasharray: 2 2; }
+.santiye2b-ray { stroke: #6A6A70; stroke-width: 2; }
+svg.bakimsiz .santiye2b-ray { stroke: #8C5A3A; }
+.santiye2b-iz { fill: none; stroke: #9C8F78; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.santiye2b-tren rect { fill: #23395B; }
+.santiye2b-tren rect + rect { fill: #D9A548; }
+.santiye2b-cam { fill: #DCE9EC !important; }
+.santiye2b-gemi path { fill: #F4F0E6; stroke: #8D8A84; stroke-width: 1; }
+.santiye2b-kamara { fill: #C65A3B; }
+.santiye2b-iskele { fill: #A88760; }
+.santiye2b-ayak, .santiye2b-tabliye { fill: #C9BBA0; stroke: #A99C86; stroke-width: 1; }
+.santiye2b-vinc-govde { fill: #E0A23A; }
+.santiye2b-halat { stroke: #2F2B28; stroke-width: 1; }
+.santiye2b-yuk { fill: #7C8A94; }
+.santiye2b-vinc.oynat .santiye2b-yuk { animation: santiye-yuk 2.4s ease-in-out; }
+@keyframes santiye-yuk { 50% { transform: translateY(26px); } }
+.santiye2b-mal { stroke: rgba(0, 0, 0, 0.25); stroke-width: 0.6; }
+.santiye2b-govde { fill: #E07B39; }
+.santiye2b-bas { fill: #E8C9A8; }
+.santiye2b-kask { fill: #F2C230; }
+.santiye2b-halka { fill: none; stroke: #E6B422; stroke-width: 2; }
+.santiye2b-bariyer rect { fill: #C2412D; }
+.santiye2b-bariyer rect:first-child { fill: #C2412D; stroke: #FFFFFF; stroke-width: 2; stroke-dasharray: 6 6; }
+svg.kapali .santiye2b-arazi { opacity: 0.35; }
+@media (prefers-reduced-motion: reduce) { .santiye2b-vinc.oynat .santiye2b-yuk { animation: none; } }
+.santiye-kart .liste-satir[data-santiye-mal] > span:last-child { white-space: nowrap; }
+
+/* ---------- Dünya haritası katmanları (C-6): ortak hatlar, ticaret yolları, mevsim ve hava ---------- */
+.hat2b { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; pointer-events: none; }
+.hat2b.rail { stroke: #3A3530; stroke-width: 3.2; }
+.hat2b.rail-ust { stroke: #F4ECDC; stroke-width: 1.2; stroke-dasharray: 3 4; }
+.hat2b.ferry { stroke: #2F6F8F; stroke-width: 2.4; stroke-dasharray: 7 5; }
+.hat2b.bridge { stroke: #8D8A84; stroke-width: 4; }
+.hat2b.insaat { stroke: #E0A23A; stroke-width: 2.6; stroke-dasharray: 4 4; }
+.hat2b.kapali { stroke: #9A948A; stroke-width: 2; stroke-dasharray: 2 4; opacity: 0.7; }
+.hat2b.bakimsiz { stroke: #8C5A3A; }
+.hat2b-isaret circle { fill: #FFFFFF; stroke: #3A3530; stroke-width: 1.5; }
+.hat2b-isaret.insaat circle { stroke: #E0A23A; }
+.hat2b-isaret text { font-size: 10px; font-weight: 800; fill: #3A3530; paint-order: stroke; stroke: #FFFFFF; stroke-width: 3px; }
+.ticaret2b { fill: none; stroke: #367F70; stroke-width: 1.8; stroke-dasharray: 2 5; stroke-linecap: round; vector-effect: non-scaling-stroke; pointer-events: none; opacity: 0.8; }
+.ticaret2b.gumruk { stroke: #23395B; }
+.ticaret2b-arac circle { fill: #367F70; stroke: #FFFFFF; stroke-width: 1.5; }
+.ticaret2b-arac path { fill: none; stroke: #FFFFFF; stroke-width: 1.4; stroke-linejoin: round; }
+.hava2b { pointer-events: none; }
+.hava2b .bulut { fill: #FFFFFF; opacity: 0.55; }
+.hava2b .bulut.yagmur { fill: #8E9BA8; opacity: 0.6; }
+.hava2b .damla { stroke: #5F8FB0; stroke-width: 1.2; stroke-linecap: round; opacity: 0.8; }
+.hava2b .kar { fill: #FFFFFF; stroke: #B9C7D2; stroke-width: 0.6; }
+.kar2b { fill: #F7FAFC; opacity: 0.42; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .hat2b.insaat { animation: hat-insaat 1.6s linear infinite; }
+  @keyframes hat-insaat { to { stroke-dashoffset: -16; } }
+}
