@@ -1623,3 +1623,28 @@ img { max-width: 100%; display: block; }
 /* Gözaltı çipi (D-097): üst bantta, dokununca Şehrim → Gölge */
 a.deger { color: inherit; text-decoration: none; }
 .deger.d-gozalti .ik { color: var(--mercan); }
+
+/* ---------- Sınır kapısı (D-099 C1-8): kaçak yükün gümrükten geçişi, 3B ya da 2B ---------- */
+.sinir-sahne { height: 240px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #EAF2F0 0%, #D9E6E2 55%, #C7D6CF 100%); }
+.sinir-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.sinir-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #EAF2F0, #CCDAD3 70%); z-index: 1; }
+@media (max-width: 860px) { .sinir-sahne { height: 200px; } }
+.sinir-2b { padding: 8px; }
+.sinir-2b svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+.sinir2b-cizgi { stroke: #F7F1E4; stroke-width: 2; stroke-dasharray: 6 5; }
+.sinir2b-yol { fill: #5E5A55; }
+.sinir2b-serit { stroke: #EFE6CF; stroke-width: 1.5; stroke-dasharray: 10 8; }
+.sinir2b-kulube { fill: #E9DFC9; stroke: #B5523A; stroke-width: 2; }
+.sinir2b-yazi { font-size: 8px; font-weight: 800; fill: #23395B; letter-spacing: 0.06em; }
+.sinir2b-lamba { stroke: rgba(0, 0, 0, 0.25); stroke-width: 1; }
+.sinir2b-direk { fill: #8F887A; }
+.sinir2b-bariyer { stroke: #C2412D; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 6 4; }
+.sinir2b-kasa { fill: #6B5A48; }
+.sinir2b-sandik { fill: #B07A44; stroke: #8A5A30; stroke-width: 1; }
+.sinir2b-kabin { fill: #C65A3B; }
+.sinir2b-polis { fill: #F4F1EA; stroke: #2F5FA8; stroke-width: 2; }
+.sinir2b-cakar .kirmizi { fill: #E04040; animation: sinir-cakar 0.9s steps(1) infinite; }
+.sinir2b-cakar .mavi { fill: #3B6FE0; animation: sinir-cakar 0.9s steps(1) infinite reverse; }
+@keyframes sinir-cakar { 0% { opacity: 1; } 50% { opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .sinir2b-cakar .kirmizi, .sinir2b-cakar .mavi { animation: none; } }
