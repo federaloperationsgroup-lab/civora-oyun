@@ -1,0 +1,89 @@
+# Bekçi (D-098): 15 dakikada bir oyun sitesini ve sunucuyu dener.
+# Denetimler: site açılıyor mu ve ayar dosyası okunuyor mu; Supabase giriş servisi (Auth) sağlıklı mı; veritabanı yanıt
+# veriyor mu (giriş yapmamış bir çağrıya veritabanı "izin yok" (42501) der; sunucu ya da veritabanı düşükse 5xx ya da
+# zaman aşımı olur). Her denetim üç kez denenir (aralarda 15 saniye); geçici takılmalar sorun sayılmaz.
+# Sorun bulursa bu depoda "bekci" etiketli bir konu (issue) açar ve depo sahibini anar: GitHub sahibine e-postayla haber
+# verir. Sorun sürerken konunun metni güncellenir (yeni e-posta gitmez); düzelince konu kapanır (bir e-posta daha).
+# İş kırmızıya dönmez: her 15 dakikada bir hata e-postası gelmesin diye haber yalnız konuyla verilir.
+# İsteğe bağlı değişken: SITE_ADRESI (sitenin asıl adresi; yoksa GitHub Pages adresi denetlenir).
+# Not: GitHub, 60 gün hiç gönderim olmayan açık depolarda zamanlanmış işleri durdurur; yeni oyun sürümü yüklendikçe sürer.
+name: Bekçi
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: bekci
+  cancel-in-progress: false
+
+jobs:
+  bekci:
+    name: Site ve sunucu denetimi
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Denetle
+        env:
+          SITE_ADRESI: ${{ vars.SITE_ADRESI }}
+        run: |
+          set -u
+          : > sorunlar.txt
+          REPO_ADI="${GITHUB_REPOSITORY#*/}"
+          SAHIP="${GITHUB_REPOSITORY_OWNER,,}"
+          SITE="${SITE_ADRESI:-https://${SAHIP}.github.io/${REPO_ADI}}"
+          SITE="${SITE%/}"
+          dene() { local n; for n in 1 2 3; do if "$@"; then return 0; fi; [ "$n" = 3 ] || sleep 15; done; return 1; }
+          sayfa_ok() { curl -fsS --max-time 20 "$SITE/" -o sayfa.html && grep -q "<title>Civora</title>" sayfa.html; }
+          ayar_ok() { curl -fsS --max-time 20 "$SITE/yapilandirma.json" -o ayar.json && jq -e '.supabaseUrl and .anahtar' ayar.json > /dev/null; }
+          auth_ok() { [ "$(curl -sS --max-time 20 -o /dev/null -w '%{http_code}' -H "apikey: $ANAHTAR" "$URL/auth/v1/health")" = "200" ]; }
+          vt_ok() {
+            local yanit kod
+            yanit=$(curl -sS --max-time 20 -w '\n%{http_code}' -X POST -H "apikey: $ANAHTAR" -H "content-type: application/json" \
+              -d '{}' "$URL/rest/v1/rpc/me_overview") || return 1
+            kod=$(printf '%s' "$yanit" | tail -n 1)
+            case "$kod" in
+              401|403) printf '%s' "$yanit" | head -n -1 | grep -q '"42501"' ;;
+              *) return 1 ;;
+            esac
+          }
+          dene sayfa_ok || echo "Oyun sitesi açılmıyor: $SITE/" >> sorunlar.txt
+          if dene ayar_ok; then
+            URL=$(jq -r .supabaseUrl ayar.json)
+            ANAHTAR=$(jq -r .anahtar ayar.json)
+            dene auth_ok || echo "Giriş servisi (Supabase Auth) yanıt vermiyor: oyuncular giriş yapamaz." >> sorunlar.txt
+            dene vt_ok || echo "Veritabanı yanıt vermiyor: Supabase projesi duraklatılmış ya da çökmüş olabilir (Supabase panelinde projenin durumuna bak)." >> sorunlar.txt
+          else
+            echo "Sitenin ayar dosyası (yapilandirma.json) okunamıyor: oyun sunucuya bağlanamaz." >> sorunlar.txt
+          fi
+          {
+            echo "### Bekçi ($(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M'), Türkiye saati)"
+            echo
+            echo "Denetlenen site: $SITE/"
+            echo
+            if [ -s sorunlar.txt ]; then sed 's/^/- ❌ /' sorunlar.txt; else echo "- ✅ Site, giriş servisi ve veritabanı yanıt veriyor."; fi
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Konu aç, güncelle ya da kapat
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ETIKET="bekci"
+          SAAT=$(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M')
+          ACIK=$(gh issue list -R "$GITHUB_REPOSITORY" --label "$ETIKET" --state open --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -s sorunlar.txt ]; then
+            GOVDE=$(printf '@%s bekçi bir sorun buldu (son denetim %s, Türkiye saati):\n\n%s\n\nSorun sürerken bu metin güncellenir; düzelince konu kendiliğinden kapanır.\n' \
+              "$GITHUB_REPOSITORY_OWNER" "$SAAT" "$(sed 's/^/- /' sorunlar.txt)")
+            if [ -z "$ACIK" ]; then
+              gh label create "$ETIKET" -R "$GITHUB_REPOSITORY" --color B60205 --description "Bekçinin bulduğu sorun" 2>/dev/null || true
+              gh issue create -R "$GITHUB_REPOSITORY" --title "Bekçi: oyun sitesi ya da sunucu yanıt vermiyor" --label "$ETIKET" --body "$GOVDE"
+            else
+              gh issue edit "$ACIK" -R "$GITHUB_REPOSITORY" --body "$GOVDE"
+            fi
+          elif [ -n "$ACIK" ]; then
+            gh issue close "$ACIK" -R "$GITHUB_REPOSITORY" --comment "Düzeldi ($SAAT, Türkiye saati). Bekçi her şeyi yeniden sağlam buldu."
+          fi

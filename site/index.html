@@ -3,14 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- İçerik güvenlik politikası (D-098): derlemede yazılır (tools/istemci/build.ts); satır içi betiklerin özetleri dahil -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-ndRxgw+4+93LpXnb8/Wc4Sd4V1Kv0asVcbkVUjvrEl0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Civora</title>
 <meta name="description" content="Civora: gerçek dünya haritasında, ülkeleri oyuncuların yönettiği strateji oyunu.">
 <meta name="theme-color" content="#0F362F">
-<link rel="icon" href="img/amblem.png">
+<link rel="icon" href="img/amblem.png" type="image/png" sizes="192x192">
+<!-- Ana ekrana ekleme (D-098): Android ve masaüstü manifestten, iPhone apple-touch-icon'dan okur -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/simge_apple_180.png">
+<meta name="application-name" content="Civora">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Civora">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- Paylaşım kartı (D-098): __SITE_ADRESI__ yayında site deposunun ayar betiği yazar; adres yoksa resim satırları silinir -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Civora">
+<meta property="og:title" content="Civora">
+<meta property="og:description" content="Gerçek dünya haritasında, ülkeleri oyuncuların yönettiği strateji oyunu. Ülkeni kur, şehrini büyüt, tarihini birlikte yaz.">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="__SITE_ADRESI__/">
+<meta property="og:image" content="__SITE_ADRESI__/img/paylas.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Deniz kıyısında renkli bir şehir, tepeler ve tarlalar">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
-<link rel="stylesheet" href="stil.css?v=2026-10-19-5732286f-6370c72">
+<link rel="stylesheet" href="stil.css?v=2026-10-19-35045d96-89b5a2c">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
@@ -32,6 +56,6 @@
 </script>
 <div class="tostlar" id="tostlar" role="status" aria-live="polite"></div>
 <noscript><p class="noscript">Civora'yı oynamak için tarayıcında JavaScript açık olmalı. · <span lang="en">To play Civora, JavaScript must be enabled in your browser.</span></p></noscript>
-<script type="module" src="app.js?v=2026-10-19-5732286f-6370c72"></script>
+<script type="module" src="app.js?v=2026-10-19-35045d96-89b5a2c"></script>
 </body>
 </html>
