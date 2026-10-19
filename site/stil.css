@@ -1648,3 +1648,78 @@ a.deger { color: inherit; text-decoration: none; }
 .sinir2b-cakar .mavi { fill: #3B6FE0; animation: sinir-cakar 0.9s steps(1) infinite reverse; }
 @keyframes sinir-cakar { 0% { opacity: 1; } 50% { opacity: 0.2; } }
 @media (prefers-reduced-motion: reduce) { .sinir2b-cakar .kirmizi, .sinir2b-cakar .mavi { animation: none; } }
+
+/* ---------- Karakol (D-105, shadow-1.3.0): nöbetteki görevliler ve gözaltı sayacı, 3B ya da 2B ---------- */
+.karakol-sahne { height: 240px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #F1EBDD 0%, #E3D8C3 55%, #D2C4AA 100%); }
+.karakol-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.karakol-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #F1EBDD, #D9CCB2 70%); z-index: 1; }
+@media (max-width: 860px) { .karakol-sahne { height: 200px; } }
+.karakol-2b { padding: 8px; }
+.karakol-2b svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+.karakol2b-zemin { fill: #D9C7A6; }
+.karakol2b-yol { fill: #5E5A55; }
+.karakol2b-serit { stroke: #EFE6CF; stroke-width: 1.5; stroke-dasharray: 10 8; }
+.karakol2b-taban { fill: #BFAE93; }
+.karakol2b-cerceve { fill: none; stroke: #EDE4D2; stroke-width: 4; }
+.karakol2b-duvar { stroke: #EDE4D2; stroke-width: 4; }
+.karakol2b-tabela { fill: #23395B; }
+.karakol2b-yazi { font-size: 8px; font-weight: 800; fill: #F7F1E4; letter-spacing: 0.06em; }
+.karakol2b-masa { fill: #8A6A4A; }
+.karakol2b-ten { fill: #D8A982; }
+.karakol2b-parmaklik { stroke: #4A4F55; stroke-width: 2; }
+.karakol2b-bank { fill: #7A5A3C; }
+.karakol2b-kadran { fill: #F7F1E4; stroke: #23395B; stroke-width: 2.5; }
+.karakol2b-kalan { fill: none; stroke: #E07560; stroke-width: 3; }
+.karakol2b-ibre { stroke: #C2412D; stroke-width: 2; stroke-linecap: round; }
+.karakol2b-araba { fill: #F4F1EA; stroke: #2F5FA8; stroke-width: 1.5; }
+.karakol2b-serit-mavi { fill: #2F5FA8; }
+.karakol2b-lamba.kirmizi { fill: #E04040; opacity: 0.35; }
+.karakol2b-lamba.mavi { fill: #3B6FE0; opacity: 0.35; }
+.karakol2b-lamba.yanik.kirmizi { opacity: 1; animation: sinir-cakar 0.9s steps(1) infinite; }
+.karakol2b-lamba.yanik.mavi { opacity: 1; animation: sinir-cakar 0.9s steps(1) infinite reverse; }
+@media (prefers-reduced-motion: reduce) { .karakol2b-lamba.yanik { animation: none; } }
+.karakol2b-direk { fill: #8F887A; }
+
+/* ---------- Vurgun (D-105, shadow-1.4.0): planlama masası (kum masası maketi), 3B ya da 2B ---------- */
+.masa-sahne { height: 240px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #EFE7D8 0%, #DCCDB2 55%, #C9B693 100%); }
+.masa-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.masa-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #EFE7D8, #D3C2A2 70%); z-index: 1; }
+@media (max-width: 860px) { .masa-sahne { height: 200px; } }
+.masa-2b { padding: 8px; }
+.masa-2b svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+.masa2b-ahsap { fill: #7A5536; }
+.masa2b-kil { fill: #D9C7A6; }
+.masa2b-yol { fill: #6A655E; }
+.masa2b-serit { stroke: #EFE6CF; stroke-width: 1.5; stroke-dasharray: 8 7; }
+.masa2b-blok { fill: #EADFCB; stroke: #CDBB98; stroke-width: 1; }
+.masa2b-dukkan { fill: #C9B48F; stroke: #A8936D; stroke-width: 1.5; }
+.masa2b-tente { fill: #8C2F2F; }
+.masa2b-kasa { fill: #3A3F45; }
+.masa2b-kol { fill: none; stroke: #C9A227; stroke-width: 1.5; }
+.masa2b-depo { fill: #A7B0AE; stroke: #6F7A77; stroke-width: 2; }
+.masa2b-kapi { fill: #5E6B66; }
+.masa2b-kapi-cizgi { stroke: #4A5551; stroke-width: 1; }
+.masa2b-rampa { fill: #8F887A; }
+.masa2b-zirhli { fill: #4A5056; }
+.masa2b-zirhli-kabin { fill: #5D646B; }
+.masa2b-altin { fill: #D9AE2B; stroke: #A9831C; stroke-width: 0.8; }
+.masa2b-piyon circle:first-child { stroke: rgba(0, 0, 0, 0.3); stroke-width: 1; }
+.masa2b-piyon-bas { fill: rgba(255, 255, 255, 0.75); }
+.masa2b-piyon.cagrili { opacity: 0.4; }
+.masa2b-piyon.cagrili circle:first-child { stroke-dasharray: 2 2; }
+.masa2b-direk { stroke: #5A4C3A; stroke-width: 1.2; }
+.masa2b-bayrak { fill: #C2412D; }
+.masa2b-kacis { fill: #2E5E3E; stroke: #3E8E5A; stroke-width: 1.5; }
+.masa2b-far { fill: #E8F7D0; opacity: 0.5; }
+.masa2b-far.yanik { fill: #BFF2A0; opacity: 1; }
+.masa2b-kacis-g.oynat { animation: masa-kacis 2.6s ease-out; }
+@keyframes masa-kacis { from { transform: translateX(-28px); } to { transform: translateX(0); } }
+.masa2b-polis { fill: #F4F1EA; stroke: #2F5FA8; stroke-width: 1.5; }
+.masa2b-serit-mavi { fill: #2F5FA8; }
+.masa2b-lamba.kirmizi { fill: #E04040; opacity: 0.35; }
+.masa2b-lamba.mavi { fill: #3B6FE0; opacity: 0.35; }
+.masa2b-lamba.yanik.kirmizi { opacity: 1; animation: sinir-cakar 0.9s steps(1) infinite; }
+.masa2b-lamba.yanik.mavi { opacity: 1; animation: sinir-cakar 0.9s steps(1) infinite reverse; }
+@media (prefers-reduced-motion: reduce) { .masa2b-lamba.yanik, .masa2b-kacis-g.oynat { animation: none; } }
