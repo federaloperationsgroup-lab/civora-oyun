@@ -1900,3 +1900,24 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
   border-radius: 12px; background: var(--kagit-2); }
 .hareket-sonuc.yesil { box-shadow: inset 3px 0 0 var(--orman); }
 .hareket-yanit .hareket-metin, .hareket-sonuc .alt { margin-top: 4px; }
+
+/* ---------- Hayatım sahnesi (D-109, D-110): yaşayan 3B maket ya da hafif 2B ---------- */
+.hayat-kart { margin-bottom: 16px; }
+.hayat-sahne { height: 460px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #E9F1F2 0%, #D9DCCB 55%, #C4B595 100%); }
+.hayat-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.hayat-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #F1EBDD, #D9CCB2 70%); z-index: 1; }
+/* 3B yüklenirken aynı maketin 2B çizimi görünür (ilk açılış hızlı; 3B hazır olunca kalkar) */
+.hayat-sahne .hayat-on { display: flex; align-items: center; justify-content: center; padding: 8px; }
+.hayat-sahne .hayat-on svg { width: 100%; height: 100%; border-radius: 10px; opacity: 0.92; }
+@media (max-width: 860px) { .hayat-sahne { height: 320px; } }
+.hayat-2b { padding: 8px; }
+.hayat-2b svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+.hayat2b-tik { cursor: pointer; }
+.hayat2b-tik:hover { filter: brightness(1.08); }
+.hayat2b-seviye { font: 700 13px Georgia, "Times New Roman", serif; fill: #F6E7C1; }
+.hayat-etkinlik { margin-top: 10px; font-weight: 600; color: var(--murekkep); display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.hayat-etkinlik .ik { width: 15px; height: 15px; }
+.profil-figur { height: 220px; margin-top: 10px; border-radius: var(--r-m); overflow: hidden; touch-action: pan-y;
+  background: radial-gradient(ellipse at 50% 35%, #F4EFE4 0%, #E3D8C2 70%); }
+.hayat-2b svg { max-height: 460px; }
