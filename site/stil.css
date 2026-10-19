@@ -1490,6 +1490,9 @@ img { max-width: 100%; display: block; }
   background: var(--kagit-2); color: var(--murekkep); font: inherit; text-align: left; cursor: pointer; }
 .vitrin-liste li.secili button { border-color: var(--altin); box-shadow: 0 0 0 2px var(--altin-acik); }
 .vitrin-liste li[data-kademe="0"] button { background: transparent; }
+.vitrin-liste .vitrin-goster { width: auto; margin-top: 4px; padding: 4px 10px; border: none; background: transparent; color: var(--soluk); font-size: 12.5px; }
+.vitrin-liste .vitrin-goster[aria-pressed="true"] { color: var(--murekkep); }
+.vitrin-liste li.secili .vitrin-goster { box-shadow: none; }
 .vitrin-liste .vitrin-metin { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
 .vitrin-liste b { font-size: 13.5px; }
 .vitrin-liste small { font-size: 12px; color: var(--soluk); }
@@ -1723,3 +1726,43 @@ a.deger { color: inherit; text-decoration: none; }
 .masa2b-lamba.yanik.kirmizi { opacity: 1; animation: sinir-cakar 0.9s steps(1) infinite; }
 .masa2b-lamba.yanik.mavi { opacity: 1; animation: sinir-cakar 0.9s steps(1) infinite reverse; }
 @media (prefers-reduced-motion: reduce) { .masa2b-lamba.yanik, .masa2b-kacis-g.oynat { animation: none; } }
+
+/* ---------- Sicil (D-105, shadow-1.5.0): mahkeme salonu (maket), 3B ya da 2B ---------- */
+.mahkeme-sahne { height: 240px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #F1EADB 0%, #DED0B5 55%, #C8B391 100%); }
+.mahkeme-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.mahkeme-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #F1EADB, #D5C3A1 70%); z-index: 1; }
+@media (max-width: 860px) { .mahkeme-sahne { height: 200px; } }
+.mahkeme-2b { padding: 8px; }
+.mahkeme-2b svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+.mahkeme2b-duvar { fill: #E6DCC8; }
+.mahkeme2b-parke { fill: #B78B5E; }
+.mahkeme2b-amblem { fill: none; stroke: #C9A227; stroke-width: 2.5; }
+.mahkeme2b-kol { stroke: #C9A227; stroke-width: 2; }
+.mahkeme2b-kefe { fill: #C9A227; }
+.mahkeme2b-terazi { transform-origin: 160px 22px; }
+.mahkeme2b-terazi.egik { transform: rotate(9deg); }
+.mahkeme2b-kursu { fill: #6E4A2E; stroke: #4E3320; stroke-width: 2; }
+.mahkeme2b-masa { fill: #6E4A2E; }
+.mahkeme2b-dosya { fill: #D9B979; stroke: #A98B4F; stroke-width: 0.8; }
+.mahkeme2b-muhur { fill: #C2412D; }
+.mahkeme2b-kagit { fill: #F3EEE2; }
+.mahkeme2b-masa-lamba { fill: #FFD98A; }
+.mahkeme2b-lamba { fill: #D8D2C4; stroke: #4E3320; stroke-width: 1; }
+.mahkeme2b-lamba.yesil { fill: #3E8E5A; }
+.mahkeme2b-lamba.kirmizi { fill: #C2412D; }
+.mahkeme2b-lamba.oynat { animation: mahkeme-lamba 1.2s ease-out 1.5s backwards; }
+@keyframes mahkeme-lamba { from { opacity: 0; } to { opacity: 1; } }
+.mahkeme2b-tokmak { fill: #4E3320; transform-origin: 192px 72px; }
+.mahkeme2b-tokmak.oynat { animation: mahkeme-tokmak 0.5s ease-in-out 3; }
+@keyframes mahkeme-tokmak { 50% { transform: rotate(-35deg); } }
+.mahkeme2b-bas { fill: #E8C9A8; }
+.mahkeme2b-bas-koyu { fill: #3A3530; }
+.mahkeme2b-kisi path { stroke: rgba(0, 0, 0, 0.3); stroke-width: 1; }
+.mahkeme2b-halka { fill: none; stroke: #E6B422; stroke-width: 2.5; }
+@media (prefers-reduced-motion: reduce) { .mahkeme2b-lamba.oynat, .mahkeme2b-tokmak.oynat { animation: none; } }
+
+/* ---------- Şöhret ve dedikodu (C-13; fame-1.0.0): şehrin tanınanları ---------- */
+.un-liste { list-style: none; margin: 0; padding: 0; }
+.un-sira { font-weight: 800; font-size: 17px; width: 40px; height: 40px; border-radius: 12px; }
+.un-liste .liste-satir.ben { box-shadow: inset 3px 0 0 var(--altin); }
