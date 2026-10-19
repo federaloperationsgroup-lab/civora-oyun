@@ -1,0 +1,47 @@
+# Civora oyun sitesi (T-27). Bu depo yalnız derlenmiş oyun ekranlarını taşır; kaynak kod ana (gizli) depodadır.
+# Her gönderimde: Supabase ayar dosyası depo değişkenlerinden yazılır, site GitHub Pages'e yayımlanır.
+# Gereken depo değişkenleri (Settings → Secrets and variables → Actions → Variables):
+#   SUPABASE_URL      Supabase → Project Settings → Data API → Project URL (https://….supabase.co)
+#   SUPABASE_ANAHTAR  Supabase → Project Settings → API Keys → Publishable key (herkese açık anahtar; gizli anahtar DEĞİL)
+name: Yayın
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  yayin:
+    name: Siteyi yayımla
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.dagitim.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Supabase ayar dosyası
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_ANAHTAR: ${{ vars.SUPABASE_ANAHTAR }}
+        run: |
+          if [ -z "$SUPABASE_URL" ]; then echo "::error::SUPABASE_URL değişkeni tanımlı değil (Settings → Secrets and variables → Actions → Variables)."; exit 1; fi
+          if [ -z "$SUPABASE_ANAHTAR" ]; then echo "::error::SUPABASE_ANAHTAR değişkeni tanımlı değil."; exit 1; fi
+          case "$SUPABASE_URL" in https://*.supabase.co|https://*.supabase.co/) ;; *) echo "::error::SUPABASE_URL https://….supabase.co biçiminde olmalı."; exit 1;; esac
+          case "$SUPABASE_ANAHTAR" in sb_secret_*) echo "::error::Bu gizli anahtar! Siteye yalnız herkese açık (publishable) anahtar konur. Değişkeni hemen sil ve Supabase'te gizli anahtarı yenile."; exit 1;; esac
+          node -e 'const fs = require("fs"); fs.writeFileSync("site/yapilandirma.json", JSON.stringify({ supabaseUrl: process.env.SUPABASE_URL.replace(/\/+$/, ""), anahtar: process.env.SUPABASE_ANAHTAR, ortam: "canli" }) + "\n");'
+          echo "Ayar dosyası yazıldı."
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: dagitim
+        uses: actions/deploy-pages@v4
