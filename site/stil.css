@@ -1921,3 +1921,23 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .profil-figur { height: 220px; margin-top: 10px; border-radius: var(--r-m); overflow: hidden; touch-action: pan-y;
   background: radial-gradient(ellipse at 50% 35%, #F4EFE4 0%, #E3D8C2 70%); }
 .hayat-2b svg { max-height: 460px; }
+
+/* ---------- Çalış: devlet atölyesi (D-110 #1): yaşayan 3B sahne ya da hafif 2B ---------- */
+.atolye-kart { margin-bottom: 16px; }
+.atolye-sahne { height: 420px; margin-top: 10px; border-radius: var(--r-m); touch-action: pan-y; overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, #F2EADB 0%, #E1D3B9 60%, #C7AE88 100%); }
+.atolye-sahne[data-mod="2b"] { height: auto; background: var(--kagit-2); }
+.atolye-sahne .yukleniyor { background: radial-gradient(ellipse at 50% 40%, #F1EBDD, #D9CCB2 70%); z-index: 1; }
+/* 3B yüklenirken aynı atölyenin 2B çizimi görünür (3B hazır olunca kalkar) */
+.atolye-sahne .atolye-on { display: flex; align-items: center; justify-content: center; padding: 8px; }
+.atolye-sahne .atolye-on svg { width: 100%; height: 100%; border-radius: 10px; opacity: 0.92; }
+@media (max-width: 860px) { .atolye-sahne { height: 320px; } }
+.atolye-2b { padding: 8px; }
+.atolye-2b svg { display: block; width: 100%; height: auto; max-height: 420px; border-radius: 10px; }
+.atolye2b-tik { cursor: pointer; }
+.atolye2b-tik:hover { filter: brightness(1.08); }
+.atolye2b-levha { font: 700 15px Georgia, "Times New Roman", serif; fill: #F4E7C8; }
+.atolye2b-tahta { font: 600 11px "Segoe Print", "Comic Sans MS", cursive; fill: #EDEBDF; }
+/* Sahneden gelinen kart bir an altın çerçeveyle belirir */
+.vurgu-yan { animation: vurgu-yan 1.6s ease-out; }
+@keyframes vurgu-yan { 0%, 55% { box-shadow: 0 0 0 3px var(--altin); } 100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); } }
