@@ -1003,18 +1003,32 @@ img { max-width: 100%; display: block; }
 .giris-dipnot { margin-top: 14px; font-size: 12.5px; color: var(--soluk); text-align: center; }
 .giris-dipnot a { color: var(--orman); }
 
-/* ---------- Karakter ---------- */
-.ulke-secim { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.ulke-kart {
-  position: relative; text-align: left; border: 2px solid var(--cizgi); border-radius: 16px; background: #fff;
-  padding: 14px; display: flex; flex-direction: column; gap: 4px; min-height: 96px;
-}
-.ulke-kart[aria-pressed="true"] { border-color: var(--orman); box-shadow: 0 0 0 3px var(--orman-acik); }
-.ulke-kart b { font-size: 16px; }
-.ulke-kart .kucuk { font-size: 12.5px; }
-.ulke-kart .oneri { position: absolute; top: -9px; right: 10px; background: var(--altin); color: #2B1E05; font-size: 11px; font-weight: 800;
-  padding: 2px 8px; border-radius: 999px; letter-spacing: 0.04em; }
-.ulke-bayrak { width: 34px; height: 24px; border-radius: 5px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); margin-bottom: 4px; }
+/* ---------- Karakter (172 ülke, D-103): seçili ülke, dünya haritası, arama ve süzgeç, liste ---------- */
+.giris-kart.genis { width: min(560px, 100%); }
+.ulke-bayrak { width: 34px; height: 24px; border-radius: 5px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); flex: none; }
+.ulke-secili { border: 2px solid var(--orman); border-radius: 16px; background: #fff; padding: 12px 14px; display: grid; gap: 6px; }
+.ulke-secili p { margin: 0; }
+.ulke-secili-ust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ulke-secili-ust b { font-size: 17px; flex: 1 1 140px; overflow-wrap: anywhere; }
+.ulke-secili .oneri-yazi { font-size: 12px; color: #7A5418; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.ulke-secili .oneri-yazi .ik { width: 14px; height: 14px; }
+.ulke-harita { margin: 10px 0; border-radius: 14px; overflow: hidden; background: #CFE3E6; border: 1px solid var(--cizgi); }
+.ulke-harita svg { display: block; width: 100%; height: auto; }
+.ulke-harita .kucuk { padding: 18px; margin: 0; text-align: center; }
+.ulke-harita [data-ulke] { stroke: rgba(40, 32, 20, 0.35); stroke-width: 0.6px; vector-effect: non-scaling-stroke; }
+.ulke-harita [data-ulke][role="button"] { cursor: pointer; }
+.ulke-harita [data-ulke][role="button"]:hover { stroke: var(--orman); stroke-width: 1.5px; }
+.ulke-harita [data-ulke].secili { stroke: #1A1A1A; stroke-width: 2px; }
+.ulke-harita .notr2b { fill: #DCD5C4; }
+#ulke-ara { margin: 4px 0 8px; }
+#ulke-suzgec { margin-bottom: 8px; }
+.ulke-liste { display: grid; gap: 6px; max-height: 300px; overflow-y: auto; padding: 2px; }
+.ulke-satir { display: flex; align-items: center; gap: 10px; text-align: left; border: 2px solid var(--cizgi); border-radius: 12px;
+  background: #fff; padding: 9px 12px; min-height: 52px; }
+.ulke-satir[aria-pressed="true"] { border-color: var(--orman); box-shadow: 0 0 0 3px var(--orman-acik); }
+.ulke-satir-ad { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.ulke-satir-ad b { font-size: 15px; }
+.ulke-satir-ad .kucuk { font-size: 12px; }
 
 /* ---------- Kabuk ---------- */
 .kabuk-ust-ad { font-weight: 700; font-size: 14px; color: #F4F1E6; }
