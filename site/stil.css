@@ -1605,3 +1605,7 @@ img { max-width: 100%; display: block; }
 .gorunus-onizleme .avatar.gorunus-buyuk { width: 96px; height: 96px; }
 .gorunus-onizleme .avatar.gorunus-orta { width: 56px; height: 56px; }
 .gorunus-onizleme p { flex: 1 1 220px; margin: 0; }
+
+/* Gözaltı çipi (D-097): üst bantta, dokununca Şehrim → Gölge */
+a.deger { color: inherit; text-decoration: none; }
+.deger.d-gozalti .ik { color: var(--mercan); }
