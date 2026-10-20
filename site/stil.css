@@ -1351,6 +1351,16 @@ img { max-width: 100%; display: block; }
 .oda2b-esya.secili rect { stroke: #E3B23C; stroke-width: 0.1; }
 .oda2b-on { stroke: #3F2C1C; stroke-width: 0.08; stroke-linecap: round; }
 .oda2b-yazi { font-size: 0.32px; font-weight: 700; fill: #2B1E12; pointer-events: none; }
+/* Yaşayan oda (D-110 #5): figürün durumu, erzak; 2B'de figür ve kiler rafı */
+.oda-hayat { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.oda-hayat-yazi { display: flex; align-items: flex-start; gap: 8px; margin: 0; font-weight: 600; }
+.oda-hayat-yazi .ik { flex: none; color: var(--orman); margin-top: 2px; }
+.oda-erzak { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.oda2b-figur-govde { stroke: #FFFDF7; stroke-width: 0.06; }
+.oda2b-figur-baloncuk { fill: #FFFDF7; stroke: #D9CCB2; stroke-width: 0.03; }
+.oda2b-kiler { cursor: pointer; }
+.oda2b-kiler rect { fill: #C9A26B; stroke: #8C6E52; stroke-width: 0.04; }
+.oda2b-kiler text { fill: #2B1E12; }
 .oda-arac { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
 .oda-secili { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .oda-uyari { color: var(--mercan); font-weight: 700; }
