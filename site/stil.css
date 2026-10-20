@@ -2066,6 +2066,28 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .baskent-anit summary .ik { width: 16px; height: 16px; }
 .anit-liste { columns: 3 120px; column-gap: 16px; margin: 8px 0 0; padding-left: 28px; font-size: 13px; }
 @media (max-width: 860px) { .baskent-sahne { height: 260px; } }
+/* İşbirliği akışı (D-110 #14) */
+.akis-kart { margin-bottom: 12px; }
+.akis-sahne { height: 360px; margin-top: 12px; border-radius: var(--r-m); background: #E6EDEC; touch-action: pan-y; }
+.akis-sahne .yukleniyor.akis-on { display: grid; place-items: stretch; padding: 0; background: #E6EDEC; z-index: 1; }
+.akis-sahne .yukleniyor.akis-on svg, .akis-2b svg { width: 100%; height: 100%; }
+.akis-2b { position: absolute; inset: 0; display: grid; }
+.akis-2b[hidden] { display: none; }
+.akis2b-tik { cursor: pointer; }
+.akis2b-arac, .akis2b-ucak { animation-timing-function: linear; animation-iteration-count: infinite; }
+.akis2b-sag { animation-name: akis2b-sag; }
+.akis2b-sol { animation-name: akis2b-sol; }
+.akis2b-ucak { animation-duration: 8s; }
+@keyframes akis2b-sag { 0% { transform: translateX(150px); opacity: 0; } 6%, 94% { opacity: 1; } 100% { transform: translateX(550px); opacity: 0; } }
+@keyframes akis2b-sol { 0% { transform: translateX(550px) scaleX(-1); opacity: 0; } 6%, 94% { opacity: 1; } 100% { transform: translateX(150px) scaleX(-1); opacity: 0; } }
+.akis2b-gidip { animation: akis2b-gidip 20s linear infinite; }
+.akis2b-feribot { animation-duration: 26s; }
+@keyframes akis2b-gidip { 0%, 100% { transform: translateX(170px); } 50% { transform: translateX(530px); } }
+@media (max-width: 860px) { .akis-sahne { height: 250px; } .akis-sahne[data-mod="2b"] { height: auto; aspect-ratio: 700 / 360; } }
+@media (prefers-reduced-motion: reduce) {
+  .akis2b-arac, .akis2b-ucak, .akis2b-gidip { animation: none; }
+  .akis2b-sag { transform: translateX(330px); } .akis2b-sol { transform: translateX(420px) scaleX(-1); } .akis2b-gidip { transform: translateX(350px); }
+}
 /* Diplomasi salonu (D-110 #13) */
 .diplomasi-kart { margin-bottom: 12px; }
 .diplomasi-sahne { height: 380px; margin-top: 12px; border-radius: var(--r-m); background: #ECE5D6; touch-action: pan-y; }
