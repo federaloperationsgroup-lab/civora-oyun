@@ -2306,8 +2306,10 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .ozk-isaret .ozk-nokta { stroke: #FFFFFF; stroke-width: 1.6; }
 .ozk-isaret.ozerk .ozk-nokta { fill: #3E8E5E; }
 .ozk-isaret.surec .ozk-nokta { fill: #C9932E; }
+.ozk-isaret.devlet .ozk-nokta { fill: #C65A3B; }   /* yeni devletin korumasız başkenti (D-113) */
 .ozk-isaret .ozk-simge { fill: #FFFFFF; stroke: none; }
 .e-ozk { color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; display: flex; gap: 6px; align-items: center; }
 .e-ozk.ozerk { background: #3E8E5E; box-shadow: 0 6px 16px -6px rgba(62, 142, 94, 0.8); }
 .e-ozk.surec { background: #B58225; box-shadow: 0 6px 16px -6px rgba(181, 130, 37, 0.8); }
+.e-ozk.devlet { background: #C65A3B; box-shadow: 0 6px 16px -6px rgba(198, 90, 59, 0.8); }
 .e-ozk .ik { width: 14px; height: 14px; }
