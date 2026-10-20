@@ -2030,3 +2030,13 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 @keyframes sokak2b-kamyon { from { transform: translateX(-220px); } to { transform: translateX(920px); } }
 @media (max-width: 860px) { .sokak-sahne { height: 260px; } }
 @media (prefers-reduced-motion: reduce) { .sokak2b-siren, .sokak2b-kamyon { animation: none; } .sokak2b-kamyon { transform: translateX(300px); } }
+
+/* ---------- Dünya: canlı trafik (D-110 #8); 2B işaretler ve haritanın altındaki canlı satırı ---------- */
+.harita-canli { display: flex; gap: 6px; align-items: center; margin: 0 0 12px; }
+.harita-canli .ik { width: 16px; height: 16px; flex: none; }
+.trafik2b-araba circle { fill: #F4F1E8; stroke: #23395B; stroke-width: 1.4; }
+.trafik2b-ticaret circle { stroke: #FFFFFF; stroke-width: 1.4; }
+.trafik2b-ticaret path { fill: #FFFFFF; }
+.trafik2b-konvoy rect { stroke: #FFFFFF; stroke-width: 1; }
+.trafik2b-konvoy.saldiran rect { fill: #5B6B3A; }
+.trafik2b-konvoy.savunan rect { fill: #2F3B5A; }
