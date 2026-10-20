@@ -2235,3 +2235,59 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .salon2b-tokmak.vur .salon2b-tokmak-sap { animation: salon2b-tokmak 0.5s ease-in 3; }
 @keyframes salon2b-tokmak { 0% { transform: rotate(-30deg); } 40% { transform: rotate(12deg); } 100% { transform: rotate(-30deg); } }
 @media (prefers-reduced-motion: reduce) { .salon2b-tokmak.vur .salon2b-tokmak-sap { animation: none; } }
+
+/* ---------- Yönetime el koyma girişimi (D-111; 3B sahne yok, D-099): mücadele, canlı çubuk, geçici yönetim, girişim kartı ---------- */
+.ek-ust { margin-bottom: 16px; }
+.ek-mucadele { border: 2px solid var(--mercan-acik); }
+.ek-cubuk { margin-top: 12px; display: grid; gap: 6px; }
+.ek-cubuk-ust, .ek-cubuk-alt { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.ek-cubuk-ust .ek-yan { display: inline-flex; gap: 5px; align-items: center; font-weight: 750; }
+.ek-cubuk-ust .ek-yan .ik { width: 15px; height: 15px; }
+.ek-yan.girisim { color: var(--mercan-2); }
+.ek-yan.savunma { color: var(--orman); }
+.ek-cubuk-ic { position: relative; height: 18px; border-radius: 10px; background: var(--orman-3); overflow: hidden; }
+.ek-cubuk-ic > i { position: absolute; inset: 0 auto 0 0; background: var(--mercan); transition: width 0.8s ease; }
+.ek-esik { position: absolute; top: -2px; bottom: -2px; width: 3px; margin-left: -1.5px; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(22, 34, 30, 0.35); }
+.ek-cubuk[data-gecti="1"] .ek-cubuk-durum { color: var(--mercan-2); font-weight: 650; }
+.ek-cubuk-durum { margin: 0; }
+.ek-taraflar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.ek-taraf { display: grid; gap: 4px; justify-items: start; text-align: left; border: 2px solid var(--cizgi); background: var(--kagit); border-radius: var(--r-m); padding: 12px; font: inherit; color: inherit; cursor: pointer; }
+.ek-taraf .liste-ikon { width: 40px; height: 40px; border-radius: 12px; }
+.ek-taraf b { font-size: 15px; }
+.ek-taraf > span:last-child { font-size: 12.5px; color: var(--soluk); }
+.ek-taraf.savunma:hover, .ek-taraf.savunma:focus-visible { border-color: var(--orman); }
+.ek-taraf.girisim:hover, .ek-taraf.girisim:focus-visible { border-color: var(--mercan); }
+.ek-vurus-bas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.ek-vurus-bas #ek-benim { margin-left: auto; }
+.ek-ikmal { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: center; font-size: 13.5px; margin-top: 4px; }
+.ek-ikmal > span { display: inline-flex; gap: 5px; align-items: center; }
+.ek-ikmal .ik { width: 15px; height: 15px; }
+.uyari-yazi { color: var(--mercan-2); font-weight: 650; }
+.ek-fon { margin-top: 12px; }
+.ek-gecici .yasa-bant { margin-top: 10px; }
+.ek-odeme-alan { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--cizgi); }
+.ek-sart { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.ek-sandik { margin-top: 12px; display: grid; gap: 8px; }
+.ek-sandik-ic { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+.ek-sandik-ic > span { display: inline-flex; gap: 6px; align-items: center; }
+.ek-sandik-ic .ik { width: 16px; height: 16px; color: var(--altin-2); }
+.ek-katki { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ek-katki select, .ek-katki input { min-width: 0; flex: 1 1 110px; min-height: 42px; padding: 8px 12px; border-radius: 12px;
+  border: 1.5px solid var(--cizgi-2); background: #fff; font-size: 16px; }
+.ek-katki select:focus, .ek-katki input:focus { outline: none; border-color: var(--orman); box-shadow: 0 0 0 3px var(--orman-acik); }
+.ek-katki .dugme { flex: none; }
+.ek-ucret { margin-top: 4px; }
+.ek-cagrilar { display: grid; gap: 8px; margin-top: 8px; }
+.ek-kurallar { margin-top: 14px; }
+.ek-kurallar summary { display: flex; gap: 6px; align-items: center; cursor: pointer; font-weight: 650; }
+.ek-kurallar summary .ik { width: 16px; height: 16px; }
+.ek-kurallar .liste { margin-top: 10px; }
+/* Haritada başkentteki mücadele (mor) */
+.girisim-nokta { fill: #7D5FA0; stroke: #FFFFFF; stroke-width: 2; }
+.girisim-kalkan { fill: #FFFFFF; }
+.girisim-etiket { font-family: var(--f-govde); font-size: 12px; font-weight: 700; fill: #FFFFFF; paint-order: stroke; stroke-linejoin: round; stroke: #7D5FA0; stroke-width: 4px; }
+.odul .rozet-girisim { color: #5D4280; }
+.e-girisim { background: #7D5FA0; color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; display: flex; gap: 6px; align-items: center; box-shadow: 0 6px 16px -6px rgba(125, 95, 160, 0.8); }
+.e-girisim .ik { width: 14px; height: 14px; }
+@media (max-width: 560px) { .ek-taraflar { grid-template-columns: minmax(0, 1fr); } .ek-vurus-bas #ek-benim { margin-left: 0; } }
+@media (prefers-reduced-motion: reduce) { .ek-cubuk-ic > i { transition: none; } }
