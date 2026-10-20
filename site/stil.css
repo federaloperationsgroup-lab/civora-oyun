@@ -2099,6 +2099,21 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .baskent-anit summary .ik { width: 16px; height: 16px; }
 .anit-liste { columns: 3 120px; column-gap: 16px; margin: 8px 0 0; padding-left: 28px; font-size: 13px; }
 @media (max-width: 860px) { .baskent-sahne { height: 260px; } }
+/* Eğitim sahası (D-110 #16) */
+.egitim-kart { margin-bottom: 16px; }
+.egitim-sahne { height: 360px; margin-top: 12px; border-radius: var(--r-m); background: #E9E4D8; touch-action: pan-y; }
+.egitim-sahne[data-mod="2b"] { height: auto; aspect-ratio: 700 / 300; }
+.egitim-sahne .yukleniyor.egitim-on { display: grid; place-items: stretch; padding: 0; background: #E9E4D8; z-index: 1; }
+.egitim-sahne .yukleniyor.egitim-on svg, .egitim-2b svg { width: 100%; height: 100%; }
+.egitim-2b { position: absolute; inset: 0; display: grid; }
+.egitim-2b[hidden] { display: none; }
+.egitim2b-levha { font: 800 17px Figtree, system-ui, sans-serif; fill: #3A3324; }
+.egitim2b-sayi { font: 800 22px Figtree, system-ui, sans-serif; fill: #F1EDE2; }
+.egitim2b-not { font: 600 9px Figtree, system-ui, sans-serif; fill: #F1EDE2; }
+.egitim2b-ben { animation: egitim2b-sallan 1.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes egitim2b-sallan { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@media (max-width: 860px) { .egitim-sahne { height: 250px; } }
+@media (prefers-reduced-motion: reduce) { .egitim2b-ben { animation: none; } }
 /* İşbirliği akışı (D-110 #14) */
 .akis-kart { margin-bottom: 12px; }
 .akis-sahne { height: 360px; margin-top: 12px; border-radius: var(--r-m); background: #E6EDEC; touch-action: pan-y; }
