@@ -2016,3 +2016,17 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 @keyframes yol2b-akis { to { stroke-dashoffset: 16; } }
 @media (max-width: 860px) { .yolculuk-sahne { height: 240px; } }
 @media (prefers-reduced-motion: reduce) { .yol2b-cizgi.akiyor { animation: none; } }
+
+/* ---------- Gölge → Kara borsa: gece sokağı (D-110 #7), 3B yaşayan sahne ya da 2B ---------- */
+.sokak-kart { margin-top: 12px; }
+.sokak-sahne { height: 340px; margin-top: 12px; border-radius: var(--r-m); background: #1E2438; touch-action: pan-y; }
+.sokak-sahne .yukleniyor.sokak-on { display: grid; place-items: stretch; padding: 0; background: #1E2438; z-index: 1; }
+.sokak-sahne .yukleniyor.sokak-on svg, .sokak-2b svg { width: 100%; height: 100%; }
+.sokak-2b { position: absolute; inset: 0; display: grid; }
+.sokak-2b[hidden] { display: none; }
+.sokak2b-tik { cursor: pointer; }
+.sokak2b-siren { fill: #FF3B30; animation: s2b-siren 0.7s steps(2) infinite; }
+.sokak2b-kamyon { animation: sokak2b-kamyon 10s linear infinite; }
+@keyframes sokak2b-kamyon { from { transform: translateX(-220px); } to { transform: translateX(920px); } }
+@media (max-width: 860px) { .sokak-sahne { height: 260px; } }
+@media (prefers-reduced-motion: reduce) { .sokak2b-siren, .sokak2b-kamyon { animation: none; } .sokak2b-kamyon { transform: translateX(300px); } }
