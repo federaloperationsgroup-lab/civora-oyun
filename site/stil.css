@@ -1615,6 +1615,39 @@ img { max-width: 100%; display: block; }
 .figur-2b-resim { width: 200px; height: 200px; box-shadow: var(--golge-2); }
 .figur-2b-resim svg { width: 100%; height: 100%; display: block; }
 .figur-alt { justify-content: space-between; gap: 8px; margin-top: 10px; }
+/* Terzi ve ayna odası, hafif 2B (D-110 #15) */
+.figur-2b:has(.terzi2b) { padding: 0; align-items: stretch; }
+.terzi2b { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 0.7fr); gap: 12px; align-items: center; padding: 16px 14px;
+  border-radius: var(--r-m); background: linear-gradient(#EFE3C9 0 74%, #6E4A32 74% 76%, #96684A 76% 100%); }
+.terzi2b-dolap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 8px 6px; background: #C9A57A;
+  border: 6px solid #8A5A3A; border-radius: 6px; box-shadow: inset 0 6px 0 rgba(0,0,0,.08); }
+.terzi2b-aski { display: grid; justify-items: center; gap: 1px; padding: 4px 2px; border-radius: 8px; border: 2px solid transparent; background: transparent;
+  font: inherit; font-size: 11px; line-height: 1.2; color: #3B2A1C; cursor: pointer; min-width: 0; }
+.terzi2b-aski span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.terzi2b-aski:hover:not(:disabled) { background: rgba(255,255,255,.3); }
+.terzi2b-aski[aria-pressed="true"] { border-color: #B08A3E; background: rgba(255,255,255,.5); }
+.terzi2b-aski:disabled { opacity: .6; cursor: not-allowed; }
+.terzi2b-aski svg { width: 42px; height: 52px; }
+.terzi2b-orta { display: grid; justify-items: center; gap: 8px; text-align: center; }
+.terzi2b-orta b { padding: 3px 12px; border-radius: 4px; border: 1px solid rgba(70,50,10,.45); background: linear-gradient(#D9B865, #A9822F);
+  color: #3B2A0C; font-family: Georgia, "Times New Roman", serif; font-size: 14px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.terzi2b .figur-2b-resim { width: min(200px, 100%); height: auto; aspect-ratio: 1; }
+.terzi2b-ayna { aspect-ratio: 9 / 19; max-height: 240px; justify-self: center; width: 100%; border: 7px solid #6B4A32; display: grid; place-items: center;
+  overflow: hidden; border-radius: 46% 46% 6px 6px / 20% 20% 6px 6px; background: linear-gradient(135deg, #E4ECEE 0%, #B9C9CC 60%, #DCE6E8 100%); position: relative; }
+.terzi2b-ayna .avatar { width: 82%; height: auto; aspect-ratio: 1; transform: scaleX(-1); opacity: .82; }
+.terzi2b-ayna::after { content: ""; position: absolute; inset: -40% -60%; background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.55) 50%, transparent 58%);
+  transform: translateX(-60%); pointer-events: none; }
+.terzi2b.doner .figur-2b-resim { animation: terzi2b-don .7s ease-in-out; }
+.terzi2b.doner .terzi2b-ayna::after { animation: terzi2b-parla .9s ease-out .2s; }
+@keyframes terzi2b-don { 0%, 100% { transform: rotateY(0); } 50% { transform: rotateY(90deg); } }
+@keyframes terzi2b-parla { from { transform: translateX(-60%); } to { transform: translateX(60%); } }
+@media (max-width: 560px) {
+  .terzi2b { grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr); background: linear-gradient(#EFE3C9 0 82%, #6E4A32 82% 83.5%, #96684A 83.5% 100%); }
+  .terzi2b-dolap { grid-column: 1 / -1; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .terzi2b-aski svg { width: 34px; height: 42px; }
+  .terzi2b-aski span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .terzi2b.doner .figur-2b-resim, .terzi2b.doner .terzi2b-ayna::after { animation: none; } }
 .figur-eylemler { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--cizgi); }
 .figur-eylemler .ust-yazi { margin-bottom: 8px; }
 .figur-eylemler .secim-cip { min-height: 36px; padding: 0 12px; }
