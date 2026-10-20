@@ -1977,3 +1977,18 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .carsi2b-baslik { font: 700 12px Georgia, "Times New Roman", serif; fill: #E9C46A; }
 .carsi2b-pano { font: 600 10px Georgia, "Times New Roman", serif; fill: #EDEBDF; }
 .carsi2b-pano.yesil { fill: #9BE39B; }
+
+
+/* ---------- Şehir: yaşayan şehir (D-110 #4), 2B planın yaşam katmanı ---------- */
+.s2b-hayat { pointer-events: none; }
+.sehir-ust .sehir-nabiz { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 13px; color: rgba(255, 255, 255, 0.9); }
+.sehir-nabiz b { font-weight: 600; color: rgba(255, 255, 255, 0.75); }
+.sehir-nabiz span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.sehir-nabiz svg { width: 15px; height: 15px; flex: none; }
+.s2b-yaya { stroke: rgba(40, 30, 20, 0.35); stroke-width: 0.05; }
+.s2b-siren { fill: #FF3B30; animation: s2b-siren 0.7s steps(2) infinite; }
+.s2b-arac.jandarma .s2b-siren { animation-duration: 0.9s; }
+@keyframes s2b-siren { 0% { fill: #FF3B30; } 100% { fill: #3A6BFF; } }
+.s2b-miting { animation: s2b-miting 1.2s ease-in-out infinite alternate; }
+@keyframes s2b-miting { from { transform: translateY(0); } to { transform: translateY(-0.12px); } }
+@media (prefers-reduced-motion: reduce) { .s2b-siren, .s2b-miting { animation: none; } }
