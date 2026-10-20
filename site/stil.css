@@ -2291,3 +2291,23 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .e-girisim .ik { width: 14px; height: 14px; }
 @media (max-width: 560px) { .ek-taraflar { grid-template-columns: minmax(0, 1fr); } .ek-vurus-bas #ek-benim { margin-left: 0; } }
 @media (prefers-reduced-motion: reduce) { .ek-cubuk-ic > i { transition: none; } }
+
+/* ---------- Bölge özerkliği (D-112): Ülkem → Bölge, harita işaretleri ---------- */
+.ozk-butce { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 12px 0 6px; padding: 12px 14px; border-radius: 14px;
+  background: var(--kagit-2); }
+.ozk-butce > span { font-size: 13px; color: var(--murekkep); opacity: 0.75; font-weight: 700; }
+.ozk-butce > b { font-size: 24px; font-weight: 800; color: var(--orman); }
+.ozk-liste button.liste-satir { width: 100%; text-align: left; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; border-radius: 12px; }
+.ozk-liste button.liste-satir:hover, .ozk-liste button.liste-satir:focus-visible { background: var(--kagit-2); outline: none; }
+.ozk-odeme .alan select, .ozk-odeme .alan input { min-height: 42px; padding: 8px 12px; border-radius: 12px; border: 1.5px solid var(--cizgi-2); background: #fff; font-size: 16px; }
+.ozk-odeme .alan select:focus, .ozk-odeme .alan input:focus { outline: none; border-color: var(--orman); box-shadow: 0 0 0 3px var(--orman-acik); }
+.odul .rozet-ozerk { color: var(--orman); }
+.odul .rozet-ozk { color: #8A6A1E; }
+.ozk-isaret .ozk-nokta { stroke: #FFFFFF; stroke-width: 1.6; }
+.ozk-isaret.ozerk .ozk-nokta { fill: #3E8E5E; }
+.ozk-isaret.surec .ozk-nokta { fill: #C9932E; }
+.ozk-isaret .ozk-simge { fill: #FFFFFF; stroke: none; }
+.e-ozk { color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; display: flex; gap: 6px; align-items: center; }
+.e-ozk.ozerk { background: #3E8E5E; box-shadow: 0 6px 16px -6px rgba(62, 142, 94, 0.8); }
+.e-ozk.surec { background: #B58225; box-shadow: 0 6px 16px -6px rgba(181, 130, 37, 0.8); }
+.e-ozk .ik { width: 14px; height: 14px; }
