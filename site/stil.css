@@ -2623,6 +2623,9 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .meydan2b-balon { fill: #FFFFFF; stroke: rgba(0, 0, 0, 0.2); stroke-width: 0.6; } .meydan2b-balon.tellal { fill: #FFF3C8; }
 .meydan2b-konusma.megafon .meydan2b-balon { fill: #FFF3C8; stroke: #C9A227; }
 .meydan2b-masa { fill: #FFFFFF; stroke: #4A4F55; stroke-width: 0.8; }
+.meydan2b-sandalye { fill: #2F6F6A; opacity: 0.85; }
+.meydan2b-oyuncu.oturuyor .meydan2b-govde { transform: scaleY(0.72) translateY(2px); }
+.meydan2b-cay-kapi { fill: #ECE6D6; stroke: #B48A5A; stroke-width: 0.6; }
 .meydan2b-cerceve { fill: #F4EFE3; stroke: #C9A227; stroke-width: 1.4; }
 .meydan2b-foto { fill: #9AA9B3; } .meydan2b-foto.parlak { fill: #FFD873; }
 .meydan2b-yagmur { stroke: #9FB4C8; stroke-width: 0.8; opacity: 0.6; }
