@@ -3132,3 +3132,39 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .canli-cip .ik { width: 13px; height: 13px; }
 .birlik-cip.canli-cip { border-radius: 14px; padding: 8px 12px; }
 .cip-dugme.soluk { opacity: 0.5; }
+
+/* ---------- Turne (D-128, 1. parça): yol (duraklar ve otobüsler), planlayıcı, haritadaki otobüs ---------- */
+.turne-yol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.turne-durak, .turne-ayak { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 10px 12px; border: 1px solid var(--cizgi);
+  border-radius: var(--r-m); background: var(--kagit); }
+.turne-ayak { background: color-mix(in srgb, var(--kagit) 80%, var(--altin-acik)); border-style: dashed; }
+.turne-ayak.hal-en_route { border-color: var(--altin); border-style: solid; }
+.turne-durak.hal-canli { border-color: var(--mercan); }
+.turne-durak.hal-iptal, .turne-ayak.hal-cancelled { opacity: 0.7; }
+.turne-sira { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--orman); color: #FFF; font-weight: 800; }
+.turne-ayak .turne-sira { background: var(--altin); color: var(--murekkep); }
+.turne-sira .ik { width: 16px; height: 16px; }
+.turne-durak-govde { display: flex; flex-direction: column; gap: 3px; min-width: 0; overflow-wrap: anywhere; }
+.turne-durak-govde .tur { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soluk); }
+.turne-durak-govde .alt { font-size: 13px; color: var(--soluk); }
+.turne-durak-govde .oneri-dugmeler { margin: 4px 0 0; }
+.turne-durak > .cip, .turne-ayak > .cip { flex: none; }
+.cip.kucuk { min-height: 24px; padding: 0 8px; font-size: 12px; }
+.pencere:has(#turne-duraklar) { width: min(760px, 100%); }
+.turne-durak-form { display: grid; grid-template-columns: 32px minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr) auto; gap: 8px; align-items: end; padding: 8px 0; border-bottom: 1px dashed var(--cizgi); }
+.turne-durak-form .turne-sira { margin-bottom: 6px; }
+.turne-durak-form .alan { margin: 0; }
+.turne-durak-form [data-durak-sil] { margin-bottom: 2px; }
+.turne-plan li.hata { color: var(--mercan-2); }
+.konser-tahmin .ust-yazi { margin: 10px 0 4px; }
+.trafik2b-otobus rect:first-of-type { stroke: #FFFFFF; stroke-width: 1; }
+.otobus2b-yazi { font-size: 9px; font-weight: 800; fill: #23395B; paint-order: stroke; stroke: #F4F1E8; stroke-width: 2px; }
+.etiket-otobus { pointer-events: none; }
+.etiket-otobus-yazi { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; background: rgba(35, 57, 91, 0.88); color: #F4F1E8;
+  font-size: 11px; font-weight: 800; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+.etiket-otobus-yazi .ik { width: 13px; height: 13px; }
+@media (max-width: 720px) {
+  .turne-durak-form { grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1fr); }
+  .turne-durak-form .alan:nth-of-type(3) { grid-column: 2; }
+  .turne-durak-form [data-durak-sil] { grid-column: 3; justify-self: end; align-self: end; }
+}
