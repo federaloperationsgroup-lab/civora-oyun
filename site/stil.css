@@ -3168,3 +3168,49 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
   .turne-durak-form .alan:nth-of-type(3) { grid-column: 2; }
   .turne-durak-form [data-durak-sil] { grid-column: 3; justify-self: end; align-self: end; }
 }
+
+/* ---------- Kayıt stüdyosu ve EP (D-128, 2. parça): kapaklar, EP satırları ve rafı, formlar, stüdyonun sahnesi ---------- */
+.ep-kapak { display: block; border-radius: 6px; flex: none; box-shadow: 0 2px 6px rgba(0, 0, 0, .25); }
+.ep-kapak.buyuk { border-radius: 10px; }
+.ep-kapak-dugme { padding: 0; border: 0; background: none; cursor: pointer; border-radius: 6px; line-height: 0; }
+.ep-kapak-dugme:focus-visible { outline: 2px solid var(--altin); outline-offset: 2px; }
+.ep-satir { align-items: center; }
+.ep-satir-dugmeler { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.ep-kart-ust { display: flex; gap: 14px; align-items: flex-start; }
+.ep-kart-ust > div { min-width: 0; flex: 1; }
+.ep-raf { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 12px; }
+.ep-raf-oge { display: grid; justify-items: start; gap: 4px; padding: 8px; border: 1px solid var(--cizgi); border-radius: var(--r-m); background: var(--kart-ust, transparent);
+  cursor: pointer; text-align: left; color: inherit; font: inherit; min-width: 0; }
+.ep-raf-oge:hover { border-color: var(--altin); }
+.ep-raf-oge > b { font-size: 14px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.ep-raf-oge > .kucuk { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.ep-raf-oge .ep-kapak { width: 100%; height: auto; aspect-ratio: 1; }
+.ep-parca-liste { display: grid; gap: 6px; }
+.ep-parca { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--cizgi); border-radius: var(--r-m); cursor: pointer; }
+.ep-parca.secili { border-color: var(--altin); background: rgba(217, 165, 72, .08); }
+.ep-parca input { margin: 0; width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--altin); }
+.ep-parca-sira { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--altin); color: #1D1A22; font-weight: 800; font-size: 12px; }
+.ep-parca:not(.secili) .ep-parca-sira { background: var(--cizgi); color: transparent; }
+.ep-parca > span:last-child { display: grid; min-width: 0; }
+.ep-kapak-secim { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
+.ep-kapak-sec { position: relative; display: grid; justify-items: center; gap: 4px; padding: 6px; border: 1px solid var(--cizgi); border-radius: var(--r-m); cursor: pointer; }
+.ep-kapak-sec:has(input:checked) { border-color: var(--altin); background: rgba(217, 165, 72, .08); }
+.ep-kapak-sec input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
+.ep-kapak-sec:focus-within { outline: 2px solid var(--altin); outline-offset: 2px; }
+.ep-kapak-onizleme { line-height: 0; }
+.ep-kapak-onizleme .ep-kapak { width: 64px; height: 64px; }
+.studyo-kayit .muzik-ilerleme { margin: 4px 0; }
+.studyo-kart { margin-bottom: 20px; }
+.studyo-sahne { height: 400px; margin-top: 12px; border-radius: var(--r-m); background: #DDD6CA; touch-action: pan-y; }
+.studyo-sahne .yukleniyor.studyo-on { display: grid; place-items: stretch; padding: 0; background: #DDD6CA; z-index: 1; }
+.studyo-sahne .yukleniyor.studyo-on svg, .studyo-2b svg { width: 100%; height: 100%; }
+.studyo-2b { position: absolute; inset: 0; display: grid; }
+.studyo-2b[hidden] { display: none; }
+.studyo2b-tik, .studyo2b-kisi { cursor: pointer; }
+.studyo2b-kisi.calar { animation: prova2b-cal 0.7s ease-in-out infinite; }
+.studyo2b-lamba { animation: birlik2b-fener 0.9s ease-in-out infinite alternate; }
+.studyo2b-isik { animation: prova2b-isik 2.2s ease-in-out infinite alternate; }
+.studyo2b-led { animation: studyo2b-led 1s steps(2) infinite; }
+@keyframes studyo2b-led { 50% { opacity: 0.25; } }
+@media (max-width: 860px) { .studyo-sahne { height: 280px; } }
+@media (prefers-reduced-motion: reduce) { .studyo2b-kisi, .studyo2b-lamba, .studyo2b-isik, .studyo2b-led { animation: none; } }
