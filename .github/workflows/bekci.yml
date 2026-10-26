@@ -1,5 +1,6 @@
 # Bekçi (D-098): 15 dakikada bir oyun sitesini ve sunucuyu dener.
-# Denetimler: site açılıyor mu ve ayar dosyası okunuyor mu; Supabase giriş servisi (Auth) sağlıklı mı; veritabanı yanıt
+# Denetimler: site açılıyor mu ve ayar dosyası okunuyor mu; Supabase giriş servisi (Auth) sağlıklı mı; misafir girişi açık mı
+# (Supabase ayarı, B-17); veritabanı yanıt
 # veriyor mu (giriş yapmamış bir çağrıya veritabanı "izin yok" (42501) der; sunucu ya da veritabanı düşükse 5xx ya da
 # zaman aşımı olur). Her denetim üç kez denenir (aralarda 15 saniye); geçici takılmalar sorun sayılmaz.
 # Sorun bulursa bu depoda "bekci" etiketli bir konu (issue) açar ve depo sahibini anar: GitHub sahibine e-postayla haber
@@ -42,6 +43,8 @@ jobs:
           sayfa_ok() { curl -fsS --max-time 20 "$SITE/" -o sayfa.html && grep -q "<title>Civora</title>" sayfa.html; }
           ayar_ok() { curl -fsS --max-time 20 "$SITE/yapilandirma.json" -o ayar.json && jq -e '.supabaseUrl and .anahtar' ayar.json > /dev/null; }
           auth_ok() { [ "$(curl -sS --max-time 20 -o /dev/null -w '%{http_code}' -H "apikey: $ANAHTAR" "$URL/auth/v1/health")" = "200" ]; }
+          # Misafir girişi (D-133, B-17): Supabase'in genel ayarlarında "Allow anonymous sign-ins" açık olmalı
+          misafir_ok() { curl -fsS --max-time 20 -H "apikey: $ANAHTAR" "$URL/auth/v1/settings" -o ayarlar.json && jq -e '.external.anonymous_users == true' ayarlar.json > /dev/null; }
           vt_ok() {
             local yanit kod
             yanit=$(curl -sS --max-time 20 -w '\n%{http_code}' -X POST -H "apikey: $ANAHTAR" -H "content-type: application/json" \
@@ -57,6 +60,7 @@ jobs:
             URL=$(jq -r .supabaseUrl ayar.json)
             ANAHTAR=$(jq -r .anahtar ayar.json)
             dene auth_ok || echo "Giriş servisi (Supabase Auth) yanıt vermiyor: oyuncular giriş yapamaz." >> sorunlar.txt
+            dene misafir_ok || echo "Misafir girişi kapalı: Supabase panelinde Authentication → Sign In / Providers → \"Allow anonymous sign-ins\" açılmalı (B-17); testçiler misafir olarak giremez." >> sorunlar.txt
             dene vt_ok || echo "Veritabanı yanıt vermiyor: Supabase projesi duraklatılmış ya da çökmüş olabilir (Supabase panelinde projenin durumuna bak)." >> sorunlar.txt
           else
             echo "Sitenin ayar dosyası (yapilandirma.json) okunamıyor: oyun sunucuya bağlanamaz." >> sorunlar.txt
@@ -66,7 +70,7 @@ jobs:
             echo
             echo "Denetlenen site: $SITE/"
             echo
-            if [ -s sorunlar.txt ]; then sed 's/^/- ❌ /' sorunlar.txt; else echo "- ✅ Site, giriş servisi ve veritabanı yanıt veriyor."; fi
+            if [ -s sorunlar.txt ]; then sed 's/^/- ❌ /' sorunlar.txt; else echo "- ✅ Site, giriş servisi, misafir girişi ve veritabanı yanıt veriyor."; fi
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Konu aç, güncelle ya da kapat
         env:
