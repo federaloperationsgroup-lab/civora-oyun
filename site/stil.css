@@ -3159,6 +3159,22 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .turne-durak-form .alan { margin: 0; }
 .turne-durak-form [data-durak-sil] { margin-bottom: 2px; }
 .turne-plan li.hata { color: var(--mercan-2); }
+/* Festival (D-128, 3. parça): takvim, program, sıralar */
+.festival-takvim .turne-durak.simdi { border-color: var(--altin); box-shadow: 0 0 0 2px var(--altin-acik); }
+.festival-takvim .turne-durak.hal-bitti { opacity: 0.72; }
+.festival-basvuru.secili { border-color: var(--altin); box-shadow: 0 0 0 2px var(--altin-acik); }
+.festival-basvuru.hal-not_selected, .festival-basvuru.hal-withdrawn { opacity: 0.72; }
+.festival-basvuru.hal-no_show { border-color: var(--mercan); }
+.festival-sira.altin { background: #D9B54A; color: var(--murekkep); }
+.festival-sira.gumus { background: #C9CED8; color: var(--murekkep); }
+.festival-sira.bronz { background: #B5744A; color: #FFF; }
+.festival-afis { background: linear-gradient(135deg, color-mix(in srgb, var(--kagit) 70%, #F2C27B), var(--kagit)); border-color: #D9B54A; }
+.festival-tur .kart-bas .liste-ikon .muzik-afis { width: 44px; height: 44px; border-radius: 12px; }
+@media (max-width: 560px) {
+  /* Telefonda durum çipi satırın altına iner; gövde geniş kalır (turne durakları da) */
+  .turne-durak, .turne-ayak { grid-template-columns: 36px minmax(0, 1fr); }
+  .turne-durak > .cip, .turne-ayak > .cip { grid-column: 2; justify-self: start; }
+}
 .konser-tahmin .ust-yazi { margin: 10px 0 4px; }
 .trafik2b-otobus rect:first-of-type { stroke: #FFFFFF; stroke-width: 1; }
 .otobus2b-yazi { font-size: 9px; font-weight: 800; fill: #23395B; paint-order: stroke; stroke: #F4F1E8; stroke-width: 2px; }
