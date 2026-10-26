@@ -1005,6 +1005,9 @@ img { max-width: 100%; display: block; }
 .bilgi-kutusu { background: var(--orman-acik); color: var(--orman); }
 .hata-kutusu .ik, .bilgi-kutusu .ik { margin-top: 2px; }
 .giris-alt { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: space-between; margin-top: 16px; font-size: 14px; }
+.misafir-kutu { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--cizgi); display: grid; gap: 8px; }
+.misafir-kutu small { color: var(--soluk); font-size: 12.5px; line-height: 1.45; }
+.misafir-cip { display: inline-flex; align-items: center; gap: 6px; }
 .giris-alt .baglanti { font-size: 14px; }
 .giris-dipnot { margin-top: 14px; font-size: 12.5px; color: var(--soluk); text-align: center; }
 .giris-dipnot a { color: var(--orman); }
