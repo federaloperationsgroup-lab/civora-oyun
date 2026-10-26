@@ -3233,3 +3233,48 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 @keyframes studyo2b-led { 50% { opacity: 0.25; } }
 @media (max-width: 860px) { .studyo-sahne { height: 280px; } }
 @media (prefers-reduced-motion: reduce) { .studyo2b-kisi, .studyo2b-lamba, .studyo2b-isik, .studyo2b-led { animation: none; } }
+
+/* ---------- Mağaza (D-134): üst kartlar, katalog, sezon kartı ödülleri, Kurucu paketi, haklar; Görünüm'de ürün yuvaları ---------- */
+.magaza-ust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 20px; }
+.magaza-kart { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.magaza-kart .ust-yazi { display: inline-flex; align-items: center; gap: 6px; }
+.magaza-kart .ust-yazi .ik { width: 16px; height: 16px; }
+.magaza-kart .cubuk { width: 100%; }
+.magaza-sayi { font-family: var(--f-baslik); font-size: 30px; font-weight: 600; line-height: 1.1; margin: 0; }
+.magaza-hediye { display: flex; align-items: center; gap: 12px; }
+.avatar.magaza-onizleme { width: 64px; height: 64px; border: 0; }
+.avatar.magaza-onizleme.kucuk-o { width: 36px; height: 36px; }
+.magaza-yuvalar { margin: 10px 0 14px; }
+.magaza-yuvalar .secim-cip .kucuk { color: var(--soluk); font-weight: 500; }
+.magaza-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.magaza-urun { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px 12px; padding: 12px; border: 1px solid var(--cizgi-2); border-radius: var(--r-m); background: var(--kagit); align-items: start; }
+.magaza-urun.sende { border-color: var(--orman); background: rgba(23, 74, 64, 0.04); }
+.magaza-urun-bilgi { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.magaza-urun-bilgi .cip { align-self: flex-start; }
+.magaza-urun-bilgi .kucuk { display: inline-flex; align-items: center; gap: 4px; }
+.magaza-urun-bilgi .kucuk .ik { width: 13px; height: 13px; }
+.magaza-tl { color: var(--soluk); }
+.magaza-urun-dugmeler { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; min-height: 0; }
+.magaza-urun-dugmeler:empty { display: none; }
+.magaza-not { margin-top: 12px; }
+.magaza-sezon-tablo { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--cizgi-2); border-radius: var(--r-m); overflow: hidden; margin-top: 10px; }
+.magaza-sezon-bas, .magaza-sezon-satir { display: contents; }
+.magaza-sezon-bas > span { padding: 8px 10px; background: var(--kagit-3); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--soluk); }
+.magaza-sezon-satir > * { padding: 8px 10px; border-top: 1px solid var(--cizgi-2); display: flex; align-items: center; gap: 8px; min-width: 0; }
+.magaza-sezon-satir.gecildi > * { background: rgba(217, 165, 72, 0.08); }
+.magaza-seviye { font-weight: 700; justify-content: center; }
+.magaza-odul { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.magaza-odul > .ik { width: 18px; height: 18px; color: var(--altin); flex: none; }
+.magaza-odul .cip { padding: 1px 8px; font-size: 11.5px; }
+.magaza-bos { color: var(--soluk); }
+.magaza-kurucu-izgara { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.magaza-kurucu { padding: 14px; border: 1px solid var(--cizgi-2); border-radius: var(--r-m); background: var(--kagit); display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.magaza-kurucu.sende { border-color: var(--altin); }
+.magaza-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.magaza-liste li { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.magaza-liste li > .ik { width: 16px; height: 16px; flex: none; color: var(--orman); }
+.magaza-liste.iki { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gorunus-urunler { padding-top: 12px; border-top: 1px dashed var(--cizgi-2); }
+.gorunus-yuva { margin-top: 8px; display: grid; gap: 6px; }
+@media (max-width: 860px) { .magaza-ust, .magaza-kurucu-izgara { grid-template-columns: minmax(0, 1fr); } .magaza-liste.iki { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .magaza-izgara { grid-template-columns: minmax(0, 1fr); } .magaza-sezon-tablo { grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr); } .magaza-sezon-satir > *, .magaza-sezon-bas > span { padding: 6px; } }
