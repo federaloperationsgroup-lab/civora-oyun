@@ -21,11 +21,15 @@
   Cache-Control: no-cache
 /manifest.webmanifest
   Cache-Control: no-cache
+/acilis.js
+  Cache-Control: public, max-age=31536000, immutable
 /app.js
   Cache-Control: public, max-age=31536000, immutable
 /stil.css
   Cache-Control: public, max-age=31536000, immutable
 /veri/*
   Cache-Control: no-cache
+/veri/en.js
+  Cache-Control: public, max-age=31536000, immutable
 /img/*
   Cache-Control: public, max-age=86400

@@ -1,18 +1,20 @@
-# Bekçi (D-098): 15 dakikada bir oyun sitesini ve sunucuyu dener.
+# Bekçi (D-098; D-159 ile 5 dakikada bir): oyun sitesini ve sunucuyu dener.
 # Denetimler: site açılıyor mu ve ayar dosyası okunuyor mu; Supabase giriş servisi (Auth) sağlıklı mı; misafir girişi açık mı
-# (Supabase ayarı, B-17); veritabanı yanıt
-# veriyor mu (giriş yapmamış bir çağrıya veritabanı "izin yok" (42501) der; sunucu ya da veritabanı düşükse 5xx ya da
-# zaman aşımı olur). Her denetim üç kez denenir (aralarda 15 saniye); geçici takılmalar sorun sayılmaz.
+# (Supabase ayarı, B-17); veritabanı yanıt veriyor mu (giriş yapmamış bir çağrıya veritabanı "izin yok" (42501) der; sunucu ya
+# da veritabanı düşükse 5xx ya da zaman aşımı olur); yönetim uyarısı var mı (D-159: sunucunun dakikalık denetimi zamanlanmış
+# işlerin gecikmesi ve birikmesi, hata oranı, yavaş istek gibi durumlarda uyarı açar; api.watch_status bunu ziyaretçiye de
+# söyler; son denetim 10 dakikadan eskiyse zamanlayıcı durmuş demektir). Her denetim üç kez denenir (aralarda 15 saniye);
+# geçici takılmalar sorun sayılmaz.
 # Sorun bulursa bu depoda "bekci" etiketli bir konu (issue) açar ve depo sahibini anar: GitHub sahibine e-postayla haber
 # verir. Sorun sürerken konunun metni güncellenir (yeni e-posta gitmez); düzelince konu kapanır (bir e-posta daha).
-# İş kırmızıya dönmez: her 15 dakikada bir hata e-postası gelmesin diye haber yalnız konuyla verilir.
+# İş kırmızıya dönmez: her 5 dakikada bir hata e-postası gelmesin diye haber yalnız konuyla verilir.
 # İsteğe bağlı değişken: SITE_ADRESI (sitenin asıl adresi; yoksa GitHub Pages adresi denetlenir).
 # Not: GitHub, 60 gün hiç gönderim olmayan açık depolarda zamanlanmış işleri durdurur; yeni oyun sürümü yüklendikçe sürer.
 name: Bekçi
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -55,13 +57,36 @@ jobs:
               *) return 1 ;;
             esac
           }
+          # Yönetim uyarısı (D-159): ziyaretçiye açık tek işlev; açık uyarıların türü ve Türkçe metni döner, sayı ve ayrıntı dönmez
+          uyari_al() {
+            curl -fsS --max-time 20 -X POST -H "apikey: $ANAHTAR" -H "content-type: application/json" -H "content-profile: api" \
+              -d '{}' "$URL/rest/v1/rpc/watch_status" -o uyari.json && jq -e 'has("ok")' uyari.json > /dev/null
+          }
           dene sayfa_ok || echo "Oyun sitesi açılmıyor: $SITE/" >> sorunlar.txt
           if dene ayar_ok; then
             URL=$(jq -r .supabaseUrl ayar.json)
             ANAHTAR=$(jq -r .anahtar ayar.json)
             dene auth_ok || echo "Giriş servisi (Supabase Auth) yanıt vermiyor: oyuncular giriş yapamaz." >> sorunlar.txt
             dene misafir_ok || echo "Misafir girişi kapalı: Supabase panelinde Authentication → Sign In / Providers → \"Allow anonymous sign-ins\" açılmalı (B-17); testçiler misafir olarak giremez." >> sorunlar.txt
-            dene vt_ok || echo "Veritabanı yanıt vermiyor: Supabase projesi duraklatılmış ya da çökmüş olabilir (Supabase panelinde projenin durumuna bak)." >> sorunlar.txt
+            if dene vt_ok; then
+              if dene uyari_al; then
+                if [ "$(jq -r .ok uyari.json)" != "true" ]; then
+                  jq -c '.alerts[]' uyari.json | while read -r a; do
+                    echo "Yönetim uyarısı: $(printf '%s' "$a" | jq -r .text) (başlangıç $(TZ=Europe/Istanbul date -d "$(printf '%s' "$a" | jq -r .since)" '+%d.%m.%Y %H:%M'), Türkiye saati; oyunda Hayatım → Moderasyon → Sunucu)" >> sorunlar.txt
+                  done
+                fi
+                SON=$(jq -r '.checked_at // empty' uyari.json)
+                if [ -z "$SON" ]; then
+                  echo "Yönetim denetimi hiç çalışmamış (ops_check): kurulumdan sonra pg_cron'da zamanlanmış işler kurulmamış olabilir (Actions → Supabase'e kurulum)." >> sorunlar.txt
+                elif [ $(( $(date -u +%s) - $(date -u -d "$SON" +%s) )) -gt 600 ]; then
+                  echo "Yönetim denetimi 10 dakikadan uzun süredir çalışmamış (son: $(TZ=Europe/Istanbul date -d "$SON" '+%d.%m.%Y %H:%M'), Türkiye saati): zamanlayıcı (pg_cron) durmuş olabilir; savaş, seçim ve iş bitişleri ilerlemez." >> sorunlar.txt
+                fi
+              else
+                echo "Yönetim uyarısı okunamadı (api.watch_status): sürüm eski olabilir ya da veritabanı yanıt vermiyor." >> sorunlar.txt
+              fi
+            else
+              echo "Veritabanı yanıt vermiyor: Supabase projesi duraklatılmış ya da çökmüş olabilir (Supabase panelinde projenin durumuna bak)." >> sorunlar.txt
+            fi
           else
             echo "Sitenin ayar dosyası (yapilandirma.json) okunamıyor: oyun sunucuya bağlanamaz." >> sorunlar.txt
           fi
@@ -70,7 +95,7 @@ jobs:
             echo
             echo "Denetlenen site: $SITE/"
             echo
-            if [ -s sorunlar.txt ]; then sed 's/^/- ❌ /' sorunlar.txt; else echo "- ✅ Site, giriş servisi, misafir girişi ve veritabanı yanıt veriyor."; fi
+            if [ -s sorunlar.txt ]; then sed 's/^/- ❌ /' sorunlar.txt; else echo "- ✅ Site, giriş servisi, misafir girişi ve veritabanı yanıt veriyor; yönetim uyarısı yok (son denetim $(TZ=Europe/Istanbul date -d "${SON:-now}" '+%d.%m.%Y %H:%M'), Türkiye saati)."; fi
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Konu aç, güncelle ya da kapat
         env:

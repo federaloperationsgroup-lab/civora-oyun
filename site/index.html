@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- İçerik güvenlik politikası (D-098): derlemede yazılır (tools/istemci/build.ts); satır içi betiklerin özetleri dahil -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-ndRxgw+4+93LpXnb8/Wc4Sd4V1Kv0asVcbkVUjvrEl0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-clO3lQlq/8ND4lGU/+G7YIQ4A+PHMi8zGTVeYxXsyQA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Civora</title>
 <meta name="description" content="Civora: gerçek dünya haritasında, ülkeleri oyuncuların yönettiği strateji oyunu.">
@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
-<link rel="stylesheet" href="stil.css?v=2026-11-02-24109ac3-0f79a36">
+<link rel="stylesheet" href="stil.css?v=2026-11-03-2e097b95-c0fcd73">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
@@ -45,17 +45,29 @@
   </div>
 </div>
 <script>
-  // Açılış yazısı ve sayfanın dili oyun yüklenmeden önce seçili dilde (00_dil.js ile aynı kural: bu cihazda seçilen dil, yoksa tarayıcının dili)
+  // Açılış yazısı ve sayfanın dili oyun yüklenmeden önce seçili dilde (00_dil.js ile aynı kural: bu cihazda seçilen dil, yoksa
+  // tarayıcının dili). Betikler buradan sırayla eklenir (D-157): İngilizcede önce katalog (veri/en.js; Türkçe açılış onu
+  // taşımaz), sonra küçük açılış parçası (acilis.js: indiği anda giriş ekranı) ve büyük parça (app.js). async=false:
+  // tarayıcı hepsini birlikte indirir, eklenme sırasıyla çalıştırır; hepsi aynı küresel ortamı paylaşan klasik betiktir.
   (function () {
     var s = null;
     try { s = localStorage.getItem("civora.dil"); } catch (e) { /* depolama yok */ }
     var t = String((navigator.languages && navigator.languages[0]) || navigator.language || "tr").toLowerCase();
     var en = s === "en" || (s !== "tr" && t.indexOf("tr") !== 0);
     if (en) { document.documentElement.lang = "en"; document.getElementById("baslangic-yazi").textContent = "Loading Civora…"; }
+    var parcalar = (en ? [["veri/en.js", "en"]] : []).concat([["acilis.js", "acilis"], ["app.js", "app"]]);
+    for (var i = 0; i < parcalar.length; i++) {
+      var b = document.createElement("script");
+      b.src = parcalar[i][0] + "?v=2026-11-03-2e097b95-c0fcd73";
+      b.async = false;
+      b.setAttribute("data-parca", parcalar[i][1]);
+      document.head.appendChild(b);
+    }
   })();
 </script>
 <div class="tostlar" id="tostlar" role="status" aria-live="polite"></div>
 <noscript><p class="noscript">Civora'yı oynamak için tarayıcında JavaScript açık olmalı. · <span lang="en">To play Civora, JavaScript must be enabled in your browser.</span></p></noscript>
-<script type="module" src="app.js?v=2026-11-02-24109ac3-0f79a36"></script>
+<!-- Betikler yukarıdaki açılış betiğiyle eklenir (acilis.js?v=2026-11-03-2e097b95-c0fcd73 ve app.js?v=2026-11-03-2e097b95-c0fcd73; D-157). Yüklenemeyen parçayı
+     00a_parcalar.js duyurur. -->
 </body>
 </html>
