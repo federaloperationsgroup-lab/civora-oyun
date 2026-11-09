@@ -1,0 +1,31 @@
+// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_55_elcilik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";function elcilik3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,120);let w=1,h=1,kirli=!0,ciz=!1,d={anahtar:"",
+ulkem:null,ortaklar:[],sec:null,mesaj:!1};const azHareket=()=>matchMedia("(prefers-reduced-motion: reduce)").matches,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek}),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{
+const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,m},yari=new THREE.HemisphereLight(UC_RENK.gokDis,UC_RENK.yerDis,1.25),gunes=new THREE.
+DirectionalLight(UC_RENK.gunes,2.2);gunes.position.set(-5,10,8),gunes.target.position.set(0,0,-.5),gunes.castShadow=!0,gunes.shadow.mapSize.set(1024,1024),Object.assign(gunes.shadow.camera,{left:-8,right:8,
+top:7,bottom:-6,near:1,far:30}),gunes.shadow.camera.updateProjectionMatrix(),gunes.shadow.bias=-6e-4,sahne.add(yari,gunes,gunes.target),sahne.add(kutu(16,.12,11,M("#8FAE6F"),0,-.12,0)),sahne.add(kutu(
+7.6,.03,5.2,M("#E3D9C4"),0,0,-.9)),sahne.add(kutu(2,.03,4.2,M("#DCD0B6"),0,0,2.9));for(let x=-3.6;x<=3.6;x+=.6)sahne.add(kutu(.015,.005,5.2,M("#CDBFA3"),x,.03,-.9));const tas=M("#EFE6D4"),tasKoyu=M("#\
+D9CCB2"),kolonMat=M("#F7F2E6"),cati=M("#7D8B8E",{roughness:.7});sahne.add(kutu(5.6,.18,2.9,tasKoyu,0,.03,-1.3)),sahne.add(kutu(5.2,.18,2.6,tasKoyu,0,.21,-1.4)),sahne.add(kutu(4.8,.18,2.3,tasKoyu,0,.39,
+-1.5)),sahne.add(kutu(4.4,1.9,1.6,tas,0,.57,-1.95));for(let i=0;i<6;i++){const kolon=new THREE.Mesh(new THREE.CylinderGeometry(.13,.15,1.75,14),kolonMat);kolon.position.set(-1.9+i*.76,.57+.875,-.95),kolon.
+castShadow=!0,sahne.add(kolon)}sahne.add(kutu(4.5,.2,.75,tas,0,2.32,-1));const alin=new THREE.Shape([new THREE.Vector2(-2.3,0),new THREE.Vector2(2.3,0),new THREE.Vector2(0,.75)]),alinGeo=new THREE.ExtrudeGeometry(
+alin,{depth:.7,bevelEnabled:!1}),alinlik=new THREE.Mesh(alinGeo,tas);alinlik.position.set(0,2.52,-1.35),alinlik.castShadow=!0,sahne.add(alinlik);const catiG=new THREE.Mesh(new THREE.BoxGeometry(4.5,.12,
+1.7),cati);catiG.position.set(0,2.6,-2),sahne.add(catiG),sahne.add(kutu(.8,1.25,.06,M("#4E3826"),0,.57,-1.14));for(const x of[-1.5,-.8,.8,1.5])sahne.add(kutu(.42,.62,.05,M("#6F8E9A",{roughness:.3}),x,
+1.1,-1.14)),sahne.add(kutu(.5,.06,.08,tasKoyu,x,1.06,-1.12));const lambaMat=new THREE.MeshStandardMaterial({color:"#E9E1CF",emissive:"#FFD27A",emissiveIntensity:0}),lamba=new THREE.Mesh(new THREE.SphereGeometry(
+.12,14,10),lambaMat);lamba.position.set(0,2,-1.05),sahne.add(lamba);const amblem=new THREE.Mesh(new THREE.TorusGeometry(.22,.04,8,28),M("#C9A227",{metalness:.7,roughness:.3}));amblem.position.set(0,2.78,
+-.63),sahne.add(amblem);const demir=M("#2F2B28",{roughness:.6});for(const yan of[-1,1]){for(let x=1;x<=4.6;x+=.3)sahne.add(kutu(.04,.7,.04,demir,yan*x,0,1.4));sahne.add(kutu(3.7,.05,.05,demir,yan*2.8,
+.66,1.4)),sahne.add(kutu(.2,.95,.2,tasKoyu,yan*.95,0,1.4))}const kapiKanat=[-1,1].map(yan=>{const g=new THREE.Group;for(let x=.08;x<.8;x+=.16)g.add(kutu(.035,.75,.035,demir,yan*-x,0,0));return g.add(kutu(
+.8,.05,.05,demir,yan*-.42,.7,0)),g.position.set(yan*.85,0,1.4),sahne.add(g),{g,yan}});function bayrakDokusu(renk){const c=document.createElement("canvas");c.width=128,c.height=80;const x=c.getContext(
+"2d");x.fillStyle=renk,x.fillRect(0,0,128,80),x.fillStyle="rgba(255,255,255,0.92)",x.fillRect(0,32,128,16),x.fillStyle="rgba(0,0,0,0.18)",x.fillRect(0,0,6,80);const t=new THREE.CanvasTexture(c);return t.
+colorSpace=THREE.SRGBColorSpace,t}function direk(x){const g=new THREE.Group,boru=new THREE.Mesh(new THREE.CylinderGeometry(.035,.045,3.4,10),M("#D8D4CC",{metalness:.5,roughness:.4}));boru.position.y=1.7,
+boru.castShadow=!0;const tepe=new THREE.Mesh(new THREE.SphereGeometry(.07,10,8),M("#C9A227",{metalness:.6,roughness:.3}));tepe.position.y=3.42,g.add(boru,tepe,kutu(.3,.12,.3,tasKoyu,0,0,0));const geo=new THREE.
+PlaneGeometry(1.1,.68,12,6);geo.translate(.55,0,0);const mat=new THREE.MeshStandardMaterial({side:THREE.DoubleSide,roughness:.9}),bez=new THREE.Mesh(geo,mat);return bez.castShadow=!0,bez.position.set(
+.04,3,0),g.add(bez),g.position.set(x,0,2.15),sahne.add(g),{g,bez,mat,taban:Float32Array.from(geo.attributes.position.array),renk:null}}const solBayrak=direk(-2.1),sagBayrak=direk(2.1);function bayrakYaz(b,renk,yarida){
+b.bez.visible=!!renk,renk&&renk!==b.renk&&(b.mat.map?.dispose(),b.mat.map=bayrakDokusu(renk),b.mat.needsUpdate=!0,b.renk=renk),b.bez.position.y=yarida?2:3}function dalga(b,t,guc){const pos=b.bez.geometry.
+attributes.position;for(let i=0;i<pos.count;i++){const x=b.taban[i*3],y=b.taban[i*3+1];pos.setZ(i,Math.sin(x*5.2-t*6+y*1.3)*.08*x*guc)}pos.needsUpdate=!0,b.bez.geometry.computeVertexNormals()}let anim=0,
+sonAnahtar=null;function yaz(){const ortak=d.ortaklar.find(o=>o.ulke===d.sec)??d.ortaklar[0]??null;bayrakYaz(solBayrak,d.ulkem?ulkeRenk(d.ulkem):null,!1),bayrakYaz(sagBayrak,ortak?ulkeRenk(ortak.ulke):
+null,!!ortak?.savas);for(const k of kapiKanat)k.g.rotation.y=ortak&&!ortak.savas?k.yan*-1.15:0;lambaMat.emissiveIntensity=d.mesaj?1.4:0,d.anahtar!==sonAnahtar&&(sonAnahtar=d.anahtar,anim=azHareket()?0:
+performance.now()),anim||(dalga(solBayrak,0,.6),dalga(sagBayrak,0,.6)),kirli=!0}const YON=new THREE.Vector3(.28,.62,1).normalize();function kameraKur(){kamera.aspect=w/h;const n=[[-3.4,0,2.4],[3.4,0,2.4],
+[-2.6,3.6,2.2],[2.6,3.6,2.2],[-2.6,2.9,-2.4],[2.6,2.9,-2.4],[0,3.4,-1.4]].map(([x,y,z])=>new THREE.Vector3(x,y,z));kameraSigdir(THREE,kamera,n,YON,{x:.94,ust:.92,alt:-.94}),kirli=!0}return{etiket:\u00E7(
+"B\xFCy\xFCkel\xE7ilik (3B): iki \xFClkenin bayraklar\u0131"),sahne,kamera,get kareMs(){return anim?50:1e3},durumYaz(y){d={...d,...y},yaz()},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){
+w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(){if(anim){const s=(performance.now()-anim)/1e3,guc=s<3.2?1:Math.max(.6,1-(s-3.2)/1.5*.4);dalga(solBayrak,s,guc),dalga(sagBayrak,s+
+.7,guc),s>4.7&&(anim=0),kirli=!0}ciz=kirli,kirli=!1},cizilmeli(){return ciz}}}Parcalar.tamam("uc_55_elcilik3b");

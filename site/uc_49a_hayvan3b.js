@@ -1,0 +1,43 @@
+// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_49a_hayvan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";const HAYVAN_EYLEM_SURE={bekle:4,yuru:.6,otur:4,yat:5,uyu:6,ye:2.8,oyna:1.6,sevin:2.2,kus:5,pati:2.4,yuvarlan:2.4,dans:3};function hayvanParcasi(THREE){const grup=new THREE.Group;let anahtar="",p=null;
+const malzeme=new Map,M=(renk,ek={})=>{const k=renk+JSON.stringify(ek);return malzeme.has(k)||malzeme.set(k,new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek})),malzeme.get(k)},golgeli=m=>(m.
+castShadow=!0,m.receiveShadow=!0,m),kur=h=>{const a=`${h?.species}|${h?.breed}`;if(a===anahtar)return;anahtar=a;for(const c of[...grup.children])grup.remove(c);const kedi=h?.species!=="kopek",C=evcilCins(
+h?.species,h?.breed),govdeM=M(C.body),vurguM=M(C.accent),karaM=M("#1E1B1A",{roughness:.4}),burunM=M(kedi?"#D98C8C":"#2B2622",{roughness:.5}),kok=new THREE.Group,olcek=evcilBoy(h?.species,h?.breed);kok.
+scale.setScalar(olcek),grup.add(kok);const govdeG=new THREE.Group;govdeG.position.set(0,.17,0),kok.add(govdeG);const govdeBoy=kedi?.2:.22,govdeR=kedi?.075:.085,govde=golgeli(new THREE.Mesh(new THREE.CapsuleGeometry(
+govdeR,govdeBoy,6,14).rotateX(Math.PI/2),govdeM));if(govdeG.add(govde),C.pattern==="cizgili")for(let i=0;i<4;i++){const s=new THREE.Mesh(new THREE.TorusGeometry(govdeR*1.005,.012,6,18,Math.PI*1.1).rotateY(
+Math.PI/2).rotateX(-Math.PI*.05),vurguM);s.position.set(0,0,-.1+i*.065),s.rotation.z=Math.PI*.95,govdeG.add(s)}else if(C.pattern==="benekli"){const benek=[[.05,.045,-.08],[-.06,.04,.02],[.03,.07,.08],
+[-.02,.075,-.03],[.07,0,.05],[-.075,-.01,-.06],[0,.08,.13]];for(const[x,y,z]of benek){const b=new THREE.Mesh(new THREE.SphereGeometry(.016,8,6),vurguM);b.scale.set(1,.55,1),b.position.set(x*1.05,y*1.05,
+z),b.lookAt(new THREE.Vector3(x*4,y*4,z)),govdeG.add(b)}}else if(C.pattern==="gogus"){const g=new THREE.Mesh(new THREE.SphereGeometry(govdeR*.8,12,8),vurguM);g.scale.set(.95,.9,.7),g.position.set(0,-.015,
+govdeBoy/2+.02),govdeG.add(g)}const basG=new THREE.Group;basG.position.set(0,.07,govdeBoy/2+govdeR*.55),govdeG.add(basG);const basR=kedi?.078:.082,bas=golgeli(new THREE.Mesh(new THREE.SphereGeometry(basR,
+16,12),govdeM));bas.scale.set(1,.92,kedi?.95:1.02),bas.position.set(0,.03,.02),basG.add(bas);const kulaklar=[];for(const yan of[-1,1]){let k;kedi?(k=golgeli(new THREE.Mesh(new THREE.ConeGeometry(.032,
+.07,4),C.id==="van"?M("#D9C8B4"):govdeM)),k.position.set(yan*.045,.1,.01),k.rotation.set(-.15,Math.PI/4,yan*-.25)):C.id==="terrier"?(k=golgeli(new THREE.Mesh(new THREE.ConeGeometry(.03,.06,4),govdeM)),
+k.position.set(yan*.05,.095,0),k.rotation.set(.6,Math.PI/4,yan*-.35)):(k=golgeli(new THREE.Mesh(new THREE.SphereGeometry(.04,10,8),C.pattern==="maske"?vurguM:C.id==="golden"?M(C.accent):govdeM)),k.scale.
+set(.45,1,.75),k.position.set(yan*.075,.035,-.005),k.rotation.z=yan*.18),basG.add(k),kulaklar.push(k)}let agiz=null;kedi||(agiz=golgeli(new THREE.Mesh(new THREE.CapsuleGeometry(.036,.04,6,10).rotateX(
+Math.PI/2),C.pattern==="maske"?vurguM:govdeM)),agiz.position.set(0,0,.085),basG.add(agiz));const burun=new THREE.Mesh(new THREE.SphereGeometry(kedi?.011:.016,8,6),burunM);burun.position.set(0,kedi?.018:
+.012,kedi?.093:.137),basG.add(burun);const gozler=[];for(const yan of[-1,1]){const goz=new THREE.Mesh(new THREE.SphereGeometry(.015,10,8),M(yan>0&&C.eyes2?C.eyes2:C.eyes,{roughness:.3}));goz.position.
+set(yan*.034,.045,kedi?.07:.072);const bebek=new THREE.Mesh(new THREE.SphereGeometry(.008,8,6),karaM);bebek.scale.set(kedi?.45:.9,1,.6),bebek.position.set(0,0,.011),goz.add(bebek),goz.userData.boy=1,basG.
+add(goz),gozler.push(goz)}const kuyrukG=new THREE.Group;kuyrukG.position.set(0,.03,-(govdeBoy/2+govdeR*.7)),govdeG.add(kuyrukG);const kBoy=kedi?.24:C.size===1?.08:.15,kuyruk=golgeli(new THREE.Mesh(new THREE.
+CylinderGeometry(kedi?.012:.016,kedi?.02:.024,kBoy,8).translate(0,kBoy/2,0),C.pattern==="cizgili"||C.pattern==="maske"?vurguM:govdeM));kuyruk.rotation.x=kedi?-.5:-.9,kuyrukG.add(kuyruk);const bacaklar=[],
+bacakBoy=kedi?.12:.115;for(const[x,z]of[[-1,1],[1,1],[-1,-1],[1,-1]]){const b=new THREE.Group;b.position.set(x*(kedi?.045:.05),.13,z*(govdeBoy/2+.005));const ayak=golgeli(new THREE.Mesh(new THREE.CylinderGeometry(
+.02,.017,bacakBoy,8).translate(0,-bacakBoy/2,0),C.id==="sokak"&&z>0?vurguM:govdeM)),pati=golgeli(new THREE.Mesh(new THREE.SphereGeometry(.021,8,6),C.id==="sokak"||C.id==="van"?M("#F1E8D8"):govdeM));pati.
+scale.set(1,.6,1.25),pati.position.set(0,-bacakBoy,.006),b.add(ayak,pati),kok.add(b),bacaklar.push(b)}p={kok,govdeG,govde,basG,kulaklar,gozler,kuyrukG,kuyruk,bacaklar,kedi,olcek,kuyrukX:kuyruk.rotation.
+x,bacakZ:bacaklar.map(b=>b.position.z)}};function dinlen(){p.kok.position.set(0,0,0),p.kok.rotation.set(0,0,0),p.govdeG.position.set(0,.17,0),p.govdeG.rotation.set(0,0,0),p.govde.scale.set(1,1,1),p.basG.
+position.y=.07,p.basG.rotation.set(0,0,0),p.kuyrukG.rotation.set(0,0,0),p.kuyruk.rotation.x=p.kuyrukX;for(const[i,b]of p.bacaklar.entries())b.rotation.set(0,0,0),b.position.y=.13,b.position.z=p.bacakZ[i];
+for(const g of p.gozler)g.scale.y=1}function oturt(e){p.govdeG.rotation.x=-.55*e,p.govdeG.position.y=.17-.025*e,p.govdeG.position.z=-.03*e,p.bacaklar[2].rotation.x=p.bacaklar[3].rotation.x=-1.15*e,p.bacaklar[2].
+position.y=p.bacaklar[3].position.y=.13-.06*e,p.bacaklar[0].rotation.x=p.bacaklar[1].rotation.x=.12*e,p.basG.rotation.x=.45*e,p.kuyruk.rotation.x=p.kuyrukX+(-1.32-p.kuyrukX)*e}function yatir(e){p.govdeG.
+position.y=.17-.08*e;for(const[i,b]of p.bacaklar.entries())b.rotation.x=(i<2?-1.35:1.35)*e,b.position.y=.13-.07*e;p.kuyruk.rotation.x=p.kuyrukX-1.05*e}function pozla(ad,u,t,azalt=!1){if(!p)return;dinlen();
+const kipir=azalt?0:1,salla=(hiz,genlik)=>Math.sin(t*hiz)*genlik*kipir;switch(ad){case"yuru":{const f=t*11;p.bacaklar[0].rotation.x=p.bacaklar[3].rotation.x=Math.sin(f)*.55*kipir,p.bacaklar[1].rotation.
+x=p.bacaklar[2].rotation.x=-Math.sin(f)*.55*kipir,p.govdeG.position.y+=Math.abs(Math.sin(f))*.008*kipir,p.kuyrukG.rotation.y=salla(p.kedi?3:9,p.kedi?.2:.4);break}case"otur":{oturt(1),p.basG.rotation.y=
+salla(.5,.35),p.kuyrukG.rotation.y=salla(p.kedi?1.2:4,.3);break}case"pati":{oturt(1),p.bacaklar[1].rotation.x=-1.3+salla(9,.15),p.basG.rotation.z=.2,p.kuyrukG.rotation.y=salla(p.kedi?2:12,.45);break}case"\
+yat":case"uyu":{if(yatir(1),p.basG.rotation.x=ad==="uyu"?.55:.15,p.basG.position.y=.07-(ad==="uyu"?.03:0),p.govde.scale.y=1+Math.sin(t*(ad==="uyu"?1.4:2))*.03*kipir,ad==="uyu")for(const g of p.gozler)
+g.scale.y=.12;else p.basG.rotation.y=salla(.4,.4);p.kuyrukG.rotation.y=ad==="uyu"?.9:salla(.8,.25)+.6;break}case"ye":{p.basG.rotation.x=.95+Math.abs(Math.sin(t*7))*.12*kipir,p.govdeG.rotation.x=.12,p.
+bacaklar[0].rotation.x=p.bacaklar[1].rotation.x=-.1,p.kuyrukG.rotation.y=salla(p.kedi?2:10,p.kedi?.15:.45);break}case"oyna":{const z=Math.abs(Math.sin(t*5.5))*kipir;p.kok.position.y=z*.07,p.govdeG.rotation.
+x=-.25*z,p.bacaklar[0].rotation.x=p.bacaklar[1].rotation.x=-.9*z,p.bacaklar[2].rotation.x=p.bacaklar[3].rotation.x=.5*z,p.kuyrukG.rotation.y=salla(14,.55),p.basG.rotation.x=-.2*z;break}case"sevin":{p.
+govdeG.rotation.z=salla(10,.07),p.basG.rotation.z=.25+salla(3,.08),p.basG.rotation.x=-.15,p.kuyrukG.rotation.y=salla(16,.6);for(const g of p.gozler)g.scale.y=.45;p.kedi||(p.kok.position.y=Math.abs(Math.
+sin(t*8))*.02*kipir);break}case"kus":{yatir(1),p.basG.rotation.x=.45,p.basG.position.y=.02,p.kuyruk.rotation.x=p.kuyrukX-1.2;for(const k of p.kulaklar)k.rotation.x=(p.kedi?-.15:0)-.5;p.govde.scale.y=1+
+Math.sin(t*.9)*.03*kipir;break}case"yuvarlan":{yatir(1);const a=(azalt?0:u)*Math.PI*2,c=.09,s=p.olcek;p.govdeG.position.y=c;for(const b of p.bacaklar)b.position.y=c;p.basG.position.y=0,p.basG.rotation.
+x=.35;const h=s*(c+.055*Math.sin(a/2));p.kok.rotation.z=a,p.kok.position.set(c*s*Math.sin(a),h-c*s*Math.cos(a),0),p.kuyrukG.rotation.y=salla(10,.4);break}case"dans":{p.govdeG.rotation.x=-1.15,p.govdeG.
+position.y=.22,p.govdeG.position.z=-.06,p.bacaklar[0].position.y=p.bacaklar[1].position.y=.31,p.bacaklar[0].position.z=p.bacaklar[1].position.z=0,p.bacaklar[0].rotation.x=p.bacaklar[1].rotation.x=-1.6,
+p.bacaklar[0].rotation.z=salla(8,.4),p.bacaklar[1].rotation.z=-salla(8,.4),p.basG.rotation.x=1,p.kuyruk.rotation.x=-.1,p.kok.rotation.y=(azalt?0:u)*Math.PI*2,p.kuyrukG.rotation.y=salla(12,.5);break}default:
+p.govde.scale.y=1+Math.sin(t*2.2)*.02*kipir,p.kuyrukG.rotation.y=salla(p.kedi?1.3:3,p.kedi?.25:.3),p.basG.rotation.y=salla(.45,.4),p.basG.rotation.x=salla(.3,.08)}}return{grup,kur,pozla,get parcalar(){
+return p},eylemSuresi:ad=>HAYVAN_EYLEM_SURE[ad]??4}}Parcalar.tamam("uc_49a_hayvan3b");

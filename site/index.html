@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- İçerik güvenlik politikası (D-098): derlemede yazılır (tools/istemci/build.ts); satır içi betiklerin özetleri dahil -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-fVfHNp9sat3DJJ8xDrJe59bSD/S9+1S53Uaxj7p7A1g='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-3tewSSyH7Gq9ctVsgofKRtWYMwL5t9LpZ4rUqDAUWs0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co wss://civora-oda-768582.fly.dev; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Civora</title>
 <meta name="description" content="Civora: gerçek dünya haritasında, ülkeleri oyuncuların yönettiği strateji oyunu.">
@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
-<link rel="stylesheet" href="stil.css?v=2026-11-04-b3f33e46-5582cb7">
+<link rel="stylesheet" href="stil.css?v=2026-11-09-22f8ad98-68be21e">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
@@ -45,29 +45,42 @@
   </div>
 </div>
 <script>
-  // Açılış yazısı ve sayfanın dili oyun yüklenmeden önce seçili dilde (00_dil.js ile aynı kural: bu cihazda seçilen dil, yoksa
-  // tarayıcının dili). Betikler buradan sırayla eklenir (D-157): İngilizcede önce katalog (veri/en.js; Türkçe açılış onu
-  // taşımaz), sonra küçük açılış parçası (acilis.js: indiği anda giriş ekranı) ve büyük parça (app.js). async=false:
-  // tarayıcı hepsini birlikte indirir, eklenme sırasıyla çalıştırır; hepsi aynı küresel ortamı paylaşan klasik betiktir.
+  // Yeni oyuncu yalnız açılışı indirir. Kalan katalog ve oyun oturum açılınca Parcalar tarafından sırayla yüklenir.
+  // Dönen oyuncu için büyük dosyalar paralel ön yüklenir; çalıştırma sırası yine katalog → app.js olur.
   (function () {
-    var s = null;
-    try { s = localStorage.getItem("civora.dil"); } catch (e) { /* depolama yok */ }
+    var s = null, oturumlu = false;
+    try {
+      s = localStorage.getItem("civora.dil");
+      var o = JSON.parse(localStorage.getItem("civora.oturum") || "null");
+      oturumlu = !!o && typeof o === "object" && typeof o.access_token === "string" && !!o.access_token;
+      if (o !== null && !oturumlu) localStorage.removeItem("civora.oturum");
+    } catch (e) { /* depolama kapalı veya oturum bozuk: yalnız açılış */ }
     var t = String((navigator.languages && navigator.languages[0]) || navigator.language || "tr").toLowerCase();
     var en = s === "en" || (s !== "tr" && t.indexOf("tr") !== 0);
     if (en) { document.documentElement.lang = "en"; document.getElementById("baslangic-yazi").textContent = "Loading Civora…"; }
-    var parcalar = (en ? [["veri/en.js", "en"]] : []).concat([["acilis.js", "acilis"], ["app.js", "app"]]);
+    if (oturumlu) {
+      var onYukle = en ? ["veri/en.js", "app.js"] : ["app.js"];
+      for (var j = 0; j < onYukle.length; j++) {
+        var l = document.createElement("link");
+        l.rel = "preload"; l.as = "script"; l.href = onYukle[j] + "?v=2026-11-09-22f8ad98-68be21e";
+        document.head.appendChild(l);
+      }
+    }
+    var parcalar = en ? [["veri/en_acilis.js", "en_acilis"], ["acilis.js", "acilis"]]
+                      : [["acilis.js", "acilis"]];
     for (var i = 0; i < parcalar.length; i++) {
       var b = document.createElement("script");
-      b.src = parcalar[i][0] + "?v=2026-11-04-b3f33e46-5582cb7";
+      b.src = parcalar[i][0] + "?v=2026-11-09-22f8ad98-68be21e";
       b.async = false;
       b.setAttribute("data-parca", parcalar[i][1]);
+      b.onerror = function () { this.setAttribute("data-parca-durum", "hata"); };
       document.head.appendChild(b);
     }
   })();
 </script>
 <div class="tostlar" id="tostlar" role="status" aria-live="polite"></div>
 <noscript><p class="noscript">Civora'yı oynamak için tarayıcında JavaScript açık olmalı. · <span lang="en">To play Civora, JavaScript must be enabled in your browser.</span></p></noscript>
-<!-- Betikler yukarıdaki açılış betiğiyle eklenir (acilis.js?v=2026-11-04-b3f33e46-5582cb7 ve app.js?v=2026-11-04-b3f33e46-5582cb7; D-157). Yüklenemeyen parçayı
-     00a_parcalar.js duyurur. -->
+<!-- Açılış betiği yalnız acilis.js'i ekler. app.js ve İngilizce katalog oturumdan sonra, uc.js ise 3B gerektiğinde
+     00a_parcalar.js tarafından yüklenir. Dönen oyuncunun dosyaları önceden indirilir. -->
 </body>
 </html>

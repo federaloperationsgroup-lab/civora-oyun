@@ -1,0 +1,41 @@
+// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_86_toren3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";function toren3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,60);let w=1,h=1,kirli=!0,kapEl=null,d={tur:"seviy\
+e",anahtar:"",ad:"",gorunus:null,ulke:null,rutbe:{sira:0,sayi:12},onceki:null,seviye:1,makam:null},t0=performance.now(),asama="";const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.75,
+...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m};sahne.add(new THREE.
+HemisphereLight(UC_RENK.gokIc,UC_RENK.yerIc,1.25));const spot=new THREE.DirectionalLight(UC_RENK.gunesIc,2.2);spot.position.set(-2,6,5),spot.castShadow=!0,spot.shadow.mapSize.set(1024,1024),Object.assign(
+spot.shadow.camera,{left:-3,right:3,top:4,bottom:-1,near:1,far:20}),sahne.add(spot,spot.target),sahne.background=new THREE.Color("#2A2233"),kutu(sahne,8,.2,5,M("#4A3A30"),0,-.2,0),kutu(sahne,1.3,.02,4.2,
+M("#9E2B2B",{roughness:1}),0,0,.6);const altin=M("#D9B865",{roughness:.35,metalness:.55});for(const[gen,yuk,z]of[[2.4,.16,0],[2,.32,-.1],[1.6,.48,-.2]])kutu(sahne,gen,yuk,1.2-z*2,M("#6B4A32",{roughness:.5}),
+0,0,z);kutu(sahne,1.62,.04,1.62,altin,0,.48,-.2);const perdeMat=new THREE.MeshStandardMaterial({color:"#8E2B35",roughness:.9,side:THREE.DoubleSide}),perdeGeo=new THREE.PlaneGeometry(6.4,3.6,32,1);{const p=perdeGeo.
+attributes.position;for(let i=0;i<p.count;i++)p.setZ(i,Math.sin(p.getX(i)*5)*.08);perdeGeo.computeVertexNormals()}const perde=new THREE.Mesh(perdeGeo,perdeMat);perde.position.set(0,1.8,-1.6),perde.receiveShadow=
+!0,sahne.add(perde);const bayrakTuval=document.createElement("canvas");bayrakTuval.width=128,bayrakTuval.height=80;const bayrakDoku=new THREE.CanvasTexture(bayrakTuval);bayrakDoku.colorSpace=THREE.SRGBColorSpace;
+const bayrakMat=new THREE.MeshStandardMaterial({map:bayrakDoku,roughness:.85,side:THREE.DoubleSide});function bayrakBoya(renk){const x=bayrakTuval.getContext("2d");x.fillStyle=renk,x.fillRect(0,0,128,
+80),x.fillStyle="rgba(255,255,255,0.92)",x.fillRect(0,32,128,16),bayrakDoku.needsUpdate=!0}const bayraklar=[-1.45,1.45].map(x=>{const g=new THREE.Group;g.position.set(x,0,-1.05),kutu(g,.05,2.6,.05,altin,
+0,0,0);const bez=new THREE.Mesh(new THREE.PlaneGeometry(.8,.52,8,2).translate(x<0?.4:-.4,0,0),bayrakMat);return bez.position.set(0,2.3,0),g.add(bez),sahne.add(g),bez}),yeminKursu=new THREE.Group;kutu(
+yeminKursu,.42,.6,.32,M("#5B3D28",{roughness:.5}),0,0,0);const kitap=kutu(yeminKursu,.34,.035,.24,M("#F3EAD6"),0,.6,0);kitap.rotation.x=.25,kutu(yeminKursu,.36,.02,.26,M("#7A2E2E"),0,.585,0).rotation.
+x=.25,yeminKursu.position.set(.3,.52,-.02),yeminKursu.rotation.y=-.5,sahne.add(yeminKursu);const fp=figurParcasi(THREE),figur=fp.grup;figur.scale.setScalar(.72),figur.position.set(0,.5,-.2),sahne.add(
+figur);const halkaTuval=document.createElement("canvas");halkaTuval.width=256,halkaTuval.height=256;const halkaDoku=new THREE.CanvasTexture(halkaTuval);halkaDoku.colorSpace=THREE.SRGBColorSpace;const halka=new THREE.
+Sprite(new THREE.SpriteMaterial({map:halkaDoku,transparent:!0,depthWrite:!1}));halka.scale.set(.9,.9,1),halka.position.set(0,2.85,-.2),sahne.add(halka);function halkaCiz(){const g=halkaTuval.getContext(
+"2d");g.clearRect(0,0,256,256),g.fillStyle="#174A40",g.beginPath(),g.arc(128,128,116,0,Math.PI*2),g.fill(),g.lineWidth=14,g.strokeStyle="#D9B865",g.beginPath(),g.arc(128,128,108,0,Math.PI*2),g.stroke(),
+g.fillStyle="#F7F2E6",g.textAlign="center",g.textBaseline="middle",g.font="800 110px Figtree, system-ui, sans-serif",g.fillText(String(d.seviye??""),128,136),halkaDoku.needsUpdate=!0}const parilti=new THREE.
+Mesh(new THREE.SphereGeometry(.055,12,8),new THREE.MeshBasicMaterial({color:"#FFF3C4",transparent:!0,depthWrite:!1})),parilti2=parilti.clone();sahne.add(parilti,parilti2);const KONFETI=220,konfeti=new THREE.
+InstancedMesh(new THREE.PlaneGeometry(.06,.035),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}),KONFETI);konfeti.frustumCulled=!1;const renkler=["#D9B865","#C65A3B","#F7F2E6","#367F70","#7D5FA0",
+"#F2C230"].map(r2=>new THREE.Color(r2)),r=rastgele(909),parcalar=Array.from({length:KONFETI},(_,i)=>({x:(r()-.5)*5.4,z:(r()-.5)*2.6+.2,gec:r()*1.4,hiz:.7+r()*.6,don:(r()-.5)*12,sal:r()*6}));parcalar.forEach(
+(_,i)=>konfeti.setColorAt(i,renkler[i%renkler.length])),sahne.add(konfeti);const mt=new THREE.Matrix4,q=new THREE.Quaternion,e=new THREE.Euler,v=new THREE.Vector3,s1=new THREE.Vector3(1,1,1);function yaz(){
+const uniforma=d.tur==="rutbe",g=d.gorunus??varsayilanGorunus(d.ad||"?"),rutbeOnce={sira:d.onceki??Math.max(0,(d.rutbe?.sira??0)-1),sayi:d.rutbe?.sayi??12};fp.kur({anahtar:d.anahtar,ad:d.ad,gorunus:uniforma?
+{...g,kiyafet:"uniforma"}:g,ulke:d.ulke,rutbe:uniforma?rutbeOnce:d.rutbe,ek:d.tur==="yemin"?d.makam==="president"?{kusak:DUNYA.ulkeler?.[d.ulke]?.renk??"#C65A3B"}:{rozet:!0}:null});const renk=DUNYA.ulkeler?.[d.
+ulke]?.renk??"#C65A3B";perdeMat.color.set(renk).multiplyScalar(.62),bayrakBoya(renk),yeminKursu.visible=d.tur==="yemin",figur.position.x=d.tur==="yemin"?-.3:0,halkaCiz(),kameraKur(),t0=performance.now(),
+asama="",kirli=!0}let rutbeYeni=!1;const YON=new THREE.Vector3(0,.28,1).normalize(),kamGenis={p:new THREE.Vector3,q:new THREE.Quaternion},kamYakin={p:new THREE.Vector3,q:new THREE.Quaternion},kolay=x=>{
+const k=Math.min(1,Math.max(0,x));return k*k*(3-2*k)};function kameraKur(){kamera.aspect=w/h;const dar=w/h<1.2,V=dizi=>dizi.map(p=>new THREE.Vector3(...p)),x=dar?1.3:1.7;kameraSigdir(THREE,kamera,V([[
+-x,.2,.95],[x,.2,.95],[-x,3,-1.1],[x,3,-1.1]]),YON,{x:.97,ust:.95,alt:-.95}),kamGenis.p.copy(kamera.position),kamGenis.q.copy(kamera.quaternion);const fx=figur.position.x,yx=dar?.62:.85,[x0,x1]=d.tur===
+"yemin"?[fx-yx,fx+yx+.45]:[fx-yx,fx+yx],ust=d.tur==="seviye"?3.3:2.55;kameraSigdir(THREE,kamera,V([[x0,.62,.35],[x1,.62,.35],[x0,ust,-.45],[x1,ust,-.45]]),YON,{x:.97,ust:.95,alt:-.95}),kamYakin.p.copy(
+kamera.position),kamYakin.q.copy(kamera.quaternion),kirli=!0}return{etiket:\u00E7("T\xF6ren (3B): k\xFCrs\xFCde fig\xFCr\xFCn, konfeti"),sahne,kamera,get kareMs(){return hareketAzalt?1e3:(performance.
+now()-t0)/1e3>9?telefon()?50:33:telefon()?40:0},kapBagla(el){kapEl=el??null,kirli=!0},get asama(){return asama},durumYaz(y){d={...d,...y},rutbeYeni=!1,yaz()},kalite(k){spot.castShadow=k!=="dusuk",kirli=
+!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){const g=(performance.now()-t0)/1e3,yeni=g<1?"giris":g<2.5?"an":g<6?"kutlama":"bitti";yeni!==asama&&(asama=
+yeni,kapEl&&(kapEl.dataset.asama=asama));const kk=hareketAzalt?.5:kolay((g-.6)/1.6);if(kamera.position.lerpVectors(kamGenis.p,kamYakin.p,kk),kamera.quaternion.slerpQuaternions(kamGenis.q,kamYakin.q,kk),
+d.tur==="rutbe"&&g>=1&&!rutbeYeni){rutbeYeni=!0;const gg=d.gorunus??varsayilanGorunus(d.ad||"?");fp.kur({anahtar:d.anahtar,ad:d.ad,gorunus:{...gg,kiyafet:"uniforma"},ulke:d.ulke,rutbe:d.rutbe,ek:null})}
+const azalt=hareketAzalt,eylem=d.tur==="rutbe"?g<2.5?"bekle":"selamver":d.tur==="yemin"?g<1?"bekle":g<4?"yemin":"selamla":g<1?"bekle":"selamla";kapEl&&kapEl.dataset.eylem!==eylem&&(kapEl.dataset.eylem=
+eylem);const sure=fp.eylemSuresi(eylem)||2.4;fp.pozla(eylem,t%sure/sure,t,azalt,!0),azalt||fp.canli(t);const hk=d.tur==="seviye"?Math.min(1,Math.max(0,(g-1)/.5)):0;halka.visible=hk>0,halka.scale.setScalar(
+.2+.7*(azalt?1:hk)),halka.position.y=2.85+(azalt?0:Math.sin(t*2)*.04);const pk=d.tur==="rutbe"?Math.max(0,1-Math.abs(g-1.1)/.5):0;for(const[p,yan]of[[parilti,-1],[parilti2,1]])p.visible=pk>0&&!azalt,p.
+position.set(figur.position.x+yan*.24*.72,.5+(1.3-.62+FIGUR_KALCA)*.72,-.2),p.material.opacity=pk,p.scale.setScalar(.7+pk*.9);for(const b of bayraklar)b.rotation.y=Math.sin(t*2.2+b.position.x)*.12;let n=0;
+if(!azalt&&g>1.2&&g<9)for(const p of parcalar){const u=g-1.2-p.gec;if(u<0)continue;const y=4.2-u*p.hiz;y<.02||(v.set(p.x+Math.sin(u*2+p.sal)*.25,y,p.z),q.setFromEuler(e.set(u*p.don,u*p.don*.7,p.sal)),
+mt.compose(v,q,s1),konfeti.setMatrixAt(n++,mt))}konfeti.count=n,konfeti.instanceMatrix.needsUpdate=!0,kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}}}Parcalar.tamam("uc_86_toren3b");
