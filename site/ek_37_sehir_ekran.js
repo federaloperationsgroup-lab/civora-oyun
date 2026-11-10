@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_37_sehir_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_37_sehir_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/sehir",{async ac(kap){let v=null,mod=null,hata3b=!1,kapandi=!1,secili=null,havaOnizle=null,tumIsletmeler=!1;async function yukle(tam){const o=tam||!Durum.v.ozet?await Durum.ozet():
 Durum.v.ozet,bolge=o.character.location,kapali=e=>{if(e.kod==="RULE_NOT_ACTIVE")return null;throw e},[sh,ic,harita,kurallar,un,dedikodu]=await Promise.all([Sunucu.cagir("city",{p_region:bolge}),Sunucu.
 cagir("city_companies",{p_region:bolge}),Durum.harita().catch(()=>Durum.v.harita),Durum.kurallar(),Sunucu.cagir("fame_board",{p_region:bolge}).catch(kapali),Sunucu.cagir("gossip",{p_region:bolge}).catch(
@@ -56,7 +56,7 @@ kap.innerHTML=`<div class="sayfa sehir-sayfa">
 1,n.activeResidents),sh.companies/Math.max(1,n.companies)):1,satilik=evler().filter(h=>h.for_sale&&!h.mine).length,uretimde=isletmeler().filter(x=>x.producing).length;$("#sehir-ust",kap).innerHTML=`
         <p class="ust-yazi">${ikon("map-pin")}${b.baskent?\u00E7("Ba\u015Fkent"):\u00E7("B\xF6lge")} \xB7 ${esc(ulkeAdi(sahip))}${b.ulke&&sahip!==b.ulke?" \xB7 "+\u00E7("as\u0131l \xFClkesi {ulke}",{ulke:esc(
 ulkeAdi(b.ulke))}):""}</p>
-        <h1 class="b1">${esc(bolgeAdi(bolge))}</h1>
+        <h1 class="b1">${esc(bolgeAdi(bolge))}</h1>${kareSahneDugmeHtml("city",bolge)}
         <p>${b.iklim?`${esc(IKLIM_AD[b.iklim]??b.iklim)} \xB7 `:""}${\u00E7("Buradas\u0131n")}${ch.residence===bolge?" \xB7 "+\u00E7("ikametin"):""}</p>
         ${savasSatiri()}${nabizYazi()}
         <div class="seviye-satir">

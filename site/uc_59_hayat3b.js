@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_59_hayat3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_59_hayat3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function hayat3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,80);let w=1,h=1,
 kirli=!0,kapEl=null,gorunur=!0,gozcu=null,kaliteAdi="orta",d={anahtar:"",ad:"",gorunus:null,ulke:null,rutbe:{sira:0,sayi:12},seviye:1,xpOran:0,enerji:0,enerjiEn:100,etkinlik:null,egitim:null,erzak:0,muhimmat:0,
 silahlar:[],kredi:0,digerleri:[],ev:null,parti:null,gorev:null,madalyalar:[],sehir:1,gece:0};const dinleyici={},etkinMi=()=>cizici.etkin===api,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,

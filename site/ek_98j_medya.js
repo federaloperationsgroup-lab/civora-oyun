@@ -1,10 +1,11 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98j_medya.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
-"use strict";Kabuk.kaydet("hayat/medya",{async ac(kap){let v={m:null,sirketler:[],kurallar:null};const kareler=new Map;async function yukle(){const[m,kurallar]=await Promise.all([Sunucu.cagir("media_overview"),Durum.
-kurallar()]);v.m=m,v.kurallar=kurallar,v.sirketler=await Promise.all((m.companies??[]).map(c=>Sunucu.cagir("company_sponsorships",{p_company:c.company_id}).catch(()=>({company_id:c.company_id,company:c.
-name,offers:[]})))),kareler.clear();for(const p of m.photos?.recent??[])kareler.set(p.photo_id,p)}const neden=(o,m)=>o.owner_id===(Durum.v.ozet?.character?.id??"")?\u00E7("kendi i\u015Fletmen"):o.kind===
-"ad"?m.newspaper?\u00E7("en az {n} abone gerek",{n:Number(o.min_followers)}):\u00E7("gazete gerek"):\u00E7("en az {n} etkin takip\xE7i gerek",{n:Number(o.min_followers)});let geriDurdur=()=>{};function ciz(){
-const m=v.m,t=m.tier??{},s=v.kurallar.data.media?.sponsorship??{},basamak=MEDYA_BASAMAK[t.tier_id]??t.tier_id??"",acik=(m.offers?.open??[]).map(o=>({...o,neden:o.eligible?"":neden(o,m)})),bekleyen=m.offers?.
-accepted??[],yayimlanan=m.offers?.published??[],ilanlar=bekleyen.filter(o=>o.kind==="ad");kap.innerHTML=`<div class="sayfa sayfa-dar">
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98j_medya.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";Kabuk.kaydet("hayat/medya",{async ac(kap){let v={m:null,sirketler:[],kurallar:null,kariyer:null,okunmamis:0};const kareler=new Map;async function yukle(){const[m,kurallar,kariyer,kartpostallar]=await Promise.
+all([Sunucu.cagir("media_overview"),Durum.kurallar(),Sunucu.cagir("media_career").catch(()=>null),Sunucu.cagir("postcards",{p_limit:1})]);v.m=m,v.kurallar=kurallar,v.kariyer=kariyer,v.okunmamis=Number(
+kartpostallar.unread??0),v.sirketler=await Promise.all((m.companies??[]).map(c=>Sunucu.cagir("company_sponsorships",{p_company:c.company_id}).catch(()=>({company_id:c.company_id,company:c.name,offers:[]})))),
+kareler.clear();for(const p of m.photos?.recent??[])kareler.set(p.photo_id,p)}const neden=(o,m)=>o.owner_id===(Durum.v.ozet?.character?.id??"")?\u00E7("kendi i\u015Fletmen"):o.kind==="ad"?m.newspaper?
+\u00E7("en az {n} abone gerek",{n:Number(o.min_followers)}):\u00E7("gazete gerek"):\u00E7("en az {n} etkin takip\xE7i gerek",{n:Number(o.min_followers)});let geriDurdur=()=>{};function ciz(){const m=v.
+m,t=m.tier??{},s=v.kurallar.data.media?.sponsorship??{},basamak=MEDYA_BASAMAK[t.tier_id]??t.tier_id??"",acik=(m.offers?.open??[]).map(o=>({...o,neden:o.eligible?"":neden(o,m)})),bekleyen=m.offers?.accepted??
+[],yayimlanan=m.offers?.published??[],ilanlar=bekleyen.filter(o=>o.kind==="ad");kap.innerHTML=`<div class="sayfa sayfa-dar">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("Medya")}</h1>
           <p class="aciklama">${\u00E7("Kare \xE7ek, video \xE7ek, canl\u0131 yay\u0131n a\xE7, gazete \xE7\u0131kar, sponsorluk al. Takip\xE7i sat\u0131n al\u0131nmaz: yaln\u0131z ger\xE7ek, etkin oyuncular say\u0131l\u0131r; basamak g\xFC\xE7 ya da oy vermez.")}\
 </p></div></div>
@@ -19,12 +20,18 @@ n:Number(t.next.need_followers),g:Number(v.kurallar.data.media?.activeDays??7)})
 channel?` \xB7 ${\u00E7("{n} video",{n:Number(m.channel.count??0)})}`:""}</p>
           <div class="oneri-dugmeler" style="margin-top:10px">
             <button class="dugme altin" id="medya-kare">${ikon("camera")}${\u00E7("Kare \xE7ek")}</button>
-            ${m.newspaper?`<button class="dugme" id="medya-makale">${ikon("notebook-pen")}${\u00E7("Makale yaz")}</button><button class="dugme ikincil" id="medya-vaat">${ikon("scale")}${\u00E7("Vaat k\
-ayd\u0131 yaz")}</button>`:`<button class="dugme" id="medya-gazete-kur">${ikon("newspaper")}${\u00E7("Gazete kur")}</button>`}
+            <button class="dugme ikincil" id="medya-album">${ikon("image")}${\u00E7("Alb\xFCm\xFCm")}</button>
+            <button class="dugme ikincil" id="medya-kartpostal">${ikon("mail-open")}${\u00E7("Kartpostallar\u0131m")} <span class="cip altin">${esc(\u00E7("{n} okunmam\u0131\u015F",{n:sayi(v.okunmamis)}))}\
+</span></button>
+            ${m.newspaper||v.kariyer?.newspaper?`<button class="dugme" id="medya-makale">${ikon("notebook-pen")}${\u00E7("Makale yaz")}</button>`:`<button class="dugme" id="medya-gazete-kur">${ikon("n\
+ewspaper")}${\u00E7("Gazete kur")}</button>`}
+            ${m.newspaper?`<button class="dugme ikincil" id="medya-vaat">${ikon("scale")}${\u00E7("Vaat kayd\u0131 yaz")}</button>`:""}
             <button class="dugme ikincil" id="medya-akis">${ikon("megaphone")}${\u00E7("Ak\u0131\u015Fa git")}</button>
           </div>
         </section>
-        ${kanalBolumuHtml(m,v.kurallar)}
+        ${kanalBolumuHtml(m,v.kurallar,v.kariyer)}
+        ${gazeteciKartiHtml(v.kariyer,m)}
+        ${platformKartiHtml(v.kariyer)}
         <section class="kart" id="medya-sponsorluk">
           <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Sponsorluk ve ilan")}</p><h2 class="b2">${\u00E7("Bug\xFCn {k} / {t} kredi \xB7 {n} / {m} i\xE7erik",{k:kr(m.earnings?.today_cr??0),t:kr(
 s.dailyIncomeCapCr??0),n:Number(m.earnings?.published_today??0),m:Number(s.perDayPerCreator??0)})}</h2></div><span class="ik-kutu">${ikon("hand-coins")}</span></div>
@@ -55,8 +62,9 @@ per")}</span></div>
               <span><b>${esc(a.title)}</b><span class="kucuk">${esc(zamanOnce(a.created_at))} \xB7 ${\u00E7("{n} destek",{n:Number(a.endorsements??0)})} \xB7 ${ikon("eye")} ${sayi(a.views??0)}${a.hidden?
 " \xB7 "+\u00E7("gizlendi"):""}${a.ad?` \xB7 <span class="etiket-vurgu">${esc(isbirligiEtiketi(a.ad.tag))}</span>`:""}</span></span>
               <button class="dugme sade kucuk-d" data-makale-ac="${esc(a.article_id)}">${\u00E7("A\xE7")}</button></div>`).join("")||`<p class="bos">${\u00E7("\u0130lk makaleni yaz: gazeten \xFClkenin ak\u0131\u015F\u0131nd\
-a g\xF6r\xFCn\xFCr.")}</p>`}</div>`:`<p class="bos">${\u00E7("Gazete kurmak \xFCcretsiz; hesab\u0131n birka\xE7 g\xFCnl\xFCk olmal\u0131. Uzun yaz\u0131, oyunun olaylar\u0131na ba\u011Fl\u0131 haber, abonelik; i\u015Fletmeler gazetene ilan verir.")}\
-</p>`}
+a g\xF6r\xFCn\xFCr.")}</p>`}</div>`:v.kariyer?.newspaper?`<p class="bos">${\u00E7("{gazete} ekibindesin; kendi gazeteni kurmak i\xE7in \xF6nce ekipten ayr\u0131l (yukar\u0131da).",{gazete:esc(v.kariyer.
+newspaper.name)})}</p>`:`<p class="bos">${\u00E7("Gazete kurmak \xFCcretsiz; hesab\u0131n birka\xE7 g\xFCnl\xFCk olmal\u0131. Uzun yaz\u0131, oyunun olaylar\u0131na ba\u011Fl\u0131 haber, abonelik; i\u015Fletmeler gazetene ilan verir. Bir gazeteni\
+n ekibine \xE7a\u011Fr\u0131l\u0131rsan muhabir ya da edit\xF6r olarak da yazabilirsin.")}</p>`}
           <div class="satir" style="margin-top:10px;flex-wrap:wrap;gap:8px"><button class="dugme ikincil kucuk-d" type="button" id="medya-matbaa">${ikon("newspaper")}${\u00E7("Matbaaya git")}</button>\
 
             <span class="kucuk">${\u00E7("\xDClkenin gazeteleri \u015Fehrin matbaas\u0131nda bas\u0131l\u0131r: man\u015Fetler, yazarlar ve sabah b\xFClteni.")}</span></div>
@@ -75,10 +83,11 @@ c.spendable_cr??0)})}</span>
         <p class="kucuk" style="margin-top:12px">${\u00E7("Kurallar: g\xFCnde en \xE7ok {k} Kare, iki Kare aras\u0131nda {d} dakika; sponsorluk g\xFCnde en \xE7ok {n} i\xE7erik ve {kr} kredi; kendi i\u015Fletmen seni sponsorl\
 ayamaz; siyasi reklam yok.",{k:Number(v.kurallar.data.media?.photo?.perDay??10),d:Number(v.kurallar.data.media?.photo?.minIntervalMin??2),n:Number(s.perDayPerCreator??2),kr:kr(s.dailyIncomeCapCr??0)})}\
 </p>
-      </div>`,bagla(),geriDurdur(),geriDurdur=geriSay(kap,()=>tazele())}function bagla(){const m=v.m;$("#medya-kare",kap).onclick=()=>kareStudyo({sonra:tazele}),$("#medya-makale",kap)?.addEventListener(
-"click",()=>makaleYaz({ilanlar:(m.offers?.accepted??[]).filter(o=>o.kind==="ad"),sonra:tazele})),$("#medya-vaat",kap)?.addEventListener("click",()=>vaatYaz({sonra:tazele})),$("#medya-matbaa",kap)?.addEventListener(
-"click",()=>Kabuk.git("sehir/matbaa")),$("#medya-gazete-kur",kap)?.addEventListener("click",()=>gazeteKur(tazele)),$("#medya-gazete-ad",kap)?.addEventListener("click",()=>gazeteAdiYenile(m.newspaper,tazele)),
-$("#medya-akis",kap).onclick=()=>Kabuk.git("meydan/akis"),kareKartlariBagla(kap,kareler,tazele),kanalBagla(kap,m,tazele),ImzaGunu.bagla(kap,"medya",tazele);for(const b of $$("[data-makale-ac]",kap))b.
+      </div>`,bagla(),geriDurdur(),geriDurdur=geriSay(kap,()=>tazele())}function bagla(){const m=v.m;$("#medya-kare",kap).onclick=()=>kareStudyo({sonra:tazele}),$("#medya-album",kap).onclick=()=>Kabuk.
+git("hayat/kare-album"),$("#medya-kartpostal",kap).onclick=()=>Kabuk.git("hayat/kartpostal"),$("#medya-makale",kap)?.addEventListener("click",()=>makaleYaz({ilanlar:(m.offers?.accepted??[]).filter(o=>o.
+kind==="ad"),sonra:tazele})),$("#medya-vaat",kap)?.addEventListener("click",()=>vaatYaz({sonra:tazele})),$("#medya-matbaa",kap)?.addEventListener("click",()=>Kabuk.git("sehir/matbaa")),$("#medya-gazet\
+e-kur",kap)?.addEventListener("click",()=>gazeteKur(tazele)),$("#medya-gazete-ad",kap)?.addEventListener("click",()=>gazeteAdiYenile(m.newspaper,tazele)),$("#medya-akis",kap).onclick=()=>Kabuk.git("me\
+ydan/akis"),kareKartlariBagla(kap,kareler,tazele),kanalBagla(kap,m,tazele,v.kariyer),gazeteciBagla(kap,v.kariyer,tazele),ImzaGunu.bagla(kap,"medya",tazele);for(const b of $$("[data-makale-ac]",kap))b.
 onclick=()=>makaleAc(b.dataset.makaleAc,tazele);for(const b of $$("[data-teklif-kabul]",kap))b.onclick=async()=>{const o=(m.offers?.open??[]).find(x=>x.offer_id===b.dataset.teklifKabul);pencere({ust:\u00E7(
 "Sponsorluk"),baslik:\u00E7("Teklifi kabul et"),govde:`<p class="aciklama">${\u00E7("{isletme}: {urun}, {kr} kredi b\xFCt\xE7e, {g} g\xFCn tan\u0131t\u0131m. Kabul edince {s} saat i\xE7inde yay\u0131mlaman gerekir; aksi h\xE2lde t\
 eklif d\xFC\u015Fer. Yay\u0131nda b\xFCt\xE7eden \xFClkenin sat\u0131\u015F vergisi ve %{p} platform pay\u0131 d\xFC\u015Fer, kalan\u0131 sana ge\xE7er.",{isletme:esc(o?.company??""),urun:esc(varlikAdi(

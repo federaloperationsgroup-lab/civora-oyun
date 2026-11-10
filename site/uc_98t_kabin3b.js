@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_98t_kabin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98t_kabin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const KABIN_ZARF=[90,40];function kabinZarfYeri(i){const r=rastgele(9100+i);return{x:(r()-.5)*.4,z:(r()-.5)*.24,y:.012+i*.0042+r()*.002,don:(r()-.5)*1.4,egik:(r()-.5)*.18}}function kabin3bKur(THREE,cizici){
 if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,40);let w=1,h=1,kirli=!0,kapEl=null,d={secim:"",pusula:[],renk:"#C65A3B",oy:0,secmen:null},
 asama="pusula",tAt=0,yiginSayi=0;const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.78,...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(

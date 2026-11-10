@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98q_festival.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98q_festival.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/festival",{async ac(kap){let fv=null,sezon=null,kapandi=!1,durdur=()=>{},secili=FestivalHedef.al()?.basvuru??null;const salon=KonserSalonu.ac();salon.dinle("sec",(ad,id)=>{if(ad===
 "kisi"){id&&profilAc(id,()=>tazele());return}if(ad==="ekran"){const e=gosterilen();e&&festivalBasvuruKartiAc(e,fv,()=>tazele())}});const ben=()=>Durum.v.ozet?.character??{};let bekleyen=null;const yakinda=()=>{
 clearTimeout(bekleyen),bekleyen=setTimeout(()=>{kapandi||tazele()},600)};async function yukle(){fv=await Sunucu.cagir("festival_view",{p_season:sezon}),secili&&!festivalListe(fv).some(e=>e.entry_id===
@@ -24,6 +24,10 @@ f.genre)}">${ikon("message-circle")}${\u00E7("Yorumlar")}</button></div>`:""}</s
         <p class="aciklama" style="margin:0">${\u00E7("{n} bilet sat\u0131ld\u0131{s}.",{n:sayi(fv.real_tickets??0),s:Number(fv.sim_tickets??0)>0?"; "+\u00E7("kap\u0131dan {k} seyirci",{k:sayi(fv.sim_tickets)}):
 ""})}
           ${fv.gross_cr!=null?" "+esc(\u00E7("Br\xFCt {b} kredi, \xF6d\xFCl havuzu {h} kredi.",{b:kr(fv.gross_cr),h:kr(fv.pool_cr??0)})):""}</p>
+        ${fv.sponsor?`<p class="kucuk" style="margin-top:6px" id="festival-sponsor" data-sponsor="${fv.sponsor.refunded?"dondu":"var"}">${ikon("landmark")} ${esc(fv.sponsor.refunded?\u00E7("{sehir} Be\
+lediyesi'nin {kr} kredi katk\u0131s\u0131 b\xFCt\xE7eye d\xF6nd\xFC ({neden}).",{sehir:bolgeAdi(fv.sponsor.region_id),kr:kr(fv.sponsor.amount_cr),neden:fv.sponsor.refund_reason==="cancelled"?\u00E7("s\
+ezon iptal"):\u00E7("sahneye \xE7\u0131kan olmad\u0131")}):\u00E7("{sehir} Belediyesi festivale {kr} kredi katk\u0131 koydu (Ba\u015Fkan {ad}); \xF6d\xFCl gecesinde vergisiz da\u011F\u0131t\u0131l\u0131r.",
+{sehir:bolgeAdi(fv.sponsor.region_id),kr:kr(fv.sponsor.amount_cr),ad:fv.sponsor.by??""}))}</p>`:""}
         ${t?`<p class="kucuk" style="margin-top:6px">${ikon("ticket")} ${esc(\u00E7("Bilet {kr} kredi ({zaman}). Festival g\xFCn\xFC her t\xFCrde bir gruba oy verebilirsin.",{kr:kr(t.price_cr),zaman:saatYaz(
 t.at)}))}</p>`:""}
         ${fv.can_buy?`<div class="satir" style="margin-top:10px"><button class="dugme altin" id="festival-bilet-al">${ikon("ticket")}${\u00E7("Bilet al \xB7 {kr} kredi",{kr:kr(fv.ticket_price_cr??1e3)})}\
@@ -58,6 +62,7 @@ fv.host_region_id,gecmis=sezon!=null;kap.innerHTML=`<div class="sayfa">
           <p class="aciklama">${esc(FESTIVAL_EVRE[fv.phase]??"")} \xB7 ${esc(\u00E7("festival {zaman}",{zaman:saatYaz(s.festival_at)}))} \xB7 ${esc(\u00E7("\xF6d\xFCl gecesi {zaman}",{zaman:saatYaz(s.
 award_at)}))}</p></div>
           <div class="oneri-dugmeler">
+            ${kareSahneDugmeHtml("festival",gosterilen()?.festival_id??fv.festivals?.[0]?.festival_id)}
             ${Number(fv.season)>1&&!gecmis?`<button class="dugme sade kucuk-d" id="festival-onceki">${ikon("undo-2")}${\u00E7("\xD6nceki sezon")}</button>`:""}
             ${gecmis?`<button class="dugme sade kucuk-d" id="festival-bu">${ikon("tent")}${\u00E7("Bu sezon")}</button>`:""}
             <span class="cip ${fv.phase==="festival"?"konser-canli":""}">${ikon(fv.phase==="festival"?"play":"calendar")}${esc(FESTIVAL_EVRE[fv.phase]??"")}</span></div></div>

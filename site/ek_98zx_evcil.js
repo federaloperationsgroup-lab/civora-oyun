@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zx_evcil.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zx_evcil.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/evcil",{async ac(kap){let v=null,yuklendi=0,kapandi=!1,mesgul=!1,gorunus,tur="kedi",cins="tekir";const sahne=EvcilSahnesi.ac();sahne.dinle("sec",ad=>{const ilk=(v?.pets??[]).find(p=>p.
 state==="ac"||p.state==="acikti")??(v?.pets??[])[0],sec=ad.startsWith("hayvan:")?`#evcil-${ad.slice(7)}`:ad==="mama"&&ilk?`#evcil-${ilk.id}`:ad==="ben"?"#evcil-dost":(v?.pets??[]).length?`#evcil-${v.pets[0].
 id}`:"#evcil-barinak",el=$(sec,kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.

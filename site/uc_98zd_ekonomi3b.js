@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_98zd_ekonomi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98zd_ekonomi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const EKONOMI_TEZGAH=[[-5.4,-.95,.35],[-4.05,-1.5,.15],[-2.75,-1.8,.06]],EKONOMI_RENK={hazine:"#D9A548",belediye:"#367F70",ithalat:"#23395B",ihracat:"#C65A3B"};function ekonomi3bKur(THREE,cizici){if(!cizici.
 kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,90);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={
 ulke:null,alisveris:0,hacim:0,sonSaat:0,enCok:[],son:[],hazine:0,belediye:0,vergiGun:{},vergiSaat:{},kamyonHazine:0,kamyonBelediye:0,ithalat:0,ihracat:0,ortaklar:[],siparis:0,stok:[],gece:0};const dinleyici={},

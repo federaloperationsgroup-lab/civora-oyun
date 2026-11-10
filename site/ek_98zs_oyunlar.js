@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zs_oyunlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zs_oyunlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/oyunlar",{async ac(kap){let r=null,hata=null,sistem=null,kapandi=!1,kart=null,kartOyun=null;const sec={oyun:"tavla",kapsam:"dunya"};try{const s=JSON.parse(localStorage.getItem("civ\
 ora.oyunlar")??"null");s?.oyun&&OYUN_AD[s.oyun]&&(sec.oyun=s.oyun),s?.kapsam==="ulke"&&(sec.kapsam="ulke")}catch{}const siralamalar=new Map,ulkem=()=>Durum.v.ozet?.character?.citizenship??null;async function yukle(){
 try{const[m,b]=await Promise.all([Masa.benim(),MekanYolu.burada().catch(()=>null)]);r=m,sistem=b?.system??null,hata=null}catch(e){hata=e}}async function siralamaYukle(taze=!1){const a=sec.oyun+"|"+sec.

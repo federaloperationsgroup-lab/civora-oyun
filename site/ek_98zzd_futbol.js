@@ -1,15 +1,15 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zzd_futbol.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
-"use strict";Kabuk.kaydet("sehir/futbol",{async ac(kap){let v=null,mac=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=null,sonCanli=0,sonGenel=0,yoklamaZaman=null,sonEvre=null;const saha=HaliSaha.ac(),ben=()=>Durum.
-v.ozet?.character??{},R=()=>futbolKurali()??v?.rule??{},simdi=()=>Date.now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});saha.
-dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad==="ben"){git("#futbol-ben");return}git("#futbol-macim")});const sonBiten=()=>{const x=(v?.history??[])[0],bitis=x?Date.parse(x.starts_at)+
-futbolZaman().son:0;return x&&x.status==="finished"&&x.player_status==="played"&&simdi()-bitis<15*6e4?x.id:null},gosterilen=()=>izlenen??me().current??sonBiten()??(v?.program??[]).find(x=>["live","loc\
-ked","closing"].includes(x.phase))?.id??null;let saat={rtt:1/0,an:0};const saatOrnek=(zaman,t0,t1)=>{if(!zaman)return;const rtt=t1-t0,fark=Date.parse(zaman)-(t0+t1)/2;Number.isFinite(fark)&&(rtt<=saat.
-rtt||Date.now()-saat.an>6e4)&&(saat={rtt,an:Date.now()},saatFarki=fark)},zamanli=async(fn,args)=>{const t0=Date.now(),x=await Sunucu.cagir(fn,args);return saatOrnek(x?.server_time,t0,Date.now()),x};async function yukle(){
-try{const[x]=await Promise.all([zamanli("football"),Durum.kurallar().catch(()=>null)]);v=x,sonGenel=Date.now();const id=gosterilen();izlenen&&!(v.program??[]).some(p=>p.id===izlenen)&&!(v.recent??[]).
-some(p=>p.id===izlenen)&&(izlenen=null),id?v.mine?.id===id?mac=v.mine:mac=await zamanli("football_match",{p_match:id}).catch(()=>null):mac=null,hata=null}catch(e){hata=e}}async function canliYukle(){const id=gosterilen();
-if(id)try{const x=await zamanli("football_match",{p_match:id});if(kapandi)return;mac=x,v&&v.mine?.id===x.id&&(v.mine=x),sonCanli=Date.now()}catch{}}const oyuncular=()=>futbolKadro(mac?.players??[]);function kadroHtml(m){
-const l=oyuncular(),r=R(),takim=s=>{const t=l.filter(o=>o.taraf===s).sort((x,y)=>x.yer-y.yer),satir=o=>{const ic=`<span class="futbol-forma" style="--forma:${futbolForma(o)}">${esc(FUTBOL_POS_KISA[o.mevki]??
-"")}</span>
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzd_futbol.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";Kabuk.kaydet("sehir/futbol",{async ac(kap){let v=null,mac=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=null,sonCanli=0,sonGenel=0,yoklamaZaman=null,sonEvre=null;const saha=HaliSaha.ac(),spiker=MacSpikeri.
+ac("futbol-spiker"),ben=()=>Durum.v.ozet?.character??{},R=()=>futbolKurali()??v?.rule??{},simdi=()=>Date.now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"au\
+to":"smooth",block:"start"});saha.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad==="ben"){git("#futbol-ben");return}git("#futbol-macim")});const sonBiten=()=>{const x=(v?.history??
+[])[0],bitis=x?Date.parse(x.starts_at)+futbolZaman().son:0;return x&&x.status==="finished"&&x.player_status==="played"&&simdi()-bitis<15*6e4?x.id:null},gosterilen=()=>izlenen??me().current??sonBiten()??
+(v?.program??[]).find(x=>["live","locked","closing"].includes(x.phase))?.id??null;let saat={rtt:1/0,an:0};const saatOrnek=(zaman,t0,t1)=>{if(!zaman)return;const rtt=t1-t0,fark=Date.parse(zaman)-(t0+t1)/
+2;Number.isFinite(fark)&&(rtt<=saat.rtt||Date.now()-saat.an>6e4)&&(saat={rtt,an:Date.now()},saatFarki=fark)},zamanli=async(fn,args)=>{const t0=Date.now(),x=await Sunucu.cagir(fn,args);return saatOrnek(
+x?.server_time,t0,Date.now()),x};async function yukle(){try{const[x]=await Promise.all([zamanli("football"),Durum.kurallar().catch(()=>null)]);v=x,sonGenel=Date.now();const id=gosterilen();izlenen&&!(v.
+program??[]).some(p=>p.id===izlenen)&&!(v.recent??[]).some(p=>p.id===izlenen)&&(izlenen=null),id?v.mine?.id===id?mac=v.mine:mac=await zamanli("football_match",{p_match:id}).catch(()=>null):mac=null,hata=
+null}catch(e){hata=e}}async function canliYukle(){const id=gosterilen();if(id)try{const x=await zamanli("football_match",{p_match:id});if(kapandi)return;mac=x,v&&v.mine?.id===x.id&&(v.mine=x),sonCanli=
+Date.now()}catch{}}const oyuncular=()=>futbolKadro(mac?.players??[]);function kadroHtml(m){const l=oyuncular(),r=R(),takim=s=>{const t=l.filter(o=>o.taraf===s).sort((x,y)=>x.yer-y.yer),satir=o=>{const ic=`\
+<span class="futbol-forma" style="--forma:${futbolForma(o)}">${esc(FUTBOL_POS_KISA[o.mevki]??"")}</span>
             <div><b>${esc(o.ben?\u00E7("Sen"):o.ad??\u00E7("Ad\u0131n\u0131 gizleyen biri"))}</b><div class="alt">${esc([futbolPosAdi(o.mevki),o.bot?\u00E7("mahalleden yedek"):null,o.guc!=null?\u00E7(
 "g\xFC\xE7 {n}",{n:sayi(o.guc)}):null,o.gol?\u00E7("{n} gol",{n:sayi(o.gol)}):null,o.asist?\u00E7("{n} asist",{n:sayi(o.asist)}):null,o.kurtaris?\u00E7("{n} kurtar\u0131\u015F",{n:sayi(o.kurtaris)}):null].
 filter(Boolean).join(" \xB7 "))}</div></div>
@@ -149,27 +149,32 @@ round(Number(r.decisionMs??6e3)/1e3))})],["star",\u00E7("Ma\xE7\u0131n adam\u013
 "ust-yazi">${\u00E7("Kurallar")}</p><h2 class="b2">${\u00E7("Hal\u0131 saha nas\u0131l i\u015Fler?")}</h2></div><span class="ik-kutu">${ikon("book-open")}</span></div>
         <div class="liste">${maddeler.map(([ik,x])=>`<div class="liste-satir"><span class="liste-ikon">${ikon(ik)}</span><div><div class="alt" style="margin:0">${esc(x)}</div></div><span></span></div>`).
 join("")}</div>
-      </section>`}const KP=futbolKararPenceresi({fn:"football_choose",simdi,rtt:()=>saat.rtt,mac:()=>mac,oyuncular}),kararAc=m=>KP.ac(m),kararKapat=()=>KP.kapat();function sahneYaz(){const sonraki=(v?.
-program??[]).find(x=>x.phase==="open"||x.phase==="closing");saha.yaz({mac,ben:{id:ben().id},saatFarki,bolge:v?.here??null,sonrakiMac:sonraki?Date.parse(sonraki.starts_at):null,yolda:!v?.here})}function ciz(){
-if(kapandi)return;if(hata&&!v){kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(hata))}</span></div>
+      </section>`}const KP=futbolKararPenceresi({fn:"football_choose",simdi,rtt:()=>saat.rtt,mac:()=>mac,oyuncular}),kararAc=m=>KP.ac(m),kararKapat=()=>KP.kapat();function spikerYaz(){const m=mac;if(!m||
+!["live","ended","finished"].includes(m.phase)||m.phase==="live"&&!m.watch){spiker.yaz(null);return}const el=futbolEl({bas:Date.parse(m.starts_at)},simdi()),Z=futbolZaman(),gorunen=(m.events??[]).filter(
+e=>m.phase==="finished"||e.t+2e3<=el),l=oyuncular(),kisi=(s,yer)=>{const o=l.find(x=>x.taraf===s&&x.yer===yer);return o?o.ad||(o.ben?ben().name??null:null):null};spiker.yaz(m.id,macSpikerGirdisi(m,gorunen,
+R().match?.minutesPerHalf??Z.dakika,el>=Z.yari),{takim:futbolTarafAdi,kisi,adam:m.motm?m.motm.name||(m.motm.me?ben().name??null:null):null})}function sahneYaz(){const sonraki=(v?.program??[]).find(x=>x.
+phase==="open"||x.phase==="closing");saha.yaz({mac,ben:{id:ben().id},saatFarki,bolge:v?.here??null,sonrakiMac:sonraki?Date.parse(sonraki.starts_at):null,yolda:!v?.here})}function ciz(){if(kapandi)return;
+if(hata&&!v){kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(hata))}</span></div>
           <button class="dugme ikincil" style="margin-top:14px" id="futbol-yeniden">${\u00E7("Yeniden dene")}</button></div>`,$("#futbol-yeniden",kap).onclick=()=>tazele();return}const burada=!!v.here;
 kap.innerHTML=`<div class="sayfa" data-futbol-bolge="${esc(v.here??"")}">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("\u015Eehrim")}</p><h1 class="b1">${esc(burada?\u00E7("{sehir} hal\u0131 sahas\u0131",{sehir:bolgeAdi(v.here)}):\u00E7("Hal\u0131 saha"))}\
 </h1>
           <p class="aciklama">${\u00E7("5'e 5 ma\xE7lar: kur ya da kat\u0131l, sahada karar ver, gol at. Futbol becerin ma\xE7 ma\xE7 geli\u015Fir.")}</p></div>
-          <span class="cip ${burada?"yesil":""}" id="futbol-burada">${ikon("map-pin")}${esc(burada?\u00E7("\u015Eehirdesin"):\u00E7("Yoldas\u0131n"))}</span></div>
+          <div class="oneri-dugmeler">${kareSahneDugmeHtml("stadium",mac?.id?`football:${mac.id}`:null)}<span class="cip ${burada?"yesil":""}" id="futbol-burada">${ikon("map-pin")}${esc(burada?\u00E7(
+"\u015Eehirdesin"):\u00E7("Yoldas\u0131n"))}</span></div></div>
         <div id="futbol-saha-yer"></div>
         <div class="izgara iki futbol-izgara" style="margin-top:20px">
-          <div class="yigin">${macimHtml()}${programHtml()}${kurHtml()}</div>
+          <div class="yigin">${macimHtml()}<div id="futbol-spiker-yer"></div>${programHtml()}${kurHtml()}</div>
           <div class="yigin">${benHtml()}${golculerHtml()}${sonuclarHtml()}${gecmisHtml()}${kurallarHtml()}</div>
-        </div></div>`,$("#futbol-saha-yer",kap)?.replaceWith(saha.el),sahneYaz(),bagla(),mac?.decision&&kararAc(mac)}function canliCiz(){if(kapandi)return;const k=$("#futbol-macim",kap);if(k&&mac){const yeni=document.
-createElement("div");yeni.innerHTML=macimHtml();const el=yeni.firstElementChild;el&&el.outerHTML!==k.outerHTML&&(k.replaceWith(el),bagla())}else if(mac&&!k){ciz();return}sahneYaz(),mac?.decision?kararAc(
-mac):KP.karar&&!(mac?.events??[]).some(x=>x.i===KP.karar.k.i)&&futbolEl({bas:Date.parse(KP.karar.m.starts_at)},simdi())<KP.karar.k.opens-4e3&&kararKapat()}async function isle(fn,basari){if(!mesgul){mesgul=
-!0;try{const y=await fn();if(kapandi)return;basari?.(y),Durum.ozet().catch(()=>{}),await yukle()}catch(e){tost(hataMetni(e),"circle-alert"),await yukle().catch(()=>{})}finally{mesgul=!1,kapandi||ciz()}}}
-function katilPencere(id){const x=(v.program??[]).find(p=>p.id===id);if(!x)return;const r=R(),secenek=[];for(const s of["a","b"])for(const p of["kaleci","defans","orta","forvet"]){const alinan=x.taken?.[s]??
-[];secenek.push({s,p,bos:futbolYerVar(r,alinan,p)})}const ilk=secenek.find(o=>o.bos&&o.p!=="kaleci")??secenek.find(o=>o.bos);pencereForm({ust:\u00E7("{saat} \xB7 saha {n}",{saat:saatKisa(x.starts_at),
-n:sayi(x.pitch)}),baslik:\u00E7("Ma\xE7a kat\u0131l"),onayAd:\u00E7("Kat\u0131l ({kr} kredi)",{kr:kr(r.feeCr??200)}),onayIkon:"user-round-plus",govde:`<p class="aciklama">${esc(\u00E7("Tak\u0131m\u0131n\u0131 ve mev\
-kini se\xE7. Kilitten \xF6nce ayr\u0131l\u0131rsan \xFCcretin d\xF6ner; ma\xE7 ba\u015Flarken \u015Fehirde olmal\u0131s\u0131n."))}</p>
+        </div></div>`,$("#futbol-saha-yer",kap)?.replaceWith(saha.el),$("#futbol-spiker-yer",kap)?.replaceWith(spiker.el),sahneYaz(),spikerYaz(),bagla(),mac?.decision&&kararAc(mac)}function canliCiz(){
+if(kapandi)return;const k=$("#futbol-macim",kap);if(k&&mac){const yeni=document.createElement("div");yeni.innerHTML=macimHtml();const el=yeni.firstElementChild;el&&el.outerHTML!==k.outerHTML&&(k.replaceWith(
+el),bagla())}else if(mac&&!k){ciz();return}sahneYaz(),spikerYaz(),mac?.decision?kararAc(mac):KP.karar&&!(mac?.events??[]).some(x=>x.i===KP.karar.k.i)&&futbolEl({bas:Date.parse(KP.karar.m.starts_at)},simdi())<
+KP.karar.k.opens-4e3&&kararKapat()}async function isle(fn,basari){if(!mesgul){mesgul=!0;try{const y=await fn();if(kapandi)return;basari?.(y),Durum.ozet().catch(()=>{}),await yukle()}catch(e){tost(hataMetni(
+e),"circle-alert"),await yukle().catch(()=>{})}finally{mesgul=!1,kapandi||ciz()}}}function katilPencere(id){const x=(v.program??[]).find(p=>p.id===id);if(!x)return;const r=R(),secenek=[];for(const s of[
+"a","b"])for(const p of["kaleci","defans","orta","forvet"]){const alinan=x.taken?.[s]??[];secenek.push({s,p,bos:futbolYerVar(r,alinan,p)})}const ilk=secenek.find(o=>o.bos&&o.p!=="kaleci")??secenek.find(
+o=>o.bos);pencereForm({ust:\u00E7("{saat} \xB7 saha {n}",{saat:saatKisa(x.starts_at),n:sayi(x.pitch)}),baslik:\u00E7("Ma\xE7a kat\u0131l"),onayAd:\u00E7("Kat\u0131l ({kr} kredi)",{kr:kr(r.feeCr??200)}),
+onayIkon:"user-round-plus",govde:`<p class="aciklama">${esc(\u00E7("Tak\u0131m\u0131n\u0131 ve mevkini se\xE7. Kilitten \xF6nce ayr\u0131l\u0131rsan \xFCcretin d\xF6ner; ma\xE7 ba\u015Flarken \u015Fehirde olmal\u0131s\u0131n."))}\
+</p>
           ${["a","b"].map(s=>`<p class="ust-yazi" style="margin-top:10px"><span class="futbol-renk" style="--forma:${FUTBOL_RENK[s]}"></span> ${esc(futbolTarafAdi(s))} \xB7 ${esc(\u00E7("{n}/5",{n:sayi(
 x.counts?.[s]??0)}))}</p>
             <div class="secim-liste" role="radiogroup" aria-label="${esc(futbolTarafAdi(s))}">${secenek.filter(o=>o.s===s).map(o=>`<label class="secim-satir${o.bos?"":" kapali"}">
@@ -205,4 +210,4 @@ lock_at)-simdi()+2e3;x>150&&x<bekle&&(bekle=x)}if(m&&canli){const el=futbolEl({b
 async()=>{if(kapandi)return;if(document.hidden){sonrakiYoklama();return}const evre=mac?.phase;canli?(await canliYukle(),mac?.phase!==evre||mac?.phase==="finished"||Date.now()-sonGenel>3e4?(await yukle(),
 !kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()):canliCiz()):(await yukle(),!kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()),sonEvre=mac?.phase??null,sonrakiYoklama()},Math.max(
 150,bekle))}if(await yukle(),!kap.isConnected)return saha.kapat(),()=>{};ciz(),sonrakiYoklama();const b1=Durum.dinle("olay",({olay})=>{/^football\./.test(olay)&&tazele().then(()=>sonrakiYoklama())});return()=>{
-kapandi=!0,b1(),clearTimeout(yoklamaZaman),kararKapat(),saha.kapat()}}}),Parcalar.tamam("ek_98zzd_futbol");
+kapandi=!0,b1(),clearTimeout(yoklamaZaman),kararKapat(),saha.kapat(),spiker.kapat()}}}),Parcalar.tamam("ek_98zzd_futbol");

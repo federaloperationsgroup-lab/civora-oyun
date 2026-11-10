@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98c_isgal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98c_isgal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/topraklar",{async ac(kap){let o=null,s=null,bakilan=isgBakilan;isgBakilan=null;try{const x=sessionStorage.getItem("civora.topraklar");x&&(bakilan??=x,sessionStorage.removeItem("civo\
 ra.topraklar"))}catch{}let kapandi=!1,durdur=()=>{};const depo={varlik:"muhimmat@1",miktar:""},ben=()=>Durum.v.ozet?.character??{};async function yukle(){const[ov,h]=await Promise.all([Sunucu.cagir("o\
 ccupation_overview"),Durum.harita().catch(()=>Durum.v.harita),Durum.ozet(),Durum.kurallar()]);if(o=ov,!bakilan){const yer=ben().location;bakilan=(h?.occupations??[]).some(([id])=>id===yer)||Number(h?.

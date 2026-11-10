@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zzb_spor.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzb_spor.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/spor",{async ac(kap){let v=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,gorunus;const salon=SporSalonu.ac(),ben=()=>Durum.v.ozet?.character??{},R=()=>sporKurali()??v?.rule??{},simdi=()=>Date.
 now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});salon.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad===
 "alet"){git(me().active?"#spor-antrenman":`#spor-kart-${id}`);return}if(ad==="tablo"){git("#spor-rekor");return}git("#spor-seviye")});async function yukle(){try{const[x,bak]=await Promise.all([Sunucu.
@@ -138,7 +138,8 @@ innerHTML=`<div class="sayfa" data-spor-bolge="${esc(v.gym?.region_id??"")}">
 /h1>
           <p class="aciklama">${\u00E7("Kuvvet, kardiyo, boks ve esneklik. Atletik seviyen y\xFCkseldik\xE7e v\xFCcudun g\xFC\xE7lenir, i\u015Flerin k\u0131sal\u0131r, yar\u0131\u015Flarda h\u0131zlan\u0131rs\u0131n.")}\
 </p></div>
-          <span class="cip ${burada?"yesil":""}" id="spor-burada">${ikon("map-pin")}${esc(burada?\u00E7("\u015Eehirdesin"):\u00E7("Yoldas\u0131n"))}</span></div>
+          <div class="oneri-dugmeler">${kareSahneDugmeHtml("gym",v.gym?.region_id)}<span class="cip ${burada?"yesil":""}" id="spor-burada">${ikon("map-pin")}${esc(burada?\u00E7("\u015Eehirdesin"):\u00E7(
+"Yoldas\u0131n"))}</span></div></div>
         <div id="spor-salon-yer"></div>
         <div class="izgara iki spor-izgara" style="margin-top:20px">
           <div class="yigin">${antrenmanHtml()}${sonucHtml()}${salondakilerHtml()}</div>

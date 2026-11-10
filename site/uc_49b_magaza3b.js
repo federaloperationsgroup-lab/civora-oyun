@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_49b_magaza3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_49b_magaza3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function magaza3bAraclar(THREE){const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.7,...ek}),golge=m=>(m.castShadow=!0,m.receiveShadow=!0,m);return{M,kutu:(gx,gy,gz,mat,x=0,y=0,z=0)=>{
 const m=golge(new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat));return m.position.set(x,y+gy/2,z),m},silindir:(r1,r2,y0,boy,mat,x=0,z=0,n=14)=>{const m=golge(new THREE.Mesh(new THREE.CylinderGeometry(
 r1,r2,boy,n),mat));return m.position.set(x,y0+boy/2,z),m},kure:(r,mat,x=0,y=0,z=0,n=14)=>{const m=golge(new THREE.Mesh(new THREE.SphereGeometry(r,n,Math.max(6,n-4)),mat));return m.position.set(x,y,z),

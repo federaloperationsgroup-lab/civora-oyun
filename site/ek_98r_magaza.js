@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98r_magaza.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98r_magaza.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/magaza",{async ac(kap){let v=null,l=null,tur="cerceve",suzgec="hepsi",hedefUrun=null,kapandi=!1,mesgul=!1;try{const s=JSON.parse(sessionStorage.getItem("civora.magaza")??"null");sessionStorage.
 removeItem("civora.magaza"),s&&MAGAZA_TURLER.some(([k])=>k===s.tur)&&(tur=s.tur,hedefUrun=typeof s.urun=="string"?s.urun:null)}catch{}async function yukle(){const[s,m]=await Promise.all([Sunucu.cagir(
 "store_view"),Sunucu.cagir("my_look"),Durum.kurallar()]);v=s,l=m,v.pass?.pending>0&&(v=await Sunucu.yap("store_sync"))}const urunler=()=>v.products??[],urun=id=>urunler().find(p=>p.id===id)??null,gorunus=()=>l?.

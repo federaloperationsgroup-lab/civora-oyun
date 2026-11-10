@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zh_mekan_ic.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zh_mekan_ic.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/mekan",{async ac(kap){let kapandi=!1,zy=null,panelBirak=null,burada=null;const[harita]=await Promise.all([Durum.harita().catch(()=>null),Durum.kurallar().catch(()=>null)]),birak=()=>{
 panelBirak?.(),panelBirak=null,zy?.kapat(),zy=null},listeye=(bildiri=null)=>{kapandi||(birak(),MekanYolu.hedefUnut(),mekanBildiri=bildiri,Kabuk.git("sehir/mekanlar"))},kalis=()=>burada?.stay&&burada.stay.
 venue_id===zy?.s?.venue?.venue_id?burada.stay:null;async function gir(mekan,yer="main",{duzenle=!1}={}){birak(),kap.innerHTML=`<div class="sayfa"><div class="kart yuk-kart">${esc(yer==="main"?\u00E7("\

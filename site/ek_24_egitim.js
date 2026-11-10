@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_24_egitim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_24_egitim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/egitim",{async ac(kap){let durdur=()=>{},kapandi=!1;const saha=EgitimSahasi.ac();let sahne=null,gorunus,asker=null,sahneAn=0;async function sahaYukle(){const[s,bak]=await Promise.all(
 [Sunucu.cagir("training_scene").catch(()=>sahne),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);sahne=s,sahneAn=Date.now(),gorunus===void 0&&(gorunus=bak?.look??null)}const sahaYaz=()=>saha.
 yaz({sahne,gorunus,ozet:Durum.v.ozet,asker});async function ciz(){durdur();const[a,kurallar,ben,sehir]=await Promise.all([Durum.askerlik(),Durum.kurallar(),Sunucu.cagir("coop_me").catch(()=>null),Sunucu.

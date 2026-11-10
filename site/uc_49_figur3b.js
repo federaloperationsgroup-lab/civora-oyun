@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_49_figur3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_49_figur3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const FIGUR_KALCA=.62,FIGUR_BEDEN={ince:{gen:.84,der:.88,kol:.9,bacak:.9,ara:.92,boyun:.92},orta:{gen:1,der:1,kol:1,bacak:1,ara:1,boyun:1},iri:{gen:1.2,der:1.16,kol:1.16,bacak:1.16,ara:1.12,boyun:1.14}};
 function figurIfade(Y,keyif){return keyif==="happy"?{...Y,agiz:"gulumse",agizR:Math.max(Y.agizR??.07,.092),yanak:Math.max(Y.yanak??0,.62),kasA:Math.max(Y.kasA??0,.16)}:keyif==="good"&&["duz","kucuk","\
 sert"].includes(Y.agiz)?{...Y,agiz:"gulumse",yanak:Math.max(Y.yanak??0,.38)}:Y}const figurKeyfi=y=>y?.keyif!=null?y.keyif:y?.anahtar&&typeof Durum=="object"&&y.anahtar===Durum.v?.ozet?.character?.id?Durum.

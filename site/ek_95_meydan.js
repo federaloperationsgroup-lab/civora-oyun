@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_95_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_95_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("meydan/meydan",{async ac(kap){let sc=null,d=null,kapandi=!1,yer=null,dinleBirak=null,sonTellal;const kart=MeydanSahnesi.ac(),benimUlke=()=>Durum.v.ozet?.character?.citizenship??null;let ms=null,
 kanalBirak=null,kalp=null,kalpMs=0,durumZaman=null,sonEylem=0,giriyor=null,dbEylem=!1;const kisiler=new Map,yuruS={son:0,pencere:0,n:0,bekleyen:null,zaman:null};let benYerel=null;const benimki=()=>ms?
 kisiler.get(ms.presence_id)??null:null,donusKapisi=MeydanYolu.donusAl();let ilkGiris=!0,kapiNiyet=null,akis={kartlar:[],gundem:{etiketler:[],one:null},gazete:[],kus:null},yan={kapsam:"all",posts:[],kurallar:null,
@@ -20,6 +20,8 @@ ell"):"")}
         ${d.imza?satir("pencil",\u00E7("\u0130mza masas\u0131"),`<p id="meydan-imza-yazi">${esc(\u00E7("{ad}: {esya} \xB7 {durum}",{ad:d.imza.ad,esya:imzaEsyaYazi(d.imza),durum:imzaDurumYazi(d.imza)}))}${d.
 imzalar.length>1?" "+esc(\u00E7("(ve {n} imza g\xFCn\xFC daha)",{n:sayi(d.imzalar.length-1)})):""}</p>`,dugme("imza",d.imza.durum==="live"&&!d.imza.benim&&!d.imza.hatiram&&d.imza.alinan<d.imza.tavan?\u00E7(
 "\u0130mza al"):\u00E7("Bak"),"pencil")):""}
+        ${satir("tv",\u00E7("Dev ekran"),`<p id="meydan-devekran-yazi">${esc(devEkranMetni(d.medya))}</p>`,d.medya?.canli?dugme("devekran",\u00E7("\u0130zle"),"radio"):d.medya?.video?dugme("devekran",
+\u00E7("Oynat"),"play"):"")}
         ${satir("trending-up",\u00E7("G\xFCndem duvar\u0131"),et?`<p class="meydan-gundem-cipler">${et}</p>`:`<p>${\u00E7("G\xFCndemde bug\xFCn etiket yok.")}</p>`,dugme("gundem",\u00E7("G\xFCndem"),"\
 trending-up"))}
         ${satir("newspaper",\u00E7("\u015Eehrin panosu \xB7 son 24 saat"),`<p>${d.pano?\u00E7("{n} payla\u015F\u0131m",{n:sayi(d.pano)}):\u00E7("Panoda bug\xFCn payla\u015F\u0131m yok.")}</p>${paylasim?
@@ -59,7 +61,7 @@ ydan-liste-ac" aria-expanded="${listeAcik}">${ikon(listeAcik?"arrow-up":"chevron
 gece>.5?\u00E7("Gece"):\u00E7("G\xFCnd\xFCz");kap.innerHTML=`<div class="sayfa meydan-sayfa">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Meydan")}</p><h1 class="b1" id="meydan-h1">${esc(\u00E7("{sehir} meydan\u0131",{sehir:bolgeAdi(d.bolge)}))}</h1>
           <p class="aciklama" id="meydan-ust">${esc([d.ulke?ulkeAdi(d.ulke):"",vakit,havaAdi({tur:d.hava,guclu:d.havaGuclu}),\u00E7("\u015Fu an {n} ki\u015Fi",{n:sayi(d.bulunan)})].filter(Boolean).join(
-" \xB7 "))}</p></div></div>
+" \xB7 "))}</p></div>${kareSahneDugmeHtml("square",d.bolge)}</div>
         ${yol?`<div class="bilgi-kutusu" id="meydan-yolda" style="margin-bottom:12px">${ikon("route")}<span>${esc(yol)}</span></div>`:""}
         <div id="meydan-bayram"></div>
         <div id="meydan-kart-yer"></div>
@@ -74,13 +76,14 @@ vakit,havaAdi({tur:d.hava,guclu:d.havaGuclu}),\u00E7("\u015Fu an {n} ki\u015Fi",
 r",kap).innerHTML=liste(),listeBagla(),kart.yaz(sahneVerisi()),kart.sayfaAcik()==="gundem"&&gundemSayfa()}function git(ad){if(ad==="adgizle"){adGizle();return}if(ad.startsWith("kapi:")){kapiyaGit(ad.slice(
 5));return}if(ad.startsWith("kapigit:")){kapiyaGit(ad.slice(8),!0);return}if(ad==="pano"){akisAc();return}if(ad==="ekran"){kayitlarSayfa();return}if(ad==="hatira"){Kabuk.git("meydan/arkadas");return}if(ad===
 "gundem"){gundemSayfa();return}if(ad==="kursu"){kursuSayfa();return}if(ad==="imza"){d.imza?imzaKartiAc(d.imza,()=>tazele()):tost(\u00E7("Bug\xFCn bu meydanda imza g\xFCn\xFC yok."),"pencil");return}if(ad===
-"bufe"){meydanBufeAc(akis.gazete);return}if(ad==="kus"){meydanPaylasimAc(akis.kus?.post,akisTazele);return}if(ad==="cay"){cayaOtur();return}if(ad==="cay-konus"){if(d.yolda){tost(\u00E7("Yoldayken \xE7ay \
-bah\xE7esine oturulmaz."),"route");return}Konusma.ac("burasi");return}if(ad==="tellal"){d.tellal?(kart.cal(),tost(d.tellal.metin,"bell")):tost(\u00E7("Bug\xFCn duyurulacak b\xFCy\xFCk bir haber yok."),
-"bell");return}if(ad==="sahne"){const r=d.ulke&&d.ulke===benimUlke()?{devlet:"ulke/ozet",yemin:"ulke/ozet",sonuc:"ulke/secim",hareket:"ulke/hareket",afis:"ulke/secim"}[d.sahne.tur]:null;r?Kabuk.git(r):
-tost(meydanSahneMetni(d.sahne)[1],"drama")}}kart.dinle("git",git),kart.dinle("kart",p=>meydanPaylasimAc(p,akisTazele)),kart.dinle("cizildi",()=>yanCiz()),kart.dinle("hizli",ad=>{ad==="akis"?akisAc():ad===
-"gundem"?gundemSayfa():ad==="kursu"?kursuSayfa():ad==="cay"?git("cay"):ad==="kisiler"&&kisilerSayfa()});function akisAc(){const y=kart.yan;if(y&&getComputedStyle(y).display!=="none"){$(".meydan-akis-f\
-orm textarea",y)?.focus({preventScroll:!0}),y.classList.add("vurgu"),setTimeout(()=>y.classList.remove("vurgu"),900);return}akisSayfa()}function kayitlarSayfa(){kart.sayfaAc("kayitlar",\u00E7("Resm\xEE k\
-ay\u0131tlar"),`${d.kayitlar.length?`<ul class="meydan-ufak">${d.kayitlar.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:`<p class="bos">${\u00E7("Son yedi g\xFCnde resm\xEE kay\u0131t yok.")}</p>`}
+"devekran"){d.medya?.canli?yayinOdasi(d.medya.canli.stream_id,{sonra:()=>tazele()}):d.medya?.video?videoAc(d.medya.video.video_id,()=>tazele()):tost(devEkranMetni(d.medya),"tv");return}if(ad==="bufe"){
+meydanBufeAc(akis.gazete);return}if(ad==="kus"){meydanPaylasimAc(akis.kus?.post,akisTazele);return}if(ad==="cay"){cayaOtur();return}if(ad==="cay-konus"){if(d.yolda){tost(\u00E7("Yoldayken \xE7ay bah\xE7esin\
+e oturulmaz."),"route");return}Konusma.ac("burasi");return}if(ad==="tellal"){d.tellal?(kart.cal(),tost(d.tellal.metin,"bell")):tost(\u00E7("Bug\xFCn duyurulacak b\xFCy\xFCk bir haber yok."),"bell");return}
+if(ad==="sahne"){const r=d.ulke&&d.ulke===benimUlke()?{devlet:"ulke/ozet",yemin:"ulke/ozet",sonuc:"ulke/secim",hareket:"ulke/hareket",afis:"ulke/secim"}[d.sahne.tur]:null;r?Kabuk.git(r):tost(meydanSahneMetni(
+d.sahne)[1],"drama")}}kart.dinle("git",git),kart.dinle("kart",p=>meydanPaylasimAc(p,akisTazele)),kart.dinle("cizildi",()=>yanCiz()),kart.dinle("hizli",ad=>{ad==="akis"?akisAc():ad==="gundem"?gundemSayfa():
+ad==="kursu"?kursuSayfa():ad==="cay"?git("cay"):ad==="kisiler"&&kisilerSayfa()});function akisAc(){const y=kart.yan;if(y&&getComputedStyle(y).display!=="none"){$(".meydan-akis-form textarea",y)?.focus(
+{preventScroll:!0}),y.classList.add("vurgu"),setTimeout(()=>y.classList.remove("vurgu"),900);return}akisSayfa()}function kayitlarSayfa(){kart.sayfaAc("kayitlar",\u00E7("Resm\xEE kay\u0131tlar"),`${d.kayitlar.
+length?`<ul class="meydan-ufak">${d.kayitlar.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:`<p class="bos">${\u00E7("Son yedi g\xFCnde resm\xEE kay\u0131t yok.")}</p>`}
         <button class="dugme sade kucuk-d tam" type="button" data-meydan-akis-git>${ikon("arrow-right")}${\u00E7("Ak\u0131\u015F'\u0131n tamam\u0131")}</button>`,s=>$("[data-meydan-akis-git]",s)?.addEventListener(
 "click",()=>Kabuk.git("meydan/akis")))}const YAN_KAPSAM={all:\u00E7("Hepsi"),country:\u00E7("\xDClkem"),world:\u00E7("D\xFCnya")};async function yanYukle(){const[f,kurallar]=await Promise.all([Sunucu.
 cagir("square_feed",{p_scope:yan.kapsam,p_mode:"recent",p_limit:12}).catch(()=>({posts:[]})),Durum.kurallar()]);yan.posts=f.posts??[],yan.kurallar=kurallar,yan.yeni=0}const yanPaylasim=p=>`<article cl\
@@ -129,11 +132,15 @@ gundem.one,et=akis.gundem.etiketler;kart.sayfaAc("gundem",\u00E7("G\xFCndem"),`<
           ${et.length?`<div class="gundem">${et.map(t=>`<span class="cip">#${esc(t.tag)} \xB7 ${esc(\u00E7("{n} ki\u015Fi",{n:sayi(t.n)}))}</span>`).join("")}</div>`:`<p class="bos">${\u00E7("G\xFCndemde\
  bug\xFCn etiket yok; #etiketli bir payla\u015F\u0131m yaz.")}</p>`}
           ${one?`<p class="ust-yazi" style="margin-top:10px">${\u00E7("G\xFCn\xFCn \xF6ne \xE7\u0131kan payla\u015F\u0131m\u0131")}</p>${yanPaylasim(one)}`:""}
+          ${d.medya?.video?`<p class="ust-yazi" style="margin-top:10px">${\u00E7("G\xFCn\xFCn videosu")}</p><button type="button" class="ilk-adim meydan-gunun-videosu" data-meydan-video="${esc(d.medya.
+video.video_id)}"><span class="ozet-ikon" style="background:var(--kagit-3)">${ikon("video")}</span>
+            <span><b>${esc(d.medya.video.channel||d.medya.video.author||"")}</b><span class="kucuk">${esc(d.medya.video.caption||\u00E7("ads\u0131z video"))} \xB7 ${ikon("hand")} ${sayi(d.medya.video.
+applause??0)} \xB7 ${ikon("eye")} ${sayi(d.medya.video.views??0)}</span></span>${ikon("play")}</button>`:""}
           <button class="dugme sade kucuk-d tam" type="button" data-meydan-akis-git>${ikon("arrow-right")}${\u00E7("Ak\u0131\u015F'\u0131n tamam\u0131")}</button></div>`,s=>{if($("[data-meydan-akis-gi\
-t]",s)?.addEventListener("click",()=>Kabuk.git("meydan/akis")),!!one){$("[data-profil]",s)?.addEventListener("click",()=>profilAc(one.author_id,akisTazele)),$("[data-ac]",s)?.addEventListener("click",
-()=>meydanPaylasimAc(one,akisTazele));for(const b of $$("[data-alkis], [data-yanki]",s))b.addEventListener("click",()=>meydanTepki(one,b.dataset.alkis?"applause":"echo",()=>{gundemSayfa(),akisTazele()}));
-$("[data-yanit]",s)?.addEventListener("click",()=>meydanYanitla(one,akisTazele))}})}function kisilerSayfa(){kart.sayfaAc("kisiler",kisilerUst(),`<div id="meydan-kisiler-sayfa">${kisilerHtml(!1)}</div>\
-
+t]",s)?.addEventListener("click",()=>Kabuk.git("meydan/akis")),$("[data-meydan-video]",s)?.addEventListener("click",e=>videoAc(e.currentTarget.dataset.meydanVideo,()=>tazele())),!!one){$("[data-profil\
+]",s)?.addEventListener("click",()=>profilAc(one.author_id,akisTazele)),$("[data-ac]",s)?.addEventListener("click",()=>meydanPaylasimAc(one,akisTazele));for(const b of $$("[data-alkis], [data-yanki]",
+s))b.addEventListener("click",()=>meydanTepki(one,b.dataset.alkis?"applause":"echo",()=>{gundemSayfa(),akisTazele()}));$("[data-yanit]",s)?.addEventListener("click",()=>meydanYanitla(one,akisTazele))}})}
+function kisilerSayfa(){kart.sayfaAc("kisiler",kisilerUst(),`<div id="meydan-kisiler-sayfa">${kisilerHtml(!1)}</div>
           <div class="satir" style="gap:6px;flex-wrap:wrap;margin-top:8px">${adGizleDugme(!1)}<button class="dugme sade kucuk-d" type="button" data-meydan-git="hatira">${ikon("users-round")}${\u00E7("\
 Arkada\u015Flar")}</button></div>`,s=>{kisiBagla(s);for(const b of $$("[data-meydan-git]",s))b.addEventListener("click",()=>git(b.dataset.meydanGit))})}let kursuDurum=null,kursuSaat=null,kursuYurutZaman=null;
 function kursuMetni(){const k=kursuDurum;if(!ms||!k)return \u00E7("Meydana girince s\u0131raya girebilirsin: s\u0131ra gelince 2 dakika k\xFCrs\xFC senin.");const konusan=k.speaker?kisiler.get(k.speaker):

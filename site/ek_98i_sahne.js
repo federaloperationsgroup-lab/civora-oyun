@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98i_sahne.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98i_sahne.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/sahne",{async ac(kap){let v=null,plaklar=[],fv=null,disari=null,kulupler=[],kapandi=!1,durdur=()=>{};const hedef=KonserHedef.sahneAl();let bolge=hedef?.bolge??null,secili=hedef?.konser??
 null;const salon=KonserSalonu.ac();salon.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}ad==="ekran"&&salon.secili&&konserKartiAc(salon.secili,()=>tazele())});const ben=()=>Durum.
 v.ozet?.character??{},tum=()=>[...v?.live??[],...v?.upcoming??[],...v?.recent??[]];async function yukle(){[v,plaklar,fv]=await Promise.all([Sunucu.cagir("city_concerts",{p_region:bolge}),Sunucu.cagir(
@@ -30,7 +30,8 @@ concert_id===c.concert_id})).join("")}</div>`:`<p class="bos">${esc(bos)}</p>`;k
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("\u015Eehrim \xB7 Sahne")}</p>
           <h1 class="b1">${\u00E7("Sahne \xB7 {sehir}",{sehir:esc(bolgeAdi(v.region_id))})}</h1>
           <p class="aciklama">${\u00E7("\u015Eehrin konser mek\xE2nlar\u0131 ve konserleri: bilet al, konseri izle, grubunla sahneye \xE7\u0131k.")}</p></div>
-          <span class="cip">${ikon("building")}${\u00E7("{s}. seviye \xB7 {n} sakin",{s:Number(v.level??1),n:sayi(v.residents??0)})}</span></div>
+          <div class="oneri-dugmeler">${kareSahneDugmeHtml("concert",gosterilen()?.concert_id)}<span class="cip">${ikon("building")}${\u00E7("{s}. seviye \xB7 {n} sakin",{s:Number(v.level??1),n:sayi(v.
+residents??0)})}</span></div></div>
         ${burada?"":`<div class="bilgi-kutusu" style="margin-bottom:12px">${ikon("map-pin")}<span>${\u00E7("Ba\u015Fka bir \u015Fehrin sahnesine bak\u0131yorsun.")}</span>
           <button class="dugme sade kucuk-d" id="sahne-buraya">${\u00E7("Bulundu\u011Fum \u015Fehrin sahnesi")}</button></div>`}
         ${v.war?`<div class="hata-kutusu" style="margin-bottom:12px">${ikon("swords")}<span>${\u00E7("Bu \u015Fehir sava\u015F b\xF6lgesi: yeni konser ayr\u0131lmaz; bekleyen konserler iptal olur ve biletler iade edili\

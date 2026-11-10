@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zu_araclar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zu_araclar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/araclar",{async ac(kap){let v=null,kapandi=!1,mesgul=!1,gorunus;const sahne=AracSahnesi.ac();sahne.dinle("sec",ad=>{const el=$({land:"#arac-yer-land",sea:"#arac-yer-sea",kit:"#arac\
 -kurallar",ben:"#arac-bayi"}[ad]??"#arac-bayi",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vur\
 gu-yan"))});const ben=()=>Durum.v.ozet?.character??{};async function yukle(){const[x,bak]=await Promise.all([Sunucu.cagir("vehicles"),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);v=

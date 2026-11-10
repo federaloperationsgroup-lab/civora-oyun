@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_82_terzi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_82_terzi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const TERZI_KIYAFETLER=["gunluk","takim","tulum","kazak","spor","yelek","uniforma"];function terziAynaKur(THREE,gen,yuk,cozunurluk=512){const dokuMatrisi=new THREE.Matrix4,hedef=new THREE.WebGLRenderTarget(
 cozunurluk,cozunurluk,{type:THREE.HalfFloatType}),yansiyan=new THREE.ShaderMaterial({uniforms:{renk:{value:new THREE.Color("#B4BBBE")},doku:{value:hedef.texture},dokuMatrisi:{value:dokuMatrisi}},vertexShader:`\
 uniform mat4 dokuMatrisi;

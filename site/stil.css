@@ -3773,6 +3773,17 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .ust-degerler .d-keyif { text-decoration: none; color: inherit; }
 .ust-degerler .d-keyif.happy .ik { color: var(--altin); }
 .evim-konfor-esya { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+/* Keyfin geçmişi (D-205): Profil'deki keyif kartında son günlerin grafiği */
+.keyif-gecmis svg { display: block; width: 100%; max-width: 520px; height: auto; margin-top: 4px; overflow: visible; }
+.keyif-gecmis .kg-izgara { stroke: var(--cizgi); stroke-width: 1; }
+.keyif-gecmis .kg-esik { stroke: var(--altin); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.keyif-gecmis .kg-cizgi { fill: none; stroke: var(--orman-3); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.keyif-gecmis .kg-nokta { fill: var(--kagit); stroke: var(--orman-3); stroke-width: 2; }
+.keyif-gecmis .kg-nokta.yerinde { stroke: var(--altin-2); }
+.keyif-gecmis .kg-nokta.bugun { fill: var(--altin); stroke: var(--altin-2); }
+.keyif-gecmis .kg-kazanc { fill: var(--orman-acik-2); }
+.keyif-gecmis .kg-etiket { fill: var(--soluk); font-size: 9px; font-family: var(--f-govde); }
+@media (max-width: 480px) { .keyif-gecmis .kg-etiket { font-size: 11.5px; } }   /* telefonda grafik dar: etiketler okunur kalsın */
 .evim-konfor-esya .cip.yok { opacity: 0.6; }
 .oda-konfor { color: var(--orman); font-weight: 650; }
 .mekan-keyif-not { display: flex; gap: 6px; align-items: flex-start; }
@@ -4784,3 +4795,30 @@ ul.liste, ol.liste { list-style: none; margin: 0; padding: 0; }
 .meydan2b-imza-esya { fill: #F1E7CF; stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.4; }
 .meydan2b-imza-lamba { fill: #FFD873; stroke: rgba(255, 216, 115, 0.5); stroke-width: 3; }
 .meydan2b-imza.canli .meydan2b-imza-masa { stroke: #FFD873; stroke-width: 1.2; }
+
+/* Medya 3. parça (D-197): dev ekran (2B plan), kanal adı, makalenin olay bağlantısı, günün videosu, yayın köşesi */
+.meydan2b-devekran .meydan2b-ekran { fill: #1A1D21; stroke: #3A4149; }
+.meydan2b-devekran.canli .meydan2b-ekran { fill: #0B0F14; stroke: #E53935; stroke-width: 1.6; }
+.meydan2b-devekran.video .meydan2b-ekran { fill: #13181E; stroke: #B8860B; stroke-width: 1.4; }
+.meydan2b-canli-nokta { fill: #FF5252; stroke: rgba(255, 82, 82, 0.45); stroke-width: 2.4; }
+@media (prefers-reduced-motion: no-preference) { .meydan2b-canli-nokta { animation: canli-nabiz 1.6s ease-in-out infinite; } }
+@keyframes canli-nabiz { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.kanal-adi { display: inline-flex; align-items: center; gap: 3px; margin-left: 4px; padding: 0 7px; border-radius: 999px; background: var(--deniz-acik); color: #22665A; font-size: 0.78em; font-weight: 600; vertical-align: middle; }
+.kanal-adi .ik { width: 12px; height: 12px; }
+.makale-ref { display: inline-flex; align-items: center; gap: 4px; vertical-align: middle; }
+.makale-ref .ik { width: 13px; height: 13px; }
+.meydan-gunun-videosu { width: 100%; text-align: left; border: 0; cursor: pointer; font: inherit; color: inherit; }
+.meydan-gunun-videosu > .ik:last-child { width: 20px; height: 20px; color: var(--orman); }
+#yayin-kosesi[data-hazir="1"] .ik-kutu { background: var(--orman-acik); color: var(--orman); }
+
+/* Silah seçimi (D-200; T-28): arenanın köşesindeki silah yazısı düğmedir, seçenekler pencerede satır satır */
+.ar-silah-d { background: none; border: 0; padding: 0; margin: 0; color: inherit; font: inherit; font-size: 12px; line-height: 1.15; display: inline-flex; align-items: center; gap: 2px; cursor: pointer; border-radius: 4px; }
+.ar-silah-d b { font-size: 12px; }
+.ar-silah-d > .ik:last-child { width: 11px; height: 11px; margin: 0; opacity: 0.8; }
+.ar-silah-d[data-sinir="1"] b { text-decoration: underline dotted; text-underline-offset: 2px; }
+.ar-silah-d:focus-visible { outline: 2px solid #FFF4D6; outline-offset: 2px; }
+.secenek-satir { width: 100%; text-align: left; border: 0; font: inherit; color: inherit; cursor: pointer; }
+.secenek-satir:hover { background: var(--kagit-3); }
+.secenek-satir[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--orman); }
+.secenek-satir > .ik:last-child { width: 20px; height: 20px; color: var(--orman); }
+.secenek-satir:disabled { opacity: 0.6; cursor: default; }

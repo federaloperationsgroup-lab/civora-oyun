@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zm_dersler.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zm_dersler.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/dersler",{async ac(kap){let v=null,kapandi=!1,durdur=()=>{},odak=null;const sahne=SinifSahnesi.ac();sahne.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}
 const el=(ad==="tahta"&&id?$(`[data-ders-satir="${CSS.escape(id)}"]`,kap):null)??$(ad==="ben"?"#dersler-ogrenci":"#dersler-sehir",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"\
 center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let gorunus,bekleyen=null;const yakinda=()=>{clearTimeout(bekleyen),

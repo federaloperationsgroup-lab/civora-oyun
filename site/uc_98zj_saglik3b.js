@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_98zj_saglik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98zj_saglik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const SAGLIK_OLCEK=.66,SAGLIK_KALABALIK=.92,SAGLIK_SANDALYE=[[-1.2,.55],[0,.55],[1.2,.55],[-2.4,.55],[2.4,.55],[-1.8,1.75],[-.6,1.75],[.6,1.75],[1.8,1.75],[-3,1.75]],SAGLIK_OTURAK=.26,SAGLIK_SEDYE=.44;
 function saglik3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,120);let w=1,h=1,
 kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={anahtar:"",sehir:"",gece:0,doktorlar:[],fazla:0,bekleyen:0,muayenede:0,salon:0,ben:{id:"",ad:"",gorunus:null,ulke:null,sirada:!1,sedyede:!1,doktor:!1,saat:null},

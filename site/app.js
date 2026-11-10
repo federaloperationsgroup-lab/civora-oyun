@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (app.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (app.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const DUNYA={ulkeler:{AFG:{ad:"Afganistan",en:"Afghanistan",baskent:"AFG-01",tz:"Asia/Kabul",renk:"#7F9FCB",iso2:"AF"},DEU:{ad:"Almanya",en:"Germany",baskent:"DEU-01",tz:"Europe/Berlin",renk:"#D9A441",
 iso2:"DE"},USA:{ad:"Amerika Birle\u015Fik Devletleri",en:"United States of America",baskent:"USA-01",tz:"America/New_York",renk:"#79A86F",iso2:"US"},AGO:{ad:"Angola",baskent:"AGO-01",tz:"Africa/Luanda",
 renk:"#79A86F",iso2:"AO"},ARG:{ad:"Arjantin",en:"Argentina",baskent:"ARG-01",tz:"America/Argentina/Buenos_Aires",renk:"#7F9FCB",iso2:"AR"},ALB:{ad:"Arnavutluk",en:"Albania",baskent:"ALB-01",tz:"Europe\
@@ -81,864 +81,412 @@ n",baskent:"UZB-01",tz:"Asia/Tashkent",renk:"#D9A441",iso2:"UZ"},JOR:{ad:"\xDCrd
 Europe/Madrid",renk:"#7F9FCB",iso2:"ES"},ISR:{ad:"\u0130srail",en:"Israel",baskent:"ISR-01",tz:"Asia/Jerusalem",renk:"#79A86F",iso2:"IL"},SWE:{ad:"\u0130sve\xE7",en:"Sweden",baskent:"SWE-01",tz:"Europ\
 e/Stockholm",renk:"#D9A441",iso2:"SE"},CHE:{ad:"\u0130svi\xE7re",en:"Switzerland",baskent:"CHE-01",tz:"Europe/Zurich",renk:"#7F9FCB",iso2:"CH"},ITA:{ad:"\u0130talya",en:"Italy",baskent:"ITA-01",tz:"Eu\
 rope/Rome",renk:"#D9A441",iso2:"IT"},ISL:{ad:"\u0130zlanda",en:"Iceland",baskent:"ISL-01",tz:"Atlantic/Reykjavik",renk:"#D9A441",iso2:"IS"},CHL:{ad:"\u015Eili",en:"Chile",baskent:"CHL-01",tz:"America/\
-Santiago",renk:"#D9A441",iso2:"CL"}},bolgeler:{"RUS-01":{ad:"Moskova",en:"Moskva",ulke:"RUS",komsu:["AZE-01","BLR-02","BLR-04","EST-02","FIN-01","FIN-02","FIN-03","FIN-05","GEO-01","GEO-02","GEO-03","\
-KAZ-02","LTU-02","LTU-03","LVA-02","NOR-02","POL-01","POL-05","RUS-07","UKR-01","UKR-02","UKR-04"],e:[1177.2,134.2],iklim:"kuzey_orman",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"RUS-02":{
-ad:"Kam\xE7atka Kray\u0131",en:"Kamchatka",ulke:"RUS",komsu:["RUS-10","RUS-11"],e:[1746.2,148.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"RUS-03":{ad:"\u0130rkutsk Oblast\u0131",
-en:"Irkutsk",ulke:"RUS",komsu:["CHN-02","KAZ-01","KAZ-09","MNG-02","MNG-03","RUS-06","RUS-08","RUS-09","RUS-12"],e:[1488.8,148.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},
-"RUS-04":{ad:"Yamalo-Nenets \xD6zerk Okrugu",en:"Yamal-Nenets",ulke:"RUS",komsu:["RUS-06","RUS-07","RUS-09"],e:[1342.8,91.8],iklim:"kar",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"zengin"},"RUS\
--05":{ad:"Habarovsk Kray\u0131",en:"Khabarovsk",ulke:"RUS",komsu:["CHN-06","JPN-03","PRK-02","RUS-08","RUS-11","RUS-12"],e:[1651.8,178.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"\
-orta"},"RUS-06":{ad:"Krasnoyarsk Kray\u0131",en:"Krasnoyarsk",ulke:"RUS",komsu:["RUS-03","RUS-04","RUS-08","RUS-09"],e:[1414.8,89.8],iklim:"kar",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"zengin"},
-"RUS-07":{ad:"Komi Cumhuriyeti",en:"Komi",ulke:"RUS",komsu:["KAZ-02","KAZ-06","KAZ-08","RUS-01","RUS-04","RUS-09"],e:[1253.5,141.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"zen\
-gin"},"RUS-08":{ad:"Yakutistan",en:"Sakha (Yakutia)",ulke:"RUS",komsu:["RUS-03","RUS-05","RUS-06","RUS-10","RUS-11","RUS-12"],e:[1577.2,101.2],iklim:"kar",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"\
-orta"},"RUS-09":{ad:"Hant\u0131-Mansi \xD6zerk Okrugu",en:"Khanty-Mansiy",ulke:"RUS",komsu:["KAZ-01","KAZ-06","RUS-03","RUS-04","RUS-06","RUS-07"],e:[1351.5,133.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{
-tahil:10},zenginlik:"zengin"},"RUS-10":{ad:"\xC7ukotka \xD6zerk Okrugu",en:"Chukchi Autonomous Okrug",ulke:"RUS",komsu:["RUS-02","RUS-08","RUS-11","USA-05"],e:[1749.8,85.5],iklim:"kar",arazi:"dag_geci\
-di",avantaj:{cevher:10},zenginlik:"fakir"},"RUS-11":{ad:"Magadan Oblast\u0131",en:"Maga Buryatdan",ulke:"RUS",komsu:["RUS-02","RUS-05","RUS-08","RUS-10"],e:[1684.8,107.5],iklim:"kuzey_orman",arazi:"or\
-man",avantaj:{lif:10},zenginlik:"fakir"},"RUS-12":{ad:"Zabaykalskiy Kray\u0131",en:"Chita",ulke:"RUS",komsu:["CHN-06","CHN-11","MNG-01","MNG-03","MNG-04","MNG-07","MNG-08","RUS-03","RUS-05","RUS-08"],
-e:[1538.8,165.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"CAN-01":{ad:"Ontario",ulke:"CAN",komsu:["CAN-07","CAN-09","USA-01","USA-11"],e:[582.8,174.5],iklim:"gol",arazi:"\
-orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"CAN-02":{ad:"Yukon",ulke:"CAN",komsu:["CAN-06","CAN-08","USA-05"],e:[402.2,103.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},
-"CAN-03":{ad:"Newfoundland ve Labrador",en:"Newfoundland and Labrador",ulke:"CAN",komsu:["CAN-04","CAN-07"],e:[703.2,162.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"CAN-\
-04":{ad:"Nunavut",ulke:"CAN",komsu:["CAN-03","CAN-06","CAN-07","CAN-09"],e:[569.2,97.5],iklim:"kar",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"CAN-05":{ad:"Saskatchewan",ulke:"CAN",komsu:[
-"CAN-06","CAN-09","CAN-10","USA-03","USA-10"],e:[491.5,171.8],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"CAN-06":{ad:"Kuzeybat\u0131 Topraklar\u0131",en:"Northwest Territories",ulke:"\
-CAN",komsu:["CAN-02","CAN-04","CAN-05","CAN-08","CAN-10"],e:[460.2,95.8],iklim:"kar",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"orta"},"CAN-07":{ad:"Qu\xE9bec",ulke:"CAN",komsu:["CAN-01","CAN-03",
-"CAN-04","USA-01"],e:[653.5,168.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"CAN-08":{ad:"Britanya Kolumbiyas\u0131",en:"British Columbia",ulke:"CAN",komsu:["CAN-02","\
-CAN-06","CAN-10","USA-05","USA-07","USA-10"],e:[406.8,163.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"zengin"},"CAN-09":{ad:"Manitoba",ulke:"CAN",komsu:["CAN-01","CAN-04","CAN-05",
-"USA-03","USA-11"],e:[547.5,142.5],iklim:"gol",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"CAN-10":{ad:"Alberta",ulke:"CAN",komsu:["CAN-05","CAN-06","CAN-08","USA-10"],e:[453.8,160.2],iklim:"k\
-uzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"USA-01":{ad:"Washington",en:"District of Columbia",ulke:"USA",komsu:["CAN-01","CAN-07","USA-08","USA-09","USA-11"],e:[588.8,250.8],iklim:"\
-bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"USA-02":{ad:"Kaliforniya",en:"California",ulke:"USA",komsu:["MEX-02","USA-06","USA-07","USA-10"],e:[388.8,255.8],iklim:"akdeniz_kiyi",
-arazi:"kiyi",avantaj:{lif:10},zenginlik:"zengin"},"USA-03":{ad:"Wyoming",ulke:"USA",komsu:["CAN-05","CAN-09","USA-06","USA-08","USA-10","USA-11"],e:[492.5,228.2],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},
-zenginlik:"orta"},"USA-04":{ad:"Teksas",en:"Texas",ulke:"USA",komsu:["MEX-04","MEX-08","USA-06","USA-09"],e:[477.2,303.8],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"USA-05":{ad:"\
-Alaska",ulke:"USA",komsu:["CAN-02","CAN-08","RUS-10"],e:[347.5,91.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"zengin"},"USA-06":{ad:"New Mexico",ulke:"USA",komsu:["MEX-04","USA-02",
-"USA-03","USA-04","USA-08","USA-09","USA-10"],e:[449.8,258.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"USA-07":{ad:"Oregon",ulke:"USA",komsu:["CAN-08","USA-02","USA-10"],e:[395.5,
-219.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"USA-08":{ad:"Kansas",ulke:"USA",komsu:["USA-01","USA-03","USA-06","USA-09","USA-11"],e:[547.8,252.5],iklim:"bozkir",arazi:"\
-ova",avantaj:{lif:10},zenginlik:"zengin"},"USA-09":{ad:"Oklahoma",ulke:"USA",komsu:["BHS-01","USA-01","USA-04","USA-06","USA-08"],e:[563.2,291.8],iklim:"bag_tepe",arazi:"ova",deniz:["BHS-01"],avantaj:{
-tahil:10},zenginlik:"zengin"},"USA-10":{ad:"Montana",ulke:"USA",komsu:["CAN-05","CAN-08","CAN-10","USA-02","USA-03","USA-06","USA-07"],e:[435.8,204.2],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"\
-orta"},"USA-11":{ad:"Michigan",ulke:"USA",komsu:["CAN-01","CAN-09","USA-01","USA-03","USA-08"],e:[538.5,212.5],iklim:"gol",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"CHN-01":{ad:"Pekin",en:"Bei\
-jing",ulke:"CHN",komsu:["CHN-06","CHN-07","CHN-10","CHN-11","PRK-01","PRK-03"],e:[1590.8,256.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"CHN-02":{ad:"Sincan Uygur \xD6zerk\
- B\xF6lgesi",en:"Xinjiang",ulke:"CHN",komsu:["AFG-05","CHN-05","CHN-08","KAZ-03","KAZ-09","KGZ-01","KGZ-03","KGZ-04","MNG-02","MNG-05","PAK-03","PAK-06","RUS-03","TJK-02"],e:[1438.2,241.2],iklim:"col",
-arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"CHN-03":{ad:"Hunan",ulke:"CHN",komsu:["CHN-07","CHN-09","CHN-10"],e:[1611.2,331.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"\
-CHN-04":{ad:"Si\xE7uan",en:"Sichuan",ulke:"CHN",komsu:["CHN-05","CHN-08","CHN-09","CHN-10"],e:[1543.5,308.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"CHN-05":{ad:"Tibet \xD6z\
-erk B\xF6lgesi",en:"Xizang",ulke:"CHN",komsu:["BTN-01","BTN-02","CHN-02","CHN-04","CHN-08","CHN-09","IND-01","IND-03","IND-08","MMR-02","NPL-01","NPL-02","NPL-03","NPL-04","PAK-03"],e:[1451.5,295.2],iklim:"\
-dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},"CHN-06":{ad:"Heilongjiang",ulke:"CHN",komsu:["CHN-01","CHN-11","PRK-02","PRK-03","RUS-05","RUS-12"],e:[1633.2,210.2],iklim:"kuzey_orman",arazi:"\
-orman",avantaj:{tahil:10},zenginlik:"orta"},"CHN-07":{ad:"Henan",ulke:"CHN",komsu:["CHN-01","CHN-03","CHN-10","TWN-01"],e:[1622.8,295.5],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengi\
-n"},"CHN-08":{ad:"\xC7inghay",en:"Qinghai",ulke:"CHN",komsu:["CHN-02","CHN-04","CHN-05","CHN-10","CHN-11","MNG-05"],e:[1497.2,267.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},
-"CHN-09":{ad:"Y\xFCnnan",en:"Yunnan",ulke:"CHN",komsu:["CHN-03","CHN-04","CHN-05","CHN-10","LAO-03","MMR-02","MMR-05","VNM-01","VNM-04"],e:[1572.8,340.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},
-zenginlik:"orta"},"CHN-10":{ad:"\u015Eensi",en:"Shaanxi",ulke:"CHN",komsu:["CHN-01","CHN-03","CHN-04","CHN-07","CHN-08","CHN-09","CHN-11"],e:[1583.2,303.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},
-zenginlik:"orta"},"CHN-11":{ad:"\u0130\xE7 Mo\u011Folistan",en:"Inner Mongol",ulke:"CHN",komsu:["CHN-01","CHN-06","CHN-08","CHN-10","MNG-04","MNG-05","MNG-06","MNG-07","RUS-12"],e:[1590.5,218.2],iklim:"\
-col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"BRA-01":{ad:"Federal B\xF6lge",en:"Distrito Federal",ulke:"BRA",komsu:["BRA-05","BRA-07","BRA-08","BRA-11"],e:[755.8,620.8],iklim:"savan",arazi:"ov\
-a",baskent:!0,korumali:!0,zenginlik:"zengin"},"BRA-02":{ad:"Roraima",ulke:"BRA",komsu:["BRA-06","BRA-09","GUY-02","GUY-03","GUY-05","VEN-02","VEN-05"],e:[658.2,487.2],iklim:"tropik",arazi:"orman",avantaj:{
-lif:10},zenginlik:"fakir"},"BRA-03":{ad:"Rio Grande do Sul",ulke:"BRA",komsu:["ARG-05","BRA-08","PRY-04","URY-02","URY-03"],e:[725.5,683.2],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"zen\
-gin"},"BRA-04":{ad:"Acre",ulke:"BRA",komsu:["BOL-04","BRA-09","BRA-10","PER-03","PER-04","PER-06"],e:[616.8,568.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"BRA-05":{ad:"Mar\
-anh\xE3o",ulke:"BRA",komsu:["BRA-01","BRA-06","BRA-07","BRA-11"],e:[753.5,545.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"BRA-06":{ad:"Par\xE1",ulke:"BRA",komsu:["BRA-02","BRA-05",
-"BRA-07","BRA-09","GUY-02","GUY-03","SUR-02"],e:[705.2,539.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"BRA-07":{ad:"Mato Grosso",ulke:"BRA",komsu:["BOL-03","BRA-01","BRA-05",
-"BRA-06","BRA-08","BRA-09","BRA-10"],e:[694.8,591.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"BRA-08":{ad:"Mato Grosso do Sul",ulke:"BRA",komsu:["BOL-03","BRA-01","BRA-03","\
-BRA-07","BRA-11","PRY-02","PRY-03","PRY-04"],e:[698.8,633.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"BRA-09":{ad:"Amazonas",ulke:"BRA",komsu:["BRA-02","BRA-04","BRA-06","BRA-07",
-"BRA-10","COL-03","COL-04","PER-03","VEN-02"],e:[638.2,532.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"BRA-10":{ad:"Rond\xF4nia",ulke:"BRA",komsu:["BOL-03","BOL-04","BOL-06",
-"BRA-04","BRA-07","BRA-09"],e:[649.8,574.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"BRA-11":{ad:"Bahia",ulke:"BRA",komsu:["BRA-01","BRA-05","BRA-08"],e:[769.8,584.2],iklim:"\
-savan",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"AUS-01":{ad:"Avustralya Ba\u015Fkent B\xF6lgesi",en:"Australian Capital Territory",ulke:"AUS",komsu:["AUS-07"],e:[1777.2,734.8],iklim:"bag_tepe",
-arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"AUS-02":{ad:"Bat\u0131 Avustralya",en:"Western Australia",ulke:"AUS",komsu:["AUS-04","AUS-05"],e:[1652.8,675.5],iklim:"col",arazi:"kiyi",avantaj:{
-cevher:10},zenginlik:"zengin"},"AUS-03":{ad:"Queensland",ulke:"AUS",komsu:["AUS-04","AUS-05","AUS-07","PNG-03"],e:[1781.5,652.5],iklim:"savan",arazi:"kiyi",avantaj:{lif:10},zenginlik:"zengin"},"AUS-04":{
-ad:"G\xFCney Avustralya",en:"South Australia",ulke:"AUS",komsu:["AUS-02","AUS-03","AUS-05","AUS-06","AUS-07"],e:[1719.5,695.2],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"A\
-US-05":{ad:"Kuzey Topraklar\u0131",en:"Northern Territory",ulke:"AUS",komsu:["AUS-02","AUS-03","AUS-04"],e:[1730.2,621.8],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"AUS-06":{ad:"\
-Victoria",ulke:"AUS",komsu:["AUS-04","AUS-07","NZL-02"],e:[1743.5,741.5],iklim:"bag_tepe",arazi:"kiyi",deniz:["NZL-02"],avantaj:{lif:10},zenginlik:"zengin"},"AUS-07":{ad:"Yeni G\xFCney Galler",en:"New\
- South Wales",ulke:"AUS",komsu:["AUS-01","AUS-03","AUS-04","AUS-06"],e:[1767.5,713.5],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"IND-01":{ad:"Delhi",ulke:"IND",komsu:["CHN-05",
-"IND-05","IND-07","IND-08","NPL-02","PAK-02","PAK-03","PAK-05"],e:[1398.8,330.2],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"IND-02":{ad:"Tamil Nadu",ulke:"IND",komsu:["IND-\
-06","LKA-02"],e:[1429.8,437.8],iklim:"tropik",arazi:"orman",deniz:["LKA-02"],avantaj:{tahil:10},zenginlik:"orta"},"IND-03":{ad:"Aruna\xE7hal Pradesh",en:"Arunachal Pradesh",ulke:"IND",komsu:["BGD-01",
-"BGD-02","BGD-03","BTN-01","BTN-02","CHN-05","IND-08","MMR-02","MMR-04"],e:[1503.8,329.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"IND-04":{ad:"Orissa",en:"Odisha",ulke:"\
-IND",komsu:["IND-06","IND-07","IND-08","IND-09"],e:[1450.8,372.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"IND-05":{ad:"Gucerat",en:"Gujarat",ulke:"IND",komsu:["IND-01","IND-07","\
-IND-09","PAK-02"],e:[1389.5,355.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"IND-06":{ad:"Karnataka",ulke:"IND",komsu:["IND-02","IND-04","IND-09"],e:[1421.8,413.8],iklim:"savan",
-arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"IND-07":{ad:"Madhya Prade\u015F",en:"Madhya Pradesh",ulke:"IND",komsu:["IND-01","IND-04","IND-05","IND-08","IND-09"],e:[1432.2,355.8],iklim:"bozkir",
-arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"IND-08":{ad:"Uttar Prade\u015F",en:"Uttar Pradesh",ulke:"IND",komsu:["BGD-02","BGD-04","BTN-01","CHN-05","IND-01","IND-03","IND-04","IND-07","NPL-01","\
-NPL-02","NPL-03","NPL-04"],e:[1463.5,346.8],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"IND-09":{ad:"Mahara\u015Ftra",en:"Maharashtra",ulke:"IND",komsu:["IND-04","IND-05","IND-06",
-"IND-07"],e:[1410.8,381.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"ARG-01":{ad:"Buenos Aires",en:"Ciudad de Buenos Aires",ulke:"ARG",komsu:["ARG-04","ARG-05","ARG-09"],e:[686.2,
-741.2],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"ARG-02":{ad:"Santa Cruz",ulke:"ARG",komsu:["ARG-08","CHL-02","CHL-06"],e:[657.5,815.5],iklim:"bozkir",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"fakir"},"ARG-03":{ad:"Salta eyaleti",en:"Salta",ulke:"ARG",komsu:["ARG-06","ARG-07","BOL-02","BOL-07","CHL-03","PRY-06"],e:[649.2,662.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},
-zenginlik:"orta"},"ARG-04":{ad:"R\xEDo Negro eyaleti",en:"R\xEDo Negro",ulke:"ARG",komsu:["ARG-01","ARG-08","ARG-09","CHL-01","CHL-04","CHL-07"],e:[654.5,760.5],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},
-zenginlik:"fakir"},"ARG-05":{ad:"Santa Fe eyaleti",en:"Santa Fe",ulke:"ARG",komsu:["ARG-01","ARG-07","ARG-09","BRA-03","PRY-01","PRY-04","URY-02","URY-04"],e:[681.8,697.5],iklim:"bozkir",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"zengin"},"ARG-06":{ad:"Catamarca eyaleti",en:"Catamarca",ulke:"ARG",komsu:["ARG-03","ARG-07","ARG-09","CHL-01","CHL-03","CHL-05"],e:[640.8,695.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{
-lif:10},zenginlik:"orta"},"ARG-07":{ad:"Santiago del Estero eyaleti",en:"Santiago del Estero",ulke:"ARG",komsu:["ARG-03","ARG-05","ARG-06","ARG-09","PRY-01","PRY-05","PRY-06"],e:[671.8,673.5],iklim:"b\
-ozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"ARG-08":{ad:"Chubut eyaleti",en:"Chubut",ulke:"ARG",komsu:["ARG-02","ARG-04","CHL-04","CHL-06"],e:[655.5,788.8],iklim:"bozkir",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"fakir"},"ARG-09":{ad:"C\xF3rdoba eyaleti",en:"C\xF3rdoba",ulke:"ARG",komsu:["ARG-01","ARG-04","ARG-05","ARG-06","ARG-07","CHL-01"],e:[648.8,724.8],iklim:"bozkir",arazi:"ova",avantaj:{
-lif:10},zenginlik:"zengin"},"KAZ-01":{ad:"Nursultan",en:"Astana",ulke:"KAZ",komsu:["KAZ-06","KAZ-09","RUS-03","RUS-09"],e:[1329.2,167.8],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"ze\
-ngin"},"KAZ-02":{ad:"Bat\u0131 Kazakistan Eyaleti",en:"West Kazakhstan",ulke:"KAZ",komsu:["KAZ-05","KAZ-08","RUS-01","RUS-07"],e:[1249.5,189.8],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-zengin"},"KAZ-03":{ad:"Almat\u0131 Eyaleti",en:"Almaty",ulke:"KAZ",komsu:["CHN-02","KAZ-06","KAZ-07","KAZ-09","KGZ-01","KGZ-03"],e:[1388.8,215.5],iklim:"gol",arazi:"orman",avantaj:{cevher:10},zenginlik:"\
-zengin"},"KAZ-04":{ad:"K\u0131z\u0131lorda Eyaleti",en:"Qyzylorda",ulke:"KAZ",komsu:["KAZ-06","KAZ-07","KAZ-08","UZB-02","UZB-06"],e:[1315.5,214.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"\
-orta"},"KAZ-05":{ad:"Mangistav Eyaleti",en:"Mangghystau",ulke:"KAZ",komsu:["KAZ-02","KAZ-08","TKM-02","UZB-02"],e:[1271.5,221.5],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"KAZ-06":{
-ad:"Karagand\u0131 Eyaleti",en:"Qaraghandy",ulke:"KAZ",komsu:["KAZ-01","KAZ-03","KAZ-04","KAZ-07","KAZ-08","KAZ-09","RUS-07","RUS-09"],e:[1355.2,195.2],iklim:"sanayi",arazi:"ova",avantaj:{cevher:10},zenginlik:"\
-zengin"},"KAZ-07":{ad:"Jamb\u0131l Eyaleti",en:"Zhambyl",ulke:"KAZ",komsu:["KAZ-03","KAZ-04","KAZ-06","KGZ-01","KGZ-04","UZB-01","UZB-06"],e:[1354.2,220.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"\
-orta"},"KAZ-08":{ad:"Akt\xF6be eyaleti",en:"Aqt\xF6be",ulke:"KAZ",komsu:["KAZ-02","KAZ-04","KAZ-05","KAZ-06","RUS-07","UZB-02"],e:[1287.2,194.8],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-orta"},"KAZ-09":{ad:"Do\u011Fu Kazakistan Eyaleti",en:"East Kazakhstan",ulke:"KAZ",komsu:["CHN-02","KAZ-01","KAZ-03","KAZ-06","RUS-03"],e:[1401.2,191.8],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},
-zenginlik:"orta"},"COD-01":{ad:"Kin\u015Fasa",en:"Kinshasa City",ulke:"COD",komsu:["AGO-07","COD-09","COG-01","COG-04"],e:[1086.2,538.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"\
-fakir"},"COD-02":{ad:"G\xFCney Kivu",en:"Sud-Kivu",ulke:"COD",komsu:["BDI-01","BDI-02","COD-03","COD-06","COD-07","RWA-01","RWA-02","TZA-06","UGA-04"],e:[1155.8,525.8],iklim:"tropik",arazi:"orman",avantaj:{
-cevher:10},zenginlik:"fakir"},"COD-03":{ad:"Katanga",ulke:"COD",komsu:["AGO-03","AGO-08","COD-02","COD-05","COD-07","COD-08","TZA-03","TZA-06","ZMB-01","ZMB-02","ZMB-04","ZMB-07"],e:[1143.2,564.5],iklim:"\
-tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"COD-04":{ad:"Equateur",en:"\xC9quateur",ulke:"COD",komsu:["CAF-01","CAF-03","CAF-05","CAF-06","COD-05","COD-06","COD-08","COD-09","COG-02","CO\
-G-03","COG-05"],e:[1112.2,499.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"COD-05":{ad:"Bat\u0131 Kasai",en:"Kasa\xEF-Occidental",ulke:"COD",komsu:["AGO-03","COD-03","COD-04",
-"COD-08","COD-09"],e:[1119.8,540.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"COD-06":{ad:"Do\u011Fu B\xF6lgesi",en:"Orientale",ulke:"COD",komsu:["CAF-03","COD-02","COD-04",
-"COD-07","COD-08","SDS-03","SDS-04","UGA-03","UGA-04"],e:[1146.2,488.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"COD-07":{ad:"Maniema",ulke:"COD",komsu:["COD-02","COD-03","COD\
--06","COD-08"],e:[1144.2,528.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"COD-08":{ad:"Do\u011Fu Kasai",en:"Kasa\xEF-Oriental",ulke:"COD",komsu:["COD-03","COD-04","COD-05","C\
-OD-06","COD-07"],e:[1130.5,525.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"COD-09":{ad:"Bandundu",ulke:"COD",komsu:["AGO-03","AGO-06","AGO-07","COD-01","COD-04","COD-05","C\
-OG-01","COG-05"],e:[1101.8,525.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"DZA-01":{ad:"Cezayir Vilayeti",en:"Alger",ulke:"DZA",komsu:["DZA-04","DZA-06","DZA-09","TUN-01","TUN\
--02","TUN-03","TUN-04"],e:[1030.5,279.2],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"zengin"},"DZA-02":{ad:"Tamanrasset Vilayeti",en:"Tamanghasset",ulke:"DZA",komsu:["DZA-04","\
-DZA-05","DZA-07","DZA-09","LBY-06","MLI-02","NER-04"],e:[1023.8,353.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"DZA-03":{ad:"Tinduf Vilayeti",en:"Tindouf",ulke:"DZA",komsu:["DZA-0\
-5","DZA-08","MAR-03","MAR-04","MAR-06","MRT-02"],e:[962.8,325.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"DZA-04":{ad:"Vurkla Vilayeti",en:"Ouargla",ulke:"DZA",komsu:["DZA-01","\
-DZA-02","DZA-07","DZA-09","LBY-08","TUN-02"],e:[1032.2,308.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"DZA-05":{ad:"Adrar Vilayeti",en:"Adrar",ulke:"DZA",komsu:["DZA-02","DZA-03",
-"DZA-08","DZA-09","MLI-02","MLI-04","MRT-02"],e:[992.2,341.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"DZA-06":{ad:"Niame Vilayeti",en:"Na\xE2ma",ulke:"DZA",komsu:["DZA-01","DZA-\
-08","DZA-09","MAR-05"],e:[1005.5,277.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"zengin"},"DZA-07":{ad:"\u0130lizi Vilayeti",en:"Illizi",ulke:"DZA",komsu:["DZA-02","DZA-04","LBY-0\
-4","LBY-06","LBY-08"],e:[1042.5,331.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"DZA-08":{ad:"Be\u015Far Vilayeti",en:"B\xE9char",ulke:"DZA",komsu:["DZA-03","DZA-05","DZA-06","DZA-0\
-9","MAR-01","MAR-05","MAR-06"],e:[990.2,309.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"DZA-09":{ad:"Gardaye Vilayeti",en:"Gharda\xEFa",ulke:"DZA",komsu:["DZA-01","DZA-02","DZA-0\
-4","DZA-05","DZA-06","DZA-08"],e:[1008.8,293.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"MEX-01":{ad:"Meksiko",en:"Distrito Federal",ulke:"MEX",komsu:["MEX-06","MEX-07","MEX-08"],
-e:[463.2,378.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"MEX-02":{ad:"Sonora",ulke:"MEX",komsu:["MEX-04","MEX-05","USA-02"],e:[411.2,313.5],iklim:"col",arazi:"kiyi",avantaj:{
-cevher:10},zenginlik:"orta"},"MEX-03":{ad:"Campeche",ulke:"MEX",komsu:["BLZ-02","GTM-02","MEX-06"],e:[514.5,376.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"zengin"},"MEX-04":{ad:"Chihu\
-ahua",ulke:"MEX",komsu:["MEX-02","MEX-05","MEX-07","MEX-08","USA-04","USA-06"],e:[433.2,320.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"MEX-05":{ad:"Durango",ulke:"MEX",komsu:["ME\
-X-02","MEX-04","MEX-07"],e:[429.8,347.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"MEX-06":{ad:"Oaxaca",ulke:"MEX",komsu:["GTM-01","GTM-02","MEX-01","MEX-03","MEX-07"],e:[469.2,396.5],
-iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"orta"},"MEX-07":{ad:"Jalisco",ulke:"MEX",komsu:["MEX-01","MEX-04","MEX-05","MEX-06","MEX-08"],e:[435.2,375.5],iklim:"tropik",arazi:"orman",avantaj:{
-tahil:10},zenginlik:"orta"},"MEX-08":{ad:"Tamaulipas",ulke:"MEX",komsu:["MEX-01","MEX-04","MEX-07","USA-04"],e:[462.5,352.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"SAU-0\
-1":{ad:"Riyad B\xF6lgesi",en:"Ar Riyad",ulke:"SAU",komsu:["SAU-03","SAU-04","SAU-05","SAU-06","SAU-07","SAU-08"],e:[1248.2,355.8],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"SA\
-U-02":{ad:"Cevf B\xF6lgesi",en:"Al Jawf",ulke:"SAU",komsu:["JOR-01","JOR-02","JOR-03","SAU-03","SAU-07","SAU-08"],e:[1201.2,320.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"SAU-03":{
-ad:"Medine B\xF6lgesi",en:"Al Madinah",ulke:"SAU",komsu:["SAU-01","SAU-02","SAU-06","SAU-07"],e:[1218.2,349.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"SAU-04":{ad:"Necran B\xF6lges\
-i",en:"Najran",ulke:"SAU",komsu:["SAU-01","SAU-05","SAU-06","YEM-05","YEM-06"],e:[1235.2,382.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"SAU-05":{ad:"Do\u011Fu B\xF6lgesi",en:"Ash S\
-harqiyah",ulke:"SAU",komsu:["ARE-01","IRQ-02","KWT-01","KWT-02","OMN-02","OMN-03","OMN-04","QAT-01","SAU-01","SAU-04","SAU-08","YEM-05"],e:[1275.5,369.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-zengin"},"SAU-06":{ad:"Mekke B\xF6lgesi",en:"Makkah",ulke:"SAU",komsu:["SAU-01","SAU-03","SAU-04","YEM-01","YEM-06"],e:[1222.5,367.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"S\
-AU-07":{ad:"Hail B\xF6lgesi",en:"Ha'il",ulke:"SAU",komsu:["SAU-01","SAU-02","SAU-03","SAU-08"],e:[1225.8,331.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"SAU-08":{ad:"Kuzey S\u0131n\u0131r B\xF6l\
-gesi",en:"Al Hudud ash Shamaliyah",ulke:"SAU",komsu:["IRQ-02","IRQ-05","IRQ-06","JOR-03","SAU-01","SAU-02","SAU-05","SAU-07"],e:[1226.8,314.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"ort\
-a"},"IDN-01":{ad:"Cakarta",en:"Jakarta Raya",ulke:"IDN",komsu:["IDN-05","IDN-06","IDN-08"],e:[1616.5,553.5],iklim:"tropik",arazi:"orman",deniz:["IDN-05","IDN-06","IDN-08"],baskent:!0,korumali:!0,zenginlik:"\
-zengin"},"IDN-02":{ad:"Papua",ulke:"IDN",komsu:["IDN-07","PNG-02","PNG-03"],e:[1771.2,530.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"IDN-03":{ad:"Kuzey Sumatra",en:"Sumater\
-a Utara",ulke:"IDN",komsu:["IDN-05","MYS-01"],e:[1548.2,487.2],iklim:"tropik",arazi:"orman",deniz:["MYS-01"],avantaj:{lif:10},zenginlik:"orta"},"IDN-04":{ad:"Do\u011Fu Kalimantan",en:"Kalimantan Timur",
-ulke:"IDN",komsu:["IDN-06","IDN-07","IDN-08","MYS-02","MYS-03"],e:[1646.5,495.5],iklim:"tropik",arazi:"orman",deniz:["IDN-07"],avantaj:{tahil:10},zenginlik:"orta"},"IDN-05":{ad:"Riau",ulke:"IDN",komsu:[
-"IDN-01","IDN-03","IDN-06","MYS-05"],e:[1571.8,519.8],iklim:"tropik",arazi:"orman",deniz:["IDN-01","IDN-06","MYS-05"],avantaj:{cevher:10},zenginlik:"orta"},"IDN-06":{ad:"Bat\u0131 Kalimantan",en:"Kali\
-mantan Barat",ulke:"IDN",komsu:["IDN-01","IDN-04","IDN-05","IDN-08","MYS-03"],e:[1614.8,507.2],iklim:"tropik",arazi:"orman",deniz:["IDN-01","IDN-05"],avantaj:{lif:10},zenginlik:"fakir"},"IDN-07":{ad:"\
-Bat\u0131 Papua",en:"Papua Barat",ulke:"IDN",komsu:["IDN-02","IDN-04","TLS-02"],e:[1738.2,514.5],iklim:"tropik",arazi:"orman",deniz:["IDN-04","TLS-02"],avantaj:{tahil:10},zenginlik:"fakir"},"IDN-08":{
-ad:"Orta Kalimantan",en:"Kalimantan Tengah",ulke:"IDN",komsu:["IDN-01","IDN-04","IDN-06","TLS-01"],e:[1633.5,517.2],iklim:"tropik",arazi:"orman",deniz:["IDN-01"],avantaj:{cevher:10},zenginlik:"orta"},
-"SDN-01":{ad:"Hartum Eyaleti",en:"Khartoum",ulke:"SDN",komsu:["EGY-07","SDN-04","SDN-05","SDN-06","SDN-07","SDN-08"],e:[1184.8,394.2],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},
-"SDN-02":{ad:"G\xFCney Darfur Eyaleti",en:"Southern Darfur",ulke:"SDN",komsu:["CAF-02","CAF-06","SDN-03","SDN-07","SDN-08","SDS-02","TCD-03","TCD-04","TCD-08"],e:[1135.5,430.8],iklim:"savan",arazi:"ov\
-a",avantaj:{cevher:10},zenginlik:"fakir"},"SDN-03":{ad:"Kuzey Darfur Eyaleti",en:"North Darfur",ulke:"SDN",komsu:["LBY-02","SDN-02","SDN-06","SDN-08","TCD-08"],e:[1140.8,385.8],iklim:"col",arazi:"ova",
-avantaj:{lif:10},zenginlik:"fakir"},"SDN-04":{ad:"El Kadarif Eyaleti",en:"Gedarif",ulke:"SDN",komsu:["ERI-03","ERI-04","ETH-02","ETH-05","SDN-01","SDN-05","SDN-07","SDS-06"],e:[1189.5,422.2],iklim:"sa\
-van",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"SDN-05":{ad:"K\u0131z\u0131l Deniz Eyaleti",en:"Red Sea",ulke:"SDN",komsu:["EGY-07","ERI-01","ERI-03","SDN-01","SDN-04"],e:[1193.2,375.5],iklim:"\
-col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"SDN-06":{ad:"Kuzey Eyaleti",en:"Northern",ulke:"SDN",komsu:["EGY-02","EGY-04","EGY-07","LBY-02","SDN-01","SDN-03","SDN-08"],e:[1162.8,376.5],iklim:"\
-col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"SDN-07":{ad:"G\xFCney Kordofan Eyaleti",en:"South Kordufan",ulke:"SDN",komsu:["SDN-01","SDN-02","SDN-04","SDN-08","SDS-02","SDS-05","SDS-06"],e:[1170.2,
-433.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"SDN-08":{ad:"Kuzey Kordofan Eyaleti",en:"North Kordufan",ulke:"SDN",komsu:["SDN-01","SDN-02","SDN-03","SDN-06","SDN-07"],e:[1161.8,
-410.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"LBY-01":{ad:"Tajura' wa an Nawahi al Arba",ulke:"LBY",komsu:["LBY-04","LBY-05","LBY-08"],e:[1073.8,305.5],iklim:"akdeniz_kiyi",arazi:"\
-kiyi",baskent:!0,korumali:!0,zenginlik:"orta"},"LBY-02":{ad:"El Kufra ili",en:"Al Kufrah",ulke:"LBY",komsu:["EGY-04","LBY-05","LBY-06","LBY-07","SDN-03","SDN-06","TCD-06","TCD-08"],e:[1119.5,350.8],iklim:"\
-col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"LBY-03":{ad:"El Butnan ili",en:"Al Butnan",ulke:"LBY",komsu:["EGY-03","LBY-07"],e:[1113.2,299.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"\
-zengin"},"LBY-04":{ad:"Ash Shati'",ulke:"LBY",komsu:["DZA-07","LBY-01","LBY-05","LBY-06","LBY-08"],e:[1062.2,330.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"LBY-05":{ad:"El Cufra i\
-li",en:"Al Jufrah",ulke:"LBY",komsu:["LBY-01","LBY-02","LBY-04","LBY-06","LBY-07"],e:[1094.8,328.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"LBY-06":{ad:"Murzuq",ulke:"LBY",komsu:[
-"DZA-02","DZA-07","LBY-02","LBY-04","LBY-05","NER-04","TCD-02","TCD-06"],e:[1078.2,346.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"LBY-07":{ad:"Ajdabiya",ulke:"LBY",komsu:["EGY-\
-03","EGY-04","LBY-02","LBY-03","LBY-05"],e:[1111.8,316.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"LBY-08":{ad:"Ghadamis",ulke:"LBY",komsu:["DZA-04","DZA-07","LBY-01","LBY-04","TU\
-N-02","TUN-03"],e:[1056.5,313.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"IRN-01":{ad:"Tahran Eyaleti",en:"Tehran",ulke:"IRN",komsu:["IRN-03","IRN-04","IRN-05","IRN-06","IRN-08"],
-e:[1280.8,284.8],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"IRN-02":{ad:"Sistan ve Belucistan Eyaleti",en:"Sistan and Baluchestan",ulke:"IRN",komsu:["AFG-02","AFG-04","IRN-\
-07","IRN-08","PAK-04"],e:[1325.5,329.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"IRN-03":{ad:"Fars Eyaleti",en:"Fars",ulke:"IRN",komsu:["IRN-01","IRN-06","IRN-07","IRN-08"],e:[1279.5,
-315.2],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"IRN-04":{ad:"Do\u011Fu Azerbaycan Eyaleti",en:"East Azarbaijan",ulke:"IRN",komsu:["ARM-02","AZE-02","AZE-03","IRN-01","IRN-05",
-"IRN-06","IRQ-04","TUR-DAN"],e:[1242.5,262.2],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"IRN-05":{ad:"Razavi Horasan Eyaleti",en:"Razavi Khorasan",ulke:"IRN",komsu:["AFG-03","IRN\
--01","IRN-04","IRN-08","TKM-01","TKM-02"],e:[1309.2,276.2],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"IRN-06":{ad:"Huzistan Eyaleti",en:"Khuzestan",ulke:"IRN",komsu:["IRN-01","IR\
-N-03","IRN-04","IRQ-01","IRQ-02","IRQ-04","IRQ-06"],e:[1253.2,286.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"IRN-07":{ad:"Kirman Eyaleti",en:"Kerman",ulke:"IRN",komsu:["IRN-02",
-"IRN-03","IRN-08"],e:[1303.8,312.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"IRN-08":{ad:"Yezd Eyaleti",en:"Yazd",ulke:"IRN",komsu:["AFG-03","AFG-04","IRN-01","IRN-02","IRN-03","IRN\
--05","IRN-07"],e:[1312.8,296.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MNG-01":{ad:"Ulan Batur",en:"Ulaanbaatar",ulke:"MNG",komsu:["MNG-06","MNG-07","MNG-08","RUS-12"],e:[1524.8,
-195.2],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"MNG-02":{ad:"Hovd",ulke:"MNG",komsu:["CHN-02","MNG-03","MNG-05","RUS-03"],e:[1450.2,189.8],iklim:"bozkir",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"fakir"},"MNG-03":{ad:"H\xF6vsg\xF6l",ulke:"MNG",komsu:["MNG-02","MNG-05","MNG-08","RUS-03","RUS-12"],e:[1485.8,182.8],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},
-"MNG-04":{ad:"Dornod",ulke:"MNG",komsu:["CHN-11","MNG-07","RUS-12"],e:[1565.5,206.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MNG-05":{ad:"Gobi-Altay",en:"Govi-Altay",ulke:"MNG",
-komsu:["CHN-02","CHN-08","CHN-11","MNG-02","MNG-03","MNG-06","MNG-08"],e:[1490.5,215.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MNG-06":{ad:"Umnugobi",en:"\xD6mn\xF6govi",ulke:"\
-MNG",komsu:["CHN-11","MNG-01","MNG-05","MNG-07","MNG-08"],e:[1524.8,225.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"MNG-07":{ad:"Dornogobi",en:"Dornogovi",ulke:"MNG",komsu:["CHN-11",
-"MNG-01","MNG-04","MNG-06","RUS-12"],e:[1550.8,219.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MNG-08":{ad:"\xD6v\xF6rhangay",ulke:"MNG",komsu:["MNG-01","MNG-03","MNG-05","MNG-06",
-"RUS-12"],e:[1504.5,195.8],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"PER-01":{ad:"Lima ili",en:"Lima Province",ulke:"PER",komsu:["PER-04","PER-05","PER-06","PER-07","PER-08"],e:[
-580.2,578.8],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"PER-02":{ad:"Puno B\xF6lgesi",en:"Puno",ulke:"PER",komsu:["BOL-01","CHL-03","PER-04","PER-08"],e:[612.5,610.5],iklim:"g\
-ol",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"PER-03":{ad:"Loreto B\xF6lgesi",en:"Loreto",ulke:"PER",komsu:["BRA-04","BRA-09","COL-03","ECU-03","ECU-05","PER-06","PER-07"],e:[584.2,531.5],
-iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"PER-04":{ad:"Madre de Dior B\xF6lgesi",en:"Madre de Dios",ulke:"PER",komsu:["BOL-01","BOL-04","BRA-04","PER-01","PER-02","PER-06","\
-PER-08"],e:[604.8,585.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"PER-05":{ad:"Piura B\xF6lgesi",en:"Piura",ulke:"PER",komsu:["ECU-02","PER-01","PER-07"],e:[557.5,542.5],iklim:"\
-col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"PER-06":{ad:"Ucayali B\xF6lgesi",en:"Ucayali",ulke:"PER",komsu:["BRA-04","PER-01","PER-03","PER-04","PER-07"],e:[595.8,570.5],iklim:"tropik",arazi:"\
-orman",avantaj:{cevher:10},zenginlik:"fakir"},"PER-07":{ad:"San Mart\xEDn B\xF6lgesi",en:"San Mart\xEDn",ulke:"PER",komsu:["ECU-02","ECU-03","PER-01","PER-03","PER-05","PER-06"],e:[573.8,548.5],iklim:"\
-tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"PER-08":{ad:"Ayacuch\u0131 B\xF6lgesi",en:"Ayacucho",ulke:"PER",komsu:["PER-01","PER-02","PER-04"],e:[588.5,594.5],iklim:"dag",arazi:"dag_gec\
-idi",avantaj:{tahil:10},zenginlik:"orta"},"TCD-01":{ad:"N'Djamena",en:"Ville de N'Djamena",ulke:"TCD",komsu:["CMR-02","CMR-03","NER-02","NGA-02","TCD-03","TCD-05","TCD-07"],e:[1089.8,428.5],iklim:"sav\
-an",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"TCD-02":{ad:"Tibesti B\xF6lgesi",en:"Tibesti",ulke:"TCD",komsu:["LBY-06","NER-02","NER-04","TCD-06"],e:[1090.8,365.8],iklim:"col",arazi:"ova",
-avantaj:{cevher:10},zenginlik:"fakir"},"TCD-03":{ad:"Batha B\xF6lgesi",en:"Batha",ulke:"TCD",komsu:["SDN-02","TCD-01","TCD-04","TCD-05","TCD-06","TCD-07","TCD-08"],e:[1109.8,412.8],iklim:"col",arazi:"\
-ova",avantaj:{lif:10},zenginlik:"fakir"},"TCD-04":{ad:"Salamat B\xF6lgesi",en:"Salamat",ulke:"TCD",komsu:["CAF-02","SDN-02","TCD-03","TCD-05"],e:[1115.5,431.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},
-zenginlik:"fakir"},"TCD-05":{ad:"Gu\xE9ra B\xF6lgesi",en:"Gu\xE9ra",ulke:"TCD",komsu:["CAF-02","CAF-04","CAF-05","CMR-03","TCD-01","TCD-03","TCD-04"],e:[1102.5,440.2],iklim:"savan",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"orta"},"TCD-06":{ad:"Borkou B\xF6lgesi",en:"Borkou",ulke:"TCD",komsu:["LBY-02","LBY-06","NER-02","TCD-02","TCD-03","TCD-07","TCD-08"],e:[1099.5,391.2],iklim:"col",arazi:"ova",avantaj:{
-lif:10},zenginlik:"fakir"},"TCD-07":{ad:"Kanem B\xF6lgesi",en:"Kanem",ulke:"TCD",komsu:["NER-02","TCD-01","TCD-03","TCD-06"],e:[1087.5,408.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"faki\
-r"},"TCD-08":{ad:"Ennedi B\xF6lgesi",en:"Ennedi",ulke:"TCD",komsu:["LBY-02","SDN-02","SDN-03","TCD-03","TCD-06"],e:[1121.2,386.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MLI-01":{
-ad:"Bamako",ulke:"MLI",komsu:["GIN-04","MLI-06","MLI-07","MLI-08","MRT-03","MRT-04"],e:[959.2,410.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"MLI-02":{ad:"Kidal",ulke:"MLI",
-komsu:["DZA-02","DZA-05","MLI-04","MLI-05","NER-04","NER-06"],e:[1008.2,382.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MLI-03":{ad:"Mopti",ulke:"MLI",komsu:["BFA-01","BFA-04","B\
-FA-05","MLI-04","MLI-07"],e:[980.8,410.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MLI-04":{ad:"Tombouctou B\xF6lgesi",en:"Timbuktu",ulke:"MLI",komsu:["BFA-04","DZA-05","MLI-02",
-"MLI-03","MLI-05","MLI-07","MRT-02","MRT-03","MRT-05"],e:[980.2,366.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"MLI-05":{ad:"Gao Belediyesi",en:"Gao",ulke:"MLI",komsu:["BFA-04","ML\
-I-02","MLI-04","NER-06","NER-08"],e:[1014.2,398.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MLI-06":{ad:"Kayes B\xF6lgesi",en:"Kayes",ulke:"MLI",komsu:["GIN-02","GIN-03","GIN-04",
-"MLI-01","MRT-04","SEN-02"],e:[943.2,415.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MLI-07":{ad:"S\xE9gou B\xF6lgesi",en:"S\xE9gou",ulke:"MLI",komsu:["BFA-05","MLI-01","MLI-0\
-3","MLI-04","MLI-08","MRT-03"],e:[967.5,418.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"MLI-08":{ad:"Sikasso B\xF6lgesi",en:"Sikasso",ulke:"MLI",komsu:["BFA-02","BFA-05","CIV-02",
-"GIN-04","MLI-01","MLI-07"],e:[959.2,433.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"AGO-01":{ad:"Luanda B\xF6lgesi",en:"Luanda",ulke:"AGO",komsu:["AGO-05","AGO-06","AGO-07"],e:[
-1082.2,574.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"AGO-02":{ad:"Cuando Cubango B\xF6lgesi",en:"Cuando Cubango",ulke:"AGO",komsu:["AGO-04","AGO-05","AGO-08","NAM-02","N\
-AM-03","NAM-07","ZMB-03"],e:[1108.2,610.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"AGO-03":{ad:"Lunda Norte B\xF6lgesi",en:"Lunda Norte",ulke:"AGO",komsu:["AGO-05","AGO-06","AGO\
--08","COD-03","COD-05","COD-09"],e:[1110.5,566.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"AGO-04":{ad:"Hu\xEDla B\xF6lgesi",en:"Hu\xEDla",ulke:"AGO",komsu:["AGO-02","AGO-05",
-"NAM-03","NAM-05"],e:[1080.5,605.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"AGO-05":{ad:"Bi\xE9 B\xF6lgesi",en:"Bi\xE9",ulke:"AGO",komsu:["AGO-01","AGO-02","AGO-03","AGO-04","AG\
-O-06","AGO-08"],e:[1091.2,584.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"AGO-06":{ad:"Malanje B\xF6lgesi",en:"Malanje",ulke:"AGO",komsu:["AGO-01","AGO-03","AGO-05","AGO-07","CO\
-D-09"],e:[1092.5,561.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"AGO-07":{ad:"U\xEDge B\xF6lgesi",en:"U\xEDge",ulke:"AGO",komsu:["AGO-01","AGO-06","COD-01","COD-09","COG-04"],
-e:[1084.2,549.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"AGO-08":{ad:"Moxico B\xF6lgesi",en:"Moxico",ulke:"AGO",komsu:["AGO-02","AGO-03","AGO-05","COD-03","ZMB-03","ZMB-0\
-4"],e:[1111.8,588.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ZAF-01":{ad:"Gauteng",ulke:"ZAF",komsu:["MOZ-01","SWZ-01","SWZ-02","ZAF-05","ZAF-06","ZAF-07","ZAF-08"],e:[1158.8,674.8],
-iklim:"sanayi",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"ZAF-02":{ad:"Bat\u0131 Kap",en:"Western Cape",ulke:"ZAF",komsu:["ZAF-03","ZAF-04"],e:[1102.8,721.2],iklim:"akdeniz_kiyi",arazi:"k\
-iyi",avantaj:{tahil:10},zenginlik:"zengin"},"ZAF-03":{ad:"Do\u011Fu Kap",en:"Eastern Cape",ulke:"ZAF",komsu:["LSO-01","LSO-02","ZAF-02","ZAF-04","ZAF-05","ZAF-06"],e:[1140.8,712.2],iklim:"bag_tepe",arazi:"\
-ova",avantaj:{cevher:10},zenginlik:"orta"},"ZAF-04":{ad:"Kuzey Kap",en:"Northern Cape",ulke:"ZAF",komsu:["BWA-03","NAM-01","NAM-04","ZAF-02","ZAF-03","ZAF-06","ZAF-08"],e:[1116.8,696.2],iklim:"col",arazi:"\
-ova",avantaj:{lif:10},zenginlik:"fakir"},"ZAF-05":{ad:"KwaZulu-Natal",ulke:"ZAF",komsu:["LSO-02","MOZ-01","SWZ-02","ZAF-01","ZAF-03","ZAF-06"],e:[1164.5,688.2],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},
-zenginlik:"orta"},"ZAF-06":{ad:"\xD6zg\xFCr Devlet",en:"Free State",ulke:"ZAF",komsu:["LSO-01","LSO-02","ZAF-01","ZAF-03","ZAF-04","ZAF-05","ZAF-08"],e:[1139.2,691.2],iklim:"bozkir",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"orta"},"ZAF-07":{ad:"Limpopo",ulke:"ZAF",komsu:["BWA-01","BWA-04","MOZ-01","ZAF-01","ZAF-08","ZWE-02","ZWE-04"],e:[1159.2,657.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"\
-fakir"},"ZAF-08":{ad:"Kuzeybat\u0131",en:"North West",ulke:"ZAF",komsu:["BWA-01","BWA-03","BWA-06","ZAF-01","ZAF-04","ZAF-06","ZAF-07"],e:[1135.2,677.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-zengin"},"NER-01":{ad:"Niamey",ulke:"NER",komsu:["NER-08"],e:[1011.8,418.5],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"NER-02":{ad:"Diffa",ulke:"NER",komsu:["NER-04","NER-05",
-"NGA-02","TCD-01","TCD-02","TCD-06","TCD-07"],e:[1073.5,397.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"NER-03":{ad:"Maradi",ulke:"NER",komsu:["NER-04","NER-05","NER-06","NGA-03"],
-e:[1040.2,415.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"NER-04":{ad:"Agadez",ulke:"NER",komsu:["DZA-02","LBY-06","MLI-02","NER-02","NER-03","NER-05","NER-06","TCD-02"],e:[1066.8,
-373.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"NER-05":{ad:"Zinder",ulke:"NER",komsu:["NER-02","NER-03","NER-04","NGA-02","NGA-03","NGA-07"],e:[1054.2,410.2],iklim:"col",arazi:"o\
-va",avantaj:{cevher:10},zenginlik:"fakir"},"NER-06":{ad:"Tahoua",ulke:"NER",komsu:["MLI-02","MLI-05","NER-03","NER-04","NER-07","NER-08","NGA-03"],e:[1029.2,404.8],iklim:"col",arazi:"ova",avantaj:{lif:10},
-zenginlik:"fakir"},"NER-07":{ad:"Dosso",ulke:"NER",komsu:["BEN-02","NER-06","NER-08","NGA-03"],e:[1018.8,421.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"NER-08":{ad:"Tillab\xE9ri",
-ulke:"NER",komsu:["BEN-02","BFA-03","BFA-04","MLI-05","NER-01","NER-06","NER-07"],e:[1010.2,412.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"COL-01":{ad:"Bogot\xE1",en:"Bogota",ulke:"\
-COL",komsu:["COL-02","COL-05","COL-06","COL-07","VEN-03","VEN-06"],e:[592.8,466.2],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"zengin"},"COL-02":{ad:"Bol\xEDvar",ulke:"COL",komsu:[
-"COL-01","COL-05","VEN-03"],e:[588.5,442.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"COL-03":{ad:"Amazonas Departmant\u0131",en:"Amazonas",ulke:"COL",komsu:["BRA-09","COL-04","C\
-OL-06","COL-07","ECU-05","PER-03"],e:[606.5,512.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"COL-04":{ad:"Vichada",ulke:"COL",komsu:["BRA-09","COL-03","COL-07","VEN-02","VEN\
--06"],e:[614.8,480.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"COL-05":{ad:"Antioquia",ulke:"COL",komsu:["COL-01","COL-02","PAN-01"],e:[579.2,461.2],iklim:"tropik",arazi:"orma\
-n",avantaj:{tahil:10},zenginlik:"zengin"},"COL-06":{ad:"Caquet\xE1",ulke:"COL",komsu:["COL-01","COL-03","COL-07","ECU-01","ECU-05"],e:[579.5,492.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"\
-orta"},"COL-07":{ad:"Meta",ulke:"COL",komsu:["COL-01","COL-03","COL-04","COL-06","VEN-06"],e:[596.2,487.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"ETH-01":{ad:"Addis Ababa",ulke:"\
-ETH",komsu:["ETH-02","ETH-03","ETH-04","ETH-05","ETH-06","ETH-07","KEN-05","SDS-06"],e:[1222.2,456.5],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"ETH-02":{ad:"Amhara B\xF6lge\
-si",en:"Amhara",ulke:"ETH",komsu:["ERI-01","ERI-04","ETH-01","ETH-05","ETH-06","SDN-04"],e:[1209.5,424.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},"ETH-03":{ad:"Somali B\xF6lges\
-i",en:"Somali",ulke:"ETH",komsu:["DJI-01","DJI-02","ETH-01","ETH-06","KEN-02","KEN-05","SOM-01","SOM-03","SOM-05","SOM-06","SOM-07"],e:[1245.2,460.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-fakir"},"ETH-04":{ad:"Gambela B\xF6lgesi",en:"Gambela Peoples",ulke:"ETH",komsu:["ETH-01","ETH-07","SDS-01","SDS-06"],e:[1189.5,454.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},
-"ETH-05":{ad:"Benishangul-Gumuz B\xF6lgesi",en:"Benshangul-Gumaz",ulke:"ETH",komsu:["ETH-01","ETH-02","SDN-04","SDS-06"],e:[1196.8,437.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fak\
-ir"},"ETH-06":{ad:"Afar B\xF6lgesi",en:"Afar",ulke:"ETH",komsu:["DJI-01","DJI-02","ERI-01","ERI-02","ETH-01","ETH-02","ETH-03"],e:[1225.8,425.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"f\
-akir"},"ETH-07":{ad:"G\xFCney Uluslar\u0131 ve Halklar\u0131 B\xF6lgesi",en:"Southern Nations, Nationalities and Peoples",ulke:"ETH",komsu:["ETH-01","ETH-04","KEN-05","KEN-06","SDS-01","SDS-04"],e:[1202.8,
-465.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"BOL-01":{ad:"La Paz Departman\u0131",en:"La Paz",ulke:"BOL",komsu:["BOL-04","BOL-05","BOL-06","CHL-03","PER-02","PER-04"],e:[625.8,
-605.8],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"BOL-02":{ad:"Chuquisaca Departman\u0131",en:"Chuquisaca",ulke:"BOL",komsu:["ARG-03","BOL-03","BOL-05","BOL-07","PRY-06"],
-e:[650.5,641.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"BOL-03":{ad:"Santa Cruz Departman\u0131",en:"Santa Cruz",ulke:"BOL",komsu:["BOL-02","BOL-05","BOL-06","BRA-07","B\
-RA-08","BRA-10","PRY-02","PRY-06"],e:[660.8,618.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"zengin"},"BOL-04":{ad:"Pando Departman\u0131",en:"Pando",ulke:"BOL",komsu:["BOL-01","BOL-06",
-"BRA-04","BRA-10","PER-04"],e:[627.5,578.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"BOL-05":{ad:"Cochabamba Departman\u0131",en:"Cochabamba",ulke:"BOL",komsu:["BOL-01","BOL\
--02","BOL-03","BOL-06","BOL-07","CHL-03"],e:[629.8,625.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"BOL-06":{ad:"Beni Departman\u0131",en:"El Beni",ulke:"BOL",komsu:["BOL-0\
-1","BOL-03","BOL-04","BOL-05","BRA-10"],e:[639.5,594.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"BOL-07":{ad:"Potosi Departman\u0131",en:"Potos\xED",ulke:"BOL",komsu:["ARG-03",
-"BOL-02","BOL-05","CHL-03"],e:[635.8,639.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"orta"},"MRT-01":{ad:"Nuak\u015Fot",en:"Nouakchott",ulke:"MRT",komsu:["MRT-04","MRT-05","MRT-06",
-"MRT-07","SEN-03"],e:[923.8,390.8],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"MRT-02":{ad:"Tiris Zemmour B\xF6lgesi",en:"Tiris Zemmour",ulke:"MRT",komsu:["DZA-03","DZA-05","MAR-\
-04","MLI-04","MRT-05"],e:[946.2,348.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"MRT-03":{ad:"Hodh Ech Chargui B\xF6lgesi",en:"Hodh ech Chargui",ulke:"MRT",komsu:["MLI-01","MLI-04","\
-MLI-07","MRT-04","MRT-05","MRT-07"],e:[960.5,390.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MRT-04":{ad:"Hodh El Garbi",en:"Hodh el Gharbi",ulke:"MRT",komsu:["MLI-01","MLI-06","\
-MRT-01","MRT-03","MRT-07","SEN-02","SEN-03"],e:[942.2,399.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MRT-05":{ad:"Adrar B\xF6lgesi",en:"Adrar",ulke:"MRT",komsu:["MAR-04","MLI-0\
-4","MRT-01","MRT-02","MRT-03","MRT-06","MRT-07"],e:[950.5,370.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"MRT-06":{ad:"Ichiri B\xF6lgesi",en:"Inchiri",ulke:"MRT",komsu:["MAR-04","M\
-RT-01","MRT-05"],e:[917.2,373.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MRT-07":{ad:"Tagant B\xF6lgesi",en:"Tagant",ulke:"MRT",komsu:["MRT-01","MRT-03","MRT-04","MRT-05"],e:[946.5,
-385.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"EGY-01":{ad:"Kahire",en:"Al Qahirah",ulke:"EGY",komsu:["EGY-03","EGY-04","EGY-05","EGY-06","EGY-07"],e:[1161.5,307.5],iklim:"col",
-arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"EGY-02":{ad:"Asvan",en:"Aswan",ulke:"EGY",komsu:["EGY-04","EGY-05","EGY-07","SDN-06"],e:[1177.8,353.2],iklim:"col",arazi:"ova",avantaj:{lif:10},
-zenginlik:"orta"},"EGY-03":{ad:"Matruh",ulke:"EGY",komsu:["EGY-01","EGY-04","LBY-03","LBY-07"],e:[1142.5,313.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"EGY-04":{ad:"Yeni Vadi",en:"\
-Al Wadi at Jadid",ulke:"EGY",komsu:["EGY-01","EGY-02","EGY-03","EGY-05","LBY-02","LBY-07","SDN-06"],e:[1153.2,345.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"EGY-05":{ad:"Minye",
-en:"Al Minya",ulke:"EGY",komsu:["EGY-01","EGY-02","EGY-04","EGY-07"],e:[1161.5,323.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"EGY-06":{ad:"G\xFCney Sina",en:"Janub Sina'",ulke:"EG\
-Y",komsu:["EGY-01","ISR-02","PSX-01"],e:[1179.8,314.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"EGY-07":{ad:"K\u0131z\u0131ldeniz",en:"Al Bahr al Ahmar",ulke:"EGY",komsu:["EGY-0\
-1","EGY-02","EGY-05","SDN-01","SDN-05","SDN-06"],e:[1186.2,354.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"PAK-01":{ad:"\u0130slamabad Ba\u015Fkent B\xF6lgesi",en:"F.C.T.",ulke:"\
-PAK",komsu:["AFG-05","PAK-05","PAK-06","PAK-07"],e:[1380.5,280.2],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"PAK-02":{ad:"Sind Eyaleti",en:"Sind",ulke:"PAK",komsu:["IND-01","\
-IND-05","PAK-04","PAK-05"],e:[1370.2,341.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"PAK-03":{ad:"Ladakh",ulke:"PAK",komsu:["CHN-02","CHN-05","IND-01","PAK-05","PAK-06"],e:[1396.2,
-288.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},"PAK-04":{ad:"Belucistan Eyaleti",en:"Baluchistan",ulke:"PAK",komsu:["AFG-02","AFG-07","IRN-02","PAK-02","PAK-05","PAK-07"],e:[
-1349.2,325.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"PAK-05":{ad:"Pencap Eyaleti",en:"Punjab",ulke:"PAK",komsu:["IND-01","PAK-01","PAK-02","PAK-03","PAK-04","PAK-06","PAK-07"],
-e:[1384.8,303.2],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"PAK-06":{ad:"Gilgit-Baltistan",en:"Northern Areas",ulke:"PAK",komsu:["AFG-05","CHN-02","PAK-01","PAK-03","PAK-05"],
-e:[1389.8,273.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},"PAK-07":{ad:"Federal y\xF6netilen kabile alanlar\u0131",en:"F.A.T.A.",ulke:"PAK",komsu:["AFG-01","AFG-05","AFG-07",
-"PAK-01","PAK-04","PAK-05"],e:[1368.8,295.2],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"TZA-01":{ad:"Dar es Salaam B\xF6lgesi",en:"Dar-Es-Salaam",ulke:"TZA",komsu:["TZA-03","TZA\
--04","TZA-05","TZA-07"],e:[1210.5,550.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"TZA-02":{ad:"Tabora",ulke:"TZA",komsu:["BDI-02","RWA-01","TZA-03","TZA-05","TZA-06","TZA\
--07","UGA-01"],e:[1181.5,531.8],iklim:"gol",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"TZA-03":{ad:"Mbeya B\xF6lgesi",en:"Mbeya",ulke:"TZA",komsu:["COD-03","MWI-02","TZA-01","TZA-02","TZA-04",
-"TZA-06","TZA-07","ZMB-02","ZMB-05"],e:[1182.2,558.8],iklim:"gol",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"TZA-04":{ad:"Lindi",ulke:"TZA",komsu:["MOZ-02","MOZ-07","MWI-01","MWI-02","TZA-01",
-"TZA-03"],e:[1212.5,569.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"TZA-05":{ad:"Manyara B\xF6lgesi",en:"Manyara",ulke:"TZA",komsu:["KEN-03","KEN-04","KEN-06","TZA-01","TZA\
--02","TZA-07","UGA-01"],e:[1194.5,523.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"TZA-06":{ad:"Katavi B\xF6lgesi",en:"Katavi",ulke:"TZA",komsu:["BDI-01","BDI-02","COD-02","COD-03",
-"TZA-02","TZA-03"],e:[1168.8,544.8],iklim:"gol",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"TZA-07":{ad:"Singida B\xF6lgesi",en:"Singida",ulke:"TZA",komsu:["TZA-01","TZA-02","TZA-03","TZA-05"],
-e:[1195.8,546.8],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"VEN-01":{ad:"Ba\u015Fkent B\xF6lgesi",en:"Distrito Capital",ulke:"VEN",komsu:["VEN-03","VEN-05","VEN-06","VEN-07"],e:[
-628.8,445.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"VEN-02":{ad:"Amazonas",ulke:"VEN",komsu:["BRA-02","BRA-09","COL-04","VEN-05"],e:[634.8,485.8],iklim:"tropik",arazi:"\
-orman",avantaj:{lif:10},zenginlik:"fakir"},"VEN-03":{ad:"Zulia",ulke:"VEN",komsu:["COL-01","COL-02","VEN-01","VEN-06"],e:[612.8,447.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},
-"VEN-04":{ad:"Deltra Amacuro",en:"Delta Amacuro",ulke:"VEN",komsu:["GUY-04","TTO-01","VEN-05","VEN-07"],e:[655.2,446.8],iklim:"savan",arazi:"ova",deniz:["TTO-01"],avantaj:{cevher:10},zenginlik:"orta"},
-"VEN-05":{ad:"Bolivar",en:"Bol\xEDvar",ulke:"VEN",komsu:["BRA-02","GUY-04","GUY-05","VEN-01","VEN-02","VEN-04","VEN-06","VEN-07"],e:[648.8,464.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"\
-fakir"},"VEN-06":{ad:"Apure",ulke:"VEN",komsu:["COL-01","COL-04","COL-07","VEN-01","VEN-03","VEN-05"],e:[619.8,460.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"VEN-07":{ad:"Anzo\
-ategui",en:"Anzo\xE1tegui",ulke:"VEN",komsu:["TTO-01","VEN-01","VEN-04","VEN-05"],e:[644.8,449.8],iklim:"savan",arazi:"ova",deniz:["TTO-01"],avantaj:{cevher:10},zenginlik:"orta"},"NGA-01":{ad:"Federal\
- Ba\u015Fkent B\xF6lgesi",en:"Federal Capital Territory",ulke:"NGA",komsu:["BEN-02","BEN-03","NGA-03","NGA-04","NGA-06","NGA-07"],e:[1036.2,442.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"\
-orta"},"NGA-02":{ad:"Borno Eyaleti",en:"Borno",ulke:"NGA",komsu:["CMR-02","NER-02","NER-05","NGA-05","NGA-07","TCD-01"],e:[1068.5,429.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"\
-NGA-03":{ad:"Kebbi Eyaleti",en:"Kebbi",ulke:"NGA",komsu:["BEN-02","NER-03","NER-05","NER-06","NER-07","NGA-01","NGA-07"],e:[1030.5,424.8],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},
-"NGA-04":{ad:"Kogi Eyaleti",en:"Kogi",ulke:"NGA",komsu:["GNQ-01","NGA-01","NGA-05","NGA-06","NGA-07"],e:[1034.5,464.8],iklim:"tropik",arazi:"orman",deniz:["GNQ-01"],avantaj:{lif:10},zenginlik:"orta"},
-"NGA-05":{ad:"Taraba Eyaleti",en:"Taraba",ulke:"NGA",komsu:["CMR-02","CMR-03","CMR-04","NGA-02","NGA-04","NGA-07"],e:[1061.2,453.8],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"NGA\
--06":{ad:"Kwara Eyaleti",en:"Kwara",ulke:"NGA",komsu:["BEN-01","BEN-03","NGA-01","NGA-04"],e:[1022.5,453.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"NGA-07":{ad:"Bauchi Ey\
-aleti",en:"Bauchi",ulke:"NGA",komsu:["NER-05","NGA-01","NGA-02","NGA-03","NGA-04","NGA-05"],e:[1052.8,430.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"NAM-01":{ad:"Khomas",ulke:"NA\
-M",komsu:["BWA-03","NAM-04","NAM-05","NAM-06","ZAF-04"],e:[1093.2,662.2],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"NAM-02":{ad:"Caprivi",ulke:"NAM",komsu:["AGO-02","BWA-02","\
-NAM-07","ZMB-03","ZMB-06","ZWE-03"],e:[1129.5,620.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"NAM-03":{ad:"Oshikoto",ulke:"NAM",komsu:["AGO-02","AGO-04","NAM-05","NAM-06","NAM-07"],
-e:[1089.2,623.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"NAM-04":{ad:"Karas",ulke:"NAM",komsu:["NAM-01","ZAF-04"],e:[1097.8,679.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"\
-orta"},"NAM-05":{ad:"Kunene",ulke:"NAM",komsu:["AGO-04","NAM-01","NAM-03","NAM-06"],e:[1078.8,637.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"NAM-06":{ad:"Otjozondjupa",ulke:"NAM",komsu:[
-"BWA-02","BWA-03","BWA-05","NAM-01","NAM-03","NAM-05","NAM-07"],e:[1104.8,638.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"NAM-07":{ad:"Kavango",ulke:"NAM",komsu:["AGO-02","BWA-02",
-"NAM-02","NAM-03","NAM-06"],e:[1108.8,624.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"MOZ-01":{ad:"Maputo",ulke:"MOZ",komsu:["MOZ-03","MOZ-05","SWZ-02","ZAF-01","ZAF-05","ZAF-0\
-7","ZWE-04"],e:[1177.2,656.5],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"MOZ-02":{ad:"Nampula B\xF6lgesi",en:"Nampula",ulke:"MOZ",komsu:["MDG-06","MOZ-06","MOZ-07","TZA-04"],e:[
-1216.8,600.5],iklim:"tropik",arazi:"orman",deniz:["MDG-06"],avantaj:{cevher:10},zenginlik:"fakir"},"MOZ-03":{ad:"Sofala B\xF6lgesi",en:"Sofala",ulke:"MOZ",komsu:["MOZ-01","MOZ-04","MOZ-05","MOZ-06","Z\
-WE-06"],e:[1188.2,625.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"MOZ-04":{ad:"Tete B\xF6lgesi",en:"Tete",ulke:"MOZ",komsu:["MOZ-03","MOZ-06","MWI-01","MWI-03","ZMB-01","ZMB-0\
-5","ZWE-01"],e:[1179.8,604.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"MOZ-05":{ad:"Inhambane B\xF6lgesi",en:"Inhambane",ulke:"MOZ",komsu:["MOZ-01","MOZ-03"],e:[1186.5,650.2],iklim:"\
-tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"MOZ-06":{ad:"Zambezia B\xF6lgesi",en:"Zambezia",ulke:"MOZ",komsu:["MOZ-02","MOZ-03","MOZ-04","MOZ-07","MWI-03"],e:[1203.8,610.5],iklim:"tr\
-opik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"MOZ-07":{ad:"Niassa B\xF6lgesi",en:"Niassa",ulke:"MOZ",komsu:["MOZ-02","MOZ-06","MWI-01","MWI-04","TZA-04"],e:[1200.5,589.2],iklim:"gol",arazi:"\
-orman",avantaj:{tahil:10},zenginlik:"fakir"},"TUR-MAR":{ad:"Marmara",ulke:"TUR",komsu:["BGR-02","BGR-03","GRC-02","TUR-EGE","TUR-ICA","TUR-KAR"],e:[1144.8,248.2],iklim:"sanayi",arazi:"kiyi",avantaj:{lif:10},
-zenginlik:"zengin"},"TUR-EGE":{ad:"Ege",en:"Aegean",ulke:"TUR",komsu:["GRC-01","TUR-AKD","TUR-ICA","TUR-MAR"],e:[1147.2,259.5],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"TUR-AK\
-D":{ad:"Akdeniz",en:"Mediterranean",ulke:"TUR",komsu:["CYN-01","SYR-03","SYR-04","TUR-DAN","TUR-EGE","TUR-GDA","TUR-ICA"],e:[1158.2,264.2],iklim:"akdeniz_kiyi",arazi:"kiyi",deniz:["CYN-01"],avantaj:{tahil:10},
-zenginlik:"orta"},"TUR-ICA":{ad:"\u0130\xE7 Anadolu",en:"Central Anatolia",ulke:"TUR",komsu:["TUR-AKD","TUR-DAN","TUR-EGE","TUR-KAR","TUR-MAR"],e:[1172.8,257.2],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,
-zenginlik:"zengin"},"TUR-KAR":{ad:"Karadeniz",en:"Black Sea",ulke:"TUR",komsu:["GEO-03","TUR-DAN","TUR-ICA","TUR-MAR"],e:[1179.2,241.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"\
-orta"},"TUR-DAN":{ad:"Do\u011Fu Anadolu",en:"Eastern Anatolia",ulke:"TUR",komsu:["ARM-01","GEO-01","GEO-03","IRN-04","IRQ-03","IRQ-04","TUR-AKD","TUR-GDA","TUR-ICA","TUR-KAR"],e:[1217.2,249.8],iklim:"\
-dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"TUR-GDA":{ad:"G\xFCneydo\u011Fu Anadolu",en:"Southeastern Anatolia",ulke:"TUR",komsu:["IRQ-03","SYR-02","SYR-03","TUR-AKD","TUR-DAN"],e:[
-1205.2,263.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"ZMB-01":{ad:"Lusaka B\xF6lgesi",en:"Lusaka",ulke:"ZMB",komsu:["COD-03","MOZ-04","ZMB-02","ZMB-03","ZMB-04","ZMB-05","ZMB-06",
-"ZMB-07","ZWE-01","ZWE-05"],e:[1158.2,601.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"ZMB-02":{ad:"Kuzey B\xF6lgesi",en:"Northern",ulke:"ZMB",komsu:["COD-03","TZA-03","ZMB\
--01","ZMB-05"],e:[1165.5,571.2],iklim:"gol",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"ZMB-03":{ad:"Bat\u0131 B\xF6lgesi",en:"Western",ulke:"ZMB",komsu:["AGO-02","AGO-08","NAM-02","ZMB-01","ZM\
-B-04","ZMB-06"],e:[1129.5,605.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"ZMB-04":{ad:"Kuzeybat\u0131 B\xF6lgesi",en:"North-Western",ulke:"ZMB",komsu:["AGO-08","COD-03","ZMB-01",
-"ZMB-03","ZMB-07"],e:[1139.8,588.8],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"ZMB-05":{ad:"Muchinga B\xF6lgesi",en:"Muchinga",ulke:"ZMB",komsu:["MOZ-04","MWI-01","MWI-02","TZA-\
-03","ZMB-01","ZMB-02"],e:[1176.2,581.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ZMB-06":{ad:"G\xFCney B\xF6lgesi",en:"Southern",ulke:"ZMB",komsu:["NAM-02","ZMB-01","ZMB-03","ZWE\
--03","ZWE-05"],e:[1145.5,612.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"ZMB-07":{ad:"Copperbelt B\xF6lgesi",en:"Copperbelt",ulke:"ZMB",komsu:["COD-03","ZMB-01","ZMB-04"],e:[1153.5,
-589.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"CHL-01":{ad:"Santiago Metropolitan b\xF6lgesi",en:"Regi\xF3n Metropolitana de Santiago",ulke:"CHL",komsu:["ARG-04","ARG-06","A\
-RG-09","CHL-05","CHL-07"],e:[627.8,725.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"CHL-02":{ad:"Magallanes y la Ant\xE1rtica Chilena b\xF6lgesi",en:"Magallanes y Ant\xE1rt\
-ica Chilena",ulke:"CHL",komsu:["ARG-02","CHL-06"],e:[647.2,834.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"CHL-03":{ad:"Antofagasta b\xF6lgesi",en:"Antofagasta",ulke:"CHL",
-komsu:["ARG-03","ARG-06","BOL-01","BOL-05","BOL-07","CHL-05","PER-02"],e:[626.2,656.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"CHL-04":{ad:"Los Lagos b\xF6lgesi",en:"Los Lagos",
-ulke:"CHL",komsu:["ARG-04","ARG-08","CHL-06","CHL-07"],e:[627.8,766.5],iklim:"gol",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"CHL-05":{ad:"Atacama b\xF6lgesi",en:"Atacama",ulke:"CHL",komsu:[
-"ARG-06","CHL-01","CHL-03"],e:[625.8,676.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"CHL-06":{ad:"Aysen b\xF6lgesi",en:"Ais\xE9n del General Carlos Ib\xE1\xF1ez del Campo",ulke:"CHL",
-komsu:["ARG-02","ARG-08","CHL-02","CHL-04"],e:[638.2,807.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"CHL-07":{ad:"Araucan\xEDa b\xF6lgesi",en:"La Araucan\xEDa",ulke:"CH\
-L",komsu:["ARG-04","CHL-01","CHL-04"],e:[627.2,752.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"MAR-01":{ad:"Rabat-Sal\xE9-Zemmour-Zaer",en:"Rabat - Sal\xE9 - Zemmour - Zae\
-r",ulke:"MAR",komsu:["DZA-08","MAR-05","MAR-06","MAR-07"],e:[973.2,290.5],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"orta"},"MAR-02":{ad:"Oued Ed-Dahab",en:"Oued el Dahab",ulke:"\
-MAR",komsu:["MAR-04"],e:[917.5,359.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"MAR-03":{ad:"Guelmim-Es Semara",en:"Guelmim - Es-Semara",ulke:"MAR",komsu:["DZA-03","MAR-04","MAR-06"],
-e:[946.2,324.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MAR-04":{ad:"Bat\u0131 Sahra",en:"Western Sahara",ulke:"MAR",komsu:["DZA-03","MAR-02","MAR-03","MRT-02","MRT-05","MRT-06"],
-e:[927.8,341.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MAR-05":{ad:"Oriental",ulke:"MAR",komsu:["DZA-06","DZA-08","ESP-04","MAR-01"],e:[985.5,283.2],iklim:"dag",arazi:"dag_gec\
-idi",avantaj:{lif:10},zenginlik:"orta"},"MAR-06":{ad:"Souss-Massa-Dra\xE2",en:"Souss - Massa - Dra\xE2",ulke:"MAR",komsu:["DZA-03","DZA-08","MAR-01","MAR-03","MAR-07"],e:[967.2,305.8],iklim:"dag",arazi:"\
-dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"MAR-07":{ad:"Marrakech-Tensift-El Haouz",en:"Marrakech - Tensift - Al Haouz",ulke:"MAR",komsu:["MAR-01","MAR-06"],e:[959.8,296.2],iklim:"dag",arazi:"\
-dag_gecidi",avantaj:{cevher:10},zenginlik:"zengin"},"MMR-01":{ad:"Yangon B\xF6lgesi",en:"Yangon",ulke:"MMR",komsu:["MMR-03","MMR-06","MMR-07"],e:[1524.5,395.2],iklim:"tropik",arazi:"orman",baskent:!0,
-korumali:!0,zenginlik:"orta"},"MMR-02":{ad:"Kachin Eyaleti",en:"Kachin",ulke:"MMR",komsu:["CHN-05","CHN-09","IND-03","MMR-04","MMR-05"],e:[1523.5,336.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},
-zenginlik:"fakir"},"MMR-03":{ad:"Tanintharyi",ulke:"MMR",komsu:["MMR-01","MMR-07","THA-02","THA-06"],e:[1546.8,428.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"MMR-04":{ad:"\
-Sagaing B\xF6lgesi",en:"Sagaing",ulke:"MMR",komsu:["BGD-03","IND-03","MMR-02","MMR-05","MMR-06","MMR-07"],e:[1513.5,354.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"MMR-05":{ad:"\
-Shan State",en:"Shan",ulke:"MMR",komsu:["CHN-09","LAO-01","LAO-03","MMR-02","MMR-04","MMR-07","THA-03"],e:[1533.8,369.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"MMR-06":{ad:"\
-Magway B\xF6lgesi",en:"Magway",ulke:"MMR",komsu:["BGD-03","MMR-01","MMR-04","MMR-07"],e:[1516.8,378.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"MMR-07":{ad:"Mandalay B\xF6lges\
-i",en:"Mandalay",ulke:"MMR",komsu:["MMR-01","MMR-03","MMR-04","MMR-05","MMR-06","THA-03","THA-06"],e:[1520.8,368.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"AFG-01":{ad:"K\xE2bil\
- Vilayeti",en:"Kabul",ulke:"AFG",komsu:["AFG-04","AFG-05","AFG-06","AFG-07","PAK-07","TJK-04"],e:[1357.8,280.5],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"AFG-02":{ad:"He\
-lmend Vilayeti",en:"Hilmand",ulke:"AFG",komsu:["AFG-04","AFG-07","IRN-02","PAK-04"],e:[1335.2,307.8],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"AFG-03":{ad:"Herat Vilayeti",en:"\
-Hirat",ulke:"AFG",komsu:["AFG-04","AFG-06","IRN-05","IRN-08","TKM-01","TKM-05"],e:[1326.8,283.8],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"AFG-04":{ad:"Ferah Vilayeti",en:"Far\
-ah",ulke:"AFG",komsu:["AFG-01","AFG-02","AFG-03","AFG-06","AFG-07","IRN-02","IRN-08"],e:[1343.8,285.5],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"AFG-05":{ad:"Badah\u015Fan Vilayeti",
-en:"Badakhshan",ulke:"AFG",komsu:["AFG-01","CHN-02","PAK-01","PAK-06","PAK-07","TJK-02","TJK-04"],e:[1369.2,278.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"AFG-06":{ad:"Fa\
-ryab Vilayeti",en:"Faryab",ulke:"AFG",komsu:["AFG-01","AFG-03","AFG-04","TJK-04","TKM-03","TKM-05","UZB-04"],e:[1344.8,271.5],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"AFG-07":{
-ad:"Kandehar Vilayeti",en:"Kandahar",ulke:"AFG",komsu:["AFG-01","AFG-02","AFG-04","PAK-04","PAK-07"],e:[1348.2,302.2],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"SOM-01":{ad:"Banaa\
-dir",ulke:"SOM",komsu:["ETH-03","SOM-03","SOM-06","SOM-07"],e:[1256.2,477.2],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"SOM-02":{ad:"Bari",ulke:"SOM",komsu:["SOM-03","SOM-05"],e:[
-1276.2,437.2],iklim:"col",arazi:"kiyi",avantaj:{lif:10},zenginlik:"fakir"},"SOM-03":{ad:"Mudug",ulke:"SOM",komsu:["ETH-03","SOM-01","SOM-02","SOM-05"],e:[1267.8,460.2],iklim:"col",arazi:"ova",avantaj:{
-tahil:10},zenginlik:"fakir"},"SOM-04":{ad:"A\u015Fa\u011F\u0131 Cubba",en:"Jubbada Hoose",ulke:"SOM",komsu:["KEN-02","SOM-06"],e:[1232.5,504.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"f\
-akir"},"SOM-05":{ad:"Somaliland",ulke:"SOM",komsu:["DJI-01","ETH-03","SOM-02","SOM-03"],e:[1260.5,444.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"SOM-06":{ad:"Gedo",ulke:"SOM",komsu:[
-"ETH-03","KEN-02","SOM-01","SOM-04","SOM-07"],e:[1231.5,489.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"SOM-07":{ad:"Bay",ulke:"SOM",komsu:["ETH-03","SOM-01","SOM-06"],e:[1243.5,
-478.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"FRA-01":{ad:"\xCEle-de-France",ulke:"FRA",komsu:["CHE-01","FRA-02","FRA-03","FRA-04","FRA-05"],e:[1011.2,198.2],iklim:"bag_tepe",
-arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"FRA-02":{ad:"Auvergne-Rh\xF4ne-Alpes",ulke:"FRA",komsu:["CHE-01","FRA-01","FRA-04","FRA-06","ITA-02"],e:[1026.2,214.2],iklim:"bag_tepe",arazi:"o\
-va",avantaj:{lif:10},zenginlik:"zengin"},"FRA-03":{ad:"Pays de la Loire",ulke:"FRA",komsu:["FRA-01","FRA-04","FRA-05"],e:[997.8,193.8],iklim:"bag_tepe",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},
-"FRA-04":{ad:"Nouvelle-Aquitaine",ulke:"FRA",komsu:["ESP-06","FRA-01","FRA-02","FRA-03","FRA-06"],e:[1002.2,211.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"FRA-05":{ad:"Gran\
-d Est",ulke:"FRA",komsu:["BEL-01","BEL-02","CHE-01","DEU-02","DEU-04","FRA-01","FRA-03","GBR-01","LUX-01"],e:[1022.8,191.2],iklim:"bag_tepe",arazi:"ova",deniz:["GBR-01"],avantaj:{lif:10},zenginlik:"ze\
-ngin"},"FRA-06":{ad:"Occitanie",ulke:"FRA",komsu:["ESP-02","ESP-06","FRA-02","FRA-04"],e:[1009.8,223.8],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"SDS-01":{ad:"Jonglei",ulke:"\
-SDS",komsu:["ETH-04","ETH-07","SDS-04","SDS-05","SDS-06"],e:[1180.5,461.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"fakir"},"SDS-02":{ad:"Bat\u0131 Bahr el Ghazal",en:"Western Bahr \
-el Ghazal",ulke:"SDS",komsu:["CAF-03","CAF-06","SDN-02","SDN-07","SDS-03","SDS-05"],e:[1146.2,451.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"SDS-03":{ad:"Bat\u0131 Equatoria",
-en:"Western Equatoria",ulke:"SDS",komsu:["CAF-03","COD-06","SDS-02","SDS-04","SDS-05"],e:[1157.8,471.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"SDS-04":{ad:"Do\u011Fu Equatoria",
-en:"Eastern Equatoria",ulke:"SDS",komsu:["COD-06","ETH-07","KEN-06","SDS-01","SDS-03","SDS-05","UGA-02","UGA-03"],e:[1177.5,474.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"SDS-\
-05":{ad:"Lakes",ulke:"SDS",komsu:["SDN-07","SDS-01","SDS-02","SDS-03","SDS-04","SDS-06"],e:[1162.2,452.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"SDS-06":{ad:"Yukar\u0131 Nil Eyal\
-eti",en:"Upper Nile",ulke:"SDS",komsu:["ETH-01","ETH-04","ETH-05","SDN-04","SDN-07","SDS-01","SDS-05"],e:[1180.5,441.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"CAF-01":{ad:"Bangui",
-ulke:"CAF",komsu:["CAF-04","CAF-05","CMR-05","COD-04","COG-02"],e:[1097.2,475.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"CAF-02":{ad:"Bamingui-Bangoran",ulke:"CAF",komsu:[
-"CAF-05","CAF-06","SDN-02","TCD-04","TCD-05"],e:[1124.5,442.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"CAF-03":{ad:"Mbomou B\xF6lgesi",en:"Mbomou",ulke:"CAF",komsu:["CAF-06","CO\
-D-04","COD-06","SDS-02","SDS-03"],e:[1139.8,465.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"CAF-04":{ad:"Qu\u1EADn Ouham-Pend\xE9",en:"Ouham-Pend\xE9",ulke:"CAF",komsu:["CAF\
--01","CAF-05","CMR-03","CMR-05","TCD-05"],e:[1087.8,465.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"CAF-05":{ad:"Ouham B\xF6lgesi",en:"Ouham",ulke:"CAF",komsu:["CAF-01","CA\
-F-02","CAF-04","CAF-06","COD-04","TCD-05"],e:[1103.2,461.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"CAF-06":{ad:"Haute-Kotto",ulke:"CAF",komsu:["CAF-02","CAF-03","CAF-05","CO\
-D-04","SDN-02","SDS-02"],e:[1127.8,457.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"UKR-01":{ad:"Kiev",en:"Kiev City",ulke:"UKR",komsu:["BLR-02","RUS-01","UKR-02","UKR-04","U\
-KR-05","UKR-06"],e:[1151.8,187.8],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"UKR-02":{ad:"Harkiv Oblast\u0131",en:"Kharkiv",ulke:"UKR",komsu:["RUS-01","UKR-01","UKR-04"],
-e:[1187.5,191.5],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"UKR-03":{ad:"Lviv Oblast\u0131",en:"L'viv",ulke:"UKR",komsu:["HUN-03","MDA-02","POL-04","ROU-02","ROU-03","SVK-02","UK\
-R-05","UKR-06"],e:[1119.5,189.8],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"UKR-04":{ad:"Dnipropetrovsk Oblast\u0131",en:"Dnipropetrovs'k",ulke:"UKR",komsu:["RUS-01","UKR-01",
-"UKR-02","UKR-05"],e:[1171.8,199.2],iklim:"sanayi",arazi:"kiyi",avantaj:{lif:10},zenginlik:"zengin"},"UKR-05":{ad:"Odessa Oblast\u0131",en:"Odessa",ulke:"UKR",komsu:["MDA-01","MDA-02","ROU-05","UKR-01",
-"UKR-03","UKR-04","UKR-06"],e:[1152.5,200.5],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"UKR-06":{ad:"Jitomir Oblast\u0131",en:"Zhytomyr",ulke:"UKR",komsu:["BLR-02","BLR-03",
-"POL-04","UKR-01","UKR-03","UKR-05"],e:[1123.5,177.2],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MDG-01":{ad:"Analamanga",ulke:"MDG",komsu:["MDG-02","MDG-04","MDG-05","MDG-06"],
-e:[1263.8,625.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"MDG-02":{ad:"Atsimo-Andrefana",ulke:"MDG",komsu:["MDG-01","MDG-04"],e:[1243.8,661.5],iklim:"savan",arazi:"kiyi",avantaj:{
-lif:10},zenginlik:"fakir"},"MDG-03":{ad:"Sava",ulke:"MDG",komsu:["MDG-05"],e:[1272.2,593.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"MDG-04":{ad:"Ihorombe",ulke:"MDG",komsu:[
-"MDG-01","MDG-02"],e:[1255.8,642.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"MDG-05":{ad:"Sofia",ulke:"MDG",komsu:["MDG-01","MDG-03","MDG-06","MUS-01"],e:[1266.8,603.8],iklim:"\
-savan",arazi:"ova",deniz:["MUS-01"],avantaj:{lif:10},zenginlik:"fakir"},"MDG-06":{ad:"Melaky",ulke:"MDG",komsu:["MDG-01","MDG-05","MOZ-02"],e:[1252.5,613.5],iklim:"savan",arazi:"ova",deniz:["MOZ-02"],
-avantaj:{tahil:10},zenginlik:"fakir"},"KEN-01":{ad:"Nairobi",ulke:"KEN",komsu:["KEN-05","KEN-06"],e:[1205.2,509.5],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"KEN-02":{ad:"Nort\
-h Eastern",en:"North-Eastern",ulke:"KEN",komsu:["ETH-03","KEN-04","KEN-05","SOM-04","SOM-06"],e:[1221.8,490.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"KEN-03":{ad:"Nyanza",ulke:"\
-KEN",komsu:["KEN-06","TZA-05","UGA-01","UGA-05"],e:[1191.5,507.5],iklim:"gol",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"KEN-04":{ad:"Coast",ulke:"KEN",komsu:["KEN-02","KEN-05","KEN-06","TZA-0\
-5"],e:[1216.8,528.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"KEN-05":{ad:"Eastern",ulke:"KEN",komsu:["ETH-01","ETH-03","ETH-07","KEN-01","KEN-02","KEN-04","KEN-06"],e:[1209.8,
-487.8],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"KEN-06":{ad:"Rift Valley",ulke:"KEN",komsu:["ETH-07","KEN-01","KEN-03","KEN-04","KEN-05","SDS-04","TZA-05","UGA-02","UGA-05"],e:[
-1200.5,496.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"BWA-01":{ad:"Gaborone",ulke:"BWA",komsu:["BWA-03","BWA-04","BWA-05","BWA-06","ZAF-07","ZAF-08"],e:[1137.5,659.8],iklim:"col",
-arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"BWA-02":{ad:"Kuzeybat\u0131 B\xF6lgesi",en:"North-West",ulke:"BWA",komsu:["BWA-04","BWA-05","NAM-02","NAM-06","NAM-07","ZWE-03"],e:[1123.5,631.2],
-iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"BWA-03":{ad:"Kgalagadi B\xF6lgesi",en:"Kgalagadi",ulke:"BWA",komsu:["BWA-01","BWA-05","BWA-06","NAM-01","NAM-06","ZAF-04","ZAF-08"],e:[1116.5,
-663.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"BWA-04":{ad:"Merkez B\xF6lgesi",en:"Central",ulke:"BWA",komsu:["BWA-01","BWA-02","BWA-05","ZAF-07","ZWE-02","ZWE-03"],e:[1142.5,643.8],
-iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"BWA-05":{ad:"Ghanzi B\xF6lgesi",en:"Ghanzi",ulke:"BWA",komsu:["BWA-01","BWA-02","BWA-03","BWA-04","NAM-06"],e:[1121.5,647.8],iklim:"col",
-arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"BWA-06":{ad:"G\xFCney B\xF6lgesi",en:"Southern",ulke:"BWA",komsu:["BWA-01","BWA-03","ZAF-08"],e:[1134.2,667.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},
-zenginlik:"orta"},"THA-01":{ad:"Central",ulke:"THA",komsu:["LAO-01","THA-03","THA-04","THA-05","THA-06"],e:[1550.2,402.8],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"THA-0\
-2":{ad:"Southern",ulke:"THA",komsu:["MMR-03","MYS-01","MYS-04","THA-06"],e:[1549.2,449.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"THA-03":{ad:"Northern",ulke:"THA",komsu:["L\
-AO-01","MMR-05","MMR-07","THA-01","THA-06"],e:[1542.2,384.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"THA-04":{ad:"Eastern",ulke:"THA",komsu:["KHM-02","KHM-04","THA-01","THA\
--05"],e:[1559.8,417.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"THA-05":{ad:"Northeastern",ulke:"THA",komsu:["KHM-02","LAO-01","LAO-02","LAO-04","THA-01","THA-04"],e:[1566.5,403.5],
-iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"THA-06":{ad:"Western",ulke:"THA",komsu:["MMR-03","MMR-07","THA-01","THA-02","THA-03"],e:[1546.5,413.5],iklim:"tropik",arazi:"orman",avantaj:{
-cevher:10},zenginlik:"fakir"},"ESP-01":{ad:"Madrid",ulke:"ESP",komsu:["ESP-04","ESP-05","ESP-06","PRT-01","PRT-02"],e:[983.8,249.2],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},
-"ESP-02":{ad:"Catalu\xF1a",ulke:"ESP",komsu:["ESP-06","FRA-06"],e:[1006.8,235.8],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"zengin"},"ESP-03":{ad:"Galicia",ulke:"ESP",komsu:["ESP-\
-05","PRT-02"],e:[960.2,229.2],iklim:"bag_tepe",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"orta"},"ESP-04":{ad:"Andaluc\xEDa",ulke:"ESP",komsu:["ESP-01","ESP-06","MAR-05","PRT-01"],e:[975.5,263.2],iklim:"\
-akdeniz_kiyi",arazi:"kiyi",avantaj:{lif:10},zenginlik:"zengin"},"ESP-05":{ad:"Castilla y Le\xF3n",ulke:"ESP",komsu:["ESP-01","ESP-03","ESP-06","PRT-02"],e:[976.2,234.8],iklim:"bozkir",arazi:"ova",avantaj:{
-tahil:10},zenginlik:"orta"},"ESP-06":{ad:"Arag\xF3n",ulke:"ESP",komsu:["ESP-01","ESP-02","ESP-04","ESP-05","FRA-04","FRA-06"],e:[996.5,235.2],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"\
-zengin"},"TKM-01":{ad:"Ahal vilayeti",en:"Ahal",ulke:"TKM",komsu:["AFG-03","IRN-05","TKM-02","TKM-03","TKM-04","TKM-05"],e:[1302.2,254.5],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zeng\
-in"},"TKM-02":{ad:"Balkan vilayeti",en:"Balkan",ulke:"TKM",komsu:["IRN-05","KAZ-05","TKM-01","TKM-04","UZB-02"],e:[1283.8,248.8],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"TKM\
--03":{ad:"Lebap vilayeti",en:"Chardzhou",ulke:"TKM",komsu:["AFG-06","TKM-01","TKM-04","TKM-05","UZB-03","UZB-04","UZB-05"],e:[1334.2,261.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"\
-TKM-04":{ad:"Da\u015Fo\u011Fuz",en:"Tashauz",ulke:"TKM",komsu:["TKM-01","TKM-02","TKM-03","UZB-02","UZB-05"],e:[1297.8,238.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"TKM-05":{ad:"\
-Mary vilayeti",en:"Mary",ulke:"TKM",komsu:["AFG-03","AFG-06","TKM-01","TKM-03"],e:[1323.8,264.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"PNG-01":{ad:"Port Moresby",en:"Nationa\
-l Capital District",ulke:"PNG",komsu:["PNG-04","PNG-05","PNG-06"],e:[1810.5,548.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"PNG-02":{ad:"Sandaun",ulke:"PNG",komsu:["IDN\
--02","PNG-03","PNG-04","PNG-06"],e:[1786.5,527.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"PNG-03":{ad:"Bat\u0131",en:"Western",ulke:"PNG",komsu:["AUS-03","IDN-02","PNG-02",
-"PNG-06"],e:[1786.8,553.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"PNG-04":{ad:"Do\u011Fu Sepik",en:"East Sepik",ulke:"PNG",komsu:["PNG-01","PNG-02","PNG-05","PNG-06"],e:[1796.2,
-532.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"PNG-05":{ad:"Oro",en:"Northern",ulke:"PNG",komsu:["PNG-01","PNG-04","SLB-02"],e:[1822.2,566.2],iklim:"tropik",arazi:"orman",deniz:[
-"SLB-02"],avantaj:{cevher:10},zenginlik:"orta"},"PNG-06":{ad:"gulf",en:"Gulf",ulke:"PNG",komsu:["PNG-01","PNG-02","PNG-03","PNG-04"],e:[1797.8,549.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"\
-fakir"},"CMR-01":{ad:"Merkez B\xF6lgesi",en:"Centre",ulke:"CMR",komsu:["CMR-03","CMR-04","CMR-05","CMR-06"],e:[1066.5,474.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"CMR-\
-02":{ad:"Far North B\xF6lgesi",en:"Extr\xEAme-Nord",ulke:"CMR",komsu:["CMR-03","NGA-02","NGA-05","TCD-01"],e:[1079.5,436.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"CMR-03":{ad:"\
-Kuzey B\xF6lgesi",en:"Nord",ulke:"CMR",komsu:["CAF-04","CMR-01","CMR-02","CMR-04","CMR-05","NGA-05","TCD-01","TCD-05"],e:[1075.8,456.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},
-"CMR-04":{ad:"G\xFCneybat\u0131 B\xF6lgesi",en:"Sud-Ouest",ulke:"CMR",komsu:["CMR-01","CMR-03","CMR-06","GNQ-01","NGA-05"],e:[1056.8,468.2],iklim:"savan",arazi:"ova",deniz:["GNQ-01"],avantaj:{lif:10},
-zenginlik:"zengin"},"CMR-05":{ad:"Do\u011Fu B\xF6lgesi",en:"Est",ulke:"CMR",komsu:["CAF-01","CAF-04","CMR-01","CMR-03","CMR-06","COG-02"],e:[1077.2,480.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},
-zenginlik:"fakir"},"CMR-06":{ad:"G\xFCney B\xF6lgesi",en:"Sud",ulke:"CMR",komsu:["CMR-01","CMR-04","CMR-05","COG-02","GAB-04","GNQ-02"],e:[1058.5,487.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},
-zenginlik:"fakir"},"YEM-01":{ad:"San'a",en:"Amanat Al Asimah",ulke:"YEM",komsu:["SAU-06","YEM-03","YEM-04","YEM-05","YEM-06"],e:[1243.8,406.8],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"\
-orta"},"YEM-02":{ad:"El Mahra ili",en:"Al Mahrah",ulke:"YEM",komsu:["OMN-02","YEM-05"],e:[1281.2,401.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"YEM-03":{ad:"\u015Eabva ili",en:"\
-Shabwah",ulke:"YEM",komsu:["YEM-01","YEM-04","YEM-05"],e:[1256.5,409.8],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"YEM-04":{ad:"El Hudeyde ili",en:"Al Hudaydah",ulke:"YEM",komsu:[
-"YEM-01","YEM-03"],e:[1244.5,418.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"YEM-05":{ad:"Hadramut ili",en:"Hadramawt",ulke:"YEM",komsu:["SAU-04","SAU-05","YEM-01","YEM-02","YEM-0\
-3","YEM-06"],e:[1268.2,396.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"YEM-06":{ad:"El Cavf ili",en:"Al Jawf",ulke:"YEM",komsu:["SAU-04","SAU-06","YEM-01","YEM-05"],e:[1249.2,398.5],
-iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"UZB-01":{ad:"Ta\u015Fkent",en:"Tashkent",ulke:"UZB",komsu:["KAZ-07","KGZ-02","KGZ-04","TJK-03","UZB-06"],e:[1349.2,246.5],iklim:"col",arazi:"\
-ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"UZB-02":{ad:"Karakalpakistan",en:"Karakalpakstan",ulke:"UZB",komsu:["KAZ-04","KAZ-05","KAZ-08","TKM-02","TKM-04","UZB-03","UZB-05","UZB-06"],e:[1291.2,
-221.5],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"UZB-03":{ad:"Buhara ili",en:"Bukhoro",ulke:"UZB",komsu:["TKM-03","UZB-02","UZB-04","UZB-05","UZB-06"],e:[1327.2,246.8],iklim:"col",arazi:"\
-ova",avantaj:{tahil:10},zenginlik:"orta"},"UZB-04":{ad:"Ka\u015Fkaderya",en:"Kashkadarya",ulke:"UZB",komsu:["AFG-06","TJK-01","TJK-03","TJK-04","TKM-03","UZB-03","UZB-06"],e:[1347.2,257.5],iklim:"col",
-arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"UZB-05":{ad:"Harezm ili",en:"Khorezm",ulke:"UZB",komsu:["TKM-03","TKM-04","UZB-02","UZB-03"],e:[1307.5,237.5],iklim:"col",arazi:"ova",avantaj:{lif:10},
-zenginlik:"fakir"},"UZB-06":{ad:"Navoiy ili",en:"Navoi",ulke:"UZB",komsu:["KAZ-04","KAZ-07","TJK-03","UZB-01","UZB-02","UZB-03","UZB-04"],e:[1325.5,232.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-zengin"},"SWE-01":{ad:"Stokholm ili",en:"Stockholm",ulke:"SWE",komsu:["SWE-04","SWE-05","SWE-06"],e:[1072.8,128.8],iklim:"gol",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"SWE-02":{ad:"No\
-rrbotten ili",en:"Norrbotten",ulke:"SWE",komsu:["FIN-02","NOR-03","NOR-05","SWE-03"],e:[1089.8,83.8],iklim:"kar",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"SWE-03":{ad:"V\xE4sterbotten ili",
-en:"V\xE4sterbotten",ulke:"SWE",komsu:["NOR-01","NOR-03","NOR-06","SWE-02","SWE-06"],e:[1069.5,95.2],iklim:"kar",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"orta"},"SWE-04":{ad:"Sk\xE5ne ili",en:"S\
-k\xE5ne",ulke:"SWE",komsu:["DNK-01","SWE-01","SWE-05"],e:[1067.5,141.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"SWE-05":{ad:"V\xE4stra G\xF6taland ili",en:"V\xE4stra G\xF6t\
-aland",ulke:"SWE",komsu:["NOR-01","SWE-01","SWE-04","SWE-06"],e:[1059.5,131.5],iklim:"gol",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"SWE-06":{ad:"Dalarna ili",en:"Dalarna",ulke:"SWE",komsu:[
-"NOR-01","SWE-01","SWE-03","SWE-05"],e:[1071.8,116.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"IRQ-01":{ad:"Ba\u011Fdat ili",en:"Baghdad",ulke:"IRQ",komsu:["IRN-06","IRQ-0\
-3","IRQ-04","IRQ-05","IRQ-06"],e:[1233.8,285.5],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"IRQ-02":{ad:"Mutanna ili",en:"Al-Muthannia",ulke:"IRQ",komsu:["IRN-06","IRQ-06","KWT\
--02","SAU-05","SAU-08"],e:[1242.8,310.2],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"zengin"},"IRQ-03":{ad:"Nineve ili",en:"Ninawa",ulke:"IRQ",komsu:["IRQ-01","IRQ-04","IRQ-05","SYR-02","TU\
-R-DAN","TUR-GDA"],e:[1220.2,273.2],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"IRQ-04":{ad:"S\xFCleymaniye ili",en:"As-Sulaymaniyah",ulke:"IRQ",komsu:["IRN-04","IRN-06","IRQ-01","\
-IRQ-03","TUR-DAN"],e:[1231.2,274.2],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"IRQ-05":{ad:"Anbar ili",en:"Al-Anbar",ulke:"IRQ",komsu:["IRQ-01","IRQ-03","IRQ-06","JOR-03","SAU-0\
-8","SYR-02","SYR-04"],e:[1219.2,291.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"IRQ-06":{ad:"Necef ili",en:"An-Najaf",ulke:"IRQ",komsu:["IRN-06","IRQ-01","IRQ-02","IRQ-05","SAU-08"],
-e:[1232.8,302.8],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"PRY-01":{ad:"Asunci\xF3n",ulke:"PRY",komsu:["ARG-05","ARG-07","PRY-03","PRY-04","PRY-05"],e:[691.5,677.5],iklim:"bozki\
-r",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"PRY-02":{ad:"Alta Paraguai",en:"Alto Paraguay",ulke:"PRY",komsu:["BOL-03","BRA-08","PRY-03","PRY-05","PRY-06"],e:[680.2,640.8],iklim:"savan",
-arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"PRY-03":{ad:"San Pedro",ulke:"PRY",komsu:["BRA-08","PRY-01","PRY-02","PRY-04","PRY-05"],e:[693.5,653.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"\
-fakir"},"PRY-04":{ad:"Itapua",en:"Itap\xFAa",ulke:"PRY",komsu:["ARG-05","BRA-03","BRA-08","PRY-01","PRY-03"],e:[700.8,675.2],iklim:"bozkir",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"PRY-05":{
-ad:"Presidente Hayes",ulke:"PRY",komsu:["ARG-07","PRY-01","PRY-02","PRY-03","PRY-06"],e:[681.2,656.5],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"PRY-06":{ad:"XVI Boqueron",en:"Boq\
-uer\xF3n",ulke:"PRY",komsu:["ARG-03","ARG-07","BOL-02","BOL-03","PRY-02","PRY-05"],e:[667.5,645.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"ZWE-01":{ad:"Harare",ulke:"ZWE",komsu:[
-"MOZ-04","ZMB-01","ZWE-04","ZWE-05","ZWE-06"],e:[1173.5,615.8],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"ZWE-02":{ad:"G\xFCney Matabeleland",en:"Matabeleland South",ulke:"ZWE",
-komsu:["BWA-04","ZAF-07","ZWE-03","ZWE-04","ZWE-05"],e:[1155.5,640.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ZWE-03":{ad:"Kuzey Matabeleland",en:"Matabeleland North",ulke:"ZWE",
-komsu:["BWA-02","BWA-04","NAM-02","ZMB-06","ZWE-02","ZWE-05"],e:[1147.5,626.8],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"ZWE-04":{ad:"Masvingo",ulke:"ZWE",komsu:["MOZ-01","ZAF-0\
-7","ZWE-01","ZWE-02","ZWE-05","ZWE-06"],e:[1170.2,642.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"ZWE-05":{ad:"Bat\u0131 Mashonaland",en:"Mashonaland West",ulke:"ZWE",komsu:["\
-ZMB-01","ZMB-06","ZWE-01","ZWE-02","ZWE-03","ZWE-04"],e:[1161.2,618.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ZWE-06":{ad:"Manicaland",ulke:"ZWE",komsu:["MOZ-03","ZWE-01","ZWE-\
-04"],e:[1177.5,623.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"NOR-01":{ad:"Oslo",ulke:"NOR",komsu:["NOR-06","SWE-03","SWE-05","SWE-06"],e:[1046.5,118.2],iklim:"kuzey_orman",arazi:"\
-orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"NOR-02":{ad:"Finnmark",ulke:"NOR",komsu:["FIN-02","NOR-05","RUS-01"],e:[1101.2,68.8],iklim:"kar",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"orta"},
-"NOR-03":{ad:"Nordland",ulke:"NOR",komsu:["ISL-03","NOR-05","NOR-06","SWE-02","SWE-03"],e:[1058.8,91.5],iklim:"kar",arazi:"dag_gecidi",deniz:["ISL-03"],avantaj:{tahil:10},zenginlik:"orta"},"NOR-04":{ad:"\
-Svalbard",ulke:"NOR",komsu:["NOR-05"],e:[1067.5,23.8],iklim:"kar",arazi:"dag_gecidi",deniz:["NOR-05"],avantaj:{cevher:10},zenginlik:"orta"},"NOR-05":{ad:"Troms",ulke:"NOR",komsu:["FIN-02","NOR-02","NO\
-R-03","NOR-04","SWE-02"],e:[1081.5,71.8],iklim:"kar",arazi:"dag_gecidi",deniz:["NOR-04"],avantaj:{lif:10},zenginlik:"orta"},"NOR-06":{ad:"S\xF8r-Tr\xF8ndelag",ulke:"NOR",komsu:["NOR-01","NOR-03","SWE-\
-03"],e:[1028.8,116.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"JPN-01":{ad:"Kanto",ulke:"JPN",komsu:["JPN-04","JPN-05"],e:[1719.5,273.5],iklim:"bag_tepe",arazi:"kiyi",
-baskent:!0,korumali:!0,zenginlik:"zengin"},"JPN-02":{ad:"Kyushu",ulke:"JPN",komsu:["JPN-06","KOR-02","KOR-03"],e:[1691.8,294.2],iklim:"bag_tepe",arazi:"kiyi",deniz:["KOR-02","KOR-03"],avantaj:{tahil:10},
-zenginlik:"orta"},"JPN-03":{ad:"Hokkaido",ulke:"JPN",komsu:["JPN-04","RUS-05"],e:[1722.8,226.5],iklim:"kar",arazi:"dag_gecidi",deniz:["JPN-04"],avantaj:{cevher:10},zenginlik:"orta"},"JPN-04":{ad:"Toho\
-ku",ulke:"JPN",komsu:["JPN-01","JPN-03"],e:[1724.5,252.2],iklim:"bag_tepe",arazi:"kiyi",deniz:["JPN-03"],avantaj:{lif:10},zenginlik:"orta"},"JPN-05":{ad:"Kinki",ulke:"JPN",komsu:["JPN-01","JPN-06"],e:[
-1712.2,283.8],iklim:"bag_tepe",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"zengin"},"JPN-06":{ad:"Chugoku",ulke:"JPN",komsu:["JPN-02","JPN-05"],e:[1696.2,280.5],iklim:"bag_tepe",arazi:"kiyi",avantaj:{cevher:10},
-zenginlik:"orta"},"DEU-01":{ad:"Berlin",ulke:"DEU",komsu:["CZE-01","CZE-03","DEU-03","DEU-04","DEU-05","POL-02"],e:[1063.8,168.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},
-"DEU-02":{ad:"Kuzey Ren-Vestfalya",en:"Nordrhein-Westfalen",ulke:"DEU",komsu:["BEL-02","DEU-04","DEU-05","FRA-05","LUX-01","NLD-01","NLD-02"],e:[1038.2,178.5],iklim:"sanayi",arazi:"ova",avantaj:{cevher:10},
-zenginlik:"zengin"},"DEU-03":{ad:"Mecklenburg-Vorpommern",ulke:"DEU",komsu:["DEU-01","DEU-05","DNK-02","POL-02"],e:[1060.8,160.5],iklim:"bag_tepe",arazi:"kiyi",avantaj:{lif:10},zenginlik:"orta"},"DEU-\
-04":{ad:"Bavyera",en:"Bayern",ulke:"DEU",komsu:["AUT-02","AUT-03","CHE-01","CHE-02","CZE-01","CZE-03","DEU-01","DEU-02","DEU-05","FRA-05"],e:[1053.8,190.8],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},
-zenginlik:"zengin"},"DEU-05":{ad:"A\u015Fa\u011F\u0131 Saksonya",en:"Niedersachsen",ulke:"DEU",komsu:["DEU-01","DEU-02","DEU-03","DEU-04","NLD-01"],e:[1052.8,171.5],iklim:"sanayi",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"orta"},"COG-01":{ad:"Brazzaville",ulke:"COG",komsu:["COD-01","COD-09","COG-04","COG-05"],e:[1082.2,529.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},
-"COG-02":{ad:"Likouala",ulke:"COG",komsu:["CAF-01","CMR-05","CMR-06","COD-04","COG-03","GAB-01","GAB-04"],e:[1095.2,492.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"COG-03":{ad:"\
-Cuvette",ulke:"COG",komsu:["COD-04","COG-02","COG-05","GAB-01","GAB-02"],e:[1084.5,507.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"COG-04":{ad:"Niari",ulke:"COG",komsu:["AGO\
--07","COD-01","COG-01","COG-05","GAB-02","GAB-03"],e:[1068.8,523.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"zengin"},"COG-05":{ad:"Plateaux",ulke:"COG",komsu:["COD-04","COD-09","CO\
-G-01","COG-03","COG-04","GAB-02"],e:[1085.5,519.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"FIN-01":{ad:"Uusimaa",ulke:"FIN",komsu:["FIN-03","FIN-04","RUS-01"],e:[1105.2,116.8],
-iklim:"kuzey_orman",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"FIN-02":{ad:"Lappi",en:"Lapland",ulke:"FIN",komsu:["FIN-05","NOR-02","NOR-05","RUS-01","SWE-02"],e:[1113.5,80.8],iklim:"ka\
-r",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"FIN-03":{ad:"Kuzey Karelya",en:"North Karelia",ulke:"FIN",komsu:["FIN-01","FIN-04","FIN-05","RUS-01"],e:[1128.2,107.8],iklim:"gol",arazi:"o\
-rman",avantaj:{lif:10},zenginlik:"orta"},"FIN-04":{ad:"Orta Finlandiya",en:"Central Finland",ulke:"FIN",komsu:["FIN-01","FIN-03","FIN-05"],e:[1104.2,105.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},
-zenginlik:"orta"},"FIN-05":{ad:"Kuzey Ostrobothnia",en:"Northern Ostrobothnia",ulke:"FIN",komsu:["FIN-02","FIN-03","FIN-04","RUS-01"],e:[1124.2,95.5],iklim:"kar",arazi:"dag_gecidi",avantaj:{cevher:10},
-zenginlik:"orta"},"VNM-01":{ad:"\u0110\xF4ng B\u1EAFc",ulke:"VNM",komsu:["CHN-09","VNM-04"],e:[1572.5,363.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"VNM-02":{ad:"\u0111\u1ED3ng b\u1EB1\
-ng s\xF4ng C\u1EEDu Long",ulke:"VNM",komsu:["KHM-01","VNM-05"],e:[1585.2,440.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"VNM-03":{ad:"Nam Trung B\u1ED9",ulke:"VNM",komsu:["KHM-\
-03","LAO-02","VNM-04","VNM-05"],e:[1595.8,413.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"VNM-04":{ad:"B\u1EAFc Trung B\u1ED9",ulke:"VNM",komsu:["CHN-09","LAO-01","LAO-02",
-"LAO-03","LAO-04","LAO-05","VNM-01","VNM-03"],e:[1573.8,380.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"VNM-05":{ad:"T\xE2y Nguy\xEAn",ulke:"VNM",komsu:["KHM-01","KHM-03","\
-VNM-02","VNM-03"],e:[1592.8,432.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"MYS-01":{ad:"Kuala Lumpur",ulke:"MYS",komsu:["IDN-03","MYS-04","MYS-05","THA-02"],e:[1563.5,472.2],iklim:"\
-tropik",arazi:"orman",deniz:["IDN-03"],baskent:!0,korumali:!0,zenginlik:"zengin"},"MYS-02":{ad:"Sabah",ulke:"MYS",komsu:["IDN-04","MYS-03","PHL-02","PHL-03"],e:[1648.5,471.5],iklim:"tropik",arazi:"orm\
-an",deniz:["PHL-02","PHL-03"],avantaj:{lif:10},zenginlik:"orta"},"MYS-03":{ad:"Saravak",en:"Sarawak",ulke:"MYS",komsu:["BRN-01","IDN-04","IDN-06","MYS-02"],e:[1631.5,489.8],iklim:"tropik",arazi:"orman",
-avantaj:{tahil:10},zenginlik:"orta"},"MYS-04":{ad:"Kedah",ulke:"MYS",komsu:["MYS-01","THA-02"],e:[1558.2,466.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"MYS-05":{ad:"Pahang",
-ulke:"MYS",komsu:["IDN-05","MYS-01"],e:[1569.5,480.2],iklim:"tropik",arazi:"orman",deniz:["IDN-05"],avantaj:{lif:10},zenginlik:"zengin"},"CIV-01":{ad:"Lagunes",ulke:"CIV",komsu:["CIV-03","CIV-04","CIV\
--05","GHA-04"],e:[965.5,461.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"CIV-02":{ad:"Savanes",ulke:"CIV",komsu:["BFA-02","CIV-03","CIV-04","CIV-05","GIN-02","GIN-04","M\
-LI-08"],e:[960.2,443.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"CIV-03":{ad:"Zanzan B\xF6lgesi",en:"Zanzan",ulke:"CIV",komsu:["BFA-02","CIV-01","CIV-02","CIV-05","GHA-02","GHA-0\
-3","GHA-04"],e:[982.2,451.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"CIV-04":{ad:"Bas-Sassandra",ulke:"CIV",komsu:["CIV-01","CIV-02","CIV-05","GIN-02","LBR-02","LBR-03"],e:[
-962.8,470.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"CIV-05":{ad:"Vall\xE9e du Bandama",ulke:"CIV",komsu:["CIV-01","CIV-02","CIV-03","CIV-04"],e:[972.8,453.5],iklim:"tropi\
-k",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"POL-01":{ad:"Mazovya Voyvodal\u0131\u011F\u0131",en:"Masovian",ulke:"POL",komsu:["POL-03","POL-04","POL-05","RUS-01"],e:[1099.5,169.5],iklim:"bag_t\
-epe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"POL-02":{ad:"Bat\u0131 Pomeranya Voyvodal\u0131\u011F\u0131",en:"West Pomeranian",ulke:"POL",komsu:["CZE-02","CZE-03","DEU-01","DEU-03","PO\
-L-03","POL-05"],e:[1073.2,163.2],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"POL-03":{ad:"K\xFC\xE7\xFCk Polonya Voyvodal\u0131\u011F\u0131",en:"Lesser Poland",ulke:"POL",komsu:[
-"CZE-02","POL-01","POL-02","POL-04","POL-05","SVK-02"],e:[1098.5,182.8],iklim:"sanayi",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"POL-04":{ad:"Lublin Voyvodal\u0131\u011F\u0131",en:"Lublin",
-ulke:"POL",komsu:["BLR-03","BLR-05","LTU-03","POL-01","POL-03","SVK-02","UKR-03","UKR-06"],e:[1110.8,179.5],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"POL-05":{ad:"B\xFCy\xFCk Polonya \
-Voyvodal\u0131\u011F\u0131",en:"Greater Poland",ulke:"POL",komsu:["POL-01","POL-02","POL-03","RUS-01"],e:[1086.2,166.2],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"OMN-01":{ad:"\
-Maskat valili\u011Fi",en:"Muscat",ulke:"OMN",komsu:["ARE-02","ARE-03","OMN-04","OMN-05"],e:[1318.2,360.5],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"OMN-02":{ad:"Zufar valili\u011F\
-i",en:"Dhofar",ulke:"OMN",komsu:["OMN-03","SAU-05","YEM-02"],e:[1295.5,387.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"OMN-03":{ad:"El Vusta B\xF6lgesi",en:"Al Wusta",ulke:"OMN",komsu:[
-"OMN-02","OMN-04","OMN-05","SAU-05"],e:[1309.8,372.5],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"OMN-04":{ad:"Ez Zahira B\xF6lgesi",en:"Al Dhahira",ulke:"OMN",komsu:["ARE-01","ARE-\
-02","ARE-03","OMN-01","OMN-03","OMN-05","SAU-05"],e:[1303.5,355.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"OMN-05":{ad:"Ed Dahiliye B\xF6lgesi",en:"Ad Dakhliyah",ulke:"OMN",komsu:[
-"OMN-01","OMN-03","OMN-04"],e:[1310.5,362.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"ITA-01":{ad:"Lazio",ulke:"ITA",komsu:["ITA-02","ITA-04","ITA-05"],e:[1064.2,229.2],iklim:"akd\
-eniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"zengin"},"ITA-02":{ad:"Piemonte",ulke:"ITA",komsu:["CHE-01","CHE-02","FRA-02","ITA-01","ITA-04"],e:[1041.2,214.5],iklim:"bag_tepe",arazi:"ova",
-avantaj:{lif:10},zenginlik:"zengin"},"ITA-03":{ad:"Sicily",ulke:"ITA",komsu:["ITA-05"],e:[1075.2,263.2],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"ITA-04":{ad:"Emilia-Roma\
-gna",ulke:"ITA",komsu:["AUT-02","AUT-03","CHE-02","ITA-01","ITA-02","SVN-01"],e:[1058.8,208.8],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"orta"},"ITA-05":{ad:"Apulia",ulke:"ITA",
-komsu:["ITA-01","ITA-03"],e:[1081.2,242.8],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{lif:10},zenginlik:"zengin"},"PHL-01":{ad:"National Capital Region",ulke:"PHL",komsu:["PHL-03","PHL-04","PHL-05"],e:[
-1663.2,406.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"PHL-02":{ad:"Davao (Region XI)",ulke:"PHL",komsu:["MYS-02","PHL-05"],e:[1692.8,455.2],iklim:"tropik",arazi:"orman",
-deniz:["MYS-02","PHL-05"],avantaj:{cevher:10},zenginlik:"orta"},"PHL-03":{ad:"MIMAROPA (Region IV-B)",ulke:"PHL",komsu:["MYS-02","PHL-01"],e:[1667.5,421.5],iklim:"tropik",arazi:"orman",deniz:["MYS-02"],
-avantaj:{lif:10},zenginlik:"fakir"},"PHL-04":{ad:"Cagayan Valley (Region II)",ulke:"PHL",komsu:["PHL-01"],e:[1666.5,396.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"PHL-05":{
-ad:"Eastern Visayas (Region VIII)",ulke:"PHL",komsu:["PHL-01","PHL-02"],e:[1676.5,433.2],iklim:"tropik",arazi:"orman",deniz:["PHL-02"],avantaj:{cevher:10},zenginlik:"orta"},"BFA-01":{ad:"Centre",ulke:"\
-BFA",komsu:["BFA-03","BFA-04","BFA-05","GHA-02","MLI-03"],e:[993.2,421.5],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"BFA-02":{ad:"Hauts-Bassins",ulke:"BFA",komsu:["BFA-05","CI\
-V-02","CIV-03","GHA-02","MLI-08"],e:[976.8,436.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"BFA-03":{ad:"Est",ulke:"BFA",komsu:["BEN-02","BEN-04","BFA-01","BFA-04","GHA-02","NER\
--08","TGO-02"],e:[1003.5,427.8],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"BFA-04":{ad:"Sahel",ulke:"BFA",komsu:["BFA-01","BFA-03","MLI-03","MLI-04","MLI-05","NER-08"],e:[997.2,
-412.2],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"BFA-05":{ad:"Boucle du Mouhoun",ulke:"BFA",komsu:["BFA-01","BFA-02","GHA-02","MLI-03","MLI-07","MLI-08"],e:[980.8,424.8],iklim:"sava\
-n",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"NZL-01":{ad:"Wellington B\xF6lgesi",en:"Wellington",ulke:"NZL",komsu:["NZL-03","NZL-04","NZL-05"],e:[1899.5,760.2],iklim:"bag_tepe",arazi:"kiyi",deniz:[
-"NZL-04"],baskent:!0,korumali:!0,zenginlik:"zengin"},"NZL-02":{ad:"Otago B\xF6lgesi",en:"Otago",ulke:"NZL",komsu:["AUS-06","NZL-04","WSM-01"],e:[1839.8,799.8],iklim:"kuzey_orman",arazi:"orman",deniz:[
-"AUS-06","WSM-01"],avantaj:{tahil:10},zenginlik:"orta"},"NZL-03":{ad:"Waikato B\xF6lgesi",en:"Waikato",ulke:"NZL",komsu:["NZL-01","NZL-05"],e:[1906.5,750.8],iklim:"bag_tepe",arazi:"kiyi",avantaj:{cevher:10},
-zenginlik:"zengin"},"NZL-04":{ad:"Canterbury B\xF6lgesi",en:"Canterbury",ulke:"NZL",komsu:["NZL-01","NZL-02"],e:[1874.2,778.5],iklim:"kuzey_orman",arazi:"orman",deniz:["NZL-01"],avantaj:{lif:10},zenginlik:"\
-orta"},"NZL-05":{ad:"Hawke Limano B\xF6lgesi",en:"Hawke's Bay",ulke:"NZL",komsu:["NZL-01","NZL-03"],e:[1914.2,753.5],iklim:"bag_tepe",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"GAB-01":{ad:"Es\
-tuaire",ulke:"GAB",komsu:["COG-02","COG-03","GAB-02","GAB-03","GAB-04","GAB-05","GNQ-02"],e:[1057.2,506.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"GAB-02":{ad:"Haut-Og\
-oou\xE9",ulke:"GAB",komsu:["COG-03","COG-04","COG-05","GAB-01","GAB-03"],e:[1073.8,512.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"GAB-03":{ad:"Ngouni\xE9",ulke:"GAB",komsu:[
-"COG-04","GAB-01","GAB-02","GAB-05"],e:[1062.2,516.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"GAB-04":{ad:"Woleu-Ntem",en:"Wouleu-Ntem",ulke:"GAB",komsu:["CMR-06","COG-02",
-"GAB-01","GNQ-02"],e:[1066.8,494.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"GAB-05":{ad:"Ogoou\xE9-Maritime",ulke:"GAB",komsu:["GAB-01","GAB-03"],e:[1051.8,512.2],iklim:"tropi\
-k",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"ECU-01":{ad:"Pichincha ili",en:"Pichincha",ulke:"ECU",komsu:["COL-06","ECU-02","ECU-03","ECU-04","ECU-05"],e:[562.8,505.5],iklim:"dag",arazi:"d\
-ag_gecidi",baskent:!0,korumali:!0,zenginlik:"zengin"},"ECU-02":{ad:"Loja",ulke:"ECU",komsu:["ECU-01","ECU-03","ECU-04","PER-05","PER-07"],e:[559.2,530.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},
-zenginlik:"orta"},"ECU-03":{ad:"Pastaza",ulke:"ECU",komsu:["ECU-01","ECU-02","ECU-05","PER-03","PER-07"],e:[570.5,517.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"ECU-04":{ad:"\
-Manabi",ulke:"ECU",komsu:["ECU-01","ECU-02"],e:[555.8,515.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"ECU-05":{ad:"Orellana",ulke:"ECU",komsu:["COL-03","COL-06","ECU-01","E\
-CU-03","PER-03"],e:[575.8,508.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"GIN-01":{ad:"Conakry",ulke:"GIN",komsu:["GIN-03","GIN-05","SLE-03"],e:[927.5,442.2],iklim:"savan",arazi:"\
-ova",baskent:!0,korumali:!0,zenginlik:"orta"},"GIN-02":{ad:"Faranah",ulke:"GIN",komsu:["CIV-02","CIV-04","GIN-03","GIN-04","LBR-01","LBR-03","MLI-06","SLE-02","SLE-03"],e:[944.5,447.2],iklim:"savan",arazi:"\
-ova",avantaj:{tahil:10},zenginlik:"fakir"},"GIN-03":{ad:"Lab\xE9",ulke:"GIN",komsu:["GIN-01","GIN-02","GIN-05","MLI-06","SEN-02","SLE-03"],e:[933.8,430.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},
-zenginlik:"fakir"},"GIN-04":{ad:"Kankan",ulke:"GIN",komsu:["CIV-02","GIN-02","MLI-01","MLI-06","MLI-08"],e:[949.5,439.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"GIN-05":{ad:"Bok\
-e",ulke:"GIN",komsu:["GIN-01","GIN-03","GNB-01","GNB-02","SEN-02","SEN-04"],e:[920.8,433.8],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"UGA-01":{ad:"Kampala ili",en:"Kampala",ulke:"\
-UGA",komsu:["KEN-03","TZA-02","TZA-05","UGA-04","UGA-05"],e:[1182.8,506.8],iklim:"gol",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"UGA-02":{ad:"Kaabong Distrisct",en:"Kaabong",ulke:"UGA",komsu:[
-"KEN-06","SDS-04","UGA-03","UGA-05"],e:[1186.8,484.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"UGA-03":{ad:"Nwoya",ulke:"UGA",komsu:["COD-06","SDS-04","UGA-02","UGA-04","UGA-0\
-5"],e:[1175.8,486.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"UGA-04":{ad:"Hoima",ulke:"UGA",komsu:["COD-02","COD-06","RWA-01","UGA-01","UGA-03","UGA-05"],e:[1172.2,501.2],iklim:"\
-gol",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"UGA-05":{ad:"Napak",ulke:"UGA",komsu:["KEN-03","KEN-06","UGA-01","UGA-02","UGA-03","UGA-04"],e:[1190.2,493.2],iklim:"savan",arazi:"ova",avantaj:{
-cevher:10},zenginlik:"fakir"},"GBR-01":{ad:"\u0130ngiltere",en:"England",ulke:"GBR",komsu:["BEL-01","FRA-05","GBR-02","GBR-03"],e:[995.2,171.5],iklim:"sanayi",arazi:"kiyi",deniz:["BEL-01","FRA-05"],baskent:!0,
-korumali:!0,zenginlik:"zengin"},"GBR-02":{ad:"\u0130sko\xE7ya",en:"Scotland",ulke:"GBR",komsu:["GBR-01","GBR-04","IRL-03"],e:[980.5,143.2],iklim:"kuzey_orman",arazi:"orman",deniz:["GBR-04","IRL-03"],avantaj:{
-cevher:10},zenginlik:"orta"},"GBR-03":{ad:"Galler",en:"Wales",ulke:"GBR",komsu:["GBR-01","GBR-04","IRL-01"],e:[981.8,171.5],iklim:"bag_tepe",arazi:"kiyi",deniz:["GBR-04","IRL-01"],avantaj:{lif:10},zenginlik:"\
-orta"},"GBR-04":{ad:"Kuzey \u0130rlanda",en:"Northern Ireland",ulke:"GBR",komsu:["GBR-02","GBR-03","IRL-03"],e:[969.5,155.2],iklim:"bag_tepe",arazi:"ova",deniz:["GBR-02","GBR-03"],avantaj:{tahil:10},zenginlik:"\
-orta"},"GHA-01":{ad:"B\xFCy\xFCk Accra B\xF6lgesi",en:"Greater Accra",ulke:"GHA",komsu:["GHA-03","GHA-04","GHA-05"],e:[994.5,462.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengi\
-n"},"GHA-02":{ad:"Kuzey B\xF6lgesi",en:"Northern",ulke:"GHA",komsu:["BFA-01","BFA-02","BFA-03","BFA-05","CIV-03","GHA-03","GHA-05","TGO-02"],e:[992.2,441.8],iklim:"savan",arazi:"ova",avantaj:{tahil:10},
-zenginlik:"fakir"},"GHA-03":{ad:"Brong-Ahafo B\xF6lgesi",en:"Brong Ahafo",ulke:"GHA",komsu:["CIV-03","GHA-01","GHA-02","GHA-04","GHA-05"],e:[991.2,453.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},
-zenginlik:"fakir"},"GHA-04":{ad:"Bat\u0131 B\xF6lgesi",en:"Western",ulke:"GHA",komsu:["CIV-01","CIV-03","GHA-01","GHA-03"],e:[988.8,470.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},
-"GHA-05":{ad:"Volta B\xF6lgesi",en:"Volta",ulke:"GHA",komsu:["GHA-01","GHA-02","GHA-03","TGO-01","TGO-02"],e:[1001.2,454.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"ROU-01":{
-ad:"B\xFCkre\u0219",en:"Bucharest",ulke:"ROU",komsu:["BGR-01","BGR-02","BGR-03","ROU-02","ROU-04","ROU-05"],e:[1127.2,218.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"RO\
-U-02":{ad:"Arad ili",en:"Arad",ulke:"ROU",komsu:["HUN-01","HUN-03","ROU-01","ROU-03","ROU-04","ROU-05","UKR-03"],e:[1127.5,208.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"orta"},"ROU\
--03":{ad:"Suceava ili",en:"Suceava",ulke:"ROU",komsu:["MDA-01","MDA-02","ROU-02","ROU-05","UKR-03"],e:[1131.8,201.8],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"ROU-04":{ad:"Tim\
-i\u0219 ili",en:"Timis",ulke:"ROU",komsu:["BGR-01","HUN-01","ROU-01","ROU-02","SRB-01","SRB-03"],e:[1116.5,212.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"ROU-05":{ad:"Tul\
-cea ili",en:"Tulcea",ulke:"ROU",komsu:["BGR-02","MDA-01","ROU-01","ROU-02","ROU-03","UKR-05"],e:[1139.2,217.2],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"LAO-01":{ad:"Vientiane \xD6ze\
-l Y\xF6netim B\xF6lgesi",en:"Vientiane [prefecture]",ulke:"LAO",komsu:["LAO-03","LAO-04","LAO-05","MMR-05","THA-01","THA-03","THA-05","VNM-04"],e:[1561.2,385.5],iklim:"tropik",arazi:"orman",baskent:!0,
-korumali:!0,zenginlik:"zengin"},"LAO-02":{ad:"\xC7ampasak B\xF6lgesi",en:"Champasak",ulke:"LAO",komsu:["KHM-02","KHM-03","LAO-04","THA-05","VNM-03","VNM-04"],e:[1585.2,407.2],iklim:"dag",arazi:"dag_ge\
-cidi",avantaj:{tahil:10},zenginlik:"fakir"},"LAO-03":{ad:"Luang prabang",en:"Louangphrabang",ulke:"LAO",komsu:["CHN-09","LAO-01","LAO-05","MMR-05","VNM-04"],e:[1556.2,372.5],iklim:"tropik",arazi:"orma\
-n",avantaj:{cevher:10},zenginlik:"fakir"},"LAO-04":{ad:"Savanakhet",en:"Savannakh\xE9t",ulke:"LAO",komsu:["LAO-01","LAO-02","THA-05","VNM-04"],e:[1579.5,397.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{
-lif:10},zenginlik:"fakir"},"LAO-05":{ad:"Huaphanh",en:"Houaphan",ulke:"LAO",komsu:["LAO-01","LAO-03","VNM-04"],e:[1565.5,376.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"GU\
-Y-01":{ad:"Do\u011Fu Berbice-",en:"East Berbice-Corentyne",ulke:"GUY",komsu:["GUY-03","GUY-04","GUY-05"],e:[677.8,465.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"GUY-02":{
-ad:"Upper Demerara- Berbice",en:"Upper Demerara-Berbice",ulke:"GUY",komsu:["BRA-02","BRA-06","GUY-03"],e:[672.2,487.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"GUY-03":{ad:"\
-Mahaica-Berbice",ulke:"GUY",komsu:["BRA-02","BRA-06","GUY-01","GUY-02","GUY-05","SUR-02","SUR-03"],e:[670.2,473.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"GUY-04":{ad:"Barima\
--Waini",ulke:"GUY",komsu:["GUY-01","GUY-05","VEN-04","VEN-05"],e:[669.8,456.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"GUY-05":{ad:"Pomeroon-Supenaam",ulke:"GUY",komsu:["BR\
-A-02","GUY-01","GUY-03","GUY-04","VEN-05"],e:[666.2,465.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"BLR-01":{ad:"Minsk",en:"City of Minsk",ulke:"BLR",komsu:["BLR-02","BLR-0\
-3","BLR-04","BLR-05"],e:[1130.5,159.8],iklim:"kuzey_orman",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"BLR-02":{ad:"Homyel Voblast\u0131",en:"Gomel",ulke:"BLR",komsu:["BLR-01","BLR-03","\
-BLR-04","RUS-01","UKR-01","UKR-06"],e:[1143.5,170.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"BLR-03":{ad:"Brest Voblast\u0131",en:"Brest",ulke:"BLR",komsu:["BLR-01","B\
-LR-02","BLR-05","POL-04","UKR-06"],e:[1124.2,168.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"BLR-04":{ad:"Vitsebsk Voblast\u0131",en:"Vitebsk",ulke:"BLR",komsu:["BLR-01","\
-BLR-02","BLR-05","LTU-01","LVA-02","RUS-01"],e:[1143.8,159.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"BLR-05":{ad:"Hrodna Voblast\u0131",en:"Grodno",ulke:"BLR",komsu:["\
-BLR-01","BLR-03","BLR-04","LTU-01","LTU-03","POL-04"],e:[1119.2,162.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"KGZ-01":{ad:"Bi\u015Fkek",en:"Bishkek",ulke:"KGZ",komsu:[
-"CHN-02","KAZ-03","KAZ-07","KGZ-03","KGZ-04"],e:[1385.2,239.2],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"KGZ-02":{ad:"Batken \u0130li",en:"Batken",ulke:"KGZ",komsu:["KGZ\
--04","TJK-01","TJK-03","UZB-01"],e:[1358.2,248.2],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"KGZ-03":{ad:"Iss\u0131k-G\xF6l \u0130li",en:"Ysyk-K\xF6l",ulke:"KGZ",komsu:["CHN-0\
-2","KAZ-03","KGZ-01"],e:[1396.5,233.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"KGZ-04":{ad:"Celal-Abad \u0130li",en:"Jalal-Abad",ulke:"KGZ",komsu:["CHN-02","KAZ-07","KGZ\
--01","KGZ-02","TJK-01","TJK-02","UZB-01"],e:[1375.5,245.8],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"SEN-01":{ad:"Dakar",ulke:"SEN",komsu:["CPV-01","GMB-01","GMB-02","SEN-03"],
-e:[912.2,407.8],iklim:"savan",arazi:"ova",deniz:["CPV-01"],baskent:!0,korumali:!0,zenginlik:"zengin"},"SEN-02":{ad:"Tambacounda B\xF6lgesi",en:"Tambacounda",ulke:"SEN",komsu:["GIN-03","GIN-05","GMB-02",
-"MLI-06","MRT-04","SEN-03","SEN-04"],e:[928.8,416.8],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"SEN-03":{ad:"Matam",ulke:"SEN",komsu:["GMB-02","MRT-01","MRT-04","SEN-01","SEN-02"],
-e:[924.5,408.2],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"SEN-04":{ad:"Kolda",ulke:"SEN",komsu:["GIN-05","GMB-01","GMB-02","GNB-01","GNB-02","SEN-02"],e:[916.8,421.5],iklim:"savan",
-arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"SYR-01":{ad:"\u015Eam",en:"Damascus",ulke:"SYR",komsu:["ISR-01","JOR-01","JOR-03","LBN-02","SYR-04"],e:[1193.5,291.5],iklim:"col",arazi:"ova",baskent:!0,
-korumali:!0,zenginlik:"orta"},"SYR-02":{ad:"Deyrizor",en:"Dayr Az Zawr",ulke:"SYR",komsu:["IRQ-03","IRQ-05","SYR-03","SYR-04","TUR-GDA"],e:[1210.8,277.5],iklim:"bozkir",arazi:"ova",avantaj:{lif:10},zenginlik:"\
-fakir"},"SYR-03":{ad:"Halep",en:"Aleppo",ulke:"SYR",komsu:["SYR-02","SYR-04","TUR-AKD","TUR-GDA"],e:[1196.8,273.8],iklim:"bozkir",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"SYR-04":{ad:"Humus",
-en:"Homs (Hims)",ulke:"SYR",komsu:["CYN-01","IRQ-05","JOR-03","LBN-01","LBN-02","SYR-01","SYR-02","SYR-03","TUR-AKD"],e:[1202.5,284.5],iklim:"col",arazi:"ova",deniz:["CYN-01"],avantaj:{cevher:10},zenginlik:"\
-orta"},"KHM-01":{ad:"Phnom Penh",ulke:"KHM",komsu:["KHM-02","KHM-03","KHM-04","VNM-02","VNM-05"],e:[1582.8,425.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"KHM-02":{ad:"Si\
-em Reap",en:"Siemr\xE9ab",ulke:"KHM",komsu:["KHM-01","KHM-03","KHM-04","LAO-02","THA-04","THA-05"],e:[1573.8,416.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"KHM-03":{ad:"Mon\
-dulkiri",en:"M\xF4nd\xF3l Kiri",ulke:"KHM",komsu:["KHM-01","KHM-02","LAO-02","VNM-03","VNM-05"],e:[1587.5,416.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"KHM-04":{ad:"Koh k\
-ong",en:"Ka\xF4h Kong",ulke:"KHM",komsu:["KHM-01","KHM-02","THA-04"],e:[1573.2,428.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"URY-01":{ad:"Montevideo",ulke:"URY",komsu:["URY-\
-02","URY-03","URY-04"],e:[704.2,721.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"URY-02":{ad:"Tacuarembo Departman\u0131",en:"Tacuaremb\xF3",ulke:"URY",komsu:["ARG-05","\
-BRA-03","URY-01","URY-03","URY-04"],e:[697.8,705.2],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"URY-03":{ad:"Cerro Largo",ulke:"URY",komsu:["BRA-03","URY-01","URY-02"],e:[714.2,723.8],
-iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"URY-04":{ad:"Paysandu Departman\u0131",en:"Paysand\xFA",ulke:"URY",komsu:["ARG-05","URY-01","URY-02"],e:[697.5,714.5],iklim:"bag_tepe",
-arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"TUN-01":{ad:"Tunus ili",en:"Tunis",ulke:"TUN",komsu:["DZA-01","TUN-04"],e:[1049.2,270.5],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"\
-zengin"},"TUN-02":{ad:"Tatavin ili",en:"Tataouine",ulke:"TUN",komsu:["DZA-01","DZA-04","LBY-08","TUN-03"],e:[1051.5,298.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"TUN-03":{ad:"K\
-abili ili",en:"Kebili",ulke:"TUN",komsu:["DZA-01","LBY-08","TUN-02","TUN-04"],e:[1046.8,290.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"TUN-04":{ad:"Kassarin ili",en:"Kass\xE9rine",
-ulke:"TUN",komsu:["DZA-01","TUN-01","TUN-03"],e:[1047.2,280.8],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{lif:10},zenginlik:"orta"},"NPL-01":{ad:"Central",ulke:"NPL",komsu:["CHN-05","IND-08","NPL-03",
-"NPL-04"],e:[1456.8,327.5],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"NPL-02":{ad:"Mid-Western",ulke:"NPL",komsu:["CHN-05","IND-01","IND-08","NPL-03"],e:[1435.2,316.8],iklim:"\
-dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"NPL-03":{ad:"West",ulke:"NPL",komsu:["CHN-05","IND-08","NPL-01","NPL-02"],e:[1448.2,323.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},
-zenginlik:"fakir"},"NPL-04":{ad:"East",ulke:"NPL",komsu:["CHN-05","IND-08","NPL-01"],e:[1467.5,330.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"SUR-01":{ad:"Paramaribo",ulke:"\
-SUR",komsu:["SUR-02","SUR-03","SUR-04"],e:[692.5,469.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"SUR-02":{ad:"Sipaliwini",ulke:"SUR",komsu:["BRA-06","GUY-03","SUR-01","\
-SUR-03","SUR-04"],e:[686.2,478.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"SUR-03":{ad:"Nickerie",ulke:"SUR",komsu:["GUY-03","SUR-01","SUR-02"],e:[685.2,469.2],iklim:"tropik",arazi:"\
-orman",avantaj:{tahil:10},zenginlik:"fakir"},"SUR-04":{ad:"Brokopondo",ulke:"SUR",komsu:["SUR-01","SUR-02"],e:[694.2,474.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"TJK-01":{
-ad:"Kurgan Tyube",ulke:"TJK",komsu:["KGZ-02","KGZ-04","TJK-02","TJK-03","TJK-04","UZB-04"],e:[1367.2,253.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"fakir"},"TJK-02":{ad:"Dushanb\
-e",ulke:"TJK",komsu:["AFG-05","CHN-02","KGZ-04","TJK-01","TJK-04"],e:[1375.5,258.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"TJK-03":{ad:"Khudzhand",ulke:"TJK",komsu:["KG\
-Z-02","TJK-01","UZB-01","UZB-04","UZB-06"],e:[1353.8,251.5],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"TJK-04":{ad:"Kulyab",ulke:"TJK",komsu:["AFG-01","AFG-05","AFG-06","TJK-01",
-"TJK-02","UZB-04"],e:[1357.2,260.8],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"BGD-01":{ad:"Dhaka",ulke:"BGD",komsu:["BGD-02","BGD-03","BGD-04","IND-03"],e:[1488.5,347.8],iklim:"\
-tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"fakir"},"BGD-02":{ad:"Rajshahi",ulke:"BGD",komsu:["BGD-01","BGD-04","IND-03","IND-08"],e:[1480.5,345.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},
-zenginlik:"fakir"},"BGD-03":{ad:"Chittagong \u0130li",en:"Chittagong",ulke:"BGD",komsu:["BGD-01","BGD-04","IND-03","MMR-04","MMR-06"],e:[1494.8,345.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},
-zenginlik:"fakir"},"BGD-04":{ad:"Khulna",ulke:"BGD",komsu:["BGD-01","BGD-02","BGD-03","IND-08"],e:[1486.5,361.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"GRC-01":{ad:"Attika",
-en:"Attiki",ulke:"GRC",komsu:["ALB-02","GRC-03","TUR-EGE"],e:[1114.8,262.5],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"zengin"},"GRC-02":{ad:"Do\u011Fu Makedonya ve Trakya",en:"\
-Anatoliki Makedonia kai Thraki",ulke:"GRC",komsu:["BGR-01","BGR-03","GRC-04","TUR-MAR"],e:[1123.8,239.5],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{lif:10},zenginlik:"orta"},"GRC-03":{ad:"Tesalya",en:"\
-Thessalia",ulke:"GRC",komsu:["ALB-01","ALB-02","GRC-01","GRC-04","MKD-01"],e:[1109.8,248.2],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"GRC-04":{ad:"Orta Makedonya",en:"Ken\
-triki Makedonia",ulke:"GRC",komsu:["BGR-01","GRC-02","GRC-03","MKD-01","MKD-02"],e:[1118.8,241.5],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"zengin"},"NIC-01":{ad:"Managua Depart\
-man\u0131",en:"Managua",ulke:"NIC",komsu:["CRI-02","HND-03","NIC-03","NIC-04"],e:[527.2,430.5],iklim:"gol",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"NIC-02":{ad:"\xD6zerk B\xF6lge",en:"\
-Atl\xE1ntico Norte",ulke:"NIC",komsu:["HND-01","HND-02","NIC-03","NIC-04"],e:[536.8,415.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"NIC-03":{ad:"G\xFCney Atlantik Otonom B\xF6lge\
-si",en:"Atl\xE1ntico Sur",ulke:"NIC",komsu:["CRI-01","CRI-02","NIC-01","NIC-02","NIC-04"],e:[535.2,424.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"NIC-04":{ad:"Jinotega",ulke:"\
-NIC",komsu:["HND-01","HND-03","NIC-01","NIC-02","NIC-03"],e:[525.8,419.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"ERI-01":{ad:"Anseba",ulke:"ERI",komsu:["ERI-02","ERI-03","E\
-RI-04","ETH-02","ETH-06","SDN-05"],e:[1211.2,395.5],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"fakir"},"ERI-02":{ad:"G\xFCney K\u0131z\u0131ldeniz",en:"Debubawi Keyih Bahri",ulke:"ERI",
-komsu:["DJI-01","ERI-01","ETH-06"],e:[1224.5,412.5],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"ERI-03":{ad:"Kuzey K\u0131z\u0131ldeniz",en:"Semenawi Keyih Bahri",ulke:"ERI",komsu:[
-"ERI-01","ERI-04","SDN-04","SDN-05"],e:[1205.5,398.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ERI-04":{ad:"Gash-Barka",en:"Gash Barka",ulke:"ERI",komsu:["ERI-01","ERI-03","ETH-02",
-"SDN-04"],e:[1204.8,407.8],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"PRK-01":{ad:"Pyongyang",en:"P'y\u014Fngyang",ulke:"PRK",komsu:["CHN-01","KOR-01","PRK-03","PRK-04"],e:[1649.2,
-255.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"PRK-02":{ad:"Kuzey Hamgyong",en:"Hamgy\u014Fng-bukto",ulke:"PRK",komsu:["CHN-06","PRK-03","PRK-04","RUS-05"],e:[1657.5,234.8],
-iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"PRK-03":{ad:"Chagang",en:"Chagang-do",ulke:"PRK",komsu:["CHN-01","CHN-06","PRK-01","PRK-02","PRK-04"],e:[1646.5,242.2],iklim:"bag_\
-tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"PRK-04":{ad:"G\xFCney Hamgyong",en:"Hamgy\u014Fng-namdo",ulke:"PRK",komsu:["KOR-01","PRK-01","PRK-02","PRK-03"],e:[1656.5,255.8],iklim:"bag_te\
-pe",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"MWI-01":{ad:"Lilongwe",ulke:"MWI",komsu:["MOZ-04","MOZ-07","MWI-02","MWI-03","MWI-04","TZA-04","ZMB-05"],e:[1185.5,595.2],iklim:"gol",arazi:"orman",
-baskent:!0,korumali:!0,zenginlik:"fakir"},"MWI-02":{ad:"Mzimba",ulke:"MWI",komsu:["MWI-01","TZA-03","TZA-04","ZMB-05"],e:[1188.2,570.8],iklim:"gol",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"M\
-WI-03":{ad:"Chikwawa",ulke:"MWI",komsu:["MOZ-04","MOZ-06","MWI-01","MWI-04"],e:[1191.5,607.8],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"MWI-04":{ad:"Mangochi",ulke:"MWI",komsu:[
-"MOZ-07","MWI-01","MWI-03"],e:[1194.8,601.2],iklim:"gol",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"BEN-01":{ad:"Littoral Departman\u0131",en:"Littoral",ulke:"BEN",komsu:["BEN-03","NGA-06",
-"TGO-01","TGO-02"],e:[1012.2,457.2],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"BEN-02":{ad:"Alibori Departman\u0131",en:"Alibori",ulke:"BEN",komsu:["BEN-03","BEN-04","BFA-0\
-3","NER-07","NER-08","NGA-01","NGA-03"],e:[1015.8,432.2],iklim:"savan",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"BEN-03":{ad:"Borgou Departman\u0131",en:"Borgou",ulke:"BEN",komsu:["BEN-01","\
-BEN-02","BEN-04","NGA-01","NGA-06","TGO-02"],e:[1012.8,444.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"BEN-04":{ad:"Atakora Departman\u0131",en:"Atakora",ulke:"BEN",komsu:["BEN-0\
-2","BEN-03","BFA-03","TGO-02"],e:[1008.8,437.2],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"HND-01":{ad:"Francisco Moraz",en:"Francisco Moraz\xE1n",ulke:"HND",komsu:["HND-02","HND\
--03","NIC-02","NIC-04"],e:[527.2,410.8],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"HND-02":{ad:"Gracias a Dios",ulke:"HND",komsu:["HND-01","HND-03","NIC-02"],e:[535.8,407.8],
-iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"HND-03":{ad:"Yoro Departman\u0131",en:"Yoro",ulke:"HND",komsu:["GTM-03","HND-01","HND-02","NIC-01","NIC-04","SLV-01","SLV-02"],e:[512.8,
-411.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"BGR-01":{ad:"Grad Sofiya",ulke:"BGR",komsu:["BGR-03","GRC-02","GRC-04","MKD-02","ROU-01","ROU-04","SRB-02","SRB-03"],e:[1120.5,
-230.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"BGR-02":{ad:"Burgaz ili",en:"Burgas",ulke:"BGR",komsu:["BGR-03","ROU-01","ROU-05","TUR-MAR"],e:[1137.5,225.8],iklim:"akd\
-eniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"orta"},"BGR-03":{ad:"Eski Za\u011Fra ili",en:"Stara Zagora",ulke:"BGR",komsu:["BGR-01","BGR-02","GRC-02","ROU-01","TUR-MAR"],e:[1131.8,232.5],iklim:"\
-bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"CUB-01":{ad:"Havana",en:"Ciudad de la Habana",ulke:"CUB",komsu:["BHS-01","CUB-03"],e:[561.8,359.8],iklim:"tropik",arazi:"orman",deniz:["BHS\
--01"],baskent:!0,korumali:!0,zenginlik:"zengin"},"CUB-02":{ad:"Holgu\xEDn ili",en:"Holgu\xEDn",ulke:"CUB",komsu:["BHS-02","CUB-03","HTI-01","JAM-02"],e:[585.2,373.5],iklim:"tropik",arazi:"orman",deniz:[
-"BHS-02","HTI-01","JAM-02"],avantaj:{cevher:10},zenginlik:"orta"},"CUB-03":{ad:"Camag\xFCey ili",en:"Camag\xFCey",ulke:"CUB",komsu:["CUB-01","CUB-02"],e:[577.2,368.5],iklim:"tropik",arazi:"orman",avantaj:{
-lif:10},zenginlik:"orta"},"GTM-01":{ad:"Guatemala Departman\u0131",en:"Guatemala",ulke:"GTM",komsu:["GTM-03","MEX-06","SLV-01"],e:[498.8,410.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"\
-zengin"},"GTM-02":{ad:"Peten Departman\u0131",en:"Pet\xE9n",ulke:"GTM",komsu:["BLZ-01","BLZ-02","GTM-03","MEX-03","MEX-06"],e:[506.5,395.2],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fak\
-ir"},"GTM-03":{ad:"Alta Verapaz \u0130li",en:"Alta Verapaz",ulke:"GTM",komsu:["BLZ-01","GTM-01","GTM-02","HND-03","SLV-01"],e:[508.5,405.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"f\
-akir"},"ISL-01":{ad:"Reykjav\xEDk",ulke:"ISL",komsu:["ISL-02","ISL-03"],e:[916.8,99.8],iklim:"kar",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"zengin"},"ISL-02":{ad:"Do\u011Fu B\xF6lgesi",en:"\
-Austurland",ulke:"ISL",komsu:["ISL-01","ISL-03"],e:[933.5,94.8],iklim:"kar",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"ISL-03":{ad:"Kuzeydo\u011Fu B\xF6lgesi",en:"Nor\xF0urland eystra",
-ulke:"ISL",komsu:["ISL-01","ISL-02","NOR-03"],e:[923.8,92.8],iklim:"kar",arazi:"dag_gecidi",deniz:["NOR-03"],avantaj:{lif:10},zenginlik:"orta"},"KOR-01":{ad:"Seul",en:"Seoul",ulke:"KOR",komsu:["KOR-02",
-"KOR-03","PRK-01","PRK-04"],e:[1659.5,262.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"KOR-02":{ad:"Kuzey Gyeongsang",en:"North Gyeongsang",ulke:"KOR",komsu:["JPN-02","K\
-OR-01","KOR-03"],e:[1670.8,275.2],iklim:"bag_tepe",arazi:"ova",deniz:["JPN-02"],avantaj:{lif:10},zenginlik:"zengin"},"KOR-03":{ad:"G\xFCney Jeolla",en:"South Jeolla",ulke:"KOR",komsu:["JPN-02","KOR-01",
-"KOR-02"],e:[1663.2,275.8],iklim:"bag_tepe",arazi:"kiyi",deniz:["JPN-02"],avantaj:{tahil:10},zenginlik:"orta"},"LBR-01":{ad:"Montserrado",ulke:"LBR",komsu:["GIN-02","LBR-02","LBR-03","SLE-01","SLE-02"],
-e:[943.2,460.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"LBR-02":{ad:"Sinoe",ulke:"LBR",komsu:["CIV-04","LBR-01","LBR-03"],e:[955.2,472.8],iklim:"tropik",arazi:"orman",avantaj:{
-cevher:10},zenginlik:"fakir"},"LBR-03":{ad:"Nimba",ulke:"LBR",komsu:["CIV-04","GIN-02","LBR-01","LBR-02"],e:[951.8,460.8],iklim:"tropik",arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"HUN-01":{ad:"\
-Central Hungary",ulke:"HUN",komsu:["HUN-02","HUN-03","ROU-02","ROU-04","SRB-01","SVK-01"],e:[1096.8,205.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"HUN-02":{ad:"Souther\
-n Transdanubia",ulke:"HUN",komsu:["AUT-01","HRV-01","HUN-01","SVK-01","SVN-02"],e:[1088.2,203.5],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"HUN-03":{ad:"Northern Great Plain",ulke:"\
-HUN",komsu:["HUN-01","ROU-02","SVK-01","SVK-02","UKR-03"],e:[1102.8,197.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"PRT-01":{ad:"Lisbon",ulke:"PRT",komsu:["ESP-01","ESP-04",
-"PRT-02","PRT-03"],e:[958.2,254.5],iklim:"akdeniz_kiyi",arazi:"kiyi",deniz:["PRT-03"],baskent:!0,korumali:!0,zenginlik:"zengin"},"PRT-02":{ad:"Centro",ulke:"PRT",komsu:["ESP-01","ESP-03","ESP-05","PRT\
--01"],e:[960.2,243.2],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{lif:10},zenginlik:"zengin"},"PRT-03":{ad:"Azorlar",en:"Azores",ulke:"PRT",komsu:["PRT-01"],e:[839.5,251.2],iklim:"bag_tepe",arazi:"kiyi",
-deniz:["PRT-01"],avantaj:{tahil:10},zenginlik:"orta"},"JOR-01":{ad:"Amman ili",en:"Amman",ulke:"JOR",komsu:["ISR-01","ISR-02","JOR-02","JOR-03","PSX-01","SAU-02","SYR-01"],e:[1190.8,301.2],iklim:"bozk\
-ir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"JOR-02":{ad:"Ma'an Valili\u011Fi",en:"Ma`an",ulke:"JOR",komsu:["ISR-02","JOR-01","SAU-02"],e:[1195.5,308.5],iklim:"bozkir",arazi:"ova",avantaj:{
-tahil:10},zenginlik:"fakir"},"JOR-03":{ad:"Mafraq Y\xF6netimi",en:"Mafraq",ulke:"JOR",komsu:["IRQ-05","JOR-01","SAU-02","SAU-08","SYR-01","SYR-04"],e:[1202.2,296.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},
-zenginlik:"fakir"},"AZE-01":{ad:"Absheron Economic Region",ulke:"AZE",komsu:["AZE-02","AZE-03","GEO-01","RUS-01"],e:[1247.2,240.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},
-"AZE-02":{ad:"Ganja-Gazakh Economic Region",ulke:"AZE",komsu:["ARM-01","ARM-02","AZE-01","AZE-03","GEO-01","IRN-04"],e:[1235.5,242.8],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},
-"AZE-03":{ad:"Aran Economic Region",ulke:"AZE",komsu:["AZE-01","AZE-02","IRN-04"],e:[1250.5,249.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"AUT-01":{ad:"Viyana",en:"Wien",ulke:"\
-AUT",komsu:["AUT-03","CZE-02","CZE-03","HUN-02","SVK-01","SVN-02"],e:[1079.5,195.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"AUT-02":{ad:"Tirol",ulke:"AUT",komsu:["AUT-\
-03","CHE-02","DEU-04","ITA-04","SVN-01","SVN-02"],e:[1057.8,200.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"orta"},"AUT-03":{ad:"Steiermark",ulke:"AUT",komsu:["AUT-01","AUT-02","CZ\
-E-03","DEU-04","ITA-04","SVN-02"],e:[1068.2,198.5],iklim:"sanayi",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"CZE-01":{ad:"Prag",en:"Prague",ulke:"CZE",komsu:["CZE-03","DEU-01","DEU-04"],e:[1066.2,
-183.5],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"CZE-02":{ad:"G\xFCney Moravya ili",en:"Jihomoravsk\xFD",ulke:"CZE",komsu:["AUT-01","CZE-03","POL-02","POL-03","SVK-01","\
-SVK-02"],e:[1085.5,187.5],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"zengin"},"CZE-03":{ad:"G\xFCney Bohemya ili",en:"Jiho\u010Desk\xFD",ulke:"CZE",komsu:["AUT-01","AUT-03","CZE-01","C\
-ZE-02","DEU-01","DEU-04","POL-02"],e:[1076.8,187.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"SRB-01":{ad:"Belgrad",en:"Grad Beograd",ulke:"SRB",komsu:["BIH-02","HRV-01","HUN\
--01","ROU-04","SRB-02","SRB-03"],e:[1101.2,214.8],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"SRB-02":{ad:"Zlatibor",en:"Zlatiborski",ulke:"SRB",komsu:["BGR-01","BIH-02","\
-KOS-01","MKD-01","MKD-02","MNE-01","MNE-02","SRB-01","SRB-03"],e:[1101.2,224.5],iklim:"bag_tepe",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"SRB-03":{ad:"Brani\xE7evo \u0130l\xE7esi",en:"Branic\
-evski",ulke:"SRB",komsu:["BGR-01","ROU-04","SRB-01","SRB-02"],e:[1110.8,224.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"PAN-01":{ad:"Panama ili",en:"Panama",ulke:"PAN",komsu:[
-"COL-05","PAN-03"],e:[569.2,453.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"PAN-02":{ad:"Chiriqui",en:"Chiriqu\xED",ulke:"PAN",komsu:["CRI-01","PAN-03"],e:[543.8,449.5],
-iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"PAN-03":{ad:"Veraguas",ulke:"PAN",komsu:["PAN-01","PAN-02"],e:[551.8,453.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"\
-fakir"},"SLE-01":{ad:"Western Area",en:"Western",ulke:"SLE",komsu:["LBR-01","SLE-02","SLE-03"],e:[932.8,454.8],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"fakir"},"SLE-02":{ad:"East\
-ern",ulke:"SLE",komsu:["GIN-02","LBR-01","SLE-01","SLE-03"],e:[939.2,449.5],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"SLE-03":{ad:"Northern",ulke:"SLE",komsu:["GIN-01","GIN-\
-02","GIN-03","SLE-01","SLE-02"],e:[933.8,446.2],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ARE-01":{ad:"Abu Dabi Emirli\u011Fi",en:"Abu Dhabi",ulke:"ARE",komsu:["ARE-03","OMN-04","\
-SAU-05"],e:[1294.5,354.2],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"ARE-02":{ad:"Res\xFC'l-Hayme",en:"Ras Al Khaymah",ulke:"ARE",komsu:["ARE-03","OMN-01","OMN-04"],e:[1301.5,
-341.5],iklim:"col",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"ARE-03":{ad:"Dubai Emirli\u011Fi",en:"Dubay",ulke:"ARE",komsu:["ARE-01","ARE-02","OMN-01","OMN-04"],e:[1299.2,344.5],iklim:"col",arazi:"\
-ova",avantaj:{cevher:10},zenginlik:"zengin"},"GEO-01":{ad:"Tiflis",en:"Tbilisi",ulke:"GEO",komsu:["ARM-01","ARM-02","AZE-01","AZE-02","GEO-03","RUS-01","TUR-DAN"],e:[1225.2,234.8],iklim:"bag_tepe",arazi:"\
-ova",baskent:!0,korumali:!0,zenginlik:"orta"},"GEO-02":{ad:"Abhazya",en:"Abkhazia",ulke:"GEO",komsu:["GEO-03","RUS-01"],e:[1211.8,229.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"f\
-akir"},"GEO-03":{ad:"\u0130mereti",en:"Imereti",ulke:"GEO",komsu:["GEO-01","GEO-02","RUS-01","TUR-DAN","TUR-KAR"],e:[1218.2,232.5],iklim:"dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},"I\
-RL-01":{ad:"Dublin",ulke:"IRL",komsu:["GBR-03","IRL-02","IRL-03"],e:[966.8,165.2],iklim:"bag_tepe",arazi:"ova",deniz:["GBR-03"],baskent:!0,korumali:!0,zenginlik:"zengin"},"IRL-02":{ad:"South-West",ulke:"\
-IRL",komsu:["IRL-01","IRL-03"],e:[956.2,171.2],iklim:"bag_tepe",arazi:"kiyi",avantaj:{lif:10},zenginlik:"orta"},"IRL-03":{ad:"West",ulke:"IRL",komsu:["GBR-02","GBR-04","IRL-01","IRL-02"],e:[958.2,161.2],
-iklim:"bag_tepe",arazi:"kiyi",deniz:["GBR-02"],avantaj:{tahil:10},zenginlik:"orta"},"LKA-01":{ad:"Basn\u0101hira pa\u1E37\u0101ta",ulke:"LKA",komsu:["LKA-02","LKA-03"],e:[1445.5,458.2],iklim:"tropik",
-arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"LKA-02":{ad:"Uturum\xE6\u0306da pa\u1E37\u0101ta",ulke:"LKA",komsu:["IND-02","LKA-01","LKA-03"],e:[1444.8,448.8],iklim:"tropik",arazi:"orman",deniz:[
-"IND-02"],avantaj:{cevher:10},zenginlik:"orta"},"LKA-03":{ad:"N\xE6\u0306g\u0115nahira pa\u1E37\u0101ta",ulke:"LKA",komsu:["LKA-01","LKA-02"],e:[1451.2,461.5],iklim:"tropik",arazi:"orman",avantaj:{lif:10},
-zenginlik:"orta"},"LTU-01":{ad:"Vilnius",en:"Vilniaus",ulke:"LTU",komsu:["BLR-04","BLR-05","LTU-02","LTU-03","LVA-01","LVA-02"],e:[1119.5,150.8],iklim:"kuzey_orman",arazi:"orman",baskent:!0,korumali:!0,
-zenginlik:"zengin"},"LTU-02":{ad:"Siauliai",en:"\u0160iauliai",ulke:"LTU",komsu:["LTU-01","LTU-03","LVA-01","LVA-03","RUS-01"],e:[1109.5,147.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{cevher:10},zenginlik:"\
-orta"},"LTU-03":{ad:"Kaunas",en:"Kauno",ulke:"LTU",komsu:["BLR-05","LTU-01","LTU-02","POL-04","RUS-01"],e:[1112.2,154.5],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"LVA-01":{
-ad:"Riga",ulke:"LVA",komsu:["EST-01","LTU-01","LTU-02","LVA-02","LVA-03"],e:[1113.8,142.8],iklim:"kuzey_orman",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"LVA-02":{ad:"Vidzeme",ulke:"LVA",
-komsu:["BLR-04","EST-01","EST-02","LTU-01","LVA-01","RUS-01"],e:[1127.2,144.8],iklim:"kuzey_orman",arazi:"orman",avantaj:{lif:10},zenginlik:"orta"},"LVA-03":{ad:"Kurzeme",ulke:"LVA",komsu:["LTU-02","L\
-VA-01"],e:[1101.8,142.2],iklim:"kuzey_orman",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"TGO-01":{ad:"Maritime",ulke:"TGO",komsu:["BEN-01","GHA-05","TGO-02"],e:[1005.8,457.2],iklim:"tropik",arazi:"\
-orman",baskent:!0,korumali:!0,zenginlik:"fakir"},"TGO-02":{ad:"Centre B\xF6lgesi",en:"Centre",ulke:"TGO",komsu:["BEN-01","BEN-03","BEN-04","BFA-03","GHA-02","GHA-05","TGO-01"],e:[1005.5,448.8],iklim:"\
-savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"HRV-01":{ad:"Zagreb",en:"Grad Zagreb",ulke:"HRV",komsu:["BIH-01","BIH-02","HRV-02","HUN-02","SRB-01","SVN-01","SVN-02"],e:[1082.5,210.8],iklim:"\
-bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"HRV-02":{ad:"Zadar B\xF6lgesi",en:"Zadarska",ulke:"HRV",komsu:["BIH-01","BIH-02","HRV-01","MNE-01","SVN-01"],e:[1078.8,220.5],iklim:"a\
-kdeniz_kiyi",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"zengin"},"BIH-01":{ad:"Federacija Bosna i Hercegovina",ulke:"BIH",komsu:["BIH-02","HRV-01","HRV-02","MNE-02"],e:[1089.8,222.2],iklim:"dag",arazi:"\
-dag_gecidi",baskent:!0,korumali:!0,zenginlik:"zengin"},"BIH-02":{ad:"Repuplika Srpska",ulke:"BIH",komsu:["BIH-01","HRV-01","HRV-02","MNE-01","MNE-02","SRB-01","SRB-02"],e:[1086.5,216.8],iklim:"dag",arazi:"\
-dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"CRI-01":{ad:"San soze",en:"San Jos\xE9",ulke:"CRI",komsu:["CRI-02","NIC-03","PAN-02"],e:[538.2,442.8],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,
-zenginlik:"zengin"},"CRI-02":{ad:"Guanacaste",ulke:"CRI",komsu:["CRI-01","NIC-01","NIC-03"],e:[533.8,438.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},"DOM-01":{ad:"Nacional",en:"\
-Distrito Nacional",ulke:"DOM",komsu:["DOM-02"],e:[619.5,384.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"DOM-02":{ad:"San Juan",ulke:"DOM",komsu:["DOM-01","HTI-01"],e:[611.8,
-383.8],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"SVK-01":{ad:"Bratislava B\xF6lgesi",en:"Bratislavsk\xFD",ulke:"SVK",komsu:["AUT-01","CZE-02","HUN-01","HUN-02","HUN-03","SVK-\
-02"],e:[1089.8,194.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"SVK-02":{ad:"Pre\u0161ov B\xF6lgesi",en:"Pre\u0161ov",ulke:"SVK",komsu:["CZE-02","HUN-03","POL-03","POL-0\
-4","SVK-01","UKR-03"],e:[1104.2,190.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"zengin"},"EST-01":{ad:"Harju ili",en:"Harju",ulke:"EST",komsu:["EST-02","LVA-01","LVA-02"],e:[1114.8,
-130.2],iklim:"kuzey_orman",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"EST-02":{ad:"Ida-Viru ili",en:"Ida-Viru",ulke:"EST",komsu:["EST-01","LVA-02","RUS-01"],e:[1123.5,134.2],iklim:"gol",
-arazi:"orman",avantaj:{cevher:10},zenginlik:"orta"},"DNK-01":{ad:"Danimarka Capital B\xF6lgesi",en:"Hovedstaden",ulke:"DNK",komsu:["SWE-04"],e:[1054.5,150.2],iklim:"bag_tepe",arazi:"kiyi",baskent:!0,korumali:!0,
-zenginlik:"zengin"},"DNK-02":{ad:"Merkezi Danimarka B\xF6lgesi",en:"Midtjylland",ulke:"DNK",komsu:["DEU-03"],e:[1043.2,147.2],iklim:"bag_tepe",arazi:"kiyi",avantaj:{lif:10},zenginlik:"orta"},"CHE-01":{
-ad:"Bern",ulke:"CHE",komsu:["CHE-02","DEU-04","FRA-01","FRA-02","FRA-05","ITA-02"],e:[1036.2,204.2],iklim:"gol",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"CHE-02":{ad:"Graub\xFCnden",ulke:"\
-CHE",komsu:["AUT-02","CHE-01","DEU-04","ITA-02","ITA-04"],e:[1043.8,201.2],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"orta"},"BTN-01":{ad:"Western",ulke:"BTN",komsu:["BTN-02","CHN-0\
-5","IND-03","IND-08"],e:[1480.2,329.2],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"BTN-02":{ad:"Eastern",ulke:"BTN",komsu:["BTN-01","CHN-05","IND-03"],e:[1487.5,328.2],iklim:"\
-dag",arazi:"dag_gecidi",avantaj:{lif:10},zenginlik:"fakir"},"NLD-01":{ad:"Kuzey Hollanda",en:"Noord-Holland",ulke:"NLD",komsu:["DEU-02","DEU-05","NLD-02"],e:[1028.8,166.8],iklim:"gol",arazi:"kiyi",baskent:!0,
-korumali:!0,zenginlik:"orta"},"NLD-02":{ad:"Kuzey Brabant",en:"Noord-Brabant",ulke:"NLD",komsu:["BEL-01","BEL-02","DEU-02","NLD-01"],e:[1022.2,172.2],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"\
-zengin"},"TWN-01":{ad:"Special Municipalities",ulke:"TWN",komsu:["CHN-07","TWN-02"],e:[1651.5,356.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"TWN-02":{ad:"Taiwan Provin\
-ce",ulke:"TWN",komsu:["TWN-01"],e:[1655.5,351.8],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"MDA-01":{ad:"Ki\u015Finev",en:"Chi\u015Fin\u0103u",ulke:"MDA",komsu:["MDA-02","ROU\
--03","ROU-05","UKR-05"],e:[1142.8,202.8],iklim:"bozkir",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"MDA-02":{ad:"Falesti",en:"F\u0103le\u015Fti",ulke:"MDA",komsu:["MDA-01","ROU-03","UKR-03",
-"UKR-05"],e:[1135.8,196.2],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"fakir"},"GNB-01":{ad:"Bissau",ulke:"GNB",komsu:["GIN-05","GNB-02","SEN-04"],e:[912.2,427.5],iklim:"savan",arazi:"\
-kiyi",baskent:!0,korumali:!0,zenginlik:"fakir"},"GNB-02":{ad:"Leste",ulke:"GNB",komsu:["GIN-05","GNB-01","SEN-04"],e:[920.5,427.5],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"BEL-\
-01":{ad:"Capital Region",ulke:"BEL",komsu:["BEL-02","FRA-05","GBR-01","NLD-02"],e:[1022.8,176.8],iklim:"bag_tepe",arazi:"ova",deniz:["GBR-01"],baskent:!0,korumali:!0,zenginlik:"zengin"},"BEL-02":{ad:"\
-Walloon",ulke:"BEL",komsu:["BEL-01","DEU-02","FRA-05","LUX-01","NLD-02"],e:[1025.8,182.5],iklim:"sanayi",arazi:"ova",avantaj:{tahil:10},zenginlik:"orta"},"LSO-01":{ad:"Maseru",ulke:"LSO",komsu:["LSO-0\
-2","ZAF-03","ZAF-06"],e:[1147.5,697.5],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"orta"},"LSO-02":{ad:"Thaba-Tseka",ulke:"LSO",komsu:["LSO-01","ZAF-03","ZAF-05","ZAF-06"],e:[1153.5,
-694.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{tahil:10},zenginlik:"fakir"},"ARM-01":{ad:"Erivan",en:"Erevan",ulke:"ARM",komsu:["ARM-02","AZE-02","GEO-01","TUR-DAN"],e:[1226.2,244.5],iklim:"bag_tepe",
-arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"ARM-02":{ad:"Ge\u011Farkunik",en:"Gegharkunik",ulke:"ARM",komsu:["ARM-01","AZE-02","GEO-01","IRN-04"],e:[1232.2,246.2],iklim:"dag",arazi:"dag_geci\
-di",avantaj:{tahil:10},zenginlik:"fakir"},"ALB-01":{ad:"Tiran ili",en:"Tiran\xEB",ulke:"ALB",komsu:["ALB-02","GRC-03","KOS-02","MKD-01","MNE-01"],e:[1101.5,234.8],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,
-korumali:!0,zenginlik:"orta"},"ALB-02":{ad:"Ergiri ili",en:"Gjirokast\xEBr",ulke:"ALB",komsu:["ALB-01","GRC-01","GRC-03"],e:[1101.8,244.5],iklim:"akdeniz_kiyi",arazi:"kiyi",avantaj:{tahil:10},zenginlik:"\
-fakir"},"SLB-01":{ad:"Honiara",en:"Capital Territory (Honiara)",ulke:"SLB",komsu:["SLB-02","VUT-02"],e:[1885.2,567.2],iklim:"tropik",arazi:"orman",deniz:["SLB-02","VUT-02"],baskent:!0,korumali:!0,zenginlik:"\
-orta"},"SLB-02":{ad:"Western",ulke:"SLB",komsu:["PNG-05","SLB-01"],e:[1869.8,550.2],iklim:"tropik",arazi:"orman",deniz:["PNG-05","SLB-01"],avantaj:{tahil:10},zenginlik:"fakir"},"BDI-01":{ad:"Bujumbra \
-Mairie",en:"Bujumbura Mairie",ulke:"BDI",komsu:["BDI-02","COD-02","TZA-06"],e:[1165.2,530.2],iklim:"gol",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"fakir"},"BDI-02":{ad:"Ruyigi",ulke:"BDI",komsu:[
-"BDI-01","COD-02","RWA-01","RWA-02","TZA-02","TZA-06"],e:[1168.5,525.8],iklim:"savan",arazi:"ova",avantaj:{tahil:10},zenginlik:"fakir"},"HTI-01":{ad:"Ouest",ulke:"HTI",komsu:["BHS-02","CUB-02","DOM-02",
-"HTI-02"],e:[605.2,381.5],iklim:"tropik",arazi:"orman",deniz:["BHS-02","CUB-02"],baskent:!0,korumali:!0,zenginlik:"fakir"},"HTI-02":{ad:"Sud",ulke:"HTI",komsu:["HTI-01"],e:[594.5,386.5],iklim:"tropik",
-arazi:"orman",avantaj:{lif:10},zenginlik:"fakir"},"GNQ-01":{ad:"Bioko Norte",ulke:"GNQ",komsu:["CMR-04","NGA-04"],e:[1047.8,483.8],iklim:"tropik",arazi:"orman",deniz:["CMR-04","NGA-04"],baskent:!0,korumali:!0,
-zenginlik:"zengin"},"GNQ-02":{ad:"Centro Sur",ulke:"GNQ",komsu:["CMR-06","GAB-01","GAB-04"],e:[1057.8,495.2],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"zengin"},"RWA-01":{ad:"Kigali",en:"\
-Kigali City",ulke:"RWA",komsu:["BDI-02","COD-02","RWA-02","TZA-02","UGA-04"],e:[1168.8,516.5],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"fakir"},"RWA-02":{ad:"Bat\u0131 Eyaleti",en:"W\
-estern",ulke:"RWA",komsu:["BDI-02","COD-02","RWA-01"],e:[1163.8,519.8],iklim:"gol",arazi:"orman",avantaj:{tahil:10},zenginlik:"fakir"},"MKD-01":{ad:"Greater Skopje",ulke:"MKD",komsu:["ALB-01","GRC-03",
-"GRC-04","KOS-01","KOS-02","MKD-02","SRB-02"],e:[1106.8,238.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"MKD-02":{ad:"Eastern",ulke:"MKD",komsu:["BGR-01","GRC-04","MKD-0\
-1","SRB-02"],e:[1113.5,236.8],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"BLZ-01":{ad:"Cayo",ulke:"BLZ",komsu:["BLZ-02","GTM-02","GTM-03"],e:[513.5,397.5],iklim:"tropik",arazi:"o\
-rman",baskent:!0,korumali:!0,zenginlik:"orta"},"BLZ-02":{ad:"Orange Walk",ulke:"BLZ",komsu:["BLZ-01","GTM-02","MEX-03"],e:[514.8,391.5],iklim:"tropik",arazi:"orman",avantaj:{tahil:10},zenginlik:"orta"},
-"DJI-01":{ad:"Cibuti",en:"Djibouti",ulke:"DJI",komsu:["DJI-02","ERI-02","ETH-03","ETH-06","SOM-05"],e:[1234.8,427.8],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"orta"},"DJI-02":{ad:"Dikh\
-il B\xF6lgesi",en:"Dikhil",ulke:"DJI",komsu:["DJI-01","ETH-03","ETH-06"],e:[1232.5,432.8],iklim:"col",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"ISR-01":{ad:"Merkez B\xF6lge",en:"HaMerkaz",ulke:"\
-ISR",komsu:["ISR-02","JOR-01","LBN-02","PSX-01","SYR-01"],e:[1186.2,293.8],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"zengin"},"ISR-02":{ad:"G\xFCney B\xF6lgesi",en:"HaDarom",
-ulke:"ISR",komsu:["EGY-06","ISR-01","JOR-01","JOR-02","PSX-01"],e:[1184.5,305.8],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"SLV-01":{ad:"San Salvador",ulke:"SLV",komsu:["GTM-0\
-1","GTM-03","HND-03","SLV-02"],e:[508.2,415.8],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"SLV-02":{ad:"San Miguel Departman\u0131",en:"San Miguel",ulke:"SLV",komsu:["HND-03",
-"SLV-01"],e:[514.2,418.2],iklim:"tropik",arazi:"orman",avantaj:{cevher:10},zenginlik:"fakir"},"SVN-01":{ad:"Osrednjeslovenska",ulke:"SVN",komsu:["AUT-02","HRV-01","HRV-02","ITA-04","SVN-02"],e:[1070.5,
-209.2],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"SVN-02":{ad:"Savinjska",ulke:"SVN",komsu:["AUT-01","AUT-02","AUT-03","HRV-01","HUN-02","SVN-01"],e:[1075.8,207.2],iklim:"\
-sanayi",arazi:"ova",avantaj:{cevher:10},zenginlik:"orta"},"FJI-01":{ad:"Central",ulke:"FJI",komsu:["FJI-02"],e:[1975.8,620.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"FJI\
--02":{ad:"Western",ulke:"FJI",komsu:["FJI-01","VUT-01"],e:[1972.5,619.5],iklim:"tropik",arazi:"orman",deniz:["VUT-01"],avantaj:{lif:10},zenginlik:"orta"},"KWT-01":{ad:"El Asime Valili\u011Fi",en:"Al A\
-simah",ulke:"KWT",komsu:["KWT-02","SAU-05"],e:[1255.5,319.5],iklim:"col",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"KWT-02":{ad:"El Cehr\xE2",en:"Al Jahrah",ulke:"KWT",komsu:["IRQ-02","KW\
-T-01","SAU-05"],e:[1252.5,314.2],iklim:"col",arazi:"ova",avantaj:{cevher:10},zenginlik:"zengin"},"SWZ-01":{ad:"Hhohho",ulke:"SWZ",komsu:["SWZ-02","ZAF-01"],e:[1167.8,675.8],iklim:"dag",arazi:"dag_geci\
-di",baskent:!0,korumali:!0,zenginlik:"orta"},"SWZ-02":{ad:"Lubombo",ulke:"SWZ",komsu:["MOZ-01","SWZ-01","ZAF-01","ZAF-05"],e:[1169.5,679.5],iklim:"bag_tepe",arazi:"ova",avantaj:{cevher:10},zenginlik:"\
-fakir"},"TLS-01":{ad:"Dili",ulke:"TLS",komsu:["IDN-08","TLS-02"],e:[1694.5,562.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"orta"},"TLS-02":{ad:"Viqueque Belediyesi",en:"Viqueque",
-ulke:"TLS",komsu:["IDN-07","TLS-01"],e:[1699.5,561.2],iklim:"tropik",arazi:"orman",deniz:["IDN-07"],avantaj:{lif:10},zenginlik:"fakir"},"MNE-01":{ad:"Podgorica",ulke:"MNE",komsu:["ALB-01","BIH-02","HR\
-V-02","KOS-02","MNE-02","SRB-02"],e:[1096.8,231.8],iklim:"dag",arazi:"dag_gecidi",baskent:!0,korumali:!0,zenginlik:"zengin"},"MNE-02":{ad:"Niksic Belediyesi",en:"Nik\u0161ic",ulke:"MNE",komsu:["BIH-01",
-"BIH-02","MNE-01","SRB-02"],e:[1095.8,227.8],iklim:"dag",arazi:"dag_gecidi",avantaj:{cevher:10},zenginlik:"fakir"},"BHS-01":{ad:"New Profidence",en:"New Providence",ulke:"BHS",komsu:["BHS-02","CUB-01",
-"USA-09"],e:[578.8,346.5],iklim:"tropik",arazi:"orman",deniz:["BHS-02","CUB-01","USA-09"],baskent:!0,korumali:!0,zenginlik:"zengin"},"BHS-02":{ad:"Inagua",ulke:"BHS",komsu:["BHS-01","CUB-02","HTI-01"],
-e:[600.5,369.8],iklim:"tropik",arazi:"orman",deniz:["BHS-01","CUB-02","HTI-01"],avantaj:{tahil:10},zenginlik:"orta"},"VUT-01":{ad:"Shefa",ulke:"VUT",komsu:["FJI-02","VUT-02"],e:[1919.2,610.5],iklim:"t\
-ropik",arazi:"orman",deniz:["FJI-02","VUT-02"],baskent:!0,korumali:!0,zenginlik:"orta"},"VUT-02":{ad:"Sanma",ulke:"VUT",komsu:["SLB-01","VUT-01"],e:[1917.2,604.2],iklim:"tropik",arazi:"orman",deniz:["\
-SLB-01","VUT-01"],avantaj:{tahil:10},zenginlik:"fakir"},"QAT-01":{ad:"Doha",en:"Ad Dawhah",ulke:"QAT",komsu:["QAT-02","SAU-05"],e:[1276.2,344.2],iklim:"col",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"\
-zengin"},"QAT-02":{ad:"Al Khor",en:"Al Khawr",ulke:"QAT",komsu:["QAT-01"],e:[1275.2,338.2],iklim:"col",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"zengin"},"JAM-01":{ad:"Kingston",ulke:"JAM",komsu:["J\
-AM-02"],e:[577.2,389.5],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"JAM-02":{ad:"Saint Ann",ulke:"JAM",komsu:["CUB-02","JAM-01"],e:[573.5,387.5],iklim:"tropik",arazi:"orma\
-n",deniz:["CUB-02"],avantaj:{tahil:10},zenginlik:"fakir"},"KOS-01":{ad:"Pristina",ulke:"KOS",komsu:["KOS-02","MKD-01","SRB-02"],e:[1105.8,228.8],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"\
-orta"},"KOS-02":{ad:"Prizren",ulke:"KOS",komsu:["ALB-01","KOS-01","MKD-01","MNE-01"],e:[1103.5,231.2],iklim:"bag_tepe",arazi:"ova",avantaj:{lif:10},zenginlik:"orta"},"GMB-01":{ad:"Banjul",ulke:"GMB",komsu:[
-"GMB-02","SEN-01","SEN-04"],e:[910.5,419.2],iklim:"savan",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"fakir"},"GMB-02":{ad:"Central River B\xF6lgesi",en:"Central River",ulke:"GMB",komsu:["GMB-01","S\
-EN-01","SEN-02","SEN-03","SEN-04"],e:[917.5,417.5],iklim:"savan",arazi:"ova",avantaj:{lif:10},zenginlik:"fakir"},"LBN-01":{ad:"Beyrut ili",en:"Beirut",ulke:"LBN",komsu:["LBN-02","SYR-04"],e:[1188.2,284.2],
-iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"zengin"},"LBN-02":{ad:"Bekaa ili",en:"Beqaa",ulke:"LBN",komsu:["ISR-01","LBN-01","SYR-01","SYR-04"],e:[1190.8,284.5],iklim:"akdeniz_\
-kiyi",arazi:"kiyi",avantaj:{cevher:10},zenginlik:"fakir"},"PSX-01":{ad:"Filistin",en:"Palestine",ulke:"PSX",komsu:["EGY-06","ISR-01","ISR-02","JOR-01"],e:[1186.2,300.8],iklim:"bag_tepe",arazi:"ova",baskent:!0,
-korumali:!0,zenginlik:"orta"},"BRN-01":{ad:"Brunei",ulke:"BRN",komsu:["MYS-03"],e:[1635.8,476.8],iklim:"tropik",arazi:"orman",baskent:!0,korumali:!0,zenginlik:"zengin"},"CYP-01":{ad:"K\u0131br\u0131s Cumhuriyet\
-i",en:"Cyprus",ulke:"CYP",komsu:["CYN-01"],e:[1173.2,279.8],iklim:"akdeniz_kiyi",arazi:"kiyi",baskent:!0,korumali:!0,zenginlik:"zengin"},"TTO-01":{ad:"Trinidad ve Tobago",en:"Trinidad and Tobago",ulke:"\
-TTO",komsu:["VEN-04","VEN-07"],e:[661.5,439.2],iklim:"tropik",arazi:"orman",deniz:["VEN-04","VEN-07"],baskent:!0,korumali:!0,zenginlik:"zengin"},"CPV-01":{ad:"Ye\u015Fil Burun Adalar\u0131",en:"Cape V\
-erde",ulke:"CPV",komsu:["SEN-01"],e:[874.8,401.8],iklim:"tropik",arazi:"orman",deniz:["SEN-01"],baskent:!0,korumali:!0,zenginlik:"orta"},"CYN-01":{ad:"Kuzey K\u0131br\u0131s T\xFCrk Cumhuriyeti",en:"T\
-urkish Republic of Northern Cyprus",ulke:"CYN",komsu:["CYP-01","SYR-04","TUR-AKD"],e:[1176.5,277.8],iklim:"akdeniz_kiyi",arazi:"kiyi",deniz:["SYR-04","TUR-AKD"],baskent:!0,korumali:!0,zenginlik:"orta"},
-"WSM-01":{ad:"Samoa",ulke:"WSM",komsu:["NZL-02"],e:[50.2,593.2],iklim:"tropik",arazi:"orman",deniz:["NZL-02"],baskent:!0,korumali:!0,zenginlik:"orta"},"LUX-01":{ad:"L\xFCksemburg",en:"Luxembourg",ulke:"\
-LUX",komsu:["BEL-02","DEU-02","FRA-05"],e:[1029.8,185.8],iklim:"bag_tepe",arazi:"ova",baskent:!0,korumali:!0,zenginlik:"zengin"},"MUS-01":{ad:"Mauritius",ulke:"MUS",komsu:["MDG-05"],e:[1313.8,635.8],iklim:"\
-tropik",arazi:"orman",deniz:["MDG-05"],baskent:!0,korumali:!0,zenginlik:"orta"}}};dunyaAdlariniDileUydur(DUNYA);const HAVA_KURALI={version:"weather-1.0.0",blockHours:6,cloud:1e5,strong:25e4,snowMin:18e4,
-fogFromMin:240,fogToMin:600,climates:{tropik:{precip:[32e4,32e4,32e4,32e4],fog:[4e4,2e4,0,4e4],snow:[0,0,0,0]},akdeniz_kiyi:{precip:[3e5,6e4,6e4,6e4],fog:[6e4,3e4,0,5e4],snow:[0,0,0,0]},col:{precip:[2e4,
-2e4,2e4,2e4],fog:[0,0,0,0],snow:[0,0,0,0]},savan:{precip:[8e4,8e4,24e4,8e4],fog:[0,0,0,0],snow:[0,0,0,0]},kuzey_orman:{precip:[22e4,22e4,22e4,22e4],fog:[1e5,8e4,4e4,12e4],snow:[45e4,12e4,0,12e4]},kar:{
-precip:[24e4,24e4,24e4,24e4],fog:[8e4,6e4,4e4,8e4],snow:[6e5,4e5,22e4,4e5]},dag:{precip:[2e5,2e5,2e5,2e5],fog:[1e5,8e4,3e4,1e5],snow:[45e4,12e4,0,12e4]},gol:{precip:[18e4,18e4,18e4,18e4],fog:[14e4,1e5,
-4e4,16e4],snow:[18e4,0,0,0]},bozkir:{precip:[9e4,9e4,9e4,9e4],fog:[6e4,2e4,0,5e4],snow:[18e4,0,0,0]},bag_tepe:{precip:[14e4,14e4,14e4,14e4],fog:[6e4,4e4,0,6e4],snow:[18e4,0,0,0]},sanayi:{precip:[15e4,
-15e4,15e4,15e4],fog:[12e4,6e4,2e4,12e4],snow:[18e4,0,0,0]}},fallback:{precip:[12e4,12e4,12e4,12e4],fog:[0,0,0,0],snow:[0,0,0,0]}},SPIKER_KURALI={version:"commentary-1.0.0",swingPpm:8e4,flipMarginPpm:2e4,
-closePpm:1e4,streakMin:3,crowd:[10,25,50,100,250,500,1e3],finalTicks:3,maxPerTick:2,show:40},ALBUM_KURALI={version:"album-1.0.0",continents:[{id:"avrupa",name:"Avrupa",zones:["Europe"]},{id:"asya",name:"\
-Asya",zones:["Asia"]},{id:"afrika",name:"Afrika",zones:["Africa"]},{id:"amerika",name:"Amerika",zones:["America"]},{id:"okyanusya",name:"Okyanusya",zones:["Australia","Pacific"]}],continentOverrides:{
-ISL:"avrupa",CPV:"afrika",MDG:"afrika",MUS:"afrika"},momentPages:[{id:"cephe",name:"Cephe"},{id:"meclis",name:"Meclis"},{id:"carsi",name:"\xC7ar\u015F\u0131"},{id:"sahne",name:"Sahne"},{id:"hayat",name:"\
-Hayat"}],moments:[{id:"ilk_vurus",page:"cephe",name:"\u0130lk Vuru\u015F",how:"Ger\xE7ek bir sava\u015F turunda vur.",icon:"swords"},{id:"tur_zaferi",page:"cephe",name:"Tur Zaferi",how:"Vurdu\u011Fun bir t\
-uru taraf\u0131n kazans\u0131n.",icon:"flag"},{id:"fetih",page:"cephe",name:"Fetih",how:"Sald\u0131ran tarafta vurdu\u011Fun sava\u015F fetihle bitsin.",icon:"landmark"},{id:"savunma",page:"cephe",name:"\
-Kale Gibi",how:"Savunan tarafta vurdu\u011Fun sava\u015F savunmayla bitsin.",icon:"shield"},{id:"tatbikat",page:"cephe",name:"Tatbikat",how:"Tatbikat cephesinde bir tatbikat\u0131 bitir.",icon:"target"},
-{id:"onbasi",page:"cephe",name:"Onba\u015F\u0131",how:"Sava\u015Fta Onba\u015F\u0131 r\xFCtbesine y\xFCksel.",icon:"medal"},{id:"ilk_oy",page:"meclis",name:"\u0130lk Oy",how:"Ulusal se\xE7imde oy ver.",
-icon:"vote"},{id:"aday",page:"meclis",name:"Aday",how:"Ulusal se\xE7imde aday ol.",icon:"megaphone"},{id:"secildi",page:"meclis",name:"G\xF6revde",how:"Ba\u015Fkan ya da milletvekili se\xE7il.",icon:"\
-landmark"},{id:"parti_uyesi",page:"meclis",name:"Parti \xDCyesi",how:"Bir partiye kat\u0131l.",icon:"users-round"},{id:"parti_kurucusu",page:"meclis",name:"Parti Kurucusu",how:"Bir parti kur.",icon:"f\
-lag"},{id:"kurucu",page:"meclis",name:"Kurucu",how:"\xDClkenin ilk vatanda\u015Flar\u0131 (kurucular) aras\u0131nda ol.",icon:"crown"},{id:"ilk_is",page:"carsi",name:"\u0130lk Maa\u015F",how:"Bir i\u015F s\
-\xF6zle\u015Fmesini tamamla.",icon:"hand-coins"},{id:"isletme",page:"carsi",name:"Patron",how:"Bir i\u015Fletme kur.",icon:"factory"},{id:"pazar_satisi",page:"carsi",name:"\u0130lk Sat\u0131\u015F",how:"\
-Pazarda bir \u015Fey sat.",icon:"store"},{id:"ev",page:"carsi",name:"Ev Sahibi",how:"Bir ev sat\u0131n al.",icon:"house"},{id:"yolculuk",page:"carsi",name:"Yolcu",how:"Bir yolculu\u011Fu tamamla.",icon:"\
-route"},{id:"makale",page:"carsi",name:"K\xF6\u015Fe Yazar\u0131",how:"Gazetede bir makale yay\u0131mla.",icon:"newspaper"},{id:"konser",page:"sahne",name:"Konser",how:"Bir konserde sahneye \xE7\u0131k ya da \
-biletle izle.",icon:"mic"},{id:"festival",page:"sahne",name:"Festival",how:"Bir festivalde sahneye \xE7\u0131k ya da bilet al.",icon:"party-popper"},{id:"hali_saha",page:"sahne",name:"Hal\u0131 Saha",
-how:"Bir hal\u0131 saha ma\xE7\u0131nda oyna.",icon:"trophy"},{id:"gol",page:"sahne",name:"Gol!",how:"Bir ma\xE7ta gol at.",icon:"goal"},{id:"spor_salonu",page:"sahne",name:"Formda",how:"Spor salonund\
-a bir antrenman\u0131 bitir.",icon:"dumbbell"},{id:"kahvehane",page:"sahne",name:"Kahvehane",how:"Kahvehanede puanl\u0131 bir tavla, satran\xE7 ya da okey oyununu bitir.",icon:"coffee"},{id:"arkadas",
-page:"hayat",name:"Dost",how:"Bir arkada\u015F edin.",icon:"heart-handshake"},{id:"evcil_hayvan",page:"hayat",name:"Can Dostu",how:"Bar\u0131naktan bir hayvan sahiplen.",icon:"heart"},{id:"ev_partisi",
-page:"hayat",name:"Parti Evi",how:"Evinde misafirli bir parti ver.",icon:"party-popper"},{id:"kahvehane_zafer",page:"hayat",name:"Usta Oyuncu",how:"Kahvehanede puanl\u0131 bir oyun kazan.",icon:"crown"},
-{id:"sezon",page:"hayat",name:"Sezonun Y\u0131ld\u0131z\u0131",how:"Bir sezonda madalya ya da unvan kazan.",icon:"star"},{id:"gezgin",page:"hayat",name:"Gezgin",how:"Be\u015F \xFClkenin bayra\u011F\u0131n\u0131 topla.",
-icon:"globe"}],flagsPerDay:1,giftsPerDay:3,giftMinHours:24,giftKeepDays:30,travelerFlags:5},UC_PARCALARI={"00_dil.js":[],"00a_parcalar.js":[],"01_temel.js":[],"01a_ses.js":[],"01b_seslendirme.js":[],"\
-02_sunucu.js":[],"03_durum.js":[],"04_gorunus.js":[],"04a_magaza_cizim.js":[],"04b_giysi.js":[],"10_giris.js":[],"11_karakter.js":[],"20_kabuk.js":[],"20a_yazi_koru.js":[],"21_ozet.js":[],"22_cephe.js":[],
-"23_ayarlar.js":[],"24_egitim.js":[],"25_calis.js":[],"26_pazar.js":[],"27_ulke.js":[],"28_arena.js":["uc_43_arena3b","uc_49_figur3b","uc_49b_magaza3b","uc_82_terzi3b"],"28a_spiker.js":[],"29_uretim.j\
-s":[],"30_meydan.js":["uc_49_figur3b","uc_82_terzi3b"],"31_sehir.js":[],"32_diplomasi.js":[],"33_oda.js":["uc_44_oda3b","uc_49_figur3b","uc_49a_hayvan3b","uc_49b_magaza3b","uc_82_terzi3b"],"34_meclis_\
-salonu.js":["uc_45_meclis3b"],"35_secim_gecesi.js":["uc_46_secim3b"],"36_vitrin.js":["uc_47_vitrin3b"],"37_sehir_ekran.js":["uc_48_sehir3b","uc_61_kalabalik3b","uc_98x_belediye3b"],"38_gorunus_ekran.j\
-s":["uc_49_figur3b","uc_82_terzi3b"],"39_golge.js":["uc_50_sinir3b","uc_51_karakol3b","uc_52_masa3b","uc_53_mahkeme3b"],"40_uc.js":[],"41_harita3b.js":["uc_41_harita3b","uc_49_figur3b","uc_82_terzi3b",
-"uc_98zt_arac3b"],"42_harita.js":["uc_41_harita3b","uc_49_figur3b","uc_82_terzi3b","uc_98zt_arac3b"],"42a_hava.js":[],"43_arena3b.js":["uc_43_arena3b","uc_49_figur3b","uc_49b_magaza3b","uc_82_terzi3b"],
-"44_oda3b.js":["uc_44_oda3b","uc_49_figur3b","uc_49a_hayvan3b","uc_49b_magaza3b","uc_82_terzi3b"],"45_meclis3b.js":["uc_45_meclis3b"],"46_secim3b.js":["uc_46_secim3b"],"47_vitrin3b.js":["uc_47_vitrin3\
-b"],"48_sehir3b.js":["uc_48_sehir3b","uc_61_kalabalik3b","uc_98x_belediye3b"],"48_sehir3b_veri.js":[],"49_figur3b.js":["uc_49_figur3b","uc_82_terzi3b"],"49_figur3b_veri.js":[],"49a_hayvan3b.js":["uc_4\
-9a_hayvan3b"],"49a_hayvan3b_veri.js":[],"49b_magaza3b.js":["uc_49_figur3b","uc_49b_magaza3b","uc_82_terzi3b"],"50_sinir3b.js":["uc_50_sinir3b"],"51_karakol3b.js":["uc_51_karakol3b"],"52_masa3b.js":["u\
-c_52_masa3b"],"53_mahkeme3b.js":["uc_53_mahkeme3b"],"54_isbirligi.js":["uc_55_elcilik3b","uc_56_santiye3b"],"55_elcilik3b.js":["uc_55_elcilik3b"],"56_santiye3b.js":["uc_56_santiye3b"],"57_miting3b.js":[
-"uc_57_miting3b"],"57_miting3b_veri.js":[],"58_hareket.js":["uc_57_miting3b"],"59_hayat3b.js":["uc_49_figur3b","uc_49b_magaza3b","uc_59_hayat3b","uc_82_terzi3b","uc_98zt_arac3b"],"59_hayat3b_veri.js":[],
-"60_hayat.js":["uc_49_figur3b","uc_49b_magaza3b","uc_59_hayat3b","uc_82_terzi3b","uc_98zt_arac3b"],"61_kalabalik3b.js":["uc_61_kalabalik3b"],"61_kalabalik3b_veri.js":[],"62_atolye3b.js":["uc_49_figur3\
-b","uc_61_kalabalik3b","uc_62_atolye3b","uc_82_terzi3b"],"62_atolye3b_veri.js":[],"63_atolye.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_62_atolye3b","uc_82_terzi3b"],"64_isletme3b.js":["uc_49_figur3\
-b","uc_61_kalabalik3b","uc_64_isletme3b","uc_82_terzi3b"],"64_isletme3b_veri.js":[],"65_isletme.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_64_isletme3b","uc_82_terzi3b"],"66_carsi3b.js":["uc_49_figu\
-r3b","uc_61_kalabalik3b","uc_66_carsi3b","uc_82_terzi3b"],"66_carsi3b_veri.js":[],"67_carsi.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_66_carsi3b","uc_82_terzi3b"],"68_yolculuk3b.js":["uc_49_figur3b",
-"uc_68_yolculuk3b","uc_82_terzi3b","uc_98zt_arac3b"],"69_yolculuk.js":["uc_49_figur3b","uc_68_yolculuk3b","uc_82_terzi3b","uc_98zt_arac3b"],"70_sokak3b.js":["uc_61_kalabalik3b","uc_70_sokak3b"],"70_so\
-kak3b_veri.js":[],"71_sokak.js":["uc_61_kalabalik3b","uc_70_sokak3b"],"72_baskent3b.js":["uc_61_kalabalik3b","uc_72_baskent3b"],"72_baskent3b_veri.js":[],"73_baskent.js":["uc_61_kalabalik3b","uc_72_ba\
-skent3b"],"74_sandik3b.js":["uc_61_kalabalik3b","uc_74_sandik3b"],"74_sandik3b_veri.js":[],"75_sandik.js":["uc_61_kalabalik3b","uc_74_sandik3b"],"76_karargah3b.js":["uc_61_kalabalik3b","uc_76_karargah\
-3b"],"76_karargah3b_veri.js":[],"77_karargah.js":["uc_61_kalabalik3b","uc_76_karargah3b"],"78_diplomasi3b.js":["uc_61_kalabalik3b","uc_78_diplomasi3b"],"78_diplomasi3b_veri.js":[],"79_diplomasi_salonu\
-.js":["uc_61_kalabalik3b","uc_78_diplomasi3b"],"80_akis3b.js":["uc_80_akis3b"],"80_akis3b_veri.js":[],"81_akis.js":["uc_80_akis3b"],"82_terzi3b.js":["uc_82_terzi3b"],"83_terzi.js":[],"84_egitim3b.js":[
-"uc_49_figur3b","uc_49b_magaza3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_84_egitim3b"],"84_egitim3b_veri.js":[],"85_egitim_sahasi.js":["uc_49_figur3b","uc_49b_magaza3b","uc_61_kalabalik3b","uc_82_ter\
-zi3b","uc_84_egitim3b"],"86_toren3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_86_toren3b"],"86a_zafer3b.js":["uc_61_kalabalik3b","uc_86a_zafer3b"],"86a_zafer3b_veri.js":[],"87_toren.js":["uc_49_figur3b",
-"uc_61_kalabalik3b","uc_82_terzi3b","uc_86_toren3b","uc_86a_zafer3b"],"88_foto3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_88_foto3b"],"89_foto.js":["uc_49_figur3b","uc_82_terzi3b","uc_88_foto3b"],"90_\
-darbe.js":[],"91_ozerklik.js":[],"92_bagimsizlik.js":[],"93_konusma.js":[],"93a_meydan_yer.js":[],"94_meydan3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_94_meydan3b"],"95_meydan.js":[
-"uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_94_meydan3b"],"95z_oda_yol.js":[],"96_meydan_yol.js":[],"97_ev_yol.js":[],"98_misafir.js":[],"98a_birlik3b.js":["uc_49_figur3b","uc_61_kalabalik\
-3b","uc_82_terzi3b","uc_98a_birlik3b"],"98a_birlik3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b"],"98b_birlik.js":[],"98c_isgal.js":[],"98d_koalisyon.js":[],"98e_ez\
-gi.js":[],"98f_prova3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98f_prova3b"],"98f_prova3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_b\
-irlik3b","uc_98f_prova3b"],"98g_muzik.js":[],"98h_konser3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98h_konser3b"],"98h_konser3b_veri.js":["uc_49_figur3b","uc_61_\
-kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98h_konser3b"],"98i_sahne.js":[],"98j_medya.js":[],"98k_kare.js":["uc_49_figur3b","uc_82_terzi3b"],"98l_kanal.js":[],"98m_turne.js":[],"98n_ep.js":[],
-"98o_studyo3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98o_studyo3b"],"98o_studyo3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98o_studyo3b"],"98p_studyo.js":[],"98q_festival.js":[],"98r_magaza.js":[],
-"98s_belediye.js":[],"98t_kabin3b.js":["uc_98t_kabin3b"],"98t_kabin3b_veri.js":[],"98u_kabin.js":["uc_98t_kabin3b"],"98v_parti3b.js":["uc_61_kalabalik3b","uc_98v_parti3b"],"98v_parti3b_veri.js":[],"98\
-w_parti.js":["uc_61_kalabalik3b","uc_98v_parti3b"],"98x_belediye3b.js":["uc_61_kalabalik3b","uc_98x_belediye3b"],"98x_belediye3b_veri.js":[],"98y_belediye_oda.js":["uc_61_kalabalik3b","uc_98x_belediye\
-3b"],"98z_sosyal.js":[],"98zb_moderasyon.js":[],"98zc_depo.js":[],"98zc_rehber.js":[],"98zd_ekonomi3b.js":["uc_61_kalabalik3b","uc_98zd_ekonomi3b"],"98zd_ekonomi3b_veri.js":[],"98zd_sezon.js":[],"98ze\
-_ekonomi.js":["uc_61_kalabalik3b","uc_98zd_ekonomi3b"],"98zf_mekan_yol.js":[],"98zg_mekan.js":[],"98zh_mekan_ic.js":["uc_44_oda3b","uc_49_figur3b","uc_49a_hayvan3b","uc_49b_magaza3b","uc_82_terzi3b"],
-"98zi_ev_partisi.js":[],"98zj_saglik3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zj_saglik3b"],"98zj_saglik3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98z\
-j_saglik3b"],"98zk_saglik.js":[],"98zl_sinif3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zl_sinif3b"],"98zl_sinif3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","\
-uc_98zl_sinif3b"],"98zm_dersler.js":[],"98zn_keyif.js":[],"98zo_hobi3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zo_hobi3b"],"98zo_hobi3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zo_hobi3b"],"\
-98zp_hobi.js":[],"98zq_masa_kural.js":[],"98zr_masa.js":[],"98zs_oyunlar.js":[],"98zt_arac3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zt_arac3b"],"98zt_arac3b_veri.js":["uc_49_figur3b","uc_82_terzi3\
-b","uc_98zt_arac3b"],"98zu_araclar.js":[],"98zv_butik.js":[],"98zw_evcil3b.js":["uc_49_figur3b","uc_49a_hayvan3b","uc_82_terzi3b","uc_98zw_evcil3b"],"98zw_evcil3b_veri.js":["uc_49_figur3b","uc_49a_hay\
-van3b","uc_82_terzi3b","uc_98zw_evcil3b"],"98zx_evcil.js":[],"98zy_etkinlik3b.js":["uc_61_kalabalik3b","uc_98zy_etkinlik3b"],"98zy_etkinlik3b_veri.js":["uc_61_kalabalik3b","uc_98zy_etkinlik3b"],"98zz_\
-etkinlik.js":[],"98zza_spor3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zza_spor3b"],"98zza_spor3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zza_spor3b"],"98zzb_spor.js":[],"98zzc_futbol3b.js":[
-"uc_49_figur3b","uc_82_terzi3b","uc_98zzc_futbol3b","uc_98zze_stadyum3b"],"98zzc_futbol3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zzc_futbol3b","uc_98zze_stadyum3b"],"98zzd_futbol.js":[],"98zz\
-e_stadyum3b.js":["uc_98zze_stadyum3b"],"98zzf_kulup.js":[],"98zzg_kupa.js":[],"98zzh_millet.js":["uc_98zzl_muze3b"],"98zzi_makam3b.js":["uc_61_kalabalik3b","uc_98zzi_makam3b"],"98zzi_makam3b_veri.js":[],
-"98zzj_makam.js":["uc_61_kalabalik3b","uc_98zzi_makam3b"],"98zzk_film.js":[],"98zzl_muze3b.js":["uc_98zzl_muze3b"],"98zzl_muze3b_veri.js":[],"98zzm_gece3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zz\
-m_gece3b"],"98zzm_gece3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zzm_gece3b"],"98zzn_istasyon3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zt_arac3b","uc_98zzn_istasyon3b"],
-"98zzn_istasyon3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zt_arac3b","uc_98zzn_istasyon3b"],"98zzo_album.js":[],"98zzp_gundem.js":[],"98zzq_matbaa3b.js":["uc_61_kalabalik3b",
-"uc_98zzq_matbaa3b"],"98zzq_matbaa3b_veri.js":[],"98zzr_matbaa.js":["uc_61_kalabalik3b","uc_98zzq_matbaa3b"],"98zzs_odasalon3b.js":["uc_61_kalabalik3b","uc_98zzs_odasalon3b"],"98zzs_odasalon3b_veri.js":[],
-"98zzt_odalar.js":["uc_61_kalabalik3b","uc_98zzs_odasalon3b"],"98zzu_usta.js":[],"98zzv_imza.js":[],"99_baslat.js":[]},Seslendirme=(()=>{const varMi=()=>typeof speechSynthesis<"u"&&typeof SpeechSynthesisUtterance<
-"u",dil=()=>DIL.kod==="en"?"en-GB":"tr-TR";function ses(){try{const d=dil().slice(0,2);return speechSynthesis.getVoices().find(v=>v.localService&&String(v.lang).toLowerCase().startsWith(d))??null}catch{
-return null}}function oku(metinler,bitince){if(!varMi()||!metinler.length)return!1;const s=ses();return metinler.forEach((m,i)=>{const u=new SpeechSynthesisUtterance(m);u.lang=dil(),u.rate=1,s&&(u.voice=
-s),i===metinler.length-1&&bitince&&(u.onend=u.onerror=bitince);try{speechSynthesis.speak(u)}catch{i===metinler.length-1&&bitince?.()}}),!0}function dur(){if(varMi())try{speechSynthesis.cancel()}catch{}}
-return{varMi,oku,dur}})(),GORUNUS_VARSAYILAN_KURAL=veri({version:"look-1.0.0",skin:TEN,hairColor:SAC,outfitColors:GIYSI,backgrounds:ZEMIN,hairStyles:[{id:"kisa",name:"K\u0131sa"},{id:"uzun",name:"Uzun"},
-{id:"topuz",name:"Topuz"},{id:"yan",name:"Yana taral\u0131"},{id:"kirpik",name:"K\u0131rp\u0131k"},{id:"kivircik",name:"K\u0131v\u0131rc\u0131k"},{id:"atkuyrugu",name:"At kuyru\u011Fu"},{id:"kel",name:"\
-Kel"}],beards:[{id:"yok",name:"Yok"},{id:"biyik",name:"B\u0131y\u0131k"},{id:"sakal",name:"Sakal"}],faces:[{id:"sakin",name:"Sakin"},{id:"gulec",name:"G\xFCle\xE7"},{id:"ciddi",name:"Ciddi"},{id:"nese\
-li",name:"Ne\u015Feli"},{id:"dalgin",name:"Dalg\u0131n"},{id:"kararli",name:"Kararl\u0131"}],bodies:[{id:"ince",name:"\u0130nce"},{id:"orta",name:"Orta"},{id:"iri",name:"\u0130ri"}],outfits:[{id:"gunl\
-uk",name:"G\xFCnl\xFCk",uniform:!1},{id:"takim",name:"Tak\u0131m elbise",uniform:!1},{id:"tulum",name:"\u0130\u015F tulumu",uniform:!1},{id:"kazak",name:"Kazak",uniform:!1},{id:"spor",name:"E\u015Fofman",
-uniform:!1},{id:"yelek",name:"Yelek",uniform:!1},{id:"uniforma",name:"\xDCniforma",uniform:!0}]}),FIGUR_EYLEMLERI=[{id:"bekle",ad:\u00E7("eylem::Bekle"),ik:"hourglass"},{id:"selamla",ad:\u00E7("eylem:\
-:Selamla"),ik:"hand"},{id:"calis",ad:\u00E7("eylem::\xC7al\u0131\u015F"),ik:"hammer"},{id:"egit",ad:\u00E7("eylem::E\u011Fit"),ik:"dumbbell"},{id:"tasi",ad:\u00E7("eylem::Ta\u015F\u0131"),ik:"package"},
-{id:"taarruz",ad:\u00E7("eylem::Taarruz"),ik:"swords"},{id:"mevzi",ad:\u00E7("eylem::Mevzi"),ik:"shield-half"},{id:"kanat",ad:\u00E7("eylem::Kanat"),ik:"move"},{id:"prova",ad:\u00E7("eylem::Prova"),ik:"\
-guitar"},{id:"sahne",ad:\u00E7("eylem::Sahne"),ik:"mic-vocal"}],gorunusKurali=()=>Durum.v.kurallar?.data?.look??GORUNUS_VARSAYILAN_KURAL,UNIFORMA={kumas:"#55603F",koyu:"#3A4230",kemer:"#3A2E22",sirma:"\
-#E2B54A"};function varsayilanGorunus(ad){const r=rastgele(ozet(ad)^2654435769),i=n=>Math.floor(r()*n),K=GORUNUS_VARSAYILAN_KURAL,ten=i(TEN.length),sacRenk=i(SAC.length),renk=i(GIYSI.length),zemin=i(ZEMIN.
-length),stil=i(5),sakal=stil!==1&&stil!==3&&r()<.28,yuz=K.faces[i(K.faces.length)].id,beden=K.bodies[i(K.bodies.length)].id;return{ten,sacRenk,sac:K.hairStyles[stil].id,sakal:sakal?"sakal":"yok",yuz,beden,
-kiyafet:"gunluk",renk,zemin}}function rutbeBicimi(sira,sayi2=12){const i=Math.round(Math.max(0,sira)/Math.max(1,sayi2-1)*11);return i<=3?{serit:i,yildiz:0,defne:0}:i<=7?{serit:0,yildiz:i-3,defne:0}:{serit:0,
-yildiz:i===11?4:i-7,defne:i===11?2:1}}const Gorunus=(()=>{const onbellek=new Map,bekleyen=new Set,dinleyici=new Set;let zaman=null;function iste(kimlikler){for(const k of kimlikler)k&&!onbellek.has(k)&&
-bekleyen.add(k);bekleyen.size&&!zaman&&(zaman=setTimeout(getir,40))}async function getir(){zaman=null;const liste=[...bekleyen].slice(0,100);for(const k of liste)bekleyen.delete(k);if(liste.length){try{
-const r=await Sunucu.cagir("looks",{p_ids:liste}),bulunan=new Map((r??[]).map(x=>[x.character_id,x]));for(const k of liste)onbellek.set(k,bulunan.get(k)??null)}catch{for(const k of liste)onbellek.set(
-k,null)}yay(liste),bekleyen.size&&(zaman=setTimeout(getir,40))}}function yay(kimlikler){for(const k of kimlikler)for(const el of document.querySelectorAll(`[data-avatar-kisi="${CSS.escape(k)}"]`))el.innerHTML=
-avatarSvg(el.dataset.avatarAd??"",...avatarSecim(k));for(const f of dinleyici)try{f(kimlikler)}catch(e){console.error(e)}}return{al:k=>onbellek.get(k),iste,yaz(k,kayit){onbellek.set(k,kayit),yay([k])},
-dinle(f){return dinleyici.add(f),()=>dinleyici.delete(f)},yenile(){yay([...new Set([...document.querySelectorAll("[data-avatar-kisi]")].map(el=>el.dataset.avatarKisi))])},temizle(){onbellek.clear(),bekleyen.
-clear()}}})();function avatarSecim(kimlik){const k=kimlik?Gorunus.al(kimlik):null,keyif=kimlik&&kimlik===Durum.v?.ozet?.character?.id?Durum.v.ozet.mood?.level??null:null,ek={...keyif?{keyif}:{},...k?.
-laurel?{defne:k.laurel}:{}};return k?.look?[k.look,{ulke:k.country_id,rutbe:k.rank,...ek}]:[null,ek]}if(typeof Durum=="object"&&typeof Durum.dinle=="function"){let sonKeyif=null;Durum.dinle("ozet",o=>{
-const k=o?.mood?.level??null;if(k===sonKeyif)return;sonKeyif=k;const kimlik=o?.character?.id;kimlik&&document.querySelector(`[data-avatar-kisi="${CSS.escape(kimlik)}"]`)&&Gorunus.yenile()})}function avatarKutu(ad,kimlik){
-return kimlik&&Gorunus.iste([kimlik]),`<span class="avatar" aria-hidden="true"${kimlik?` data-avatar-kisi="${esc(kimlik)}" data-avatar-ad="${esc(ad)}"`:""}>${avatarSvg(ad,...avatarSecim(kimlik))}</spa\
-n>`}function gorunusRenkleri(ad,kimlik){kimlik&&Gorunus.iste([kimlik]);const g=kimlik&&Gorunus.al(kimlik)?.look||varsayilanGorunus(ad),K=gorunusKurali();return[(K.skin??TEN)[g.ten]??TEN[0],(K.hairColor??
-SAC)[g.sacRenk]??SAC[0]]}const MAGAZA_YUVALAR={cerceve:"frame",zemin:"background",desen:"pattern",renk:"color",sapka:"hat",gozluk:"glasses",uniforma:"uniform",silah:"weapon",vurus:"hitfx",sevinc:"cele\
-bration"},MAGAZA_YUVA_AD={cerceve:\u00E7("\xC7er\xE7eve"),zemin:\u00E7("Zemin"),desen:\u00E7("Kuma\u015F deseni"),renk:\u00E7("Kuma\u015F rengi"),sapka:\u00E7("\u015Eapka"),gozluk:\u00E7("G\xF6zl\xFCk"),
-uniforma:\u00E7("\xDCniforma"),silah:\u00E7("Silah g\xF6r\xFCn\xFCm\xFC"),vurus:\u00E7("Vuru\u015F efekti"),sevinc:\u00E7("Gol sevinci")},MAGAZA_TURLER=[["cerceve","frame",\u00E7("\xC7er\xE7eve"),"cir\
-cle"],["zemin","background",\u00E7("Zemin"),"image"],["desen","pattern",\u00E7("Kuma\u015F deseni"),"swatch-book"],["renk","color",\u00E7("Kuma\u015F rengi"),"palette"],["sapka","hat",\u00E7("\u015Eapka"),
-"graduation-cap"],["gozluk","glasses",\u00E7("G\xF6zl\xFCk"),"glasses"],["uniforma","uniform",\u00E7("\xDCniforma"),"shield-half"],["silah","weapon",\u00E7("Silah g\xF6r\xFCn\xFCm\xFC"),"crosshair"],[
-"vurus","hitfx",\u00E7("Vuru\u015F efekti"),"sparkles"],["sahne","stage",\u00E7("Sahne temas\u0131"),"drama"],["amblem","emblem",\u00E7("Amblem"),"flag"],["cikartma","sticker",\u00E7("\xC7\u0131kartma"),
-"sticker"],["esya","furniture",\u00E7("Ev e\u015Fyas\u0131"),"sofa"],["sevinc","celebration",\u00E7("Gol sevinci"),"party-popper"],["forma","kit",\u00E7("Forma deseni"),"shirt","kulup"],["arma","crest",
-\u00E7("Arma s\xFCs\xFC"),"shield","kulup"],["isik","lights",\u00E7("I\u015F\u0131k \u015Fovu"),"lightbulb","kulup"],["dekor","decor",\u00E7("Stadyum dekoru"),"flag-triangle-right","kulup"],["koreo","\
-tifo",\u00E7("Trib\xFCn koreografisi"),"users-round","kulup"],["mars","anthem",\u00E7("Kul\xFCp mar\u015F\u0131"),"eighth-notes","kulup"]],MAGAZA_KULUP_HEDEF={kit:"club_kit",crest:"club_crest",lights:"\
-club_lights",decor:"club_decor",tifo:"club_tifo",anthem:"club_anthem"},MAGAZA_NADIRLIK={common:\u00E7("S\u0131radan"),rare:\u00E7("Nadir"),epic:\u00E7("Destans\u0131")},magazaKurali=()=>Durum.v.kurallar?.
-data?.store??null,magazaUrun=id=>id?magazaKurali()?.products?.find(p=>p.id===id)??null:null;let magazaKuralIstendi=!1;function magazaKuralIste(){magazaKuralIstendi||typeof Durum>"u"||!Sunucu.Giris?.oturum||
-(magazaKuralIstendi=!0,Durum.kurallar().then(()=>Gorunus.yenile()).catch(()=>{magazaKuralIstendi=!1}))}function gorunusUrunleri(g){const u=g?.urunler,out={};if(!u||typeof u!="object")return out;if(!magazaKurali())
-return Object.values(u).some(x=>typeof x=="string")&&magazaKuralIste(),out;for(const[k,tur]of Object.entries(MAGAZA_YUVALAR)){const p=typeof u[k]=="string"?magazaUrun(u[k]):null;p&&p.kind===tur&&(out[k]=
-p)}return out}const magazaRenk=(r,i=0)=>Array.isArray(r)?r[Math.min(i,r.length-1)]:r;function magazaDolgu(renk,id,aci=90){if(!Array.isArray(renk))return{defs:"",fill:renk};const n=renk.length;return{defs:`\
-<linearGradient id="${id}" gradientTransform="rotate(${aci} .5 .5)">${renk.map((r,i)=>`<stop offset="${n===1?0:Math.round(i/(n-1)*100)}%" stop-color="${r}"/>`).join("")}</linearGradient>`,fill:`url(#${id}\
-)`}}function magazaZeminDeseni(tur,renk){const c=renk??"rgba(255,255,255,.38)";switch(tur){case"dots":return Array.from({length:36},(_,i)=>`<circle cx="${i%6*11+5+Math.floor(i/6)%2*5}" cy="${Math.floor(
-i/6)*11+4}" r="1.5" fill="${c}"/>`).join("");case"stripes":return`<g stroke="${c}" stroke-width="3.2" opacity=".85">${Array.from({length:12},(_,i)=>`<path d="M${i*12-40} 70L${i*12+30} 0"/>`).join("")}\
-</g>`;case"stars":return[[8,10,1.6],[22,6,1],[40,12,1.4],[55,8,1],[12,30,1],[50,28,1.6],[6,50,1.2],[58,46,1],[30,56,1.1],[44,58,1.4],[18,44,1.3],[36,34,.9]].map(([x,y,r])=>`<path d="M${x} ${y-r*2.2}l${r*
-.7} ${r*1.5}l${r*1.5} ${r*.7}l${-r*1.5} ${r*.7}l${-r*.7} ${r*1.5}l${-r*.7} ${-r*1.5}l${-r*1.5} ${-r*.7}l${r*1.5} ${-r*.7}z" fill="${c}"/>`).join("");case"rays":return`<g fill="${c}" opacity=".55">${Array.
-from({length:8},(_,i)=>`<path d="M32 32L${(32+60*Math.cos((i*45-8)*Math.PI/180)).toFixed(1)} ${(32+60*Math.sin((i*45-8)*Math.PI/180)).toFixed(1)}L${(32+60*Math.cos((i*45+8)*Math.PI/180)).toFixed(1)} ${(32+
-60*Math.sin((i*45+8)*Math.PI/180)).toFixed(1)}z"/>`).join("")}</g>`;case"grid":return`<g stroke="${c}" stroke-width="1" opacity=".7">${Array.from({length:8},(_,i)=>`<path d="M${i*9+1} 0v64M0 ${i*9+1}h\
-64"/>`).join("")}</g>`;case"waves":return`<g fill="none" stroke="${c}" stroke-width="1.6" opacity=".8">${Array.from({length:6},(_,i)=>`<path d="M-4 ${i*11+6}q6-4 12 0t12 0t12 0t12 0t12 0t12 0"/>`).join(
-"")}</g>`;default:return""}}function magazaKumasDeseni(tur,id,renk){const c=renk??"rgba(255,255,255,.42)",ic={stripes:`<rect x="0" y="0" width="3" height="8" fill="${c}"/>`,checks:`<rect x="0" y="0" w\
-idth="4" height="4" fill="${c}"/><rect x="4" y="4" width="4" height="4" fill="${c}"/>`,dots:`<circle cx="2" cy="2" r="1.3" fill="${c}"/><circle cx="6" cy="6" r="1.3" fill="${c}"/>`,camo:`<path d="M0 2\
-q3-3 5 0t3 3q-3 3-5 0T0 2z" fill="${renk??"rgba(60,80,40,.55)"}" opacity="${renk?".7":"1"}"/><path d="M4 6q2-2 4 0v2H3z" fill="${renk??"rgba(120,100,60,.5)"}" opacity="${renk?".45":"1"}"/>`,stars:`<pa\
-th d="M4 .8l.9 2 2.1.2-1.6 1.4.5 2.1L4 5.4 2.1 6.5l.5-2.1L1 3l2.1-.2z" fill="${c}"/>`,flowers:`<g fill="${c}"><circle cx="4" cy="2.2" r="1"/><circle cx="4" cy="5.8" r="1"/><circle cx="2.2" cy="4" r="1\
-"/><circle cx="5.8" cy="4" r="1"/></g><circle cx="4" cy="4" r=".9" fill="#F2C27B"/>`,zigzag:`<path d="M0 6l2-4 2 4 2-4 2 4" fill="none" stroke="${c}" stroke-width="1.1"/>`,herringbone:'<path d="M0 0l4\
- 4M4 4l4-4M0 8l4-4" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1.1"/>',tracksuit:`<rect x="1.2" y="0" width="1.1" height="8" fill="${c}"/><rect x="3.4" y="0" width="1.1" height="8" fill="${c}"\
-/>`}[tur]??"";return`<pattern id="${id}" width="8" height="8" patternUnits="userSpaceOnUse">${ic}</pattern>`}function magazaSapkaSvg(p){const c=p.data.color??"#C65A3B",c2=p.data.color2??"rgba(0,0,0,.2\
-2)",koyu="rgba(0,0,0,.22)";switch(p.data.shape){case"ponpon":case"bere":return`${p.data.shape==="ponpon"?`<circle cx="32" cy="12.8" r="3.1" fill="${c2}"/>`:""}
+Santiago",renk:"#D9A441",iso2:"CL"}},bolgeler:{"RUS-01":{ad:"Moskova",en:"Moskva",ulke:"RUS",e:[1177.2,134.2]},"RUS-02":{ad:"Kam\xE7atka Kray\u0131",en:"Kamchatka",ulke:"RUS",e:[1746.2,148.2]},"RUS-03":{
+ad:"\u0130rkutsk Oblast\u0131",en:"Irkutsk",ulke:"RUS",e:[1488.8,148.2]},"RUS-04":{ad:"Yamalo-Nenets \xD6zerk Okrugu",en:"Yamal-Nenets",ulke:"RUS",e:[1342.8,91.8]},"RUS-05":{ad:"Habarovsk Kray\u0131",
+en:"Khabarovsk",ulke:"RUS",e:[1651.8,178.8]},"RUS-06":{ad:"Krasnoyarsk Kray\u0131",en:"Krasnoyarsk",ulke:"RUS",e:[1414.8,89.8]},"RUS-07":{ad:"Komi Cumhuriyeti",en:"Komi",ulke:"RUS",e:[1253.5,141.2]},"\
+RUS-08":{ad:"Yakutistan",en:"Sakha (Yakutia)",ulke:"RUS",e:[1577.2,101.2]},"RUS-09":{ad:"Hant\u0131-Mansi \xD6zerk Okrugu",en:"Khanty-Mansiy",ulke:"RUS",e:[1351.5,133.8]},"RUS-10":{ad:"\xC7ukotka \xD6zerk O\
+krugu",en:"Chukchi Autonomous Okrug",ulke:"RUS",e:[1749.8,85.5]},"RUS-11":{ad:"Magadan Oblast\u0131",en:"Maga Buryatdan",ulke:"RUS",e:[1684.8,107.5]},"RUS-12":{ad:"Zabaykalskiy Kray\u0131",en:"Chita",
+ulke:"RUS",e:[1538.8,165.5]},"CAN-01":{ad:"Ontario",ulke:"CAN",e:[582.8,174.5]},"CAN-02":{ad:"Yukon",ulke:"CAN",e:[402.2,103.8]},"CAN-03":{ad:"Newfoundland ve Labrador",en:"Newfoundland and Labrador",
+ulke:"CAN",e:[703.2,162.2]},"CAN-04":{ad:"Nunavut",ulke:"CAN",e:[569.2,97.5]},"CAN-05":{ad:"Saskatchewan",ulke:"CAN",e:[491.5,171.8]},"CAN-06":{ad:"Kuzeybat\u0131 Topraklar\u0131",en:"Northwest Territ\
+ories",ulke:"CAN",e:[460.2,95.8]},"CAN-07":{ad:"Qu\xE9bec",ulke:"CAN",e:[653.5,168.2]},"CAN-08":{ad:"Britanya Kolumbiyas\u0131",en:"British Columbia",ulke:"CAN",e:[406.8,163.8]},"CAN-09":{ad:"Manitoba",
+ulke:"CAN",e:[547.5,142.5]},"CAN-10":{ad:"Alberta",ulke:"CAN",e:[453.8,160.2]},"USA-01":{ad:"Washington",en:"District of Columbia",ulke:"USA",e:[588.8,250.8]},"USA-02":{ad:"Kaliforniya",en:"California",
+ulke:"USA",e:[388.8,255.8]},"USA-03":{ad:"Wyoming",ulke:"USA",e:[492.5,228.2]},"USA-04":{ad:"Teksas",en:"Texas",ulke:"USA",e:[477.2,303.8]},"USA-05":{ad:"Alaska",ulke:"USA",e:[347.5,91.2]},"USA-06":{ad:"\
+New Mexico",ulke:"USA",e:[449.8,258.5]},"USA-07":{ad:"Oregon",ulke:"USA",e:[395.5,219.2]},"USA-08":{ad:"Kansas",ulke:"USA",e:[547.8,252.5]},"USA-09":{ad:"Oklahoma",ulke:"USA",e:[563.2,291.8]},"USA-10":{
+ad:"Montana",ulke:"USA",e:[435.8,204.2]},"USA-11":{ad:"Michigan",ulke:"USA",e:[538.5,212.5]},"CHN-01":{ad:"Pekin",en:"Beijing",ulke:"CHN",e:[1590.8,256.2]},"CHN-02":{ad:"Sincan Uygur \xD6zerk B\xF6lgesi",
+en:"Xinjiang",ulke:"CHN",e:[1438.2,241.2]},"CHN-03":{ad:"Hunan",ulke:"CHN",e:[1611.2,331.5]},"CHN-04":{ad:"Si\xE7uan",en:"Sichuan",ulke:"CHN",e:[1543.5,308.5]},"CHN-05":{ad:"Tibet \xD6zerk B\xF6lgesi",
+en:"Xizang",ulke:"CHN",e:[1451.5,295.2]},"CHN-06":{ad:"Heilongjiang",ulke:"CHN",e:[1633.2,210.2]},"CHN-07":{ad:"Henan",ulke:"CHN",e:[1622.8,295.5]},"CHN-08":{ad:"\xC7inghay",en:"Qinghai",ulke:"CHN",e:[
+1497.2,267.5]},"CHN-09":{ad:"Y\xFCnnan",en:"Yunnan",ulke:"CHN",e:[1572.8,340.2]},"CHN-10":{ad:"\u015Eensi",en:"Shaanxi",ulke:"CHN",e:[1583.2,303.5]},"CHN-11":{ad:"\u0130\xE7 Mo\u011Folistan",en:"Inner\
+ Mongol",ulke:"CHN",e:[1590.5,218.2]},"BRA-01":{ad:"Federal B\xF6lge",en:"Distrito Federal",ulke:"BRA",e:[755.8,620.8]},"BRA-02":{ad:"Roraima",ulke:"BRA",e:[658.2,487.2]},"BRA-03":{ad:"Rio Grande do S\
+ul",ulke:"BRA",e:[725.5,683.2]},"BRA-04":{ad:"Acre",ulke:"BRA",e:[616.8,568.8]},"BRA-05":{ad:"Maranh\xE3o",ulke:"BRA",e:[753.5,545.5]},"BRA-06":{ad:"Par\xE1",ulke:"BRA",e:[705.2,539.8]},"BRA-07":{ad:"\
+Mato Grosso",ulke:"BRA",e:[694.8,591.2]},"BRA-08":{ad:"Mato Grosso do Sul",ulke:"BRA",e:[698.8,633.8]},"BRA-09":{ad:"Amazonas",ulke:"BRA",e:[638.2,532.8]},"BRA-10":{ad:"Rond\xF4nia",ulke:"BRA",e:[649.8,
+574.8]},"BRA-11":{ad:"Bahia",ulke:"BRA",e:[769.8,584.2]},"AUS-01":{ad:"Avustralya Ba\u015Fkent B\xF6lgesi",en:"Australian Capital Territory",ulke:"AUS",e:[1777.2,734.8]},"AUS-02":{ad:"Bat\u0131 Avustralya",
+en:"Western Australia",ulke:"AUS",e:[1652.8,675.5]},"AUS-03":{ad:"Queensland",ulke:"AUS",e:[1781.5,652.5]},"AUS-04":{ad:"G\xFCney Avustralya",en:"South Australia",ulke:"AUS",e:[1719.5,695.2]},"AUS-05":{
+ad:"Kuzey Topraklar\u0131",en:"Northern Territory",ulke:"AUS",e:[1730.2,621.8]},"AUS-06":{ad:"Victoria",ulke:"AUS",e:[1743.5,741.5]},"AUS-07":{ad:"Yeni G\xFCney Galler",en:"New South Wales",ulke:"AUS",
+e:[1767.5,713.5]},"IND-01":{ad:"Delhi",ulke:"IND",e:[1398.8,330.2]},"IND-02":{ad:"Tamil Nadu",ulke:"IND",e:[1429.8,437.8]},"IND-03":{ad:"Aruna\xE7hal Pradesh",en:"Arunachal Pradesh",ulke:"IND",e:[1503.8,
+329.2]},"IND-04":{ad:"Orissa",en:"Odisha",ulke:"IND",e:[1450.8,372.2]},"IND-05":{ad:"Gucerat",en:"Gujarat",ulke:"IND",e:[1389.5,355.2]},"IND-06":{ad:"Karnataka",ulke:"IND",e:[1421.8,413.8]},"IND-07":{
+ad:"Madhya Prade\u015F",en:"Madhya Pradesh",ulke:"IND",e:[1432.2,355.8]},"IND-08":{ad:"Uttar Prade\u015F",en:"Uttar Pradesh",ulke:"IND",e:[1463.5,346.8]},"IND-09":{ad:"Mahara\u015Ftra",en:"Maharashtra",
+ulke:"IND",e:[1410.8,381.2]},"ARG-01":{ad:"Buenos Aires",en:"Ciudad de Buenos Aires",ulke:"ARG",e:[686.2,741.2]},"ARG-02":{ad:"Santa Cruz",ulke:"ARG",e:[657.5,815.5]},"ARG-03":{ad:"Salta eyaleti",en:"\
+Salta",ulke:"ARG",e:[649.2,662.2]},"ARG-04":{ad:"R\xEDo Negro eyaleti",en:"R\xEDo Negro",ulke:"ARG",e:[654.5,760.5]},"ARG-05":{ad:"Santa Fe eyaleti",en:"Santa Fe",ulke:"ARG",e:[681.8,697.5]},"ARG-06":{
+ad:"Catamarca eyaleti",en:"Catamarca",ulke:"ARG",e:[640.8,695.8]},"ARG-07":{ad:"Santiago del Estero eyaleti",en:"Santiago del Estero",ulke:"ARG",e:[671.8,673.5]},"ARG-08":{ad:"Chubut eyaleti",en:"Chub\
+ut",ulke:"ARG",e:[655.5,788.8]},"ARG-09":{ad:"C\xF3rdoba eyaleti",en:"C\xF3rdoba",ulke:"ARG",e:[648.8,724.8]},"KAZ-01":{ad:"Nursultan",en:"Astana",ulke:"KAZ",e:[1329.2,167.8]},"KAZ-02":{ad:"Bat\u0131 Kazak\
+istan Eyaleti",en:"West Kazakhstan",ulke:"KAZ",e:[1249.5,189.8]},"KAZ-03":{ad:"Almat\u0131 Eyaleti",en:"Almaty",ulke:"KAZ",e:[1388.8,215.5]},"KAZ-04":{ad:"K\u0131z\u0131lorda Eyaleti",en:"Qyzylorda",ulke:"\
+KAZ",e:[1315.5,214.2]},"KAZ-05":{ad:"Mangistav Eyaleti",en:"Mangghystau",ulke:"KAZ",e:[1271.5,221.5]},"KAZ-06":{ad:"Karagand\u0131 Eyaleti",en:"Qaraghandy",ulke:"KAZ",e:[1355.2,195.2]},"KAZ-07":{ad:"J\
+amb\u0131l Eyaleti",en:"Zhambyl",ulke:"KAZ",e:[1354.2,220.5]},"KAZ-08":{ad:"Akt\xF6be eyaleti",en:"Aqt\xF6be",ulke:"KAZ",e:[1287.2,194.8]},"KAZ-09":{ad:"Do\u011Fu Kazakistan Eyaleti",en:"East Kazakhst\
+an",ulke:"KAZ",e:[1401.2,191.8]},"COD-01":{ad:"Kin\u015Fasa",en:"Kinshasa City",ulke:"COD",e:[1086.2,538.5]},"COD-02":{ad:"G\xFCney Kivu",en:"Sud-Kivu",ulke:"COD",e:[1155.8,525.8]},"COD-03":{ad:"Katan\
+ga",ulke:"COD",e:[1143.2,564.5]},"COD-04":{ad:"Equateur",en:"\xC9quateur",ulke:"COD",e:[1112.2,499.5]},"COD-05":{ad:"Bat\u0131 Kasai",en:"Kasa\xEF-Occidental",ulke:"COD",e:[1119.8,540.5]},"COD-06":{ad:"\
+Do\u011Fu B\xF6lgesi",en:"Orientale",ulke:"COD",e:[1146.2,488.5]},"COD-07":{ad:"Maniema",ulke:"COD",e:[1144.2,528.8]},"COD-08":{ad:"Do\u011Fu Kasai",en:"Kasa\xEF-Oriental",ulke:"COD",e:[1130.5,525.5]},
+"COD-09":{ad:"Bandundu",ulke:"COD",e:[1101.8,525.8]},"DZA-01":{ad:"Cezayir Vilayeti",en:"Alger",ulke:"DZA",e:[1030.5,279.2]},"DZA-02":{ad:"Tamanrasset Vilayeti",en:"Tamanghasset",ulke:"DZA",e:[1023.8,
+353.2]},"DZA-03":{ad:"Tinduf Vilayeti",en:"Tindouf",ulke:"DZA",e:[962.8,325.2]},"DZA-04":{ad:"Vurkla Vilayeti",en:"Ouargla",ulke:"DZA",e:[1032.2,308.5]},"DZA-05":{ad:"Adrar Vilayeti",en:"Adrar",ulke:"\
+DZA",e:[992.2,341.5]},"DZA-06":{ad:"Niame Vilayeti",en:"Na\xE2ma",ulke:"DZA",e:[1005.5,277.2]},"DZA-07":{ad:"\u0130lizi Vilayeti",en:"Illizi",ulke:"DZA",e:[1042.5,331.2]},"DZA-08":{ad:"Be\u015Far Vilayeti",
+en:"B\xE9char",ulke:"DZA",e:[990.2,309.2]},"DZA-09":{ad:"Gardaye Vilayeti",en:"Gharda\xEFa",ulke:"DZA",e:[1008.8,293.5]},"MEX-01":{ad:"Meksiko",en:"Distrito Federal",ulke:"MEX",e:[463.2,378.2]},"MEX-0\
+2":{ad:"Sonora",ulke:"MEX",e:[411.2,313.5]},"MEX-03":{ad:"Campeche",ulke:"MEX",e:[514.5,376.2]},"MEX-04":{ad:"Chihuahua",ulke:"MEX",e:[433.2,320.2]},"MEX-05":{ad:"Durango",ulke:"MEX",e:[429.8,347.8]},
+"MEX-06":{ad:"Oaxaca",ulke:"MEX",e:[469.2,396.5]},"MEX-07":{ad:"Jalisco",ulke:"MEX",e:[435.2,375.5]},"MEX-08":{ad:"Tamaulipas",ulke:"MEX",e:[462.5,352.5]},"SAU-01":{ad:"Riyad B\xF6lgesi",en:"Ar Riyad",
+ulke:"SAU",e:[1248.2,355.8]},"SAU-02":{ad:"Cevf B\xF6lgesi",en:"Al Jawf",ulke:"SAU",e:[1201.2,320.5]},"SAU-03":{ad:"Medine B\xF6lgesi",en:"Al Madinah",ulke:"SAU",e:[1218.2,349.2]},"SAU-04":{ad:"Necran\
+ B\xF6lgesi",en:"Najran",ulke:"SAU",e:[1235.2,382.2]},"SAU-05":{ad:"Do\u011Fu B\xF6lgesi",en:"Ash Sharqiyah",ulke:"SAU",e:[1275.5,369.2]},"SAU-06":{ad:"Mekke B\xF6lgesi",en:"Makkah",ulke:"SAU",e:[1222.5,
+367.8]},"SAU-07":{ad:"Hail B\xF6lgesi",en:"Ha'il",ulke:"SAU",e:[1225.8,331.2]},"SAU-08":{ad:"Kuzey S\u0131n\u0131r B\xF6lgesi",en:"Al Hudud ash Shamaliyah",ulke:"SAU",e:[1226.8,314.8]},"IDN-01":{ad:"C\
+akarta",en:"Jakarta Raya",ulke:"IDN",e:[1616.5,553.5]},"IDN-02":{ad:"Papua",ulke:"IDN",e:[1771.2,530.5]},"IDN-03":{ad:"Kuzey Sumatra",en:"Sumatera Utara",ulke:"IDN",e:[1548.2,487.2]},"IDN-04":{ad:"Do\u011F\
+u Kalimantan",en:"Kalimantan Timur",ulke:"IDN",e:[1646.5,495.5]},"IDN-05":{ad:"Riau",ulke:"IDN",e:[1571.8,519.8]},"IDN-06":{ad:"Bat\u0131 Kalimantan",en:"Kalimantan Barat",ulke:"IDN",e:[1614.8,507.2]},
+"IDN-07":{ad:"Bat\u0131 Papua",en:"Papua Barat",ulke:"IDN",e:[1738.2,514.5]},"IDN-08":{ad:"Orta Kalimantan",en:"Kalimantan Tengah",ulke:"IDN",e:[1633.5,517.2]},"SDN-01":{ad:"Hartum Eyaleti",en:"Kharto\
+um",ulke:"SDN",e:[1184.8,394.2]},"SDN-02":{ad:"G\xFCney Darfur Eyaleti",en:"Southern Darfur",ulke:"SDN",e:[1135.5,430.8]},"SDN-03":{ad:"Kuzey Darfur Eyaleti",en:"North Darfur",ulke:"SDN",e:[1140.8,385.8]},
+"SDN-04":{ad:"El Kadarif Eyaleti",en:"Gedarif",ulke:"SDN",e:[1189.5,422.2]},"SDN-05":{ad:"K\u0131z\u0131l Deniz Eyaleti",en:"Red Sea",ulke:"SDN",e:[1193.2,375.5]},"SDN-06":{ad:"Kuzey Eyaleti",en:"Nort\
+hern",ulke:"SDN",e:[1162.8,376.5]},"SDN-07":{ad:"G\xFCney Kordofan Eyaleti",en:"South Kordufan",ulke:"SDN",e:[1170.2,433.5]},"SDN-08":{ad:"Kuzey Kordofan Eyaleti",en:"North Kordufan",ulke:"SDN",e:[1161.8,
+410.2]},"LBY-01":{ad:"Tajura' wa an Nawahi al Arba",ulke:"LBY",e:[1073.8,305.5]},"LBY-02":{ad:"El Kufra ili",en:"Al Kufrah",ulke:"LBY",e:[1119.5,350.8]},"LBY-03":{ad:"El Butnan ili",en:"Al Butnan",ulke:"\
+LBY",e:[1113.2,299.5]},"LBY-04":{ad:"Ash Shati'",ulke:"LBY",e:[1062.2,330.8]},"LBY-05":{ad:"El Cufra ili",en:"Al Jufrah",ulke:"LBY",e:[1094.8,328.2]},"LBY-06":{ad:"Murzuq",ulke:"LBY",e:[1078.2,346.5]},
+"LBY-07":{ad:"Ajdabiya",ulke:"LBY",e:[1111.8,316.8]},"LBY-08":{ad:"Ghadamis",ulke:"LBY",e:[1056.5,313.2]},"IRN-01":{ad:"Tahran Eyaleti",en:"Tehran",ulke:"IRN",e:[1280.8,284.8]},"IRN-02":{ad:"Sistan ve\
+ Belucistan Eyaleti",en:"Sistan and Baluchestan",ulke:"IRN",e:[1325.5,329.5]},"IRN-03":{ad:"Fars Eyaleti",en:"Fars",ulke:"IRN",e:[1279.5,315.2]},"IRN-04":{ad:"Do\u011Fu Azerbaycan Eyaleti",en:"East Az\
+arbaijan",ulke:"IRN",e:[1242.5,262.2]},"IRN-05":{ad:"Razavi Horasan Eyaleti",en:"Razavi Khorasan",ulke:"IRN",e:[1309.2,276.2]},"IRN-06":{ad:"Huzistan Eyaleti",en:"Khuzestan",ulke:"IRN",e:[1253.2,286.2]},
+"IRN-07":{ad:"Kirman Eyaleti",en:"Kerman",ulke:"IRN",e:[1303.8,312.8]},"IRN-08":{ad:"Yezd Eyaleti",en:"Yazd",ulke:"IRN",e:[1312.8,296.5]},"MNG-01":{ad:"Ulan Batur",en:"Ulaanbaatar",ulke:"MNG",e:[1524.8,
+195.2]},"MNG-02":{ad:"Hovd",ulke:"MNG",e:[1450.2,189.8]},"MNG-03":{ad:"H\xF6vsg\xF6l",ulke:"MNG",e:[1485.8,182.8]},"MNG-04":{ad:"Dornod",ulke:"MNG",e:[1565.5,206.2]},"MNG-05":{ad:"Gobi-Altay",en:"Govi\
+-Altay",ulke:"MNG",e:[1490.5,215.2]},"MNG-06":{ad:"Umnugobi",en:"\xD6mn\xF6govi",ulke:"MNG",e:[1524.8,225.8]},"MNG-07":{ad:"Dornogobi",en:"Dornogovi",ulke:"MNG",e:[1550.8,219.2]},"MNG-08":{ad:"\xD6v\xF6rhan\
+gay",ulke:"MNG",e:[1504.5,195.8]},"PER-01":{ad:"Lima ili",en:"Lima Province",ulke:"PER",e:[580.2,578.8]},"PER-02":{ad:"Puno B\xF6lgesi",en:"Puno",ulke:"PER",e:[612.5,610.5]},"PER-03":{ad:"Loreto B\xF6lge\
+si",en:"Loreto",ulke:"PER",e:[584.2,531.5]},"PER-04":{ad:"Madre de Dior B\xF6lgesi",en:"Madre de Dios",ulke:"PER",e:[604.8,585.2]},"PER-05":{ad:"Piura B\xF6lgesi",en:"Piura",ulke:"PER",e:[557.5,542.5]},
+"PER-06":{ad:"Ucayali B\xF6lgesi",en:"Ucayali",ulke:"PER",e:[595.8,570.5]},"PER-07":{ad:"San Mart\xEDn B\xF6lgesi",en:"San Mart\xEDn",ulke:"PER",e:[573.8,548.5]},"PER-08":{ad:"Ayacuch\u0131 B\xF6lgesi",
+en:"Ayacucho",ulke:"PER",e:[588.5,594.5]},"TCD-01":{ad:"N'Djamena",en:"Ville de N'Djamena",ulke:"TCD",e:[1089.8,428.5]},"TCD-02":{ad:"Tibesti B\xF6lgesi",en:"Tibesti",ulke:"TCD",e:[1090.8,365.8]},"TCD\
+-03":{ad:"Batha B\xF6lgesi",en:"Batha",ulke:"TCD",e:[1109.8,412.8]},"TCD-04":{ad:"Salamat B\xF6lgesi",en:"Salamat",ulke:"TCD",e:[1115.5,431.2]},"TCD-05":{ad:"Gu\xE9ra B\xF6lgesi",en:"Gu\xE9ra",ulke:"T\
+CD",e:[1102.5,440.2]},"TCD-06":{ad:"Borkou B\xF6lgesi",en:"Borkou",ulke:"TCD",e:[1099.5,391.2]},"TCD-07":{ad:"Kanem B\xF6lgesi",en:"Kanem",ulke:"TCD",e:[1087.5,408.2]},"TCD-08":{ad:"Ennedi B\xF6lgesi",
+en:"Ennedi",ulke:"TCD",e:[1121.2,386.2]},"MLI-01":{ad:"Bamako",ulke:"MLI",e:[959.2,410.2]},"MLI-02":{ad:"Kidal",ulke:"MLI",e:[1008.2,382.5]},"MLI-03":{ad:"Mopti",ulke:"MLI",e:[980.8,410.8]},"MLI-04":{
+ad:"Tombouctou B\xF6lgesi",en:"Timbuktu",ulke:"MLI",e:[980.2,366.5]},"MLI-05":{ad:"Gao Belediyesi",en:"Gao",ulke:"MLI",e:[1014.2,398.2]},"MLI-06":{ad:"Kayes B\xF6lgesi",en:"Kayes",ulke:"MLI",e:[943.2,
+415.5]},"MLI-07":{ad:"S\xE9gou B\xF6lgesi",en:"S\xE9gou",ulke:"MLI",e:[967.5,418.2]},"MLI-08":{ad:"Sikasso B\xF6lgesi",en:"Sikasso",ulke:"MLI",e:[959.2,433.2]},"AGO-01":{ad:"Luanda B\xF6lgesi",en:"Lua\
+nda",ulke:"AGO",e:[1082.2,574.2]},"AGO-02":{ad:"Cuando Cubango B\xF6lgesi",en:"Cuando Cubango",ulke:"AGO",e:[1108.2,610.5]},"AGO-03":{ad:"Lunda Norte B\xF6lgesi",en:"Lunda Norte",ulke:"AGO",e:[1110.5,
+566.2]},"AGO-04":{ad:"Hu\xEDla B\xF6lgesi",en:"Hu\xEDla",ulke:"AGO",e:[1080.5,605.8]},"AGO-05":{ad:"Bi\xE9 B\xF6lgesi",en:"Bi\xE9",ulke:"AGO",e:[1091.2,584.5]},"AGO-06":{ad:"Malanje B\xF6lgesi",en:"Ma\
+lanje",ulke:"AGO",e:[1092.5,561.5]},"AGO-07":{ad:"U\xEDge B\xF6lgesi",en:"U\xEDge",ulke:"AGO",e:[1084.2,549.8]},"AGO-08":{ad:"Moxico B\xF6lgesi",en:"Moxico",ulke:"AGO",e:[1111.8,588.2]},"ZAF-01":{ad:"\
+Gauteng",ulke:"ZAF",e:[1158.8,674.8]},"ZAF-02":{ad:"Bat\u0131 Kap",en:"Western Cape",ulke:"ZAF",e:[1102.8,721.2]},"ZAF-03":{ad:"Do\u011Fu Kap",en:"Eastern Cape",ulke:"ZAF",e:[1140.8,712.2]},"ZAF-04":{
+ad:"Kuzey Kap",en:"Northern Cape",ulke:"ZAF",e:[1116.8,696.2]},"ZAF-05":{ad:"KwaZulu-Natal",ulke:"ZAF",e:[1164.5,688.2]},"ZAF-06":{ad:"\xD6zg\xFCr Devlet",en:"Free State",ulke:"ZAF",e:[1139.2,691.2]},
+"ZAF-07":{ad:"Limpopo",ulke:"ZAF",e:[1159.2,657.8]},"ZAF-08":{ad:"Kuzeybat\u0131",en:"North West",ulke:"ZAF",e:[1135.2,677.8]},"NER-01":{ad:"Niamey",ulke:"NER",e:[1011.8,418.5]},"NER-02":{ad:"Diffa",ulke:"\
+NER",e:[1073.5,397.2]},"NER-03":{ad:"Maradi",ulke:"NER",e:[1040.2,415.8]},"NER-04":{ad:"Agadez",ulke:"NER",e:[1066.8,373.2]},"NER-05":{ad:"Zinder",ulke:"NER",e:[1054.2,410.2]},"NER-06":{ad:"Tahoua",ulke:"\
+NER",e:[1029.2,404.8]},"NER-07":{ad:"Dosso",ulke:"NER",e:[1018.8,421.2]},"NER-08":{ad:"Tillab\xE9ri",ulke:"NER",e:[1010.2,412.2]},"COL-01":{ad:"Bogot\xE1",en:"Bogota",ulke:"COL",e:[592.8,466.2]},"COL-\
+02":{ad:"Bol\xEDvar",ulke:"COL",e:[588.5,442.5]},"COL-03":{ad:"Amazonas Departmant\u0131",en:"Amazonas",ulke:"COL",e:[606.5,512.5]},"COL-04":{ad:"Vichada",ulke:"COL",e:[614.8,480.5]},"COL-05":{ad:"Ant\
+ioquia",ulke:"COL",e:[579.2,461.2]},"COL-06":{ad:"Caquet\xE1",ulke:"COL",e:[579.5,492.5]},"COL-07":{ad:"Meta",ulke:"COL",e:[596.2,487.5]},"ETH-01":{ad:"Addis Ababa",ulke:"ETH",e:[1222.2,456.5]},"ETH-0\
+2":{ad:"Amhara B\xF6lgesi",en:"Amhara",ulke:"ETH",e:[1209.5,424.5]},"ETH-03":{ad:"Somali B\xF6lgesi",en:"Somali",ulke:"ETH",e:[1245.2,460.5]},"ETH-04":{ad:"Gambela B\xF6lgesi",en:"Gambela Peoples",ulke:"\
+ETH",e:[1189.5,454.2]},"ETH-05":{ad:"Benishangul-Gumuz B\xF6lgesi",en:"Benshangul-Gumaz",ulke:"ETH",e:[1196.8,437.8]},"ETH-06":{ad:"Afar B\xF6lgesi",en:"Afar",ulke:"ETH",e:[1225.8,425.8]},"ETH-07":{ad:"\
+G\xFCney Uluslar\u0131 ve Halklar\u0131 B\xF6lgesi",en:"Southern Nations, Nationalities and Peoples",ulke:"ETH",e:[1202.8,465.5]},"BOL-01":{ad:"La Paz Departman\u0131",en:"La Paz",ulke:"BOL",e:[625.8,
+605.8]},"BOL-02":{ad:"Chuquisaca Departman\u0131",en:"Chuquisaca",ulke:"BOL",e:[650.5,641.8]},"BOL-03":{ad:"Santa Cruz Departman\u0131",en:"Santa Cruz",ulke:"BOL",e:[660.8,618.8]},"BOL-04":{ad:"Pando \
+Departman\u0131",en:"Pando",ulke:"BOL",e:[627.5,578.2]},"BOL-05":{ad:"Cochabamba Departman\u0131",en:"Cochabamba",ulke:"BOL",e:[629.8,625.5]},"BOL-06":{ad:"Beni Departman\u0131",en:"El Beni",ulke:"BOL",
+e:[639.5,594.8]},"BOL-07":{ad:"Potosi Departman\u0131",en:"Potos\xED",ulke:"BOL",e:[635.8,639.2]},"MRT-01":{ad:"Nuak\u015Fot",en:"Nouakchott",ulke:"MRT",e:[923.8,390.8]},"MRT-02":{ad:"Tiris Zemmour B\xF6\
+lgesi",en:"Tiris Zemmour",ulke:"MRT",e:[946.2,348.8]},"MRT-03":{ad:"Hodh Ech Chargui B\xF6lgesi",en:"Hodh ech Chargui",ulke:"MRT",e:[960.5,390.2]},"MRT-04":{ad:"Hodh El Garbi",en:"Hodh el Gharbi",ulke:"\
+MRT",e:[942.2,399.2]},"MRT-05":{ad:"Adrar B\xF6lgesi",en:"Adrar",ulke:"MRT",e:[950.5,370.2]},"MRT-06":{ad:"Ichiri B\xF6lgesi",en:"Inchiri",ulke:"MRT",e:[917.2,373.5]},"MRT-07":{ad:"Tagant B\xF6lgesi",
+en:"Tagant",ulke:"MRT",e:[946.5,385.2]},"EGY-01":{ad:"Kahire",en:"Al Qahirah",ulke:"EGY",e:[1161.5,307.5]},"EGY-02":{ad:"Asvan",en:"Aswan",ulke:"EGY",e:[1177.8,353.2]},"EGY-03":{ad:"Matruh",ulke:"EGY",
+e:[1142.5,313.2]},"EGY-04":{ad:"Yeni Vadi",en:"Al Wadi at Jadid",ulke:"EGY",e:[1153.2,345.5]},"EGY-05":{ad:"Minye",en:"Al Minya",ulke:"EGY",e:[1161.5,323.5]},"EGY-06":{ad:"G\xFCney Sina",en:"Janub Sin\
+a'",ulke:"EGY",e:[1179.8,314.2]},"EGY-07":{ad:"K\u0131z\u0131ldeniz",en:"Al Bahr al Ahmar",ulke:"EGY",e:[1186.2,354.5]},"PAK-01":{ad:"\u0130slamabad Ba\u015Fkent B\xF6lgesi",en:"F.C.T.",ulke:"PAK",e:[
+1380.5,280.2]},"PAK-02":{ad:"Sind Eyaleti",en:"Sind",ulke:"PAK",e:[1370.2,341.2]},"PAK-03":{ad:"Ladakh",ulke:"PAK",e:[1396.2,288.5]},"PAK-04":{ad:"Belucistan Eyaleti",en:"Baluchistan",ulke:"PAK",e:[1349.2,
+325.5]},"PAK-05":{ad:"Pencap Eyaleti",en:"Punjab",ulke:"PAK",e:[1384.8,303.2]},"PAK-06":{ad:"Gilgit-Baltistan",en:"Northern Areas",ulke:"PAK",e:[1389.8,273.5]},"PAK-07":{ad:"Federal y\xF6netilen kabile a\
+lanlar\u0131",en:"F.A.T.A.",ulke:"PAK",e:[1368.8,295.2]},"TZA-01":{ad:"Dar es Salaam B\xF6lgesi",en:"Dar-Es-Salaam",ulke:"TZA",e:[1210.5,550.2]},"TZA-02":{ad:"Tabora",ulke:"TZA",e:[1181.5,531.8]},"TZA\
+-03":{ad:"Mbeya B\xF6lgesi",en:"Mbeya",ulke:"TZA",e:[1182.2,558.8]},"TZA-04":{ad:"Lindi",ulke:"TZA",e:[1212.5,569.8]},"TZA-05":{ad:"Manyara B\xF6lgesi",en:"Manyara",ulke:"TZA",e:[1194.5,523.5]},"TZA-0\
+6":{ad:"Katavi B\xF6lgesi",en:"Katavi",ulke:"TZA",e:[1168.8,544.8]},"TZA-07":{ad:"Singida B\xF6lgesi",en:"Singida",ulke:"TZA",e:[1195.8,546.8]},"VEN-01":{ad:"Ba\u015Fkent B\xF6lgesi",en:"Distrito Capi\
+tal",ulke:"VEN",e:[628.8,445.2]},"VEN-02":{ad:"Amazonas",ulke:"VEN",e:[634.8,485.8]},"VEN-03":{ad:"Zulia",ulke:"VEN",e:[612.8,447.5]},"VEN-04":{ad:"Deltra Amacuro",en:"Delta Amacuro",ulke:"VEN",e:[655.2,
+446.8]},"VEN-05":{ad:"Bolivar",en:"Bol\xEDvar",ulke:"VEN",e:[648.8,464.8]},"VEN-06":{ad:"Apure",ulke:"VEN",e:[619.8,460.2]},"VEN-07":{ad:"Anzoategui",en:"Anzo\xE1tegui",ulke:"VEN",e:[644.8,449.8]},"NG\
+A-01":{ad:"Federal Ba\u015Fkent B\xF6lgesi",en:"Federal Capital Territory",ulke:"NGA",e:[1036.2,442.2]},"NGA-02":{ad:"Borno Eyaleti",en:"Borno",ulke:"NGA",e:[1068.5,429.2]},"NGA-03":{ad:"Kebbi Eyaleti",
+en:"Kebbi",ulke:"NGA",e:[1030.5,424.8]},"NGA-04":{ad:"Kogi Eyaleti",en:"Kogi",ulke:"NGA",e:[1034.5,464.8]},"NGA-05":{ad:"Taraba Eyaleti",en:"Taraba",ulke:"NGA",e:[1061.2,453.8]},"NGA-06":{ad:"Kwara Ey\
+aleti",en:"Kwara",ulke:"NGA",e:[1022.5,453.2]},"NGA-07":{ad:"Bauchi Eyaleti",en:"Bauchi",ulke:"NGA",e:[1052.8,430.2]},"NAM-01":{ad:"Khomas",ulke:"NAM",e:[1093.2,662.2]},"NAM-02":{ad:"Caprivi",ulke:"NA\
+M",e:[1129.5,620.8]},"NAM-03":{ad:"Oshikoto",ulke:"NAM",e:[1089.2,623.5]},"NAM-04":{ad:"Karas",ulke:"NAM",e:[1097.8,679.8]},"NAM-05":{ad:"Kunene",ulke:"NAM",e:[1078.8,637.2]},"NAM-06":{ad:"Otjozondjup\
+a",ulke:"NAM",e:[1104.8,638.2]},"NAM-07":{ad:"Kavango",ulke:"NAM",e:[1108.8,624.5]},"MOZ-01":{ad:"Maputo",ulke:"MOZ",e:[1177.2,656.5]},"MOZ-02":{ad:"Nampula B\xF6lgesi",en:"Nampula",ulke:"MOZ",e:[1216.8,
+600.5]},"MOZ-03":{ad:"Sofala B\xF6lgesi",en:"Sofala",ulke:"MOZ",e:[1188.2,625.2]},"MOZ-04":{ad:"Tete B\xF6lgesi",en:"Tete",ulke:"MOZ",e:[1179.8,604.5]},"MOZ-05":{ad:"Inhambane B\xF6lgesi",en:"Inhamban\
+e",ulke:"MOZ",e:[1186.5,650.2]},"MOZ-06":{ad:"Zambezia B\xF6lgesi",en:"Zambezia",ulke:"MOZ",e:[1203.8,610.5]},"MOZ-07":{ad:"Niassa B\xF6lgesi",en:"Niassa",ulke:"MOZ",e:[1200.5,589.2]},"TUR-MAR":{ad:"M\
+armara",ulke:"TUR",e:[1144.8,248.2]},"TUR-EGE":{ad:"Ege",en:"Aegean",ulke:"TUR",e:[1147.2,259.5]},"TUR-AKD":{ad:"Akdeniz",en:"Mediterranean",ulke:"TUR",e:[1158.2,264.2]},"TUR-ICA":{ad:"\u0130\xE7 Anadolu",
+en:"Central Anatolia",ulke:"TUR",e:[1172.8,257.2]},"TUR-KAR":{ad:"Karadeniz",en:"Black Sea",ulke:"TUR",e:[1179.2,241.2]},"TUR-DAN":{ad:"Do\u011Fu Anadolu",en:"Eastern Anatolia",ulke:"TUR",e:[1217.2,249.8]},
+"TUR-GDA":{ad:"G\xFCneydo\u011Fu Anadolu",en:"Southeastern Anatolia",ulke:"TUR",e:[1205.2,263.2]},"ZMB-01":{ad:"Lusaka B\xF6lgesi",en:"Lusaka",ulke:"ZMB",e:[1158.2,601.2]},"ZMB-02":{ad:"Kuzey B\xF6lgesi",
+en:"Northern",ulke:"ZMB",e:[1165.5,571.2]},"ZMB-03":{ad:"Bat\u0131 B\xF6lgesi",en:"Western",ulke:"ZMB",e:[1129.5,605.5]},"ZMB-04":{ad:"Kuzeybat\u0131 B\xF6lgesi",en:"North-Western",ulke:"ZMB",e:[1139.8,
+588.8]},"ZMB-05":{ad:"Muchinga B\xF6lgesi",en:"Muchinga",ulke:"ZMB",e:[1176.2,581.8]},"ZMB-06":{ad:"G\xFCney B\xF6lgesi",en:"Southern",ulke:"ZMB",e:[1145.5,612.2]},"ZMB-07":{ad:"Copperbelt B\xF6lgesi",
+en:"Copperbelt",ulke:"ZMB",e:[1153.5,589.2]},"CHL-01":{ad:"Santiago Metropolitan b\xF6lgesi",en:"Regi\xF3n Metropolitana de Santiago",ulke:"CHL",e:[627.8,725.5]},"CHL-02":{ad:"Magallanes y la Ant\xE1rtic\
+a Chilena b\xF6lgesi",en:"Magallanes y Ant\xE1rtica Chilena",ulke:"CHL",e:[647.2,834.5]},"CHL-03":{ad:"Antofagasta b\xF6lgesi",en:"Antofagasta",ulke:"CHL",e:[626.2,656.8]},"CHL-04":{ad:"Los Lagos b\xF6lg\
+esi",en:"Los Lagos",ulke:"CHL",e:[627.8,766.5]},"CHL-05":{ad:"Atacama b\xF6lgesi",en:"Atacama",ulke:"CHL",e:[625.8,676.8]},"CHL-06":{ad:"Aysen b\xF6lgesi",en:"Ais\xE9n del General Carlos Ib\xE1\xF1ez del Campo",
+ulke:"CHL",e:[638.2,807.5]},"CHL-07":{ad:"Araucan\xEDa b\xF6lgesi",en:"La Araucan\xEDa",ulke:"CHL",e:[627.2,752.8]},"MAR-01":{ad:"Rabat-Sal\xE9-Zemmour-Zaer",en:"Rabat - Sal\xE9 - Zemmour - Zaer",ulke:"\
+MAR",e:[973.2,290.5]},"MAR-02":{ad:"Oued Ed-Dahab",en:"Oued el Dahab",ulke:"MAR",e:[917.5,359.2]},"MAR-03":{ad:"Guelmim-Es Semara",en:"Guelmim - Es-Semara",ulke:"MAR",e:[946.2,324.8]},"MAR-04":{ad:"Ba\
+t\u0131 Sahra",en:"Western Sahara",ulke:"MAR",e:[927.8,341.2]},"MAR-05":{ad:"Oriental",ulke:"MAR",e:[985.5,283.2]},"MAR-06":{ad:"Souss-Massa-Dra\xE2",en:"Souss - Massa - Dra\xE2",ulke:"MAR",e:[967.2,305.8]},
+"MAR-07":{ad:"Marrakech-Tensift-El Haouz",en:"Marrakech - Tensift - Al Haouz",ulke:"MAR",e:[959.8,296.2]},"MMR-01":{ad:"Yangon B\xF6lgesi",en:"Yangon",ulke:"MMR",e:[1524.5,395.2]},"MMR-02":{ad:"Kachin\
+ Eyaleti",en:"Kachin",ulke:"MMR",e:[1523.5,336.8]},"MMR-03":{ad:"Tanintharyi",ulke:"MMR",e:[1546.8,428.8]},"MMR-04":{ad:"Sagaing B\xF6lgesi",en:"Sagaing",ulke:"MMR",e:[1513.5,354.8]},"MMR-05":{ad:"Sha\
+n State",en:"Shan",ulke:"MMR",e:[1533.8,369.2]},"MMR-06":{ad:"Magway B\xF6lgesi",en:"Magway",ulke:"MMR",e:[1516.8,378.5]},"MMR-07":{ad:"Mandalay B\xF6lgesi",en:"Mandalay",ulke:"MMR",e:[1520.8,368.8]},
+"AFG-01":{ad:"K\xE2bil Vilayeti",en:"Kabul",ulke:"AFG",e:[1357.8,280.5]},"AFG-02":{ad:"Helmend Vilayeti",en:"Hilmand",ulke:"AFG",e:[1335.2,307.8]},"AFG-03":{ad:"Herat Vilayeti",en:"Hirat",ulke:"AFG",e:[
+1326.8,283.8]},"AFG-04":{ad:"Ferah Vilayeti",en:"Farah",ulke:"AFG",e:[1343.8,285.5]},"AFG-05":{ad:"Badah\u015Fan Vilayeti",en:"Badakhshan",ulke:"AFG",e:[1369.2,278.2]},"AFG-06":{ad:"Faryab Vilayeti",en:"\
+Faryab",ulke:"AFG",e:[1344.8,271.5]},"AFG-07":{ad:"Kandehar Vilayeti",en:"Kandahar",ulke:"AFG",e:[1348.2,302.2]},"SOM-01":{ad:"Banaadir",ulke:"SOM",e:[1256.2,477.2]},"SOM-02":{ad:"Bari",ulke:"SOM",e:[
+1276.2,437.2]},"SOM-03":{ad:"Mudug",ulke:"SOM",e:[1267.8,460.2]},"SOM-04":{ad:"A\u015Fa\u011F\u0131 Cubba",en:"Jubbada Hoose",ulke:"SOM",e:[1232.5,504.5]},"SOM-05":{ad:"Somaliland",ulke:"SOM",e:[1260.5,
+444.5]},"SOM-06":{ad:"Gedo",ulke:"SOM",e:[1231.5,489.2]},"SOM-07":{ad:"Bay",ulke:"SOM",e:[1243.5,478.5]},"FRA-01":{ad:"\xCEle-de-France",ulke:"FRA",e:[1011.2,198.2]},"FRA-02":{ad:"Auvergne-Rh\xF4ne-Alpes",
+ulke:"FRA",e:[1026.2,214.2]},"FRA-03":{ad:"Pays de la Loire",ulke:"FRA",e:[997.8,193.8]},"FRA-04":{ad:"Nouvelle-Aquitaine",ulke:"FRA",e:[1002.2,211.5]},"FRA-05":{ad:"Grand Est",ulke:"FRA",e:[1022.8,191.2]},
+"FRA-06":{ad:"Occitanie",ulke:"FRA",e:[1009.8,223.8]},"SDS-01":{ad:"Jonglei",ulke:"SDS",e:[1180.5,461.2]},"SDS-02":{ad:"Bat\u0131 Bahr el Ghazal",en:"Western Bahr el Ghazal",ulke:"SDS",e:[1146.2,451.5]},
+"SDS-03":{ad:"Bat\u0131 Equatoria",en:"Western Equatoria",ulke:"SDS",e:[1157.8,471.8]},"SDS-04":{ad:"Do\u011Fu Equatoria",en:"Eastern Equatoria",ulke:"SDS",e:[1177.5,474.2]},"SDS-05":{ad:"Lakes",ulke:"\
+SDS",e:[1162.2,452.5]},"SDS-06":{ad:"Yukar\u0131 Nil Eyaleti",en:"Upper Nile",ulke:"SDS",e:[1180.5,441.8]},"CAF-01":{ad:"Bangui",ulke:"CAF",e:[1097.2,475.5]},"CAF-02":{ad:"Bamingui-Bangoran",ulke:"CAF",
+e:[1124.5,442.8]},"CAF-03":{ad:"Mbomou B\xF6lgesi",en:"Mbomou",ulke:"CAF",e:[1139.8,465.2]},"CAF-04":{ad:"Qu\u1EADn Ouham-Pend\xE9",en:"Ouham-Pend\xE9",ulke:"CAF",e:[1087.8,465.2]},"CAF-05":{ad:"Ouham\
+ B\xF6lgesi",en:"Ouham",ulke:"CAF",e:[1103.2,461.2]},"CAF-06":{ad:"Haute-Kotto",ulke:"CAF",e:[1127.8,457.2]},"UKR-01":{ad:"Kiev",en:"Kiev City",ulke:"UKR",e:[1151.8,187.8]},"UKR-02":{ad:"Harkiv Oblast\
+\u0131",en:"Kharkiv",ulke:"UKR",e:[1187.5,191.5]},"UKR-03":{ad:"Lviv Oblast\u0131",en:"L'viv",ulke:"UKR",e:[1119.5,189.8]},"UKR-04":{ad:"Dnipropetrovsk Oblast\u0131",en:"Dnipropetrovs'k",ulke:"UKR",e:[
+1171.8,199.2]},"UKR-05":{ad:"Odessa Oblast\u0131",en:"Odessa",ulke:"UKR",e:[1152.5,200.5]},"UKR-06":{ad:"Jitomir Oblast\u0131",en:"Zhytomyr",ulke:"UKR",e:[1123.5,177.2]},"MDG-01":{ad:"Analamanga",ulke:"\
+MDG",e:[1263.8,625.2]},"MDG-02":{ad:"Atsimo-Andrefana",ulke:"MDG",e:[1243.8,661.5]},"MDG-03":{ad:"Sava",ulke:"MDG",e:[1272.2,593.5]},"MDG-04":{ad:"Ihorombe",ulke:"MDG",e:[1255.8,642.2]},"MDG-05":{ad:"\
+Sofia",ulke:"MDG",e:[1266.8,603.8]},"MDG-06":{ad:"Melaky",ulke:"MDG",e:[1252.5,613.5]},"KEN-01":{ad:"Nairobi",ulke:"KEN",e:[1205.2,509.5]},"KEN-02":{ad:"North Eastern",en:"North-Eastern",ulke:"KEN",e:[
+1221.8,490.2]},"KEN-03":{ad:"Nyanza",ulke:"KEN",e:[1191.5,507.5]},"KEN-04":{ad:"Coast",ulke:"KEN",e:[1216.8,528.8]},"KEN-05":{ad:"Eastern",ulke:"KEN",e:[1209.8,487.8]},"KEN-06":{ad:"Rift Valley",ulke:"\
+KEN",e:[1200.5,496.5]},"BWA-01":{ad:"Gaborone",ulke:"BWA",e:[1137.5,659.8]},"BWA-02":{ad:"Kuzeybat\u0131 B\xF6lgesi",en:"North-West",ulke:"BWA",e:[1123.5,631.2]},"BWA-03":{ad:"Kgalagadi B\xF6lgesi",en:"\
+Kgalagadi",ulke:"BWA",e:[1116.5,663.2]},"BWA-04":{ad:"Merkez B\xF6lgesi",en:"Central",ulke:"BWA",e:[1142.5,643.8]},"BWA-05":{ad:"Ghanzi B\xF6lgesi",en:"Ghanzi",ulke:"BWA",e:[1121.5,647.8]},"BWA-06":{ad:"\
+G\xFCney B\xF6lgesi",en:"Southern",ulke:"BWA",e:[1134.2,667.2]},"THA-01":{ad:"Central",ulke:"THA",e:[1550.2,402.8]},"THA-02":{ad:"Southern",ulke:"THA",e:[1549.2,449.8]},"THA-03":{ad:"Northern",ulke:"T\
+HA",e:[1542.2,384.5]},"THA-04":{ad:"Eastern",ulke:"THA",e:[1559.8,417.2]},"THA-05":{ad:"Northeastern",ulke:"THA",e:[1566.5,403.5]},"THA-06":{ad:"Western",ulke:"THA",e:[1546.5,413.5]},"ESP-01":{ad:"Mad\
+rid",ulke:"ESP",e:[983.8,249.2]},"ESP-02":{ad:"Catalu\xF1a",ulke:"ESP",e:[1006.8,235.8]},"ESP-03":{ad:"Galicia",ulke:"ESP",e:[960.2,229.2]},"ESP-04":{ad:"Andaluc\xEDa",ulke:"ESP",e:[975.5,263.2]},"ESP\
+-05":{ad:"Castilla y Le\xF3n",ulke:"ESP",e:[976.2,234.8]},"ESP-06":{ad:"Arag\xF3n",ulke:"ESP",e:[996.5,235.2]},"TKM-01":{ad:"Ahal vilayeti",en:"Ahal",ulke:"TKM",e:[1302.2,254.5]},"TKM-02":{ad:"Balkan \
+vilayeti",en:"Balkan",ulke:"TKM",e:[1283.8,248.8]},"TKM-03":{ad:"Lebap vilayeti",en:"Chardzhou",ulke:"TKM",e:[1334.2,261.5]},"TKM-04":{ad:"Da\u015Fo\u011Fuz",en:"Tashauz",ulke:"TKM",e:[1297.8,238.8]},
+"TKM-05":{ad:"Mary vilayeti",en:"Mary",ulke:"TKM",e:[1323.8,264.8]},"PNG-01":{ad:"Port Moresby",en:"National Capital District",ulke:"PNG",e:[1810.5,548.2]},"PNG-02":{ad:"Sandaun",ulke:"PNG",e:[1786.5,
+527.5]},"PNG-03":{ad:"Bat\u0131",en:"Western",ulke:"PNG",e:[1786.8,553.8]},"PNG-04":{ad:"Do\u011Fu Sepik",en:"East Sepik",ulke:"PNG",e:[1796.2,532.8]},"PNG-05":{ad:"Oro",en:"Northern",ulke:"PNG",e:[1822.2,
+566.2]},"PNG-06":{ad:"gulf",en:"Gulf",ulke:"PNG",e:[1797.8,549.8]},"CMR-01":{ad:"Merkez B\xF6lgesi",en:"Centre",ulke:"CMR",e:[1066.5,474.5]},"CMR-02":{ad:"Far North B\xF6lgesi",en:"Extr\xEAme-Nord",ulke:"\
+CMR",e:[1079.5,436.8]},"CMR-03":{ad:"Kuzey B\xF6lgesi",en:"Nord",ulke:"CMR",e:[1075.8,456.5]},"CMR-04":{ad:"G\xFCneybat\u0131 B\xF6lgesi",en:"Sud-Ouest",ulke:"CMR",e:[1056.8,468.2]},"CMR-05":{ad:"Do\u011Fu\
+ B\xF6lgesi",en:"Est",ulke:"CMR",e:[1077.2,480.8]},"CMR-06":{ad:"G\xFCney B\xF6lgesi",en:"Sud",ulke:"CMR",e:[1058.5,487.5]},"YEM-01":{ad:"San'a",en:"Amanat Al Asimah",ulke:"YEM",e:[1243.8,406.8]},"YEM\
+-02":{ad:"El Mahra ili",en:"Al Mahrah",ulke:"YEM",e:[1281.2,401.5]},"YEM-03":{ad:"\u015Eabva ili",en:"Shabwah",ulke:"YEM",e:[1256.5,409.8]},"YEM-04":{ad:"El Hudeyde ili",en:"Al Hudaydah",ulke:"YEM",e:[
+1244.5,418.2]},"YEM-05":{ad:"Hadramut ili",en:"Hadramawt",ulke:"YEM",e:[1268.2,396.2]},"YEM-06":{ad:"El Cavf ili",en:"Al Jawf",ulke:"YEM",e:[1249.2,398.5]},"UZB-01":{ad:"Ta\u015Fkent",en:"Tashkent",ulke:"\
+UZB",e:[1349.2,246.5]},"UZB-02":{ad:"Karakalpakistan",en:"Karakalpakstan",ulke:"UZB",e:[1291.2,221.5]},"UZB-03":{ad:"Buhara ili",en:"Bukhoro",ulke:"UZB",e:[1327.2,246.8]},"UZB-04":{ad:"Ka\u015Fkaderya",
+en:"Kashkadarya",ulke:"UZB",e:[1347.2,257.5]},"UZB-05":{ad:"Harezm ili",en:"Khorezm",ulke:"UZB",e:[1307.5,237.5]},"UZB-06":{ad:"Navoiy ili",en:"Navoi",ulke:"UZB",e:[1325.5,232.8]},"SWE-01":{ad:"Stokho\
+lm ili",en:"Stockholm",ulke:"SWE",e:[1072.8,128.8]},"SWE-02":{ad:"Norrbotten ili",en:"Norrbotten",ulke:"SWE",e:[1089.8,83.8]},"SWE-03":{ad:"V\xE4sterbotten ili",en:"V\xE4sterbotten",ulke:"SWE",e:[1069.5,
+95.2]},"SWE-04":{ad:"Sk\xE5ne ili",en:"Sk\xE5ne",ulke:"SWE",e:[1067.5,141.5]},"SWE-05":{ad:"V\xE4stra G\xF6taland ili",en:"V\xE4stra G\xF6taland",ulke:"SWE",e:[1059.5,131.5]},"SWE-06":{ad:"Dalarna ili",
+en:"Dalarna",ulke:"SWE",e:[1071.8,116.5]},"IRQ-01":{ad:"Ba\u011Fdat ili",en:"Baghdad",ulke:"IRQ",e:[1233.8,285.5]},"IRQ-02":{ad:"Mutanna ili",en:"Al-Muthannia",ulke:"IRQ",e:[1242.8,310.2]},"IRQ-03":{ad:"\
+Nineve ili",en:"Ninawa",ulke:"IRQ",e:[1220.2,273.2]},"IRQ-04":{ad:"S\xFCleymaniye ili",en:"As-Sulaymaniyah",ulke:"IRQ",e:[1231.2,274.2]},"IRQ-05":{ad:"Anbar ili",en:"Al-Anbar",ulke:"IRQ",e:[1219.2,291.8]},
+"IRQ-06":{ad:"Necef ili",en:"An-Najaf",ulke:"IRQ",e:[1232.8,302.8]},"PRY-01":{ad:"Asunci\xF3n",ulke:"PRY",e:[691.5,677.5]},"PRY-02":{ad:"Alta Paraguai",en:"Alto Paraguay",ulke:"PRY",e:[680.2,640.8]},"\
+PRY-03":{ad:"San Pedro",ulke:"PRY",e:[693.5,653.5]},"PRY-04":{ad:"Itapua",en:"Itap\xFAa",ulke:"PRY",e:[700.8,675.2]},"PRY-05":{ad:"Presidente Hayes",ulke:"PRY",e:[681.2,656.5]},"PRY-06":{ad:"XVI Boque\
+ron",en:"Boquer\xF3n",ulke:"PRY",e:[667.5,645.5]},"ZWE-01":{ad:"Harare",ulke:"ZWE",e:[1173.5,615.8]},"ZWE-02":{ad:"G\xFCney Matabeleland",en:"Matabeleland South",ulke:"ZWE",e:[1155.5,640.2]},"ZWE-03":{
+ad:"Kuzey Matabeleland",en:"Matabeleland North",ulke:"ZWE",e:[1147.5,626.8]},"ZWE-04":{ad:"Masvingo",ulke:"ZWE",e:[1170.2,642.2]},"ZWE-05":{ad:"Bat\u0131 Mashonaland",en:"Mashonaland West",ulke:"ZWE",
+e:[1161.2,618.8]},"ZWE-06":{ad:"Manicaland",ulke:"ZWE",e:[1177.5,623.5]},"NOR-01":{ad:"Oslo",ulke:"NOR",e:[1046.5,118.2]},"NOR-02":{ad:"Finnmark",ulke:"NOR",e:[1101.2,68.8]},"NOR-03":{ad:"Nordland",ulke:"\
+NOR",e:[1058.8,91.5]},"NOR-04":{ad:"Svalbard",ulke:"NOR",e:[1067.5,23.8]},"NOR-05":{ad:"Troms",ulke:"NOR",e:[1081.5,71.8]},"NOR-06":{ad:"S\xF8r-Tr\xF8ndelag",ulke:"NOR",e:[1028.8,116.5]},"JPN-01":{ad:"\
+Kanto",ulke:"JPN",e:[1719.5,273.5]},"JPN-02":{ad:"Kyushu",ulke:"JPN",e:[1691.8,294.2]},"JPN-03":{ad:"Hokkaido",ulke:"JPN",e:[1722.8,226.5]},"JPN-04":{ad:"Tohoku",ulke:"JPN",e:[1724.5,252.2]},"JPN-05":{
+ad:"Kinki",ulke:"JPN",e:[1712.2,283.8]},"JPN-06":{ad:"Chugoku",ulke:"JPN",e:[1696.2,280.5]},"DEU-01":{ad:"Berlin",ulke:"DEU",e:[1063.8,168.2]},"DEU-02":{ad:"Kuzey Ren-Vestfalya",en:"Nordrhein-Westfale\
+n",ulke:"DEU",e:[1038.2,178.5]},"DEU-03":{ad:"Mecklenburg-Vorpommern",ulke:"DEU",e:[1060.8,160.5]},"DEU-04":{ad:"Bavyera",en:"Bayern",ulke:"DEU",e:[1053.8,190.8]},"DEU-05":{ad:"A\u015Fa\u011F\u0131 Saksonya",
+en:"Niedersachsen",ulke:"DEU",e:[1052.8,171.5]},"COG-01":{ad:"Brazzaville",ulke:"COG",e:[1082.2,529.2]},"COG-02":{ad:"Likouala",ulke:"COG",e:[1095.2,492.8]},"COG-03":{ad:"Cuvette",ulke:"COG",e:[1084.5,
+507.2]},"COG-04":{ad:"Niari",ulke:"COG",e:[1068.8,523.5]},"COG-05":{ad:"Plateaux",ulke:"COG",e:[1085.5,519.2]},"FIN-01":{ad:"Uusimaa",ulke:"FIN",e:[1105.2,116.8]},"FIN-02":{ad:"Lappi",en:"Lapland",ulke:"\
+FIN",e:[1113.5,80.8]},"FIN-03":{ad:"Kuzey Karelya",en:"North Karelia",ulke:"FIN",e:[1128.2,107.8]},"FIN-04":{ad:"Orta Finlandiya",en:"Central Finland",ulke:"FIN",e:[1104.2,105.2]},"FIN-05":{ad:"Kuzey \
+Ostrobothnia",en:"Northern Ostrobothnia",ulke:"FIN",e:[1124.2,95.5]},"VNM-01":{ad:"\u0110\xF4ng B\u1EAFc",ulke:"VNM",e:[1572.5,363.2]},"VNM-02":{ad:"\u0111\u1ED3ng b\u1EB1ng s\xF4ng C\u1EEDu Long",ulke:"\
+VNM",e:[1585.2,440.5]},"VNM-03":{ad:"Nam Trung B\u1ED9",ulke:"VNM",e:[1595.8,413.8]},"VNM-04":{ad:"B\u1EAFc Trung B\u1ED9",ulke:"VNM",e:[1573.8,380.5]},"VNM-05":{ad:"T\xE2y Nguy\xEAn",ulke:"VNM",e:[1592.8,
+432.2]},"MYS-01":{ad:"Kuala Lumpur",ulke:"MYS",e:[1563.5,472.2]},"MYS-02":{ad:"Sabah",ulke:"MYS",e:[1648.5,471.5]},"MYS-03":{ad:"Saravak",en:"Sarawak",ulke:"MYS",e:[1631.5,489.8]},"MYS-04":{ad:"Kedah",
+ulke:"MYS",e:[1558.2,466.8]},"MYS-05":{ad:"Pahang",ulke:"MYS",e:[1569.5,480.2]},"CIV-01":{ad:"Lagunes",ulke:"CIV",e:[965.5,461.2]},"CIV-02":{ad:"Savanes",ulke:"CIV",e:[960.2,443.5]},"CIV-03":{ad:"Zanz\
+an B\xF6lgesi",en:"Zanzan",ulke:"CIV",e:[982.2,451.5]},"CIV-04":{ad:"Bas-Sassandra",ulke:"CIV",e:[962.8,470.8]},"CIV-05":{ad:"Vall\xE9e du Bandama",ulke:"CIV",e:[972.8,453.5]},"POL-01":{ad:"Mazovya Vo\
+yvodal\u0131\u011F\u0131",en:"Masovian",ulke:"POL",e:[1099.5,169.5]},"POL-02":{ad:"Bat\u0131 Pomeranya Voyvodal\u0131\u011F\u0131",en:"West Pomeranian",ulke:"POL",e:[1073.2,163.2]},"POL-03":{ad:"K\xFC\xE7\xFCk\
+ Polonya Voyvodal\u0131\u011F\u0131",en:"Lesser Poland",ulke:"POL",e:[1098.5,182.8]},"POL-04":{ad:"Lublin Voyvodal\u0131\u011F\u0131",en:"Lublin",ulke:"POL",e:[1110.8,179.5]},"POL-05":{ad:"B\xFCy\xFCk Polon\
+ya Voyvodal\u0131\u011F\u0131",en:"Greater Poland",ulke:"POL",e:[1086.2,166.2]},"OMN-01":{ad:"Maskat valili\u011Fi",en:"Muscat",ulke:"OMN",e:[1318.2,360.5]},"OMN-02":{ad:"Zufar valili\u011Fi",en:"Dhof\
+ar",ulke:"OMN",e:[1295.5,387.5]},"OMN-03":{ad:"El Vusta B\xF6lgesi",en:"Al Wusta",ulke:"OMN",e:[1309.8,372.5]},"OMN-04":{ad:"Ez Zahira B\xF6lgesi",en:"Al Dhahira",ulke:"OMN",e:[1303.5,355.8]},"OMN-05":{
+ad:"Ed Dahiliye B\xF6lgesi",en:"Ad Dakhliyah",ulke:"OMN",e:[1310.5,362.2]},"ITA-01":{ad:"Lazio",ulke:"ITA",e:[1064.2,229.2]},"ITA-02":{ad:"Piemonte",ulke:"ITA",e:[1041.2,214.5]},"ITA-03":{ad:"Sicily",
+ulke:"ITA",e:[1075.2,263.2]},"ITA-04":{ad:"Emilia-Romagna",ulke:"ITA",e:[1058.8,208.8]},"ITA-05":{ad:"Apulia",ulke:"ITA",e:[1081.2,242.8]},"PHL-01":{ad:"National Capital Region",ulke:"PHL",e:[1663.2,406.5]},
+"PHL-02":{ad:"Davao (Region XI)",ulke:"PHL",e:[1692.8,455.2]},"PHL-03":{ad:"MIMAROPA (Region IV-B)",ulke:"PHL",e:[1667.5,421.5]},"PHL-04":{ad:"Cagayan Valley (Region II)",ulke:"PHL",e:[1666.5,396.2]},
+"PHL-05":{ad:"Eastern Visayas (Region VIII)",ulke:"PHL",e:[1676.5,433.2]},"BFA-01":{ad:"Centre",ulke:"BFA",e:[993.2,421.5]},"BFA-02":{ad:"Hauts-Bassins",ulke:"BFA",e:[976.8,436.2]},"BFA-03":{ad:"Est",
+ulke:"BFA",e:[1003.5,427.8]},"BFA-04":{ad:"Sahel",ulke:"BFA",e:[997.2,412.2]},"BFA-05":{ad:"Boucle du Mouhoun",ulke:"BFA",e:[980.8,424.8]},"NZL-01":{ad:"Wellington B\xF6lgesi",en:"Wellington",ulke:"NZ\
+L",e:[1899.5,760.2]},"NZL-02":{ad:"Otago B\xF6lgesi",en:"Otago",ulke:"NZL",e:[1839.8,799.8]},"NZL-03":{ad:"Waikato B\xF6lgesi",en:"Waikato",ulke:"NZL",e:[1906.5,750.8]},"NZL-04":{ad:"Canterbury B\xF6lges\
+i",en:"Canterbury",ulke:"NZL",e:[1874.2,778.5]},"NZL-05":{ad:"Hawke Limano B\xF6lgesi",en:"Hawke's Bay",ulke:"NZL",e:[1914.2,753.5]},"GAB-01":{ad:"Estuaire",ulke:"GAB",e:[1057.2,506.5]},"GAB-02":{ad:"\
+Haut-Ogoou\xE9",ulke:"GAB",e:[1073.8,512.2]},"GAB-03":{ad:"Ngouni\xE9",ulke:"GAB",e:[1062.2,516.2]},"GAB-04":{ad:"Woleu-Ntem",en:"Wouleu-Ntem",ulke:"GAB",e:[1066.8,494.5]},"GAB-05":{ad:"Ogoou\xE9-Maritim\
+e",ulke:"GAB",e:[1051.8,512.2]},"ECU-01":{ad:"Pichincha ili",en:"Pichincha",ulke:"ECU",e:[562.8,505.5]},"ECU-02":{ad:"Loja",ulke:"ECU",e:[559.2,530.2]},"ECU-03":{ad:"Pastaza",ulke:"ECU",e:[570.5,517.8]},
+"ECU-04":{ad:"Manabi",ulke:"ECU",e:[555.8,515.8]},"ECU-05":{ad:"Orellana",ulke:"ECU",e:[575.8,508.2]},"GIN-01":{ad:"Conakry",ulke:"GIN",e:[927.5,442.2]},"GIN-02":{ad:"Faranah",ulke:"GIN",e:[944.5,447.2]},
+"GIN-03":{ad:"Lab\xE9",ulke:"GIN",e:[933.8,430.2]},"GIN-04":{ad:"Kankan",ulke:"GIN",e:[949.5,439.2]},"GIN-05":{ad:"Boke",ulke:"GIN",e:[920.8,433.8]},"UGA-01":{ad:"Kampala ili",en:"Kampala",ulke:"UGA",
+e:[1182.8,506.8]},"UGA-02":{ad:"Kaabong Distrisct",en:"Kaabong",ulke:"UGA",e:[1186.8,484.5]},"UGA-03":{ad:"Nwoya",ulke:"UGA",e:[1175.8,486.5]},"UGA-04":{ad:"Hoima",ulke:"UGA",e:[1172.2,501.2]},"UGA-05":{
+ad:"Napak",ulke:"UGA",e:[1190.2,493.2]},"GBR-01":{ad:"\u0130ngiltere",en:"England",ulke:"GBR",e:[995.2,171.5]},"GBR-02":{ad:"\u0130sko\xE7ya",en:"Scotland",ulke:"GBR",e:[980.5,143.2]},"GBR-03":{ad:"Ga\
+ller",en:"Wales",ulke:"GBR",e:[981.8,171.5]},"GBR-04":{ad:"Kuzey \u0130rlanda",en:"Northern Ireland",ulke:"GBR",e:[969.5,155.2]},"GHA-01":{ad:"B\xFCy\xFCk Accra B\xF6lgesi",en:"Greater Accra",ulke:"GH\
+A",e:[994.5,462.2]},"GHA-02":{ad:"Kuzey B\xF6lgesi",en:"Northern",ulke:"GHA",e:[992.2,441.8]},"GHA-03":{ad:"Brong-Ahafo B\xF6lgesi",en:"Brong Ahafo",ulke:"GHA",e:[991.2,453.8]},"GHA-04":{ad:"Bat\u0131 B\xF6lg\
+esi",en:"Western",ulke:"GHA",e:[988.8,470.5]},"GHA-05":{ad:"Volta B\xF6lgesi",en:"Volta",ulke:"GHA",e:[1001.2,454.2]},"ROU-01":{ad:"B\xFCkre\u0219",en:"Bucharest",ulke:"ROU",e:[1127.2,218.5]},"ROU-02":{
+ad:"Arad ili",en:"Arad",ulke:"ROU",e:[1127.5,208.8]},"ROU-03":{ad:"Suceava ili",en:"Suceava",ulke:"ROU",e:[1131.8,201.8]},"ROU-04":{ad:"Timi\u0219 ili",en:"Timis",ulke:"ROU",e:[1116.5,212.2]},"ROU-05":{
+ad:"Tulcea ili",en:"Tulcea",ulke:"ROU",e:[1139.2,217.2]},"LAO-01":{ad:"Vientiane \xD6zel Y\xF6netim B\xF6lgesi",en:"Vientiane [prefecture]",ulke:"LAO",e:[1561.2,385.5]},"LAO-02":{ad:"\xC7ampasak B\xF6lgesi",
+en:"Champasak",ulke:"LAO",e:[1585.2,407.2]},"LAO-03":{ad:"Luang prabang",en:"Louangphrabang",ulke:"LAO",e:[1556.2,372.5]},"LAO-04":{ad:"Savanakhet",en:"Savannakh\xE9t",ulke:"LAO",e:[1579.5,397.8]},"LA\
+O-05":{ad:"Huaphanh",en:"Houaphan",ulke:"LAO",e:[1565.5,376.2]},"GUY-01":{ad:"Do\u011Fu Berbice-",en:"East Berbice-Corentyne",ulke:"GUY",e:[677.8,465.2]},"GUY-02":{ad:"Upper Demerara- Berbice",en:"Upp\
+er Demerara-Berbice",ulke:"GUY",e:[672.2,487.2]},"GUY-03":{ad:"Mahaica-Berbice",ulke:"GUY",e:[670.2,473.5]},"GUY-04":{ad:"Barima-Waini",ulke:"GUY",e:[669.8,456.2]},"GUY-05":{ad:"Pomeroon-Supenaam",ulke:"\
+GUY",e:[666.2,465.8]},"BLR-01":{ad:"Minsk",en:"City of Minsk",ulke:"BLR",e:[1130.5,159.8]},"BLR-02":{ad:"Homyel Voblast\u0131",en:"Gomel",ulke:"BLR",e:[1143.5,170.2]},"BLR-03":{ad:"Brest Voblast\u0131",
+en:"Brest",ulke:"BLR",e:[1124.2,168.5]},"BLR-04":{ad:"Vitsebsk Voblast\u0131",en:"Vitebsk",ulke:"BLR",e:[1143.8,159.2]},"BLR-05":{ad:"Hrodna Voblast\u0131",en:"Grodno",ulke:"BLR",e:[1119.2,162.8]},"KG\
+Z-01":{ad:"Bi\u015Fkek",en:"Bishkek",ulke:"KGZ",e:[1385.2,239.2]},"KGZ-02":{ad:"Batken \u0130li",en:"Batken",ulke:"KGZ",e:[1358.2,248.2]},"KGZ-03":{ad:"Iss\u0131k-G\xF6l \u0130li",en:"Ysyk-K\xF6l",ulke:"\
+KGZ",e:[1396.5,233.8]},"KGZ-04":{ad:"Celal-Abad \u0130li",en:"Jalal-Abad",ulke:"KGZ",e:[1375.5,245.8]},"SEN-01":{ad:"Dakar",ulke:"SEN",e:[912.2,407.8]},"SEN-02":{ad:"Tambacounda B\xF6lgesi",en:"Tambac\
+ounda",ulke:"SEN",e:[928.8,416.8]},"SEN-03":{ad:"Matam",ulke:"SEN",e:[924.5,408.2]},"SEN-04":{ad:"Kolda",ulke:"SEN",e:[916.8,421.5]},"SYR-01":{ad:"\u015Eam",en:"Damascus",ulke:"SYR",e:[1193.5,291.5]},
+"SYR-02":{ad:"Deyrizor",en:"Dayr Az Zawr",ulke:"SYR",e:[1210.8,277.5]},"SYR-03":{ad:"Halep",en:"Aleppo",ulke:"SYR",e:[1196.8,273.8]},"SYR-04":{ad:"Humus",en:"Homs (Hims)",ulke:"SYR",e:[1202.5,284.5]},
+"KHM-01":{ad:"Phnom Penh",ulke:"KHM",e:[1582.8,425.2]},"KHM-02":{ad:"Siem Reap",en:"Siemr\xE9ab",ulke:"KHM",e:[1573.8,416.8]},"KHM-03":{ad:"Mondulkiri",en:"M\xF4nd\xF3l Kiri",ulke:"KHM",e:[1587.5,416.5]},
+"KHM-04":{ad:"Koh kong",en:"Ka\xF4h Kong",ulke:"KHM",e:[1573.2,428.5]},"URY-01":{ad:"Montevideo",ulke:"URY",e:[704.2,721.5]},"URY-02":{ad:"Tacuarembo Departman\u0131",en:"Tacuaremb\xF3",ulke:"URY",e:[
+697.8,705.2]},"URY-03":{ad:"Cerro Largo",ulke:"URY",e:[714.2,723.8]},"URY-04":{ad:"Paysandu Departman\u0131",en:"Paysand\xFA",ulke:"URY",e:[697.5,714.5]},"TUN-01":{ad:"Tunus ili",en:"Tunis",ulke:"TUN",
+e:[1049.2,270.5]},"TUN-02":{ad:"Tatavin ili",en:"Tataouine",ulke:"TUN",e:[1051.5,298.5]},"TUN-03":{ad:"Kabili ili",en:"Kebili",ulke:"TUN",e:[1046.8,290.2]},"TUN-04":{ad:"Kassarin ili",en:"Kass\xE9rine",
+ulke:"TUN",e:[1047.2,280.8]},"NPL-01":{ad:"Central",ulke:"NPL",e:[1456.8,327.5]},"NPL-02":{ad:"Mid-Western",ulke:"NPL",e:[1435.2,316.8]},"NPL-03":{ad:"West",ulke:"NPL",e:[1448.2,323.5]},"NPL-04":{ad:"\
+East",ulke:"NPL",e:[1467.5,330.5]},"SUR-01":{ad:"Paramaribo",ulke:"SUR",e:[692.5,469.2]},"SUR-02":{ad:"Sipaliwini",ulke:"SUR",e:[686.2,478.5]},"SUR-03":{ad:"Nickerie",ulke:"SUR",e:[685.2,469.2]},"SUR-\
+04":{ad:"Brokopondo",ulke:"SUR",e:[694.2,474.5]},"TJK-01":{ad:"Kurgan Tyube",ulke:"TJK",e:[1367.2,253.2]},"TJK-02":{ad:"Dushanbe",ulke:"TJK",e:[1375.5,258.8]},"TJK-03":{ad:"Khudzhand",ulke:"TJK",e:[1353.8,
+251.5]},"TJK-04":{ad:"Kulyab",ulke:"TJK",e:[1357.2,260.8]},"BGD-01":{ad:"Dhaka",ulke:"BGD",e:[1488.5,347.8]},"BGD-02":{ad:"Rajshahi",ulke:"BGD",e:[1480.5,345.8]},"BGD-03":{ad:"Chittagong \u0130li",en:"\
+Chittagong",ulke:"BGD",e:[1494.8,345.8]},"BGD-04":{ad:"Khulna",ulke:"BGD",e:[1486.5,361.2]},"GRC-01":{ad:"Attika",en:"Attiki",ulke:"GRC",e:[1114.8,262.5]},"GRC-02":{ad:"Do\u011Fu Makedonya ve Trakya",
+en:"Anatoliki Makedonia kai Thraki",ulke:"GRC",e:[1123.8,239.5]},"GRC-03":{ad:"Tesalya",en:"Thessalia",ulke:"GRC",e:[1109.8,248.2]},"GRC-04":{ad:"Orta Makedonya",en:"Kentriki Makedonia",ulke:"GRC",e:[
+1118.8,241.5]},"NIC-01":{ad:"Managua Departman\u0131",en:"Managua",ulke:"NIC",e:[527.2,430.5]},"NIC-02":{ad:"\xD6zerk B\xF6lge",en:"Atl\xE1ntico Norte",ulke:"NIC",e:[536.8,415.2]},"NIC-03":{ad:"G\xFCney \
+Atlantik Otonom B\xF6lgesi",en:"Atl\xE1ntico Sur",ulke:"NIC",e:[535.2,424.2]},"NIC-04":{ad:"Jinotega",ulke:"NIC",e:[525.8,419.5]},"ERI-01":{ad:"Anseba",ulke:"ERI",e:[1211.2,395.5]},"ERI-02":{ad:"G\xFCney\
+ K\u0131z\u0131ldeniz",en:"Debubawi Keyih Bahri",ulke:"ERI",e:[1224.5,412.5]},"ERI-03":{ad:"Kuzey K\u0131z\u0131ldeniz",en:"Semenawi Keyih Bahri",ulke:"ERI",e:[1205.5,398.8]},"ERI-04":{ad:"Gash-Barka",
+en:"Gash Barka",ulke:"ERI",e:[1204.8,407.8]},"PRK-01":{ad:"Pyongyang",en:"P'y\u014Fngyang",ulke:"PRK",e:[1649.2,255.5]},"PRK-02":{ad:"Kuzey Hamgyong",en:"Hamgy\u014Fng-bukto",ulke:"PRK",e:[1657.5,234.8]},
+"PRK-03":{ad:"Chagang",en:"Chagang-do",ulke:"PRK",e:[1646.5,242.2]},"PRK-04":{ad:"G\xFCney Hamgyong",en:"Hamgy\u014Fng-namdo",ulke:"PRK",e:[1656.5,255.8]},"MWI-01":{ad:"Lilongwe",ulke:"MWI",e:[1185.5,
+595.2]},"MWI-02":{ad:"Mzimba",ulke:"MWI",e:[1188.2,570.8]},"MWI-03":{ad:"Chikwawa",ulke:"MWI",e:[1191.5,607.8]},"MWI-04":{ad:"Mangochi",ulke:"MWI",e:[1194.8,601.2]},"BEN-01":{ad:"Littoral Departman\u0131",
+en:"Littoral",ulke:"BEN",e:[1012.2,457.2]},"BEN-02":{ad:"Alibori Departman\u0131",en:"Alibori",ulke:"BEN",e:[1015.8,432.2]},"BEN-03":{ad:"Borgou Departman\u0131",en:"Borgou",ulke:"BEN",e:[1012.8,444.5]},
+"BEN-04":{ad:"Atakora Departman\u0131",en:"Atakora",ulke:"BEN",e:[1008.8,437.2]},"HND-01":{ad:"Francisco Moraz",en:"Francisco Moraz\xE1n",ulke:"HND",e:[527.2,410.8]},"HND-02":{ad:"Gracias a Dios",ulke:"\
+HND",e:[535.8,407.8]},"HND-03":{ad:"Yoro Departman\u0131",en:"Yoro",ulke:"HND",e:[512.8,411.2]},"BGR-01":{ad:"Grad Sofiya",ulke:"BGR",e:[1120.5,230.5]},"BGR-02":{ad:"Burgaz ili",en:"Burgas",ulke:"BGR",
+e:[1137.5,225.8]},"BGR-03":{ad:"Eski Za\u011Fra ili",en:"Stara Zagora",ulke:"BGR",e:[1131.8,232.5]},"CUB-01":{ad:"Havana",en:"Ciudad de la Habana",ulke:"CUB",e:[561.8,359.8]},"CUB-02":{ad:"Holgu\xEDn ili",
+en:"Holgu\xEDn",ulke:"CUB",e:[585.2,373.5]},"CUB-03":{ad:"Camag\xFCey ili",en:"Camag\xFCey",ulke:"CUB",e:[577.2,368.5]},"GTM-01":{ad:"Guatemala Departman\u0131",en:"Guatemala",ulke:"GTM",e:[498.8,410.5]},
+"GTM-02":{ad:"Peten Departman\u0131",en:"Pet\xE9n",ulke:"GTM",e:[506.5,395.2]},"GTM-03":{ad:"Alta Verapaz \u0130li",en:"Alta Verapaz",ulke:"GTM",e:[508.5,405.8]},"ISL-01":{ad:"Reykjav\xEDk",ulke:"ISL",
+e:[916.8,99.8]},"ISL-02":{ad:"Do\u011Fu B\xF6lgesi",en:"Austurland",ulke:"ISL",e:[933.5,94.8]},"ISL-03":{ad:"Kuzeydo\u011Fu B\xF6lgesi",en:"Nor\xF0urland eystra",ulke:"ISL",e:[923.8,92.8]},"KOR-01":{ad:"\
+Seul",en:"Seoul",ulke:"KOR",e:[1659.5,262.2]},"KOR-02":{ad:"Kuzey Gyeongsang",en:"North Gyeongsang",ulke:"KOR",e:[1670.8,275.2]},"KOR-03":{ad:"G\xFCney Jeolla",en:"South Jeolla",ulke:"KOR",e:[1663.2,275.8]},
+"LBR-01":{ad:"Montserrado",ulke:"LBR",e:[943.2,460.5]},"LBR-02":{ad:"Sinoe",ulke:"LBR",e:[955.2,472.8]},"LBR-03":{ad:"Nimba",ulke:"LBR",e:[951.8,460.8]},"HUN-01":{ad:"Central Hungary",ulke:"HUN",e:[1096.8,
+205.2]},"HUN-02":{ad:"Southern Transdanubia",ulke:"HUN",e:[1088.2,203.5]},"HUN-03":{ad:"Northern Great Plain",ulke:"HUN",e:[1102.8,197.5]},"PRT-01":{ad:"Lisbon",ulke:"PRT",e:[958.2,254.5]},"PRT-02":{ad:"\
+Centro",ulke:"PRT",e:[960.2,243.2]},"PRT-03":{ad:"Azorlar",en:"Azores",ulke:"PRT",e:[839.5,251.2]},"JOR-01":{ad:"Amman ili",en:"Amman",ulke:"JOR",e:[1190.8,301.2]},"JOR-02":{ad:"Ma'an Valili\u011Fi",en:"\
+Ma`an",ulke:"JOR",e:[1195.5,308.5]},"JOR-03":{ad:"Mafraq Y\xF6netimi",en:"Mafraq",ulke:"JOR",e:[1202.2,296.2]},"AZE-01":{ad:"Absheron Economic Region",ulke:"AZE",e:[1247.2,240.5]},"AZE-02":{ad:"Ganja-\
+Gazakh Economic Region",ulke:"AZE",e:[1235.5,242.8]},"AZE-03":{ad:"Aran Economic Region",ulke:"AZE",e:[1250.5,249.5]},"AUT-01":{ad:"Viyana",en:"Wien",ulke:"AUT",e:[1079.5,195.5]},"AUT-02":{ad:"Tirol",
+ulke:"AUT",e:[1057.8,200.8]},"AUT-03":{ad:"Steiermark",ulke:"AUT",e:[1068.2,198.5]},"CZE-01":{ad:"Prag",en:"Prague",ulke:"CZE",e:[1066.2,183.5]},"CZE-02":{ad:"G\xFCney Moravya ili",en:"Jihomoravsk\xFD",
+ulke:"CZE",e:[1085.5,187.5]},"CZE-03":{ad:"G\xFCney Bohemya ili",en:"Jiho\u010Desk\xFD",ulke:"CZE",e:[1076.8,187.5]},"SRB-01":{ad:"Belgrad",en:"Grad Beograd",ulke:"SRB",e:[1101.2,214.8]},"SRB-02":{ad:"\
+Zlatibor",en:"Zlatiborski",ulke:"SRB",e:[1101.2,224.5]},"SRB-03":{ad:"Brani\xE7evo \u0130l\xE7esi",en:"Branicevski",ulke:"SRB",e:[1110.8,224.5]},"PAN-01":{ad:"Panama ili",en:"Panama",ulke:"PAN",e:[569.2,
+453.5]},"PAN-02":{ad:"Chiriqui",en:"Chiriqu\xED",ulke:"PAN",e:[543.8,449.5]},"PAN-03":{ad:"Veraguas",ulke:"PAN",e:[551.8,453.2]},"SLE-01":{ad:"Western Area",en:"Western",ulke:"SLE",e:[932.8,454.8]},"S\
+LE-02":{ad:"Eastern",ulke:"SLE",e:[939.2,449.5]},"SLE-03":{ad:"Northern",ulke:"SLE",e:[933.8,446.2]},"ARE-01":{ad:"Abu Dabi Emirli\u011Fi",en:"Abu Dhabi",ulke:"ARE",e:[1294.5,354.2]},"ARE-02":{ad:"Res\
+\xFC'l-Hayme",en:"Ras Al Khaymah",ulke:"ARE",e:[1301.5,341.5]},"ARE-03":{ad:"Dubai Emirli\u011Fi",en:"Dubay",ulke:"ARE",e:[1299.2,344.5]},"GEO-01":{ad:"Tiflis",en:"Tbilisi",ulke:"GEO",e:[1225.2,234.8]},
+"GEO-02":{ad:"Abhazya",en:"Abkhazia",ulke:"GEO",e:[1211.8,229.2]},"GEO-03":{ad:"\u0130mereti",en:"Imereti",ulke:"GEO",e:[1218.2,232.5]},"IRL-01":{ad:"Dublin",ulke:"IRL",e:[966.8,165.2]},"IRL-02":{ad:"\
+South-West",ulke:"IRL",e:[956.2,171.2]},"IRL-03":{ad:"West",ulke:"IRL",e:[958.2,161.2]},"LKA-01":{ad:"Basn\u0101hira pa\u1E37\u0101ta",ulke:"LKA",e:[1445.5,458.2]},"LKA-02":{ad:"Uturum\xE6\u0306da pa\u1E37\u0101ta",
+ulke:"LKA",e:[1444.8,448.8]},"LKA-03":{ad:"N\xE6\u0306g\u0115nahira pa\u1E37\u0101ta",ulke:"LKA",e:[1451.2,461.5]},"LTU-01":{ad:"Vilnius",en:"Vilniaus",ulke:"LTU",e:[1119.5,150.8]},"LTU-02":{ad:"Siaul\
+iai",en:"\u0160iauliai",ulke:"LTU",e:[1109.5,147.5]},"LTU-03":{ad:"Kaunas",en:"Kauno",ulke:"LTU",e:[1112.2,154.5]},"LVA-01":{ad:"Riga",ulke:"LVA",e:[1113.8,142.8]},"LVA-02":{ad:"Vidzeme",ulke:"LVA",e:[
+1127.2,144.8]},"LVA-03":{ad:"Kurzeme",ulke:"LVA",e:[1101.8,142.2]},"TGO-01":{ad:"Maritime",ulke:"TGO",e:[1005.8,457.2]},"TGO-02":{ad:"Centre B\xF6lgesi",en:"Centre",ulke:"TGO",e:[1005.5,448.8]},"HRV-0\
+1":{ad:"Zagreb",en:"Grad Zagreb",ulke:"HRV",e:[1082.5,210.8]},"HRV-02":{ad:"Zadar B\xF6lgesi",en:"Zadarska",ulke:"HRV",e:[1078.8,220.5]},"BIH-01":{ad:"Federacija Bosna i Hercegovina",ulke:"BIH",e:[1089.8,
+222.2]},"BIH-02":{ad:"Repuplika Srpska",ulke:"BIH",e:[1086.5,216.8]},"CRI-01":{ad:"San soze",en:"San Jos\xE9",ulke:"CRI",e:[538.2,442.8]},"CRI-02":{ad:"Guanacaste",ulke:"CRI",e:[533.8,438.2]},"DOM-01":{
+ad:"Nacional",en:"Distrito Nacional",ulke:"DOM",e:[619.5,384.5]},"DOM-02":{ad:"San Juan",ulke:"DOM",e:[611.8,383.8]},"SVK-01":{ad:"Bratislava B\xF6lgesi",en:"Bratislavsk\xFD",ulke:"SVK",e:[1089.8,194.2]},
+"SVK-02":{ad:"Pre\u0161ov B\xF6lgesi",en:"Pre\u0161ov",ulke:"SVK",e:[1104.2,190.2]},"EST-01":{ad:"Harju ili",en:"Harju",ulke:"EST",e:[1114.8,130.2]},"EST-02":{ad:"Ida-Viru ili",en:"Ida-Viru",ulke:"EST",
+e:[1123.5,134.2]},"DNK-01":{ad:"Danimarka Capital B\xF6lgesi",en:"Hovedstaden",ulke:"DNK",e:[1054.5,150.2]},"DNK-02":{ad:"Merkezi Danimarka B\xF6lgesi",en:"Midtjylland",ulke:"DNK",e:[1043.2,147.2]},"C\
+HE-01":{ad:"Bern",ulke:"CHE",e:[1036.2,204.2]},"CHE-02":{ad:"Graub\xFCnden",ulke:"CHE",e:[1043.8,201.2]},"BTN-01":{ad:"Western",ulke:"BTN",e:[1480.2,329.2]},"BTN-02":{ad:"Eastern",ulke:"BTN",e:[1487.5,
+328.2]},"NLD-01":{ad:"Kuzey Hollanda",en:"Noord-Holland",ulke:"NLD",e:[1028.8,166.8]},"NLD-02":{ad:"Kuzey Brabant",en:"Noord-Brabant",ulke:"NLD",e:[1022.2,172.2]},"TWN-01":{ad:"Special Municipalities",
+ulke:"TWN",e:[1651.5,356.5]},"TWN-02":{ad:"Taiwan Province",ulke:"TWN",e:[1655.5,351.8]},"MDA-01":{ad:"Ki\u015Finev",en:"Chi\u015Fin\u0103u",ulke:"MDA",e:[1142.8,202.8]},"MDA-02":{ad:"Falesti",en:"F\u0103l\
+e\u015Fti",ulke:"MDA",e:[1135.8,196.2]},"GNB-01":{ad:"Bissau",ulke:"GNB",e:[912.2,427.5]},"GNB-02":{ad:"Leste",ulke:"GNB",e:[920.5,427.5]},"BEL-01":{ad:"Capital Region",ulke:"BEL",e:[1022.8,176.8]},"B\
+EL-02":{ad:"Walloon",ulke:"BEL",e:[1025.8,182.5]},"LSO-01":{ad:"Maseru",ulke:"LSO",e:[1147.5,697.5]},"LSO-02":{ad:"Thaba-Tseka",ulke:"LSO",e:[1153.5,694.8]},"ARM-01":{ad:"Erivan",en:"Erevan",ulke:"ARM",
+e:[1226.2,244.5]},"ARM-02":{ad:"Ge\u011Farkunik",en:"Gegharkunik",ulke:"ARM",e:[1232.2,246.2]},"ALB-01":{ad:"Tiran ili",en:"Tiran\xEB",ulke:"ALB",e:[1101.5,234.8]},"ALB-02":{ad:"Ergiri ili",en:"Gjirok\
+ast\xEBr",ulke:"ALB",e:[1101.8,244.5]},"SLB-01":{ad:"Honiara",en:"Capital Territory (Honiara)",ulke:"SLB",e:[1885.2,567.2]},"SLB-02":{ad:"Western",ulke:"SLB",e:[1869.8,550.2]},"BDI-01":{ad:"Bujumbra M\
+airie",en:"Bujumbura Mairie",ulke:"BDI",e:[1165.2,530.2]},"BDI-02":{ad:"Ruyigi",ulke:"BDI",e:[1168.5,525.8]},"HTI-01":{ad:"Ouest",ulke:"HTI",e:[605.2,381.5]},"HTI-02":{ad:"Sud",ulke:"HTI",e:[594.5,386.5]},
+"GNQ-01":{ad:"Bioko Norte",ulke:"GNQ",e:[1047.8,483.8]},"GNQ-02":{ad:"Centro Sur",ulke:"GNQ",e:[1057.8,495.2]},"RWA-01":{ad:"Kigali",en:"Kigali City",ulke:"RWA",e:[1168.8,516.5]},"RWA-02":{ad:"Bat\u0131 Ey\
+aleti",en:"Western",ulke:"RWA",e:[1163.8,519.8]},"MKD-01":{ad:"Greater Skopje",ulke:"MKD",e:[1106.8,238.2]},"MKD-02":{ad:"Eastern",ulke:"MKD",e:[1113.5,236.8]},"BLZ-01":{ad:"Cayo",ulke:"BLZ",e:[513.5,
+397.5]},"BLZ-02":{ad:"Orange Walk",ulke:"BLZ",e:[514.8,391.5]},"DJI-01":{ad:"Cibuti",en:"Djibouti",ulke:"DJI",e:[1234.8,427.8]},"DJI-02":{ad:"Dikhil B\xF6lgesi",en:"Dikhil",ulke:"DJI",e:[1232.5,432.8]},
+"ISR-01":{ad:"Merkez B\xF6lge",en:"HaMerkaz",ulke:"ISR",e:[1186.2,293.8]},"ISR-02":{ad:"G\xFCney B\xF6lgesi",en:"HaDarom",ulke:"ISR",e:[1184.5,305.8]},"SLV-01":{ad:"San Salvador",ulke:"SLV",e:[508.2,415.8]},
+"SLV-02":{ad:"San Miguel Departman\u0131",en:"San Miguel",ulke:"SLV",e:[514.2,418.2]},"SVN-01":{ad:"Osrednjeslovenska",ulke:"SVN",e:[1070.5,209.2]},"SVN-02":{ad:"Savinjska",ulke:"SVN",e:[1075.8,207.2]},
+"FJI-01":{ad:"Central",ulke:"FJI",e:[1975.8,620.5]},"FJI-02":{ad:"Western",ulke:"FJI",e:[1972.5,619.5]},"KWT-01":{ad:"El Asime Valili\u011Fi",en:"Al Asimah",ulke:"KWT",e:[1255.5,319.5]},"KWT-02":{ad:"\
+El Cehr\xE2",en:"Al Jahrah",ulke:"KWT",e:[1252.5,314.2]},"SWZ-01":{ad:"Hhohho",ulke:"SWZ",e:[1167.8,675.8]},"SWZ-02":{ad:"Lubombo",ulke:"SWZ",e:[1169.5,679.5]},"TLS-01":{ad:"Dili",ulke:"TLS",e:[1694.5,
+562.5]},"TLS-02":{ad:"Viqueque Belediyesi",en:"Viqueque",ulke:"TLS",e:[1699.5,561.2]},"MNE-01":{ad:"Podgorica",ulke:"MNE",e:[1096.8,231.8]},"MNE-02":{ad:"Niksic Belediyesi",en:"Nik\u0161ic",ulke:"MNE",
+e:[1095.8,227.8]},"BHS-01":{ad:"New Profidence",en:"New Providence",ulke:"BHS",e:[578.8,346.5]},"BHS-02":{ad:"Inagua",ulke:"BHS",e:[600.5,369.8]},"VUT-01":{ad:"Shefa",ulke:"VUT",e:[1919.2,610.5]},"VUT\
+-02":{ad:"Sanma",ulke:"VUT",e:[1917.2,604.2]},"QAT-01":{ad:"Doha",en:"Ad Dawhah",ulke:"QAT",e:[1276.2,344.2]},"QAT-02":{ad:"Al Khor",en:"Al Khawr",ulke:"QAT",e:[1275.2,338.2]},"JAM-01":{ad:"Kingston",
+ulke:"JAM",e:[577.2,389.5]},"JAM-02":{ad:"Saint Ann",ulke:"JAM",e:[573.5,387.5]},"KOS-01":{ad:"Pristina",ulke:"KOS",e:[1105.8,228.8]},"KOS-02":{ad:"Prizren",ulke:"KOS",e:[1103.5,231.2]},"GMB-01":{ad:"\
+Banjul",ulke:"GMB",e:[910.5,419.2]},"GMB-02":{ad:"Central River B\xF6lgesi",en:"Central River",ulke:"GMB",e:[917.5,417.5]},"LBN-01":{ad:"Beyrut ili",en:"Beirut",ulke:"LBN",e:[1188.2,284.2]},"LBN-02":{
+ad:"Bekaa ili",en:"Beqaa",ulke:"LBN",e:[1190.8,284.5]},"PSX-01":{ad:"Filistin",en:"Palestine",ulke:"PSX",e:[1186.2,300.8]},"BRN-01":{ad:"Brunei",ulke:"BRN",e:[1635.8,476.8]},"CYP-01":{ad:"K\u0131br\u0131s Cumhu\
+riyeti",en:"Cyprus",ulke:"CYP",e:[1173.2,279.8]},"TTO-01":{ad:"Trinidad ve Tobago",en:"Trinidad and Tobago",ulke:"TTO",e:[661.5,439.2]},"CPV-01":{ad:"Ye\u015Fil Burun Adalar\u0131",en:"Cape Verde",ulke:"\
+CPV",e:[874.8,401.8]},"CYN-01":{ad:"Kuzey K\u0131br\u0131s T\xFCrk Cumhuriyeti",en:"Turkish Republic of Northern Cyprus",ulke:"CYN",e:[1176.5,277.8]},"WSM-01":{ad:"Samoa",ulke:"WSM",e:[50.2,593.2]},"L\
+UX-01":{ad:"L\xFCksemburg",en:"Luxembourg",ulke:"LUX",e:[1029.8,185.8]},"MUS-01":{ad:"Mauritius",ulke:"MUS",e:[1313.8,635.8]}}};dunyaAdlariniDileUydur(DUNYA);const HAVA_KURALI={version:"weather-1.0.0",
+blockHours:6,cloud:1e5,strong:25e4,snowMin:18e4,fogFromMin:240,fogToMin:600,climates:{tropik:{precip:[32e4,32e4,32e4,32e4],fog:[4e4,2e4,0,4e4],snow:[0,0,0,0]},akdeniz_kiyi:{precip:[3e5,6e4,6e4,6e4],fog:[
+6e4,3e4,0,5e4],snow:[0,0,0,0]},col:{precip:[2e4,2e4,2e4,2e4],fog:[0,0,0,0],snow:[0,0,0,0]},savan:{precip:[8e4,8e4,24e4,8e4],fog:[0,0,0,0],snow:[0,0,0,0]},kuzey_orman:{precip:[22e4,22e4,22e4,22e4],fog:[
+1e5,8e4,4e4,12e4],snow:[45e4,12e4,0,12e4]},kar:{precip:[24e4,24e4,24e4,24e4],fog:[8e4,6e4,4e4,8e4],snow:[6e5,4e5,22e4,4e5]},dag:{precip:[2e5,2e5,2e5,2e5],fog:[1e5,8e4,3e4,1e5],snow:[45e4,12e4,0,12e4]},
+gol:{precip:[18e4,18e4,18e4,18e4],fog:[14e4,1e5,4e4,16e4],snow:[18e4,0,0,0]},bozkir:{precip:[9e4,9e4,9e4,9e4],fog:[6e4,2e4,0,5e4],snow:[18e4,0,0,0]},bag_tepe:{precip:[14e4,14e4,14e4,14e4],fog:[6e4,4e4,
+0,6e4],snow:[18e4,0,0,0]},sanayi:{precip:[15e4,15e4,15e4,15e4],fog:[12e4,6e4,2e4,12e4],snow:[18e4,0,0,0]}},fallback:{precip:[12e4,12e4,12e4,12e4],fog:[0,0,0,0],snow:[0,0,0,0]}},SPIKER_KURALI={version:"\
+commentary-1.1.0",swingPpm:8e4,flipMarginPpm:2e4,closePpm:1e4,streakMin:3,crowd:[10,25,50,100,250,500,1e3],finalTicks:3,maxPerTick:2,show:40,football:{pressureMin:3,saves:[3,5,8],lateMinutes:5,maxPerEvent:2,
+show:30}},ALBUM_KURALI={version:"album-1.0.0",continents:[{id:"avrupa",name:"Avrupa",zones:["Europe"]},{id:"asya",name:"Asya",zones:["Asia"]},{id:"afrika",name:"Afrika",zones:["Africa"]},{id:"amerika",
+name:"Amerika",zones:["America"]},{id:"okyanusya",name:"Okyanusya",zones:["Australia","Pacific"]}],continentOverrides:{ISL:"avrupa",CPV:"afrika",MDG:"afrika",MUS:"afrika"},momentPages:[{id:"cephe",name:"\
+Cephe"},{id:"meclis",name:"Meclis"},{id:"carsi",name:"\xC7ar\u015F\u0131"},{id:"sahne",name:"Sahne"},{id:"hayat",name:"Hayat"}],moments:[{id:"ilk_vurus",page:"cephe",name:"\u0130lk Vuru\u015F",how:"Ge\
+r\xE7ek bir sava\u015F turunda vur.",icon:"swords"},{id:"tur_zaferi",page:"cephe",name:"Tur Zaferi",how:"Vurdu\u011Fun bir turu taraf\u0131n kazans\u0131n.",icon:"flag"},{id:"fetih",page:"cephe",name:"\
+Fetih",how:"Sald\u0131ran tarafta vurdu\u011Fun sava\u015F fetihle bitsin.",icon:"landmark"},{id:"savunma",page:"cephe",name:"Kale Gibi",how:"Savunan tarafta vurdu\u011Fun sava\u015F savunmayla bitsin.",
+icon:"shield"},{id:"tatbikat",page:"cephe",name:"Tatbikat",how:"Tatbikat cephesinde bir tatbikat\u0131 bitir.",icon:"target"},{id:"onbasi",page:"cephe",name:"Onba\u015F\u0131",how:"Sava\u015Fta Onba\u015F\u0131 r\xFCtb\
+esine y\xFCksel.",icon:"medal"},{id:"ilk_oy",page:"meclis",name:"\u0130lk Oy",how:"Ulusal se\xE7imde oy ver.",icon:"vote"},{id:"aday",page:"meclis",name:"Aday",how:"Ulusal se\xE7imde aday ol.",icon:"m\
+egaphone"},{id:"secildi",page:"meclis",name:"G\xF6revde",how:"Ba\u015Fkan ya da milletvekili se\xE7il.",icon:"landmark"},{id:"parti_uyesi",page:"meclis",name:"Parti \xDCyesi",how:"Bir partiye kat\u0131l.",
+icon:"users-round"},{id:"parti_kurucusu",page:"meclis",name:"Parti Kurucusu",how:"Bir parti kur.",icon:"flag"},{id:"kurucu",page:"meclis",name:"Kurucu",how:"\xDClkenin ilk vatanda\u015Flar\u0131 (kurucular) aras\u0131n\
+da ol.",icon:"crown"},{id:"ilk_is",page:"carsi",name:"\u0130lk Maa\u015F",how:"Bir i\u015F s\xF6zle\u015Fmesini tamamla.",icon:"hand-coins"},{id:"isletme",page:"carsi",name:"Patron",how:"Bir i\u015Fletme k\
+ur.",icon:"factory"},{id:"pazar_satisi",page:"carsi",name:"\u0130lk Sat\u0131\u015F",how:"Pazarda bir \u015Fey sat.",icon:"store"},{id:"ev",page:"carsi",name:"Ev Sahibi",how:"Bir ev sat\u0131n al.",icon:"\
+house"},{id:"yolculuk",page:"carsi",name:"Yolcu",how:"Bir yolculu\u011Fu tamamla.",icon:"route"},{id:"makale",page:"carsi",name:"K\xF6\u015Fe Yazar\u0131",how:"Gazetede bir makale yay\u0131mla.",icon:"\
+newspaper"},{id:"konser",page:"sahne",name:"Konser",how:"Bir konserde sahneye \xE7\u0131k ya da biletle izle.",icon:"mic"},{id:"festival",page:"sahne",name:"Festival",how:"Bir festivalde sahneye \xE7\u0131k y\
+a da bilet al.",icon:"party-popper"},{id:"hali_saha",page:"sahne",name:"Hal\u0131 Saha",how:"Bir hal\u0131 saha ma\xE7\u0131nda oyna.",icon:"trophy"},{id:"gol",page:"sahne",name:"Gol!",how:"Bir ma\xE7ta \
+gol at.",icon:"goal"},{id:"spor_salonu",page:"sahne",name:"Formda",how:"Spor salonunda bir antrenman\u0131 bitir.",icon:"dumbbell"},{id:"kahvehane",page:"sahne",name:"Kahvehane",how:"Kahvehanede puanl\
+\u0131 bir tavla, satran\xE7 ya da okey oyununu bitir.",icon:"coffee"},{id:"arkadas",page:"hayat",name:"Dost",how:"Bir arkada\u015F edin.",icon:"heart-handshake"},{id:"evcil_hayvan",page:"hayat",name:"\
+Can Dostu",how:"Bar\u0131naktan bir hayvan sahiplen.",icon:"heart"},{id:"ev_partisi",page:"hayat",name:"Parti Evi",how:"Evinde misafirli bir parti ver.",icon:"party-popper"},{id:"kahvehane_zafer",page:"\
+hayat",name:"Usta Oyuncu",how:"Kahvehanede puanl\u0131 bir oyun kazan.",icon:"crown"},{id:"sezon",page:"hayat",name:"Sezonun Y\u0131ld\u0131z\u0131",how:"Bir sezonda madalya ya da unvan kazan.",icon:"\
+star"},{id:"gezgin",page:"hayat",name:"Gezgin",how:"Be\u015F \xFClkenin bayra\u011F\u0131n\u0131 topla.",icon:"globe"}],flagsPerDay:1,giftsPerDay:3,giftMinHours:24,giftKeepDays:30,travelerFlags:5},DUNYA_DOSYA="\
+veri/dunya.513621da768b4a195a661a27b98556d2dd305ac5981fc393df03c503a05a8aa3.js",DUNYA_ROTALARI=["dunya/harita","sehir/sehir","sehir/yol","sehir/ev","sehir/golge","sehir/uretim","ulke/ozet","ulke/secim",
+"ulke/meclis","ulke/diplomasi","meydan/meydan","sehir/mekan","sehir/misafir"],DUNYA_UC_TUKETICILERI=["41_harita3b.js","42_harita.js","68_yolculuk3b.js","69_yolculuk.js"],UC_PARCALARI={"00_dil.js":[],"\
+00a_parcalar.js":[],"00b_dunya.js":[],"01_temel.js":[],"01a_ses.js":[],"01b_seslendirme.js":[],"02_sunucu.js":[],"03_durum.js":[],"04_gorunus.js":[],"04a_magaza_cizim.js":[],"04b_giysi.js":[],"10_giri\
+s.js":[],"11_karakter.js":[],"20_kabuk.js":[],"20a_yazi_koru.js":[],"21_ozet.js":[],"22_cephe.js":[],"23_ayarlar.js":[],"24_egitim.js":[],"25_calis.js":[],"26_pazar.js":[],"27_ulke.js":[],"28_arena.js":[
+"uc_43_arena3b","uc_49_figur3b","uc_49b_magaza3b","uc_82_terzi3b"],"28a_spiker.js":[],"28b_mac_spikeri.js":[],"29_uretim.js":[],"30_meydan.js":["uc_49_figur3b","uc_82_terzi3b"],"31_sehir.js":[],"32_di\
+plomasi.js":[],"33_oda.js":["uc_44_oda3b","uc_49_figur3b","uc_49a_hayvan3b","uc_49b_magaza3b","uc_82_terzi3b"],"34_meclis_salonu.js":["uc_45_meclis3b"],"35_secim_gecesi.js":["uc_46_secim3b"],"36_vitri\
+n.js":["uc_47_vitrin3b"],"37_sehir_ekran.js":["uc_48_sehir3b","uc_61_kalabalik3b","uc_98x_belediye3b"],"38_gorunus_ekran.js":["uc_49_figur3b","uc_82_terzi3b"],"39_golge.js":["uc_50_sinir3b","uc_51_kar\
+akol3b","uc_52_masa3b","uc_53_mahkeme3b"],"40_uc.js":[],"41_harita3b.js":["uc_41_harita3b","uc_49_figur3b","uc_82_terzi3b","uc_98zt_arac3b"],"42_harita.js":["uc_41_harita3b","uc_49_figur3b","uc_82_ter\
+zi3b","uc_98zt_arac3b"],"42a_hava.js":[],"43_arena3b.js":["uc_43_arena3b","uc_49_figur3b","uc_49b_magaza3b","uc_82_terzi3b"],"44_oda3b.js":["uc_44_oda3b","uc_49_figur3b","uc_49a_hayvan3b","uc_49b_maga\
+za3b","uc_82_terzi3b"],"45_meclis3b.js":["uc_45_meclis3b"],"46_secim3b.js":["uc_46_secim3b"],"47_vitrin3b.js":["uc_47_vitrin3b"],"48_sehir3b.js":["uc_48_sehir3b","uc_61_kalabalik3b","uc_98x_belediye3b"],
+"48_sehir3b_veri.js":[],"49_figur3b.js":["uc_49_figur3b","uc_82_terzi3b"],"49_figur3b_veri.js":[],"49a_hayvan3b.js":["uc_49a_hayvan3b"],"49a_hayvan3b_veri.js":[],"49b_magaza3b.js":["uc_49_figur3b","uc\
+_49b_magaza3b","uc_82_terzi3b"],"50_sinir3b.js":["uc_50_sinir3b"],"51_karakol3b.js":["uc_51_karakol3b"],"52_masa3b.js":["uc_52_masa3b"],"53_mahkeme3b.js":["uc_53_mahkeme3b"],"54_isbirligi.js":["uc_55_\
+elcilik3b","uc_56_santiye3b"],"55_elcilik3b.js":["uc_55_elcilik3b"],"56_santiye3b.js":["uc_56_santiye3b"],"57_miting3b.js":["uc_57_miting3b"],"57_miting3b_veri.js":[],"58_hareket.js":["uc_57_miting3b"],
+"59_hayat3b.js":["uc_49_figur3b","uc_49b_magaza3b","uc_59_hayat3b","uc_82_terzi3b","uc_98zt_arac3b"],"59_hayat3b_veri.js":[],"60_hayat.js":["uc_49_figur3b","uc_49b_magaza3b","uc_59_hayat3b","uc_82_ter\
+zi3b","uc_98zt_arac3b"],"61_kalabalik3b.js":["uc_61_kalabalik3b"],"61_kalabalik3b_veri.js":[],"62_atolye3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_62_atolye3b","uc_82_terzi3b"],"62_atolye3b_veri.\
+js":[],"63_atolye.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_62_atolye3b","uc_82_terzi3b"],"64_isletme3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_64_isletme3b","uc_82_terzi3b"],"64_isletme3b_ver\
+i.js":[],"65_isletme.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_64_isletme3b","uc_82_terzi3b"],"66_carsi3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_66_carsi3b","uc_82_terzi3b"],"66_carsi3b_veri.\
+js":[],"67_carsi.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_66_carsi3b","uc_82_terzi3b"],"68_yolculuk3b.js":["uc_49_figur3b","uc_68_yolculuk3b","uc_82_terzi3b","uc_98zt_arac3b"],"69_yolculuk.js":["u\
+c_49_figur3b","uc_68_yolculuk3b","uc_82_terzi3b","uc_98zt_arac3b"],"70_sokak3b.js":["uc_61_kalabalik3b","uc_70_sokak3b"],"70_sokak3b_veri.js":[],"71_sokak.js":["uc_61_kalabalik3b","uc_70_sokak3b"],"72\
+_baskent3b.js":["uc_61_kalabalik3b","uc_72_baskent3b"],"72_baskent3b_veri.js":[],"73_baskent.js":["uc_61_kalabalik3b","uc_72_baskent3b"],"74_sandik3b.js":["uc_61_kalabalik3b","uc_74_sandik3b"],"74_san\
+dik3b_veri.js":[],"75_sandik.js":["uc_61_kalabalik3b","uc_74_sandik3b"],"76_karargah3b.js":["uc_61_kalabalik3b","uc_76_karargah3b"],"76_karargah3b_veri.js":[],"77_karargah.js":["uc_61_kalabalik3b","uc\
+_76_karargah3b"],"78_diplomasi3b.js":["uc_61_kalabalik3b","uc_78_diplomasi3b"],"78_diplomasi3b_veri.js":[],"79_diplomasi_salonu.js":["uc_61_kalabalik3b","uc_78_diplomasi3b"],"80_akis3b.js":["uc_80_aki\
+s3b"],"80_akis3b_veri.js":[],"81_akis.js":["uc_80_akis3b"],"82_terzi3b.js":["uc_82_terzi3b"],"83_terzi.js":[],"84_egitim3b.js":["uc_49_figur3b","uc_49b_magaza3b","uc_61_kalabalik3b","uc_82_terzi3b","u\
+c_84_egitim3b"],"84_egitim3b_veri.js":[],"85_egitim_sahasi.js":["uc_49_figur3b","uc_49b_magaza3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_84_egitim3b"],"86_toren3b.js":["uc_49_figur3b","uc_82_terzi3b",
+"uc_86_toren3b"],"86a_zafer3b.js":["uc_61_kalabalik3b","uc_86a_zafer3b"],"86a_zafer3b_veri.js":[],"87_toren.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_86_toren3b","uc_86a_zafer3b"],"\
+88_foto3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_88_foto3b"],"89_foto.js":["uc_49_figur3b","uc_82_terzi3b","uc_88_foto3b"],"90_darbe.js":[],"91_ozerklik.js":[],"92_bagimsizlik.js":[],"93_konusma.js":[],
+"93a_meydan_yer.js":[],"94_meydan3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_94_meydan3b"],"95_meydan.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_94_meydan3b"],"95\
+z_oda_yol.js":[],"96_meydan_yol.js":[],"97_ev_yol.js":[],"98_misafir.js":[],"98a_birlik3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b"],"98a_birlik3b_veri.js":["uc_49_fig\
+ur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b"],"98b_birlik.js":[],"98c_isgal.js":[],"98d_koalisyon.js":[],"98e_ezgi.js":[],"98f_prova3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_te\
+rzi3b","uc_98a_birlik3b","uc_98f_prova3b"],"98f_prova3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98f_prova3b"],"98g_muzik.js":[],"98h_konser3b.js":["uc_49_fi\
+gur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98h_konser3b"],"98h_konser3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98h_konser3b"],"98i_sa\
+hne.js":[],"98j_medya.js":[],"98k_kare.js":["uc_49_figur3b","uc_82_terzi3b"],"98l_kanal.js":[],"98m_turne.js":[],"98n_ep.js":[],"98o_studyo3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98o_studyo3b"],"9\
+8o_studyo3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98o_studyo3b"],"98p_studyo.js":[],"98q_festival.js":[],"98r_magaza.js":[],"98s_belediye.js":[],"98t_kabin3b.js":["uc_98t_kabin3b"],"98t_kabin3\
+b_veri.js":[],"98u_kabin.js":["uc_98t_kabin3b"],"98v_parti3b.js":["uc_61_kalabalik3b","uc_98v_parti3b"],"98v_parti3b_veri.js":[],"98w_parti.js":["uc_61_kalabalik3b","uc_98v_parti3b"],"98x_belediye3b.j\
+s":["uc_61_kalabalik3b","uc_98x_belediye3b"],"98x_belediye3b_veri.js":[],"98y_belediye_oda.js":["uc_61_kalabalik3b","uc_98x_belediye3b"],"98z_sosyal.js":[],"98zb_moderasyon.js":[],"98zc_depo.js":[],"9\
+8zc_rehber.js":[],"98zd_ekonomi3b.js":["uc_61_kalabalik3b","uc_98zd_ekonomi3b"],"98zd_ekonomi3b_veri.js":[],"98zd_sezon.js":[],"98ze_ekonomi.js":["uc_61_kalabalik3b","uc_98zd_ekonomi3b"],"98zf_mekan_y\
+ol.js":[],"98zg_mekan.js":[],"98zh_mekan_ic.js":["uc_44_oda3b","uc_49_figur3b","uc_49a_hayvan3b","uc_49b_magaza3b","uc_82_terzi3b"],"98zi_ev_partisi.js":[],"98zj_saglik3b.js":["uc_49_figur3b","uc_61_k\
+alabalik3b","uc_82_terzi3b","uc_98zj_saglik3b"],"98zj_saglik3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zj_saglik3b"],"98zk_saglik.js":[],"98zl_sinif3b.js":["uc_49_figur3b",
+"uc_61_kalabalik3b","uc_82_terzi3b","uc_98zl_sinif3b"],"98zl_sinif3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zl_sinif3b"],"98zm_dersler.js":[],"98zn_keyif.js":[],"98zo_hobi\
+3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zo_hobi3b"],"98zo_hobi3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zo_hobi3b"],"98zp_hobi.js":[],"98zq_masa_kural.js":[],"98zr_masa.js":[],"98zs_oyu\
+nlar.js":[],"98zt_arac3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zt_arac3b"],"98zt_arac3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zt_arac3b"],"98zu_araclar.js":[],"98zv_butik.js":[],"98zw_e\
+vcil3b.js":["uc_49_figur3b","uc_49a_hayvan3b","uc_82_terzi3b","uc_98zw_evcil3b"],"98zw_evcil3b_veri.js":["uc_49_figur3b","uc_49a_hayvan3b","uc_82_terzi3b","uc_98zw_evcil3b"],"98zx_evcil.js":[],"98zy_e\
+tkinlik3b.js":["uc_61_kalabalik3b","uc_98zy_etkinlik3b"],"98zy_etkinlik3b_veri.js":["uc_61_kalabalik3b","uc_98zy_etkinlik3b"],"98zz_etkinlik.js":[],"98zza_spor3b.js":["uc_49_figur3b","uc_82_terzi3b","\
+uc_98zza_spor3b"],"98zza_spor3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zza_spor3b"],"98zzb_spor.js":[],"98zzc_futbol3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zzc_futbol3b","uc_98zze_stady\
+um3b"],"98zzc_futbol3b_veri.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zzc_futbol3b","uc_98zze_stadyum3b"],"98zzd_futbol.js":[],"98zze_stadyum3b.js":["uc_98zze_stadyum3b"],"98zzf_kulup.js":[],"98zzg_k\
+upa.js":[],"98zzh_millet.js":["uc_98zzl_muze3b"],"98zzi_makam3b.js":["uc_61_kalabalik3b","uc_98zzi_makam3b"],"98zzi_makam3b_veri.js":[],"98zzj_makam.js":["uc_61_kalabalik3b","uc_98zzi_makam3b"],"98zzk\
+_film.js":[],"98zzl_muze3b.js":["uc_98zzl_muze3b"],"98zzl_muze3b_veri.js":[],"98zzm_gece3b.js":["uc_49_figur3b","uc_82_terzi3b","uc_98zzm_gece3b"],"98zzm_gece3b_veri.js":["uc_49_figur3b","uc_82_terzi3\
+b","uc_98zzm_gece3b"],"98zzn_istasyon3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98zt_arac3b","uc_98zzn_istasyon3b"],"98zzn_istasyon3b_veri.js":["uc_49_figur3b","uc_61_kalabalik3b",
+"uc_82_terzi3b","uc_98zt_arac3b","uc_98zzn_istasyon3b"],"98zzo_album.js":[],"98zzp_gundem.js":[],"98zzq_matbaa3b.js":["uc_61_kalabalik3b","uc_98zzq_matbaa3b"],"98zzq_matbaa3b_veri.js":[],"98zzr_matbaa\
+.js":["uc_61_kalabalik3b","uc_98zzq_matbaa3b"],"98zzs_odasalon3b.js":["uc_61_kalabalik3b","uc_98zzs_odasalon3b"],"98zzs_odasalon3b_veri.js":[],"98zzt_odalar.js":["uc_61_kalabalik3b","uc_98zzs_odasalon\
+3b"],"98zzu_usta.js":[],"98zzv_imza.js":[],"98zzw_yarisma3b.js":["uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98h_konser3b","uc_98zzw_yarisma3b"],"98zzw_yarisma3b_veri.js":[
+"uc_49_figur3b","uc_61_kalabalik3b","uc_82_terzi3b","uc_98a_birlik3b","uc_98h_konser3b","uc_98zzw_yarisma3b"],"98zzx_yarisma.js":[],"98zzy_kartpostal.js":[],"99_baslat.js":[]},Dunya=(()=>{let hazir=!1;
+const rotalar=new Set(DUNYA_ROTALARI),ucTuketicileri=new Set(DUNYA_UC_TUKETICILERI);function kur(veri2){if(!hazir){dunyaAdlariniDileUydur(veri2);for(const tur of["ulkeler","bolgeler"])for(const[id,taban]of Object.
+entries(veri2[tur])){const guncel=DUNYA[tur][id];DUNYA[tur][id]=guncel?Object.assign(guncel,{...taban,...guncel}):taban}for(const[id,u]of Object.entries(DUNYA.ulkeler)){const d=u.devlet,b=DUNYA.bolgeler[u.
+baskent];!d?.kuruldu||!b||(d.dagildi?(b.ulke===id&&(b.ulke=d.ayrildigi),b.ulke===d.ayrildigi&&(delete b.baskent,delete b.korumali)):b.ulke===id&&(b.baskent=!0,d.korumali?b.korumali=!0:delete b.korumali))}
+typeof havaOnbellek=="object"&&havaOnbellek.clear(),hazir=!0}}return{kur,yukle:()=>hazir?Promise.resolve():Parcalar.dunya(DUNYA_DOSYA),gerekli:rota=>rotalar.has(rota),ucGerekli:kaynak=>!kaynak||ucTuketicileri.
+has(kaynak),get hazir(){return hazir}}})(),Seslendirme=(()=>{const varMi=()=>typeof speechSynthesis<"u"&&typeof SpeechSynthesisUtterance<"u",dil=()=>DIL.kod==="en"?"en-GB":"tr-TR";function ses(){try{const d=dil().
+slice(0,2);return speechSynthesis.getVoices().find(v=>v.localService&&String(v.lang).toLowerCase().startsWith(d))??null}catch{return null}}function oku(metinler,bitince){if(!varMi()||!metinler.length)
+return!1;const s=ses();return metinler.forEach((m,i)=>{const u=new SpeechSynthesisUtterance(m);u.lang=dil(),u.rate=1,s&&(u.voice=s),i===metinler.length-1&&bitince&&(u.onend=u.onerror=bitince);try{speechSynthesis.
+speak(u)}catch{i===metinler.length-1&&bitince?.()}}),!0}function dur(){if(varMi())try{speechSynthesis.cancel()}catch{}}return{varMi,oku,dur}})(),GORUNUS_VARSAYILAN_KURAL=veri({version:"look-1.0.0",skin:TEN,
+hairColor:SAC,outfitColors:GIYSI,backgrounds:ZEMIN,hairStyles:[{id:"kisa",name:"K\u0131sa"},{id:"uzun",name:"Uzun"},{id:"topuz",name:"Topuz"},{id:"yan",name:"Yana taral\u0131"},{id:"kirpik",name:"K\u0131rp\
+\u0131k"},{id:"kivircik",name:"K\u0131v\u0131rc\u0131k"},{id:"atkuyrugu",name:"At kuyru\u011Fu"},{id:"kel",name:"Kel"}],beards:[{id:"yok",name:"Yok"},{id:"biyik",name:"B\u0131y\u0131k"},{id:"sakal",name:"\
+Sakal"}],faces:[{id:"sakin",name:"Sakin"},{id:"gulec",name:"G\xFCle\xE7"},{id:"ciddi",name:"Ciddi"},{id:"neseli",name:"Ne\u015Feli"},{id:"dalgin",name:"Dalg\u0131n"},{id:"kararli",name:"Kararl\u0131"}],
+bodies:[{id:"ince",name:"\u0130nce"},{id:"orta",name:"Orta"},{id:"iri",name:"\u0130ri"}],outfits:[{id:"gunluk",name:"G\xFCnl\xFCk",uniform:!1},{id:"takim",name:"Tak\u0131m elbise",uniform:!1},{id:"tul\
+um",name:"\u0130\u015F tulumu",uniform:!1},{id:"kazak",name:"Kazak",uniform:!1},{id:"spor",name:"E\u015Fofman",uniform:!1},{id:"yelek",name:"Yelek",uniform:!1},{id:"uniforma",name:"\xDCniforma",uniform:!0}]}),
+FIGUR_EYLEMLERI=[{id:"bekle",ad:\u00E7("eylem::Bekle"),ik:"hourglass"},{id:"selamla",ad:\u00E7("eylem::Selamla"),ik:"hand"},{id:"calis",ad:\u00E7("eylem::\xC7al\u0131\u015F"),ik:"hammer"},{id:"egit",ad:\u00E7(
+"eylem::E\u011Fit"),ik:"dumbbell"},{id:"tasi",ad:\u00E7("eylem::Ta\u015F\u0131"),ik:"package"},{id:"taarruz",ad:\u00E7("eylem::Taarruz"),ik:"swords"},{id:"mevzi",ad:\u00E7("eylem::Mevzi"),ik:"shield-h\
+alf"},{id:"kanat",ad:\u00E7("eylem::Kanat"),ik:"move"},{id:"prova",ad:\u00E7("eylem::Prova"),ik:"guitar"},{id:"sahne",ad:\u00E7("eylem::Sahne"),ik:"mic-vocal"}],gorunusKurali=()=>Durum.v.kurallar?.data?.
+look??GORUNUS_VARSAYILAN_KURAL,UNIFORMA={kumas:"#55603F",koyu:"#3A4230",kemer:"#3A2E22",sirma:"#E2B54A"};function varsayilanGorunus(ad){const r=rastgele(ozet(ad)^2654435769),i=n=>Math.floor(r()*n),K=GORUNUS_VARSAYILAN_KURAL,
+ten=i(TEN.length),sacRenk=i(SAC.length),renk=i(GIYSI.length),zemin=i(ZEMIN.length),stil=i(5),sakal=stil!==1&&stil!==3&&r()<.28,yuz=K.faces[i(K.faces.length)].id,beden=K.bodies[i(K.bodies.length)].id;return{
+ten,sacRenk,sac:K.hairStyles[stil].id,sakal:sakal?"sakal":"yok",yuz,beden,kiyafet:"gunluk",renk,zemin}}function rutbeBicimi(sira,sayi2=12){const i=Math.round(Math.max(0,sira)/Math.max(1,sayi2-1)*11);return i<=
+3?{serit:i,yildiz:0,defne:0}:i<=7?{serit:0,yildiz:i-3,defne:0}:{serit:0,yildiz:i===11?4:i-7,defne:i===11?2:1}}const Gorunus=(()=>{const onbellek=new Map,bekleyen=new Set,dinleyici=new Set;let zaman=null;
+function iste(kimlikler){for(const k of kimlikler)k&&!onbellek.has(k)&&bekleyen.add(k);bekleyen.size&&!zaman&&(zaman=setTimeout(getir,40))}async function getir(){zaman=null;const liste=[...bekleyen].slice(
+0,100);for(const k of liste)bekleyen.delete(k);if(liste.length){try{const r=await Sunucu.cagir("looks",{p_ids:liste}),bulunan=new Map((r??[]).map(x=>[x.character_id,x]));for(const k of liste)onbellek.
+set(k,bulunan.get(k)??null)}catch{for(const k of liste)onbellek.set(k,null)}yay(liste),bekleyen.size&&(zaman=setTimeout(getir,40))}}function yay(kimlikler){for(const k of kimlikler)for(const el of document.
+querySelectorAll(`[data-avatar-kisi="${CSS.escape(k)}"]`))el.innerHTML=avatarSvg(el.dataset.avatarAd??"",...avatarSecim(k));for(const f of dinleyici)try{f(kimlikler)}catch(e){console.error(e)}}return{
+al:k=>onbellek.get(k),iste,yaz(k,kayit){onbellek.set(k,kayit),yay([k])},dinle(f){return dinleyici.add(f),()=>dinleyici.delete(f)},yenile(){yay([...new Set([...document.querySelectorAll("[data-avatar-k\
+isi]")].map(el=>el.dataset.avatarKisi))])},temizle(){onbellek.clear(),bekleyen.clear()}}})();function avatarSecim(kimlik){const k=kimlik?Gorunus.al(kimlik):null,keyif=kimlik&&kimlik===Durum.v?.ozet?.character?.
+id?Durum.v.ozet.mood?.level??null:null,ek={...keyif?{keyif}:{},...k?.laurel?{defne:k.laurel}:{}};return k?.look?[k.look,{ulke:k.country_id,rutbe:k.rank,...ek}]:[null,ek]}if(typeof Durum=="object"&&typeof Durum.
+dinle=="function"){let sonKeyif=null;Durum.dinle("ozet",o=>{const k=o?.mood?.level??null;if(k===sonKeyif)return;sonKeyif=k;const kimlik=o?.character?.id;kimlik&&document.querySelector(`[data-avatar-ki\
+si="${CSS.escape(kimlik)}"]`)&&Gorunus.yenile()})}function avatarKutu(ad,kimlik){return kimlik&&Gorunus.iste([kimlik]),`<span class="avatar" aria-hidden="true"${kimlik?` data-avatar-kisi="${esc(kimlik)}\
+" data-avatar-ad="${esc(ad)}"`:""}>${avatarSvg(ad,...avatarSecim(kimlik))}</span>`}function gorunusRenkleri(ad,kimlik){kimlik&&Gorunus.iste([kimlik]);const g=kimlik&&Gorunus.al(kimlik)?.look||varsayilanGorunus(
+ad),K=gorunusKurali();return[(K.skin??TEN)[g.ten]??TEN[0],(K.hairColor??SAC)[g.sacRenk]??SAC[0]]}const MAGAZA_YUVALAR={cerceve:"frame",zemin:"background",desen:"pattern",renk:"color",sapka:"hat",gozluk:"\
+glasses",uniforma:"uniform",silah:"weapon",vurus:"hitfx",sevinc:"celebration"},MAGAZA_YUVA_AD={cerceve:\u00E7("\xC7er\xE7eve"),zemin:\u00E7("Zemin"),desen:\u00E7("Kuma\u015F deseni"),renk:\u00E7("Kuma\
+\u015F rengi"),sapka:\u00E7("\u015Eapka"),gozluk:\u00E7("G\xF6zl\xFCk"),uniforma:\u00E7("\xDCniforma"),silah:\u00E7("Silah g\xF6r\xFCn\xFCm\xFC"),vurus:\u00E7("Vuru\u015F efekti"),sevinc:\u00E7("Gol s\
+evinci")},MAGAZA_TURLER=[["cerceve","frame",\u00E7("\xC7er\xE7eve"),"circle"],["zemin","background",\u00E7("Zemin"),"image"],["desen","pattern",\u00E7("Kuma\u015F deseni"),"swatch-book"],["renk","colo\
+r",\u00E7("Kuma\u015F rengi"),"palette"],["sapka","hat",\u00E7("\u015Eapka"),"graduation-cap"],["gozluk","glasses",\u00E7("G\xF6zl\xFCk"),"glasses"],["uniforma","uniform",\u00E7("\xDCniforma"),"shield\
+-half"],["silah","weapon",\u00E7("Silah g\xF6r\xFCn\xFCm\xFC"),"crosshair"],["vurus","hitfx",\u00E7("Vuru\u015F efekti"),"sparkles"],["sahne","stage",\u00E7("Sahne temas\u0131"),"drama"],["amblem","em\
+blem",\u00E7("Amblem"),"flag"],["cikartma","sticker",\u00E7("\xC7\u0131kartma"),"sticker"],["esya","furniture",\u00E7("Ev e\u015Fyas\u0131"),"sofa"],["sevinc","celebration",\u00E7("Gol sevinci"),"part\
+y-popper"],["forma","kit",\u00E7("Forma deseni"),"shirt","kulup"],["arma","crest",\u00E7("Arma s\xFCs\xFC"),"shield","kulup"],["isik","lights",\u00E7("I\u015F\u0131k \u015Fovu"),"lightbulb","kulup"],[
+"dekor","decor",\u00E7("Stadyum dekoru"),"flag-triangle-right","kulup"],["koreo","tifo",\u00E7("Trib\xFCn koreografisi"),"users-round","kulup"],["mars","anthem",\u00E7("Kul\xFCp mar\u015F\u0131"),"eig\
+hth-notes","kulup"]],MAGAZA_KULUP_HEDEF={kit:"club_kit",crest:"club_crest",lights:"club_lights",decor:"club_decor",tifo:"club_tifo",anthem:"club_anthem"},MAGAZA_NADIRLIK={common:\u00E7("S\u0131radan"),
+rare:\u00E7("Nadir"),epic:\u00E7("Destans\u0131")},magazaKurali=()=>Durum.v.kurallar?.data?.store??null,magazaUrun=id=>id?magazaKurali()?.products?.find(p=>p.id===id)??null:null;let magazaKuralIstendi=!1;
+function magazaKuralIste(){magazaKuralIstendi||typeof Durum>"u"||!Sunucu.Giris?.oturum||(magazaKuralIstendi=!0,Durum.kurallar().then(()=>Gorunus.yenile()).catch(()=>{magazaKuralIstendi=!1}))}function gorunusUrunleri(g){
+const u=g?.urunler,out={};if(!u||typeof u!="object")return out;if(!magazaKurali())return Object.values(u).some(x=>typeof x=="string")&&magazaKuralIste(),out;for(const[k,tur]of Object.entries(MAGAZA_YUVALAR)){
+const p=typeof u[k]=="string"?magazaUrun(u[k]):null;p&&p.kind===tur&&(out[k]=p)}return out}const magazaRenk=(r,i=0)=>Array.isArray(r)?r[Math.min(i,r.length-1)]:r;function magazaDolgu(renk,id,aci=90){if(!Array.
+isArray(renk))return{defs:"",fill:renk};const n=renk.length;return{defs:`<linearGradient id="${id}" gradientTransform="rotate(${aci} .5 .5)">${renk.map((r,i)=>`<stop offset="${n===1?0:Math.round(i/(n-
+1)*100)}%" stop-color="${r}"/>`).join("")}</linearGradient>`,fill:`url(#${id})`}}function magazaZeminDeseni(tur,renk){const c=renk??"rgba(255,255,255,.38)";switch(tur){case"dots":return Array.from({length:36},
+(_,i)=>`<circle cx="${i%6*11+5+Math.floor(i/6)%2*5}" cy="${Math.floor(i/6)*11+4}" r="1.5" fill="${c}"/>`).join("");case"stripes":return`<g stroke="${c}" stroke-width="3.2" opacity=".85">${Array.from({
+length:12},(_,i)=>`<path d="M${i*12-40} 70L${i*12+30} 0"/>`).join("")}</g>`;case"stars":return[[8,10,1.6],[22,6,1],[40,12,1.4],[55,8,1],[12,30,1],[50,28,1.6],[6,50,1.2],[58,46,1],[30,56,1.1],[44,58,1.4],
+[18,44,1.3],[36,34,.9]].map(([x,y,r])=>`<path d="M${x} ${y-r*2.2}l${r*.7} ${r*1.5}l${r*1.5} ${r*.7}l${-r*1.5} ${r*.7}l${-r*.7} ${r*1.5}l${-r*.7} ${-r*1.5}l${-r*1.5} ${-r*.7}l${r*1.5} ${-r*.7}z" fill="${c}\
+"/>`).join("");case"rays":return`<g fill="${c}" opacity=".55">${Array.from({length:8},(_,i)=>`<path d="M32 32L${(32+60*Math.cos((i*45-8)*Math.PI/180)).toFixed(1)} ${(32+60*Math.sin((i*45-8)*Math.PI/180)).
+toFixed(1)}L${(32+60*Math.cos((i*45+8)*Math.PI/180)).toFixed(1)} ${(32+60*Math.sin((i*45+8)*Math.PI/180)).toFixed(1)}z"/>`).join("")}</g>`;case"grid":return`<g stroke="${c}" stroke-width="1" opacity="\
+.7">${Array.from({length:8},(_,i)=>`<path d="M${i*9+1} 0v64M0 ${i*9+1}h64"/>`).join("")}</g>`;case"waves":return`<g fill="none" stroke="${c}" stroke-width="1.6" opacity=".8">${Array.from({length:6},(_,i)=>`\
+<path d="M-4 ${i*11+6}q6-4 12 0t12 0t12 0t12 0t12 0t12 0"/>`).join("")}</g>`;default:return""}}function magazaKumasDeseni(tur,id,renk){const c=renk??"rgba(255,255,255,.42)",ic={stripes:`<rect x="0" y=\
+"0" width="3" height="8" fill="${c}"/>`,checks:`<rect x="0" y="0" width="4" height="4" fill="${c}"/><rect x="4" y="4" width="4" height="4" fill="${c}"/>`,dots:`<circle cx="2" cy="2" r="1.3" fill="${c}\
+"/><circle cx="6" cy="6" r="1.3" fill="${c}"/>`,camo:`<path d="M0 2q3-3 5 0t3 3q-3 3-5 0T0 2z" fill="${renk??"rgba(60,80,40,.55)"}" opacity="${renk?".7":"1"}"/><path d="M4 6q2-2 4 0v2H3z" fill="${renk??
+"rgba(120,100,60,.5)"}" opacity="${renk?".45":"1"}"/>`,stars:`<path d="M4 .8l.9 2 2.1.2-1.6 1.4.5 2.1L4 5.4 2.1 6.5l.5-2.1L1 3l2.1-.2z" fill="${c}"/>`,flowers:`<g fill="${c}"><circle cx="4" cy="2.2" r\
+="1"/><circle cx="4" cy="5.8" r="1"/><circle cx="2.2" cy="4" r="1"/><circle cx="5.8" cy="4" r="1"/></g><circle cx="4" cy="4" r=".9" fill="#F2C27B"/>`,zigzag:`<path d="M0 6l2-4 2 4 2-4 2 4" fill="none"\
+ stroke="${c}" stroke-width="1.1"/>`,herringbone:'<path d="M0 0l4 4M4 4l4-4M0 8l4-4" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1.1"/>',tracksuit:`<rect x="1.2" y="0" width="1.1" height="8" fi\
+ll="${c}"/><rect x="3.4" y="0" width="1.1" height="8" fill="${c}"/>`}[tur]??"";return`<pattern id="${id}" width="8" height="8" patternUnits="userSpaceOnUse">${ic}</pattern>`}function magazaSapkaSvg(p){
+const c=p.data.color??"#C65A3B",c2=p.data.color2??"rgba(0,0,0,.22)",koyu="rgba(0,0,0,.22)";switch(p.data.shape){case"ponpon":case"bere":return`${p.data.shape==="ponpon"?`<circle cx="32" cy="12.8" r="3\
+.1" fill="${c2}"/>`:""}
       <path d="M19.8 28.2c-1.2-9.4 4.6-15.6 12.2-15.6s13.4 6.2 12.2 15.6c-2.4-3.6-6.6-5.4-12.2-5.4s-9.8 1.8-12.2 5.4z" fill="${c}"/>
       <path d="M19.4 26.2q12.6-4.8 25.2 0l.4 3q-13-4.2-26 0z" fill="${c}" style="filter:brightness(.86)"/>`;case"kasket":return`<path d="M20 25.4c.4-7.8 5.4-12.2 12-12.2s11.6 4.4 12 12.2z" fill="${c}"\
 />
@@ -1359,9 +907,10 @@ length>1?`<div class="altsekmeler" role="tablist">${b.alt.map(([a,ad,ik])=>`<but
 "","#"+rota);const kap=document.createElement("div");kap.className="ekran"+(hareketAzalt?"":" ekran-giris"),kap.innerHTML=`<div class="sayfa"><div class="kart yuk-kart">${\u00E7("Y\xFCkleniyor\u2026")}\
 </div></div>`,$("#ipucu-yer").innerHTML="",$("#icerik").replaceChildren(kap);let devir=null;try{onceki===rota&&(devir=koruBirak?.devret?.()??null),koruBirak?.()}catch(e){console.error(e)}koruBirak=typeof YaziKoru==
 "object"?YaziKoru.bagla(kap,devir):null,window.scrollTo(0,0),typeof Ses=="object"&&Ses.ortam(ORTAM_SESI[rota]??ORTAM_SESI[bolum]??null);const kilit=R?.rotaKilidi(rota);if(kilit){kap.innerHTML=`<div cl\
-ass="sayfa sayfa-dar">${R.kilitKarti(kilit)}</div>`,R.kilitBagla(kap);return}try{const cik=await ekranlar[rota].ac(kap)??null;if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak){try{cik?.()}catch(e){
-console.error(e)}return}birak=cik;try{R?.ekranAcildi(rota)}catch(e){console.error(e)}}catch(e){if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak)return;console.error(e),kap.innerHTML=`<div class="sa\
-yfa"><div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(e))}</span></div>
+ass="sayfa sayfa-dar">${R.kilitKarti(kilit)}</div>`,R.kilitBagla(kap);return}try{if(typeof Dunya=="object"&&Dunya.gerekli(rota)&&(await Dunya.yukle(),!kurulu||benim!==nesil||oturumKusagi!==Sunucu.Giris.
+kusak||!kap.isConnected))return;const cik=await ekranlar[rota].ac(kap)??null;if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak){try{cik?.()}catch(e){console.error(e)}return}birak=cik;try{R?.ekranAcildi(
+rota)}catch(e){console.error(e)}}catch(e){if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak)return;console.error(e),kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}\
+<span>${esc(hataMetni(e))}</span></div>
         <button class="dugme ikincil" style="margin-top:14px" id="ekran-yenile">${\u00E7("Yeniden dene")}</button></div>`,$("#ekran-yenile",kap).onclick=()=>git(rota,{gecmis:!1})}}function sifirla(){kurulu=
 !1,kurulumNesli++,nesil++,etkin=null;for(const dur of kabukBiraklar.splice(0))try{dur?.()}catch(e){console.error(e)}if(clearInterval(gunSonuSaat),gunSonuSaat=null,clearTimeout(kopmaZamani),kopmaZamani=
 null,clearTimeout(gozaltiZaman),gozaltiZaman=null,bant?.remove(),bant=null,birak){try{birak()}catch(e){console.error(e)}birak=null}try{koruBirak?.()}catch{}koruBirak=null,typeof Ses=="object"&&Ses.ortam(
@@ -1394,17 +943,18 @@ ton']");d&&kap.contains(d)?unut():e.target.closest?.("input, textarea, select, l
 kap,{childList:!0,subtree:!0});const birak=()=>{gozcu.disconnect(),removeEventListener("civora:yazma",yazma),yazilan.clear(),odak=null};return birak.devret=()=>({yazilan:new Map([...yazilan].map(([k,y])=>[
 k,{...y}])),odak:odak?{...odak}:null}),birak}return{bagla,kimlik}})(),varlikAdi=asset=>{const[urun,q]=String(asset).split("@"),ad=URUN[urun]?.ad??urun;return urun==="techizat"?\u00E7("{q}. kalite sila\
 h",{q:Number(q)}):Number(q)>1?\u00E7("{ad} ({q}. kalite)",{ad,q:Number(q)}):ad},varlikResim=asset=>{const urun=String(asset).split("@")[0];return URUN[urun]?urunResim(urun):"img/amblem.png"};Kabuk.kaydet(
-"hayat/profil",{async ac(kap){let is=null,secim=null,madalya=null,hs=null,gorunus=null;const hayat=HayatSahnesi.ac(),vitrin=Vitrin.ac(),sahneAl=()=>Sunucu.cagir("life_scene").then(x=>{hs=x}).catch(()=>{});
-let rehber=null,rehberImza="";const rehberAl=()=>typeof Rehber=="object"?Rehber.profilKartlari().then(x=>{rehber=x}).catch(()=>{}):Promise.resolve();await Promise.all([Durum.ozet(),Durum.askerlik(),Sunucu.
-cagir("my_work").then(x=>{is=x}).catch(()=>{}),Sunucu.cagir("election_status").then(x=>{secim=x?.election??null}).catch(()=>{}),Sunucu.cagir("medals").then(x=>{madalya=x}).catch(()=>{}),sahneAl(),rehberAl(),
-Sunucu.cagir("my_look").then(x=>{gorunus=x?.look??null}).catch(()=>{})]);const ciz=()=>{const o=Durum.v.ozet,a=Durum.v.askerlik,s=a?.soldier,ch=o.character,stoklar=(o.balances??[]).filter(b=>b.asset!==
-"CR"&&b.amount>0),kredi=o.balances?.find(b=>b.asset==="CR")?.spendable??0,xpOran=s&&s.next_level_xp?(s.xp-s.level_xp)/(s.next_level_xp-s.level_xp):1,donmaOnce=secim?.stage==="scheduled"&&Date.parse(secim.
-freeze_at)>Date.now(),adimlar=[{bitti:a?.basic_training_done,ik:"target",ad:\u00E7("Temel asker\xEE e\u011Fitimi bitir"),aciklama:\u00E7("Tatbikatta botla dokunarak vurmay\u0131 \xF6\u011Fren; bir \u015Fey kaybetmezsin\
-."),git:"ulke/cephe"},{bitti:!!ch.civic_tutorial_done,ik:"vote",ad:\u00E7("Vatanda\u015Fl\u0131k \xF6\u011Freticisini bitir"),aciklama:donmaOnce?\u00E7("Se\xE7imde oy vermek i\xE7in \u015Fart. Se\xE7men listesinin \
-donma zaman\u0131: {zaman}.",{zaman:saatYaz(secim.freeze_at)}):\u00E7("Se\xE7imlerde oy vermek i\xE7in \u015Fart; birka\xE7 dakika s\xFCrer."),is:()=>vatandaslikOgreticisi()},{bitti:!!(is&&(is.units_today>
-0||is.active||is.recent?.length)),ik:"briefcase-business",ad:\u00E7("\u0130lk i\u015Fini yap"),aciklama:\u00E7("Sistem i\u015Finde \xE7al\u0131\u015F: \xFCcret ve g\xFCnl\xFCk erzak tay\u0131n\u0131 kazan."),
-git:"sehir/is"},...ch.terms_accepted?[]:[{bitti:!1,ik:"scroll-text",ad:\u00E7("Topluluk kurallar\u0131n\u0131 kabul et"),aciklama:\u00E7("Sohbet, parti ve payla\u015F\u0131m i\xE7in gerekli."),is:()=>kurallariKabul()}],
-{bitti:!1,ik:"store",ad:\u00E7("Pazara bak"),aciklama:\u00E7("Erzak, m\xFChimmat ve silah fiyatlar\u0131n\u0131 g\xF6r; \xE7antandakini sat."),git:"sehir/pazar",ikincil:!0}];kap.innerHTML=`
+"hayat/profil",{async ac(kap){let is=null,secim=null,madalya=null,hs=null,gorunus=null,keyifG=null;const hayat=HayatSahnesi.ac(),vitrin=Vitrin.ac(),sahneAl=()=>Sunucu.cagir("life_scene").then(x=>{hs=x}).
+catch(()=>{});let rehber=null,rehberImza="";const rehberAl=()=>typeof Rehber=="object"?Rehber.profilKartlari().then(x=>{rehber=x}).catch(()=>{}):Promise.resolve();await Promise.all([Durum.ozet(),Durum.
+askerlik(),Sunucu.cagir("my_work").then(x=>{is=x}).catch(()=>{}),Sunucu.cagir("election_status").then(x=>{secim=x?.election??null}).catch(()=>{}),Sunucu.cagir("medals").then(x=>{madalya=x}).catch(()=>{}),
+sahneAl(),rehberAl(),Sunucu.cagir("my_look").then(x=>{gorunus=x?.look??null}).catch(()=>{}),Sunucu.cagir("mood_history").then(x=>{keyifG=x??null}).catch(()=>{})]);const ciz=()=>{const o=Durum.v.ozet,a=Durum.
+v.askerlik,s=a?.soldier,ch=o.character,stoklar=(o.balances??[]).filter(b=>b.asset!=="CR"&&b.amount>0),kredi=o.balances?.find(b=>b.asset==="CR")?.spendable??0,xpOran=s&&s.next_level_xp?(s.xp-s.level_xp)/
+(s.next_level_xp-s.level_xp):1,donmaOnce=secim?.stage==="scheduled"&&Date.parse(secim.freeze_at)>Date.now(),adimlar=[{bitti:a?.basic_training_done,ik:"target",ad:\u00E7("Temel asker\xEE e\u011Fitimi bitir"),
+aciklama:\u00E7("Tatbikatta botla dokunarak vurmay\u0131 \xF6\u011Fren; bir \u015Fey kaybetmezsin."),git:"ulke/cephe"},{bitti:!!ch.civic_tutorial_done,ik:"vote",ad:\u00E7("Vatanda\u015Fl\u0131k \xF6\u011Freticisini bit\
+ir"),aciklama:donmaOnce?\u00E7("Se\xE7imde oy vermek i\xE7in \u015Fart. Se\xE7men listesinin donma zaman\u0131: {zaman}.",{zaman:saatYaz(secim.freeze_at)}):\u00E7("Se\xE7imlerde oy vermek i\xE7in \u015Fart; birk\
+a\xE7 dakika s\xFCrer."),is:()=>vatandaslikOgreticisi()},{bitti:!!(is&&(is.units_today>0||is.active||is.recent?.length)),ik:"briefcase-business",ad:\u00E7("\u0130lk i\u015Fini yap"),aciklama:\u00E7("S\
+istem i\u015Finde \xE7al\u0131\u015F: \xFCcret ve g\xFCnl\xFCk erzak tay\u0131n\u0131 kazan."),git:"sehir/is"},...ch.terms_accepted?[]:[{bitti:!1,ik:"scroll-text",ad:\u00E7("Topluluk kurallar\u0131n\u0131 kabul\
+ et"),aciklama:\u00E7("Sohbet, parti ve payla\u015F\u0131m i\xE7in gerekli."),is:()=>kurallariKabul()}],{bitti:!1,ik:"store",ad:\u00E7("Pazara bak"),aciklama:\u00E7("Erzak, m\xFChimmat ve silah fiyatlar\u0131\
+n\u0131 g\xF6r; \xE7antandakini sat."),git:"sehir/pazar",ikincil:!0}];kap.innerHTML=`
         <div class="sayfa sayfa-dar">
           <div class="sayfa-bas"><div>
             <p class="ust-yazi">${\u00E7("{ulke} vatanda\u015F\u0131 \xB7 {yer}",{ulke:esc(ulkeAdi(ch.citizenship)),yer:esc(bolgeAdi(ch.location))})}</p>
@@ -1431,7 +981,8 @@ en bir sava\u015F\u0131 yok.")}</p>
                   <div class="asker-deger"><b>${sayi(s.energy)}<small class="kucuk"> / ${sayi(s.energy_max)}</small></b><span>${\u00E7("Enerji (vuru\u015F ba\u015F\u0131 {n})",{n:Number(s.per_hit)})}<\
 /span></div>
                   <div class="asker-deger"><b>${puan(s.power)}</b><span>${\u00E7("Vuru\u015F g\xFCc\xFC (puan)")}</span></div>
-                  <div class="asker-deger"><b>${s.best_quality?\u00E7("{q}. kalite",{q:Number(s.best_quality)}):\u00E7("Silahs\u0131z")}</b><span>${\u00E7("Silah")}</span></div>
+                  <div class="asker-deger"><b>${s.best_quality?\u00E7("{q}. kalite",{q:Number(s.best_quality)}):\u00E7("Silahs\u0131z")}</b><span>${s.weapon_max==null?\u00E7("Silah"):Number(s.weapon_max)===
+0?\u00E7("Silah (se\xE7im: silahs\u0131z)"):\u00E7("Silah (se\xE7im: en \xE7ok {n}.)",{n:Number(s.weapon_max)})}</span></div>
                   <div class="asker-deger"><b>${sayi(s.supplies.ammo)}</b><span>${\u00E7("M\xFChimmat")}</span></div>
                 </div>
                 <div style="margin-top:14px"><div class="satir" style="justify-content:space-between"><span class="kucuk">${\u00E7("Deneyim: {xp}",{xp:sayi(s.xp)+(s.next_level_xp?" / "+sayi(s.next_level_xp):
@@ -1439,7 +990,7 @@ en bir sava\u015F\u0131 yok.")}</p>
                   <span class="kucuk">${\u00E7("Askerlik becerisi {n}",{n:Number(s.skill)})}</span></div>
                   <div class="cubuk" style="margin-top:6px"><i style="display:block;height:100%;width:${Math.round(Math.max(0,Math.min(1,xpOran))*100)}%;background:var(--altin)"></i></div></div>`:""}
               </section>
-              ${keyifKarti(a?.mood)}
+              ${keyifKarti(a?.mood,keyifG)}
             </div>
             <section class="kart">
               <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("\xC7anta")}</p><h2 class="b2">${\u00E7("Sto\u011Fun")}</h2></div><span class="ik-kutu">${ikon("package")}</span></div>
@@ -1459,7 +1010,7 @@ return typeof Rehber=="object"&&setTimeout(()=>{kap.isConnected&&Rehber.rolSorus
 const puan=milli=>(Number(milli)/1e5).toLocaleString(DIL.yerel,{maximumFractionDigits:1}),ulkeAdi=id=>DUNYA.ulkeler?.[id]?.ad??id,bolgeAdi=id=>DUNYA.bolgeler?.[id]?.ad??id,KESIM={left:{ad:\u00E7("Sol \
 kanat"),agirlik:3},center:{ad:\u00E7("Merkez"),agirlik:4},right:{ad:\u00E7("Sa\u011F kanat"),agirlik:3}},DURUS={assault:{ad:\u00E7("Taarruz"),yener:\u00E7("Mevziyi yener")},hold:{ad:\u00E7("Mevzi"),yener:\u00E7(
 "Yan manevray\u0131 yener")},flank:{ad:\u00E7("Yan manevra"),yener:\u00E7("Taarruzu yener")}},payYuzde=ppm=>\u00E7("%{n}",{n:Math.round(Number(ppm)/1e4)});Kabuk.gecikmeli("ulke/cephe","ek_22_cephe");const GB_TUR={
-bug:\u00E7("Hata"),balance:\u00E7("Denge"),idea:\u00E7("\xD6neri"),other:\u00E7("Di\u011Fer")},SURUM="2026-11-09-22f8ad98-68be21e";Kabuk.gecikmeli("hayat/ayarlar","ek_23_ayarlar"),Kabuk.gecikmeli("hay\
+bug:\u00E7("Hata"),balance:\u00E7("Denge"),idea:\u00E7("\xD6neri"),other:\u00E7("Di\u011Fer")},SURUM="2026-11-10-07201b6c-c3ff3d2";Kabuk.gecikmeli("hayat/ayarlar","ek_23_ayarlar"),Kabuk.gecikmeli("hay\
 at/egitim","ek_24_egitim");const BECERI={military:{ad:\u00E7("Askerlik"),ik:"shield"},production:{ad:\u00E7("\xDCretim"),ik:"hammer"},logistics:{ad:\u00E7("Lojistik"),ik:"truck"},management:{ad:\u00E7(
 "Y\xF6netim"),ik:"briefcase-business"},music:{ad:\u00E7("M\xFCzik"),ik:"guitar"},content:{ad:\u00E7("\u0130\xE7erik \xFCretimi"),ik:"clapperboard"},medicine:{ad:\u00E7("T\u0131p"),ik:"stethoscope"}},beceriAdi=b=>BECERI[b]?.
 ad??String(b??"");Kabuk.gecikmeli("sehir/is","ek_25_calis");const TARIF_AD={tarla:\u00E7("Tarla"),maden:\u00E7("Maden oca\u011F\u0131"),lif:\u00E7("Lif bah\xE7esi"),gida:\u00E7("F\u0131r\u0131n"),metal:\u00E7(
@@ -1601,6 +1152,9 @@ yelerin \xFC\xE7te ikisi gerekir."),etki:\u00E7("Kabul edilirse vali g\xF6revden
 national_goal":return{tur:\u00E7("\xDClke hedefi"),ik:"target",baslik:\u00E7("Haftal\u0131k \xFClke hedefi: {hedef}",{hedef:hedefYazi(p.metric,p.target)}),aciklama:\u00E7("Vatanda\u015Flar\u0131n bir haftada to\
 playaca\u011F\u0131 {birim}. En az {n} puan katk\u0131 veren, hedefe ula\u015F\u0131l\u0131rsa \xDClke Hedefi Madalyas\u0131 al\u0131r.",{birim:HEDEF_METRIK[p.metric]?.birim??String(p.metric??""),n:Number(
 Millet.kural()?.goal?.minContribution??10)}),etki:\u00E7("Kabul edilirse bu haftan\u0131n hedefi olur; bu haftan\u0131n hedefi varsa gelecek haftan\u0131n. \xD6d\xFCl madalyad\u0131r; para ya da g\xFC\xE7 vermez.")};case"\
+anthem":return{tur:\u00E7("Milli mar\u015F"),ik:"eighth-notes",baslik:\u00E7("Milli mar\u015F: {sarki} \u2014 {grup}",{sarki:String(p.title??""),grup:String(p.band??"")}),aciklama:\u00E7("Kayd\u0131 bitmi\u015F\
+ \u015Fark\u0131 (\u015Fark\u0131 kalitesi {k}, kay\u0131t kalitesi {kk}); grubun en az bir \xFCyesi \xFClkenin vatanda\u015F\u0131. Salt \xE7o\u011Funluk yeter.",{k:Number(p.quality??0),kk:Number(p.recording_quality??
+0)}),etki:\u00E7("Kabul edilirse \u015Fark\u0131 \xFClkenin milli mar\u015F\u0131 olur: \xDClkem \u2192 \xD6zet'te ve m\xFCzede \xE7alar, grup Milli Mar\u015F unvan\u0131 al\u0131r. Onur ve g\xF6r\xFCn\xFCmd\xFCr; g\xFC\xE7 ya da oy vermez.")};case"\
 customs_law":return{tur:\u00E7("G\xFCmr\xFCk"),ik:"shield",baslik:\u00E7("G\xFCmr\xFCk yasas\u0131: {yasa}",{yasa:gumrukOzet(p.law)}),aciklama:\u00E7("Y\xFCr\xFCrl\xFCkteki: {yasa}.",{yasa:gumrukOzet(
 p.current)})+(p.law?.budgetCr?" "+\u00E7("G\xFCnl\xFCk g\xFCmr\xFCk b\xFCt\xE7esi {kr} kredi (hazineden).",{kr:kr(p.law.budgetCr)}):" "+\u00E7("G\xFCmr\xFCk b\xFCt\xE7esi yok."))+(p.law?.policeBudgetCr!=
 null?" "+(Number(p.law.policeBudgetCr)>0?\u00E7("G\xFCnl\xFCk kolluk b\xFCt\xE7esi {kr} kredi (n\xF6bet maa\u015Flar\u0131 hazineden).",{kr:kr(p.law.policeBudgetCr)}):\u00E7("Kolluk b\xFCt\xE7esi yok: n\xF6bet\
@@ -1696,38 +1250,39 @@ trim()||null}),tost(\u00E7("Ba\u015Fvuru reddedildi."),"x"),vatandaslikAc()}})}}
 right"],KESIM_AD2={left:\u00E7("Sol kanat"),center:\u00E7("Merkez"),right:\u00E7("Sa\u011F kanat")},KESIM_KISA={left:\u00E7("Sol"),center:\u00E7("Merkez"),right:\u00E7("Sa\u011F")},DURUS2={assault:{ad:\u00E7(
 "Taarruz"),ik:"swords",yener:\u00E7("Mevziyi yener")},hold:{ad:\u00E7("Mevzi tut"),ik:"shield",yener:\u00E7("Kanad\u0131 yener")},flank:{ad:\u00E7("Kanat"),ik:"route",yener:\u00E7("Taarruzu yener")}},
 NEDEN={limit:\u00E7("Bu dakikan\u0131n vuru\u015F hakk\u0131 doldu."),energy:\u00E7("Enerjin yetmedi; ye ya da bekle."),logistics:\u00E7("Lojistik paketin yok: bu dakika vuru\u015F yap\u0131lamad\u0131. Pazardan loj\
-istik al.")};let arena3bOrnek=null;const CepheArena=(()=>{async function ac(yer,kampanyaId){const S={snap:null,front:null,asker:null,board:null,kural:null,kesim:"center",durus:"hold",kuyruk:[],ilkBekleyen:0,
-sonDokunus:0,gonderiliyor:!1,tick:0,tickVurus:0,tickTur:null,live:null,liveAn:0,fark:0,benimCanli:0,enerji:{deger:0,an:0,capa:0,tavan:100,regen:3e3},ikmal:{ammo:0,logistics:0,alloc_ammo:0,alloc_logistics:0},
-durumMetni:"",uyari:!1,kapandi:!1,birlik:null,emirSurum:null,vurusSurum:0};Object.defineProperty(S,"bekleyen",{get:()=>S.kuyruk.reduce((top,p)=>top+p.n,0)});const kuyrukSifirla=()=>{S.kuyruk=[],S.ilkBekleyen=
-0},kuyrugaKoy=n=>{const son=S.kuyruk[S.kuyruk.length-1];son&&son.kesim===S.kesim&&son.durus===S.durus?son.n+=n:S.kuyruk.push({kesim:S.kesim,durus:S.durus,n})};let mod=Gorunum.uc()?"3b":"2b";const karargah=Karargah.
-ac(),spiker=Spiker.ac();let hata3b=!1,ekranKapandi=!1;try{const k=JSON.parse(sessionStorage.getItem("civora.arena")??"{}");k.kesim&&(S.kesim=k.kesim),k.durus&&(S.durus=k.durus)}catch{}const hatirla=()=>{
-try{sessionStorage.setItem("civora.arena",JSON.stringify({kesim:S.kesim,durus:S.durus}))}catch{}},simdi=()=>Date.now()+S.fark,W=()=>S.kural.war2,benimTaraf=()=>S.front?.side??S.snap?.my_side??null,bizPay=saldiranPpm=>benimTaraf()===
-"attacker"?saldiranPpm:1e6-saldiranPpm,tur=()=>S.snap?.open_round??null,turKaydi=()=>(S.snap?.rounds??[]).find(r=>r.round_id===tur()?.round_id),bizimUlke=()=>benimTaraf()==="attacker"?S.snap.attacker_country_id:
-S.snap.defender_country_id,onlarinUlke=()=>benimTaraf()==="attacker"?S.snap.defender_country_id:S.snap.attacker_country_id,onlarinTarafi=()=>benimTaraf()==="attacker"?"defender":"attacker",ar3=()=>mod===
-"3b"&&arena3bOrnek&&Uc.cizici?.etkin===arena3bOrnek?arena3bOrnek:null;function kesimPaylari(){const t=tur(),cozulen=t?.ticks?.length?t.ticks[t.ticks.length-1]:null,canli2=S.live&&(!cozulen||Number(S.live.
-tick)>Number(cozulen.tick))?S.live.sectors:null;return Object.fromEntries(KESIMLER.map(k=>{const c=Number(canli2?.[k]??5e5);return[k,c!==5e5?c:Number(cozulen?.[k]??5e5)]}))}function durum3b(){const p=kesimPaylari();
-return{anahtar:kampanyaId,biz:{renk:ulkeRenk(bizimUlke()),kod:bizimUlke()},onlar:{renk:ulkeRenk(onlarinUlke()),kod:onlarinUlke()},pay:Object.fromEntries(KESIMLER.map(k=>[k,bizPay(p[k])])),kesim:S.kesim,
-asker:{biz:Number(S.live?.soldiers?.[benimTaraf()]??0),onlar:Number(S.live?.soldiers?.[onlarinTarafi()]??0)},arazi:S.sahne?.terrain??DUNYA.bolgeler?.[S.snap.target_region_id]?.arazi??"ova",gece:bolgeGecesi(
-S.snap.target_region_id),ikmal:Number(S.sahne?.sides?.[benimTaraf()]?.supply??0)}}function enerjiAyarla(deger,sunucuAn,capa,tavan){S.enerji={deger,an:Date.parse(sunucuAn),capa:capa?Date.parse(capa):Date.
-parse(sunucuAn),tavan:tavan??S.enerji.tavan,regen:S.enerji.regen}}function enerjiSimdi(){const e=S.enerji,t=simdi(),artis=Math.floor((t-e.capa)/e.regen)-Math.floor((e.an-e.capa)/e.regen);return Math.min(
-e.tavan,e.deger+Math.max(0,artis))}async function yukle(){const surum=S.vurusSurum,[snap,front,kurallar,a,sahne,birlik]=await Promise.all([Sunucu.cagir("campaign_snapshot",{p_campaign:kampanyaId}),Sunucu.
-cagir("front_status",{p_campaign:kampanyaId}),Durum.kurallar(),Durum.askerlik(),Sunucu.cagir("front_scene",{p_campaign:kampanyaId}).catch(()=>null),Sunucu.cagir("unit_front",{p_campaign:kampanyaId}).catch(
-()=>null)]);S.snap=snap,S.front=front,S.kural=kurallar.data.combat,S.asker=a?.soldier??null,S.sahne=sahne,S.birlik=birlik,S.fark=Date.parse(snap.server_time)-Date.now(),S.asker&&S.vurusSurum===surum&&
-(S.enerji.regen=S.asker.regen_ms,enerjiAyarla(S.asker.energy,S.asker.server_time,null,S.asker.energy_max),S.ikmal={...S.ikmal,ammo:S.asker.supplies.ammo,logistics:S.asker.supplies.logistics});const t=tur();
-if(t){const tick=Number(t.current_tick),vurus=Number(t.my_tick?.hits??0);S.tickTur!==t.round_id||tick>S.tick?(S.tick=tick,S.tickVurus=vurus,t.my_tick?.stance&&(S.durus=t.my_tick.stance)):tick===S.tick&&
-vurus>=S.tickVurus&&(S.tickVurus=vurus,t.my_tick?.stance&&(S.durus=t.my_tick.stance)),S.tickTur=t.round_id,t.live&&(S.live=t.live,S.liveAn=Date.now())}birlikIkmal(),birlikKanal(),await tahta(),spikerYaz()}
-function spikerBaglam(){const x=S.snap,kisiler=new Map([...S.board?.round?.attacker??[],...S.board?.round?.defender??[]].map(k=>[k.character_id,k.name]));return{taraf:yan=>ulkeAdi(yan==="attacker"?x.attacker_country_id:
-x.defender_country_id),kesim:k=>KESIM_AD2[k]??"",kisi:id=>kisiler.get(id)??null,bolge:bolgeAdi(x.target_region_id),tur:x.drive_id?"bagimsizlik":x.liberation||x.resistance_id?"kurtarma":"normal"}}function spikerYaz(){
-const x=S.snap,t=x?.open_round;if(!x||!S.kural)return;const sayi0=(v,y)=>v==null?y:Number(v);spiker.yaz({rounds:x.rounds??[],ticksPerRound:Number(S.kural.ticksPerRound),status:x.status,open:t?{round_no:Number(
-t.round_no),ticks:(t.ticks??[]).map(k=>({tick:Number(k.tick),left:sayi0(k.left,5e5),center:sayi0(k.center,5e5),right:sayi0(k.right,5e5),sliceX10:sayi0(k.slice_x10,5e6),plans:sayi0(k.plans,0)}))}:null},
-spikerBaglam());const br=S.board?.status==="open"?S.board.round:null;if(br){const a0=br.attacker?.[0],d0=br.defender?.[0],ust=a0?d0&&(Number(d0.damage)>Number(a0.damage)||Number(d0.damage)===Number(a0.
-damage)&&d0.character_id<a0.character_id)?d0:a0:d0;spiker.lider(ust?[{id:ust.character_id,side:ust===a0?"attacker":"defender"}]:[],Number(S.board.round_no),Number(S.board.ticks_resolved))}}const spikerYerles=()=>{
-const sy=$("#spiker-yer",yer);sy&&sy.replaceWith(spiker.el)};async function tahta(){const r=tur()?.round_id??[...S.snap?.rounds??[]].reverse().find(x=>x.status==="closed")?.round_id;S.board=r?await Sunucu.
-cagir("war_board",{p_round:r}).catch(()=>null):null}let ciz=function(){const x=S.snap,t=tur(),biz=bizimUlke(),onlar=onlarinUlke(),rb=ulkeRenk(biz),ro=ulkeRenk(onlar),bizKazanc=benimTaraf()==="attacker"?
-x.attacker_wins:x.defender_wins,onlarKazanc=benimTaraf()==="attacker"?x.defender_wins:x.attacker_wins,bg=bagimsizlik(),dr=direnisMi(),muttefik=S.front?.ally?.joined?S.front.ally.country_id:null,skor={
-a:esc(ulkeAdi(x.attacker_country_id)),d:esc(ulkeAdi(x.defender_country_id)),biz:Number(bizKazanc),onlar:Number(onlarKazanc),n:Number(x.rounds_played),toplam:Number(S.kural.roundsMax??6)},ust=`<div cla\
-ss="sayfa-bas" style="margin-bottom:12px"><div>${ulkeUst(biz,bg?benimTaraf()==="attacker"?\u00E7("ba\u011F\u0131ms\u0131zl\u0131k taraf\u0131"):\u00E7("\xFClke taraf\u0131"):dr?benimTaraf()==="attacke\
-r"?\u00E7("yerel direni\u015F"):\u00E7("i\u015Fgal savunmas\u0131"):muttefik?\u00E7("m\xFCttefik savunma"):benimTaraf()==="attacker"?\u00E7("sald\u0131r\u0131"):\u00E7("savunma"))}
+istik al.")};let arena3bOrnek=null;const CepheArena=(()=>{async function ac(yer,kampanyaId){const dunyaOturumu=Sunucu.Giris.kusak;if(await Dunya.yukle(),dunyaOturumu!==Sunucu.Giris.kusak||!yer.isConnected)
+return;const S={snap:null,front:null,asker:null,board:null,kural:null,kesim:"center",durus:"hold",kuyruk:[],ilkBekleyen:0,sonDokunus:0,gonderiliyor:!1,tick:0,tickVurus:0,tickTur:null,live:null,liveAn:0,
+fark:0,benimCanli:0,enerji:{deger:0,an:0,capa:0,tavan:100,regen:3e3},ikmal:{ammo:0,logistics:0,alloc_ammo:0,alloc_logistics:0},durumMetni:"",uyari:!1,kapandi:!1,birlik:null,emirSurum:null,vurusSurum:0};
+Object.defineProperty(S,"bekleyen",{get:()=>S.kuyruk.reduce((top,p)=>top+p.n,0)});const kuyrukSifirla=()=>{S.kuyruk=[],S.ilkBekleyen=0},kuyrugaKoy=n=>{const son=S.kuyruk[S.kuyruk.length-1];son&&son.kesim===
+S.kesim&&son.durus===S.durus?son.n+=n:S.kuyruk.push({kesim:S.kesim,durus:S.durus,n})};let mod=Gorunum.uc()?"3b":"2b";const karargah=Karargah.ac(),spiker=Spiker.ac();let hata3b=!1,ekranKapandi=!1;try{const k=JSON.
+parse(sessionStorage.getItem("civora.arena")??"{}");k.kesim&&(S.kesim=k.kesim),k.durus&&(S.durus=k.durus)}catch{}const hatirla=()=>{try{sessionStorage.setItem("civora.arena",JSON.stringify({kesim:S.kesim,
+durus:S.durus}))}catch{}},simdi=()=>Date.now()+S.fark,W=()=>S.kural.war2,benimTaraf=()=>S.front?.side??S.snap?.my_side??null,bizPay=saldiranPpm=>benimTaraf()==="attacker"?saldiranPpm:1e6-saldiranPpm,tur=()=>S.
+snap?.open_round??null,turKaydi=()=>(S.snap?.rounds??[]).find(r=>r.round_id===tur()?.round_id),bizimUlke=()=>benimTaraf()==="attacker"?S.snap.attacker_country_id:S.snap.defender_country_id,onlarinUlke=()=>benimTaraf()===
+"attacker"?S.snap.defender_country_id:S.snap.attacker_country_id,onlarinTarafi=()=>benimTaraf()==="attacker"?"defender":"attacker",ar3=()=>mod==="3b"&&arena3bOrnek&&Uc.cizici?.etkin===arena3bOrnek?arena3bOrnek:
+null;function kesimPaylari(){const t=tur(),cozulen=t?.ticks?.length?t.ticks[t.ticks.length-1]:null,canli2=S.live&&(!cozulen||Number(S.live.tick)>Number(cozulen.tick))?S.live.sectors:null;return Object.
+fromEntries(KESIMLER.map(k=>{const c=Number(canli2?.[k]??5e5);return[k,c!==5e5?c:Number(cozulen?.[k]??5e5)]}))}function durum3b(){const p=kesimPaylari();return{anahtar:kampanyaId,biz:{renk:ulkeRenk(bizimUlke()),
+kod:bizimUlke()},onlar:{renk:ulkeRenk(onlarinUlke()),kod:onlarinUlke()},pay:Object.fromEntries(KESIMLER.map(k=>[k,bizPay(p[k])])),kesim:S.kesim,asker:{biz:Number(S.live?.soldiers?.[benimTaraf()]??0),onlar:Number(
+S.live?.soldiers?.[onlarinTarafi()]??0)},arazi:S.sahne?.terrain??DUNYA.bolgeler?.[S.snap.target_region_id]?.arazi??"ova",gece:bolgeGecesi(S.snap.target_region_id),ikmal:Number(S.sahne?.sides?.[benimTaraf()]?.
+supply??0)}}function enerjiAyarla(deger,sunucuAn,capa,tavan){S.enerji={deger,an:Date.parse(sunucuAn),capa:capa?Date.parse(capa):Date.parse(sunucuAn),tavan:tavan??S.enerji.tavan,regen:S.enerji.regen}}function enerjiSimdi(){
+const e=S.enerji,t=simdi(),artis=Math.floor((t-e.capa)/e.regen)-Math.floor((e.an-e.capa)/e.regen);return Math.min(e.tavan,e.deger+Math.max(0,artis))}async function yukle(){const surum=S.vurusSurum,[snap,
+front,kurallar,a,sahne,birlik]=await Promise.all([Sunucu.cagir("campaign_snapshot",{p_campaign:kampanyaId}),Sunucu.cagir("front_status",{p_campaign:kampanyaId}),Durum.kurallar(),Durum.askerlik(),Sunucu.
+cagir("front_scene",{p_campaign:kampanyaId}).catch(()=>null),Sunucu.cagir("unit_front",{p_campaign:kampanyaId}).catch(()=>null)]);S.snap=snap,S.front=front,S.kural=kurallar.data.combat,S.asker=a?.soldier??
+null,S.sahne=sahne,S.birlik=birlik,S.fark=Date.parse(snap.server_time)-Date.now(),S.asker&&S.vurusSurum===surum&&(S.enerji.regen=S.asker.regen_ms,enerjiAyarla(S.asker.energy,S.asker.server_time,null,S.
+asker.energy_max),S.ikmal={...S.ikmal,ammo:S.asker.supplies.ammo,logistics:S.asker.supplies.logistics});const t=tur();if(t){const tick=Number(t.current_tick),vurus=Number(t.my_tick?.hits??0);S.tickTur!==
+t.round_id||tick>S.tick?(S.tick=tick,S.tickVurus=vurus,t.my_tick?.stance&&(S.durus=t.my_tick.stance)):tick===S.tick&&vurus>=S.tickVurus&&(S.tickVurus=vurus,t.my_tick?.stance&&(S.durus=t.my_tick.stance)),
+S.tickTur=t.round_id,t.live&&(S.live=t.live,S.liveAn=Date.now())}birlikIkmal(),birlikKanal(),await tahta(),spikerYaz()}function spikerBaglam(){const x=S.snap,kisiler=new Map([...S.board?.round?.attacker??
+[],...S.board?.round?.defender??[]].map(k=>[k.character_id,k.name]));return{taraf:yan=>ulkeAdi(yan==="attacker"?x.attacker_country_id:x.defender_country_id),kesim:k=>KESIM_AD2[k]??"",kisi:id=>kisiler.
+get(id)??null,bolge:bolgeAdi(x.target_region_id),tur:x.drive_id?"bagimsizlik":x.liberation||x.resistance_id?"kurtarma":"normal"}}function spikerYaz(){const x=S.snap,t=x?.open_round;if(!x||!S.kural)return;
+const sayi0=(v,y)=>v==null?y:Number(v);spiker.yaz({rounds:x.rounds??[],ticksPerRound:Number(S.kural.ticksPerRound),status:x.status,open:t?{round_no:Number(t.round_no),ticks:(t.ticks??[]).map(k=>({tick:Number(
+k.tick),left:sayi0(k.left,5e5),center:sayi0(k.center,5e5),right:sayi0(k.right,5e5),sliceX10:sayi0(k.slice_x10,5e6),plans:sayi0(k.plans,0)}))}:null},spikerBaglam());const br=S.board?.status==="open"?S.
+board.round:null;if(br){const a0=br.attacker?.[0],d0=br.defender?.[0],ust=a0?d0&&(Number(d0.damage)>Number(a0.damage)||Number(d0.damage)===Number(a0.damage)&&d0.character_id<a0.character_id)?d0:a0:d0;
+spiker.lider(ust?[{id:ust.character_id,side:ust===a0?"attacker":"defender"}]:[],Number(S.board.round_no),Number(S.board.ticks_resolved))}}const spikerYerles=()=>{const sy=$("#spiker-yer",yer);sy&&sy.replaceWith(
+spiker.el)};async function tahta(){const r=tur()?.round_id??[...S.snap?.rounds??[]].reverse().find(x=>x.status==="closed")?.round_id;S.board=r?await Sunucu.cagir("war_board",{p_round:r}).catch(()=>null):
+null}let ciz=function(){const x=S.snap,t=tur(),biz=bizimUlke(),onlar=onlarinUlke(),rb=ulkeRenk(biz),ro=ulkeRenk(onlar),bizKazanc=benimTaraf()==="attacker"?x.attacker_wins:x.defender_wins,onlarKazanc=benimTaraf()===
+"attacker"?x.defender_wins:x.attacker_wins,bg=bagimsizlik(),dr=direnisMi(),muttefik=S.front?.ally?.joined?S.front.ally.country_id:null,skor={a:esc(ulkeAdi(x.attacker_country_id)),d:esc(ulkeAdi(x.defender_country_id)),
+biz:Number(bizKazanc),onlar:Number(onlarKazanc),n:Number(x.rounds_played),toplam:Number(S.kural.roundsMax??6)},ust=`<div class="sayfa-bas" style="margin-bottom:12px"><div>${ulkeUst(biz,bg?benimTaraf()===
+"attacker"?\u00E7("ba\u011F\u0131ms\u0131zl\u0131k taraf\u0131"):\u00E7("\xFClke taraf\u0131"):dr?benimTaraf()==="attacker"?\u00E7("yerel direni\u015F"):\u00E7("i\u015Fgal savunmas\u0131"):muttefik?\u00E7(
+"m\xFCttefik savunma"):benimTaraf()==="attacker"?\u00E7("sald\u0131r\u0131"):\u00E7("savunma"))}
           <h2 class="b2">${esc(bolgeAdi(x.target_region_id))}</h2>
           <p class="aciklama">${bg?\u00E7("Ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131: {a} \xFClkeden ayr\u0131lmak i\xE7in sava\u015F\u0131yor, {d} savunuyor \xB7 skor <b>{biz}\u2013{onlar}</b> (biz\u2013onlar) \xB7 {n} / {toplam} tur",
 skor):dr?\u00E7("Yerel direni\u015F: {a} i\u015Fgal alt\u0131ndaki b\xF6lgesini geri almak i\xE7in sava\u015F\u0131yor, {d} savunuyor \xB7 skor <b>{biz}\u2013{onlar}</b> (biz\u2013onlar) \xB7 {n} / {toplam} tur",
@@ -1791,8 +1346,8 @@ all>${v.yener}</small></span></button>`).join("")}</div>
                   <svg viewBox="0 0 104 104" aria-hidden="true"><circle class="iz" cx="52" cy="52" r="48"/><circle class="dolum" id="ar-halka" cx="52" cy="52" r="48"/></svg>
                   <span class="ar-vur-ic"><b id="ar-vur-yazi">${\u00E7("VUR")}</b><small id="ar-hak"></small></span>
                 </button>
-                <div class="ar-bilgi sag"><small>${ikon("box")}${\u00E7("M\xFChimmat")}</small><b id="ar-mermi"></b><small>${ikon("truck")}${\u00E7("Lojistik")} <b id="ar-lojistik"></b></small><small>${ikon(
-"shield-half")}<b id="ar-silah"></b></small></div>
+                <div class="ar-bilgi sag"><small>${ikon("box")}${\u00E7("M\xFChimmat")}</small><b id="ar-mermi"></b><small>${ikon("truck")}${\u00E7("Lojistik")} <b id="ar-lojistik"></b></small><button\
+ type="button" class="ar-silah-d" id="ar-silah-sec" aria-label="${esc(\u00E7("Silah se\xE7imi"))}">${ikon("shield-half")}<b id="ar-silah"></b>${ikon("chevron-down")}</button></div>
               </div>
               <p class="ar-durum" id="ar-durum" aria-live="polite"></p>
             </div>
@@ -1870,53 +1425,71 @@ S.kesim===k))}ar3()?.durumYaz(durum3b());const e=enerjiSimdi(),a=S.asker;$("#ar-
 1,S.enerji.tavan)*100)+"%",$("#ar-erzak",yer).textContent=sayi(Durum.stok("erzak@1"));const tm=Number(S.ikmal.alloc_ammo??0),tl=Number(S.ikmal.alloc_logistics??0),mermiEl=$("#ar-mermi",yer),lojEl=$("#\
 ar-lojistik",yer);mermiEl.textContent=sayi(S.ikmal.ammo+tm),lojEl.textContent=sayi(S.ikmal.logistics+tl),mermiEl.title=tm?\u00E7("{n} senin, {m} birli\u011Fin tahsisi",{n:Number(S.ikmal.ammo),m:tm}):"",
 lojEl.title=tl?\u00E7("{n} senin, {m} birli\u011Fin tahsisi",{n:Number(S.ikmal.logistics),m:tl}):"",mermiEl.classList.toggle("ar-tahsisli",tm>0),lojEl.classList.toggle("ar-tahsisli",tl>0),$("#ar-silah",
-yer).textContent=a?.best_quality?\u00E7("{n}. kalite",{n:Number(a.best_quality)}):\u00E7("Silahs\u0131z"),$("#ar-guc",yer).textContent=a?puan(a.power):"\u2014",$("#ar-rutbe",yer).textContent=\u00E7v(a?.
-rank_name);for(const b of $$("[data-durus]",yer))b.setAttribute("aria-pressed",String(S.durus===b.dataset.durus));const hak=W().hitsPerTick-S.tickVurus-S.bekleyen,vur2=$("#ar-vur",yer),durum=S.kapandi?
-"bitti":hak<=0?"dolu":e<W().energy.perHit*(S.bekleyen+1)?"enerji":lojistikYok()&&S.tickVurus===0?"mermi":"hazir";vur2.dataset.durum=durum,$("#ar-vur-yazi",yer).textContent={hazir:\u00E7("VUR"),dolu:\u00E7(
-"DOLDU"),enerji:\u00E7("ENERJ\u0130"),mermi:\u00E7("LOJ\u0130ST\u0130K"),bitti:\u00E7("B\u0130TT\u0130")}[durum],$("#ar-hak",yer).textContent=`${sayi(S.tickVurus+S.bekleyen)} / ${sayi(W().hitsPerTick)}`,
-$("#ar-halka",yer).style.strokeDashoffset=String(301.6*(1-(S.tickVurus+S.bekleyen)/W().hitsPerTick));const d=$("#ar-durum",yer),metin=S.durumMetni||(durum==="dolu"?\u00E7("Bu dakikan\u0131n hakk\u0131 doldu; ye\
-ni dakikay\u0131 bekle."):durum==="enerji"?\u00E7("Enerjin yetmiyor: ye ya da birka\xE7 saniye bekle."):durum==="mermi"?\u00E7("Lojistik paketin yok; vuru\u015F yap\u0131lamaz."):"");if(d.textContent=
-metin,d.classList.toggle("uyari",S.uyari||!S.durumMetni&&durum!=="hazir"),S.bekleyen>0&&!S.gonderiliyor){const t0=Date.now();(t0-S.sonDokunus>1200||t0-S.ilkBekleyen>(W().batchMs??3e3)||kalan<2500)&&gonder()}}
-function tahtaCiz(){const b=S.board;if(!b||!$("#ar-biz5",yer))return;const biz=b.round?.[benimTaraf()]??[],onlar=b.round?.[benimTaraf()==="attacker"?"defender":"attacker"]??[],sat=(x,i)=>`<li class="${x.
-character_id===benimKimlik()?"ben":""}"${x.ally?` data-muttefik="${esc(x.country_id)}" title="${esc(\u00E7("{ulke} m\xFCttefik",{ulke:ulkeAdi(x.country_id)}))}"`:""}><i>${i+1}</i><span>${x.ally?`<span\
- class="ulke-nokta" style="background:${ulkeRenk(x.country_id)}"></span> `:""}${esc(x.name)}</span><b>${puan(x.damage)}</b></li>`;$("#ar-biz5",yer).innerHTML=biz.map(sat).join("")||`<li><i></i><span>${\u00E7(
-"Hen\xFCz vuru\u015F yok")}</span><b></b></li>`,$("#ar-onlar5",yer).innerHTML=onlar.map(sat).join("")||`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}</span><b></b></li>`;const me=b.me?.round;$(
-"#ar-sen",yer).textContent=me?\u00E7("Sen: {n}. s\u0131ra / {toplam} \xB7 {puan} puan",{n:Number(me.position),toplam:Number(me.of),puan:puan(me.damage)}):""}function akis(metin,sinif=""){const k=$("#a\
-r-akis",yer);if(!k)return;const el=document.createElement("div");for(el.className=sinif,el.textContent=metin,k.appendChild(el);k.children.length>4;)k.firstChild.remove();setTimeout(()=>el.remove(),6e3)}
-function hasar(kesim,metin){const a=ar3();if(a){hareketAzalt||a.hasar(kesim,metin);return}const el=$(`[data-kesim="${kesim}"]`,yer);if(!el||hareketAzalt)return;const h=document.createElement("span");h.
-className="ar-hasar",h.textContent=metin,h.style.left="50%",h.style.top="45%",el.style.position="relative",el.appendChild(h),setTimeout(()=>h.remove(),950)}function baglaArena(){const klavyeTiki=e=>e.
-detail===0&&!e.pointerType;for(const b of $$("[data-kesim]",yer))b.addEventListener("pointerdown",e=>{e.preventDefault(),kesimSec(b.dataset.kesim),vur()}),b.addEventListener("click",e=>{klavyeTiki(e)&&
-(kesimSec(b.dataset.kesim),vur())});$("#ar-vur",yer).addEventListener("pointerdown",e=>{e.preventDefault(),vur()}),$("#ar-vur",yer).addEventListener("click",e=>{klavyeTiki(e)&&vur()});for(const b of $$(
-"[data-durus]",yer))b.addEventListener("click",()=>durusSec(b.dataset.durus));$("#ar-ye",yer).addEventListener("click",ye),$("#ar-gorunum",yer)?.addEventListener("click",()=>{hata3b=!1;const yeni=mod===
-"3b"?"2b":"3b";Gorunum.ayarla(yeni),tost(yeni==="2b"?\u00E7("Hafif g\xF6r\xFCn\xFCm (2B) se\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsin."):\u00E7("3B g\xF6r\xFCn\xFCm se\xE7ildi."),"layers")}),$(
-"#yol-git",yer)?.addEventListener("click",yolaCik),$("#yol-teklif",yer)&&teklifGoster();for(const b of $$("[data-onar]",yer))b.onclick=()=>onar(Number(b.dataset.onar))}function arenaVurusEfekti(){const k=benimKimlik(),
-kayit=k?Gorunus.al(k):void 0;return k&&kayit===void 0&&Gorunus.iste([k]),typeof gorunusUrunleri=="function"&&kayit?.look?gorunusUrunleri(kayit.look).vurus??null:null}function vur(){if(S.kapandi)return;
-if(S.front&&!S.front.basic_training_done){tost(\u00E7("\xD6nce tatbikatta temel e\u011Fitimi tamamla."),"target");return}if(S.front&&!S.front.at_front){tost(\u00E7("Vurmak i\xE7in cepheye gitmelisin."),
-"route");return}if(!(W().hitsPerTick-S.tickVurus-S.bekleyen<=0)){if(enerjiSimdi()<W().energy.perHit*(S.bekleyen+1)){S.durumMetni="",guncelle();return}if(lojistikYok()&&S.tickVurus===0){tost(NEDEN.logistics,
-"truck");return}S.bekleyen||(S.ilkBekleyen=Date.now()),kuyrugaKoy(1),S.sonDokunus=Date.now(),S.durumMetni="",S.uyari=!1,ar3()?.atis(S.kesim,arenaVurusEfekti()),navigator.vibrate&&navigator.vibrate(8),
-S.bekleyen+S.tickVurus>=W().hitsPerTick?gonder():guncelle()}}function kesimSec(k){k!==S.kesim&&(S.kesim=k,hatirla(),S.bekleyen&&gonder(),guncelle())}function durusSec(d){d!==S.durus&&(S.durus=d,hatirla(),
-S.bekleyen?gonder():S.tickVurus>0&&(S.kuyruk.push({kesim:S.kesim,durus:d,n:0}),gonder()),guncelle())}async function gonder(){const t=tur();if(!t||S.gonderiliyor||!S.kuyruk.length)return;const paket=S.
-kuyruk.shift();S.kuyruk.length||(S.ilkBekleyen=0);const n=paket.n,kesim=paket.kesim,durus=paket.durus;S.gonderiliyor=!0;try{const r=await Sunucu.yap("war_hit",{p_round:t.round_id,p_sector:kesim,p_stance:durus,
-p_hits:n});if(S.vurusSurum+=1,S.fark=Date.parse(r.server_time)-Date.now(),(r.round_id??t.round_id)===S.tickTur&&r.tick>=S.tick&&(S.tick=r.tick,S.tickVurus=r.tick_hits),S.enerji.regen=r.regen_ms??S.enerji.
-regen,enerjiAyarla(r.energy,r.server_time,r.energy_at,r.energy_max),S.ikmal={ammo:r.supplies.ammo,logistics:r.supplies.logistics,alloc_ammo:Number(r.supplies.alloc_ammo??0),alloc_logistics:Number(r.supplies.
-alloc_logistics??0)},S.birlik?.round?.alloc&&S.birlik.round.round_id===(r.round_id??t.round_id)&&(S.birlik.round.alloc={ammo:S.ikmal.alloc_ammo,logistics:S.ikmal.alloc_logistics}),S.asker&&(S.asker.rank=
-r.rank),r.accepted>0){S.benimCanli+=r.accepted;const m=\u00E7("{kesim}: {n} vuru\u015F \xB7 +{puan} puan",{kesim:KESIM_AD2[kesim],n:Number(r.accepted),puan:puan(r.power)});hasar(kesim,"+"+puan(r.power)),
-akis(m),S.durumMetni=m,S.uyari=!1}n>0&&r.accepted<n&&r.reason&&(S.durumMetni=NEDEN[r.reason]??"",S.uyari=!0);const as=Durum.v.askerlik?.soldier;as&&(Object.assign(as,{energy:r.energy,energy_max:r.energy_max,
-rank:r.rank}),as.supplies={...as.supplies,ammo:r.supplies.ammo,logistics:r.supplies.logistics},Kabuk.ustGuncelle()),r.xp?.leveled_up&&tost(\u00E7("Seviye atlad\u0131n: {n}. seviye; enerji bar\u0131n doldu.",
-{n:Number(r.xp.level)}),"sparkles"),yorgunlukVurus(r.fatigue)}catch(e){hataIsle(e)}finally{S.gonderiliyor=!1,guncelle(),S.kuyruk.length&&tur()&&gonder()}}function hataIsle(e){const kod=e?.kod;if(kod===
-"LOCATION_CONFLICT"){yenile(),tost(hataMetni(e),"route");return}if(kod==="ROUND_CLOSED"||kod==="TICK_SEALED"||kod==="CAMPAIGN_PAUSED"||kod==="ROUND_NOT_FOUND"){S.durumMetni=hataMetni(e),S.uyari=!0,yenile();
-return}S.durumMetni=hataMetni(e),S.uyari=!0,tost(hataMetni(e),"circle-alert")}async function ye(){try{const r=await Sunucu.yap("war_eat");enerjiAyarla(r.energy,r.server_time,r.energy_at,r.energy_max),
-tost(\u00E7("Erzak yedin: enerji {e}. \xC7antada {n} erzak kald\u0131.",{e:Number(r.energy),n:Number(r.food_left)}),"croissant"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}guncelle()}
-async function onar(kalite){try{const r=await Sunucu.yap("war_repair",{p_quality:kalite});tost(r.wear===0?\u00E7("{n}. kalite silah\u0131n onar\u0131ld\u0131.",{n:kalite}):\u00E7("Silah onar\u0131ld\u0131; a\u015F\u0131n\
-ma {a} / {b}.",{a:Number(r.wear),b:Number(r.durability)}),"wrench")}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}async function teklifGoster(){const f=S.front,yerT=$("#yol-teklif",yer);if(!(!f?.
-destination||!yerT))try{const q=await Sunucu.cagir("travel_quote",{p_to:f.destination});yerT.textContent=\u00E7("{n} dakika \xB7 {kr} kredi",{n:Number(q.minutes),kr:kr(q.fee_cr)}),yerT.dataset.ucret=String(
-q.fee_cr)}catch(e){yerT.textContent=hataMetni(e)}}async function yolaCik(){const f=S.front,ucret=Number($("#yol-teklif",yer)?.dataset.ucret??NaN);try{const r=await Sunucu.yap("travel_start",{p_to:f.destination,
-p_expected_fee:Number.isFinite(ucret)?ucret:null});tost(\u00E7("Yola \xE7\u0131kt\u0131n: {bolge}. Var\u0131\u015F {zaman}.",{bolge:bolgeAdi(f.destination),zaman:saatYaz(r.arrives_at??r.travel?.arrives_at??
-new Date().toISOString())}),"route"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}const lojistikYok=()=>S.ikmal.logistics+Number(S.ikmal.alloc_logistics??0)<1;function birlikIkmal(){
-const r=S.birlik?.round,t=tur(),ayni=!!(r&&t&&r.round_id===t.round_id);S.ikmal.alloc_ammo=ayni?Number(r.alloc?.ammo??0):0,S.ikmal.alloc_logistics=ayni?Number(r.alloc?.logistics??0):0}const emirMetni=e=>`${KESIM_AD2[e.
-sector]??e.sector} \xB7 ${DURUS2[e.stance]?.ad??e.stance}`;function emirCiz(){const el=$("#ar-emir",yer);if(!el)return;const b=S.birlik,r=b?.round,t=tur();if(!b||!r||!t||r.round_id!==t.round_id){el.hidden=
-!0,el.innerHTML="";return}const e=r.order,uy=!!r.mine?.follow,tm=Number(r.alloc?.ammo??0),tl=Number(r.alloc?.logistics??0);el.hidden=!1,el.dataset.emir=e?`${e.sector}:${e.stance}`:"yok",el.dataset.uy=
-uy?"1":"0",el.innerHTML=`<span class="birlik-amblem kucuk" style="--renk:${esc(b.color)}" aria-hidden="true">${ikon(b.icon)}</span>
+yer).textContent=a?.best_quality?\u00E7("{n}. kalite",{n:Number(a.best_quality)}):\u00E7("Silahs\u0131z");const silahSecD=$("#ar-silah-sec",yer);silahSecD&&(silahSecD.dataset.sinir=a?.weapon_max==null?
+"0":"1",silahSecD.title=a?.weapon_max==null?\u00E7("Silah se\xE7imi: en iyisi"):Number(a.weapon_max)===0?\u00E7("Silah se\xE7imi: silahs\u0131z"):\u00E7("Silah se\xE7imi: en \xE7ok {n}. kalite",{n:Number(
+a.weapon_max)})),$("#ar-guc",yer).textContent=a?puan(a.power):"\u2014",$("#ar-rutbe",yer).textContent=\u00E7v(a?.rank_name);for(const b of $$("[data-durus]",yer))b.setAttribute("aria-pressed",String(S.
+durus===b.dataset.durus));const hak=W().hitsPerTick-S.tickVurus-S.bekleyen,vur2=$("#ar-vur",yer),durum=S.kapandi?"bitti":hak<=0?"dolu":e<W().energy.perHit*(S.bekleyen+1)?"enerji":lojistikYok()&&S.tickVurus===
+0?"mermi":"hazir";vur2.dataset.durum=durum,$("#ar-vur-yazi",yer).textContent={hazir:\u00E7("VUR"),dolu:\u00E7("DOLDU"),enerji:\u00E7("ENERJ\u0130"),mermi:\u00E7("LOJ\u0130ST\u0130K"),bitti:\u00E7("B\u0130T\
+T\u0130")}[durum],$("#ar-hak",yer).textContent=`${sayi(S.tickVurus+S.bekleyen)} / ${sayi(W().hitsPerTick)}`,$("#ar-halka",yer).style.strokeDashoffset=String(301.6*(1-(S.tickVurus+S.bekleyen)/W().hitsPerTick));
+const d=$("#ar-durum",yer),metin=S.durumMetni||(durum==="dolu"?\u00E7("Bu dakikan\u0131n hakk\u0131 doldu; yeni dakikay\u0131 bekle."):durum==="enerji"?\u00E7("Enerjin yetmiyor: ye ya da birka\xE7 saniye\
+ bekle."):durum==="mermi"?\u00E7("Lojistik paketin yok; vuru\u015F yap\u0131lamaz."):"");if(d.textContent=metin,d.classList.toggle("uyari",S.uyari||!S.durumMetni&&durum!=="hazir"),S.bekleyen>0&&!S.gonderiliyor){
+const t0=Date.now();(t0-S.sonDokunus>1200||t0-S.ilkBekleyen>(W().batchMs??3e3)||kalan<2500)&&gonder()}}function tahtaCiz(){const b=S.board;if(!b||!$("#ar-biz5",yer))return;const biz=b.round?.[benimTaraf()]??
+[],onlar=b.round?.[benimTaraf()==="attacker"?"defender":"attacker"]??[],sat=(x,i)=>`<li class="${x.character_id===benimKimlik()?"ben":""}"${x.ally?` data-muttefik="${esc(x.country_id)}" title="${esc(\u00E7(
+"{ulke} m\xFCttefik",{ulke:ulkeAdi(x.country_id)}))}"`:""}><i>${i+1}</i><span>${x.ally?`<span class="ulke-nokta" style="background:${ulkeRenk(x.country_id)}"></span> `:""}${esc(x.name)}</span><b>${puan(
+x.damage)}</b></li>`;$("#ar-biz5",yer).innerHTML=biz.map(sat).join("")||`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}</span><b></b></li>`,$("#ar-onlar5",yer).innerHTML=onlar.map(sat).join("")||
+`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}</span><b></b></li>`;const me=b.me?.round;$("#ar-sen",yer).textContent=me?\u00E7("Sen: {n}. s\u0131ra / {toplam} \xB7 {puan} puan",{n:Number(me.position),
+toplam:Number(me.of),puan:puan(me.damage)}):""}function akis(metin,sinif=""){const k=$("#ar-akis",yer);if(!k)return;const el=document.createElement("div");for(el.className=sinif,el.textContent=metin,k.
+appendChild(el);k.children.length>4;)k.firstChild.remove();setTimeout(()=>el.remove(),6e3)}function hasar(kesim,metin){const a=ar3();if(a){hareketAzalt||a.hasar(kesim,metin);return}const el=$(`[data-k\
+esim="${kesim}"]`,yer);if(!el||hareketAzalt)return;const h=document.createElement("span");h.className="ar-hasar",h.textContent=metin,h.style.left="50%",h.style.top="45%",el.style.position="relative",el.
+appendChild(h),setTimeout(()=>h.remove(),950)}function baglaArena(){const klavyeTiki=e=>e.detail===0&&!e.pointerType;for(const b of $$("[data-kesim]",yer))b.addEventListener("pointerdown",e=>{e.preventDefault(),
+kesimSec(b.dataset.kesim),vur()}),b.addEventListener("click",e=>{klavyeTiki(e)&&(kesimSec(b.dataset.kesim),vur())});$("#ar-vur",yer).addEventListener("pointerdown",e=>{e.preventDefault(),vur()}),$("#a\
+r-vur",yer).addEventListener("click",e=>{klavyeTiki(e)&&vur()});for(const b of $$("[data-durus]",yer))b.addEventListener("click",()=>durusSec(b.dataset.durus));$("#ar-ye",yer).addEventListener("click",
+ye),$("#ar-gorunum",yer)?.addEventListener("click",()=>{hata3b=!1;const yeni=mod==="3b"?"2b":"3b";Gorunum.ayarla(yeni),tost(yeni==="2b"?\u00E7("Hafif g\xF6r\xFCn\xFCm (2B) se\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsi\
+n."):\u00E7("3B g\xF6r\xFCn\xFCm se\xE7ildi."),"layers")}),$("#yol-git",yer)?.addEventListener("click",yolaCik),$("#yol-teklif",yer)&&teklifGoster();for(const b of $$("[data-onar]",yer))b.onclick=()=>onar(
+Number(b.dataset.onar));$("#ar-silah-sec",yer)?.addEventListener("click",silahSec)}function silahSec(){const a=S.asker;if(!a)return;const simdiki=a.weapon_max==null?"":String(a.weapon_max),silahlar=[...a.
+weapons??[]].sort((x,y)=>Number(y.quality)-Number(x.quality)),satir=(deger,baslik,altyazi,simge)=>`<button type="button" class="ilk-adim secenek-satir" data-silah="${deger}" aria-pressed="${String(deger===
+simdiki)}">
+          <span class="ozet-ikon" style="background:var(--kagit-3)">${ikon(simge)}</span><span><b>${baslik}</b><span class="kucuk">${altyazi}</span></span>${deger===simdiki?ikon("check"):""}</button>`,
+govde=`<p class="aciklama">${\u00E7("Se\xE7im bir \xFCst s\u0131n\u0131rd\u0131r: daha iyi silah\u0131n olsa da bu kaliteden yukar\u0131s\u0131 kullan\u0131lmaz; s\u0131n\u0131r\u0131n alt\u0131nda eldeki en iyisi kullan\u0131l\u0131r. Silahs\u0131z vuru\u015F m\xFChimmat harcamaz am\
+a g\xFC\xE7 d\xFC\u015Fer.")}</p>
+        <div class="yigin" style="margin-top:10px">
+          ${satir("",\u00E7("En iyisi"),a.best_quality||silahlar.length?\u00E7("Eldeki en iyi silah kendili\u011Finden se\xE7ilir."):\u00E7("Silah\u0131n yok; silah al\u0131nca kendili\u011Finden kullan\u0131l\u0131r."),
+"sparkles")}
+          ${silahlar.map(w=>satir(String(w.quality),\u00E7("En \xE7ok {n}. kalite",{n:Number(w.quality)}),(w.usable?\u00E7("G\xFC\xE7 {g}",{g:puan(w.power)}):\u00E7("{n}. seviye gerekir",{n:Number(w.min_level)}))+
+" \xB7 "+(Number(w.in_use_wear)>0?\u00E7("elde (a\u015F\u0131nma {a} / {b}), {n} yedek",{a:Number(w.in_use_wear),b:Number(w.durability),n:Number(w.free)}):\u00E7("{n} yedek",{n:Number(w.free)})),"shie\
+ld-half")).join("")}
+          ${satir("0",\u00E7("Silahs\u0131z"),\u00E7("G\xFC\xE7 {g} \xB7 m\xFChimmat harcamaz",{g:puan(a.unarmed_power??0)}),"hand")}
+        </div>`;pencere({ust:\u00E7("Silah se\xE7imi"),baslik:\u00E7("Hangi silahla vuracaks\u0131n?"),govde,dugmeler:[{ad:\u00E7("Kapat")}]});const perde=$(".perde:last-child");for(const b of $$("[da\
+ta-silah]",perde))b.onclick=async()=>{const deger=b.dataset.silah;for(const x of $$("[data-silah]",perde))x.disabled=!0;try{const r=await Sunucu.yap("weapon_preference",{p_max:deger===""?null:Number(deger)});
+S.asker=r,Durum.v.askerlik?.soldier&&(Durum.v.askerlik.soldier=r),tost(deger===""?\u00E7("Silah se\xE7imi: en iyisi."):deger==="0"?\u00E7("Silah se\xE7imi: silahs\u0131z."):\u00E7("Silah se\xE7imi: en \xE7o\
+k {n}. kalite.",{n:Number(deger)}),"shield-half"),$(".pencere-dugmeler button",perde)?.click(),guncelle()}catch(e){for(const x of $$("[data-silah]",perde))x.disabled=!1;tost(hataMetni(e),"circle-alert")}}}
+function arenaVurusEfekti(){const k=benimKimlik(),kayit=k?Gorunus.al(k):void 0;return k&&kayit===void 0&&Gorunus.iste([k]),typeof gorunusUrunleri=="function"&&kayit?.look?gorunusUrunleri(kayit.look).vurus??
+null:null}function vur(){if(S.kapandi)return;if(S.front&&!S.front.basic_training_done){tost(\u00E7("\xD6nce tatbikatta temel e\u011Fitimi tamamla."),"target");return}if(S.front&&!S.front.at_front){tost(
+\u00E7("Vurmak i\xE7in cepheye gitmelisin."),"route");return}if(!(W().hitsPerTick-S.tickVurus-S.bekleyen<=0)){if(enerjiSimdi()<W().energy.perHit*(S.bekleyen+1)){S.durumMetni="",guncelle();return}if(lojistikYok()&&
+S.tickVurus===0){tost(NEDEN.logistics,"truck");return}S.bekleyen||(S.ilkBekleyen=Date.now()),kuyrugaKoy(1),S.sonDokunus=Date.now(),S.durumMetni="",S.uyari=!1,ar3()?.atis(S.kesim,arenaVurusEfekti()),navigator.
+vibrate&&navigator.vibrate(8),S.bekleyen+S.tickVurus>=W().hitsPerTick?gonder():guncelle()}}function kesimSec(k){k!==S.kesim&&(S.kesim=k,hatirla(),S.bekleyen&&gonder(),guncelle())}function durusSec(d){
+d!==S.durus&&(S.durus=d,hatirla(),S.bekleyen?gonder():S.tickVurus>0&&(S.kuyruk.push({kesim:S.kesim,durus:d,n:0}),gonder()),guncelle())}async function gonder(){const t=tur();if(!t||S.gonderiliyor||!S.kuyruk.
+length)return;const paket=S.kuyruk.shift();S.kuyruk.length||(S.ilkBekleyen=0);const n=paket.n,kesim=paket.kesim,durus=paket.durus;S.gonderiliyor=!0;try{const r=await Sunucu.yap("war_hit",{p_round:t.round_id,
+p_sector:kesim,p_stance:durus,p_hits:n});if(S.vurusSurum+=1,S.fark=Date.parse(r.server_time)-Date.now(),(r.round_id??t.round_id)===S.tickTur&&r.tick>=S.tick&&(S.tick=r.tick,S.tickVurus=r.tick_hits),S.
+enerji.regen=r.regen_ms??S.enerji.regen,enerjiAyarla(r.energy,r.server_time,r.energy_at,r.energy_max),S.ikmal={ammo:r.supplies.ammo,logistics:r.supplies.logistics,alloc_ammo:Number(r.supplies.alloc_ammo??
+0),alloc_logistics:Number(r.supplies.alloc_logistics??0)},S.birlik?.round?.alloc&&S.birlik.round.round_id===(r.round_id??t.round_id)&&(S.birlik.round.alloc={ammo:S.ikmal.alloc_ammo,logistics:S.ikmal.alloc_logistics}),
+S.asker&&(S.asker.rank=r.rank),r.accepted>0){S.benimCanli+=r.accepted;const m=\u00E7("{kesim}: {n} vuru\u015F \xB7 +{puan} puan",{kesim:KESIM_AD2[kesim],n:Number(r.accepted),puan:puan(r.power)});hasar(
+kesim,"+"+puan(r.power)),akis(m),S.durumMetni=m,S.uyari=!1}n>0&&r.accepted<n&&r.reason&&(S.durumMetni=NEDEN[r.reason]??"",S.uyari=!0);const as=Durum.v.askerlik?.soldier;as&&(Object.assign(as,{energy:r.
+energy,energy_max:r.energy_max,rank:r.rank}),as.supplies={...as.supplies,ammo:r.supplies.ammo,logistics:r.supplies.logistics},Kabuk.ustGuncelle()),r.xp?.leveled_up&&tost(\u00E7("Seviye atlad\u0131n: {n}. s\
+eviye; enerji bar\u0131n doldu.",{n:Number(r.xp.level)}),"sparkles"),yorgunlukVurus(r.fatigue)}catch(e){hataIsle(e)}finally{S.gonderiliyor=!1,guncelle(),S.kuyruk.length&&tur()&&gonder()}}function hataIsle(e){
+const kod=e?.kod;if(kod==="LOCATION_CONFLICT"){yenile(),tost(hataMetni(e),"route");return}if(kod==="ROUND_CLOSED"||kod==="TICK_SEALED"||kod==="CAMPAIGN_PAUSED"||kod==="ROUND_NOT_FOUND"){S.durumMetni=hataMetni(
+e),S.uyari=!0,yenile();return}S.durumMetni=hataMetni(e),S.uyari=!0,tost(hataMetni(e),"circle-alert")}async function ye(){try{const r=await Sunucu.yap("war_eat");enerjiAyarla(r.energy,r.server_time,r.energy_at,
+r.energy_max),tost(\u00E7("Erzak yedin: enerji {e}. \xC7antada {n} erzak kald\u0131.",{e:Number(r.energy),n:Number(r.food_left)}),"croissant"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"ci\
+rcle-alert")}guncelle()}async function onar(kalite){try{const r=await Sunucu.yap("war_repair",{p_quality:kalite});tost(r.wear===0?\u00E7("{n}. kalite silah\u0131n onar\u0131ld\u0131.",{n:kalite}):\u00E7(
+"Silah onar\u0131ld\u0131; a\u015F\u0131nma {a} / {b}.",{a:Number(r.wear),b:Number(r.durability)}),"wrench")}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}async function teklifGoster(){const f=S.
+front,yerT=$("#yol-teklif",yer);if(!(!f?.destination||!yerT))try{const q=await Sunucu.cagir("travel_quote",{p_to:f.destination});yerT.textContent=\u00E7("{n} dakika \xB7 {kr} kredi",{n:Number(q.minutes),
+kr:kr(q.fee_cr)}),yerT.dataset.ucret=String(q.fee_cr)}catch(e){yerT.textContent=hataMetni(e)}}async function yolaCik(){const f=S.front,ucret=Number($("#yol-teklif",yer)?.dataset.ucret??NaN);try{const r=await Sunucu.
+yap("travel_start",{p_to:f.destination,p_expected_fee:Number.isFinite(ucret)?ucret:null});tost(\u00E7("Yola \xE7\u0131kt\u0131n: {bolge}. Var\u0131\u015F {zaman}.",{bolge:bolgeAdi(f.destination),zaman:saatYaz(
+r.arrives_at??r.travel?.arrives_at??new Date().toISOString())}),"route"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}const lojistikYok=()=>S.ikmal.logistics+Number(
+S.ikmal.alloc_logistics??0)<1;function birlikIkmal(){const r=S.birlik?.round,t=tur(),ayni=!!(r&&t&&r.round_id===t.round_id);S.ikmal.alloc_ammo=ayni?Number(r.alloc?.ammo??0):0,S.ikmal.alloc_logistics=ayni?
+Number(r.alloc?.logistics??0):0}const emirMetni=e=>`${KESIM_AD2[e.sector]??e.sector} \xB7 ${DURUS2[e.stance]?.ad??e.stance}`;function emirCiz(){const el=$("#ar-emir",yer);if(!el)return;const b=S.birlik,
+r=b?.round,t=tur();if(!b||!r||!t||r.round_id!==t.round_id){el.hidden=!0,el.innerHTML="";return}const e=r.order,uy=!!r.mine?.follow,tm=Number(r.alloc?.ammo??0),tl=Number(r.alloc?.logistics??0);el.hidden=
+!1,el.dataset.emir=e?`${e.sector}:${e.stance}`:"yok",el.dataset.uy=uy?"1":"0",el.innerHTML=`<span class="birlik-amblem kucuk" style="--renk:${esc(b.color)}" aria-hidden="true">${ikon(b.icon)}</span>
         <span class="ar-emir-yazi">${e?`<b>${esc(emirMetni(e))}</b>${e.note?` <i>\u201C${esc(e.note)}\u201D</i>`:""}`:`<span>${\u00E7("Birli\u011Finin bu tur i\xE7in emri yok")}</span>`}
           ${tm||tl?`<small>${\u00E7("tahsis: {a} m\xFChimmat, {l} lojistik",{a:tm,l:tl})}</small>`:""}</span>
         <button class="ar-emir-uy" id="ar-emir-uy" type="button" aria-pressed="${uy}" title="${\u00E7("Emre uyarsan kesim ve duru\u015F emre g\xF6re se\xE7ilir; istedi\u011Fin an de\u011Fi\u015Ftirirsin.")}\
@@ -2001,27 +1574,71 @@ join("")}</ol>`:`<p class="bos">${\u00E7("Tur ba\u015Flay\u0131nca anlat\u0131m 
 sonYeni)})}let sonYeni=[];function ekle(satirlar){const yeniler=[];for(const s of satirlar){const a=anahtar(s);bilinen.has(a)||(bilinen.set(a,s),yeniler.push(s))}if(!ilk&&!yeniler.length)return;const okunacak=ilk?
 []:yeniler;ilk=!1,sonYeni=okunacak,ciz(okunacak),sesli&&okunacak.length&&!document.hidden&&!kapandi&&Seslendirme.oku([...okunacak].sort(karsilastir).map(s=>spikerMetin(s,b)))}return{el,yaz(g,bb){b=bb,
 ekle(spikerSavas(spikerKurali(),g))},lider(top,round,tick){if(!b)return;liderTur!==round&&(liderTur=round,liderId=null);const s=spikerLider(liderId,top,round,tick);top[0]&&(liderId=top[0].id),s&&ekle(
-[s])},kapat(){kapandi=!0,Seslendirme.dur()}}}return{ac}})(),ISLETME_RESIM={tarla:"tarla",maden:"maden",lif:"lif",gida:"gida",metal:"metal",dokuma:"dokuma",muhimmat:"muhimmat",techizat:"techizat",techizat2:"\
-techizat",techizat3:"techizat",techizat4:"techizat",techizat5:"techizat",bakim:"bakim",lojistik:"lojistik",sahne:"sahne",enstruman:"enstruman",enstruman2:"enstruman",enstruman3:"enstruman",mobilya:"sa\
-hne",kamera:"sahne",isik:"sahne",mikrofon:"sahne",bisiklet:"arac",motosiklet:"arac",otomobil:"arac",tekne:"tersane",insaat:"maden"},TUR_AD={raw:\u00E7("Ham madde"),food:\u00E7("G\u0131da"),manufacturing:\u00E7(
-"\u0130malat"),logistics:\u00E7("Lojistik")},BECERI_AD2={production:\u00E7("\xFCretim"),logistics:\u00E7("lojistik"),military:\u00E7("askerlik"),management:\u00E7("y\xF6netim"),music:\u00E7("m\xFCzik"),
-content:\u00E7("i\xE7erik \xFCretimi"),medicine:\u00E7("t\u0131p")},ustaIsci=r=>\u00E7("usta i\u015F\xE7i: {beceri}",{beceri:Object.entries(r.minSkill).map(([b,n])=>`${BECERI_AD2[b]??b} ${sayi(n)}`).join(
-", ")}),tarifCiktisi=r=>`${r.out[0]}@${r.quality??1}`,tarifMetni=r=>{const girdi=Object.entries(r.inputs??{}).map(([u,n])=>`${sayi(n)} ${varlikAdi(u+"@1")}`).join(" + ");return`${girdi?girdi+" \u2192 ":
-""}${sayi(r.out[1])} ${varlikAdi(tarifCiktisi(r))}`};Kabuk.gecikmeli("sehir/uretim","ek_29_uretim");const KAPSAM={all:\u00E7("Hepsi"),country:\u00E7("\xDClkem"),world:\u00E7("D\xFCnya"),party:\u00E7("\
-Partim"),friends:\u00E7("Arkada\u015Flar"),following:\u00E7("Takip ettiklerim")},YAZ_KAPSAM={country:\u00E7("\xDClkem"),world:\u00E7("D\xFCnya"),party:\u00E7("Partim"),friends:\u00E7("Arkada\u015Flar\u0131m")},
-RAPOR_NEDEN={hate:\u00E7("Nefret s\xF6ylemi"),insult:\u00E7("Hakaret ya da k\xFCf\xFCr"),terror:\u00E7("Ter\xF6r ya da \u015Fiddet \xF6vg\xFCs\xFC"),personal_info:\u00E7("Ki\u015Fisel bilgi payla\u015F\u0131m\u0131"),
-scam:\u00E7("Doland\u0131r\u0131c\u0131l\u0131k ya da yetkili taklidi"),harassment:\u00E7("Taciz ya da zorbal\u0131k"),sexual:\u00E7("Cinsel i\xE7erik"),spam:\u00E7("\u0130stenmeyen ileti (spam)"),cheating:\u00E7(
-"Hile ya da \xE7oklu hesap"),other:\u00E7("Ba\u015Fka bir sorun")},POLITIKA_DM={everyone:\u00E7("Herkes"),country:\u00E7("Yaln\u0131z \xFClkemdekiler"),friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),
-nobody:\u00E7("Kimse")},POLITIKA_ARK={everyone:\u00E7("Herkes"),country:\u00E7("Yaln\u0131z \xFClkemdekiler"),nobody:\u00E7("Kimse")},POLITIKA_BAHSETME={everyone:\u00E7("Herkes"),friends:\u00E7("Yaln\u0131\
-z arkada\u015Flar\u0131m"),nobody:\u00E7("Kimse")},oneriNedeni=x=>[Number(x.mutual)?\u00E7("{n} ortak arkada\u015F",{n:Number(x.mutual)}):"",x.unit?\u00E7("ayn\u0131 birlikte"):"",x.band?\u00E7("ayn\u0131 \
-m\xFCzik grubunda"):"",x.party?\u00E7("ayn\u0131 partide"):"",x.city?\u00E7("ayn\u0131 \u015Fehirde"):""].filter(Boolean).join(" \xB7 ");function zamanOnce(iso){const sn=Math.max(0,(Date.now()-Date.parse(
-iso))/1e3);return sn<60?\u00E7("az \xF6nce"):sn<3600?\u00E7("{n} dk",{n:Math.floor(sn/60)}):sn<86400?\u00E7("{n} sa",{n:Math.floor(sn/3600)}):sn<7*86400?\u00E7("{n} g\xFCn",{n:Math.floor(sn/86400)}):new Date(
-iso).toLocaleDateString(DIL.yerel,{day:"numeric",month:"short"})}function beriYaz(iso){const sn=Math.max(0,(Date.now()-Date.parse(iso))/1e3);return sn<60?\u00E7("az \xF6nce"):sn<7*86400?\u00E7("{sure}\
- beri",{sure:zamanOnce(iso)}):\u00E7("{tarih} tarihinden beri",{tarih:zamanOnce(iso)})}function etiketli(metin){const s=String(metin??""),re=/(^|[^0-9A-Za-zÀ-ɏ_])#([0-9A-Za-zÀ-ɏ_]{2,30})/g;let cikti="",
-son=0,m;for(;m=re.exec(s);){const bas=m.index+m[1].length;cikti+=esc(s.slice(son,bas))+`<b class="etiket-vurgu">#${esc(m[2])}</b>`,son=bas+1+m[2].length}return cikti+esc(s.slice(son))}function resmiMetin(r){
-switch(r.type){case"war_declared":return[ikon("swords"),r.drive_id?\u00E7("{bolge} ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131 ba\u015Flatt\u0131: {devlet}, {ulke} \xFClkesine kar\u015F\u0131.",{
-bolge:bolgeAdi(r.target_region_id),devlet:ulkeAdi(r.attacker_country_id),ulke:ulkeAdi(r.defender_country_id)}):\u00E7("{ulke} sava\u015F ilan etti: {bolge}.",{ulke:ulkeAdi(r.attacker_country_id),bolge:bolgeAdi(
-r.target_region_id)})];case"war_ended":if(r.drive_id){const bolge=bolgeAdi(r.target_region_id);return[ikon("swords"),r.status==="attacker_won"?\u00E7("{bolge} ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131n\u0131 kazand\u0131.",
+[s])},kapat(){kapandi=!0,Seslendirme.dur()}}}return{ac}})(),macSpikerKurali=()=>spikerKurali().football??SPIKER_KURALI.football??{pressureMin:3,saves:[3,5,8],lateMinutes:5,maxPerEvent:2,show:30},MAC_SPIKER_ONCELIK={
+goal:1,brace:2,penalty_saved:3,penalty_missed:3,saves:4,pressure:5},macSpikerOnde=(a,b)=>a>b?"a":b>a?"b":void 0;function macSpikeri(k,x){const son=2*x.minutesPerHalf,satirlar=[{kind:"kickoff",i:-1,minute:0,
+a:0,b:0}];let a=0,b=0,seriTaraf=null,seri=0,onceki=null,devre=!1,sonDk=!1,ilkYariSon=-1;const geri={a:0,b:0},kurtaris={a:0,b:0},gol=new Map,yan=(x2,y2)=>{const o=macSpikerOnde(x2,y2);return o?{side:o}:
+{}},devreArasi=()=>{devre=!0,satirlar.push({kind:"half_time",i:ilkYariSon,minute:x.minutesPerHalf,a,b,...yan(a,b)})};for(const e of x.events){e.h===2&&!devre&&devreArasi(),e.h===1&&(ilkYariSon=e.i),e.
+h===2&&!sonDk&&e.minute>=son-k.lateMinutes&&(sonDk=!0,satirlar.push({kind:"late",i:e.i,minute:e.minute,a,b,n:k.lateMinutes,...yan(a,b)}));const aday=[],df=e.s==="a"?"b":"a";if(e.s===seriTaraf?seri+=1:
+(seriTaraf=e.s,seri=1),e.goal){const once=e.s==="a"?a-b:b-a;e.s==="a"?a+=1:b+=1;const sonra=once+1,how=a+b===1?"opener":sonra===0?"equalizer":sonra===1?geri[e.s]>0?"comeback":"lead":sonra>1?"extend":"\
+reduce",late=e.h===2&&e.minute>=son-k.lateMinutes;aday.push({p:MAC_SPIKER_ONCELIK.goal,satir:{kind:"goal",i:e.i,minute:e.minute,a,b,side:e.s,slot:e.scorer,how,...e.assist!==null?{assist:e.assist}:{},...e.
+k==="penalti"?{pen:!0}:{},...late?{late:!0}:{}}});const anahtar=`${e.s}${e.scorer}`,n=(gol.get(anahtar)??0)+1;gol.set(anahtar,n),n>=2&&aday.push({p:MAC_SPIKER_ONCELIK.brace,satir:{kind:"brace",i:e.i,minute:e.
+minute,a,b,side:e.s,slot:e.scorer,n}});const fark=e.s==="a"?b-a:a-b;-fark>geri[df]&&(geri[df]=-fark)}else e.k==="penalti"&&(e.save?aday.push({p:MAC_SPIKER_ONCELIK.penalty_saved,satir:{kind:"penalty_sa\
+ved",i:e.i,minute:e.minute,a,b,side:df,slot:0}}):aday.push({p:MAC_SPIKER_ONCELIK.penalty_missed,satir:{kind:"penalty_missed",i:e.i,minute:e.minute,a,b,side:e.s,slot:e.sh}}));e.save&&(kurtaris[df]+=1,e.
+k!=="penalti"&&k.saves.includes(kurtaris[df])&&aday.push({p:MAC_SPIKER_ONCELIK.saves,satir:{kind:"saves",i:e.i,minute:e.minute,a,b,side:df,slot:0,n:kurtaris[df]}})),seri>=k.pressureMin&&seri%k.pressureMin===
+0&&aday.push({p:MAC_SPIKER_ONCELIK.pressure,satir:{kind:"pressure",i:e.i,minute:e.minute,a,b,side:e.s,n:seri}}),aday.sort((p,q)=>p.p-q.p);for(const c of aday.slice(0,k.maxPerEvent))satirlar.push(c.satir);
+onceki=e}if((x.halfTime||x.ended)&&!devre&&devreArasi(),x.ended){const sonI=onceki?onceki.i:-1;satirlar.push({kind:"full_time",i:sonI,minute:son,a,b,...yan(a,b)});for(const s of["a","b"])(s==="a"?b:a)===
+0&&kurtaris[s]>0&&satirlar.push({kind:"clean_sheet",i:sonI,minute:son,a,b,side:s,slot:0,n:kurtaris[s]})}return satirlar}function macSpikerGirdisi(m,gorunen,mph,ilkYariBitti){return{minutesPerHalf:Number(
+mph),events:gorunen.map(e=>({i:Number(e.i),minute:Number(e.minute??0),h:Number(e.h??1),s:e.s,k:e.k,sh:Number(e.sh??0),goal:!!e.goal,save:!!e.save,scorer:e.scorer??null,assist:e.assist??null})),halfTime:!!ilkYariBitti,
+ended:m.phase==="ended"||m.phase==="finished"}}function macSpikerMetin(s,b){const takim=s.side?b.takim(s.side):"",kisi=(side,yer)=>b.kisi(side,yer)||\u00E7("bir oyuncu"),skor=`${sayi(s.a)}\u2013${sayi(
+s.b)}`;switch(s.kind){case"kickoff":return \u00E7("Hakem d\xFCd\xFC\u011F\xFC \xE7ald\u0131, ma\xE7 ba\u015Flad\u0131: {a} \u2013 {b}.",{a:b.takim("a"),b:b.takim("b")});case"goal":{const p={ad:kisi(s.
+side,s.slot),takim,skor};return[s.how==="opener"?\u00E7("GOL! {ad} ({takim}) skoru a\xE7t\u0131: {skor}.",p):s.how==="equalizer"?\u00E7("GOL! {ad} ({takim}) e\u015Fitli\u011Fi getirdi: {skor}.",p):s.how===
+"lead"?\u00E7("GOL! {ad} ({takim}) tak\u0131m\u0131n\u0131 \xF6ne ge\xE7irdi: {skor}.",p):s.how==="comeback"?\u00E7("GOL! Geri d\xF6n\xFC\u015F! {ad} ({takim}) geriden gelen tak\u0131m\u0131n\u0131 \xF6ne ge\xE7irdi: {skor}.",
+p):s.how==="extend"?\u00E7("GOL! {ad} ({takim}) fark\u0131 a\xE7t\u0131: {skor}.",p):\u00E7("GOL! {ad} ({takim}) fark\u0131 azaltt\u0131: {skor}.",p),s.pen?\u00E7("Gol penalt\u0131dan."):"",s.assist!==
+void 0?\u00E7("Asist: {ad}.",{ad:kisi(s.side,s.assist)}):"",s.late?\u00E7("Son dakikalarda!"):""].filter(Boolean).join(" ")}case"brace":{const ad=kisi(s.side,s.slot);return s.n===2?\u00E7("{ad} bug\xFCn \
+ikinci gol\xFCn\xFC att\u0131.",{ad}):s.n===3?\u00E7("Hat-trick! {ad} \xFC\xE7\xFCnc\xFC gol\xFCn\xFC att\u0131.",{ad}):\u00E7("{ad} durdurulam\u0131yor: bug\xFCn {n}. gol\xFCn\xFC att\u0131.",{ad,n:sayi(
+s.n)})}case"penalty_saved":return \u00E7("Penalt\u0131y\u0131 kaleci {ad} ({takim}) kurtard\u0131!",{ad:kisi(s.side,0),takim});case"penalty_missed":return \u00E7("{ad} ({takim}) penalt\u0131y\u0131 ka\xE7\u0131rd\u0131!",
+{ad:kisi(s.side,s.slot),takim});case"saves":return \u00E7("{ad} ({takim}) kalesinde ge\xE7it vermiyor: ma\xE7taki {n}. kurtar\u0131\u015F\u0131.",{ad:kisi(s.side,0),takim,n:sayi(s.n)});case"pressure":
+return \u00E7("{takim} bast\u0131r\u0131yor: \xFCst \xFCste {n}. atak.",{takim,n:sayi(s.n)});case"half_time":return s.side?\u00E7("Devre aras\u0131: {takim} \xF6nde, skor {skor}.",{takim,skor}):\u00E7(
+"Devre aras\u0131: skor {skor}, tak\u0131mlar berabere.",{skor});case"late":return s.side?\u00E7("Son {n} dakika! {takim} \xF6nde, skor {skor}.",{n:sayi(s.n),takim,skor}):\u00E7("Son {n} dakika! Skor \
+{skor}, kazanan belli de\u011Fil.",{n:sayi(s.n),skor});case"full_time":{const govde=s.side?\u00E7("Ma\xE7 bitti: {takim} {skor} kazand\u0131.",{takim,skor}):\u00E7("Ma\xE7 bitti: {skor} berabere.",{skor});
+return b.adam?`${govde} ${\u00E7("Ma\xE7\u0131n adam\u0131: {ad}.",{ad:b.adam})}`:govde}case"clean_sheet":return \u00E7("{ad} ({takim}) kalesini gole kapatt\u0131: {n} kurtar\u0131\u015F.",{ad:kisi(s.
+side,0),takim,n:sayi(s.n)});default:return""}}const macSpikerEtiket=s=>s.kind==="kickoff"?\u00E7("Ba\u015Flama"):s.kind==="half_time"?\u00E7("Devre aras\u0131"):s.kind==="full_time"||s.kind==="clean_s\
+heet"?\u00E7("Ma\xE7 sonu"):`${sayi(s.minute)}'`,MAC_SPIKER_IKON={kickoff:"flag",goal:"volleyball",brace:"flame",penalty_saved:"hand-grab",penalty_missed:"target",saves:"shield",pressure:"trending-up",
+half_time:"hourglass",late:"timer",full_time:"trophy",clean_sheet:"shield-check"},MacSpikeri=(()=>{const ANAHTAR="civora.spiker.sesli";function ac(id){const el=document.createElement("section");el.className=
+"kart spiker mac-spikeri",el.id=id,el.hidden=!0;let sesli=!1;try{sesli=localStorage.getItem(ANAHTAR)==="1"}catch{}let mac=null,bilinen=new Set,vurgulu=new Set,satirlar=[],b=null,html="",kapandi=!1;const anahtar=s=>`${s.
+kind}|${s.i}|${s.side??""}`;function ciz(){const k=macSpikerKurali(),liste=satirlar.slice().reverse().slice(0,k.show),yeni=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Canl\u0131 anlat\u0131m")}\
+</p><h3 class="b3">${\u00E7("Ma\xE7 spikeri")}</h3></div>
+          ${Seslendirme.varMi()?`<button class="dugme ikincil kucuk-d" type="button" data-spiker-ses aria-pressed="${sesli}">${ikon(sesli?"volume-2":"volume-x")}${sesli?\u00E7("Sesi kapat"):\u00E7("Se\
+sli anlat")}</button>`:""}</div>
+        <ol class="spiker-liste" aria-live="polite">${liste.map(s=>`<li class="spiker-satir${vurgulu.has(anahtar(s))?" yeni":""}" data-tur="${esc(s.kind)}" data-anahtar="${esc(anahtar(s))}">
+            <span class="spiker-ik">${ikon(MAC_SPIKER_IKON[s.kind]??"radio")}</span><span class="spiker-dk">${esc(macSpikerEtiket(s))}</span><span class="spiker-metin">${esc(macSpikerMetin(s,b))}</spa\
+n></li>`).join("")}</ol>
+        <p class="kucuk">${\u00E7("Anlat\u0131m ma\xE7\u0131n ger\xE7ek ataklar\u0131ndan: goller, kurtar\u0131\u015Flar, penalt\u0131lar, \xFCst \xFCste ataklar ve skor. Yaln\u0131z anlat\u0131md\u0131r.")}\
+</p>`;if(el.dataset.satir=String(satirlar.length),yeni===html)return;html=yeni,el.innerHTML=yeni;const d=el.querySelector("[data-spiker-ses]");d&&(d.onclick=()=>{sesli=!sesli;try{localStorage.setItem(
+ANAHTAR,sesli?"1":"0")}catch{}sesli||Seslendirme.dur(),html="",ciz()})}return{el,yaz(kimlik,x,bb){if(kapandi)return;if(!x){el.hidden=!0;return}el.hidden=!1,b=bb;const yeniMac=kimlik!==mac;yeniMac&&(mac=
+kimlik,bilinen=new Set,vurgulu=new Set),satirlar=macSpikeri(macSpikerKurali(),x);const yeniler=satirlar.filter(s=>!bilinen.has(anahtar(s)));for(const s of yeniler)bilinen.add(anahtar(s));const okunacak=yeniMac?
+[]:yeniler;okunacak.length&&(vurgulu=new Set(okunacak.map(anahtar))),ciz(),sesli&&okunacak.length&&!document.hidden&&Seslendirme.oku(okunacak.map(s=>macSpikerMetin(s,b)))},kapat(){kapandi=!0,Seslendirme.
+dur()}}}return{ac}})(),ISLETME_RESIM={tarla:"tarla",maden:"maden",lif:"lif",gida:"gida",metal:"metal",dokuma:"dokuma",muhimmat:"muhimmat",techizat:"techizat",techizat2:"techizat",techizat3:"techizat",
+techizat4:"techizat",techizat5:"techizat",bakim:"bakim",lojistik:"lojistik",sahne:"sahne",enstruman:"enstruman",enstruman2:"enstruman",enstruman3:"enstruman",mobilya:"sahne",kamera:"sahne",isik:"sahne",
+mikrofon:"sahne",bisiklet:"arac",motosiklet:"arac",otomobil:"arac",tekne:"tersane",insaat:"maden"},TUR_AD={raw:\u00E7("Ham madde"),food:\u00E7("G\u0131da"),manufacturing:\u00E7("\u0130malat"),logistics:\u00E7(
+"Lojistik")},BECERI_AD2={production:\u00E7("\xFCretim"),logistics:\u00E7("lojistik"),military:\u00E7("askerlik"),management:\u00E7("y\xF6netim"),music:\u00E7("m\xFCzik"),content:\u00E7("i\xE7erik \xFCretimi"),
+medicine:\u00E7("t\u0131p")},ustaIsci=r=>\u00E7("usta i\u015F\xE7i: {beceri}",{beceri:Object.entries(r.minSkill).map(([b,n])=>`${BECERI_AD2[b]??b} ${sayi(n)}`).join(", ")}),tarifCiktisi=r=>`${r.out[0]}\
+@${r.quality??1}`,tarifMetni=r=>{const girdi=Object.entries(r.inputs??{}).map(([u,n])=>`${sayi(n)} ${varlikAdi(u+"@1")}`).join(" + ");return`${girdi?girdi+" \u2192 ":""}${sayi(r.out[1])} ${varlikAdi(tarifCiktisi(
+r))}`};Kabuk.gecikmeli("sehir/uretim","ek_29_uretim");const KAPSAM={all:\u00E7("Hepsi"),country:\u00E7("\xDClkem"),world:\u00E7("D\xFCnya"),party:\u00E7("Partim"),friends:\u00E7("Arkada\u015Flar"),following:\u00E7(
+"Takip ettiklerim")},YAZ_KAPSAM={country:\u00E7("\xDClkem"),world:\u00E7("D\xFCnya"),party:\u00E7("Partim"),friends:\u00E7("Arkada\u015Flar\u0131m")},RAPOR_NEDEN={hate:\u00E7("Nefret s\xF6ylemi"),insult:\u00E7(
+"Hakaret ya da k\xFCf\xFCr"),terror:\u00E7("Ter\xF6r ya da \u015Fiddet \xF6vg\xFCs\xFC"),personal_info:\u00E7("Ki\u015Fisel bilgi payla\u015F\u0131m\u0131"),scam:\u00E7("Doland\u0131r\u0131c\u0131l\u0131k ya da yetkili t\
+aklidi"),harassment:\u00E7("Taciz ya da zorbal\u0131k"),sexual:\u00E7("Cinsel i\xE7erik"),spam:\u00E7("\u0130stenmeyen ileti (spam)"),cheating:\u00E7("Hile ya da \xE7oklu hesap"),other:\u00E7("Ba\u015Fka b\
+ir sorun")},POLITIKA_DM={everyone:\u00E7("Herkes"),country:\u00E7("Yaln\u0131z \xFClkemdekiler"),friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),nobody:\u00E7("Kimse")},POLITIKA_ARK={everyone:\u00E7(
+"Herkes"),country:\u00E7("Yaln\u0131z \xFClkemdekiler"),nobody:\u00E7("Kimse")},POLITIKA_BAHSETME={everyone:\u00E7("Herkes"),friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),nobody:\u00E7("Kimse")},
+oneriNedeni=x=>[Number(x.mutual)?\u00E7("{n} ortak arkada\u015F",{n:Number(x.mutual)}):"",x.unit?\u00E7("ayn\u0131 birlikte"):"",x.band?\u00E7("ayn\u0131 m\xFCzik grubunda"):"",x.party?\u00E7("ayn\u0131 pa\
+rtide"):"",x.city?\u00E7("ayn\u0131 \u015Fehirde"):""].filter(Boolean).join(" \xB7 ");function zamanOnce(iso){const sn=Math.max(0,(Date.now()-Date.parse(iso))/1e3);return sn<60?\u00E7("az \xF6nce"):sn<
+3600?\u00E7("{n} dk",{n:Math.floor(sn/60)}):sn<86400?\u00E7("{n} sa",{n:Math.floor(sn/3600)}):sn<7*86400?\u00E7("{n} g\xFCn",{n:Math.floor(sn/86400)}):new Date(iso).toLocaleDateString(DIL.yerel,{day:"\
+numeric",month:"short"})}function beriYaz(iso){const sn=Math.max(0,(Date.now()-Date.parse(iso))/1e3);return sn<60?\u00E7("az \xF6nce"):sn<7*86400?\u00E7("{sure} beri",{sure:zamanOnce(iso)}):\u00E7("{t\
+arih} tarihinden beri",{tarih:zamanOnce(iso)})}function etiketli(metin){const s=String(metin??""),re=/(^|[^0-9A-Za-zÀ-ɏ_])#([0-9A-Za-zÀ-ɏ_]{2,30})/g;let cikti="",son=0,m;for(;m=re.exec(s);){const bas=m.
+index+m[1].length;cikti+=esc(s.slice(son,bas))+`<b class="etiket-vurgu">#${esc(m[2])}</b>`,son=bas+1+m[2].length}return cikti+esc(s.slice(son))}function resmiMetin(r){switch(r.type){case"war_declared":
+return[ikon("swords"),r.drive_id?\u00E7("{bolge} ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131 ba\u015Flatt\u0131: {devlet}, {ulke} \xFClkesine kar\u015F\u0131.",{bolge:bolgeAdi(r.target_region_id),
+devlet:ulkeAdi(r.attacker_country_id),ulke:ulkeAdi(r.defender_country_id)}):\u00E7("{ulke} sava\u015F ilan etti: {bolge}.",{ulke:ulkeAdi(r.attacker_country_id),bolge:bolgeAdi(r.target_region_id)})];case"\
+war_ended":if(r.drive_id){const bolge=bolgeAdi(r.target_region_id);return[ikon("swords"),r.status==="attacker_won"?\u00E7("{bolge} ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131n\u0131 kazand\u0131.",
 {bolge}):r.status==="defender_won"?\u00E7("{bolge} ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131n\u0131 kaybetti; {ulke} savundu.",{bolge,ulke:ulkeAdi(r.defender_country_id)}):\u00E7("{bolge} b\xF6lge\
 sinin ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131 sonu\xE7suz kapand\u0131.",{bolge})]}return[ikon("swords"),\u00E7("{bolge} sava\u015F\u0131 bitti: {sonuc}.",{bolge:bolgeAdi(r.target_region_id),
 sonuc:r.status==="attacker_won"?\u00E7("{ulke} kazand\u0131",{ulke:ulkeAdi(r.attacker_country_id)}):r.status==="defender_won"?\u00E7("{ulke} savundu",{ulke:ulkeAdi(r.defender_country_id)}):\u00E7("son\
@@ -2148,10 +1765,11 @@ an class="soluk">${esc(\u00E7("ve {n} unvan daha",{n:l.length-6}))}</span>`:""}<
         <span><b>${esc(birlik.name)}</b> \xB7 ${esc(BIRLIK_ROL[birlik.role]??"")}</span></button>`:""}
       ${grup?`<button class="birlik-cip muzik-cip" type="button" data-p="grup" title="${esc(\u00E7("Grubun kart\u0131n\u0131 a\xE7"))}">${muzikAfis(grup,"kucuk")}
         <span><b>${esc(grup.name)}</b> \xB7 ${esc(grup.solo?\u00E7("solo sanat\xE7\u0131"):MUZIK_ROL[grup.stage_role]??"")}</span></button>`:""}
-      ${medya&&(Number(medya.photos??0)>0||Number(medya.videos??0)>0||Number(medya.tier?.tier??0)>0||medya.newspaper)?`<button class="birlik-cip medya-cip" type="button" data-p="medya" title="${esc(\u00E7(
-"Kare'lerini a\xE7"))}"><span class="ik-kutu">${ikon("camera")}</span>
+      ${medya&&(Number(medya.photos??0)>0||Number(medya.videos??0)>0||Number(medya.tier?.tier??0)>0||medya.newspaper||medya.channel_name)?`<button class="birlik-cip medya-cip" type="button" data-p="me\
+dya" title="${esc(\u00E7("Kare'lerini a\xE7"))}"><span class="ik-kutu">${ikon("camera")}</span>
         <span><b>${esc(MEDYA_BASAMAK[medya.tier?.tier_id]??"")}</b> \xB7 ${esc(\u00E7("{n} etkin takip\xE7i",{n:Number(medya.tier?.active_followers??0)}))} \xB7 ${esc(\u00E7("{n} Kare",{n:Number(medya.
-photos??0)}))}${Number(medya.videos??0)?` \xB7 ${esc(\u00E7("{n} video",{n:Number(medya.videos)}))}`:""}${medya.newspaper?` \xB7 ${esc(medya.newspaper.name)}`:""}</span></button>`:""}
+photos??0)}))}${Number(medya.videos??0)?` \xB7 ${esc(\u00E7("{n} video",{n:Number(medya.videos)}))}`:""}${medya.channel_name?` \xB7 ${ikon("tv")} ${esc(medya.channel_name)}`:""}${medya.newspaper?` \xB7 ${esc(
+medya.newspaper.name)}${medya.journalism?.role?` (${esc(GAZETE_ROL[medya.journalism.role]??medya.journalism.role)})`:""}`:""}</span></button>`:""}
       ${medya?.live?`<button class="birlik-cip canli-cip" type="button" data-yayin-ac="${esc(medya.live.stream_id)}" title="${esc(\u00E7("Canl\u0131 yay\u0131n\u0131n\u0131 a\xE7"))}"><span class="ik-\
 kutu">${ikon("radio")}</span>
         <span><b>${\u00E7("Canl\u0131 yay\u0131nda")}</b> \xB7 ${esc(medya.live.title||YAYIN_SAHNE[medya.live.scene]?.ad||"")} \xB7 ${\u00E7("{n} izleyici",{n:Number(medya.live.viewers??0)})}</span></\
@@ -2327,64 +1945,68 @@ omasi");let oda3bOrnek=null,odaTaslak=null,odaGorunus;const ODA_HATA={HOME_OVERL
 "Yerle\u015Fim bozuk."),HOME_ITEM_NOT_OWNED:\u00E7("Bu e\u015Fyadan yeterince yok; \xF6nce mobilyayla kur.")},ODA_RENK={yatak_tek:"#8FB0D6",yatak_cift:"#C98A84",gardirop:"#A9825C",calisma_masasi:"#B58\
 A5E",sandalye:"#C49A6C",koltuk:"#8DB487",kanepe:"#7F9FC6",sehpa:"#C9A27A",yemek_masasi:"#B58A5E",kitaplik:"#8E6A4A",lamba:"#E8D9A8",saksi:"#7FAE6E",soba:"#6B6B70",televizyon:"#5A6470",kilim:"#C9634A",
 hali:"#4F6E9C",minder:"#B5452F",ayna:"#9FC3D1",vitrin:"#9A7552",akvaryum:"#5FA8C9",sedir:"#A8553F",somine:"#9C8F82",piyano:"#3B3230",tezgah:"#8E6A4A",kahve_masasi:"#C9A27A",tavla_masasi:"#A9825C",tabure:"\
-#7A6A5E",bar_masasi:"#5A6470",sahne:"#3A2E44",dj:"#2F4C7A",resepsiyon:"#8E6A4A"},ODA_KISA={yatak_tek:\u00E7("Yatak"),yatak_cift:\u00E7("Yatak"),gardirop:\u00E7("Dolap"),calisma_masasi:\u00E7("Masa"),sandalye:\u00E7(
-"Sand."),koltuk:\u00E7("Koltuk"),kanepe:\u00E7("Kanepe"),sehpa:\u00E7("Sehpa"),yemek_masasi:\u00E7("Masa"),kitaplik:\u00E7("Kitapl\u0131k"),lamba:\u00E7("Lamba"),saksi:\u00E7("\xC7i\xE7ek"),soba:\u00E7(
-"Soba"),televizyon:\u00E7("TV"),kilim:\u00E7("Kilim"),hali:\u00E7("Hal\u0131"),minder:\u00E7("Minder"),ayna:\u00E7("Ayna"),vitrin:\u00E7("Vitrin"),akvaryum:\u00E7("Akvaryum"),sedir:\u00E7("Sedir"),somine:\u00E7(
-"\u015E\xF6mine"),piyano:\u00E7("Piyano"),tezgah:\u00E7("Tezg\xE2h"),kahve_masasi:\u00E7("Masa"),tavla_masasi:\u00E7("Tavla"),tabure:\u00E7("Tabure"),bar_masasi:\u00E7("Bar"),sahne:\u00E7("Sahne"),dj:\u00E7(
-"DJ"),resepsiyon:\u00E7("Resepsiyon")},odaAnahtar=oda=>`${oda.kind}|${oda.house_id??""}`,odaIzi=(c,p)=>p.r%2===1?{w:c.d,d:c.w}:{w:c.w,d:c.d},odaIzin=(oda,id)=>oda.furniture?Number(oda.free?.[id]??0)+Number(
-oda.owned?.[id]??0)+(oda.deneme?.includes(id)?1:0):null,odaRenk=id=>ODA_RENK[id]??(typeof magazaUrun=="function"?magazaUrun(id)?.data?.color:null)??"#bbb";let odaDenemeBekleyen=null;function odaDenemeIste(id){
-odaDenemeBekleyen=id,Kabuk.git("sehir/ev")}function odaDenetle(oda,items){if(items.length>oda.max_items)return"HOME_TOO_MANY";const k=new Map(oda.catalog.map(c=>[c.id,c])),kutu=[],sayac=new Map;for(const p of items){
-const c=k.get(p.i);if(!c)return"HOME_ITEM_UNKNOWN";const n=(sayac.get(c.id)??0)+1,izin=odaIzin(oda,c.id);if(sayac.set(c.id,n),izin!==null&&n>izin)return"HOME_ITEM_NOT_OWNED";const iz=odaIzi(c,p);if(p.
-x<0||p.z<0||p.x+iz.w>oda.grid.w||p.z+iz.d>oda.grid.d)return"HOME_OUT_OF_BOUNDS";kutu.push([p.x,p.z,p.x+iz.w,p.z+iz.d,c.rug])}for(let b=1;b<kutu.length;b++)for(let a=0;a<b;a++){const p=kutu[a],q=kutu[b];
-if(p[4]===q[4]&&p[0]<q[2]&&q[0]<p[2]&&p[1]<q[3]&&q[1]<p[3])return"HOME_OVERLAP"}return null}const ODA_FIGUR_OLCEK=.66,ODA_OTURAK={sandalye:{y:.51,on:.05,x:[0]},koltuk:{y:.51,on:.1,x:[0]},kanepe:{y:.52,
-on:.08,x:[0,-.82,.82]},esya_kadife_kanepe:{y:.53,on:.08,x:[0,-.82,.82]},esya_deri_koltuk:{y:.52,on:.1,x:[0]},sedir:{y:.46,on:.06,x:[0,-.9,.9]},minder:{y:.16,on:0,x:[0],kok:.07,eylem:"yerde"},kahve_masasi:{
-y:.47,yerler:[[0,-.72,0],[.72,0,-Math.PI/2],[0,.72,Math.PI],[-.72,0,Math.PI/2]]},tavla_masasi:{y:.32,yerler:[[0,-.37,0],[0,.37,Math.PI]]},tabure:{y:.67,yerler:[[0,0,0]]},bar_masasi:{y:.67,yerler:[[-.37,
-0,Math.PI/2],[.37,0,-Math.PI/2]]}},ODA_OTURAK_SIRA=["koltuk","esya_deri_koltuk","kanepe","esya_kadife_kanepe","sedir","sandalye","minder"],ODA_OTURMA_FARKI=.24*ODA_FIGUR_OLCEK,ODA_YATAK={yatak_tek:{x:0,
-ust:.46},yatak_cift:{x:-.6,ust:.5}};function odaDuraklari(grid,items,catalog){const k=new Map(catalog.map(c=>[c.id,c])),W=grid.w,D=grid.d,dolu=new Map;items.forEach((p,i)=>{const c=k.get(p.i);if(!c||c.
-rug)return;const iz=odaIzi(c,p);for(let x=p.x;x<p.x+iz.w;x++)for(let z=p.z;z<p.z+iz.d;z++)dolu.set(x+","+z,i)});const bos=[];for(let z=0;z<D;z++)for(let x=0;x<W;x++)dolu.has(x+","+z)||bos.push([x,z]);
-const uzak=(q,x,z)=>Math.hypot(q[0]+.5-x,q[1]+.5-z),enYakin=(x,z,liste=bos)=>liste.reduce((en,q)=>!en||uzak(q,x,z)<uzak(en,x,z)?q:en,null),s={bos,uyku:null,masa:[],oturak:[],dolas:[],kiler:null};items.
-forEach((p,i)=>{const c=k.get(p.i);if(!c||c.rug)return;const iz=odaIzi(c,p),cx=p.x+iz.w/2,cz=p.z+iz.d/2,th=p.r*Math.PI/2,yer=(lx,lz)=>[cx+lx*Math.cos(th)+lz*Math.sin(th),cz-lx*Math.sin(th)+lz*Math.cos(
-th)],cevre=bos.filter(([x,z])=>x>=p.x&&x<p.x+iz.w&&(z===p.z-1||z===p.z+iz.d)||z>=p.z&&z<p.z+iz.d&&(x===p.x-1||x===p.x+iz.w)),yakin=(x,z)=>enYakin(x,z,cevre)??enYakin(x,z),yatak=ODA_YATAK[p.i];if(yatak&&
-!s.uyku){const[x,z]=yer(yatak.x,-1+FIGUR_BAS_Y*ODA_FIGUR_OLCEK),[bx,bz]=yer(yatak.x,-1),[yx,yz]=yer(yatak.x,-.2);s.uyku={ad:"yatak:"+i,tur:"yat",x,z,y:yatak.ust+.27,yon:th,giris:yakin(x,z),bas:[bx,bz],
-yorgan:{x:yx,z:yz,y:yatak.ust+.27,yon:th,renk:p.i==="yatak_cift"?"bordo":"mavi"}}}const o=ODA_OTURAK[p.i];if(o?.yerler)o.yerler.forEach(([lx,lz,ly],n)=>{const[x,z]=yer(lx,lz);s.oturak.push({ad:`${p.i}\
-:${i}:${n}`,tur:"otur",tip:p.i,x,z,y:o.y-ODA_OTURMA_FARKI,yon:th+ly,giris:yakin(x,z),bas:[x,z]})});else if(o)for(const ox of o.x){const[x,z]=yer(ox,o.on),[fx,fz]=yer(ox,1),onu=items[dolu.get(Math.floor(
-fx)+","+Math.floor(fz))]?.i,durak={ad:`${p.i}:${i}:${ox}`,tur:"otur",tip:p.i,x,z,y:o.kok??o.y-ODA_OTURMA_FARKI,yon:th,giris:yakin(x,z),bas:[x,z],...o.eylem?{eylem:o.eylem}:{}};(onu==="calisma_masasi"||
-onu==="yemek_masasi")&&!o.eylem?s.masa.push({...durak,masa:onu}):s.oturak.push(durak)}if(["kitaplik","soba","gardirop","saksi","vitrin","ayna","akvaryum","somine","piyano","esya_gramofon","esya_telesk\
-op","esya_plak","esya_satranc","esya_kure","esya_bust","esya_ayakli_saat","esya_cini_pano"].includes(p.i)){const[fx,fz]=yer(0,(p.r%2?iz.w:iz.d)/2+.5),g=enYakin(fx,fz,cevre);g&&s.dolas.push({ad:p.i+":"+
-i,tur:"ayakta",eylem:"bekle",x:g[0]+.5,z:g[1]+.5,y:0,yon:Math.atan2(cx-(g[0]+.5),cz-(g[1]+.5)),giris:g,bas:[g[0]+.5,g[1]+.5]})}}),s.masa.sort((a,b)=>+(a.masa!=="calisma_masasi")-+(b.masa!=="calisma_ma\
-sasi")),s.oturak.sort((a,b)=>ODA_OTURAK_SIRA.indexOf(a.tip)-ODA_OTURAK_SIRA.indexOf(b.tip));const pk=enYakin(W*.55,.3);pk&&uzak(pk,W*.55,0)<2.3&&s.dolas.unshift({ad:"pencere",tur:"ayakta",eylem:"bekle",
-x:pk[0]+.5,z:pk[1]+.5,y:0,yon:Math.atan2(W*.55-(pk[0]+.5),-(pk[1]+.5)),giris:pk,bas:[pk[0]+.5,pk[1]+.5]});const kk=enYakin(.5,D-.5);return kk&&(s.kiler={ad:"kiler",tur:"ayakta",eylem:"bekle",x:kk[0]+.5,
-z:kk[1]+.5,y:0,yon:Math.atan2(.1-(kk[0]+.5),D-.5-(kk[1]+.5)),giris:kk,bas:[kk[0]+.5,kk[1]+.5]}),s}function odaHedef(s,durum,gece){if(!durum?.evde)return null;const serbest=s.bos[Math.floor(s.bos.length/
-2)],ayakta=(q,eylem)=>q&&{ad:"kare:"+q.join(","),tur:"ayakta",eylem,x:q[0]+.5,z:q[1]+.5,y:0,yon:0,giris:q,bas:[q[0]+.5,q[1]+.5]};if(durum.egitim){const o=s.masa[0]??s.oturak[0];if(o)return{hayat:"masa",
-durak:o,eylem:"oku"};const a=ayakta(serbest,"egit");return a?{hayat:"egit",durak:a,eylem:"egit"}:null}if(gece>.5){if(s.uyku)return{hayat:"uyku",durak:s.uyku,eylem:"uyu"};const uyku=["kanepe","esya_kad\
-ife_kanepe","sedir","koltuk","esya_deri_koltuk","sandalye"],o=s.oturak.filter(x=>uyku.includes(x.tip)).sort((a,b)=>uyku.indexOf(a.tip)-uyku.indexOf(b.tip))[0]??s.masa[0];if(o)return{hayat:"uyku",durak:o,
-eylem:"uyukla"};const q=serbest;return q?{hayat:"uyku",durak:{ad:"yer:"+q.join(","),tur:"yat",yer:!0,x:q[0]+.5,z:q[1]+.5+.6,y:.36,yon:0,giris:q,bas:[q[0]+.5,q[1]+.5-.6],yorgan:{x:q[0]+.5,z:q[1]+.5+.2,
-y:.36,yon:0,renk:"mavi"}},eylem:"uyu"}:null}const dolas=[...s.dolas,...s.oturak.map(o=>({...o,eylem:o.eylem??"otur"}))];if(!dolas.length){const a=ayakta(serbest,"bekle");a&&dolas.push(a)}return dolas.
-length?{hayat:"bos",dolas}:null}function bolgeGecesi(bolge,t=Date.now()){const e=DUNYA.bolgeler?.[bolge]?.e;if(!e)return 0;const[enlem,boylam]=NE.enlemBoylam(e[0],e[1]);return gecePayi(gunesSin(enlem,
-boylam,gunesKonumu(t)))}const odaUlkesi=bolge=>Durum.v.harita?.sahip?.[bolge]??DUNYA.bolgeler?.[bolge]?.ulke??null,odaSaatDilimi=bolge=>DUNYA.ulkeler?.[odaUlkesi(bolge)]?.tz??null;function odaYerelSaat(bolge,t=Date.
-now()){let s=new Date(t).getUTCHours(),d=new Date(t).getUTCMinutes();try{const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:odaSaatDilimi(bolge)??"UTC",hour:"2-digit",minute:"2-digit",
-hourCycle:"h23"}).formatToParts(new Date(t)).map(x=>[x.type,x.value]));s=Number(p.hour)%24,d=Number(p.minute)}catch{}return{s,d,yazi:`${String(s).padStart(2,"0")}.${String(d).padStart(2,"0")}`}}const odaAtesi=(hv,gece)=>!hv||
-hv.mevsim!==2||gece>.4||["yagmur","kar","sis"].includes(hv.tur)?"yanar":"kor";function odaRadyosu(bolge,uyanik,t=Date.now()){if(!uyanik)return"kapali";const{s}=odaYerelSaat(bolge,t);return s>=6&&s<11?
-"bulten":s>=11&&s<23?"haber":"kapali"}const odaGramofonu=(bolge,uyanik,t=Date.now())=>{const{s}=odaYerelSaat(bolge,t);return!!uyanik&&s>=18&&s<23};function odaBulteni(feed,bolge,hv,durum,t=Date.now()){
-const ulke=ulkeAdi(feed?.ulke??odaUlkesi(bolge)),saat=odaYerelSaat(bolge,t).yazi,satir=[durum==="bulten"?\u00E7("G\xFCnayd\u0131n! {ulke} radyosundan sabah b\xFClteni; saat {saat}.",{ulke,saat}):\u00E7(
-"{ulke} radyosundan haberler; saat {saat}.",{ulke,saat})],kayit=(feed?.official??[]).filter(r=>t-Date.parse(r.at)<864e5).slice(0,5).map(r=>typeof resmiMetin=="function"?resmiMetin(r)[1]:"").filter(m=>m&&
-m!==\u00E7("Resm\xEE kay\u0131t")),manset=(feed?.articles??[]).slice(0,2).filter(a=>a.title).map(a=>\u00E7("{gazete} yaz\u0131yor: {baslik}",{gazete:a.newspaper??\u00E7("Gazete"),baslik:a.title})),gundem=typeof gundemBultenSatirlari==
-"function"?gundemBultenSatirlari(feed?.bulten,{sabah:durum==="bulten"}):[];return satir.push(...gundem,...kayit,...manset),!gundem.length&&!kayit.length&&!manset.length&&satir.push(durum==="bulten"?\u00E7(
-"Gece sakin ge\xE7ti; kayda ge\xE7en yeni bir olay yok."):\u00E7("Kayda ge\xE7en yeni bir olay yok.")),hv&&satir.push(\u00E7("Hava: {hava} \xB7 {mevsim}.",{hava:havaAdi(hv),mevsim:MEVSIM_AD[hv.mevsim]})),
-satir}const odaZiyaretten=h=>({kind:h.kind,house_id:h.house_id??null,zone:h.zone??null,region_id:h.region_id,garden:!!h.garden,floors:h.floors??null,grid:h.grid,items:h.items??[],catalog:h.catalog??[],
-saved:!!h.saved,updated_at:h.updated_at??null,max_items:(h.items??[]).length,furniture:null});function odaSvgKare(svg,e){const m=svg?.getScreenCTM?.();if(!m)return null;const pt=svg.createSVGPoint();pt.
-x=e.clientX,pt.y=e.clientY;const q=pt.matrixTransform(m.inverse());return[Math.floor(q.x),Math.floor(q.y)]}const OdaPaneli=(()=>{function ac(yer,oda0,secenek){let oda=oda0,duzen=!1,items=oda.items.map(
-p=>({...p})),secili=-1,uyari="",mod=Gorunum.uc()?"3b":"2b",hata3b=!1,kapandi=!1,gonderiliyor=!1,hayat=null,erzak=null,yiyor=!1,sayacDur=null,sonOkuma=0;const zy=secenek.ziyaret??null,misafir=!!secenek.
-misafir;let zs=zy?.s??null,zyHata=null,kapiAyar=null,partiSayac=null,bulten=null,bultenAn=0,okunuyor=!1,hayvanlar=[];const balonlar2b=new Map,konfeti2b=new Map,kisilerim=()=>zs?.people??[],ziyaretModu=()=>!!zs&&
-!duzen&&(misafir||kisilerim().length>1);!misafir&&odaTaslak&&odaTaslak.anahtar===odaAnahtar(oda)&&(items=odaTaslak.items.map(p=>({...p})),duzen=!0,odaTaslak.deneme?.length&&(oda={...oda,deneme:odaTaslak.
-deneme}));const katalog=()=>new Map(oda.catalog.map(c=>[c.id,c])),degisti=()=>JSON.stringify(items)!==JSON.stringify(oda.items),taslakYaz=()=>{odaTaslak=degisti()?{anahtar:odaAnahtar(oda),items:items.
-map(p=>({...p})),deneme:oda.deneme??[]}:null},adi=i=>\u00E7v(katalog().get(items[i]?.i)?.name);function ciz(){const ev=oda.kind==="house",ust=misafir?[\u00E7("Misafirsin"),ev?\u00E7("evin salonu"):\u00E7(
-"pansiyon odas\u0131"),bolgeAdi(oda.region_id)].join(" \xB7 "):ev?\u00E7("Evinin i\xE7i \xB7 salon"):\u00E7("Pansiyon odan \xB7 i\xE7eriden"),baslik=misafir?zs?.owner_name??secenek.sahipAd??"":duzen?\u00E7(
-"D\xFCzenliyorsun"):ev?\u00E7("Salonun"):\u00E7("Odan");yer.innerHTML=`<section class="kart oda-kart"${misafir?` data-misafir="${esc(zs?.owner_id??"")}"`:""}>
+#7A6A5E",bar_masasi:"#5A6470",sahne:"#3A2E44",dj:"#2F4C7A",resepsiyon:"#8E6A4A",ses_masasi:"#2B3340",kabin:"#4A3F5C",davul:"#8E3B3B",klavye:"#2E2A2A",amfi:"#3B3B3B",mikrofon:"#6B7280"},ODA_KISA={yatak_tek:\u00E7(
+"Yatak"),yatak_cift:\u00E7("Yatak"),gardirop:\u00E7("Dolap"),calisma_masasi:\u00E7("Masa"),sandalye:\u00E7("Sand."),koltuk:\u00E7("Koltuk"),kanepe:\u00E7("Kanepe"),sehpa:\u00E7("Sehpa"),yemek_masasi:\u00E7(
+"Masa"),kitaplik:\u00E7("Kitapl\u0131k"),lamba:\u00E7("Lamba"),saksi:\u00E7("\xC7i\xE7ek"),soba:\u00E7("Soba"),televizyon:\u00E7("TV"),kilim:\u00E7("Kilim"),hali:\u00E7("Hal\u0131"),minder:\u00E7("Min\
+der"),ayna:\u00E7("Ayna"),vitrin:\u00E7("Vitrin"),akvaryum:\u00E7("Akvaryum"),sedir:\u00E7("Sedir"),somine:\u00E7("\u015E\xF6mine"),piyano:\u00E7("Piyano"),tezgah:\u00E7("Tezg\xE2h"),kahve_masasi:\u00E7(
+"Masa"),tavla_masasi:\u00E7("Tavla"),tabure:\u00E7("Tabure"),bar_masasi:\u00E7("Bar"),sahne:\u00E7("Sahne"),dj:\u00E7("DJ"),resepsiyon:\u00E7("Resepsiyon"),ses_masasi:\u00E7("Ses masas\u0131"),kabin:\u00E7(
+"Kabin"),davul:\u00E7("Davul"),klavye:\u00E7("Klavye"),amfi:\u00E7("Amfi"),mikrofon:\u00E7("Mikrofon")},odaAnahtar=oda=>`${oda.kind}|${oda.house_id??""}`,odaIzi=(c,p)=>p.r%2===1?{w:c.d,d:c.w}:{w:c.w,d:c.
+d},odaIzin=(oda,id)=>oda.furniture?Number(oda.free?.[id]??0)+Number(oda.owned?.[id]??0)+(oda.deneme?.includes(id)?1:0):null,odaRenk=id=>ODA_RENK[id]??(typeof magazaUrun=="function"?magazaUrun(id)?.data?.
+color:null)??"#bbb",odaYaziRengi=renk=>{const m=/^#([0-9a-f]{6})$/i.exec(String(renk??""));if(!m)return"";const n=parseInt(m[1],16),r=n>>16,g=n>>8&255,b=n&255;return .299*r+.587*g+.114*b<110?"fill:#F3\
+EBDD;":""};let odaDenemeBekleyen=null;function odaDenemeIste(id){odaDenemeBekleyen=id,Kabuk.git("sehir/ev")}function odaDenetle(oda,items){if(items.length>oda.max_items)return"HOME_TOO_MANY";const k=new Map(
+oda.catalog.map(c=>[c.id,c])),kutu=[],sayac=new Map;for(const p of items){const c=k.get(p.i);if(!c)return"HOME_ITEM_UNKNOWN";const n=(sayac.get(c.id)??0)+1,izin=odaIzin(oda,c.id);if(sayac.set(c.id,n),
+izin!==null&&n>izin)return"HOME_ITEM_NOT_OWNED";const iz=odaIzi(c,p);if(p.x<0||p.z<0||p.x+iz.w>oda.grid.w||p.z+iz.d>oda.grid.d)return"HOME_OUT_OF_BOUNDS";kutu.push([p.x,p.z,p.x+iz.w,p.z+iz.d,c.rug])}for(let b=1;b<
+kutu.length;b++)for(let a=0;a<b;a++){const p=kutu[a],q=kutu[b];if(p[4]===q[4]&&p[0]<q[2]&&q[0]<p[2]&&p[1]<q[3]&&q[1]<p[3])return"HOME_OVERLAP"}return null}const ODA_FIGUR_OLCEK=.66,ODA_OTURAK={sandalye:{
+y:.51,on:.05,x:[0]},koltuk:{y:.51,on:.1,x:[0]},kanepe:{y:.52,on:.08,x:[0,-.82,.82]},esya_kadife_kanepe:{y:.53,on:.08,x:[0,-.82,.82]},esya_deri_koltuk:{y:.52,on:.1,x:[0]},sedir:{y:.46,on:.06,x:[0,-.9,.9]},
+minder:{y:.16,on:0,x:[0],kok:.07,eylem:"yerde"},kahve_masasi:{y:.47,yerler:[[0,-.72,0],[.72,0,-Math.PI/2],[0,.72,Math.PI],[-.72,0,Math.PI/2]]},tavla_masasi:{y:.32,yerler:[[0,-.37,0],[0,.37,Math.PI]]},
+tabure:{y:.67,yerler:[[0,0,0]]},bar_masasi:{y:.67,yerler:[[-.37,0,Math.PI/2],[.37,0,-Math.PI/2]]},ses_masasi:{y:.5,yerler:[[0,.95,Math.PI]]},davul:{y:.5,yerler:[[0,.7,Math.PI]]},klavye:{y:.5,yerler:[[
+0,.75,Math.PI]]}},ODA_OTURAK_SIRA=["koltuk","esya_deri_koltuk","kanepe","esya_kadife_kanepe","sedir","sandalye","minder"],ODA_OTURMA_FARKI=.24*ODA_FIGUR_OLCEK,ODA_YATAK={yatak_tek:{x:0,ust:.46},yatak_cift:{
+x:-.6,ust:.5}};function odaDuraklari(grid,items,catalog){const k=new Map(catalog.map(c=>[c.id,c])),W=grid.w,D=grid.d,dolu=new Map;items.forEach((p,i)=>{const c=k.get(p.i);if(!c||c.rug)return;const iz=odaIzi(
+c,p);for(let x=p.x;x<p.x+iz.w;x++)for(let z=p.z;z<p.z+iz.d;z++)dolu.set(x+","+z,i)});const bos=[];for(let z=0;z<D;z++)for(let x=0;x<W;x++)dolu.has(x+","+z)||bos.push([x,z]);const uzak=(q,x,z)=>Math.hypot(
+q[0]+.5-x,q[1]+.5-z),enYakin=(x,z,liste=bos)=>liste.reduce((en,q)=>!en||uzak(q,x,z)<uzak(en,x,z)?q:en,null),s={bos,uyku:null,masa:[],oturak:[],dolas:[],kiler:null};items.forEach((p,i)=>{const c=k.get(
+p.i);if(!c||c.rug)return;const iz=odaIzi(c,p),cx=p.x+iz.w/2,cz=p.z+iz.d/2,th=p.r*Math.PI/2,yer=(lx,lz)=>[cx+lx*Math.cos(th)+lz*Math.sin(th),cz-lx*Math.sin(th)+lz*Math.cos(th)],cevre=bos.filter(([x,z])=>x>=
+p.x&&x<p.x+iz.w&&(z===p.z-1||z===p.z+iz.d)||z>=p.z&&z<p.z+iz.d&&(x===p.x-1||x===p.x+iz.w)),yakin=(x,z)=>enYakin(x,z,cevre)??enYakin(x,z),yatak=ODA_YATAK[p.i];if(yatak&&!s.uyku){const[x,z]=yer(yatak.x,
+-1+FIGUR_BAS_Y*ODA_FIGUR_OLCEK),[bx,bz]=yer(yatak.x,-1),[yx,yz]=yer(yatak.x,-.2);s.uyku={ad:"yatak:"+i,tur:"yat",x,z,y:yatak.ust+.27,yon:th,giris:yakin(x,z),bas:[bx,bz],yorgan:{x:yx,z:yz,y:yatak.ust+.27,
+yon:th,renk:p.i==="yatak_cift"?"bordo":"mavi"}}}const o=ODA_OTURAK[p.i];if(o?.yerler)o.yerler.forEach(([lx,lz,ly],n)=>{const[x,z]=yer(lx,lz);s.oturak.push({ad:`${p.i}:${i}:${n}`,tur:"otur",tip:p.i,x,z,
+y:o.y-ODA_OTURMA_FARKI,yon:th+ly,giris:yakin(x,z),bas:[x,z]})});else if(o)for(const ox of o.x){const[x,z]=yer(ox,o.on),[fx,fz]=yer(ox,1),onu=items[dolu.get(Math.floor(fx)+","+Math.floor(fz))]?.i,durak={
+ad:`${p.i}:${i}:${ox}`,tur:"otur",tip:p.i,x,z,y:o.kok??o.y-ODA_OTURMA_FARKI,yon:th,giris:yakin(x,z),bas:[x,z],...o.eylem?{eylem:o.eylem}:{}};(onu==="calisma_masasi"||onu==="yemek_masasi")&&!o.eylem?s.
+masa.push({...durak,masa:onu}):s.oturak.push(durak)}if(["kitaplik","soba","gardirop","saksi","vitrin","ayna","akvaryum","somine","piyano","esya_gramofon","esya_teleskop","esya_plak","esya_satranc","es\
+ya_kure","esya_bust","esya_ayakli_saat","esya_cini_pano"].includes(p.i)){const[fx,fz]=yer(0,(p.r%2?iz.w:iz.d)/2+.5),g=enYakin(fx,fz,cevre);g&&s.dolas.push({ad:p.i+":"+i,tur:"ayakta",eylem:"bekle",x:g[0]+
+.5,z:g[1]+.5,y:0,yon:Math.atan2(cx-(g[0]+.5),cz-(g[1]+.5)),giris:g,bas:[g[0]+.5,g[1]+.5]})}}),s.masa.sort((a,b)=>+(a.masa!=="calisma_masasi")-+(b.masa!=="calisma_masasi")),s.oturak.sort((a,b)=>ODA_OTURAK_SIRA.
+indexOf(a.tip)-ODA_OTURAK_SIRA.indexOf(b.tip));const pk=enYakin(W*.55,.3);pk&&uzak(pk,W*.55,0)<2.3&&s.dolas.unshift({ad:"pencere",tur:"ayakta",eylem:"bekle",x:pk[0]+.5,z:pk[1]+.5,y:0,yon:Math.atan2(W*
+.55-(pk[0]+.5),-(pk[1]+.5)),giris:pk,bas:[pk[0]+.5,pk[1]+.5]});const kk=enYakin(.5,D-.5);return kk&&(s.kiler={ad:"kiler",tur:"ayakta",eylem:"bekle",x:kk[0]+.5,z:kk[1]+.5,y:0,yon:Math.atan2(.1-(kk[0]+.5),
+D-.5-(kk[1]+.5)),giris:kk,bas:[kk[0]+.5,kk[1]+.5]}),s}function odaHedef(s,durum,gece){if(!durum?.evde)return null;const serbest=s.bos[Math.floor(s.bos.length/2)],ayakta=(q,eylem)=>q&&{ad:"kare:"+q.join(
+","),tur:"ayakta",eylem,x:q[0]+.5,z:q[1]+.5,y:0,yon:0,giris:q,bas:[q[0]+.5,q[1]+.5]};if(durum.egitim){const o=s.masa[0]??s.oturak[0];if(o)return{hayat:"masa",durak:o,eylem:"oku"};const a=ayakta(serbest,
+"egit");return a?{hayat:"egit",durak:a,eylem:"egit"}:null}if(gece>.5){if(s.uyku)return{hayat:"uyku",durak:s.uyku,eylem:"uyu"};const uyku=["kanepe","esya_kadife_kanepe","sedir","koltuk","esya_deri_kolt\
+uk","sandalye"],o=s.oturak.filter(x=>uyku.includes(x.tip)).sort((a,b)=>uyku.indexOf(a.tip)-uyku.indexOf(b.tip))[0]??s.masa[0];if(o)return{hayat:"uyku",durak:o,eylem:"uyukla"};const q=serbest;return q?
+{hayat:"uyku",durak:{ad:"yer:"+q.join(","),tur:"yat",yer:!0,x:q[0]+.5,z:q[1]+.5+.6,y:.36,yon:0,giris:q,bas:[q[0]+.5,q[1]+.5-.6],yorgan:{x:q[0]+.5,z:q[1]+.5+.2,y:.36,yon:0,renk:"mavi"}},eylem:"uyu"}:null}
+const dolas=[...s.dolas,...s.oturak.map(o=>({...o,eylem:o.eylem??"otur"}))];if(!dolas.length){const a=ayakta(serbest,"bekle");a&&dolas.push(a)}return dolas.length?{hayat:"bos",dolas}:null}function bolgeGecesi(bolge,t=Date.
+now()){const e=DUNYA.bolgeler?.[bolge]?.e;if(!e)return 0;const[enlem,boylam]=NE.enlemBoylam(e[0],e[1]);return gecePayi(gunesSin(enlem,boylam,gunesKonumu(t)))}const odaUlkesi=bolge=>Durum.v.harita?.sahip?.[bolge]??
+DUNYA.bolgeler?.[bolge]?.ulke??null,odaSaatDilimi=bolge=>DUNYA.ulkeler?.[odaUlkesi(bolge)]?.tz??null;function odaYerelSaat(bolge,t=Date.now()){let s=new Date(t).getUTCHours(),d=new Date(t).getUTCMinutes();
+try{const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:odaSaatDilimi(bolge)??"UTC",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date(t)).map(x=>[x.type,x.value]));
+s=Number(p.hour)%24,d=Number(p.minute)}catch{}return{s,d,yazi:`${String(s).padStart(2,"0")}.${String(d).padStart(2,"0")}`}}const odaAtesi=(hv,gece)=>!hv||hv.mevsim!==2||gece>.4||["yagmur","kar","sis"].
+includes(hv.tur)?"yanar":"kor";function odaRadyosu(bolge,uyanik,t=Date.now()){if(!uyanik)return"kapali";const{s}=odaYerelSaat(bolge,t);return s>=6&&s<11?"bulten":s>=11&&s<23?"haber":"kapali"}const odaGramofonu=(bolge,uyanik,t=Date.
+now())=>{const{s}=odaYerelSaat(bolge,t);return!!uyanik&&s>=18&&s<23};function odaBulteni(feed,bolge,hv,durum,t=Date.now()){const ulke=ulkeAdi(feed?.ulke??odaUlkesi(bolge)),saat=odaYerelSaat(bolge,t).yazi,
+satir=[durum==="bulten"?\u00E7("G\xFCnayd\u0131n! {ulke} radyosundan sabah b\xFClteni; saat {saat}.",{ulke,saat}):\u00E7("{ulke} radyosundan haberler; saat {saat}.",{ulke,saat})],kayit=(feed?.official??
+[]).filter(r=>t-Date.parse(r.at)<864e5).slice(0,5).map(r=>typeof resmiMetin=="function"?resmiMetin(r)[1]:"").filter(m=>m&&m!==\u00E7("Resm\xEE kay\u0131t")),manset=(feed?.articles??[]).slice(0,2).filter(
+a=>a.title).map(a=>\u00E7("{gazete} yaz\u0131yor: {baslik}",{gazete:a.newspaper??\u00E7("Gazete"),baslik:a.title})),gundem=typeof gundemBultenSatirlari=="function"?gundemBultenSatirlari(feed?.bulten,{
+sabah:durum==="bulten"}):[];return satir.push(...gundem,...kayit,...manset),!gundem.length&&!kayit.length&&!manset.length&&satir.push(durum==="bulten"?\u00E7("Gece sakin ge\xE7ti; kayda ge\xE7en yeni bir ol\
+ay yok."):\u00E7("Kayda ge\xE7en yeni bir olay yok.")),hv&&satir.push(\u00E7("Hava: {hava} \xB7 {mevsim}.",{hava:havaAdi(hv),mevsim:MEVSIM_AD[hv.mevsim]})),satir}const odaZiyaretten=h=>({kind:h.kind,house_id:h.
+house_id??null,zone:h.zone??null,region_id:h.region_id,garden:!!h.garden,floors:h.floors??null,grid:h.grid,items:h.items??[],catalog:h.catalog??[],saved:!!h.saved,updated_at:h.updated_at??null,max_items:(h.
+items??[]).length,furniture:null});function odaSvgKare(svg,e){const m=svg?.getScreenCTM?.();if(!m)return null;const pt=svg.createSVGPoint();pt.x=e.clientX,pt.y=e.clientY;const q=pt.matrixTransform(m.inverse());
+return[Math.floor(q.x),Math.floor(q.y)]}const OdaPaneli=(()=>{function ac(yer,oda0,secenek){let oda=oda0,duzen=!1,items=oda.items.map(p=>({...p})),secili=-1,uyari="",mod=Gorunum.uc()?"3b":"2b",hata3b=!1,
+kapandi=!1,gonderiliyor=!1,hayat=null,erzak=null,yiyor=!1,sayacDur=null,sonOkuma=0;const zy=secenek.ziyaret??null,misafir=!!secenek.misafir;let zs=zy?.s??null,zyHata=null,kapiAyar=null,partiSayac=null,
+bulten=null,bultenAn=0,okunuyor=!1,hayvanlar=[];const balonlar2b=new Map,konfeti2b=new Map,kisilerim=()=>zs?.people??[],ziyaretModu=()=>!!zs&&!duzen&&(misafir||kisilerim().length>1);!misafir&&odaTaslak&&
+odaTaslak.anahtar===odaAnahtar(oda)&&(items=odaTaslak.items.map(p=>({...p})),duzen=!0,odaTaslak.deneme?.length&&(oda={...oda,deneme:odaTaslak.deneme}));const katalog=()=>new Map(oda.catalog.map(c=>[c.
+id,c])),degisti=()=>JSON.stringify(items)!==JSON.stringify(oda.items),taslakYaz=()=>{odaTaslak=degisti()?{anahtar:odaAnahtar(oda),items:items.map(p=>({...p})),deneme:oda.deneme??[]}:null},adi=i=>\u00E7v(
+katalog().get(items[i]?.i)?.name);function ciz(){const ev=oda.kind==="house",ust=misafir?[\u00E7("Misafirsin"),ev?\u00E7("evin salonu"):\u00E7("pansiyon odas\u0131"),bolgeAdi(oda.region_id)].join(" \xB7 "):
+ev?\u00E7("Evinin i\xE7i \xB7 salon"):\u00E7("Pansiyon odan \xB7 i\xE7eriden"),baslik=misafir?zs?.owner_name??secenek.sahipAd??"":duzen?\u00E7("D\xFCzenliyorsun"):ev?\u00E7("Salonun"):\u00E7("Odan");yer.
+innerHTML=`<section class="kart oda-kart"${misafir?` data-misafir="${esc(zs?.owner_id??"")}"`:""}>
         <div class="kart-bas"><div><p class="ust-yazi">${esc(ust)}</p>
           <h2 class="b2" id="oda-baslik">${esc(baslik)}</h2></div>
-          <div class="kart-bas-dugmeler">${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="oda-mod" aria-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Hafif g\xF6r\xFCn\xFCme (2B) ge\xE7"):
-\u00E7("3B g\xF6r\xFCn\xFCme ge\xE7")}">${ikon("layers")}${mod==="3b"?\u00E7("2B"):\u00E7("3B")}</button>`:""}
+          <div class="kart-bas-dugmeler">${!duzen&&zs?kareSahneDugmeHtml("home",zs.owner_id??secenek.sahip??Durum.v.ozet?.character?.id):""}${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id=\
+"oda-mod" aria-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Hafif g\xF6r\xFCn\xFCme (2B) ge\xE7"):\u00E7("3B g\xF6r\xFCn\xFCme ge\xE7")}">${ikon("layers")}${mod==="3b"?\u00E7("2B"):\u00E7("3B")}\
+</button>`:""}
             ${duzen||misafir?"":`<button class="dugme ikincil kucuk-d" id="oda-duzenle">${ikon("move")}${\u00E7("D\xFCzenle")}</button>${meydanaDonDugme("ev")}`}</div></div>
         <div class="oda-sahne sahne3b${duzen?" oda-duzende":""}" id="oda-sahne" data-mod="${mod}">
           ${mod==="3b"?`<div class="yukleniyor${oda3bOrnek?" bitti":""}" id="oda-yukleniyor"><div class="yukleniyor-ic"><img src="img/amblem.png" alt=""><span>${\u00E7("Oda haz\u0131rlan\u0131yor\u2026")}\
@@ -2569,13 +2191,13 @@ bolgeGecesi(oda.region_id))==="yanar"?`<path class="oda2b-alev" d="M${(p.x+iz.w-
 2 0.36 z"/>`:"";return`<g class="oda2b-esya${i===secili&&duzen?" secili":""}${c.rug?" hali":""}" data-oda-esya="${i}"${canli2b}>
           <rect x="${p.x+.06}" y="${p.z+.06}" width="${iz.w-.12}" height="${iz.d-.12}" rx="0.12" fill="${odaRenk(c.id)}"/>
           ${c.rug?"":`<line x1="${on[0]}" y1="${on[1]}" x2="${on[2]}" y2="${on[3]}" class="oda2b-on"/>`}${alev2b}
-          ${(()=>{const ad=saatli?odaYerelSaat(oda.region_id).yazi:ODA_KISA[c.id]??\u00E7v(c.name).split(" ")[0],boy=Math.min(.32,iz.w*.86/(ad.length*.56));return c.rug?`<text x="${p.x+.16}" y="${p.z+
-iz.d-.16}" class="oda2b-yazi" style="font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`:`<text x="${p.x+iz.w/2}" y="${p.z+iz.d/2+boy*.36}" text-anchor="middle" class="oda2b-yazi" style="font-size:${boy.
-toFixed(3)}px">${esc(ad)}</text>`})()}</g>`}).join(""),pg=Math.min(2.2,W*.36),px0=W*.55-pg/2,gece=bolgeGecesi(oda.region_id),hd=hayatDurumu(),zm=ziyaretModu(),hedef=duzen||misafir||zm?null:odaHedef(odaDuraklari(
-oda.grid,items,oda.catalog),hd,gece),q=hedef?hedef.durak??hedef.dolas?.[0]:null,fq=q?q.bas??[q.x,q.z]:null,bosHepsi=duzen?[]:odaDuraklari(oda.grid,items,oda.catalog).bos,bosAyri=fq?bosHepsi.filter(([x,
-z])=>Math.hypot(x+.5-fq[0],z+.5-fq[1])>.9):bosHepsi,bos2b=bosAyri.length?bosAyri:bosHepsi,anahtar2b=odaAnahtar(oda)+(misafir?"|"+(secenek.sahip??zs?.owner_id??""):""),hayvan2b=bos2b.length?hayvanlar.map(
-(h,i)=>{const yer2=bos2b[(ozet(String(h.id)+anahtar2b)+i*7)%bos2b.length],b=.55*evcilBoy(h.species,h.breed);return`<g class="oda2b-hayvan" data-oda-hayvan="${esc(h.id)}" data-hal="${esc(h.state)}" rol\
-e="button" tabindex="0" aria-label="${esc(evcilTanim(h))}"
+          ${(()=>{const ad=saatli?odaYerelSaat(oda.region_id).yazi:ODA_KISA[c.id]??\u00E7v(c.name).split(" ")[0],boy=Math.min(.32,iz.w*.86/(ad.length*.56)),yr=odaYaziRengi(odaRenk(c.id));return c.rug?
+`<text x="${p.x+.16}" y="${p.z+iz.d-.16}" class="oda2b-yazi" style="${yr}font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`:`<text x="${p.x+iz.w/2}" y="${p.z+iz.d/2+boy*.36}" text-anchor="middle" class\
+="oda2b-yazi" style="${yr}font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`})()}</g>`}).join(""),pg=Math.min(2.2,W*.36),px0=W*.55-pg/2,gece=bolgeGecesi(oda.region_id),hd=hayatDurumu(),zm=ziyaretModu(),
+hedef=duzen||misafir||zm?null:odaHedef(odaDuraklari(oda.grid,items,oda.catalog),hd,gece),q=hedef?hedef.durak??hedef.dolas?.[0]:null,fq=q?q.bas??[q.x,q.z]:null,bosHepsi=duzen?[]:odaDuraklari(oda.grid,items,
+oda.catalog).bos,bosAyri=fq?bosHepsi.filter(([x,z])=>Math.hypot(x+.5-fq[0],z+.5-fq[1])>.9):bosHepsi,bos2b=bosAyri.length?bosAyri:bosHepsi,anahtar2b=odaAnahtar(oda)+(misafir?"|"+(secenek.sahip??zs?.owner_id??
+""):""),hayvan2b=bos2b.length?hayvanlar.map((h,i)=>{const yer2=bos2b[(ozet(String(h.id)+anahtar2b)+i*7)%bos2b.length],b=.55*evcilBoy(h.species,h.breed);return`<g class="oda2b-hayvan" data-oda-hayvan="${esc(
+h.id)}" data-hal="${esc(h.state)}" role="button" tabindex="0" aria-label="${esc(evcilTanim(h))}"
           transform="translate(${(yer2[0]+.5).toFixed(2)} ${(yer2[1]+.82).toFixed(2)})"><rect x="${(-b/2).toFixed(2)}" y="${(-b*.8).toFixed(2)}" width="${b.toFixed(2)}" height="${(b*.8).toFixed(2)}" f\
 ill="transparent"/>
           ${hayvanSvg(h,evcilBosDurus(h.state),{kutu:[-b/2,-b*.8,b,b*.8]})}</g>`}).join(""):"";let figur2b="";if(q){const[fx,fz]=q.bas??[q.x,q.z],f=figurVerisi(),g=f.gorunus??varsayilanGorunus(f.ad||"\
@@ -2660,8 +2282,9 @@ president?{ad:kisaAd(l.president.name),tamAd:l.president.name,renkler:gorunusRen
 o.country_id),ulkeKod:v.o.country_id}};function ciz(){kurulu=!0;const dolu=(v.o.parliament.members??[]).length;el.innerHTML=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Genel kurul")} \xB7 ${\u00E7(
 "{n} / {toplam} sandalye dolu",{n:dolu,toplam:Number(v.o.parliament.seats)})}</p>
           <h2 class="b2">${\u00E7("Meclis salonu")}</h2></div>
-          <div class="kart-bas-dugmeler">${meydanaDonDugme("meclis")}${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="salon-mod" aria-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Ha\
-fif g\xF6r\xFCn\xFCme (2B) ge\xE7"):\u00E7("3B g\xF6r\xFCn\xFCme ge\xE7")}">${ikon("layers")}${mod==="3b"?\u00E7("2B"):\u00E7("3B")}</button>`:""}</div></div>
+          <div class="kart-bas-dugmeler">${kareSahneDugmeHtml("parliament",v.o.country_id)}${meydanaDonDugme("meclis")}${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="salon-mod" aria-pres\
+sed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Hafif g\xF6r\xFCn\xFCme (2B) ge\xE7"):\u00E7("3B g\xF6r\xFCn\xFCme ge\xE7")}">${ikon("layers")}${mod==="3b"?\u00E7("2B"):\u00E7("3B")}</button>`:""}</di\
+v></div>
         <div class="salon-oylamalar" id="salon-oylamalar"></div>
         <div class="salon-sahne sahne3b" id="salon-sahne" data-mod="${mod}">
           ${mod==="3b"?`<div class="yukleniyor${meclis3bOrnek?" bitti":""}" id="salon-yukleniyor"><div class="yukleniyor-ic"><img src="img/amblem.png" alt=""><span>${\u00E7("Salon haz\u0131rlan\u0131yor\u2026")}\
@@ -3091,57 +2714,57 @@ yay()}function yavasBildir(){secim!=="oto"||yavas>=2||(yavas++,yavas>=2&&tost(\u
 "u")return Promise.resolve();const liste=typeof UC_PARCALARI=="object"&&kaynak?UC_PARCALARI[kaynak]:null;return liste?Promise.all(liste.map(ad=>Parcalar.bekle(ad))):Parcalar.bekle("uc")},Uc=(()=>{let soz=null,
 cizici=null;function araclar(){if(!soz){const p=Promise.all([import("three"),import("three/addons/controls/MapControls.js"),import("three/addons/utils/BufferGeometryUtils.js"),import("three/addons/controls/OrbitControls.js")]).
 then(([THREE,kontrol,araclar2,yorunge])=>(cizici??=cizicKur(THREE),{THREE,MapControls:kontrol.MapControls,OrbitControls:yorunge.OrbitControls,birlestir:araclar2.mergeGeometries,cizici}));soz=p,p.catch(
-()=>{soz===p&&(soz=null)})}return soz}function yukle(kaynak){return Promise.all([araclar(),ucParcasi(kaynak)]).then(([ortam])=>ortam)}return{yukle,get cizici(){return cizici}}})(),sinamaYaz=ek=>{typeof window<
-"u"&&window.__civoraSinama&&typeof window.__civoraSinama=="object"&&Object.assign(window.__civoraSinama,ek)};sinamaYaz({uc:Uc});function cizicKur(THREE){let renderer=null,etkin=null,calisiyor=!1,sonCizim=0,
-olcum={n:0,top:0};const katmanlar=[],gozlemci=new ResizeObserver(()=>boyutla());function kur(){if(renderer)return renderer;const k=Gorunum.kalite();try{renderer=new THREE.WebGLRenderer({antialias:k!==
-"dusuk",alpha:!0,powerPreference:k==="dusuk"?"low-power":"default"})}catch(hata){return console.warn("WebGL a\xE7\u0131lamad\u0131",hata),null}return renderer.setClearColor(0,0),renderer.shadowMap.type=
-THREE.PCFSoftShadowMap,renderer.outputColorSpace=THREE.SRGBColorSpace,renderer.toneMapping=THREE.NoToneMapping,renderer.domElement.setAttribute("tabindex","0"),kaliteUygula(),renderer}function kaliteUygula(){
-if(!renderer)return;const k=Gorunum.kalite();renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,k==="yuksek"?2:k==="orta"?1.5:1)),renderer.shadowMap.enabled=k!=="dusuk",etkin?.kalite?.(k),boyutla()}
-Gorunum.dinle(kaliteUygula);function bagla(modul,kap){if(!kap?.isConnected)return!0;const ust=katmanlar.at(-1);return ust&&modul!==ust.modul?(ust.bekleyen={modul,kap},!0):kur()?(etkin&&etkin!==modul&&
-etkin.etkinlestir?.(!1),etkin=modul,renderer.domElement.setAttribute("aria-label",modul.etiket??\u00E7("3B sahne")),renderer.domElement.parentElement!==kap&&(gozlemci.disconnect(),kap.prepend(renderer.
-domElement),gozlemci.observe(kap)),modul.kalite?.(Gorunum.kalite()),boyutla(),modul.etkinlestir?.(!0),olcum={n:0,top:0},firsatCizdi=!1,calisiyor||(calisiyor=!0,baslat()),!0):!1}function birak(modul){for(const k of katmanlar)
-k.bekleyen?.modul===modul&&(k.bekleyen=null);etkin===modul&&(etkin.etkinlestir?.(!1),etkin=null,calisiyor=!1,tur++)}function boyutla(){if(!renderer||!etkin)return;const kap=renderer.domElement.parentElement;
-if(!kap)return;const w=Math.max(1,kap.clientWidth),h=Math.max(1,kap.clientHeight);renderer.setSize(w,h,!1),etkin.boyut(w,h)}let sonGuncelle=0,cizdi=!1,tur=0,firsatCizdi=!1,sonKare=-1;function baslat(){
-const benim=++tur,adim=t=>{benim!==tur||!calisiyor||(requestAnimationFrame(adim),dongu(t))};requestAnimationFrame(adim)}function dongu(t){const ard=cizdi;if(cizdi=!1,!etkin||document.hidden||!renderer.
-domElement.isConnected){firsatCizdi=!1;return}const kare=etkin.kareMs??0;if(kare&&t-sonCizim<kare-2)return;const dt=Math.min(.05,Math.max(.001,(t-(sonGuncelle||t-16))/1e3));if(sonGuncelle=t,etkin.guncelle(
-dt,t/1e3),etkin.cizilmeli&&!etkin.cizilmeli()){firsatCizdi=!1;return}renderer.render(etkin.sahne,etkin.kamera);const surekli=!!etkin.surekli&&kare>0&&kare<=50;(kare?surekli&&firsatCizdi&&sonKare===kare:
-ard)&&(olcum.n++,olcum.top+=t-sonCizim,(olcum.n>=90||surekli&&olcum.n>=8&&olcum.top>=4e3)&&(olcum.top/olcum.n>Math.max(45,kare*2)&&Gorunum.yavasBildir(),olcum={n:0,top:0})),sonCizim=t,cizdi=!0,firsatCizdi=
-!0,sonKare=kare}function ustAc(modul,kap){const kap0=renderer?.domElement.parentElement??null,once=etkin&&etkin!==modul&&kap0?{modul:etkin,kap:kap0}:null,k={modul,bekleyen:null};return katmanlar.push(
-k),bagla(modul,kap)?(k.bekleyen=once,!0):(katmanlar.splice(katmanlar.indexOf(k),1),!1)}function ustKapat(modul){const i=katmanlar.findIndex(k2=>k2.modul===modul);if(i<0)return;const[k]=katmanlar.splice(
-i,1);if(i<katmanlar.length){katmanlar[i].bekleyen?.modul===modul&&(katmanlar[i].bekleyen=k.bekleyen);return}birak(modul),k.bekleyen?.kap.isConnected&&bagla(k.bekleyen.modul,k.bekleyen.kap)}return{kur,
-bagla,birak,boyutla,ustAc,ustKapat,get renderer(){return renderer},get etkin(){return etkin}}}function kameraSigdir(THREE,kamera,noktalar,yon,sinir={}){const sx=sinir.x??.94,ust=sinir.ust??.92,alt=sinir.
-alt??-.92,merkez=new THREE.Box3().setFromPoints(noktalar).getCenter(new THREE.Vector3),p=new THREE.Vector3,sag=new THREE.Vector3,yukari=new THREE.Vector3,tanY=Math.tan(THREE.MathUtils.degToRad(kamera.
-fov/2)),yerles=uz=>{kamera.position.copy(merkez).addScaledVector(yon,uz),kamera.lookAt(merkez),kamera.updateProjectionMatrix(),kamera.updateMatrixWorld()},sigiyor=()=>noktalar.every(n=>(p.copy(n).project(
-kamera),p.z<1&&Math.abs(p.x)<=sx&&p.y<=ust&&p.y>=alt)),ust0=kamera.far*.9;for(let tur=0;tur<4;tur++){let lo2=.5,hi2=ust0;for(let i=0;i<28;i++){const m=(lo2+hi2)/2;yerles(m),sigiyor()?hi2=m:lo2=m}yerles(
-hi2);let x0=1/0,x1=-1/0,y0=1/0,y1=-1/0;for(const n of noktalar)p.copy(n).project(kamera),x0=Math.min(x0,p.x),x1=Math.max(x1,p.x),y0=Math.min(y0,p.y),y1=Math.max(y1,p.y);const hH=tanY*hi2,hW=hH*kamera.
-aspect;sag.setFromMatrixColumn(kamera.matrixWorld,0),yukari.setFromMatrixColumn(kamera.matrixWorld,1),merkez.addScaledVector(sag,(x0+x1)/2*hW).addScaledVector(yukari,((y0+y1)/2-(ust+alt)/2)*hH)}let lo=.5,
-hi=ust0;for(let i=0;i<28;i++){const m=(lo+hi)/2;yerles(m),sigiyor()?hi=m:lo=m}yerles(hi)}let haritaVeriSozu=null;function haritaVerisi(){return haritaVeriSozu||(haritaVeriSozu=fetch("veri/dunya3b.json").
-then(y=>{if(!y.ok)throw new Error("harita-verisi-"+y.status);return y.json()}).then(v=>{for(const u of v.ulkeler??[])u.ad=DUNYA.ulkeler?.[u.id]?.ad??u.ad,u.baskent&&(u.baskentAd=DUNYA.bolgeler?.[u.baskent]?.
-ad??u.baskentAd);for(const b of v.bolgeler??[])b.ad=DUNYA.bolgeler?.[b.id]?.ad??b.ad;for(const[id,k]of Object.entries(v.komsuAd??{}))k.ad=DUNYA.bolgeler?.[id]?.ad??k.ad;return Devletler.haritaya(v)}),
-haritaVeriSozu.catch(()=>{haritaVeriSozu=null})),haritaVeriSozu}let harita3bOrnek=null;const NE=(()=>{const XMAX=Math.PI*.8707,OLCEK=1e3/XMAX,ENLEM_ALT=-57*Math.PI/180,ENLEM_UST=84*Math.PI/180,y=p=>{const p2=p*
-p,p4=p2*p2;return p*(1.007226+.015085*p2-.044475*p4*p2+.028874*p4*p4-.005916*p4*p4*p2)},k=p=>{const p2=p*p,p4=p2*p2;return .8707-.131979*p2-.013791*p4+.003971*p4*p4*p2-.001529*p4*p4*p4},YUST=y(ENLEM_UST);
-function enlemBoylam(tx,ty){const Y=YUST-ty/OLCEK;let p=Y/1.007226;for(let i=0;i<4;i++){const p2=p*p,p4=p2*p2;p-=(y(p)-Y)/(1.007226+.045255*p2-.311325*p4*p2+.259866*p4*p4-.065076*p4*p4*p2)}return[p,(tx/
-OLCEK-XMAX)/k(p)]}function tuval(enlem,boylam){const p=Math.max(ENLEM_ALT,Math.min(ENLEM_UST,enlem));return[(boylam*k(p)+XMAX)*OLCEK,(YUST-y(p))*OLCEK]}return{XMAX,OLCEK,YUST,enlemBoylam,tuval}})();function gunesKonumu(t=Date.
-now()){const n=(t-Date.UTC(new Date(t).getUTCFullYear(),0,1))/864e5,gun=.98565*Math.PI/180,sapma=-Math.asin(.39779*Math.cos(gun*(n+10)+1.914*Math.PI/180*Math.sin(gun*(n-2)))),B=2*Math.PI*(n-81)/364,zd=9.87*
-Math.sin(2*B)-7.53*Math.cos(B)-1.5*Math.sin(B),saat=(t%864e5+864e5)%864e5/36e5;return[sapma,-((saat-12+zd/60)*15*Math.PI)/180]}const gunesSin=(enlem,boylam,g)=>Math.sin(enlem)*Math.sin(g[0])+Math.cos(
-enlem)*Math.cos(g[0])*Math.cos(boylam-g[1]),gecePayi=sinH=>Math.min(1,Math.max(0,(.035-sinH)/(.035+.139)));function geceYolu2b(t,tuvalBoy){const[d0,ls]=gunesKonumu(t),d=Math.abs(d0)<.003?.003*(Math.sign(
-d0)||1):d0,n=[];for(let i=0;i<=90;i++){const l=-Math.PI+2*Math.PI*i/90;n.push(NE.tuval(Math.atan(-Math.cos(l-ls)/Math.tan(d)),l))}const kenar=d>0?tuvalBoy[1]+60:-60;return"M"+n.map(([x,y])=>x.toFixed(
-1)+","+y.toFixed(1)).join("L")+`L${tuvalBoy[0]+60},${n[n.length-1][1].toFixed(1)}L${tuvalBoy[0]+60},${kenar}L-60,${kenar}L-60,${n[0][1].toFixed(1)}Z`}const haritaKiyi=b=>b?.arazi==="kiyi"||b?.iklim===
-"akdeniz_kiyi",MEVSIM_AD=[\u00E7("K\u0131\u015F"),\u00E7("\u0130lkbahar"),\u00E7("Yaz"),\u00E7("Sonbahar")],ticaretUcOnbellek=new Map;function ticaretUclari(a,b){const k=a<b?`${a}|${b}`:`${b}|${a}`;if(ticaretUcOnbellek.
-has(k))return ticaretUcOnbellek.get(k);const bolgeler=u2=>Object.entries(DUNYA.bolgeler??{}).filter(([,x])=>x.ulke===u2&&x.e),A=bolgeler(a),B=bolgeler(b),kA=A.filter(([,x])=>haritaKiyi(x)),kB=B.filter(
-([,x])=>haritaKiyi(x)),gemi=kA.length>0&&kB.length>0;let en=null;for(const[ia,xa]of gemi?kA:A)for(const[ib,xb]of gemi?kB:B){const d=(xa.e[0]-xb.e[0])**2+(xa.e[1]-xb.e[1])**2;(!en||d<en.d)&&(en={d,a:ia,
-b:ib})}const u=en?{a:en.a,b:en.b,gemi}:null;return ticaretUcOnbellek.set(k,u),u}const ticaretAdet=t=>t.at_war||Number(t.volume_7d_cr)<=0?0:Number(t.volume_7d_cr)<5e4?1:Number(t.volume_7d_cr)<5e5?2:3;function konvoyAdet(n){
-return Number(n)<=1?1:Math.min(5,1+Math.floor(Math.log2(Number(n))))}function kirikNokta(n,u){if(n.length<2)return n[0]??null;u=Math.min(1,Math.max(0,u));const parca=n.slice(1).map((p,i)=>Math.hypot(p[0]-
-n[i][0],p[1]-n[i][1]));let kalan=u*parca.reduce((a,b)=>a+b,0);for(let i=0;i<parca.length;i++){if(kalan<=parca[i]||i===parca.length-1){const f=parca[i]?Math.min(1,kalan/parca[i]):0;return[n[i][0]+(n[i+
-1][0]-n[i][0])*f,n[i][1]+(n[i+1][1]-n[i][1])*f]}kalan-=parca[i]}return n[n.length-1]}function savasDurumMetni(s){if(s.film)return \u00E7("sava\u015F s\xFCr\xFCyor");if(s.paused)return \u00E7("duraklat\
-\u0131ld\u0131");if(s.status==="preparing")return s.next_round_at?\u00E7("haz\u0131rl\u0131kta \xB7 ilk tur {zaman}",{zaman:saatYaz(s.next_round_at)}):\u00E7("haz\u0131rl\u0131kta");const skor=`${sayi(
-s.attacker_wins)}\u2013${sayi(s.defender_wins)}`;return s.open_round_no?\u00E7("Tur {n}/{toplam} \xB7 {skor}",{n:Number(s.open_round_no),toplam:Number(s.rounds_total),skor}):\u00E7("skor {skor}",{skor})}
-let yollar2bOnbellek=null;function yollar2b(veri2){if(yollar2bOnbellek)return yollar2bOnbellek;let minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;const bolgeKutu=new Map,halka=(h,kutu)=>{let x=0,y=0,d="";for(let i=0;i<
-h.length;i+=2){x+=h[i],y+=h[i+1];const px=x/10,py=y/10;kutu&&(minX=Math.min(minX,px),maxX=Math.max(maxX,px),minY=Math.min(minY,py),maxY=Math.max(maxY,py)),d+=(i?"L":"M")+px.toFixed(1)+","+py.toFixed(1)}
-return d+"Z"},poligon=(ps,kutu=!1)=>ps.map(p=>p.map(h=>halka(h,kutu)).join("")).join(""),bolge=new Map;for(const b of veri2.bolgeler)minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0,bolge.set(b.id,poligon(b.p,!0)),
-bolgeKutu.set(b.id,{minX,minY,maxX,maxY});return yollar2bOnbellek={ulke:new Map(veri2.ulkeler.filter(u=>u.p.length).map(u=>[u.id,poligon(u.p)])),bolge,bolgeKutu,notr:poligon(veri2.notr)},yollar2bOnbellek}
-function bolgelerKutusu(y,bolgeler){let minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;for(const b of bolgeler){const k=y.bolgeKutu.get(b.id);k&&(minX=Math.min(minX,k.minX),minY=Math.min(minY,k.minY),maxX=Math.
-max(maxX,k.maxX),maxY=Math.max(maxY,k.maxY))}return Number.isFinite(minX)?{x:minX,y:minY,w:maxX-minX,h:maxY-minY}:{x:900,y:150,w:400,h:250}}const haritaAcilan=new Set;function haritaAyrinti(veri2,harita,yol){
+()=>{soz===p&&(soz=null)})}return soz}function yukle(kaynak){const dunya=typeof Dunya=="object"&&Dunya.ucGerekli(kaynak)?Dunya.yukle():Promise.resolve();return Promise.all([araclar(),ucParcasi(kaynak),
+dunya]).then(([ortam])=>ortam)}return{yukle,get cizici(){return cizici}}})(),sinamaYaz=ek=>{typeof window<"u"&&window.__civoraSinama&&typeof window.__civoraSinama=="object"&&Object.assign(window.__civoraSinama,
+ek)};sinamaYaz({uc:Uc});function cizicKur(THREE){let renderer=null,etkin=null,calisiyor=!1,sonCizim=0,olcum={n:0,top:0};const katmanlar=[],gozlemci=new ResizeObserver(()=>boyutla());function kur(){if(renderer)
+return renderer;const k=Gorunum.kalite();try{renderer=new THREE.WebGLRenderer({antialias:k!=="dusuk",alpha:!0,powerPreference:k==="dusuk"?"low-power":"default"})}catch(hata){return console.warn("WebGL\
+ a\xE7\u0131lamad\u0131",hata),null}return renderer.setClearColor(0,0),renderer.shadowMap.type=THREE.PCFSoftShadowMap,renderer.outputColorSpace=THREE.SRGBColorSpace,renderer.toneMapping=THREE.NoToneMapping,
+renderer.domElement.setAttribute("tabindex","0"),kaliteUygula(),renderer}function kaliteUygula(){if(!renderer)return;const k=Gorunum.kalite();renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,
+k==="yuksek"?2:k==="orta"?1.5:1)),renderer.shadowMap.enabled=k!=="dusuk",etkin?.kalite?.(k),boyutla()}Gorunum.dinle(kaliteUygula);function bagla(modul,kap){if(!kap?.isConnected)return!0;const ust=katmanlar.
+at(-1);return ust&&modul!==ust.modul?(ust.bekleyen={modul,kap},!0):kur()?(etkin&&etkin!==modul&&etkin.etkinlestir?.(!1),etkin=modul,renderer.domElement.setAttribute("aria-label",modul.etiket??\u00E7("\
+3B sahne")),renderer.domElement.parentElement!==kap&&(gozlemci.disconnect(),kap.prepend(renderer.domElement),gozlemci.observe(kap)),modul.kalite?.(Gorunum.kalite()),boyutla(),modul.etkinlestir?.(!0),olcum=
+{n:0,top:0},firsatCizdi=!1,calisiyor||(calisiyor=!0,baslat()),!0):!1}function birak(modul){for(const k of katmanlar)k.bekleyen?.modul===modul&&(k.bekleyen=null);etkin===modul&&(etkin.etkinlestir?.(!1),
+etkin=null,calisiyor=!1,tur++)}function boyutla(){if(!renderer||!etkin)return;const kap=renderer.domElement.parentElement;if(!kap)return;const w=Math.max(1,kap.clientWidth),h=Math.max(1,kap.clientHeight);
+renderer.setSize(w,h,!1),etkin.boyut(w,h)}let sonGuncelle=0,cizdi=!1,tur=0,firsatCizdi=!1,sonKare=-1;function baslat(){const benim=++tur,adim=t=>{benim!==tur||!calisiyor||(requestAnimationFrame(adim),
+dongu(t))};requestAnimationFrame(adim)}function dongu(t){const ard=cizdi;if(cizdi=!1,!etkin||document.hidden||!renderer.domElement.isConnected){firsatCizdi=!1;return}const kare=etkin.kareMs??0;if(kare&&
+t-sonCizim<kare-2)return;const dt=Math.min(.05,Math.max(.001,(t-(sonGuncelle||t-16))/1e3));if(sonGuncelle=t,etkin.guncelle(dt,t/1e3),etkin.cizilmeli&&!etkin.cizilmeli()){firsatCizdi=!1;return}renderer.
+render(etkin.sahne,etkin.kamera);const surekli=!!etkin.surekli&&kare>0&&kare<=50;(kare?surekli&&firsatCizdi&&sonKare===kare:ard)&&(olcum.n++,olcum.top+=t-sonCizim,(olcum.n>=90||surekli&&olcum.n>=8&&olcum.
+top>=4e3)&&(olcum.top/olcum.n>Math.max(45,kare*2)&&Gorunum.yavasBildir(),olcum={n:0,top:0})),sonCizim=t,cizdi=!0,firsatCizdi=!0,sonKare=kare}function ustAc(modul,kap){const kap0=renderer?.domElement.parentElement??
+null,once=etkin&&etkin!==modul&&kap0?{modul:etkin,kap:kap0}:null,k={modul,bekleyen:null};return katmanlar.push(k),bagla(modul,kap)?(k.bekleyen=once,!0):(katmanlar.splice(katmanlar.indexOf(k),1),!1)}function ustKapat(modul){
+const i=katmanlar.findIndex(k2=>k2.modul===modul);if(i<0)return;const[k]=katmanlar.splice(i,1);if(i<katmanlar.length){katmanlar[i].bekleyen?.modul===modul&&(katmanlar[i].bekleyen=k.bekleyen);return}birak(
+modul),k.bekleyen?.kap.isConnected&&bagla(k.bekleyen.modul,k.bekleyen.kap)}return{kur,bagla,birak,boyutla,ustAc,ustKapat,get renderer(){return renderer},get etkin(){return etkin}}}function kameraSigdir(THREE,kamera,noktalar,yon,sinir={}){
+const sx=sinir.x??.94,ust=sinir.ust??.92,alt=sinir.alt??-.92,merkez=new THREE.Box3().setFromPoints(noktalar).getCenter(new THREE.Vector3),p=new THREE.Vector3,sag=new THREE.Vector3,yukari=new THREE.Vector3,
+tanY=Math.tan(THREE.MathUtils.degToRad(kamera.fov/2)),yerles=uz=>{kamera.position.copy(merkez).addScaledVector(yon,uz),kamera.lookAt(merkez),kamera.updateProjectionMatrix(),kamera.updateMatrixWorld()},
+sigiyor=()=>noktalar.every(n=>(p.copy(n).project(kamera),p.z<1&&Math.abs(p.x)<=sx&&p.y<=ust&&p.y>=alt)),ust0=kamera.far*.9;for(let tur=0;tur<4;tur++){let lo2=.5,hi2=ust0;for(let i=0;i<28;i++){const m=(lo2+
+hi2)/2;yerles(m),sigiyor()?hi2=m:lo2=m}yerles(hi2);let x0=1/0,x1=-1/0,y0=1/0,y1=-1/0;for(const n of noktalar)p.copy(n).project(kamera),x0=Math.min(x0,p.x),x1=Math.max(x1,p.x),y0=Math.min(y0,p.y),y1=Math.
+max(y1,p.y);const hH=tanY*hi2,hW=hH*kamera.aspect;sag.setFromMatrixColumn(kamera.matrixWorld,0),yukari.setFromMatrixColumn(kamera.matrixWorld,1),merkez.addScaledVector(sag,(x0+x1)/2*hW).addScaledVector(
+yukari,((y0+y1)/2-(ust+alt)/2)*hH)}let lo=.5,hi=ust0;for(let i=0;i<28;i++){const m=(lo+hi)/2;yerles(m),sigiyor()?hi=m:lo=m}yerles(hi)}let haritaVeriSozu=null;function haritaVerisi(){return haritaVeriSozu||
+(haritaVeriSozu=fetch("veri/dunya3b.json").then(y=>{if(!y.ok)throw new Error("harita-verisi-"+y.status);return y.json()}).then(v=>{for(const u of v.ulkeler??[])u.ad=DUNYA.ulkeler?.[u.id]?.ad??u.ad,u.baskent&&
+(u.baskentAd=DUNYA.bolgeler?.[u.baskent]?.ad??u.baskentAd);for(const b of v.bolgeler??[])b.ad=DUNYA.bolgeler?.[b.id]?.ad??b.ad;for(const[id,k]of Object.entries(v.komsuAd??{}))k.ad=DUNYA.bolgeler?.[id]?.
+ad??k.ad;return Devletler.haritaya(v)}),haritaVeriSozu.catch(()=>{haritaVeriSozu=null})),haritaVeriSozu}let harita3bOrnek=null;const NE=(()=>{const XMAX=Math.PI*.8707,OLCEK=1e3/XMAX,ENLEM_ALT=-57*Math.
+PI/180,ENLEM_UST=84*Math.PI/180,y=p=>{const p2=p*p,p4=p2*p2;return p*(1.007226+.015085*p2-.044475*p4*p2+.028874*p4*p4-.005916*p4*p4*p2)},k=p=>{const p2=p*p,p4=p2*p2;return .8707-.131979*p2-.013791*p4+
+.003971*p4*p4*p2-.001529*p4*p4*p4},YUST=y(ENLEM_UST);function enlemBoylam(tx,ty){const Y=YUST-ty/OLCEK;let p=Y/1.007226;for(let i=0;i<4;i++){const p2=p*p,p4=p2*p2;p-=(y(p)-Y)/(1.007226+.045255*p2-.311325*
+p4*p2+.259866*p4*p4-.065076*p4*p4*p2)}return[p,(tx/OLCEK-XMAX)/k(p)]}function tuval(enlem,boylam){const p=Math.max(ENLEM_ALT,Math.min(ENLEM_UST,enlem));return[(boylam*k(p)+XMAX)*OLCEK,(YUST-y(p))*OLCEK]}
+return{XMAX,OLCEK,YUST,enlemBoylam,tuval}})();function gunesKonumu(t=Date.now()){const n=(t-Date.UTC(new Date(t).getUTCFullYear(),0,1))/864e5,gun=.98565*Math.PI/180,sapma=-Math.asin(.39779*Math.cos(gun*
+(n+10)+1.914*Math.PI/180*Math.sin(gun*(n-2)))),B=2*Math.PI*(n-81)/364,zd=9.87*Math.sin(2*B)-7.53*Math.cos(B)-1.5*Math.sin(B),saat=(t%864e5+864e5)%864e5/36e5;return[sapma,-((saat-12+zd/60)*15*Math.PI)/
+180]}const gunesSin=(enlem,boylam,g)=>Math.sin(enlem)*Math.sin(g[0])+Math.cos(enlem)*Math.cos(g[0])*Math.cos(boylam-g[1]),gecePayi=sinH=>Math.min(1,Math.max(0,(.035-sinH)/(.035+.139)));function geceYolu2b(t,tuvalBoy){
+const[d0,ls]=gunesKonumu(t),d=Math.abs(d0)<.003?.003*(Math.sign(d0)||1):d0,n=[];for(let i=0;i<=90;i++){const l=-Math.PI+2*Math.PI*i/90;n.push(NE.tuval(Math.atan(-Math.cos(l-ls)/Math.tan(d)),l))}const kenar=d>
+0?tuvalBoy[1]+60:-60;return"M"+n.map(([x,y])=>x.toFixed(1)+","+y.toFixed(1)).join("L")+`L${tuvalBoy[0]+60},${n[n.length-1][1].toFixed(1)}L${tuvalBoy[0]+60},${kenar}L-60,${kenar}L-60,${n[0][1].toFixed(
+1)}Z`}const haritaKiyi=b=>b?.arazi==="kiyi"||b?.iklim==="akdeniz_kiyi",MEVSIM_AD=[\u00E7("K\u0131\u015F"),\u00E7("\u0130lkbahar"),\u00E7("Yaz"),\u00E7("Sonbahar")],ticaretUcOnbellek=new Map;function ticaretUclari(a,b){
+const k=a<b?`${a}|${b}`:`${b}|${a}`;if(ticaretUcOnbellek.has(k))return ticaretUcOnbellek.get(k);const bolgeler=u2=>Object.entries(DUNYA.bolgeler??{}).filter(([,x])=>x.ulke===u2&&x.e),A=bolgeler(a),B=bolgeler(
+b),kA=A.filter(([,x])=>haritaKiyi(x)),kB=B.filter(([,x])=>haritaKiyi(x)),gemi=kA.length>0&&kB.length>0;let en=null;for(const[ia,xa]of gemi?kA:A)for(const[ib,xb]of gemi?kB:B){const d=(xa.e[0]-xb.e[0])**
+2+(xa.e[1]-xb.e[1])**2;(!en||d<en.d)&&(en={d,a:ia,b:ib})}const u=en?{a:en.a,b:en.b,gemi}:null;return ticaretUcOnbellek.set(k,u),u}const ticaretAdet=t=>t.at_war||Number(t.volume_7d_cr)<=0?0:Number(t.volume_7d_cr)<
+5e4?1:Number(t.volume_7d_cr)<5e5?2:3;function konvoyAdet(n){return Number(n)<=1?1:Math.min(5,1+Math.floor(Math.log2(Number(n))))}function kirikNokta(n,u){if(n.length<2)return n[0]??null;u=Math.min(1,Math.
+max(0,u));const parca=n.slice(1).map((p,i)=>Math.hypot(p[0]-n[i][0],p[1]-n[i][1]));let kalan=u*parca.reduce((a,b)=>a+b,0);for(let i=0;i<parca.length;i++){if(kalan<=parca[i]||i===parca.length-1){const f=parca[i]?
+Math.min(1,kalan/parca[i]):0;return[n[i][0]+(n[i+1][0]-n[i][0])*f,n[i][1]+(n[i+1][1]-n[i][1])*f]}kalan-=parca[i]}return n[n.length-1]}function savasDurumMetni(s){if(s.film)return \u00E7("sava\u015F s\xFCr\xFCyor");
+if(s.paused)return \u00E7("duraklat\u0131ld\u0131");if(s.status==="preparing")return s.next_round_at?\u00E7("haz\u0131rl\u0131kta \xB7 ilk tur {zaman}",{zaman:saatYaz(s.next_round_at)}):\u00E7("haz\u0131rl\
+\u0131kta");const skor=`${sayi(s.attacker_wins)}\u2013${sayi(s.defender_wins)}`;return s.open_round_no?\u00E7("Tur {n}/{toplam} \xB7 {skor}",{n:Number(s.open_round_no),toplam:Number(s.rounds_total),skor}):
+\u00E7("skor {skor}",{skor})}let yollar2bOnbellek=null;function yollar2b(veri2){if(yollar2bOnbellek)return yollar2bOnbellek;let minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;const bolgeKutu=new Map,halka=(h,kutu)=>{
+let x=0,y=0,d="";for(let i=0;i<h.length;i+=2){x+=h[i],y+=h[i+1];const px=x/10,py=y/10;kutu&&(minX=Math.min(minX,px),maxX=Math.max(maxX,px),minY=Math.min(minY,py),maxY=Math.max(maxY,py)),d+=(i?"L":"M")+
+px.toFixed(1)+","+py.toFixed(1)}return d+"Z"},poligon=(ps,kutu=!1)=>ps.map(p=>p.map(h=>halka(h,kutu)).join("")).join(""),bolge=new Map;for(const b of veri2.bolgeler)minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0,
+bolge.set(b.id,poligon(b.p,!0)),bolgeKutu.set(b.id,{minX,minY,maxX,maxY});return yollar2bOnbellek={ulke:new Map(veri2.ulkeler.filter(u=>u.p.length).map(u=>[u.id,poligon(u.p)])),bolge,bolgeKutu,notr:poligon(
+veri2.notr)},yollar2bOnbellek}function bolgelerKutusu(y,bolgeler){let minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;for(const b of bolgeler){const k=y.bolgeKutu.get(b.id);k&&(minX=Math.min(minX,k.minX),minY=Math.
+min(minY,k.minY),maxX=Math.max(maxX,k.maxX),maxY=Math.max(maxY,k.maxY))}return Number.isFinite(minX)?{x:minX,y:minY,w:maxX-minX,h:maxY-minY}:{x:900,y:150,w:400,h:250}}const haritaAcilan=new Set;function haritaAyrinti(veri2,harita,yol){
 const ch=Durum.v.ozet?.character??{},ulkesi=id=>id?harita.sahip?.[id]??DUNYA.bolgeler?.[id]?.ulke??null:null,cekirdek=new Set([ch.citizenship,ulkesi(ch.location)].filter(Boolean)),ilgili=new Set([...cekirdek,
 ulkesi(ch.residence),ulkesi(yol?.travel?.to),...haritaAcilan].filter(Boolean));for(const s of harita.campaigns??[])ilgili.add(s.attacker_country_id),ilgili.add(s.defender_country_id);for(const[id,b]of Object.
 entries(DUNYA.bolgeler??{}))if(cekirdek.has(ulkesi(id)))for(const n of b.komsu??[]){const u=ulkesi(n);u&&ilgili.add(u)}return{...veri2,bolgeler:veri2.bolgeler.filter(b=>ilgili.has(b.ulke)),ayrinti:[...ilgili].
@@ -5148,46 +4771,46 @@ MEYDAN_OYUNCU=40,MEYDAN_FIGUR_OLCEK=.7,MEYDAN_ALAN={minX:-20,maxX:20,minZ:-15,ma
 maxX:w.area.maxX/100,minZ:w.area.minZ/100,maxZ:w.area.maxZ/100}:MEYDAN_ALAN,MEYDAN_KAPI_YER={atolye:{x:-2e3,z:-700},carsi:{x:2e3,z:300},meclis:{x:0,z:-1500},egitim:{x:-2e3,z:300},ev:{x:-2e3,z:1100},sahne:{
 x:2e3,z:-700},studyo:{x:2e3,z:1100},mekan:{x:-1300,z:-1500},saglik:{x:2e3,z:-1300},odalar:{x:-2e3,z:-1300}},MEYDAN_YER={sahne:{x:0,z:-11,yx:5.2,yz:1.5,yuk:.6},havuz:{x:0,z:0,r:4},cay:{x0:8.6,x1:17.4,z0:5.6,
 z1:12.4},pano:{x:-12.5,z:4.2,en:4.8},kursu:{x:-12.5,z:9.6,yx:1.6,yz:.9,yuk:.9,ust:[-12.5,9.45],dip:[-12.5,11.2]},bufe:{x:-6.2,z:12.6},tellal:{x:-3,z:6.4},hatira:{x:18.2,z:13.4},gundem:{x:15,z:-16.1,en:7.4,
-boy:3.9,alt:2.6},kayitlar:{x:-8.4,z:-15.25},agac:[[-10.5,-5.2],[10.5,-5.2],[-6.8,5],[6.4,3.9]],fener:[[-15.2,-12.8],[15.2,-12.8],[-17.6,-2],[17.6,-2],[-17.6,7.2],[-8.6,14.4],[8.6,14.4]]},MEYDAN_MASA_X=[
-10.4,11.8,13.2,14.6,16],MEYDAN_MASA_Z=[7.3,10.7],MEYDAN_MASA=MEYDAN_MASA_Z.flatMap(z=>MEYDAN_MASA_X.map(x=>[x,z])),MEYDAN_SANDALYE_ARA=.72,MEYDAN_SANDALYE=MEYDAN_MASA.flatMap(([x,z],masa)=>[{masa,x,z:z-
-MEYDAN_SANDALYE_ARA,yon:0},{masa,x,z:z+MEYDAN_SANDALYE_ARA,yon:Math.PI}]),MEYDAN_CAY_KORIDOR=9,MEYDAN_CAY_KAPI={dis:[MEYDAN_YER.cay.x0-.5,MEYDAN_CAY_KORIDOR],ic:[MEYDAN_YER.cay.x0+.35,MEYDAN_CAY_KORIDOR]},
-meydanCayda=([x,z])=>{const C=MEYDAN_YER.cay;return x>C.x0&&x<C.x1&&z>C.z0&&z<C.z1};function meydanSandalye(x,z){let en=null;for(const s of MEYDAN_SANDALYE){const d=Math.hypot(s.x-x,s.z-z);d<.45&&(!en||
-d<en.d)&&(en={d,s})}return en?en.s:null}function meydanBosSandalye(dolular,yakin){const dolu=s=>dolular.some(k=>Math.hypot(k.x-s.x,k.z-s.z)<.45);let en=null;for(const s of MEYDAN_SANDALYE){if(dolu(s))
-continue;const d=Math.hypot(s.x-yakin[0],s.z-yakin[1]);(!en||d<en.d)&&(en={d,s})}return en?en.s:null}function meydanCayIcYol(p){const kx=p[0]-.7;return Math.abs(p[1]-MEYDAN_CAY_KORIDOR)<1.2?[[p[0],MEYDAN_CAY_KORIDOR],
-p]:[[kx,MEYDAN_CAY_KORIDOR],[kx,p[1]],p]}function meydanYol(a,b,alan=MEYDAN_ALAN){const aIc=meydanCayda(a),bIc=meydanCayda(b);if(!aIc&&!bIc)return meydanYolBul(a,b,alan);const K=MEYDAN_CAY_KAPI,cikis=p=>meydanCayIcYol(
-p).slice(0,-1).reverse();return aIc&&bIc?[a,...cikis(a),...meydanCayIcYol(b)]:bIc?[...meydanYolBul(a,K.dis,alan),K.ic,...meydanCayIcYol(b)]:[a,...cikis(a),K.ic,...meydanYolBul(K.dis,b,alan)]}const meydanMiting=(imza,esik,en)=>imza>
-0?Math.min(en,Math.max(Math.min(4,imza),Math.round(en*Math.min(1,imza/Math.max(1,esik))))):0,meydanSeviye=s=>{const v=Math.min(5,Math.max(1,Number(s)||1));return{v,kat:[2,2,3,4,5][v-1],tas:v>=2,havuzKat:v>=
-3?2:1,agac:v>=2?4:2,kule:v>=4,led:v>=5}};function meydanKapiYeri(k,alan=MEYDAN_ALAN){const x=k.x/100,z=k.z/100,[,dx,dz]=[[x-alan.minX,-1,0],[alan.maxX-x,1,0],[z-alan.minZ,0,-1],[alan.maxZ-z,0,1]].sort(
-(a,b)=>a[0]-b[0])[0];if(dz<0&&Math.abs(x)<6.5)return{nokta:[x,z],kemer:[x,z-2.9,1.2],dis:[x,z-4,1.2],yon:0,kenar:"kuzey",merdiven:!0};const kx=x+dx*1.15,kz=z+dz*1.15;return{nokta:[x,z],kemer:[kx,kz],dis:[
-kx+dx*1.2,kz+dz*1.2],yon:Math.atan2(-dx,-dz),kenar:dz<0?"kuzey":dx<0?"bati":dx>0?"dogu":"guney"}}const meydanDortgen=(cx,cz,yx,yz,don=0)=>{const c=Math.cos(don),s=Math.sin(don);return[[-yx,-yz],[yx,-yz],
-[yx,yz],[-yx,yz]].map(([a,b])=>[cx+a*c+b*s,cz-a*s+b*c])},meydanSekizgen=(cx,cz,r)=>Array.from({length:8},(_,i)=>{const a=(i+.5)/8*Math.PI*2,R=r/Math.cos(Math.PI/8);return[cx+Math.cos(a)*R,cz+Math.sin(
-a)*R]});function meydanCokgen(k){let a=0;k.forEach((q,i)=>{const n=k[(i+1)%k.length];a+=q[0]*n[1]-n[0]*q[1]}),a<0&&(k=[...k].reverse());const mx=k.reduce((t,q)=>t+q[0],0)/k.length,mz=k.reduce((t,q)=>t+
-q[1],0)/k.length;return{k,dis:k.map(([x,z])=>{const u=Math.hypot(x-mx,z-mz)||1;return[x+(x-mx)/u*.08,z+(z-mz)/u*.08]})}}const MEYDAN_ENGEL=(()=>{const Y=MEYDAN_YER,p=.3;return[meydanDortgen(Y.sahne.x,
-Y.sahne.z,Y.sahne.yx+p,Y.sahne.yz+p),meydanSekizgen(Y.havuz.x,Y.havuz.z,Y.havuz.r+p),meydanDortgen((Y.cay.x0+Y.cay.x1)/2,(Y.cay.z0+Y.cay.z1)/2,(Y.cay.x1-Y.cay.x0)/2+p,(Y.cay.z1-Y.cay.z0)/2+p),meydanDortgen(
-Y.pano.x,Y.pano.z,Y.pano.en/2+p,.25+p),meydanDortgen(Y.kursu.x,Y.kursu.z,Y.kursu.yx+p,Y.kursu.yz+p),meydanDortgen(Y.bufe.x,Y.bufe.z,1.2+p,.9+p),meydanSekizgen(Y.tellal.x,Y.tellal.z,.5+p),meydanDortgen(
-Y.hatira.x,Y.hatira.z,1+p,.7+p),...Y.agac.map(([x,z])=>meydanSekizgen(x,z,1+p)),...Y.fener.map(([x,z])=>meydanDortgen(x,z,.12+p,.12+p))].map(meydanCokgen)})(),meydanIcinde=(c,[x,z],pay=1e-9)=>c.k.every(
-(a,i)=>{const b=c.k[(i+1)%c.k.length];return(b[0]-a[0])*(z-a[1])-(b[1]-a[1])*(x-a[0])>pay});function meydanKesiyor(c,p,q){let t0=0,t1=1;const dx=q[0]-p[0],dz=q[1]-p[1];for(let i=0;i<c.k.length;i++){const a=c.
-k[i],b=c.k[(i+1)%c.k.length],nx=b[1]-a[1],nz=a[0]-b[0],pay=nx*(p[0]-a[0])+nz*(p[1]-a[1]),pd=nx*dx+nz*dz;if(Math.abs(pd)<1e-12){if(pay>=0)return!1;continue}const t=-pay/pd;if(pd<0?t0=Math.max(t0,t):t1=
-Math.min(t1,t),t0>=t1)return!1}return(t1-t0)*Math.hypot(dx,dz)>1e-6}function meydanHedef(x,z,alan=MEYDAN_ALAN){const kirp=(v,a,b)=>Math.min(b,Math.max(a,v)),p=[kirp(x,alan.minX,alan.maxX),kirp(z,alan.
-minZ,alan.maxZ)],icinde=q=>MEYDAN_ENGEL.some(e=>meydanIcinde(e,q,-1e-9)),c=MEYDAN_ENGEL.find(e=>meydanIcinde(e,p,-1e-9));if(!c)return p;let en=null;if(c.k.forEach((a,i)=>{const b=c.k[(i+1)%c.k.length],
-ex=b[0]-a[0],ez=b[1]-a[1],L=Math.hypot(ex,ez),u=Math.max(0,Math.min(1,((p[0]-a[0])*ex+(p[1]-a[1])*ez)/(L*L))),q=[kirp(a[0]+ex*u+ez/L*.06,alan.minX,alan.maxX),kirp(a[1]+ez*u-ex/L*.06,alan.minZ,alan.maxZ)],
-d=Math.hypot(p[0]-q[0],p[1]-q[1]);!icinde(q)&&(!en||d<en.d)&&(en={d,q})}),!en)for(const k of c.dis){const q=[kirp(k[0],alan.minX,alan.maxX),kirp(k[1],alan.minZ,alan.maxZ)],d=Math.hypot(p[0]-q[0],p[1]-
-q[1]);!icinde(q)&&(!en||d<en.d)&&(en={d,q})}return en?en.q:p}let meydanGorus=null;function meydanYolBul(a,b,alan=MEYDAN_ALAN){const aktif=MEYDAN_ENGEL.filter(c=>!meydanIcinde(c,a)&&!meydanIcinde(c,b)),
-engel=(p,q)=>aktif.some(c=>meydanKesiyor(c,p,q));if(!engel(a,b))return[a,b];const anahtar=JSON.stringify(alan);if(meydanGorus?.anahtar!==anahtar){const dugum2=[];for(const c of MEYDAN_ENGEL)for(const k of c.
-dis){const D=MEYDAN_DOSEME;k[0]>=D.minX&&k[0]<=D.maxX&&k[1]>=D.minZ&&k[1]<=D.maxZ&&!MEYDAN_ENGEL.some(o=>meydanIcinde(o,k))&&dugum2.push(k)}meydanGorus={anahtar,dugum:dugum2,gorur:dugum2.map((p,i)=>dugum2.
-map((q,j)=>i!==j&&!MEYDAN_ENGEL.some(c=>meydanKesiyor(c,p,q))))}}const{dugum,gorur}=meydanGorus,n=dugum.length,yer=i=>i===n?a:i===n+1?b:dugum[i],gorunur=(i,j)=>i<n&&j<n?gorur[i][j]:!engel(yer(i),yer(j)),
-uz=new Array(n+2).fill(1/0),once=new Array(n+2).fill(-1),bitti=new Array(n+2).fill(!1);for(uz[n]=0;;){let i=-1;for(let j=0;j<n+2;j++)!bitti[j]&&uz[j]<1/0&&(i<0||uz[j]<uz[i])&&(i=j);if(i<0||i===n+1)break;
-bitti[i]=!0;for(let j=0;j<n+2;j++){if(bitti[j]||j===i)continue;const d=Math.hypot(yer(j)[0]-yer(i)[0],yer(j)[1]-yer(i)[1]);uz[i]+d<uz[j]&&gorunur(i,j)&&(uz[j]=uz[i]+d,once[j]=i)}}if(once[n+1]<0)return[
-a,b];const yol=[];for(let i=n+1;i>=0;i=once[i])yol.unshift(yer(i));return yol}const meydanKursuyeYol=(a,alan=MEYDAN_ALAN)=>{const K=MEYDAN_YER.kursu;return[...meydanYolBul(a,K.dip,alan),[K.ust[0],K.ust[1]+
-.9,K.yuk*.5],[K.ust[0],K.ust[1],K.yuk]]},meydanKursudenYol=(b,alan=MEYDAN_ALAN)=>{const K=MEYDAN_YER.kursu;return[[K.ust[0],K.ust[1],K.yuk],[K.ust[0],K.ust[1]+.9,K.yuk*.5],...meydanYolBul(K.dip,b,alan)]};
-function meydanKisiRenk(gorunus,ad){const g=gorunus??varsayilanGorunus(ad||"?"),K=gorunusKurali(),W=typeof giysiCizimi=="function"?giysiCizimi(g.giysi):null;if(W)return{...giysiKisiRenk(W),ten:(K.skin??
-TEN)[g.ten]??TEN[0],sapka:null};const uniforma=g.kiyafet==="uniforma";return{giysi:uniforma?UNIFORMA.kumas:(K.outfitColors??GIYSI)[g.renk]??GIYSI[0],ten:(K.skin??TEN)[g.ten]??TEN[0],alt:uniforma?UNIFORMA.
-kumas:g.kiyafet==="takim"?"#2B2F36":"#3B4A5E",sapka:uniforma?UNIFORMA.koyu:null}}function meydanAralikla(kisiler,ara,dt){const n=kisiler.length;for(let i=0;i<n;i++)kisiler[i]._hx=0,kisiler[i]._hz=0;for(let i=0;i<
-n;i++){const a=kisiler[i];for(let j=i+1;j<n;j++){const b=kisiler[j];let dx=a.x-b.x,dz=a.z-b.z,u=Math.hypot(dx,dz);if(u>=ara)continue;if(u<1e-4){const t=(i*7+j*13)%17/17*Math.PI*2;dx=Math.cos(t),dz=Math.
-sin(t),u=1}else dx/=u,dz/=u;const it=(ara-Math.min(u,ara))/2;a._hx+=dx*it,a._hz+=dz*it,b._hx-=dx*it,b._hz-=dz*it}}const k=Math.min(1,dt*6);for(const o of kisiler)o.ax=(o.ax??0)+(o._hx-(o.ax??0))*k,o.az=
-(o.az??0)+(o._hz-(o.az??0))*k}let meydan3bOrnek=null;const MEYDAN_SAHNE_TUR={state:"devlet",oath:"yemin",results:"sonuc",movement:"hareket",posters:"afis"},MEYDAN_SECIM_ASAMA={candidacy:\u00E7("adayl\u0131\
-k s\xFCr\xFCyor"),voting:\u00E7("oylama s\xFCr\xFCyor"),runoff:\u00E7("ikinci tur s\xFCr\xFCyor")},meydanKisa=(s,n)=>{const t=String(s??"").replace(/\s+/g," ").trim();return t.length>n?t.slice(0,n-1).
-trimEnd()+"\u2026":t},meydanHava=bolge=>DUNYA.bolgeler?.[bolge]?havaAn(bolge):null,meydanAfisRenk=c=>KALABALIK_GIYSI[ozet(String(c.party??c.name??""))%KALABALIK_GIYSI.length];function meydanVerisi(sc){
+boy:3.9,alt:2.6},kayitlar:{x:-8.4,z:-15.25},devekran:{x:8.4,z:-15.25},agac:[[-10.5,-5.2],[10.5,-5.2],[-6.8,5],[6.4,3.9]],fener:[[-15.2,-12.8],[15.2,-12.8],[-17.6,-2],[17.6,-2],[-17.6,7.2],[-8.6,14.4],
+[8.6,14.4]]},MEYDAN_MASA_X=[10.4,11.8,13.2,14.6,16],MEYDAN_MASA_Z=[7.3,10.7],MEYDAN_MASA=MEYDAN_MASA_Z.flatMap(z=>MEYDAN_MASA_X.map(x=>[x,z])),MEYDAN_SANDALYE_ARA=.72,MEYDAN_SANDALYE=MEYDAN_MASA.flatMap(
+([x,z],masa)=>[{masa,x,z:z-MEYDAN_SANDALYE_ARA,yon:0},{masa,x,z:z+MEYDAN_SANDALYE_ARA,yon:Math.PI}]),MEYDAN_CAY_KORIDOR=9,MEYDAN_CAY_KAPI={dis:[MEYDAN_YER.cay.x0-.5,MEYDAN_CAY_KORIDOR],ic:[MEYDAN_YER.
+cay.x0+.35,MEYDAN_CAY_KORIDOR]},meydanCayda=([x,z])=>{const C=MEYDAN_YER.cay;return x>C.x0&&x<C.x1&&z>C.z0&&z<C.z1};function meydanSandalye(x,z){let en=null;for(const s of MEYDAN_SANDALYE){const d=Math.
+hypot(s.x-x,s.z-z);d<.45&&(!en||d<en.d)&&(en={d,s})}return en?en.s:null}function meydanBosSandalye(dolular,yakin){const dolu=s=>dolular.some(k=>Math.hypot(k.x-s.x,k.z-s.z)<.45);let en=null;for(const s of MEYDAN_SANDALYE){
+if(dolu(s))continue;const d=Math.hypot(s.x-yakin[0],s.z-yakin[1]);(!en||d<en.d)&&(en={d,s})}return en?en.s:null}function meydanCayIcYol(p){const kx=p[0]-.7;return Math.abs(p[1]-MEYDAN_CAY_KORIDOR)<1.2?
+[[p[0],MEYDAN_CAY_KORIDOR],p]:[[kx,MEYDAN_CAY_KORIDOR],[kx,p[1]],p]}function meydanYol(a,b,alan=MEYDAN_ALAN){const aIc=meydanCayda(a),bIc=meydanCayda(b);if(!aIc&&!bIc)return meydanYolBul(a,b,alan);const K=MEYDAN_CAY_KAPI,
+cikis=p=>meydanCayIcYol(p).slice(0,-1).reverse();return aIc&&bIc?[a,...cikis(a),...meydanCayIcYol(b)]:bIc?[...meydanYolBul(a,K.dis,alan),K.ic,...meydanCayIcYol(b)]:[a,...cikis(a),K.ic,...meydanYolBul(
+K.dis,b,alan)]}const meydanMiting=(imza,esik,en)=>imza>0?Math.min(en,Math.max(Math.min(4,imza),Math.round(en*Math.min(1,imza/Math.max(1,esik))))):0,meydanSeviye=s=>{const v=Math.min(5,Math.max(1,Number(
+s)||1));return{v,kat:[2,2,3,4,5][v-1],tas:v>=2,havuzKat:v>=3?2:1,agac:v>=2?4:2,kule:v>=4,led:v>=5}};function meydanKapiYeri(k,alan=MEYDAN_ALAN){const x=k.x/100,z=k.z/100,[,dx,dz]=[[x-alan.minX,-1,0],[
+alan.maxX-x,1,0],[z-alan.minZ,0,-1],[alan.maxZ-z,0,1]].sort((a,b)=>a[0]-b[0])[0];if(dz<0&&Math.abs(x)<6.5)return{nokta:[x,z],kemer:[x,z-2.9,1.2],dis:[x,z-4,1.2],yon:0,kenar:"kuzey",merdiven:!0};const kx=x+
+dx*1.15,kz=z+dz*1.15;return{nokta:[x,z],kemer:[kx,kz],dis:[kx+dx*1.2,kz+dz*1.2],yon:Math.atan2(-dx,-dz),kenar:dz<0?"kuzey":dx<0?"bati":dx>0?"dogu":"guney"}}const meydanDortgen=(cx,cz,yx,yz,don=0)=>{const c=Math.
+cos(don),s=Math.sin(don);return[[-yx,-yz],[yx,-yz],[yx,yz],[-yx,yz]].map(([a,b])=>[cx+a*c+b*s,cz-a*s+b*c])},meydanSekizgen=(cx,cz,r)=>Array.from({length:8},(_,i)=>{const a=(i+.5)/8*Math.PI*2,R=r/Math.
+cos(Math.PI/8);return[cx+Math.cos(a)*R,cz+Math.sin(a)*R]});function meydanCokgen(k){let a=0;k.forEach((q,i)=>{const n=k[(i+1)%k.length];a+=q[0]*n[1]-n[0]*q[1]}),a<0&&(k=[...k].reverse());const mx=k.reduce(
+(t,q)=>t+q[0],0)/k.length,mz=k.reduce((t,q)=>t+q[1],0)/k.length;return{k,dis:k.map(([x,z])=>{const u=Math.hypot(x-mx,z-mz)||1;return[x+(x-mx)/u*.08,z+(z-mz)/u*.08]})}}const MEYDAN_ENGEL=(()=>{const Y=MEYDAN_YER,
+p=.3;return[meydanDortgen(Y.sahne.x,Y.sahne.z,Y.sahne.yx+p,Y.sahne.yz+p),meydanSekizgen(Y.havuz.x,Y.havuz.z,Y.havuz.r+p),meydanDortgen((Y.cay.x0+Y.cay.x1)/2,(Y.cay.z0+Y.cay.z1)/2,(Y.cay.x1-Y.cay.x0)/2+
+p,(Y.cay.z1-Y.cay.z0)/2+p),meydanDortgen(Y.pano.x,Y.pano.z,Y.pano.en/2+p,.25+p),meydanDortgen(Y.kursu.x,Y.kursu.z,Y.kursu.yx+p,Y.kursu.yz+p),meydanDortgen(Y.bufe.x,Y.bufe.z,1.2+p,.9+p),meydanSekizgen(
+Y.tellal.x,Y.tellal.z,.5+p),meydanDortgen(Y.hatira.x,Y.hatira.z,1+p,.7+p),...Y.agac.map(([x,z])=>meydanSekizgen(x,z,1+p)),...Y.fener.map(([x,z])=>meydanDortgen(x,z,.12+p,.12+p))].map(meydanCokgen)})(),
+meydanIcinde=(c,[x,z],pay=1e-9)=>c.k.every((a,i)=>{const b=c.k[(i+1)%c.k.length];return(b[0]-a[0])*(z-a[1])-(b[1]-a[1])*(x-a[0])>pay});function meydanKesiyor(c,p,q){let t0=0,t1=1;const dx=q[0]-p[0],dz=q[1]-
+p[1];for(let i=0;i<c.k.length;i++){const a=c.k[i],b=c.k[(i+1)%c.k.length],nx=b[1]-a[1],nz=a[0]-b[0],pay=nx*(p[0]-a[0])+nz*(p[1]-a[1]),pd=nx*dx+nz*dz;if(Math.abs(pd)<1e-12){if(pay>=0)return!1;continue}
+const t=-pay/pd;if(pd<0?t0=Math.max(t0,t):t1=Math.min(t1,t),t0>=t1)return!1}return(t1-t0)*Math.hypot(dx,dz)>1e-6}function meydanHedef(x,z,alan=MEYDAN_ALAN){const kirp=(v,a,b)=>Math.min(b,Math.max(a,v)),
+p=[kirp(x,alan.minX,alan.maxX),kirp(z,alan.minZ,alan.maxZ)],icinde=q=>MEYDAN_ENGEL.some(e=>meydanIcinde(e,q,-1e-9)),c=MEYDAN_ENGEL.find(e=>meydanIcinde(e,p,-1e-9));if(!c)return p;let en=null;if(c.k.forEach(
+(a,i)=>{const b=c.k[(i+1)%c.k.length],ex=b[0]-a[0],ez=b[1]-a[1],L=Math.hypot(ex,ez),u=Math.max(0,Math.min(1,((p[0]-a[0])*ex+(p[1]-a[1])*ez)/(L*L))),q=[kirp(a[0]+ex*u+ez/L*.06,alan.minX,alan.maxX),kirp(
+a[1]+ez*u-ex/L*.06,alan.minZ,alan.maxZ)],d=Math.hypot(p[0]-q[0],p[1]-q[1]);!icinde(q)&&(!en||d<en.d)&&(en={d,q})}),!en)for(const k of c.dis){const q=[kirp(k[0],alan.minX,alan.maxX),kirp(k[1],alan.minZ,
+alan.maxZ)],d=Math.hypot(p[0]-q[0],p[1]-q[1]);!icinde(q)&&(!en||d<en.d)&&(en={d,q})}return en?en.q:p}let meydanGorus=null;function meydanYolBul(a,b,alan=MEYDAN_ALAN){const aktif=MEYDAN_ENGEL.filter(c=>!meydanIcinde(
+c,a)&&!meydanIcinde(c,b)),engel=(p,q)=>aktif.some(c=>meydanKesiyor(c,p,q));if(!engel(a,b))return[a,b];const anahtar=JSON.stringify(alan);if(meydanGorus?.anahtar!==anahtar){const dugum2=[];for(const c of MEYDAN_ENGEL)
+for(const k of c.dis){const D=MEYDAN_DOSEME;k[0]>=D.minX&&k[0]<=D.maxX&&k[1]>=D.minZ&&k[1]<=D.maxZ&&!MEYDAN_ENGEL.some(o=>meydanIcinde(o,k))&&dugum2.push(k)}meydanGorus={anahtar,dugum:dugum2,gorur:dugum2.
+map((p,i)=>dugum2.map((q,j)=>i!==j&&!MEYDAN_ENGEL.some(c=>meydanKesiyor(c,p,q))))}}const{dugum,gorur}=meydanGorus,n=dugum.length,yer=i=>i===n?a:i===n+1?b:dugum[i],gorunur=(i,j)=>i<n&&j<n?gorur[i][j]:!engel(
+yer(i),yer(j)),uz=new Array(n+2).fill(1/0),once=new Array(n+2).fill(-1),bitti=new Array(n+2).fill(!1);for(uz[n]=0;;){let i=-1;for(let j=0;j<n+2;j++)!bitti[j]&&uz[j]<1/0&&(i<0||uz[j]<uz[i])&&(i=j);if(i<
+0||i===n+1)break;bitti[i]=!0;for(let j=0;j<n+2;j++){if(bitti[j]||j===i)continue;const d=Math.hypot(yer(j)[0]-yer(i)[0],yer(j)[1]-yer(i)[1]);uz[i]+d<uz[j]&&gorunur(i,j)&&(uz[j]=uz[i]+d,once[j]=i)}}if(once[n+
+1]<0)return[a,b];const yol=[];for(let i=n+1;i>=0;i=once[i])yol.unshift(yer(i));return yol}const meydanKursuyeYol=(a,alan=MEYDAN_ALAN)=>{const K=MEYDAN_YER.kursu;return[...meydanYolBul(a,K.dip,alan),[K.
+ust[0],K.ust[1]+.9,K.yuk*.5],[K.ust[0],K.ust[1],K.yuk]]},meydanKursudenYol=(b,alan=MEYDAN_ALAN)=>{const K=MEYDAN_YER.kursu;return[[K.ust[0],K.ust[1],K.yuk],[K.ust[0],K.ust[1]+.9,K.yuk*.5],...meydanYolBul(
+K.dip,b,alan)]};function meydanKisiRenk(gorunus,ad){const g=gorunus??varsayilanGorunus(ad||"?"),K=gorunusKurali(),W=typeof giysiCizimi=="function"?giysiCizimi(g.giysi):null;if(W)return{...giysiKisiRenk(
+W),ten:(K.skin??TEN)[g.ten]??TEN[0],sapka:null};const uniforma=g.kiyafet==="uniforma";return{giysi:uniforma?UNIFORMA.kumas:(K.outfitColors??GIYSI)[g.renk]??GIYSI[0],ten:(K.skin??TEN)[g.ten]??TEN[0],alt:uniforma?
+UNIFORMA.kumas:g.kiyafet==="takim"?"#2B2F36":"#3B4A5E",sapka:uniforma?UNIFORMA.koyu:null}}function meydanAralikla(kisiler,ara,dt){const n=kisiler.length;for(let i=0;i<n;i++)kisiler[i]._hx=0,kisiler[i].
+_hz=0;for(let i=0;i<n;i++){const a=kisiler[i];for(let j=i+1;j<n;j++){const b=kisiler[j];let dx=a.x-b.x,dz=a.z-b.z,u=Math.hypot(dx,dz);if(u>=ara)continue;if(u<1e-4){const t=(i*7+j*13)%17/17*Math.PI*2;dx=
+Math.cos(t),dz=Math.sin(t),u=1}else dx/=u,dz/=u;const it=(ara-Math.min(u,ara))/2;a._hx+=dx*it,a._hz+=dz*it,b._hx-=dx*it,b._hz-=dz*it}}const k=Math.min(1,dt*6);for(const o of kisiler)o.ax=(o.ax??0)+(o.
+_hx-(o.ax??0))*k,o.az=(o.az??0)+(o._hz-(o.az??0))*k}let meydan3bOrnek=null;const MEYDAN_SAHNE_TUR={state:"devlet",oath:"yemin",results:"sonuc",movement:"hareket",posters:"afis"},MEYDAN_SECIM_ASAMA={candidacy:\u00E7(
+"adayl\u0131k s\xFCr\xFCyor"),voting:\u00E7("oylama s\xFCr\xFCyor"),runoff:\u00E7("ikinci tur s\xFCr\xFCyor")},meydanKisa=(s,n)=>{const t=String(s??"").replace(/\s+/g," ").trim();return t.length>n?t.slice(
+0,n-1).trimEnd()+"\u2026":t},meydanHava=bolge=>DUNYA.bolgeler?.[bolge]?havaAn(bolge):null,meydanAfisRenk=c=>KALABALIK_GIYSI[ozet(String(c.party??c.name??""))%KALABALIK_GIYSI.length];function meydanVerisi(sc){
 const s=sc.stage??{kind:"idle"},sahne={tur:MEYDAN_SAHNE_TUR[s.kind]??"bos"};return s.kind==="state"&&Object.assign(sahne,{ulke:s.country_id,ad:DIL.kod==="en"&&s.name_en||s.name_tr,eski:s.from}),s.kind===
 "oath"&&Object.assign(sahne,{ad:s.name??""}),s.kind==="results"&&Object.assign(sahne,{baskan:s.president?.name??null,koltuk:Number(s.seats??0),baslangic:s.term_start}),s.kind==="movement"&&Object.assign(
 sahne,{imza:Number(s.signatures??0),esik:Number(s.threshold??1),sebep:s.reason??"other"}),s.kind==="posters"&&Object.assign(sahne,{adaylar:(s.candidates??[]).map(c=>({ad:c.name??"",parti:c.party??null,
@@ -5195,9 +4818,12 @@ renk:meydanAfisRenk(c)})),sayi:Number(s.count??0),asama:s.election_stage,yaris:s
 0),pano:Number(sc.board?.count??0),paylasimlar:sc.board?.latest??[],kayitlar:(sc.records??[]).map(r=>resmiMetin(r)[1]),tellal:sc.crier?{metin:resmiMetin(sc.crier)[1],anahtar:`${sc.crier.type}|${sc.crier.
 at}`,at:sc.crier.at}:null,sahne,cay:(sc.tea??[]).map(m=>({ad:m.author_name??"",metin:meydanKisa(m.body,44),tam:m.body??"",ulke:m.author_country_id??null,at:m.at,kimlik:m.author_id??null})),foto:Number(
 sc.friends?.total??0),cevrimici:Number(sc.friends?.online??0),gece:bolgeGecesi(sc.region_id),hava:meydanHava(sc.region_id)?.tur??"acik",havaGuclu:!!meydanHava(sc.region_id)?.guclu,yolda:!!sc.on_road,yol:sc.
-on_road??null,kapilar:sc.doors??{},...(()=>{const l=(sc.signings??[]).map(imzaVerisi);return{imzalar:l,imza:l.find(s2=>s2.durum==="live")??l[0]??null}})(),kartlar:[],gundem:{etiketler:[],one:null},gazete:[],
-kus:null}}function meydanKapilari(d,benimUlke){const k=d.kapilar??{},n=x=>Number(x??0);return Object.entries(MEYDAN_KAPI).map(([kapi,K])=>{let durum="",uzun="",kilit=null;if(kapi==="atolye"){const c=n(
-k.atolye?.working);durum=c>0?\u00E7("{n} ki\u015Fi \xE7al\u0131\u015F\u0131yor",{n:sayi(c)}):\u00E7("Tezg\xE2hlar bo\u015F"),uzun=c>0?\u00E7("\u015Eehrinde \u015Fu an {n} ki\u015Fi sistem i\u015Finde \xE7al\u0131\u015F\u0131yor.",
+on_road??null,kapilar:sc.doors??{},medya:{canli:sc.media?.live??null,video:sc.media?.video_of_day??null},...(()=>{const l=(sc.signings??[]).map(imzaVerisi);return{imzalar:l,imza:l.find(s2=>s2.durum===
+"live")??l[0]??null}})(),kartlar:[],gundem:{etiketler:[],one:null},gazete:[],kus:null}}function devEkranMetni(dv){const c=dv?.canli,v=dv?.video;return c?\u00E7("Canl\u0131: {kanal} \xB7 {baslik} \xB7 {n} izleyic\
+i",{kanal:c.channel||c.streamer||"",baslik:c.title||(YAYIN_SAHNE[c.scene]?.ad??""),n:sayi(c.viewers??0)}):v?\u00E7("G\xFCn\xFCn videosu: {kanal} \u2014 {baslik} ({a} alk\u0131\u015F, {g} izlenme)",{kanal:v.
+channel||v.author||"",baslik:v.caption||\u00E7("ads\u0131z video"),a:sayi(v.applause??0),g:sayi(v.views??0)}):\u00E7("Yay\u0131n yok. \xDClkenin canl\u0131 yay\u0131n\u0131 ve g\xFCn\xFCn en \xE7ok alk\u0131\u015Flanan videosu burada g\xF6r\xFCn\xFCr.")}
+function meydanKapilari(d,benimUlke){const k=d.kapilar??{},n=x=>Number(x??0);return Object.entries(MEYDAN_KAPI).map(([kapi,K])=>{let durum="",uzun="",kilit=null;if(kapi==="atolye"){const c=n(k.atolye?.
+working);durum=c>0?\u00E7("{n} ki\u015Fi \xE7al\u0131\u015F\u0131yor",{n:sayi(c)}):\u00E7("Tezg\xE2hlar bo\u015F"),uzun=c>0?\u00E7("\u015Eehrinde \u015Fu an {n} ki\u015Fi sistem i\u015Finde \xE7al\u0131\u015F\u0131yor.",
 {n:sayi(c)}):\u00E7("\u015Eu an at\xF6lyede kimse \xE7al\u0131\u015Fm\u0131yor; tezg\xE2h\u0131n seni bekliyor.")}else if(kapi==="carsi"){const c=n(k.carsi?.trades);durum=c>0?\u00E7("10 dk: {n} al\u0131\u015Fve\
 ri\u015F",{n:sayi(c)}):\u00E7("Sakin"),uzun=c>0?\u00E7("Son 10 dakikada {n} al\u0131\u015Fveri\u015F yap\u0131ld\u0131.",{n:sayi(c)}):\u00E7("Son 10 dakikada al\u0131\u015Fveri\u015F olmad\u0131.")}else if(kapi===
 "meclis"){const ulke=k.meclis?.country_id??d.ulke??null;if(!ulke||ulke!==benimUlke)kilit=ulke?\u00E7("{ulke} meclisine yaln\u0131z vatanda\u015Flar\u0131 girer; kendi meclisine kendi \xFClkenin \u015Fehirlerinin meydan\u0131ndan\
@@ -5262,8 +4888,13 @@ other}" class="meydan2b-pankart"/>`)}const sahne=`<g data-meydan-git="sahne" cla
       ${Array.from({length:imzaEsya},(_,i)=>`<rect x="${(m2x(3)+i*2.4).toFixed(1)}" y="${m2y(sz+.3).toFixed(1)}" width="2" height="2.6" class="meydan2b-imza-esya"/>`).join("")}
       <rect x="${m2x(4.6)}" y="${m2y(sz-.4)}" width="7.5" height="10" rx="1" fill="${IMZA_RENK[im.tur]??"#9C3D6B"}" class="meydan2b-afis"/>
       ${im.durum==="live"&&im.masada?`<circle cx="${m2x(3.7)}" cy="${m2y(sz-.3)}" r="2.2" class="meydan2b-imza-lamba"/>`:""}
-      <title>${esc(\u00E7("\u0130mza masas\u0131: {ad} \xB7 {durum}",{ad:im.ad,durum:imzaDurumYazi(im)}))}</title></g>`:"",havuz=`<circle cx="${m2x(0)}" cy="${m2y(0)}" r="${(Y.havuz.r+2.4)*M2B.k}" cla\
-ss="meydan2b-halka"/><circle cx="${m2x(0)}" cy="${m2y(0)}" r="${Y.havuz.r*M2B.k}" class="meydan2b-havuz"/>
+      <title>${esc(\u00E7("\u0130mza masas\u0131: {ad} \xB7 {durum}",{ad:im.ad,durum:imzaDurumYazi(im)}))}</title></g>`:"",dv=d.medya??{},E=Y.devekran,devekran=`<g data-meydan-git="devekran" class="me\
+ydan2b-tik meydan2b-devekran${dv.canli?" canli":dv.video?" video":""}">
+      ${dikd(E.x-2.2,E.z-.32,E.x+2.2,E.z+.32,"meydan2b-ekran")}
+      ${dv.canli?`<circle cx="${m2x(E.x-1.7)}" cy="${m2y(E.z)}" r="1.6" class="meydan2b-canli-nokta"/>`:""}
+      ${yazi(E.x,E.z-1.3,dv.canli?\u00E7("CANLI"):\u00E7("Dev ekran"),"meydan2b-yazi beyaz")}
+      <title>${esc(devEkranMetni(dv))}</title></g>`,havuz=`<circle cx="${m2x(0)}" cy="${m2y(0)}" r="${(Y.havuz.r+2.4)*M2B.k}" class="meydan2b-halka"/><circle cx="${m2x(0)}" cy="${m2y(0)}" r="${Y.havuz.
+r*M2B.k}" class="meydan2b-havuz"/>
     <circle cx="${m2x(0)}" cy="${m2y(0)}" r="${(Y.havuz.r-.35)*M2B.k}" class="meydan2b-su"/><circle cx="${m2x(0)}" cy="${m2y(0)}" r="${S.havuzKat>=2?15:10}" class="meydan2b-havuz"/>`,agaclar=Y.agac.slice(
 0,S.agac).map(([x,z])=>`<circle cx="${m2x(x)}" cy="${m2y(z)}" r="10" class="meydan2b-saksi"/><circle cx="${m2x(x)}" cy="${m2y(z)}" r="13" class="meydan2b-agac"/>`).join(""),fenerler=Y.fener.map(([x,z])=>`\
 <circle cx="${m2x(x)}" cy="${m2y(z)}" r="1.8" class="meydan2b-fener${g>.5?" yanar":""}"/>`).join(""),G=Y.gundem,gundem=`<g data-meydan-git="gundem" class="meydan2b-tik">${dikd(G.x-G.en/2,G.z-.4,G.x+G.
@@ -5306,12 +4937,12 @@ i*20}" height="26" rx="13" class="meydan2b-sis-bant"/>`).join("")}`:"";return`<s
       data-cevrimici="${Math.min(MEYDAN_FOTO,d.foto,d.cevrimici)}" data-tellal="${d.tellal?1:0}" data-afis="${s.tur==="afis"?Math.min(MEYDAN_AFIS,(s.adaylar??[]).length):0}"
       data-kalabalik="${mn}" data-hava="${esc(d.hava)}" data-gece="${d.gece>.5?1:0}" data-kapilar="${esc((d.kapiListe??[]).map(k=>k.kapi).join(","))}"
       data-kart="${Math.min(MEYDAN_KART,(d.kartlar??[]).length)}" data-gazete="${Math.min(3,(d.gazete??[]).length)}" data-kus="${kusN}" data-seviye="${S.v}"
-      data-imza="${esc(im?.durum??"")}" data-imza-esya="${imzaEsya}">
+      data-imza="${esc(im?.durum??"")}" data-imza-esya="${imzaEsya}" data-devekran="${dv.canli?"canli":dv.video?"video":""}">
     <rect x="-1000" y="-1000" width="2460" height="2400" fill="${cimen}"/>
     ${dikd(-40,16.2,40,22,"meydan2b-cadde")}
     ${binalar}${meclis}${doseme}
     ${yazi(0,-19.7,\u00E7("MECL\u0130S").toLocaleUpperCase(DIL.yerel),"meydan2b-yazi buyuk")}
-    ${havuz}${agaclar}${fenerler}${sahne}${imza}${afisler}${gundem}${kayitlar}${pano}${kuslar}${kursu}${bufe}${cay}${hatira}
+    ${havuz}${agaclar}${fenerler}${sahne}${imza}${afisler}${gundem}${kayitlar}${devekran}${pano}${kuslar}${kursu}${bufe}${cay}${hatira}
     ${miting}${yayalar}${kapilar}${tellal}
     <g id="meydan2b-oyuncular" class="meydan2b-oyuncular"></g>
     ${hava}
@@ -5924,7 +5555,8 @@ apt\u0131\u011F\u0131 her \u015Feyi de yapars\u0131n."),deputy:\u00E7("Davet ede
  hari\xE7)."),member:\u00E7("\u015Eark\u0131 yazar, prova eder, ortak provalara ve konserlere \xE7\u0131kar, kasaya kredi ve sahne malzemesi koyars\u0131n.")},muzikTon=n=>MUZIK_TON[Number(n)%12]??"",muzikSure=sn=>`${Math.
 floor(Number(sn)/60)}:${String(Number(sn)%60).padStart(2,"0")}`,muzikYuzde=ppm=>\u00E7("%{n}",{n:(Math.round(Number(ppm)/100)/100).toLocaleString(DIL.yerel,{maximumFractionDigits:2})}),muzikTekSatir=s=>String(
 s??"").replace(/\s+/g," ").trim(),muzikAfis=(b,sinif="")=>`<span class="muzik-afis${sinif?" "+sinif:""}" style="--renk:${esc(MUZIK_TUR_RENK[b?.genre]??"#87938C")}" aria-hidden="true">${ikon(MUZIK_TUR_IK[b?.
-genre]??"eighth-notes")}</span>`,muzikDinle=(s,sinif="sade")=>`<button class="dugme ${sinif} kucuk-d muzik-dinle" type="button" data-dinle="${esc(s.song_id)}"
+genre]??"eighth-notes")}</span>`,muzikYarismaRozeti=s=>(s.contest_wins??[]).map(n=>`<span class="cip altin">${ikon("medal")}${\u00E7("Yar\u0131\u015Fma birincisi, {n}. sezon",{n:Number(n)})}</span>`).
+join(" "),muzikDinle=(s,sinif="sade")=>`<button class="dugme ${sinif} kucuk-d muzik-dinle" type="button" data-dinle="${esc(s.song_id)}"
   data-tohum="${Number(s.seed)}" data-tur="${esc(s.genre)}" data-tempo="${Number(s.tempo)}" data-ton="${Number(s.key_no)}" aria-pressed="${Ezgi.calan===s.song_id}">${ikon(Ezgi.calan===s.song_id?"pause":
 "play")}${Ezgi.calan===s.song_id?\u00E7("Durdur"):\u00E7("Dinle")}</button>`;function muzikDinleBagla(kok){for(const b of $$("[data-dinle]",kok))b.onclick=async()=>{const d=b.dataset;await Ezgi.cal({kimlik:d.
 dinle,seed:Number(d.tohum),genre:d.tur,tempo:Number(d.tempo),key_no:Number(d.ton)})}}Ezgi.dinle(kimlik=>{for(const b of $$("[data-dinle]")){const calar=b.dataset.dinle===kimlik;b.setAttribute("aria-pr\
@@ -5948,7 +5580,8 @@ lass="bos">${\u00E7("\xDCye yok.")}</p>`}</div>
       <p class="ust-yazi" style="margin-top:12px">${\u00E7("\u015Eark\u0131lar \xB7 {n}",{n:sarkilar.length})}</p>
       <div class="liste muzik-kart-sarkilar">${sarkilar.slice(0,12).map(s=>`<div class="liste-satir"><span class="liste-ikon"><span class="ozet-ikon">${ikon("eighth-notes")}</span></span>
         <div><span class="tur">${\u00E7("Kalite {q}",{q:Number(s.quality??0)})}${g.me?"":` \xB7 <button class="baglanti" type="button" data-sarki-rapor="${esc(s.song_id)}|${esc(s.title)}">${\u00E7("Ra\
-porla")}</button>`}</span><b>${esc(s.title)}</b></div>${muzikDinle({...s,genre:s.genre??g.genre})}</div>`).join("")||`<p class="bos">${\u00E7("Hen\xFCz bitmi\u015F \u015Fark\u0131 yok.")}</p>`}</div>
+porla")}</button>`}</span><b>${esc(s.title)}</b>${muzikYarismaRozeti(s)}</div>${muzikDinle({...s,genre:s.genre??g.genre})}</div>`).join("")||`<p class="bos">${\u00E7("Hen\xFCz bitmi\u015F \u015Fark\u0131 yok.")}\
+</p>`}</div>
       <p class="kucuk" style="margin-top:8px">${\u00E7("Ezgi ger\xE7ek ses kayd\u0131 de\u011Fildir; \u015Fark\u0131n\u0131n verisinden oyunun kurallar\u0131yla \xFCretilir.")}</p>`,dugmeler});const perdeler=$$(
 ".perde");muzikDinleBagla(perdeler[perdeler.length-1]??document);for(const b of $$("[data-turne-ac]",perdeler[perdeler.length-1]??document))b.onclick=()=>turneKartiAc(b.dataset.turneAc);for(const b of $$(
 "[data-sarki-rapor]",perdeler[perdeler.length-1]??document))b.onclick=()=>{const[sid,ad]=b.dataset.sarkiRapor.split("|");raporla({tur:"song",ref:sid,ad})}}Kabuk.gecikmeli("hayat/muzik","ek_98g_muzik");
@@ -6177,49 +5810,75 @@ c,sonra)};for(const b of $$("[data-bilet-iade]",kok))b.onclick=()=>{const c=bul(
 b.dataset.bolge,b.dataset.konserGit);for(const b of $$("[data-grup-ac]",kok))b.onclick=()=>muzikKartiAc(b.dataset.grupAc);for(const b of $$("[data-turne-ac]",kok))b.onclick=()=>turneKartiAc(b.dataset.
 turneAc,sonra)}Kabuk.gecikmeli("sehir/sahne","ek_98i_sahne");const MEDYA_BASAMAK={newcomer:\u00E7("Yeni ba\u015Flayan"),rising:\u00E7("Y\xFCkselen"),phenomenon:\u00E7("Fenomen"),star:\u00E7("\xDCnl\xFC")},
 TEKLIF_DURUM={open:\u00E7("A\xE7\u0131k"),accepted:\u00E7("Kabul edildi"),published:\u00E7("Yay\u0131mland\u0131"),cancelled:\u00E7("Geri \xE7ekildi"),expired:\u00E7("S\xFCresi doldu"),lapsed:\u00E7("\
-Yay\u0131mlanmad\u0131")},TEKLIF_TUR={sponsor:\u00E7("Fenomene sponsorluk"),ad:\u00E7("Gazeteye ilan")},isbirligiEtiketi=t=>!t||t==="#i\u015Fbirli\u011Fi"?\u00E7("#i\u015Fbirli\u011Fi"):t;function kareKartHtml(p,{
-kucuk=!1}={}){const sp=p.sponsorship;return`<article class="kare-kart${kucuk?" kucuk":""}" data-kare="${esc(p.photo_id)}">
+Yay\u0131mlanmad\u0131")},TEKLIF_TUR={sponsor:\u00E7("Fenomene sponsorluk"),ad:\u00E7("Gazeteye ilan")},isbirligiEtiketi=t=>!t||t==="#i\u015Fbirli\u011Fi"?\u00E7("#i\u015Fbirli\u011Fi"):t,GAZETECI_BASAMAK={
+muhabir:\u00E7("Muhabir"),kidemli:\u00E7("K\u0131demli muhabir"),editor:\u00E7("Edit\xF6r")},GAZETE_ROL={yayin_yonetmeni:\u00E7("Yay\u0131n y\xF6netmeni"),editor:\u00E7("Edit\xF6r"),muhabir:\u00E7("Mu\
+habir")},MAKALE_REF={campaign:{ad:\u00E7("Sava\u015F"),ik:"swords"},election:{ad:\u00E7("Se\xE7im"),ik:"vote"},region:{ad:\u00E7("B\xF6lge"),ik:"map-pin"},tax_law:{ad:\u00E7("Vergi yasas\u0131"),ik:"s\
+cale"},issue:{ad:\u00E7("G\xFCn\xFCn meselesi"),ik:"circle-question-mark"},cityevent:{ad:\u00E7("\u015Eehir etkinli\u011Fi"),ik:"party-popper"},concert:{ad:\u00E7("Konser"),ik:"mic-vocal"},cup:{ad:\u00E7(
+"Kupa"),ik:"trophy"}},makaleRefCip=a=>a.ref_label?`<span class="cip makale-ref" title="${esc(MAKALE_REF[a.ref_type]?.ad??"")}">${ikon(MAKALE_REF[a.ref_type]?.ik??"scroll-text")}${esc(a.ref_label)}</sp\
+an>`:"",kareYerMekanlari=new Map,kareYerOkumalari=new Map,kareYerMekaniBelirsiz=p=>!!p&&["venue","cafe"].includes(p.scene)&&p.place_label===veri("Kahvehane")&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.
+test(String(p.place_ref));function kareYerAdi(p){if(!p)return"";if(p.scene==="city"||p.scene==="square")return bolgeAdi(p.region_id??p.place_ref)||Kare.sahneAdi(p.scene);const sabit={home:\u00E7("Ev"),
+gym:\u00E7("Spor salonu"),parliament:\u00E7("Meclis salonu"),concert:\u00E7("Konser"),festival:\u00E7("Festival alan\u0131"),stadium:\u00E7("Stadyum")};if(sabit[p.scene])return sabit[p.scene];if(p.scene===
+"cafe"&&String(p.place_ref??"").startsWith("board:"))return \u00E7("Kahvehane masas\u0131");if(p.scene==="venue"||p.scene==="cafe"){const sistem=kareYerMekanlari.get(`${Sunucu.Giris.kusak}:${p.place_ref}`);
+if(sistem===!0)return mekanAdi({system:!0,region_id:p.region_id});if(sistem!==!1&&DIL.kod==="en"&&kareYerMekaniBelirsiz(p))return p.scene==="cafe"?\u00E7("Kahvehane"):\u00E7("Mek\xE2n")}return p.place_label||
+bolgeAdi(p.region_id)||Kare.sahneAdi(p.scene)}const kareYerHtml=p=>`<span data-kare-yer-ad="${esc(p.photo_id??p.place_ref??"")}">${esc(kareYerAdi(p))}</span>`;async function kareYerleriniHazirla(fotolar){
+const kusak=Sunucu.Giris.kusak,kimlikler=new Set(fotolar.filter(kareYerMekaniBelirsiz).map(p=>p.place_ref));await Promise.all([...kimlikler].map(id=>{const anahtar=`${kusak}:${id}`;if(!kareYerMekanlari.
+has(anahtar))return kareYerOkumalari.has(anahtar)||kareYerOkumalari.set(anahtar,(async()=>{try{const v=await Sunucu.cagir("venue_get",{p_venue:id});if(kusak!==Sunucu.Giris.kusak)return;kareYerMekanlari.
+set(anahtar,v?.venue_id===id&&typeof v.system=="boolean"?v.system:null)}catch{kusak===Sunucu.Giris.kusak&&kareYerMekanlari.set(anahtar,null)}finally{kareYerMekanlari.size>80&&kareYerMekanlari.delete(kareYerMekanlari.
+keys().next().value),kareYerOkumalari.delete(anahtar)}})()),kareYerOkumalari.get(anahtar)}))}function kareYerAdlariniBagla(kok,fotolar){const kusak=Sunucu.Giris.kusak,rota=Kabuk.etkin,yerler=new Map(fotolar.
+filter(Boolean).map(p=>[p.photo_id??p.place_ref??"",p]));return kareYerleriniHazirla(fotolar).then(()=>{if(!(!kok?.isConnected||kusak!==Sunucu.Giris.kusak||rota&&rota!==Kabuk.etkin))for(const el of $$(
+"[data-kare-yer-ad]",kok)){const p=yerler.get(el.dataset.kareYerAd);p&&(el.textContent=kareYerAdi(p))}})}function kareKartHtml(p,{kucuk=!1}={}){const sp=p.sponsorship;return`<article class="kare-kart${kucuk?
+" kucuk":""}" data-kare="${esc(p.photo_id)}">
     <button type="button" class="kare-ac" data-kare-ac="${esc(p.photo_id)}" aria-label="${esc(\u00E7("Kare'yi b\xFCy\xFCt"))}"><div class="kare-resim-yer" data-kare-resim="${esc(p.photo_id)}"></div></\
 button>
     <div class="kare-alt">
       <div class="paylasim-ust"><button class="paylasim-yazar" data-profil="${esc(p.author_id)}">${avatarKutu(p.author,p.author_id)}<span><b>${esc(p.author)}</b>
-        <span class="kucuk">${esc(Kare.sahneAdi(p.scene))} \xB7 ${esc(bolgeAdi(p.region_id))} \xB7 ${esc(zamanOnce(p.created_at))}</span></span></button>
+        <span class="kucuk">${esc(Kare.sahneAdi(p.scene))} \xB7 ${kareYerHtml(p)} \xB7 ${esc(zamanOnce(p.created_at))}</span></span></button>
         <button class="paylasim-menu" data-kare-menu="${esc(p.photo_id)}" aria-label="${\u00E7("Se\xE7enekler")}">${ikon("ellipsis")}</button></div>
       ${p.caption?`<p class="paylasim-metin">${etiketli(p.caption)}${sp?` <b class="etiket-vurgu">${esc(isbirligiEtiketi(sp.tag))}</b>`:""}</p>`:sp?`<p class="paylasim-metin"><b class="etiket-vurgu">${esc(
 isbirligiEtiketi(sp.tag))}</b></p>`:""}
       ${sp?`<p class="kucuk kare-sponsor">${ikon("megaphone")}${\u00E7("{isletme} sponsorlu\u011Funda: {urun}",{isletme:esc(sp.company??""),urun:esc(varlikAdi(sp.asset))})}</p>`:""}
       <div class="paylasim-alt">
-        <button data-kare-alkis="${esc(p.photo_id)}" aria-pressed="${!!p.applauded_by_me}">${ikon("hand")}<span>${sayi(p.applause??0)}</span><span class="gizli-ad">${\u00E7("Alk\u0131\u015F")}</span><\
-/button>
-        <span class="kucuk">${ikon("eye")} ${sayi(p.views??0)}</span>
+        ${p.shared===!1?`<span class="cip" data-kare-ozel>${ikon("lock")}${\u00E7("\xD6zel \xB7 yaln\u0131z bende")}</span>`:`<button data-kare-alkis="${esc(p.photo_id)}" aria-pressed="${!!p.applauded_by_me}\
+">${ikon("hand")}<span>${sayi(p.applause??0)}</span><span class="gizli-ad">${\u00E7("Alk\u0131\u015F")}</span></button><span class="kucuk">${ikon("eye")} ${sayi(p.views??0)}</span>`}
+        ${p.mine&&p.shared===!1?`<button data-kare-paylas="${esc(p.photo_id)}">${ikon("send")}${\u00E7("Payla\u015F")}</button>`:""}
+        ${kareKartpostalGonderebilir(p)?`<button data-kare-kartpostal="${esc(p.photo_id)}">${ikon("mail-open")}${\u00E7("Kartpostal g\xF6nder")}</button>`:""}
         ${p.article_id?`<button data-makale-ac="${esc(p.article_id)}">${ikon("newspaper")}<span class="gizli-ad">${\u00E7("Haberi oku")}</span></button>`:""}
       </div>
-    </div></article>`}function kareKartlariBagla(kok,kareler,tazele){for(const el of $$("[data-kare-resim]",kok)){const p=kareler.get(el.dataset.kareResim);p&&!el.dataset.kareCizim&&Kare.goster(el,p,480,
-360)}for(const b of $$("[data-kare-ac]",kok))b.onclick=()=>kareAc(kareler.get(b.dataset.kareAc)??b.dataset.kareAc,tazele);for(const b of $$("[data-kare-alkis]",kok))b.onclick=()=>kareAlkisla(b,kareler.
-get(b.dataset.kareAlkis));for(const b of $$("[data-kare-menu]",kok))b.onclick=()=>kareMenu(kareler.get(b.dataset.kareMenu),tazele);for(const b of $$("[data-makale-ac]",kok))b.onclick=()=>makaleAc(b.dataset.
-makaleAc,tazele);for(const b of $$("[data-profil]",kok))b.onclick||(b.onclick=()=>profilAc(b.dataset.profil,tazele))}async function kareAlkisla(b,p){const acik=b.getAttribute("aria-pressed")!=="true";
-try{const r=await Sunucu.cagir("photo_applaud",{p_photo:p?.photo_id??b.dataset.kareAlkis,p_on:acik});b.setAttribute("aria-pressed",String(acik)),$("span",b).textContent=sayi(r.applause),p&&(p.applause=
-r.applause,p.applauded_by_me=acik)}catch(e){tost(hataMetni(e),"circle-alert")}}function kareMenu(p,tazele){p&&pencere({ust:\u00E7("Kare"),baslik:p.author,govde:`<p class="aciklama">${p.caption?etiketli(
-p.caption):esc(Kare.sahneAdi(p.scene))}</p>`,dugmeler:p.mine?[{ad:\u00E7("Kapat")},...p.sponsorship?[]:[{ad:\u00E7("Sil"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("photo_delete",{p_photo:p.photo_id}),
-tost(\u00E7("Kare silindi."),"x")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele?.()}}]]:[{ad:\u00E7("Kapat")},{ad:\u00E7("Profil"),is:()=>profilAc(p.author_id,tazele)},{ad:\u00E7("Raporla"),
-sinif:"mercan",is:()=>raporla({kare:p.photo_id,ad:p.author})}]})}async function kareAc(p,tazele){if(typeof p=="string")try{p=await Sunucu.cagir("photo_get",{p_photo:p})}catch(e){tost(hataMetni(e),"cir\
-cle-alert");return}const sp=p.sponsorship,kisiler=[p.author_figure,...p.figures??[]].filter(Boolean);pencere({ust:\u00E7("Kare \xB7 {sahne}",{sahne:Kare.sahneAdi(p.scene)}),baslik:p.caption||p.author,
-govde:`
+    </div></article>`}function kareKartlariBagla(kok,kareler,tazele){kareYerAdlariniBagla(kok,[...kareler.values()]);for(const el of $$("[data-kare-resim]",kok)){const p=kareler.get(el.dataset.kareResim);
+p&&!el.dataset.kareCizim&&Kare.goster(el,p,480,360)}for(const b of $$("[data-kare-ac]",kok))b.onclick=()=>kareAc(kareler.get(b.dataset.kareAc)??b.dataset.kareAc,tazele);for(const b of $$("[data-kare-a\
+lkis]",kok))b.onclick=()=>kareAlkisla(b,kareler.get(b.dataset.kareAlkis));for(const b of $$("[data-kare-menu]",kok))b.onclick=()=>kareMenu(kareler.get(b.dataset.kareMenu),tazele);for(const b of $$("[d\
+ata-kare-paylas]",kok))b.onclick=()=>karePaylas(kareler.get(b.dataset.karePaylas),tazele);for(const b of $$("[data-kare-kartpostal]",kok))b.onclick=()=>kartpostalGonder(kareler.get(b.dataset.kareKartpostal),
+tazele);for(const b of $$("[data-makale-ac]",kok))b.onclick=()=>makaleAc(b.dataset.makaleAc,tazele);for(const b of $$("[data-profil]",kok))b.onclick||(b.onclick=()=>profilAc(b.dataset.profil,tazele))}
+async function kareAlkisla(b,p){const acik=b.getAttribute("aria-pressed")!=="true";try{const r=await Sunucu.cagir("photo_applaud",{p_photo:p?.photo_id??b.dataset.kareAlkis,p_on:acik});b.setAttribute("\
+aria-pressed",String(acik)),$("span",b).textContent=sayi(r.applause),p&&(p.applause=r.applause,p.applauded_by_me=acik)}catch(e){tost(hataMetni(e),"circle-alert")}}function kareMenu(p,tazele){if(!p)return;
+const ortak=[...kareKartpostalGonderebilir(p)?[{ad:\u00E7("Kartpostal g\xF6nder"),ikon:"mail-open",is:()=>kartpostalGonder(p,tazele)}]:[],...p.mine&&p.shared===!1?[{ad:\u00E7("Payla\u015F"),ikon:"send",
+is:()=>karePaylas(p,tazele)}]:[]];pencere({ust:\u00E7("Kare"),baslik:p.author,govde:`<p class="aciklama">${p.caption?etiketli(p.caption):esc(Kare.sahneAdi(p.scene))}</p>`,dugmeler:p.mine?[{ad:\u00E7("\
+Kapat")},...ortak,...p.sponsorship?[]:[{ad:\u00E7("Sil"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("photo_delete",{p_photo:p.photo_id}),tost(\u00E7("Kare silindi."),"x")}catch(e){tost(hataMetni(
+e),"circle-alert")}await tazele?.()}}]]:[{ad:\u00E7("Kapat")},...ortak,{ad:\u00E7("Profil"),is:()=>profilAc(p.author_id,tazele)},{ad:\u00E7("Raporla"),sinif:"mercan",is:()=>raporla({kare:p.photo_id,ad:p.
+author})}]})}function kareKartpostalGonderebilir(p){const ben=Durum.v.ozet?.character?.id;return!!p&&(p.mine||p.shared!==!1&&!!ben&&(p.figures??[]).some(k=>k.character_id===ben))}function karePaylas(p,sonra){
+if(!p?.mine||p.shared!==!1)return;const kusak=Sunucu.Giris.kusak;pencereForm({ust:\u00E7("Alb\xFCm\xFCm"),baslik:\u00E7("Kare'yi payla\u015F"),onayAd:\u00E7("Payla\u015F"),onayIkon:"send",govde:`<p cl\
+ass="aciklama">${\u00E7("Bu Kare Ak\u0131\u015F'ta ve profilinde g\xF6r\xFCn\xFCr olacak.")}</p>`,is:async()=>{const r=await Sunucu.yap("photo_share",{p_photo:p.photo_id});kusak===Sunucu.Giris.kusak&&
+(Object.assign(p,r),tost(\u00E7("Kare payla\u015F\u0131ld\u0131."),"send"),await sonra?.())}})}async function kareAc(p,tazele){const kusak=Sunucu.Giris.kusak;if(typeof p=="string")try{p=await Sunucu.cagir(
+"photo_get",{p_photo:p})}catch(e){tost(hataMetni(e),"circle-alert");return}if(!p||kusak!==Sunucu.Giris.kusak)return;const sp=p.sponsorship,kisiler=[p.author_figure,...p.figures??[]].filter(Boolean);pencere(
+{ust:\u00E7("Kare \xB7 {sahne}",{sahne:Kare.sahneAdi(p.scene)}),baslik:p.caption||p.author,govde:`
     <div class="kare-buyuk" id="kare-buyuk"></div>
-    <p class="kucuk" style="margin-top:8px">${esc(p.author)} \xB7 ${esc(bolgeAdi(p.region_id))} \xB7 ${esc(saatYaz(p.created_at))} \xB7 ${esc(KARE_KAMERA[p.camera]??p.camera)}, ${esc(KARE_CERCEVE[p.frame]??
-p.frame)}, ${esc(KARE_SUZGEC[p.filter]??p.filter)}</p>
+    <p class="kucuk" style="margin-top:8px">${esc(p.author)} \xB7 ${kareYerHtml(p)} \xB7 ${esc(saatYaz(p.created_at))} \xB7 ${esc(KARE_KAMERA[p.camera]??p.camera)}, ${esc(KARE_CERCEVE[p.frame]??p.frame)}\
+, ${esc(KARE_SUZGEC[p.filter]??p.filter)}</p>
     ${kisiler.length>1?`<p class="kucuk">${\u00E7("Karedekiler: {liste}",{liste:esc(kisiler.map(k=>k.name).join(", "))})}</p>`:""}
     ${sp?`<p class="kucuk kare-sponsor">${ikon("megaphone")}${\u00E7("{isletme} sponsorlu\u011Funda: {urun} \xB7 {etiket}",{isletme:esc(sp.company??""),urun:esc(varlikAdi(sp.asset)),etiket:esc(isbirligiEtiketi(
 sp.tag))})}</p>`:""}
-    <div class="paylasim-alt" style="margin-top:8px"><button data-kare-alkis="${esc(p.photo_id)}" aria-pressed="${!!p.applauded_by_me}">${ikon("hand")}<span>${sayi(p.applause??0)}</span><span class="g\
-izli-ad">${\u00E7("Alk\u0131\u015F")}</span></button>
-      <span class="kucuk">${ikon("eye")} ${sayi(p.views??0)}</span></div>`,dugmeler:[{ad:\u00E7("Kapat")},...p.article_id?[{ad:\u00E7("Haberi oku"),ikon:"newspaper",is:()=>makaleAc(p.article_id,tazele)}]:
-[],...p.mine?[]:[{ad:\u00E7("Profil"),is:()=>profilAc(p.author_id,tazele)}]]});const kutu=$("#kare-buyuk");kutu&&Kare.goster(kutu,p,960,720);const b=$(".perde:last-child [data-kare-alkis]");b&&(b.onclick=
-()=>kareAlkisla(b,p))}async function kareListesiAc(kimlik,ad,medya=null){let f,vf;try{[f,vf]=await Promise.all([Sunucu.cagir("photo_feed",{p_character:kimlik,p_limit:24}),Sunucu.cagir("video_feed",{p_character:kimlik,
-p_limit:12}).catch(()=>({videos:[]}))])}catch(e){tost(hataMetni(e),"circle-alert");return}const kareler=new Map((f.photos??[]).map(p=>[p.photo_id,p])),videolar=new Map((vf.videos??[]).map(x=>[x.video_id,
-x]));pencere({ust:\u00E7("Medya"),baslik:ad,govde:`
-    ${medya?`<p class="kucuk">${esc(MEDYA_BASAMAK[medya.tier?.tier_id]??"")} \xB7 ${esc(\u00E7("{n} etkin takip\xE7i",{n:Number(medya.tier?.active_followers??0)}))}${medya.newspaper?` \xB7 <button class=\
-"baglanti" data-medya-gazete="${esc(medya.newspaper.newspaper_id)}">${esc(medya.newspaper.name)}</button>`:""}</p>`:""}
+    <div class="paylasim-alt" style="margin-top:8px">${p.shared===!1?`<span class="cip" data-kare-ozel>${ikon("lock")}${\u00E7("\xD6zel \xB7 yaln\u0131z bende")}</span>`:`<button data-kare-alkis="${esc(
+p.photo_id)}" aria-pressed="${!!p.applauded_by_me}">${ikon("hand")}<span>${sayi(p.applause??0)}</span><span class="gizli-ad">${\u00E7("Alk\u0131\u015F")}</span></button><span class="kucuk">${ikon("eye")}\
+ ${sayi(p.views??0)}</span>`}</div>`,dugmeler:[{ad:\u00E7("Kapat")},...p.article_id?[{ad:\u00E7("Haberi oku"),ikon:"newspaper",is:()=>makaleAc(p.article_id,tazele)}]:[],...p.mine&&p.shared===!1?[{ad:\u00E7(
+"Payla\u015F"),ikon:"send",is:()=>karePaylas(p,tazele)}]:[],...kareKartpostalGonderebilir(p)?[{ad:\u00E7("Kartpostal g\xF6nder"),ikon:"mail-open",is:()=>kartpostalGonder(p,tazele)}]:[],...p.mine?[]:[{
+ad:\u00E7("Profil"),is:()=>profilAc(p.author_id,tazele)}]]});const kutu=$("#kare-buyuk");kareYerAdlariniBagla($(".perde:last-child"),[p]),kutu&&Kare.goster(kutu,p,960,720);const b=$(".perde:last-child\
+ [data-kare-alkis]");b&&(b.onclick=()=>kareAlkisla(b,p))}async function kareListesiAc(kimlik,ad,medya=null){let f,vf;try{[f,vf]=await Promise.all([Sunucu.cagir("photo_feed",{p_character:kimlik,p_limit:24}),
+Sunucu.cagir("video_feed",{p_character:kimlik,p_limit:12}).catch(()=>({videos:[]}))])}catch(e){tost(hataMetni(e),"circle-alert");return}const kareler=new Map((f.photos??[]).map(p=>[p.photo_id,p])),videolar=new Map(
+(vf.videos??[]).map(x=>[x.video_id,x]));pencere({ust:\u00E7("Medya"),baslik:ad,govde:`
+    ${medya?`<p class="kucuk">${esc(MEDYA_BASAMAK[medya.tier?.tier_id]??"")} \xB7 ${esc(\u00E7("{n} etkin takip\xE7i",{n:Number(medya.tier?.active_followers??0)}))}${medya.channel_name?` \xB7 ${ikon("\
+tv")} ${esc(medya.channel_name)}`:""}${medya.newspaper?` \xB7 <button class="baglanti" data-medya-gazete="${esc(medya.newspaper.newspaper_id)}">${esc(medya.newspaper.name)}</button>${medya.journalism?.
+role?` (${esc(GAZETE_ROL[medya.journalism.role]??medya.journalism.role)})`:""}`:""}${medya.journalism&&Number(medya.journalism.articles??0)>0?` \xB7 ${esc(\u00E7("{basamak}, {n} makale",{basamak:GAZETECI_BASAMAK[medya.
+journalism.step]??medya.journalism.step,n:Number(medya.journalism.articles)}))}`:""}</p>`:""}
     ${videolar.size?`<p class="ust-yazi">${\u00E7("Kanal")}</p><div class="kare-izgara video-izgara" id="video-listesi">${[...videolar.values()].map(x=>videoKartHtml(x,{kucuk:!0})).join("")}</div><p c\
 lass="ust-yazi" style="margin-top:10px">${\u00E7("Kare")}</p>`:""}
     <div class="kare-izgara" id="kare-listesi">${(f.photos??[]).map(p=>kareKartHtml(p,{kucuk:!0})).join("")||`<p class="bos">${\u00E7("Hen\xFCz Kare yok.")}</p>`}</div>`,dugmeler:[{ad:\u00E7("Kapat")}]});
@@ -6231,12 +5890,14 @@ const perde=$(".perde:last-child");kareKartlariBagla($("#kare-listesi",perde),ka
 promise.verdict]??""}" data-vaat-cip="${esc(a.promise.verdict)}">${ikon("scale")}${esc(\u00E7("Vaat kayd\u0131: {karar}",{karar:VAAT_KARAR[a.promise.verdict]??a.promise.verdict}))}</span>`:""}</p>
       <h3 class="b3"><button type="button" class="baglanti makale-baslik" data-makale-ac="${esc(a.article_id)}">${esc(a.title)}</button></h3>
       ${a.excerpt?`<p class="makale-ozet">${esc(a.excerpt)}${a.excerpt.length>=280?"\u2026":""}</p>`:""}
-      <p class="kucuk">${esc(a.author??"")} \xB7 ${esc(zamanOnce(a.created_at))} \xB7 ${\u00E7("{n} destek",{n:Number(a.endorsements??0)})} \xB7 ${ikon("eye")} ${sayi(a.views??0)}</p>
+      <p class="kucuk">${esc(a.author??"")}${a.author_role&&a.author_role!=="yayin_yonetmeni"?` (${esc(GAZETE_ROL[a.author_role]??a.author_role)})`:""} \xB7 ${esc(zamanOnce(a.created_at))} \xB7 ${\u00E7(
+"{n} destek",{n:Number(a.endorsements??0)})} \xB7 ${ikon("eye")} ${sayi(a.views??0)}${a.ref_label?` \xB7 ${makaleRefCip(a)}`:""}</p>
     </div></article>`}function makaleKartlariBagla(kok,makaleler,tazele){for(const el of $$("[data-makale-resim]",kok)){const a=makaleler.get(el.dataset.makaleResim);a?.photo&&!el.dataset.kareCizim&&Kare.
 goster(el,a.photo,320,240),el.onclick=()=>makaleAc(el.dataset.makaleResim,tazele)}for(const b of $$("[data-makale-ac]",kok))b.onclick=()=>makaleAc(b.dataset.makaleAc,tazele)}async function makaleAc(id,tazele){
 let a;try{a=await Sunucu.cagir("article_get",{p_article:id})}catch(e){tost(hataMetni(e),"circle-alert");return}const paragraflar=String(a.body??"").split(/\n{2,}/).map(p=>`<p>${esc(p).replaceAll(`
 `,"<br>")}</p>`).join("");pencere({ust:a.newspaper??\u00E7("Gazete"),baslik:a.title,govde:`
-    <p class="kucuk">${esc(a.author??"")} \xB7 ${esc(saatYaz(a.created_at))} \xB7 ${ikon("eye")} ${sayi(a.views??0)}</p>
+    <p class="kucuk">${esc(a.author??"")}${a.author_role?` \xB7 ${esc(GAZETE_ROL[a.author_role]??a.author_role)}`:""} \xB7 ${esc(saatYaz(a.created_at))} \xB7 ${ikon("eye")} ${sayi(a.views??0)}</p>
+    ${a.ref_label?`<p class="kucuk" style="margin-top:4px">${\u00E7("Ba\u011Fl\u0131 olay:")} ${makaleRefCip(a)}</p>`:""}
     ${a.photo?`<div class="kare-buyuk makale-foto" id="makale-foto"></div>${a.photo.caption?`<p class="kucuk">${esc(a.photo.caption)}</p>`:""}`:""}
     ${a.promise?vaatKutusu(a.promise):""}
     <div class="makale-metin">${paragraflar}</div>
@@ -6269,30 +5930,39 @@ pan></p>
   </div>`}async function gazeteAc(id,tazele){let g;try{g=await Sunucu.cagir("newspaper_get",{p_newspaper:id})}catch(e){tost(hataMetni(e),"circle-alert");return}const makaleler=new Map((g.articles??[]).
 map(a=>[a.article_id,a]));pencere({ust:\u00E7("Gazete"),baslik:g.name,govde:`
     <p class="kucuk">${\u00E7("Yay\u0131nc\u0131: {ad}",{ad:esc(g.owner??"")})} \xB7 ${\u00E7("{n} abone",{n:Number(g.subscribers??0)})} \xB7 ${\u00E7("{n} makale",{n:Number(g.articles_count??0)})} \xB7 ${esc(
-ulkeAdi(g.country_id))}</p>
+ulkeAdi(g.country_id))}${g.my_role?` \xB7 ${esc(\u00E7("rol\xFCn: {rol}",{rol:GAZETE_ROL[g.my_role]??g.my_role}))}`:""}</p>
+    ${(g.staff??[]).length?`<p class="kucuk" style="margin-top:4px">${ikon("users-round")} ${\u00E7("Yaz\u0131 i\u015Fleri:")} ${g.staff.map(x=>`<button class="baglanti" type="button" data-profil="${esc(
+x.character_id)}">${esc(x.name)}</button> (${esc(GAZETE_ROL[x.role]??x.role)})`).join(", ")}</p>`:""}
     <div class="paylasim-alt" style="margin-top:8px"><button data-gazete-abone aria-pressed="${!!g.subscribed}">${ikon("bookmark")}<span>${g.subscribed?\u00E7("Abonesin"):\u00E7("Abone ol")}</span></b\
 utton></div>
     <div class="yigin" style="margin-top:12px" id="gazete-makaleler">${(g.articles??[]).map(makaleKartHtml).join("")||`<p class="bos">${\u00E7("Hen\xFCz makale yok.")}</p>`}</div>`,dugmeler:[{ad:\u00E7(
 "Kapat")},...g.mine?g.name_reset?[{ad:\u00E7("Yeni ad koy"),sinif:"altin",is:()=>gazeteAdiYenile(g,tazele)}]:[]:[{ad:\u00E7("Raporla"),sinif:"sade",is:()=>raporla({tur:"newspaper",ref:g.newspaper_id,ad:g.
-name})}]]});const perde=$(".perde:last-child");makaleKartlariBagla($("#gazete-makaleler",perde),makaleler,tazele);const abone=$("[data-gazete-abone]",perde);abone.onclick=async()=>{const acik=abone.getAttribute(
-"aria-pressed")!=="true";try{await Sunucu.cagir("newspaper_subscribe",{p_newspaper:g.newspaper_id,p_on:acik}),abone.setAttribute("aria-pressed",String(acik)),$("span",abone).textContent=acik?\u00E7("A\
-bonesin"):\u00E7("Abone ol"),await tazele?.()}catch(e){tost(hataMetni(e),"circle-alert")}}}async function kareStudyo({sponsorluk=null,sahne="square",sonra}={}){let aday,bak,kurallar;try{[aday,bak,kurallar]=
-await Promise.all([Sunucu.cagir("photo_candidates"),Sunucu.cagir("my_look").catch(()=>null),Durum.kurallar()])}catch(e){tost(hataMetni(e),"circle-alert");return}const f=kurallar.data.media?.photo??{scenes:Object.
-keys(KARE_SAHNE),cameras:Object.keys(KARE_KAMERA),frames:Object.keys(KARE_CERCEVE),filters:Object.keys(KARE_SUZGEC),maxFigures:5,captionMax:120},ben=Durum.v.ozet?.character??{},kisiler=new Map;for(const k of aday.
+name})}]]});const perde=$(".perde:last-child");makaleKartlariBagla($("#gazete-makaleler",perde),makaleler,tazele);for(const b of $$("[data-profil]",perde))b.onclick=()=>profilAc(b.dataset.profil,tazele);
+const abone=$("[data-gazete-abone]",perde);abone.onclick=async()=>{const acik=abone.getAttribute("aria-pressed")!=="true";try{await Sunucu.cagir("newspaper_subscribe",{p_newspaper:g.newspaper_id,p_on:acik}),
+abone.setAttribute("aria-pressed",String(acik)),$("span",abone).textContent=acik?\u00E7("Abonesin"):\u00E7("Abone ol"),await tazele?.()}catch(e){tost(hataMetni(e),"circle-alert")}}}function kareSahneDugmeHtml(sahne,yer=null){
+return`<button type="button" class="dugme ikincil kucuk-d" data-sahne-kare="${esc(sahne)}" data-kare-yer="${esc(yer??"")}">${ikon("camera")}${\u00E7("Foto\u011Fraf \xE7ek")}</button>`}document.addEventListener(
+"click",async e=>{const b=e.target.closest?.("button[data-sahne-kare]");if(!(!b||b.disabled)){b.disabled=!0;try{await kareStudyo({sahne:b.dataset.sahneKare,yer:b.dataset.kareYer||null,kaynak:b})}finally{
+b.isConnected&&(b.disabled=!1)}}});async function kareStudyo({sponsorluk=null,sahne="square",yer=null,kaynak=null,sonra}={}){const kusak=Sunucu.Giris.kusak,gecerli=()=>kusak===Sunucu.Giris.kusak&&(!kaynak||
+kaynak.isConnected);let aday,bak,kurallar;try{[aday,bak,kurallar]=await Promise.all([Sunucu.cagir("photo_candidates",kaynak?{p_scene:sahne,p_place:yer}:{}),Sunucu.cagir("my_look").catch(()=>null),Durum.
+kurallar()])}catch(e){gecerli()&&tost(hataMetni(e),"circle-alert");return}if(!gecerli())return;const cekimYeri={...aday,scene:sahne,place_ref:aday.place_ref??yer};if(kaynak&&await kareYerleriniHazirla(
+[cekimYeri]),!gecerli())return;const f=kurallar.data.media?.photo??{scenes:Object.keys(KARE_SAHNE),cameras:Object.keys(KARE_KAMERA),frames:Object.keys(KARE_CERCEVE),filters:Object.keys(KARE_SUZGEC),maxFigures:5,
+captionMax:120},ben=Durum.v.ozet?.character??{},kisiler=new Map;if(kaynak)for(const k of aday.candidates??[])k.character_id!==ben.id&&kisiler.set(k.character_id,{...k,kaynak:"place"});else{for(const k of aday.
 friends??[])kisiler.set(k.character_id,{...k,kaynak:"friend"});for(const k of aday.square??[])kisiler.set(k.character_id,{...kisiler.get(k.character_id),...k,kaynak:kisiler.has(k.character_id)?"both":
-"square"});const liste=[...kisiler.values()].sort((a,b)=>a.name.localeCompare(b.name,DIL.yerel)),sec=(k,a)=>Object.entries(k).map(([v,ad])=>`<option value="${v}" ${v===a?"selected":""}>${esc(ad)}</opt\
-ion>`).join(""),{form,kapat}=pencereForm({ust:sponsorluk?\u00E7("Sponsorlu Kare"):\u00E7("Kare"),baslik:\u00E7("Kare \xE7ek"),onayAd:sponsorluk?\u00E7("Yay\u0131mla ve \xF6demeyi al"):\u00E7("\xC7ek ve p\
-ayla\u015F"),onayIkon:"camera",govde:`
+"square"})}const liste=[...kisiler.values()].sort((a,b)=>a.name.localeCompare(b.name,DIL.yerel)),sec=(k,a)=>Object.entries(k).map(([v,ad])=>`<option value="${v}" ${v===a?"selected":""}>${esc(ad)}</opt\
+ion>`).join(""),sahneler=kaynak?[sahne]:(f.scenes??[]).filter(s=>["square","home","concert","front","friends"].includes(s));let paylas=!0;const{form,kapat}=pencereForm({ust:sponsorluk?\u00E7("Sponsorl\
+u Kare"):\u00E7("Kare"),baslik:\u00E7("Kare \xE7ek"),onayAd:sponsorluk?\u00E7("Yay\u0131mla ve \xF6demeyi al"):\u00E7("\xC7ek ve payla\u015F"),onayIkon:"camera",govde:`
       ${sponsorluk?`<div class="bilgi-kutusu">${ikon("megaphone")}<span>${\u00E7('{isletme} i\xE7in {urun} tan\u0131t\u0131m\u0131: Kare "{etiket}" etiketiyle yay\u0131mlan\u0131r; b\xFCt\xE7enin vergi ve platform pay\u0131 d\xFC\u015F\xFClm\xFC\u015F k\u0131sm\u0131 \
 hesab\u0131na ge\xE7er.',{isletme:esc(sponsorluk.company??""),urun:esc(varlikAdi(sponsorluk.asset)),etiket:esc(isbirligiEtiketi(kurallar.data.media?.sponsorship?.tag))})}</span></div>`:""}
       <div class="studyo">
         <div class="studyo-ayar">
-          <fieldset class="alan"><legend>${\u00E7("Sahne")}</legend><div class="cip-satir" role="radiogroup">${(f.scenes??[]).map(s=>`<label class="cip-dugme"><input type="radio" name="sahne" value="${s}\
-" ${s===sahne?"checked":""}>${ikon(KARE_SAHNE[s]?.ik??"image")}${esc(Kare.sahneAdi(s))}</label>`).join("")}</div></fieldset>
+          <fieldset class="alan"><legend>${\u00E7("Sahne")}</legend><div class="cip-satir" role="radiogroup">${sahneler.map(s=>`<label class="cip-dugme"><input type="radio" name="sahne" value="${esc(s)}\
+" ${s===sahne?"checked":""}>${ikon(KARE_SAHNE[s]?.ik??"image")}${esc(Kare.sahneAdi(s))}</label>`).join("")}</div>${kaynak?`<p class="kucuk">${ikon("map-pin")}${esc(kareYerAdi(cekimYeri))} \xB7 ${\u00E7(
+"\u015Eu an burada bulunanlar")}</p>`:""}</fieldset>
           <fieldset class="alan"><legend>${\u00E7("Karedekiler (senden ba\u015Fka en \xE7ok {n})",{n:Number(f.maxFigures)})}</legend>
             ${liste.length?`<div class="studyo-kisiler">${liste.map(k=>`<label class="onay"><input type="checkbox" name="kisi" value="${esc(k.character_id)}"><span>${esc(k.name)} <span class="kucuk">${k.
-kaynak==="square"?\u00E7("(meydanda)"):k.kaynak==="both"?\u00E7("(arkada\u015F, meydanda)"):\u00E7("(arkada\u015F)")}</span></span></label>`).join("")}</div>`:`<p class="kucuk">${aday.in_square?\u00E7(
-"Meydanda \u015Fu an senden ba\u015Fka kimse yok; arkada\u015F da yok."):\u00E7("Arkada\u015F ekleyince ya da meydandayken yan\u0131ndakiler kareye girebilir.")}</p>`}</fieldset>
+kaynak==="place"?\u00E7("(burada)"):k.kaynak==="square"?\u00E7("(meydanda)"):k.kaynak==="both"?\u00E7("(arkada\u015F, meydanda)"):\u00E7("(arkada\u015F)")}</span></span></label>`).join("")}</div>`:`<p\
+ class="kucuk">${kaynak?\u00E7("\u015Eu an burada senden ba\u015Fka kimse yok."):aday.in_square?\u00E7("Meydanda \u015Fu an senden ba\u015Fka kimse yok; arkada\u015F da yok."):\u00E7("Arkada\u015F ekleyinc\
+e ya da meydandayken yan\u0131ndakiler kareye girebilir.")}</p>`}</fieldset>
           <div class="satir" style="gap:10px;flex-wrap:wrap">
             <label class="alan" style="flex:1 1 120px"><span>${\u00E7("Kamera")}</span><select name="kamera">${sec(KARE_KAMERA,"wide")}</select></label>
             <label class="alan" style="flex:1 1 120px"><span>${\u00E7("\xC7er\xE7eve")}</span><select name="cerceve">${sec(KARE_CERCEVE,"none")}</select></label>
@@ -6303,28 +5973,37 @@ kaynak==="square"?\u00E7("(meydanda)"):k.kaynak==="both"?\u00E7("(arkada\u015F, 
         </div>
         <div class="studyo-onizleme"><p class="ust-yazi">${\u00E7("\xD6nizleme")}</p><div class="kare-onizleme" id="kare-onizleme"></div><p class="kucuk">${\u00E7("Fig\xFCrler g\xF6r\xFCn\xFCmlerinden \xE7izilir; Ka\
 re bir resim dosyas\u0131 de\u011Fil, an\u0131n kayd\u0131d\u0131r.")}</p></div>
-      </div>`,is:async d=>{const kisi=d.getAll("kisi");if(kisi.length>Number(f.maxFigures))throw new Error(\u00E7("Karede senden ba\u015Fka en \xE7ok {n} ki\u015Fi olur.",{n:Number(f.maxFigures)}));try{
-await Sunucu.yap("photo_create",{p_scene:d.get("sahne"),p_camera:d.get("kamera"),p_frame:d.get("cerceve"),p_filter:d.get("suzgec"),p_caption:String(d.get("yazi")??"").trim()||null,p_figures:kisi,p_sponsorship:sponsorluk?.
-offer_id??null})}catch(err){throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),err}tost(sponsorluk?\u00E7("Sponsorlu Kare yay\u0131mland\u0131; \xF6deme hesab\u0131na ge\xE7ti."):\u00E7("Kare \xE7ekildi\
- ve payla\u015F\u0131ld\u0131."),"camera"),await sonra?.()}}),onizleme=$("#kare-onizleme",form);let zaman=null;const taslak=()=>{const d=new FormData(form),secilen=d.getAll("kisi").map(id=>kisiler.get(
-id)).filter(Boolean).slice(0,Number(f.maxFigures));return{photo_id:null,scene:d.get("sahne"),camera:d.get("kamera"),frame:d.get("cerceve"),filter:d.get("suzgec"),author_figure:{character_id:ben.id,name:ben.
-name,country_id:ben.citizenship,look:bak?.look??null,rank:0},figures:secilen.map(k=>({character_id:k.character_id,name:k.name,country_id:k.country_id,look:k.look??null,rank:0}))}},yenile=()=>{clearTimeout(
-zaman),zaman=setTimeout(()=>{onizleme.isConnected&&(onizleme.className="",Kare.goster(onizleme,taslak(),480,360))},120)};form.addEventListener("change",yenile),$("textarea[name=yazi]",form).addEventListener(
-"input",e=>{$("#studyo-sayac",form).textContent=`${e.target.value.length} / ${sayi(f.captionMax)}`}),form.addEventListener("change",e=>{if(e.target.name!=="kisi")return;$$("input[name=kisi]:checked",form).
-length>Number(f.maxFigures)&&(e.target.checked=!1,tost(\u00E7("Karede senden ba\u015Fka en \xE7ok {n} ki\u015Fi olur.",{n:Number(f.maxFigures)}),"circle-alert"))});const gorunusler=new Map;form.addEventListener(
-"change",async e=>{if(!(e.target.name!=="kisi"||!e.target.checked||gorunusler.has(e.target.value))){gorunusler.set(e.target.value,null);try{const x=(await Sunucu.cagir("looks",{p_ids:[e.target.value]})??
-[])[0];x&&kisiler.has(x.character_id)&&(kisiler.get(x.character_id).look=x.look??null,yenile())}catch{}}}),yenile()}function gazeteKur(sonra){pencereForm({ust:\u00E7("Medya"),baslik:\u00E7("Gazete kur"),
-onayAd:\u00E7("Kur"),onayIkon:"newspaper",govde:`<p class="aciklama">${\u00E7("Gazete senin yay\u0131n\u0131nd\u0131r: uzun yaz\u0131, oyunun olaylar\u0131na ba\u011Fl\u0131 haber, aboneler. \xDClkenin ak\u0131\u015F\u0131nda g\xF6r\xFCn\xFCr; i\u015Fletmeler gazeten\
-e ilan verebilir.")}</p>
+      </div>`,is:async d=>{const kisi=d.getAll("kisi");if(kisi.length>Number(f.maxFigures))throw new Error(\u00E7("Karede senden ba\u015Fka en \xE7ok {n} ki\u015Fi olur.",{n:Number(f.maxFigures)}));if(kusak!==
+Sunucu.Giris.kusak)return;const paylasim=paylas,dugmeler=$$("button[type=submit]",form);for(const b of dugmeler)b.disabled=!0;try{await Sunucu.yap("photo_create",{p_scene:d.get("sahne"),p_camera:d.get(
+"kamera"),p_frame:d.get("cerceve"),p_filter:d.get("suzgec"),p_caption:String(d.get("yazi")??"").trim()||null,p_figures:kisi,p_sponsorship:sponsorluk?.offer_id??null,p_place:kaynak?yer:null,p_shared:paylasim})}catch(err){
+throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),err}finally{for(const b of dugmeler)b.isConnected&&(b.disabled=!1)}kusak!==Sunucu.Giris.kusak||!form.isConnected||(tost(sponsorluk?\u00E7("Sponsorlu\
+ Kare yay\u0131mland\u0131; \xF6deme hesab\u0131na ge\xE7ti."):paylasim?\u00E7("Kare \xE7ekildi ve payla\u015F\u0131ld\u0131."):\u00E7("Kare \xF6zel alb\xFCm\xFCne kaydedildi."),"camera"),await sonra?.())}});
+if(!sponsorluk){const b=document.createElement("button");b.type="submit",b.className="dugme ikincil",b.dataset.kareAlbum="true",b.innerHTML=`${ikon("lock")}${esc(\u00E7("\xC7ek ve alb\xFCme kaydet"))}`,
+$(".pencere-dugmeler",form).appendChild(b)}form.addEventListener("submit",e=>{paylas=!e.submitter?.hasAttribute("data-kare-album")},!0);const onizleme=$("#kare-onizleme",form);let zaman=null;const taslak=()=>{
+const d=new FormData(form),secilen=d.getAll("kisi").map(id=>kisiler.get(id)).filter(Boolean).slice(0,Number(f.maxFigures));return{photo_id:null,scene:d.get("sahne"),camera:d.get("kamera"),frame:d.get(
+"cerceve"),filter:d.get("suzgec"),author_figure:{character_id:ben.id,name:ben.name,country_id:ben.citizenship,look:bak?.look??null,rank:0},figures:secilen.map(k=>({character_id:k.character_id,name:k.name,
+country_id:k.country_id,look:k.look??null,rank:0}))}},yenile=()=>{clearTimeout(zaman),zaman=setTimeout(()=>{onizleme.isConnected&&(onizleme.className="",Kare.goster(onizleme,taslak(),480,360))},120)};
+form.addEventListener("change",yenile),$("textarea[name=yazi]",form).addEventListener("input",e=>{$("#studyo-sayac",form).textContent=`${e.target.value.length} / ${sayi(f.captionMax)}`}),form.addEventListener(
+"change",e=>{if(e.target.name!=="kisi")return;$$("input[name=kisi]:checked",form).length>Number(f.maxFigures)&&(e.target.checked=!1,tost(\u00E7("Karede senden ba\u015Fka en \xE7ok {n} ki\u015Fi olur.",
+{n:Number(f.maxFigures)}),"circle-alert"))});const gorunusler=new Map;form.addEventListener("change",async e=>{if(!(e.target.name!=="kisi"||!e.target.checked||gorunusler.has(e.target.value))){gorunusler.
+set(e.target.value,null);try{const x=(await Sunucu.cagir("looks",{p_ids:[e.target.value]})??[])[0];form.isConnected&&kusak===Sunucu.Giris.kusak&&x&&kisiler.has(x.character_id)&&(kisiler.get(x.character_id).
+look=x.look??null,yenile())}catch{}}}),yenile()}function gazeteKur(sonra){pencereForm({ust:\u00E7("Medya"),baslik:\u00E7("Gazete kur"),onayAd:\u00E7("Kur"),onayIkon:"newspaper",govde:`<p class="acikla\
+ma">${\u00E7("Gazete senin yay\u0131n\u0131nd\u0131r: uzun yaz\u0131, oyunun olaylar\u0131na ba\u011Fl\u0131 haber, aboneler. \xDClkenin ak\u0131\u015F\u0131nda g\xF6r\xFCn\xFCr; i\u015Fletmeler gazetene ilan verebilir.")}\
+</p>
       <label class="alan"><span>${\u00E7("Gazetenin ad\u0131")}</span><input name="ad" minlength="3" maxlength="40" required placeholder="${\u00E7("\xD6rn. Marmara Postas\u0131")}"></label>`,is:async d=>{
 try{await Sunucu.yap("newspaper_create",{p_name:String(d.get("ad")??"").trim()})}catch(err){throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),err}tost(\u00E7("Gazeten kuruldu. \u0130lk makaleni yaz!"),
-"newspaper"),await sonra?.()}})}async function makaleYaz({ilan=null,ilanlar=[],sonra}={}){let kurallar,kareler;try{[kurallar,kareler]=await Promise.all([Durum.kurallar(),Sunucu.cagir("photo_feed",{p_mode:"\
-mine",p_limit:20}).catch(()=>({photos:[]}))])}catch(e){tost(hataMetni(e),"circle-alert");return}const n=kurallar.data.social?.news??{titleMin:5,titleMax:120,bodyMin:50,bodyMax:8e3},fotolar=(kareler.photos??
-[]).filter(p=>!p.hidden),secenekler=ilan?[ilan]:ilanlar;pencereForm({ust:\u00E7("Gazete"),baslik:\u00E7("Makale yaz"),onayAd:\u00E7("Yay\u0131mla"),onayIkon:"send",govde:`
+"newspaper"),await sonra?.()}})}async function makaleYaz({ilan=null,ilanlar=[],sonra}={}){let kurallar,kareler,refler;try{[kurallar,kareler,refler]=await Promise.all([Durum.kurallar(),Sunucu.cagir("ph\
+oto_feed",{p_mode:"mine",p_limit:20}).catch(()=>({photos:[]})),Sunucu.cagir("article_ref_options").catch(()=>null)])}catch(e){tost(hataMetni(e),"circle-alert");return}const n=kurallar.data.social?.news??
+{titleMin:5,titleMax:120,bodyMin:50,bodyMax:8e3},fotolar=(kareler.photos??[]).filter(p=>!p.hidden),secenekler=ilan?[ilan]:ilanlar,refGruplar=refler?(refler.kinds??Object.keys(MAKALE_REF)).map(k=>[k,(refler[k]??
+[]).filter(x=>x.id&&x.label)]).filter(([,l])=>l.length):[],refSecenek=refGruplar.length?`<label class="alan"><span>${\u00E7("Ba\u011Fl\u0131 olay (iste\u011Fe ba\u011Fl\u0131; haberin hangi olay \xFCst\xFCne oldu\u011Fu)")}\
+</span><select name="ref"><option value="">${\u00E7("Yok")}</option>
+      ${refGruplar.map(([k,l])=>`<optgroup label="${esc(MAKALE_REF[k]?.ad??k)}">${l.map(x=>`<option value="${esc(k)}:${esc(String(x.id))}">${esc(x.label)}</option>`).join("")}</optgroup>`).join("")}</\
+select></label>`:"";pencereForm({ust:\u00E7("Gazete"),baslik:\u00E7("Makale yaz"),onayAd:\u00E7("Yay\u0131mla"),onayIkon:"send",govde:`
       <label class="alan"><span>${\u00E7("Ba\u015Fl\u0131k ({a}\u2013{b} karakter)",{a:Number(n.titleMin),b:Number(n.titleMax)})}</span><input name="baslik" minlength="${Number(n.titleMin)}" maxlength\
 ="${Number(n.titleMax)}" required></label>
       <label class="alan"><span>${\u00E7("Metin ({a}\u2013{b} karakter)",{a:Number(n.bodyMin),b:Number(n.bodyMax)})}</span><textarea name="metin" rows="10" minlength="${Number(n.bodyMin)}" maxlength="${Number(
 n.bodyMax)}" required placeholder="${\u00E7("Haberini yaz; paragraflar\u0131 bo\u015F sat\u0131rla ay\u0131r.")}"></textarea><small id="makale-sayac">0 / ${sayi(n.bodyMax)}</small></label>
+      ${refSecenek}
       ${fotolar.length?`<label class="alan"><span>${\u00E7("Haber resmi (kendi Kare'lerinden)")}</span><select name="kare"><option value="">${\u00E7("Yok")}</option>${fotolar.map(p=>`<option value="${esc(
 p.photo_id)}">${esc(p.caption||Kare.sahneAdi(p.scene))} \xB7 ${esc(zamanOnce(p.created_at))}</option>`).join("")}</select></label>`:`<p class="kucuk">${\u00E7("Haber resmi i\xE7in \xF6nce bir Kare \xE7ek (Haya\
 t\u0131m \u2192 Medya).")}</p>`}
@@ -6332,15 +6011,16 @@ t\u0131m \u2192 Medya).")}</p>`}
 "Yok")}</option>`}${secenekler.map(o=>`<option value="${esc(o.offer_id)}" ${ilan&&o.offer_id===ilan.offer_id?"selected":""}>${esc(o.company??"")} \xB7 ${esc(varlikAdi(o.asset))} \xB7 ${\u00E7("{kr} kr\
 edi",{kr:kr(o.budget_cr)})}</option>`).join("")}</select></label>`:""}`,is:async d=>{const baslik=String(d.get("baslik")??"").trim(),metin=String(d.get("metin")??"").trim();if(baslik.length<Number(n.titleMin))
 throw new Error(\u00E7("Ba\u015Fl\u0131k en az {n} karakter olmal\u0131.",{n:Number(n.titleMin)}));if(metin.length<Number(n.bodyMin))throw new Error(\u00E7("Metin en az {n} karakter olmal\u0131.",{n:Number(
-n.bodyMin)}));try{await Sunucu.yap("article_publish",{p_title:baslik,p_body:metin,p_photo:d.get("kare")||null,p_sponsorship:d.get("ilan")||null})}catch(err){throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),
-err}tost(d.get("ilan")?\u00E7("Makale ve ilan yay\u0131mland\u0131; \xF6deme hesab\u0131na ge\xE7ti."):\u00E7("Makale yay\u0131mland\u0131."),"newspaper"),await sonra?.()}});const f=$(".perde:last-chi\
-ld form");$("textarea[name=metin]",f)?.addEventListener("input",e=>{$("#makale-sayac",f).textContent=`${e.target.value.length} / ${sayi(n.bodyMax)}`})}async function vaatYaz({sonra}={}){let k,kurallar;
-try{[k,kurallar]=await Promise.all([Sunucu.cagir("promise_sources"),Durum.kurallar()])}catch(e){tost(hataMetni(e),"circle-alert");return}const n=kurallar.data.social?.news??{titleMin:5,titleMax:120,bodyMin:50,
-bodyMax:8e3},pr=kurallar.data.media?.promise??{quoteMin:Number(k.quote_min??20),quoteMax:Number(k.quote_max??300)},partiler=k.parties??[],kayitlar=(k.records??[]).filter(r=>r.record_id);if(!k.has_newspaper||
-!partiler.length||!kayitlar.length){pencere({ust:\u00E7("Gazete"),baslik:\u00E7("Vaat kayd\u0131"),govde:`<p class="aciklama">${k.has_newspaper?partiler.length?\u00E7("\xDClkenin resm\xEE kay\u0131tlar\u0131nda kar\u015F\u0131\
-la\u015Ft\u0131r\u0131lacak bir kay\u0131t yok (yasalar, se\xE7imler, antla\u015Fmalar, sava\u015Flar, duyurular\u2026)."):\u00E7("\xDClkende program\u0131n\u0131 yazm\u0131\u015F bir parti yok. Partiler programlar\u0131n\u0131 \xDClkem\
- \u2192 Parti'de yazar."):\u00E7("Vaat kayd\u0131 bir gazete makalesidir: \xF6nce gazete kur.")}</p>`,dugmeler:[{ad:\u00E7("Kapat")}]});return}const kayitAdi=r=>{const m=resmiMetin(r)[1];return`${gunYaz(
-r.at)} \xB7 ${m.length>90?m.slice(0,89)+"\u2026":m}`},f=pencereForm({ust:\u00E7("Gazete"),baslik:\u00E7("Vaat kayd\u0131 yaz"),onayAd:\u00E7("Yay\u0131mla"),onayIkon:"send",govde:`
+n.bodyMin)}));const ref=String(d.get("ref")??""),ayrac=ref.indexOf(":");try{await Sunucu.yap("article_publish",{p_title:baslik,p_body:metin,p_photo:d.get("kare")||null,p_sponsorship:d.get("ilan")||null,
+p_ref_type:ayrac>0?ref.slice(0,ayrac):null,p_ref_id:ayrac>0?ref.slice(ayrac+1):null})}catch(err){throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),err}tost(d.get("ilan")?\u00E7("Makale ve ilan yay\u0131m\
+land\u0131; \xF6deme hesab\u0131na ge\xE7ti."):\u00E7("Makale yay\u0131mland\u0131."),"newspaper"),await sonra?.()}});const f=$(".perde:last-child form");$("textarea[name=metin]",f)?.addEventListener(
+"input",e=>{$("#makale-sayac",f).textContent=`${e.target.value.length} / ${sayi(n.bodyMax)}`})}async function vaatYaz({sonra}={}){let k,kurallar;try{[k,kurallar]=await Promise.all([Sunucu.cagir("promi\
+se_sources"),Durum.kurallar()])}catch(e){tost(hataMetni(e),"circle-alert");return}const n=kurallar.data.social?.news??{titleMin:5,titleMax:120,bodyMin:50,bodyMax:8e3},pr=kurallar.data.media?.promise??
+{quoteMin:Number(k.quote_min??20),quoteMax:Number(k.quote_max??300)},partiler=k.parties??[],kayitlar=(k.records??[]).filter(r=>r.record_id);if(!k.has_newspaper||!partiler.length||!kayitlar.length){pencere(
+{ust:\u00E7("Gazete"),baslik:\u00E7("Vaat kayd\u0131"),govde:`<p class="aciklama">${k.has_newspaper?partiler.length?\u00E7("\xDClkenin resm\xEE kay\u0131tlar\u0131nda kar\u015F\u0131la\u015Ft\u0131r\u0131lacak bir kay\u0131t yok (yasalar, se\xE7imle\
+r, antla\u015Fmalar, sava\u015Flar, duyurular\u2026)."):\u00E7("\xDClkende program\u0131n\u0131 yazm\u0131\u015F bir parti yok. Partiler programlar\u0131n\u0131 \xDClkem \u2192 Parti'de yazar."):\u00E7(
+"Vaat kayd\u0131 bir gazete makalesidir: \xF6nce gazete kur.")}</p>`,dugmeler:[{ad:\u00E7("Kapat")}]});return}const kayitAdi=r=>{const m=resmiMetin(r)[1];return`${gunYaz(r.at)} \xB7 ${m.length>90?m.slice(
+0,89)+"\u2026":m}`},f=pencereForm({ust:\u00E7("Gazete"),baslik:\u00E7("Vaat kayd\u0131 yaz"),onayAd:\u00E7("Yay\u0131mla"),onayIkon:"send",govde:`
       <p class="aciklama">${\u00E7("Bir partinin program\u0131ndaki vaadi \xFClkenin bir resm\xEE kayd\u0131yla kar\u015F\u0131la\u015Ft\u0131r. Al\u0131nt\u0131 programda aynen ge\xE7meli; makale kayd\u0131n o anki h\xE2lini ta\u015F\u0131r ve ona ba\u011Flant\u0131 verir. De\
 \u011Ferlendirme senindir; hakaret ve iftira topluluk kurallar\u0131na ayk\u0131r\u0131d\u0131r.")}</p>
       <label class="alan"><span>${\u00E7("Parti")}</span><select name="parti">${partiler.map(x=>`<option value="${esc(x.party_id)}">${esc(x.name)}${x.dissolved?" \xB7 "+esc(\u00E7("da\u011F\u0131ld\u0131")):
@@ -6408,83 +6088,168 @@ o.status)}">
 
       ${!benim&&!isletme&&o.status==="open"?o.eligible?`<button class="dugme kucuk-d" data-teklif-kabul="${esc(o.offer_id)}">${ikon("check")}${\u00E7("Kabul et")}</button>`:`<span class="kucuk">${esc(
 o.neden??"")}</span>`:""}
-    </span></div>`}Kabuk.gecikmeli("hayat/medya","ek_98j_medya");const KARE_SAHNE={square:{ad:\u00E7("Meydan"),ik:"trees",gok:"#CFE3F2",yer:"#8FB569",poz:["bekle","selamla"]},home:{ad:\u00E7("Ev"),ik:"\
-house",gok:"#F1E6D2",yer:"#B7865A",poz:["bekle","bekle"]},concert:{ad:\u00E7("Konser"),ik:"mic-vocal",gok:"#1E1A2E",yer:"#2E2838",poz:["dans","alkis"]},front:{ad:\u00E7("Cephe"),ik:"swords",gok:"#E6C9\
-A8",yer:"#B79B6C",poz:["selamver","bekle"]},friends:{ad:\u00E7("Arkada\u015Flar"),ik:"users-round",gok:"#E7DFD0",yer:"#B9C9C1",poz:["selamla","bekle"]},podium:{ad:\u00E7("K\xFCrs\xFC"),ik:"megaphone",
-gok:"#D8E6F0",yer:"#A9A396",poz:["yemin","alkis"]},travel:{ad:\u00E7("Yolculuk"),ik:"route",gok:"#F4DDB0",yer:"#B7A77A",poz:["yolcu","bekle"]},product:{ad:\u00E7("\xDCr\xFCn incelemesi"),ik:"package",
-gok:"#F3EEE4",yer:"#8E6F55",poz:["sahne","bekle"]},parliament:{ad:\u00E7("Meclis"),ik:"landmark",gok:"#E9E2D3",yer:"#7A2E2A",poz:["yemin","otur"]}},KARE_KAMERA={wide:\u00E7("Geni\u015F"),close:\u00E7(
-"Yak\u0131n"),top:\u00E7("Ku\u015Fbak\u0131\u015F\u0131")},KARE_URUN_DOKU=new Map,KARE_CERCEVE={none:\u00E7("\xC7er\xE7evesiz"),wood:\u00E7("Ah\u015Fap"),gold:\u00E7("Alt\u0131n"),film:\u00E7("Film"),
-polaroid:\u00E7("Anl\u0131k")},KARE_SUZGEC={none:\u00E7("Do\u011Fal"),warm:\u00E7("S\u0131cak"),cool:\u00E7("Serin"),mono:\u00E7("Siyah beyaz"),sepia:\u00E7("Sepya"),vivid:\u00E7("Canl\u0131")},KARE_YER=[
-[0,0],[-1.05,.25],[1.05,.25],[-2,.55],[2,.55],[-.55,-.85],[.55,-.85]],Kare=(()=>{let hazir=null,webglYok=!1;const onbellek=new Map,ONBELLEK_EN=80,bekleyen=new Map;function kur(THREE){const tuval=document.
-createElement("canvas");let renderer;try{renderer=new THREE.WebGLRenderer({canvas:tuval,antialias:!0,alpha:!1,preserveDrawingBuffer:!0,powerPreference:"low-power"})}catch{return null}renderer.shadowMap.
-enabled=!0,renderer.shadowMap.type=THREE.PCFSoftShadowMap,renderer.outputColorSpace=THREE.SRGBColorSpace,renderer.setPixelRatio(1);const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,4/3,
-.1,80),M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.
-set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m},silindir=(ust,r1,r2,yuk,mat,x,y,z)=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,yuk,14),mat);return m.position.set(x,y+yuk/
-2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m},kure=(ust,r,mat,x,y,z)=>{const m=new THREE.Mesh(new THREE.SphereGeometry(r,14,10),mat);return m.position.set(x,y,z),m.castShadow=!0,ust.add(m),m},
-hemi=new THREE.HemisphereLight(UC_RENK.gokIc,UC_RENK.yerIc,1.2),gunes=new THREE.DirectionalLight(UC_RENK.gunesIc,1.8);gunes.position.set(-3,7,6),gunes.castShadow=!0,gunes.shadow.mapSize.set(1024,1024),
-Object.assign(gunes.shadow.camera,{left:-5,right:5,top:5,bottom:-3,near:1,far:30}),sahne.add(hemi,gunes,gunes.target);const fonlar={},yer=renk=>{const m=new THREE.Mesh(new THREE.CircleGeometry(9,40),M(
-renk,{roughness:1}));return m.rotation.x=-Math.PI/2,m.receiveShadow=!0,m};{const g=new THREE.Group;g.add(yer(KARE_SAHNE.square.yer));const havuz=silindir(g,1.3,1.3,.3,M("#D9D2C2"),0,0,-3.2);havuz.receiveShadow=
-!0;const su=new THREE.Mesh(new THREE.CircleGeometry(1.1,28),M("#7FB7D9",{roughness:.2,metalness:.1}));su.rotation.x=-Math.PI/2,su.position.set(0,.31,-3.2),g.add(su);for(const[x,z,h]of[[-3.4,-2.2,1],[3.2,
--2.6,1.15],[-4.6,.2,.9]])silindir(g,.12,.16,1.2*h,M("#7A5436"),x,0,z),kure(g,.9*h,M("#4F8A46"),x,1.6*h,z),kure(g,.6*h,M("#5E9C50"),x+.4*h,2*h,z-.2);kutu(g,1.6,.08,.45,M("#8A6A4A"),3,.42,.4),kutu(g,1.6,
-.42,.08,M("#8A6A4A"),3,.5,.2);for(const x of[2.35,3.65])kutu(g,.08,.42,.45,M("#5A4A40"),x,0,.4);fonlar.square=g}{const g=new THREE.Group,zemin=new THREE.Mesh(new THREE.PlaneGeometry(9,7),M(KARE_SAHNE.
-home.yer,{roughness:.9}));zemin.rotation.x=-Math.PI/2,zemin.position.z=-.5,zemin.receiveShadow=!0,g.add(zemin),kutu(g,9,3,.1,M("#EFE3CF"),0,0,-3.5),kutu(g,1.6,1.2,.06,M("#CFE3F2",{emissive:new THREE.Color(
-"#BFD9EE"),emissiveIntensity:.5}),-1.8,1.2,-3.44),kutu(g,1.7,.08,.1,M("#F7F2E6"),-1.8,1.15,-3.4),kutu(g,2.2,.45,.9,M("#9A5A4A"),2.2,0,-2.6),kutu(g,2.2,.5,.25,M("#9A5A4A"),2.2,.45,-2.95);for(const x of[
-1.25,3.15])kutu(g,.2,.3,.9,M("#8A4A3A"),x,.45,-2.6);silindir(g,.28,.2,.5,M("#5B7D6A"),-3.2,0,-2.6),kure(g,.45,M("#6C9E6F"),-3.2,.85,-2.6),fonlar.home=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.concert.
-yer)),kutu(g,7,.5,3.5,M("#3B3246"),0,-.02,-3);for(const[x,renk]of[[-2.6,"#E66A6A"],[0,"#F2D06B"],[2.6,"#6AA7E6"]]){kutu(g,.12,3.4,.12,M("#2A2530"),x,.48,-4.5);const k=new THREE.Mesh(new THREE.ConeGeometry(
-.9,3,18,1,!0),new THREE.MeshBasicMaterial({color:renk,transparent:!0,opacity:.22,side:THREE.DoubleSide,depthWrite:!1}));k.position.set(x,2.2,-3.4),k.rotation.x=.35,g.add(k),kure(g,.14,new THREE.MeshBasicMaterial(
-{color:renk}),x,3.85,-4.5)}for(const x of[-1,1])kutu(g,.5,.7,.4,M("#1E1A24"),x,.48,-4.2);fonlar.concert=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.front.yer));for(let s=0;s<3;s++)for(let i=0;i<6;i++){
-const m=kutu(g,.62,.3,.38,M(s%2?"#9C8A66":"#A89670"),-1.9+i*.7+s%2*.35,s*.3,-2.4);m.rotation.y=(i%2?1:-1)*.05}silindir(g,.04,.05,3.2,M("#5A4A40"),3.1,0,-2),kutu(g,.9,.55,.03,M("#C8322F"),3.56,2.6,-2);
-const cadir=new THREE.Mesh(new THREE.ConeGeometry(1.3,1.3,4),M("#6E7B5A"));cadir.position.set(-3.6,.65,-3),cadir.rotation.y=Math.PI/4,cadir.castShadow=!0,g.add(cadir),fonlar.front=g}{const g=new THREE.
-Group,fonMat=M(KARE_SAHNE.friends.yer,{roughness:1}),fon=new THREE.Mesh(new THREE.CylinderGeometry(1.2,1.2,8,24,1,!0,Math.PI,Math.PI/2).rotateZ(Math.PI/2),fonMat);fon.material.side=THREE.DoubleSide,fon.
-position.set(0,1.2,-2),fon.receiveShadow=!0,g.add(fon),kutu(g,8,3.4,.05,fonMat,0,1.2,-3.2);const taban=new THREE.Mesh(new THREE.PlaneGeometry(8,6),fonMat);taban.rotation.x=-Math.PI/2,taban.position.z=
-.6,taban.receiveShadow=!0,g.add(taban);for(const x of[-3.2,3.2]){kutu(g,.04,1.9,.04,M("#3A3633"),x,0,.8);const s=new THREE.Mesh(new THREE.ConeGeometry(.4,.3,16,1,!0),M("#F7F2E6",{side:THREE.DoubleSide,
-emissive:new THREE.Color("#FFF1D8"),emissiveIntensity:.4}));s.position.set(x,1.95,.8),s.rotation.x=Math.PI*.6,s.rotation.z=x<0?-.5:.5,g.add(s)}fonlar.friends=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.
-podium.yer)),kutu(g,7,.25,4,M("#C9C2B4"),0,-.02,-1.5),kutu(g,1.1,1.05,.5,M("#7A5436"),0,.23,-.65),kutu(g,1.3,.08,.6,M("#8A6A4A"),0,1.28,-.62),silindir(g,.02,.02,.4,M("#3A3633"),.25,1.36,-.55),kure(g,.06,
-M("#2E3238"),.25,1.8,-.55);for(const x of[-2.6,2.6])silindir(g,.04,.05,3,M("#5A4A40"),x,.2,-3),kutu(g,.9,.55,.03,M(x<0?"#C8322F":"#2F5D8A"),x+.46,2.6,-3);kutu(g,5.5,.12,.5,M("#8A6A4A"),0,.22,-3.3),fonlar.
-podium=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.travel.yer));const yol=new THREE.Mesh(new THREE.PlaneGeometry(2.6,14),M("#9C9388",{roughness:1}));yol.rotation.x=-Math.PI/2,yol.position.set(.3,.01,
--3),yol.rotation.z=.08,yol.receiveShadow=!0,g.add(yol);for(const[x,z,r,renk]of[[-4.2,-5.5,2.4,"#7FA06A"],[3.8,-6.5,3,"#6E9460"],[.5,-8,2.2,"#86A872"]]){const t=new THREE.Mesh(new THREE.SphereGeometry(
-r,18,12),M(renk));t.position.set(x,-r*.55,z),t.receiveShadow=!0,g.add(t)}kutu(g,.3,.6,.3,M("#E8E2D6"),-1.6,0,-1.2),silindir(g,.04,.05,2.2,M("#5A4A40"),2.2,0,-2.2),kutu(g,1.1,.3,.05,M("#F2D06B"),2.5,1.8,
--2.2),fonlar.travel=g}{const g=new THREE.Group,zemin=new THREE.Mesh(new THREE.PlaneGeometry(9,7),M(KARE_SAHNE.product.yer,{roughness:.9}));zemin.rotation.x=-Math.PI/2,zemin.position.z=-.5,zemin.receiveShadow=
-!0,g.add(zemin),kutu(g,9,3,.1,M("#EFE3CF"),0,0,-3.5),kutu(g,2.2,.08,1,M("#8A6A4A"),1.35,.72,-1.2);for(const[x,z]of[[.35,-1.6],[2.35,-1.6],[.35,-.8],[2.35,-.8]])kutu(g,.08,.72,.08,M("#5B3D28"),x,0,z);const urun=new THREE.
-Mesh(new THREE.PlaneGeometry(.95,.95),new THREE.MeshBasicMaterial({transparent:!0,side:THREE.DoubleSide}));urun.position.set(1.35,1.28,-1.2),urun.visible=!1,g.add(urun),kutu(g,.9,.35,.55,M("#C9B458"),
--2.6,0,-2.4),fonlar.product=g,fonlar.product.userData.urun=urun}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.parliament.yer));for(let i=0;i<3;i++){const r=2.6+i*.9,sira=new THREE.Mesh(new THREE.TorusGeometry(
-r,.22,8,40,Math.PI*.8).rotateX(Math.PI/2).rotateZ(Math.PI*.1),M("#5B3D28"));sira.position.set(0,.3+i*.22,-3.2),sira.castShadow=!0,g.add(sira)}kutu(g,1.4,1,.6,M("#7A5436"),0,0,-1.4),kutu(g,1.6,.08,.7,M(
-"#8A6A4A"),0,1,-1.4);for(const x of[-3.2,-1.1,1.1,3.2])silindir(g,.18,.2,3.2,M("#E8E2D6"),x,0,-5.5);kutu(g,8.5,.3,.6,M("#D9D2C2"),0,3.2,-5.5),fonlar.parliament=g}for(const g of Object.values(fonlar))g.
-visible=!1,sahne.add(g);const figurler=KARE_YER.map(()=>{const fp=figurParcasi(THREE);return fp.grup.visible=!1,sahne.add(fp.grup),fp});return hazir={THREE,renderer,sahne,kamera,figurler,fonlar,hemi,gunes},
-hazir}async function urunDokusu(THREE,urunId){if(!urunId||!URUN[urunId])return null;if(KARE_URUN_DOKU.has(urunId))return KARE_URUN_DOKU.get(urunId);const soz=new THREE.TextureLoader().loadAsync(urunResim(
-urunId)).then(t=>(t.colorSpace=THREE.SRGBColorSpace,t)).catch(()=>null);return KARE_URUN_DOKU.set(urunId,soz),soz}const figurVeri=f=>({anahtar:f?.character_id??"",ad:f?.name??"?",gorunus:f?.look??null,
-ulke:f?.country_id??null,rutbe:{sira:Number(f?.rank??0),sayi:12},ek:null});function sahneyiKur(h,foto,urunDoku=null){const{THREE,sahne,kamera,figurler,fonlar}=h,S=KARE_SAHNE[foto.scene]??KARE_SAHNE.square;
-for(const[k,g]of Object.entries(fonlar))g.visible=k===(KARE_SAHNE[foto.scene]?foto.scene:"square");sahne.background=new THREE.Color(S.gok),h.hemi.intensity=foto.scene==="concert"?.55:1.2,h.gunes.intensity=
-foto.scene==="concert"?.9:1.8;const urun=fonlar.product.userData.urun;urun.visible=foto.scene==="product"&&!!urunDoku,urun.visible&&(urun.material.map=urunDoku,urun.material.needsUpdate=!0);const kisiler=[
-foto.author_figure,...foto.figures??[]].filter(Boolean).slice(0,KARE_YER.length),noktalar=[];let tohum=0;for(const c of String(foto.photo_id??""))tohum=(tohum*31+c.charCodeAt(0))%2147483647;const rnd=()=>(tohum=
-(tohum*1103515245+12345)%2147483648,tohum/2147483648);figurler.forEach((fp,i)=>{const k=kisiler[i];if(fp.grup.visible=!!k,!k)return;const[x,z]=KARE_YER[i];fp.kur(figurVeri(k)),fp.grup.scale.setScalar(
-.6),fp.grup.position.set(x,(foto.scene==="concert"&&i>0,0),z),fp.grup.rotation.y=-x*.12;const poz=S.poz[i===0||rnd()<.5?0:1];fp.pozla(poz,.42+rnd()*.16,.6+rnd(),!1,!0),noktalar.push(new THREE.Vector3(
-x-.55,0,z),new THREE.Vector3(x+.55,0,z),new THREE.Vector3(x,1.6,z))}),noktalar.length||noktalar.push(new THREE.Vector3(-1,0,0),new THREE.Vector3(1,1.2,0)),foto.scene==="product"&&noktalar.push(new THREE.
-Vector3(.85,.75,-1.2),new THREE.Vector3(1.85,1.78,-1.2));const yon=foto.camera==="top"?new THREE.Vector3(0,1.6,1).normalize():foto.camera==="close"?new THREE.Vector3(.12,.25,1).normalize():foto.camera===
-"pan"?new THREE.Vector3(.35,.28,1).normalize():new THREE.Vector3(0,.3,1).normalize();kamera.fov=foto.camera==="close"?24:foto.camera==="pan"?34:30;const nk=foto.camera==="close"?noktalar.map(p=>new THREE.
-Vector3(p.x,Math.max(p.y,.6),p.z)):noktalar;kameraSigdir(THREE,kamera,nk,yon,{x:foto.camera==="pan"?.8:.9,ust:.9,alt:foto.camera==="top"?-.9:-.97})}async function ciz(foto,gen=640,yuk=480){const anahtar=`${foto.
-photo_id??JSON.stringify([foto.scene,foto.camera,(foto.figures??[]).map(f=>f.character_id),foto.author_figure?.character_id,foto.author_figure?.look,foto.product?.product_id])}|${gen}x${yuk}`;if(onbellek.
-has(anahtar)){const v=onbellek.get(anahtar);return onbellek.delete(anahtar),onbellek.set(anahtar,v),v}if(bekleyen.has(anahtar))return bekleyen.get(anahtar);const soz=(async()=>{if(webglYok||!Gorunum.webglVar())
-return null;let h=hazir;if(!h){const{THREE}=await Uc.yukle("98k_kare.js");if(h=hazir??kur(THREE),!h)return webglYok=!0,null}const urunDoku=foto.scene==="product"?await urunDokusu(h.THREE,foto.product?.
-product_id):null;try{h.renderer.setSize(gen,yuk,!1),h.kamera.aspect=gen/yuk,sahneyiKur(h,foto,urunDoku),h.renderer.render(h.sahne,h.kamera);const url=h.renderer.domElement.toDataURL("image/webp",.86);
-return foto.photo_id&&(onbellek.set(anahtar,url),onbellek.size>ONBELLEK_EN&&onbellek.delete(onbellek.keys().next().value)),url}catch(e){return console.warn("Kare \xE7izilemedi:",e),null}})();bekleyen.
-set(anahtar,soz);try{return await soz}finally{bekleyen.delete(anahtar)}}function poster2b(foto){const S=KARE_SAHNE[foto.scene]??KARE_SAHNE.square,kisiler=[foto.author_figure,...foto.figures??[]].filter(
-Boolean).slice(0,6);return`<div class="kare-poster" style="--kare-gok:${S.gok};--kare-yer:${S.yer}" aria-hidden="true">
+    </span></div>`}function gazeteciKartiHtml(k,m){const j=k?.journalism;if(!j)return"";const g=k.newspaper??null,sahip=g?.my_role==="yayin_yonetmeni",uye=g&&!sahip,kalan=j.next?\u00E7("{basamak} i\xE7in\
+ {m} makale ve {o} okunma gerek (sende {sm} / {so}).",{basamak:GAZETECI_BASAMAK[j.next.id]??j.next.id,m:Number(j.next.articles),o:sayi(j.next.views),sm:Number(j.articles??0),so:sayi(j.views??0)}):\u00E7(
+"En \xFCst basamaktas\u0131n."),davetler=k.invites??[],ekip=g?.staff??[],bekleyen=g?.invited??[],dolu=ekip.length+bekleyen.length>=Number(g?.staff_max??8);return`<section class="kart" id="medya-gazete\
+ci">
+    <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Gazeteci kariyeri")}</p><h2 class="b2">${esc(GAZETECI_BASAMAK[j.step]??j.step)}${j.role?` \xB7 ${esc(GAZETE_ROL[j.role]??j.role)}`:""}</h2>\
+</div><span class="ik-kutu">${ikon("notebook-pen")}</span></div>
+    <p class="kucuk">${\u00E7("{n} makale \xB7 {o} okunma",{n:Number(j.articles??0),o:sayi(j.views??0)})} \xB7 ${esc(kalan)}</p>
+    <p class="kucuk">${\u00E7("Basamaklar: muhabir \u2192 k\u0131demli muhabir ({a} makale, {b} okunma) \u2192 edit\xF6r ({c} makale, {d} okunma). Basamak unvand\u0131r: g\xFC\xE7 ya da oy vermez; gazetenin sahibi yay\u0131n y\xF6netmeni\
+dir.",{a:Number(j.steps?.[1]?.articles??10),b:sayi(j.steps?.[1]?.views??200),c:Number(j.steps?.[2]?.articles??30),d:sayi(j.steps?.[2]?.views??1500)})}</p>
+    ${davetler.length?`<p class="ust-yazi" style="margin-top:12px">${\u00E7("Gelen davetler")}</p><div class="yigin">${davetler.map(d=>`<div class="ilk-adim" data-davet="${esc(d.staff_id)}"><span clas\
+s="ozet-ikon" style="background:var(--kagit-3)">${ikon("inbox")}</span>
+        <span><b>${esc(d.newspaper)}</b><span class="kucuk">${\u00E7("{ad} seni {rol} olarak \xE7a\u011F\u0131rd\u0131 \xB7 son yan\u0131t {zaman}",{ad:esc(d.from??""),rol:GAZETE_ROL[d.role]??d.role,zaman:saatYaz(
+d.expires_at)})}</span></span>
+        <span class="satir" style="gap:6px"><button class="dugme altin kucuk-d" data-davet-kabul="${esc(d.staff_id)}">${ikon("check")}${\u00E7("Kabul et")}</button><button class="dugme sade kucuk-d" d\
+ata-davet-ret="${esc(d.staff_id)}">${\u00E7("Reddet")}</button></span></div>`).join("")}</div>`:""}
+    ${uye?`<div class="bilgi-kutusu" style="margin-top:12px">${ikon("newspaper")}<span>${\u00E7("{gazete} gazetesinin ekibindesin ({rol}): makalelerin o gazetede yay\u0131mlan\u0131r.",{gazete:esc(g.name),
+rol:esc(GAZETE_ROL[g.my_role]??g.my_role)})}</span>
+      <span class="satir" style="gap:6px"><button class="dugme sade kucuk-d" data-gazete-ac="${esc(g.newspaper_id)}">${\u00E7("Gazeteyi a\xE7")}</button><button class="dugme ikincil kucuk-d" data-ekip\
+-ayril="${esc(k.my_staff_id??"")}">${ikon("log-out")}${\u00E7("Ekipten ayr\u0131l")}</button></span></div>`:""}
+    ${sahip?`<p class="ust-yazi" style="margin-top:12px">${\u00E7("Yaz\u0131 i\u015Fleri \xB7 {n} / {m}",{n:ekip.length+bekleyen.length,m:Number(g.staff_max??8)})}</p>
+      <p class="kucuk">${\u00E7("\xDClkenden vatanda\u015Flar\u0131 muhabir ya da edit\xF6r olarak \xE7a\u011F\u0131r; ekiptekiler gazetende makale yay\u0131mlar. Davet {s} saat ge\xE7erli; ekip davetlerle birlikte en \xE7ok {m} ki\u015Fi.",
+{s:72,m:Number(g.staff_max??8)})}</p>
+      <div class="yigin" style="margin-top:8px">${ekip.map(x=>`<div class="ilk-adim" data-ekip="${esc(x.staff_id)}"><span class="ozet-ikon" style="background:var(--kagit-3)">${ikon("user-round")}</spa\
+n>
+          <span><b><button class="baglanti" type="button" data-profil="${esc(x.character_id)}">${esc(x.name)}</button></b><span class="kucuk">${esc(GAZETE_ROL[x.role]??x.role)} \xB7 ${\u00E7("{n} maka\
+le",{n:Number(x.articles??0)})} \xB7 ${\u00E7("kat\u0131ld\u0131 {zaman}",{zaman:zamanOnce(x.joined_at)})}</span></span>
+          <span class="satir" style="gap:6px"><button class="dugme sade kucuk-d" data-ekip-rol="${esc(x.staff_id)}" data-rol="${x.role==="editor"?"muhabir":"editor"}">${x.role==="editor"?\u00E7("Muhab\
+ir yap"):\u00E7("Edit\xF6r yap")}</button><button class="dugme ikincil kucuk-d" data-ekip-cikar="${esc(x.staff_id)}" data-ad="${esc(x.name)}">${\u00E7("\xC7\u0131kar")}</button></span></div>`).join("")}\
+
+        ${bekleyen.map(x=>`<div class="ilk-adim" data-ekip-davet="${esc(x.staff_id)}"><span class="ozet-ikon" style="background:var(--kagit-3)">${ikon("hourglass")}</span>
+          <span><b>${esc(x.name)}</b><span class="kucuk">${\u00E7("davet bekliyor ({rol}) \xB7 son yan\u0131t {zaman}",{rol:GAZETE_ROL[x.role]??x.role,zaman:saatYaz(x.expires_at)})}</span></span>
+          <button class="dugme sade kucuk-d" data-ekip-geri="${esc(x.staff_id)}">${\u00E7("Geri \xE7ek")}</button></div>`).join("")}
+        ${!ekip.length&&!bekleyen.length?`<p class="bos">${\u00E7("Hen\xFCz ekibin yok. Bir muhabir \xE7a\u011F\u0131r: gazeten daha s\u0131k \xE7\u0131kar.")}</p>`:""}</div>
+      <button class="dugme kucuk-d" style="margin-top:8px" id="medya-ekip-cagir" ${dolu?"disabled":""}>${ikon("user-round-plus")}${\u00E7("Ekibe \xE7a\u011F\u0131r")}</button>`:""}
+  </section>`}function platformKartiHtml(k){const p=k?.platform;if(!p?.rule)return"";const r=p.rule,d=p.yesterday;return`<section class="kart" id="medya-platform">
+    <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Platform pay\u0131")}</p><h2 class="b2">${d?\u00E7("D\xFCn {kr} kredi",{kr:kr(d.paid_cr??0)}):\u00E7("D\xFCn pay yok")}</h2></div><span cla\
+ss="ik-kutu">${ikon("coins")}</span></div>
+    <p class="kucuk">${d?\u00E7("D\xFCn ({gun}): {i} tekil izlenme, {a} alk\u0131\u015F \u2192 hak {h} kredi, \xF6denen {o} kredi.",{gun:gunYaz(d.day),i:Number(d.video_views??0),a:Number(d.applause??0),
+h:kr(d.raw_cr??0),o:kr(d.paid_cr??0)}):\u00E7("D\xFCn videolar\u0131n izlenmedi ya da alk\u0131\u015Flanmad\u0131; pay g\xFCnde bir, d\xFCn\xFCn say\u0131lar\u0131ndan hesaplan\u0131r.")} ${\u00E7("So\
+n 30 g\xFCn: {kr} kredi.",{kr:kr(p.total_30d_cr??0)})}</p>
+    <p class="kucuk">${\u00E7("Kanal her tekil izlenme i\xE7in {i} kredi, her alk\u0131\u015F (video ve Kare) i\xE7in {a} kredi \xF6der; g\xFCnde en az {m} izlenme gerekir, ki\u015Fi ba\u015F\u0131na en \xE7ok {t} kredi. \xDClkenin g\xFCnl\xFCk topl\
+am\u0131 etkin oyuncu ba\u015F\u0131na {u} krediyle s\u0131n\u0131rl\u0131d\u0131r: a\u015F\u0131l\u0131rsa herkesin pay\u0131 ayn\u0131 oranla k\u0131s\u0131l\u0131r. Yeni para, tavanl\u0131; takip\xE7i sat\u0131n al\u0131nmaz, g\xFC\xE7 ya da oy vermez.",
+{i:kr(r.perViewCr??0),a:kr(r.perApplauseCr??0),m:Number(r.minViews??0),t:kr(r.maxDailyCr??0),u:kr(r.perActiveCapCr??0)})}</p>
+  </section>`}function ekibeCagir(k,sonra){const g=k?.newspaper;if(!g)return;pencere({ust:g.name,baslik:\u00E7("Ekibe \xE7a\u011F\u0131r"),govde:`
+    <p class="aciklama">${\u00E7("\xDClkenden bir vatanda\u015F\u0131 muhabir ya da edit\xF6r olarak \xE7a\u011F\u0131r. Kendi gazetesi ya da ba\u015Fka bir ekibi olan \xE7a\u011Fr\u0131lamaz. Davet 72 saat ge\xE7erli.")}\
+</p>
+    <form class="satir" id="ekip-ara" style="gap:8px" novalidate><input name="q" placeholder="${esc(\u00E7("Oyuncunun ad\u0131"))}" minlength="2" style="flex:1" autocomplete="off"><button class="dugme\
+ kucuk-d" type="submit">${ikon("binoculars")}${\u00E7("Ara")}</button></form>
+    <fieldset class="alan" style="margin-top:8px"><legend>${\u00E7("Rol")}</legend><div class="cip-satir" role="radiogroup"><label class="cip-dugme"><input type="radio" name="rol" value="muhabir" chec\
+ked>${ikon("pencil")}${\u00E7("Muhabir")}</label><label class="cip-dugme"><input type="radio" name="rol" value="editor">${ikon("notebook-pen")}${\u00E7("Edit\xF6r")}</label></div></fieldset>
+    <div class="yigin" id="ekip-ara-sonuc" style="margin-top:8px"></div>`,dugmeler:[{ad:\u00E7("Kapat")}]});const perde=$(".perde:last-child"),sonuc=$("#ekip-ara-sonuc",perde),rol=()=>$("input[name=ro\
+l]:checked",perde)?.value??"muhabir";$("#ekip-ara",perde).addEventListener("submit",async e=>{e.preventDefault();const q=String(new FormData(e.target).get("q")??"").trim();if(q.length<2){tost(\u00E7("\
+En az 2 harf yaz."),"circle-alert");return}try{const liste=(await Sunucu.cagir("character_search",{p_query:q})).filter(x=>x.character_id!==(Durum.v.ozet?.character?.id??""));sonuc.innerHTML=liste.length?
+liste.map(x=>`<div class="ilk-adim"><span class="ozet-ikon" style="background:var(--kagit-3)">${ikon("user-round")}</span><span><b>${esc(x.name)}</b><span class="kucuk">${esc(ulkeAdi(x.country_id??x.citizenship_country_id??
+""))}</span></span>
+        <button class="dugme altin kucuk-d" data-cagir="${esc(x.character_id)}" data-ad="${esc(x.name)}">${ikon("user-round-plus")}${\u00E7("\xC7a\u011F\u0131r")}</button></div>`).join(""):`<p class="\
+bos">${\u00E7("Bu adda oyuncu bulunamad\u0131.")}</p>`;for(const b of $$("[data-cagir]",sonuc))b.onclick=async()=>{b.disabled=!0;try{await Sunucu.yap("newspaper_invite",{p_character:b.dataset.cagir,p_role:rol()}),
+tost(\u00E7("{ad} ekibe \xE7a\u011Fr\u0131ld\u0131 ({rol}).",{ad:b.dataset.ad,rol:GAZETE_ROL[rol()]??rol()}),"user-round-plus"),await sonra?.()}catch(err){b.disabled=!1,tost(hataMetni(err),"circle-ale\
+rt")}}}catch(err){tost(hataMetni(err),"circle-alert")}})}function gazeteciBagla(kap,k,tazele){const kutu=$("#medya-gazeteci",kap);if(kutu){for(const b of $$("[data-profil]",kutu))b.onclick=()=>profilAc(
+b.dataset.profil,tazele);for(const b of $$("[data-gazete-ac]",kutu))b.onclick=()=>gazeteAc(b.dataset.gazeteAc,tazele);for(const b of $$("[data-davet-kabul]",kutu))b.onclick=async()=>{try{const r=await Sunucu.
+yap("newspaper_invite_answer",{p_staff:b.dataset.davetKabul,p_accept:!0});tost(\u00E7("{gazete} ekibine kat\u0131ld\u0131n ({rol}).",{gazete:r.newspaper??"",rol:GAZETE_ROL[r.role]??r.role??""}),"newsp\
+aper")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()};for(const b of $$("[data-davet-ret]",kutu))b.onclick=async()=>{try{await Sunucu.yap("newspaper_invite_answer",{p_staff:b.dataset.davetRet,
+p_accept:!1}),tost(\u00E7("Davet reddedildi."),"x")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()};$("[data-ekip-ayril]",kutu)?.addEventListener("click",()=>pencere({ust:\u00E7("Gazete"),baslik:\u00E7(
+"Ekipten ayr\u0131l"),govde:`<p class="aciklama">${\u00E7("Ayr\u0131l\u0131nca o gazetede makale yay\u0131mlayamazs\u0131n; yazd\u0131klar\u0131n kal\u0131r. Yeniden \xE7a\u011Fr\u0131labilirsin ya da kendi gazeteni kurabilirsin.")}\
+</p>`,dugmeler:[{ad:\u00E7("Kals\u0131n")},{ad:\u00E7("Ayr\u0131l"),sinif:"mercan",ikon:"log-out",is:async()=>{try{await Sunucu.yap("newspaper_staff_remove",{p_staff:k.my_staff_id}),tost(\u00E7("Ekipt\
+en ayr\u0131ld\u0131n."),"log-out")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}}]})),$("#medya-ekip-cagir",kap)?.addEventListener("click",()=>ekibeCagir(k,tazele));for(const b of $$("[d\
+ata-ekip-rol]",kutu))b.onclick=async()=>{try{await Sunucu.yap("newspaper_role_set",{p_staff:b.dataset.ekipRol,p_role:b.dataset.rol}),tost(\u00E7("Rol de\u011Fi\u015Fti: {rol}.",{rol:GAZETE_ROL[b.dataset.
+rol]??b.dataset.rol}),"badge-check")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()};for(const b of $$("[data-ekip-cikar]",kutu))b.onclick=()=>pencere({ust:\u00E7("Yaz\u0131 i\u015Fleri"),baslik:\u00E7(
+"Ekipten \xE7\u0131kar: {ad}",{ad:b.dataset.ad}),govde:`<p class="aciklama">${\u00E7("\xC7\u0131kar\u0131lan ki\u015Fi gazetende yazamaz; yazd\u0131klar\u0131 kal\u0131r. Yeniden \xE7a\u011F\u0131rabilirsin.")}\
+</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("\xC7\u0131kar"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("newspaper_staff_remove",{p_staff:b.dataset.ekipCikar}),tost(\u00E7("{ad} ekipten \
+\xE7\u0131kar\u0131ld\u0131.",{ad:b.dataset.ad}),"door-open")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}}]});for(const b of $$("[data-ekip-geri]",kutu))b.onclick=async()=>{try{await Sunucu.
+yap("newspaper_staff_remove",{p_staff:b.dataset.ekipGeri}),tost(\u00E7("Davet geri \xE7ekildi."),"undo-2")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}}}Kabuk.gecikmeli("hayat/medya","ek\
+_98j_medya");const KARE_SAHNE={square:{ad:\u00E7("Meydan"),ik:"trees",gok:"#CFE3F2",yer:"#8FB569",poz:["bekle","selamla"]},home:{ad:\u00E7("Ev"),ik:"house",gok:"#F1E6D2",yer:"#B7865A",poz:["bekle","be\
+kle"]},concert:{ad:\u00E7("Konser"),ik:"mic-vocal",gok:"#1E1A2E",yer:"#2E2838",poz:["dans","alkis"]},front:{ad:\u00E7("Cephe"),ik:"swords",gok:"#E6C9A8",yer:"#B79B6C",poz:["selamver","bekle"]},friends:{
+ad:\u00E7("Arkada\u015Flar"),ik:"users-round",gok:"#E7DFD0",yer:"#B9C9C1",poz:["selamla","bekle"]},city:{ad:\u00E7("\u015Eehir"),ik:"building",gok:"#DCEAF3",yer:"#B9B8AB",poz:["selamla","bekle"]},venue:{
+ad:\u00E7("Mek\xE2n"),ik:"sofa",gok:"#EEE0CB",yer:"#967B63",poz:["bekle","alkis"]},stadium:{ad:\u00E7("Stadyum"),ik:"goal",gok:"#C5DFF1",yer:"#64A065",poz:["selamver","alkis"]},festival:{ad:\u00E7("Fe\
+stival"),ik:"tent",gok:"#EBD8EB",yer:"#90AC77",poz:["dans","alkis"]},gym:{ad:\u00E7("Spor salonu"),ik:"dumbbell",gok:"#DEE9E5",yer:"#6E8586",poz:["bekle","selamver"]},cafe:{ad:\u00E7("Kahvehane"),ik:"\
+coffee",gok:"#F0E1C5",yer:"#A78462",poz:["bekle","selamla"]},podium:{ad:\u00E7("K\xFCrs\xFC"),ik:"megaphone",gok:"#D8E6F0",yer:"#A9A396",poz:["yemin","alkis"]},travel:{ad:\u00E7("Yolculuk"),ik:"route",
+gok:"#F4DDB0",yer:"#B7A77A",poz:["yolcu","bekle"]},product:{ad:\u00E7("\xDCr\xFCn incelemesi"),ik:"package",gok:"#F3EEE4",yer:"#8E6F55",poz:["sahne","bekle"]},parliament:{ad:\u00E7("Meclis"),ik:"landm\
+ark",gok:"#E9E2D3",yer:"#7A2E2A",poz:["yemin","otur"]}},KARE_KAMERA={wide:\u00E7("Geni\u015F"),close:\u00E7("Yak\u0131n"),top:\u00E7("Ku\u015Fbak\u0131\u015F\u0131")},KARE_URUN_DOKU=new Map,KARE_CERCEVE={
+none:\u00E7("\xC7er\xE7evesiz"),wood:\u00E7("Ah\u015Fap"),gold:\u00E7("Alt\u0131n"),film:\u00E7("Film"),polaroid:\u00E7("Anl\u0131k")},KARE_SUZGEC={none:\u00E7("Do\u011Fal"),warm:\u00E7("S\u0131cak"),
+cool:\u00E7("Serin"),mono:\u00E7("Siyah beyaz"),sepia:\u00E7("Sepya"),vivid:\u00E7("Canl\u0131")},KARE_YER=[[0,0],[-1.05,.25],[1.05,.25],[-2,.55],[2,.55],[-.55,-.85],[.55,-.85]],Kare=(()=>{let hazir=null,
+webglYok=!1;const onbellek=new Map,ONBELLEK_EN=80,bekleyen=new Map;function kur(THREE){const tuval=document.createElement("canvas");let renderer;try{renderer=new THREE.WebGLRenderer({canvas:tuval,antialias:!0,
+alpha:!1,preserveDrawingBuffer:!0,powerPreference:"low-power"})}catch{return null}renderer.shadowMap.enabled=!0,renderer.shadowMap.type=THREE.PCFSoftShadowMap,renderer.outputColorSpace=THREE.SRGBColorSpace,
+renderer.setPixelRatio(1);const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,4/3,.1,80),M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{
+const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m},silindir=(ust,r1,r2,yuk,mat,x,y,z)=>{const m=new THREE.Mesh(
+new THREE.CylinderGeometry(r1,r2,yuk,14),mat);return m.position.set(x,y+yuk/2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m},kure=(ust,r,mat,x,y,z)=>{const m=new THREE.Mesh(new THREE.SphereGeometry(
+r,14,10),mat);return m.position.set(x,y,z),m.castShadow=!0,ust.add(m),m},hemi=new THREE.HemisphereLight(UC_RENK.gokIc,UC_RENK.yerIc,1.2),gunes=new THREE.DirectionalLight(UC_RENK.gunesIc,1.8);gunes.position.
+set(-3,7,6),gunes.castShadow=!0,gunes.shadow.mapSize.set(1024,1024),Object.assign(gunes.shadow.camera,{left:-5,right:5,top:5,bottom:-3,near:1,far:30}),sahne.add(hemi,gunes,gunes.target);const fonlar={},
+yer=renk=>{const m=new THREE.Mesh(new THREE.CircleGeometry(9,40),M(renk,{roughness:1}));return m.rotation.x=-Math.PI/2,m.receiveShadow=!0,m};{const g=new THREE.Group;g.add(yer(KARE_SAHNE.square.yer));
+const havuz=silindir(g,1.3,1.3,.3,M("#D9D2C2"),0,0,-3.2);havuz.receiveShadow=!0;const su=new THREE.Mesh(new THREE.CircleGeometry(1.1,28),M("#7FB7D9",{roughness:.2,metalness:.1}));su.rotation.x=-Math.PI/
+2,su.position.set(0,.31,-3.2),g.add(su);for(const[x,z,h]of[[-3.4,-2.2,1],[3.2,-2.6,1.15],[-4.6,.2,.9]])silindir(g,.12,.16,1.2*h,M("#7A5436"),x,0,z),kure(g,.9*h,M("#4F8A46"),x,1.6*h,z),kure(g,.6*h,M("#\
+5E9C50"),x+.4*h,2*h,z-.2);kutu(g,1.6,.08,.45,M("#8A6A4A"),3,.42,.4),kutu(g,1.6,.42,.08,M("#8A6A4A"),3,.5,.2);for(const x of[2.35,3.65])kutu(g,.08,.42,.45,M("#5A4A40"),x,0,.4);fonlar.square=g}{const g=new THREE.
+Group,zemin=new THREE.Mesh(new THREE.PlaneGeometry(9,7),M(KARE_SAHNE.home.yer,{roughness:.9}));zemin.rotation.x=-Math.PI/2,zemin.position.z=-.5,zemin.receiveShadow=!0,g.add(zemin),kutu(g,9,3,.1,M("#EF\
+E3CF"),0,0,-3.5),kutu(g,1.6,1.2,.06,M("#CFE3F2",{emissive:new THREE.Color("#BFD9EE"),emissiveIntensity:.5}),-1.8,1.2,-3.44),kutu(g,1.7,.08,.1,M("#F7F2E6"),-1.8,1.15,-3.4),kutu(g,2.2,.45,.9,M("#9A5A4A"),
+2.2,0,-2.6),kutu(g,2.2,.5,.25,M("#9A5A4A"),2.2,.45,-2.95);for(const x of[1.25,3.15])kutu(g,.2,.3,.9,M("#8A4A3A"),x,.45,-2.6);silindir(g,.28,.2,.5,M("#5B7D6A"),-3.2,0,-2.6),kure(g,.45,M("#6C9E6F"),-3.2,
+.85,-2.6),fonlar.home=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.concert.yer)),kutu(g,7,.5,3.5,M("#3B3246"),0,-.02,-3);for(const[x,renk]of[[-2.6,"#E66A6A"],[0,"#F2D06B"],[2.6,"#6AA7E6"]]){kutu(g,
+.12,3.4,.12,M("#2A2530"),x,.48,-4.5);const k=new THREE.Mesh(new THREE.ConeGeometry(.9,3,18,1,!0),new THREE.MeshBasicMaterial({color:renk,transparent:!0,opacity:.22,side:THREE.DoubleSide,depthWrite:!1}));
+k.position.set(x,2.2,-3.4),k.rotation.x=.35,g.add(k),kure(g,.14,new THREE.MeshBasicMaterial({color:renk}),x,3.85,-4.5)}for(const x of[-1,1])kutu(g,.5,.7,.4,M("#1E1A24"),x,.48,-4.2);fonlar.concert=g}{const g=new THREE.
+Group;g.add(yer(KARE_SAHNE.front.yer));for(let s=0;s<3;s++)for(let i=0;i<6;i++){const m=kutu(g,.62,.3,.38,M(s%2?"#9C8A66":"#A89670"),-1.9+i*.7+s%2*.35,s*.3,-2.4);m.rotation.y=(i%2?1:-1)*.05}silindir(g,
+.04,.05,3.2,M("#5A4A40"),3.1,0,-2),kutu(g,.9,.55,.03,M("#C8322F"),3.56,2.6,-2);const cadir=new THREE.Mesh(new THREE.ConeGeometry(1.3,1.3,4),M("#6E7B5A"));cadir.position.set(-3.6,.65,-3),cadir.rotation.
+y=Math.PI/4,cadir.castShadow=!0,g.add(cadir),fonlar.front=g}{const g=new THREE.Group,fonMat=M(KARE_SAHNE.friends.yer,{roughness:1}),fon=new THREE.Mesh(new THREE.CylinderGeometry(1.2,1.2,8,24,1,!0,Math.
+PI,Math.PI/2).rotateZ(Math.PI/2),fonMat);fon.material.side=THREE.DoubleSide,fon.position.set(0,1.2,-2),fon.receiveShadow=!0,g.add(fon),kutu(g,8,3.4,.05,fonMat,0,1.2,-3.2);const taban=new THREE.Mesh(new THREE.
+PlaneGeometry(8,6),fonMat);taban.rotation.x=-Math.PI/2,taban.position.z=.6,taban.receiveShadow=!0,g.add(taban);for(const x of[-3.2,3.2]){kutu(g,.04,1.9,.04,M("#3A3633"),x,0,.8);const s=new THREE.Mesh(
+new THREE.ConeGeometry(.4,.3,16,1,!0),M("#F7F2E6",{side:THREE.DoubleSide,emissive:new THREE.Color("#FFF1D8"),emissiveIntensity:.4}));s.position.set(x,1.95,.8),s.rotation.x=Math.PI*.6,s.rotation.z=x<0?
+-.5:.5,g.add(s)}fonlar.friends=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.podium.yer)),kutu(g,7,.25,4,M("#C9C2B4"),0,-.02,-1.5),kutu(g,1.1,1.05,.5,M("#7A5436"),0,.23,-.65),kutu(g,1.3,.08,.6,M("#8\
+A6A4A"),0,1.28,-.62),silindir(g,.02,.02,.4,M("#3A3633"),.25,1.36,-.55),kure(g,.06,M("#2E3238"),.25,1.8,-.55);for(const x of[-2.6,2.6])silindir(g,.04,.05,3,M("#5A4A40"),x,.2,-3),kutu(g,.9,.55,.03,M(x<0?
+"#C8322F":"#2F5D8A"),x+.46,2.6,-3);kutu(g,5.5,.12,.5,M("#8A6A4A"),0,.22,-3.3),fonlar.podium=g}{const g=new THREE.Group;g.add(yer(KARE_SAHNE.travel.yer));const yol=new THREE.Mesh(new THREE.PlaneGeometry(
+2.6,14),M("#9C9388",{roughness:1}));yol.rotation.x=-Math.PI/2,yol.position.set(.3,.01,-3),yol.rotation.z=.08,yol.receiveShadow=!0,g.add(yol);for(const[x,z,r,renk]of[[-4.2,-5.5,2.4,"#7FA06A"],[3.8,-6.5,
+3,"#6E9460"],[.5,-8,2.2,"#86A872"]]){const t=new THREE.Mesh(new THREE.SphereGeometry(r,18,12),M(renk));t.position.set(x,-r*.55,z),t.receiveShadow=!0,g.add(t)}kutu(g,.3,.6,.3,M("#E8E2D6"),-1.6,0,-1.2),
+silindir(g,.04,.05,2.2,M("#5A4A40"),2.2,0,-2.2),kutu(g,1.1,.3,.05,M("#F2D06B"),2.5,1.8,-2.2),fonlar.travel=g}{const g=new THREE.Group,zemin=new THREE.Mesh(new THREE.PlaneGeometry(9,7),M(KARE_SAHNE.product.
+yer,{roughness:.9}));zemin.rotation.x=-Math.PI/2,zemin.position.z=-.5,zemin.receiveShadow=!0,g.add(zemin),kutu(g,9,3,.1,M("#EFE3CF"),0,0,-3.5),kutu(g,2.2,.08,1,M("#8A6A4A"),1.35,.72,-1.2);for(const[x,
+z]of[[.35,-1.6],[2.35,-1.6],[.35,-.8],[2.35,-.8]])kutu(g,.08,.72,.08,M("#5B3D28"),x,0,z);const urun=new THREE.Mesh(new THREE.PlaneGeometry(.95,.95),new THREE.MeshBasicMaterial({transparent:!0,side:THREE.
+DoubleSide}));urun.position.set(1.35,1.28,-1.2),urun.visible=!1,g.add(urun),kutu(g,.9,.35,.55,M("#C9B458"),-2.6,0,-2.4),fonlar.product=g,fonlar.product.userData.urun=urun}{const g=new THREE.Group;g.add(
+yer(KARE_SAHNE.parliament.yer));for(let i=0;i<3;i++){const r=2.6+i*.9,sira=new THREE.Mesh(new THREE.TorusGeometry(r,.22,8,40,Math.PI*.8).rotateX(Math.PI/2).rotateZ(Math.PI*.1),M("#5B3D28"));sira.position.
+set(0,.3+i*.22,-3.2),sira.castShadow=!0,g.add(sira)}kutu(g,1.4,1,.6,M("#7A5436"),0,0,-1.4),kutu(g,1.6,.08,.7,M("#8A6A4A"),0,1,-1.4);for(const x of[-3.2,-1.1,1.1,3.2])silindir(g,.18,.2,3.2,M("#E8E2D6"),
+x,0,-5.5);kutu(g,8.5,.3,.6,M("#D9D2C2"),0,3.2,-5.5),fonlar.parliament=g}for(const tur of["city","venue","stadium","festival","gym","cafe"]){const g=new THREE.Group;if(g.add(yer(KARE_SAHNE[tur].yer)),tur===
+"city"){for(const[x,yuk,renk]of[[-3,2.8,"#C8AD91"],[0,3.5,"#D8C9AD"],[3,2.4,"#A8B9BD"]]){kutu(g,2.2,yuk,1.8,M(renk),x,0,-4.8);for(const y of[.7,1.7])for(const dx of[-.55,.55])kutu(g,.55,.65,.04,M("#73\
+93A3"),x+dx,y,-3.87)}kutu(g,9,.04,1,M("#888A86"),0,.01,-2.4)}else if(tur==="stadium"){kutu(g,6.6,.025,.06,M("#F3F2E7"),0,.01,-2.3);for(const x of[-1.8,1.8])kutu(g,.1,2.1,.1,M("#F3F2E7"),x,0,-4.2);kutu(
+g,3.7,.1,.1,M("#F3F2E7"),0,2.05,-4.2);for(let s=0;s<3;s++)kutu(g,8,.28,.65,M(s%2?"#A8B9C4":"#C5D1D7"),0,s*.3,-5.3-s*.6);kure(g,.23,M("#F3F2E7"),2.8,.23,-1.7)}else if(tur==="festival"){kutu(g,6.4,.38,2,
+M("#645477"),0,0,-4.2);for(const[x,renk]of[[-3,"#D27B75"],[0,"#E9C66D"],[3,"#78A9B4"]])silindir(g,.05,.05,3.4,M("#776756"),x,0,-4.6),kutu(g,.7,.55,.04,M(renk),x+.3,2.7,-4.6),kure(g,.17,new THREE.MeshBasicMaterial(
+{color:renk}),x,3.4,-4.6)}else if(kutu(g,9,3.3,.12,M(KARE_SAHNE[tur].gok),0,0,-4.7),tur==="gym")for(const x of[-2.8,2.8]){kutu(g,1.5,.15,.55,M("#424D50"),x,.55,-2.6);for(const dx of[-.6,.6])kutu(g,.12,
+.55,.45,M("#AAB7B7"),x+dx,0,-2.6);kutu(g,1.7,.09,.09,M("#AAB7B7"),x,1.15,-3);for(const dx of[-.7,.7])kure(g,.25,M("#424D50"),x+dx,1.2,-3)}else for(const x of[-2.7,2.7])if(silindir(g,.7,.7,.1,M("#74523\
+C"),x,.75,-2.7),silindir(g,.1,.24,.75,M("#5C493B"),x,0,-2.7),tur==="cafe"){kutu(g,.65,.035,.65,M("#E0C49E"),x,.85,-2.7);for(let a=0;a<4;a++)for(let b=0;b<4;b++)(a+b)%2&&kutu(g,.15,.01,.15,M("#765842"),
+x-.24+a*.16,.89,-2.94+b*.16)}else silindir(g,.13,.1,.22,M("#B77C5A"),x,.85,-2.7),kure(g,.22,M("#6B8C5D"),x,1.2,-2.7);fonlar[tur]=g}for(const g of Object.values(fonlar))g.visible=!1,sahne.add(g);const figurler=KARE_YER.
+map(()=>{const fp=figurParcasi(THREE);return fp.grup.visible=!1,sahne.add(fp.grup),fp});return hazir={THREE,renderer,sahne,kamera,figurler,fonlar,hemi,gunes},hazir}async function urunDokusu(THREE,urunId){
+if(!urunId||!URUN[urunId])return null;if(KARE_URUN_DOKU.has(urunId))return KARE_URUN_DOKU.get(urunId);const soz=new THREE.TextureLoader().loadAsync(urunResim(urunId)).then(t=>(t.colorSpace=THREE.SRGBColorSpace,
+t)).catch(()=>null);return KARE_URUN_DOKU.set(urunId,soz),soz}const figurVeri=f=>({anahtar:f?.character_id??"",ad:f?.name??"?",gorunus:f?.look??null,ulke:f?.country_id??null,rutbe:{sira:Number(f?.rank??
+0),sayi:12},ek:null});function sahneyiKur(h,foto,urunDoku=null){const{THREE,sahne,kamera,figurler,fonlar}=h,S=KARE_SAHNE[foto.scene]??KARE_SAHNE.square;for(const[k,g]of Object.entries(fonlar))g.visible=
+k===(KARE_SAHNE[foto.scene]?foto.scene:"square");sahne.background=new THREE.Color(S.gok),h.hemi.intensity=foto.scene==="concert"?.55:1.2,h.gunes.intensity=foto.scene==="concert"?.9:1.8;const urun=fonlar.
+product.userData.urun;urun.visible=foto.scene==="product"&&!!urunDoku,urun.visible&&(urun.material.map=urunDoku,urun.material.needsUpdate=!0);const kisiler=[foto.author_figure,...foto.figures??[]].filter(
+Boolean).slice(0,KARE_YER.length),noktalar=[];let tohum=0;for(const c of String(foto.photo_id??""))tohum=(tohum*31+c.charCodeAt(0))%2147483647;const rnd=()=>(tohum=(tohum*1103515245+12345)%2147483648,
+tohum/2147483648);figurler.forEach((fp,i)=>{const k=kisiler[i];if(fp.grup.visible=!!k,!k)return;const[x,z]=KARE_YER[i];fp.kur(figurVeri(k)),fp.grup.scale.setScalar(.6),fp.grup.position.set(x,(foto.scene===
+"concert"&&i>0,0),z),fp.grup.rotation.y=-x*.12;const poz=S.poz[i===0||rnd()<.5?0:1];fp.pozla(poz,.42+rnd()*.16,.6+rnd(),!1,!0),noktalar.push(new THREE.Vector3(x-.55,0,z),new THREE.Vector3(x+.55,0,z),new THREE.
+Vector3(x,1.6,z))}),noktalar.length||noktalar.push(new THREE.Vector3(-1,0,0),new THREE.Vector3(1,1.2,0)),foto.scene==="product"&&noktalar.push(new THREE.Vector3(.85,.75,-1.2),new THREE.Vector3(1.85,1.78,
+-1.2));const yon=foto.camera==="top"?new THREE.Vector3(0,1.6,1).normalize():foto.camera==="close"?new THREE.Vector3(.12,.25,1).normalize():foto.camera==="pan"?new THREE.Vector3(.35,.28,1).normalize():
+new THREE.Vector3(0,.3,1).normalize();kamera.fov=foto.camera==="close"?24:foto.camera==="pan"?34:30;const nk=foto.camera==="close"?noktalar.map(p=>new THREE.Vector3(p.x,Math.max(p.y,.6),p.z)):noktalar;
+kameraSigdir(THREE,kamera,nk,yon,{x:foto.camera==="pan"?.8:.9,ust:.9,alt:foto.camera==="top"?-.9:-.97})}async function ciz(foto,gen=640,yuk=480){const anahtar=`${foto.photo_id??JSON.stringify([foto.scene,
+foto.camera,foto.figures??[],foto.author_figure,foto.product?.product_id])}|${gen}x${yuk}`;if(onbellek.has(anahtar)){const v=onbellek.get(anahtar);return onbellek.delete(anahtar),onbellek.set(anahtar,
+v),v}if(bekleyen.has(anahtar))return bekleyen.get(anahtar);const soz=(async()=>{if(webglYok||!Gorunum.webglVar())return null;let h=hazir;if(!h){const{THREE}=await Uc.yukle("98k_kare.js");if(h=hazir??kur(
+THREE),!h)return webglYok=!0,null}const urunDoku=foto.scene==="product"?await urunDokusu(h.THREE,foto.product?.product_id):null;try{h.renderer.setSize(gen,yuk,!1),h.kamera.aspect=gen/yuk,sahneyiKur(h,
+foto,urunDoku),h.renderer.render(h.sahne,h.kamera);const url=h.renderer.domElement.toDataURL("image/webp",.86);return foto.photo_id&&(onbellek.set(anahtar,url),onbellek.size>ONBELLEK_EN&&onbellek.delete(
+onbellek.keys().next().value)),url}catch(e){return console.warn("Kare \xE7izilemedi:",e),null}})();bekleyen.set(anahtar,soz);try{return await soz}finally{bekleyen.delete(anahtar)}}function poster2b(foto){
+const S=KARE_SAHNE[foto.scene]??KARE_SAHNE.square,kisiler=[foto.author_figure,...foto.figures??[]].filter(Boolean).slice(0,6);return`<div class="kare-poster" style="--kare-gok:${S.gok};--kare-yer:${S.
+yer}" aria-hidden="true">
       ${kisiler.map(k=>`<span class="kare-poster-kisi">${avatarSvg(k.name??"?",k.look??varsayilanGorunus(k.name??"?"),{ulke:k.country_id,rutbe:Number(k.rank??0)})}</span>`).join("")}
-    </div>`}function goster(el,foto,gen=640,yuk=480){return el?(el.classList.add("kare-resim",`kare-cerceve-${foto.frame??"none"}`,`kare-suzgec-${foto.filter??"none"}`),el.dataset.kareSahne=foto.scene??
-"",el.innerHTML=poster2b(foto),ciz(foto,gen,yuk).then(url=>{if(!url||!el.isConnected)return;const img=document.createElement("img");img.alt="",img.width=gen,img.height=yuk,img.src=url,img.className="k\
-are-cizim",img.decoding="async",el.appendChild(img),el.dataset.kareCizim="3b"})):Promise.resolve()}return{ciz,goster,poster2b,sahneAdi:k=>KARE_SAHNE[k]?.ad??k,get webglYok(){return webglYok}}})(),VIDEO_PLAN={
-wide:\u00E7("Geni\u015F"),close:\u00E7("Yak\u0131n"),top:\u00E7("Ku\u015Fbak\u0131\u015F\u0131"),pan:\u00E7("Kayd\u0131rma")},VIDEO_MUZIK={sabah:\u00E7("Sabah"),yol:\u00E7("Yol"),meydan:\u00E7("Meydan"),
-gece:\u00E7("Gece")},VIDEO_EZGI={sabah:{seed:1131,genre:"pop",tempo:96,key_no:2},yol:{seed:1132,genre:"rock",tempo:124,key_no:7},meydan:{seed:1133,genre:"caz",tempo:104,key_no:0},gece:{seed:1134,genre:"\
-elektronik",tempo:100,key_no:9}},YAYIN_SAHNE={square:{ad:\u00E7("Meydan"),ik:"trees",ipucu:\u00E7("Meydandayken: yan\u0131ndakiler de g\xF6r\xFCn\xFCr.")},concert:{ad:\u00E7("Konser"),ik:"mic-vocal",ipucu:\u00E7(
-"Sahnede ya da seyircideyken.")},front:{ad:\u00E7("Cephe"),ik:"swords",ipucu:\u00E7("Son bir saatte vuru\u015F yapt\u0131ysan.")},parliament:{ad:\u00E7("Meclis"),ik:"landmark",ipucu:\u00E7("Milletveki\
-li ya da ba\u015Fkanken.")}},VIDEO_KAYNAK_AD={concert:\u00E7("Konser"),post:\u00E7("K\xFCrs\xFC konu\u015Fmas\u0131"),round:\u00E7("Cephe turu"),travel:\u00E7("Yolculuk"),home:\u00E7("Ev"),product:\u00E7(
-"\xDCr\xFCn")},YAYIN_BITIS={streamer:\u00E7("yay\u0131nc\u0131 bitirdi"),time:\u00E7("s\xFCresi doldu"),silent:\u00E7("ba\u011Flant\u0131 koptu"),deleted:\u00E7("hesap silindi"),moderation:\u00E7("mod\
-erasyon")};function videoKalite(kural,beceri,ekipman,anPpm){const q=kural?.video?.quality;if(!q)return 0;const n=q.equipment.length,e=Math.min(ekipman,n);return Math.floor((q.skillPct*beceri*n*1e6+q.equipmentPct*
-e*100*1e6+q.momentPct*anPpm*100*n)/(100*n*1e6))}const sureYaz=sn=>`${Math.floor(sn/60)}:${String(Math.floor(sn%60)).padStart(2,"0")}`,videoKaresi=(v,plan,i)=>({photo_id:v.video_id?`v:${v.video_id}:${i}\
-:${plan}`:null,scene:v.scene,camera:plan,frame:"none",filter:"none",author_figure:v.author_figure,figures:v.figures??[],product:v.product??null}),anYuzde=ppm=>`%${Math.round(Number(ppm??0)/1e4)}`;function videoKartHtml(v,{
-kucuk=!1}={}){const sp=v.sponsorship,muzik=v.music_kind==="song"&&v.music?v.music.title:v.music_kind==="stock"?VIDEO_MUZIK[v.music_ref]??v.music_ref:null;return`<article class="video-kart${kucuk?" kuc\
-uk":""}" data-video="${esc(v.video_id)}">
+    </div>`}const cizimKusagi=new WeakMap;function goster(el,foto,gen=640,yuk=480){if(!el)return Promise.resolve();const kusak=(cizimKusagi.get(el)??0)+1;cizimKusagi.set(el,kusak),delete el.dataset.kareCizim;
+for(const k of[...el.classList])(k.startsWith("kare-cerceve-")||k.startsWith("kare-suzgec-"))&&el.classList.remove(k);return el.classList.add("kare-resim",`kare-cerceve-${foto.frame??"none"}`,`kare-su\
+zgec-${foto.filter??"none"}`),el.dataset.kareSahne=foto.scene??"",el.innerHTML=poster2b(foto),ciz(foto,gen,yuk).then(url=>{if(!url||!el.isConnected||cizimKusagi.get(el)!==kusak)return;const img=document.
+createElement("img");img.alt="",img.width=gen,img.height=yuk,img.src=url,img.className="kare-cizim",img.decoding="async",el.appendChild(img),el.dataset.kareCizim="3b"})}return{ciz,goster,poster2b,sahneAdi:k=>KARE_SAHNE[k]?.
+ad??k,get webglYok(){return webglYok}}})(),VIDEO_PLAN={wide:\u00E7("Geni\u015F"),close:\u00E7("Yak\u0131n"),top:\u00E7("Ku\u015Fbak\u0131\u015F\u0131"),pan:\u00E7("Kayd\u0131rma")},VIDEO_MUZIK={sabah:\u00E7(
+"Sabah"),yol:\u00E7("Yol"),meydan:\u00E7("Meydan"),gece:\u00E7("Gece")},VIDEO_EZGI={sabah:{seed:1131,genre:"pop",tempo:96,key_no:2},yol:{seed:1132,genre:"rock",tempo:124,key_no:7},meydan:{seed:1133,genre:"\
+caz",tempo:104,key_no:0},gece:{seed:1134,genre:"elektronik",tempo:100,key_no:9}},YAYIN_SAHNE={square:{ad:\u00E7("Meydan"),ik:"trees",ipucu:\u00E7("Meydandayken: yan\u0131ndakiler de g\xF6r\xFCn\xFCr.")},
+concert:{ad:\u00E7("Konser"),ik:"mic-vocal",ipucu:\u00E7("Sahnede ya da seyircideyken.")},front:{ad:\u00E7("Cephe"),ik:"swords",ipucu:\u00E7("Son bir saatte vuru\u015F yapt\u0131ysan.")},parliament:{ad:\u00E7(
+"Meclis"),ik:"landmark",ipucu:\u00E7("Milletvekili ya da ba\u015Fkanken.")},home:{ad:\u00E7("Ev"),ik:"house",ipucu:\u00E7("Evinin \u015Fehrindeyken; kamera, \u0131\u015F\u0131k ya da mikrofondan en az biri \xE7antanda (yay\u0131\
+n k\xF6\u015Fesi, D-197).")}},kanalAdiHtml=ad=>ad?` <span class="kanal-adi">${ikon("tv")}${esc(ad)}</span>`:"",VIDEO_KAYNAK_AD={concert:\u00E7("Konser"),post:\u00E7("K\xFCrs\xFC konu\u015Fmas\u0131"),
+round:\u00E7("Cephe turu"),travel:\u00E7("Yolculuk"),home:\u00E7("Ev"),product:\u00E7("\xDCr\xFCn")},YAYIN_BITIS={streamer:\u00E7("yay\u0131nc\u0131 bitirdi"),time:\u00E7("s\xFCresi doldu"),silent:\u00E7(
+"ba\u011Flant\u0131 koptu"),deleted:\u00E7("hesap silindi"),moderation:\u00E7("moderasyon")};function videoKalite(kural,beceri,ekipman,anPpm){const q=kural?.video?.quality;if(!q)return 0;const n=q.equipment.
+length,e=Math.min(ekipman,n);return Math.floor((q.skillPct*beceri*n*1e6+q.equipmentPct*e*100*1e6+q.momentPct*anPpm*100*n)/(100*n*1e6))}const sureYaz=sn=>`${Math.floor(sn/60)}:${String(Math.floor(sn%60)).
+padStart(2,"0")}`,videoKaresi=(v,plan,i)=>({photo_id:v.video_id?`v:${v.video_id}:${i}:${plan}`:null,scene:v.scene,camera:plan,frame:"none",filter:"none",author_figure:v.author_figure,figures:v.figures??
+[],product:v.product??null}),anYuzde=ppm=>`%${Math.round(Number(ppm??0)/1e4)}`;function videoKartHtml(v,{kucuk=!1}={}){const sp=v.sponsorship,muzik=v.music_kind==="song"&&v.music?v.music.title:v.music_kind===
+"stock"?VIDEO_MUZIK[v.music_ref]??v.music_ref:null;return`<article class="video-kart${kucuk?" kucuk":""}" data-video="${esc(v.video_id)}">
     <button type="button" class="kare-ac video-ac" data-video-ac="${esc(v.video_id)}" aria-label="${esc(\u00E7("Videoyu oynat"))}">
       <div class="kare-resim-yer video-kapak" data-video-kapak="${esc(v.video_id)}"></div>
       <span class="video-oynat-rozet">${ikon("play")}</span>
@@ -6492,7 +6257,7 @@ uk":""}" data-video="${esc(v.video_id)}">
       <span class="video-kalite" title="${esc(\u00E7("Kalite (beceri, ekipman, an)"))}">${ikon("sparkles")}${sayi(v.quality??0)}</span>
     </button>
     <div class="kare-alt">
-      <div class="paylasim-ust"><button class="paylasim-yazar" data-profil="${esc(v.author_id)}">${avatarKutu(v.author,v.author_id)}<span><b>${esc(v.author)}</b>
+      <div class="paylasim-ust"><button class="paylasim-yazar" data-profil="${esc(v.author_id)}">${avatarKutu(v.author,v.author_id)}<span><b>${esc(v.author)}</b>${kanalAdiHtml(v.channel)}
         <span class="kucuk">${ikon("video")} ${esc(Kare.sahneAdi(v.scene))} \xB7 ${esc(bolgeAdi(v.region_id))} \xB7 ${esc(zamanOnce(v.created_at))}</span></span></button>
         <button class="paylasim-menu" data-video-menu="${esc(v.video_id)}" aria-label="${\u00E7("Se\xE7enekler")}">${ikon("ellipsis")}</button></div>
       ${v.caption?`<p class="paylasim-metin">${etiketli(v.caption)}${sp?` <b class="etiket-vurgu">${esc(isbirligiEtiketi(sp.tag))}</b>`:""}</p>`:sp?`<p class="paylasim-metin"><b class="etiket-vurgu">${esc(
@@ -6512,11 +6277,11 @@ deo_applaud",{p_video:v?.video_id??b.dataset.videoAlkis,p_on:acik});b.setAttribu
 tost(hataMetni(e),"circle-alert")}}function videoMenu(v,tazele){v&&pencere({ust:\u00E7("Video"),baslik:v.author,govde:`<p class="aciklama">${v.caption?etiketli(v.caption):esc(Kare.sahneAdi(v.scene))}<\
 /p>`,dugmeler:v.mine?[{ad:\u00E7("Kapat")},...v.sponsorship?[]:[{ad:\u00E7("Sil"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("video_delete",{p_video:v.video_id}),tost(\u00E7("Video silindi."),"x")}catch(e){
 tost(hataMetni(e),"circle-alert")}await tazele?.()}}]]:[{ad:\u00E7("Kapat")},{ad:\u00E7("Profil"),is:()=>profilAc(v.author_id,tazele)},{ad:\u00E7("Raporla"),sinif:"mercan",is:()=>raporla({video:v.video_id,
-ad:v.author})}]})}async function videoAc(v,tazele){if(typeof v=="string")try{v=await Sunucu.cagir("video_get",{p_video:v})}catch(e){tost(hataMetni(e),"circle-alert");return}else v.mine||Sunucu.cagir("\
-video_get",{p_video:v.video_id}).then(g=>{v.views=g.views;const el=$("[data-video-izlenme]",$(".perde:last-child"));el&&(el.textContent=sayi(g.views))}).catch(()=>{});const sp=v.sponsorship,planlar=(v.
-shots??[]).length?v.shots:["wide"],altyazilar=v.captions??[],sure2=Math.max(5,Number(v.duration)||30),kisiler=[v.author_figure,...v.figures??[]].filter(Boolean),muzikAdi=v.music_kind==="song"&&v.music?
-`${v.music.title}${v.music.band?" \xB7 "+v.music.band:""}`:v.music_kind==="stock"?VIDEO_MUZIK[v.music_ref]??v.music_ref:null;pencere({ust:\u00E7("Kanal \xB7 {sahne}",{sahne:Kare.sahneAdi(v.scene)}),baslik:v.
-caption||v.author,govde:`
+ad:v.author})},...v.channel?[{ad:\u00E7("Kanal ad\u0131n\u0131 raporla"),sinif:"sade",is:()=>raporla({tur:"channel",ref:v.author_id,ad:v.channel})}]:[]]})}async function videoAc(v,tazele){if(typeof v==
+"string")try{v=await Sunucu.cagir("video_get",{p_video:v})}catch(e){tost(hataMetni(e),"circle-alert");return}else v.mine||Sunucu.cagir("video_get",{p_video:v.video_id}).then(g=>{v.views=g.views;const el=$(
+"[data-video-izlenme]",$(".perde:last-child"));el&&(el.textContent=sayi(g.views))}).catch(()=>{});const sp=v.sponsorship,planlar=(v.shots??[]).length?v.shots:["wide"],altyazilar=v.captions??[],sure2=Math.
+max(5,Number(v.duration)||30),kisiler=[v.author_figure,...v.figures??[]].filter(Boolean),muzikAdi=v.music_kind==="song"&&v.music?`${v.music.title}${v.music.band?" \xB7 "+v.music.band:""}`:v.music_kind===
+"stock"?VIDEO_MUZIK[v.music_ref]??v.music_ref:null;pencere({ust:\u00E7("Kanal \xB7 {sahne}",{sahne:Kare.sahneAdi(v.scene)}),baslik:v.caption||v.author,govde:`
     <div class="video-oynatici" id="video-oynatici">
       <div class="video-ekran" id="video-ekran"><div class="video-kare kare-resim" id="video-kare"></div>
         <div class="video-altyazi" id="video-altyazi" hidden></div>
@@ -6528,8 +6293,8 @@ caption||v.author,govde:`
         ${muzikAdi?`<button type="button" class="dugme sade kucuk-d" id="video-ses" aria-pressed="true" title="${esc(\u00E7("M\xFCzik: {ad}",{ad:muzikAdi}))}">${ikon("volume-2")}</button>`:""}
       </div>
     </div>
-    <p class="kucuk" style="margin-top:8px">${esc(v.author)} \xB7 ${esc(bolgeAdi(v.region_id))} \xB7 ${esc(saatYaz(v.created_at))} \xB7 ${\u00E7("kalite {n}",{n:Number(v.quality??0)})} \xB7 ${esc(planlar.
-map(p=>VIDEO_PLAN[p]??p).join(", "))}${muzikAdi?` \xB7 ${ikon("eighth-notes")} ${esc(muzikAdi)}`:""}</p>
+    <p class="kucuk" style="margin-top:8px">${esc(v.author)}${v.channel?` \xB7 ${ikon("tv")} ${esc(v.channel)}`:""} \xB7 ${esc(bolgeAdi(v.region_id))} \xB7 ${esc(saatYaz(v.created_at))} \xB7 ${\u00E7(
+"kalite {n}",{n:Number(v.quality??0)})} \xB7 ${esc(planlar.map(p=>VIDEO_PLAN[p]??p).join(", "))}${muzikAdi?` \xB7 ${ikon("eighth-notes")} ${esc(muzikAdi)}`:""}</p>
     ${kisiler.length>1?`<p class="kucuk">${\u00E7("Karedekiler: {liste}",{liste:esc(kisiler.map(k=>k.name).join(", "))})}</p>`:""}
     ${v.product?`<p class="kucuk">${ikon("package")} ${\u00E7("\u0130ncelenen \xFCr\xFCn: {urun}",{urun:esc(varlikAdi(v.product.asset))})}</p>`:""}
     ${sp?`<p class="kucuk kare-sponsor">${ikon("megaphone")}${\u00E7("{isletme} sponsorlu\u011Funda: {urun} \xB7 {etiket}",{isletme:esc(sp.company??""),urun:esc(varlikAdi(sp.asset)),etiket:esc(isbirligiEtiketi(
@@ -6637,25 +6402,26 @@ x=>({character_id:x.character_id,name:x.name,country_id:x.country_id,look:x.look
 "@")[0]}:null}),yenile=()=>{onizleme.isConnected&&(onizleme.className="",Kare.goster(onizleme,taslak(),480,270))};$("select[name=plan0]",form).addEventListener("change",yenile),yenile()}const Kanal=(()=>{
 let surenYayin=null;function yayinSur(id,aralikSn){yayinBirak(),surenYayin={id,saat:setInterval(async()=>{try{const s=await Sunucu.cagir("stream_ping",{p_stream:id});s.status!=="live"&&(yayinBirak(),tost(
 \u00E7("Yay\u0131n\u0131n bitti ({neden}).",{neden:YAYIN_BITIS[s.end_reason]??s.end_reason??""}),"radio"))}catch{}},Math.max(15,aralikSn)*1e3)}}function yayinBirak(){surenYayin&&(clearInterval(surenYayin.
-saat),surenYayin=null)}return{yayinSur,yayinBirak,get suren(){return surenYayin?.id??null}}})();async function yayinAc({sonra}={}){let kurallar;try{kurallar=await Durum.kurallar()}catch(e){tost(hataMetni(
-e),"circle-alert");return}const f=kurallar.data.media?.stream;if(!f){tost(\u00E7("Bu s\xFCr\xFCmde canl\u0131 yay\u0131n yok."),"circle-alert");return}pencereForm({ust:\u00E7("Kanal"),baslik:\u00E7("C\
-anl\u0131 yay\u0131n a\xE7"),onayAd:\u00E7("Yay\u0131na ba\u015Fla"),onayIkon:"radio",govde:`<p class="aciklama">${\u00E7("Yay\u0131n en \xE7ok {dk} dakika s\xFCrer; g\xFCnde {n} yay\u0131n. \u0130zleyenler sahnenin anl\u0131k g\xF6\
-r\xFCnt\xFCs\xFCn\xFC al\u0131r, alk\u0131\u015Flar ve ba\u011F\u0131\u015F yapabilir (g\xFCnde yay\u0131nc\u0131ya en \xE7ok {kr} kredi; %{p} platform pay\u0131).",{dk:Number(f.maxMinutes),n:Number(f.
-perDay),kr:kr(f.donation?.streamerDailyCr??0),p:Number(f.donation?.feePpm??0)/1e4})}</p>
-      <div class="radyo-liste">${(f.scenes??Object.keys(YAYIN_SAHNE)).map((s,i)=>`<label class="radyo"><input type="radio" name="sahne" value="${s}" ${i===0?"checked":""}><span><b>${ikon(YAYIN_SAHNE[s]?.
-ik??"radio")} ${esc(YAYIN_SAHNE[s]?.ad??s)}</b><span class="kucuk">${esc(YAYIN_SAHNE[s]?.ipucu??"")}</span></span></label>`).join("")}</div>
+saat),surenYayin=null)}return{yayinSur,yayinBirak,get suren(){return surenYayin?.id??null}}})();async function yayinAc({sonra,sahne=null}={}){let kurallar,kariyer=null;try{[kurallar,kariyer]=await Promise.
+all([Durum.kurallar(),Sunucu.cagir("media_career").catch(()=>null)])}catch(e){tost(hataMetni(e),"circle-alert");return}const f=kurallar.data.media?.stream;if(!f){tost(\u00E7("Bu s\xFCr\xFCmde canl\u0131 yay\u0131n yo\
+k."),"circle-alert");return}const sahneler=f.scenes??Object.keys(YAYIN_SAHNE),secili=sahne&&sahneler.includes(sahne)?sahne:sahneler[0],ev=kariyer?.home_studio??null,ipucu=sc=>sc==="home"&&ev?yayinKosesiDurumu(
+ev):YAYIN_SAHNE[sc]?.ipucu??"";pencereForm({ust:\u00E7("Kanal"),baslik:\u00E7("Canl\u0131 yay\u0131n a\xE7"),onayAd:\u00E7("Yay\u0131na ba\u015Fla"),onayIkon:"radio",govde:`<p class="aciklama">${\u00E7(
+"Yay\u0131n en \xE7ok {dk} dakika s\xFCrer; g\xFCnde {n} yay\u0131n. \u0130zleyenler sahnenin anl\u0131k g\xF6r\xFCnt\xFCs\xFCn\xFC al\u0131r, alk\u0131\u015Flar ve ba\u011F\u0131\u015F yapabilir (g\xFCnde yay\u0131nc\u0131ya en \xE7ok {kr} kredi; %{p} platform pay\u0131).",
+{dk:Number(f.maxMinutes),n:Number(f.perDay),kr:kr(f.donation?.streamerDailyCr??0),p:Number(f.donation?.feePpm??0)/1e4})}</p>
+      <div class="radyo-liste">${sahneler.map(s=>`<label class="radyo"><input type="radio" name="sahne" value="${s}" ${s===secili?"checked":""}><span><b>${ikon(YAYIN_SAHNE[s]?.ik??"radio")} ${esc(YAYIN_SAHNE[s]?.
+ad??s)}</b><span class="kucuk">${esc(ipucu(s))}</span></span></label>`).join("")}</div>
       <label class="alan"><span>${\u00E7("Ba\u015Fl\u0131k (iste\u011Fe ba\u011Fl\u0131, 60 harf)")}</span><input name="baslik" maxlength="60" placeholder="${\u00E7("\xD6rn. Meydandan ak\u015Fam sohbeti")}\
 "></label>`,is:async d=>{let s;try{s=await Sunucu.yap("stream_start",{p_scene:d.get("sahne"),p_title:String(d.get("baslik")??"").trim()||null})}catch(err){throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),
 err}tost(\u00E7("Yay\u0131ndas\u0131n! Takip\xE7ilerine haber gitti."),"radio"),await sonra?.(),yayinOdasi(s,{sonra})}})}async function yayinOdasi(s,{sonra}={}){if(typeof s=="string")try{s=await Sunucu.
 cagir("stream_get",{p_stream:s})}catch(e){tost(hataMetni(e),"circle-alert");return}const benim=!!s.mine,d=s.donation??{minCr:100,maxCr:2e3,donorDailyCr:5e3},bagisSecenek=[100,200,500,1e3,2e3].filter(x=>x>=
-Number(d.minCr)&&x<=Number(d.maxCr));pencere({ust:\u00E7("Canl\u0131 yay\u0131n \xB7 {sahne}",{sahne:YAYIN_SAHNE[s.scene]?.ad??s.scene}),baslik:s.title||s.streamer,govde:`
+Number(d.minCr)&&x<=Number(d.maxCr));pencere({ust:\u00E7("Canl\u0131 yay\u0131n \xB7 {sahne}",{sahne:YAYIN_SAHNE[s.scene]?.ad??s.scene}),baslik:s.title||s.channel||s.streamer,govde:`
     <div class="yayin-oda" id="yayin-oda" data-durum="${esc(s.status)}">
       <div class="yayin-ust"><span class="yayin-canli" id="yayin-canli">${ikon("radio")}${s.status==="live"?\u00E7("CANLI"):\u00E7("B\u0130TT\u0130")}</span>
         <span class="kucuk">${ikon("users-round")} <span id="yayin-izleyici">${sayi(s.viewers??0)}</span> \xB7 ${ikon("hand")} <span id="yayin-alkis">${sayi(s.applause??0)}</span> \xB7 ${ikon("gift")}\
  <span id="yayin-bagis">${kr(s.donations_cr??0)}</span> ${\u00E7("kredi")}</span></div>
       <div class="video-ekran yayin-ekran"><div class="video-kare kare-resim" id="yayin-kare"></div><div class="yayin-figurler kucuk" id="yayin-figurler"></div></div>
-      <p class="kucuk" id="yayin-bilgi">${esc(s.streamer)} \xB7 ${esc(bolgeAdi(s.region_id))} \xB7 ${\u00E7("ba\u015Flad\u0131 {zaman}",{zaman:saatYaz(s.started_at)})}${s.status==="live"?` \xB7 ${\u00E7(
-"en ge\xE7 {zaman} biter",{zaman:saatYaz(s.ends_by)})}`:""}</p>
+      <p class="kucuk" id="yayin-bilgi">${esc(s.streamer)}${s.channel?` \xB7 ${ikon("tv")} ${esc(s.channel)}`:""} \xB7 ${esc(bolgeAdi(s.region_id))} \xB7 ${\u00E7("ba\u015Flad\u0131 {zaman}",{zaman:saatYaz(
+s.started_at)})}${s.status==="live"?` \xB7 ${\u00E7("en ge\xE7 {zaman} biter",{zaman:saatYaz(s.ends_by)})}`:""}</p>
       ${benim?"":`<div class="paylasim-alt"><button id="yayin-alkisla" aria-pressed="${!!s.applauded_by_me}" ${s.status==="live"?"":"disabled"}>${ikon("hand")}<span>${sayi(s.applause??0)}</span><span \
 class="gizli-ad">${\u00E7("Alk\u0131\u015F")}</span></button></div>
         <form class="form yayin-bagis-form" id="yayin-bagis-form" novalidate ${s.status==="live"?"":"hidden"}>
@@ -6669,31 +6435,63 @@ iv>
       <div class="yayin-bagislar" id="yayin-bagislar"></div>
     </div>`,dugmeler:benim&&s.status==="live"?[{ad:\u00E7("Oday\u0131 kapat (yay\u0131n s\xFCrer)")},{ad:\u00E7("Yay\u0131n\u0131 bitir"),sinif:"mercan",ikon:"x",is:async()=>{try{await Sunucu.yap("str\
 eam_stop",{p_stream:s.stream_id}),Kanal.yayinBirak(),tost(\u00E7("Yay\u0131n bitti."),"radio")}catch(e){tost(hataMetni(e),"circle-alert")}await sonra?.()}}]:[{ad:\u00E7("Kapat")},...benim?[]:[{ad:\u00E7(
-"Profil"),is:()=>profilAc(s.streamer_id)}]]});const perde=$(".perde:last-child"),kareEl=$("#yayin-kare",perde);let anahtar="";const sahneCiz=st=>{const figurler=(st.figures??[]).filter(Boolean),yazar=figurler.
-find(x=>x.character_id===st.streamer_id)??st.streamer_figure??figurler[0],otekiler=figurler.filter(x=>x!==yazar),k=`${st.scene}|${[yazar,...otekiler].map(x=>x?.character_id+":"+(x?.emote??"")).join(",")}`;
-k!==anahtar&&(anahtar=k,kareEl.className="video-kare kare-resim",delete kareEl.dataset.kareCizim,Kare.goster(kareEl,{photo_id:null,scene:st.scene,camera:"wide",frame:"none",filter:"none",author_figure:yazar,
-figures:otekiler},960,540),$("#yayin-figurler",perde).textContent=figurler.length>1?\u00E7("Sahnede: {liste}",{liste:figurler.map(x=>x.name).join(", ")}):"")},durumYaz=st=>{if($("#yayin-izleyici",perde).
-textContent=sayi(st.viewers??0),$("#yayin-alkis",perde).textContent=sayi(st.applause??0),$("#yayin-bagis",perde).textContent=kr(st.donations_cr??0),$("#yayin-bagislar",perde).innerHTML=(st.donations??
-[]).length?`<p class="ust-yazi">${\u00E7("Son ba\u011F\u0131\u015Flar")}</p>${st.donations.map(b=>`<div class="yayin-bagis-satir">${ikon("gift")}<span><b>${esc(b.donor)}</b> ${\u00E7("{kr} kredi",{kr:kr(
-b.amount_cr)})}${b.note?` \xB7 \u201C${esc(b.note)}\u201D`:""}</span><span class="kucuk">${esc(zamanOnce(b.at))}</span></div>`).join("")}`:"",st.status!=="live"){$("#yayin-oda",perde).dataset.durum="e\
-nded",$("#yayin-canli",perde).innerHTML=`${ikon("radio")}${\u00E7("B\u0130TT\u0130")}`,$("#yayin-bagis-form",perde)?.setAttribute("hidden","");const a=$("#yayin-alkisla",perde);a&&(a.disabled=!0),$("#\
-yayin-bilgi",perde).textContent=`${st.streamer} \xB7 ${\u00E7("bitti: {neden}",{neden:YAYIN_BITIS[st.end_reason]??st.end_reason??""})} \xB7 ${\u00E7("{n} izleyici, {a} alk\u0131\u015F, {kr} kredi ba\u011F\u0131\u015F",
-{n:Number(st.viewers_total??0),a:Number(st.applause??0),kr:kr(st.donations_cr??0)})}`}sahneCiz(st)};durumYaz(s);const aralik=Math.max(15,Number(s.heartbeat_sec??45));let canli=s.status==="live";const yokla=async()=>{
-if(!perde.isConnected){clearInterval(saat),benim||Sunucu.cagir("stream_leave",{p_stream:s.stream_id}).catch(()=>{});return}if(canli)try{const st=await Sunucu.cagir(benim?"stream_ping":"stream_watch",{
-p_stream:s.stream_id});durumYaz(st),st.status!=="live"&&(canli=!1,benim&&Kanal.yayinBirak())}catch(e){tost(hataMetni(e),"circle-alert")}},saat=setInterval(yokla,aralik*1e3);benim&&canli&&Kanal.yayinSur(
-s.stream_id,aralik);const alkisla=$("#yayin-alkisla",perde);alkisla&&(alkisla.onclick=async()=>{try{const r=await Sunucu.cagir("stream_applaud",{p_stream:s.stream_id});alkisla.setAttribute("aria-press\
-ed","true"),$("span",alkisla).textContent=sayi(r.applause),$("#yayin-alkis",perde).textContent=sayi(r.applause)}catch(e){tost(hataMetni(e),"circle-alert")}});const bf=$("#yayin-bagis-form",perde);bf&&
-bf.addEventListener("submit",async e=>{e.preventDefault();const fd=new FormData(bf),tutar=Number(fd.get("tutar")),not=String(fd.get("not")??"").trim()||null,yer=$(".form-mesaj",bf),b=$("button[type=su\
-bmit]",bf);b.disabled=!0,yer.innerHTML="";try{const r=await Sunucu.yap("stream_donate",{p_stream:s.stream_id,p_amount:tutar,p_note:not});tost(\u00E7("Ba\u011F\u0131\u015F\u0131n gitti: {kr} kredi ({y} yay\u0131nc\u0131ya).",
-{kr:kr(r.amount_cr),y:kr(r.streamer_cr)}),"gift"),$("#yayin-bagis-bugun",perde).textContent=\u00E7("Bug\xFCn ba\u011F\u0131\u015Flad\u0131\u011F\u0131n: {a} / {b} kredi",{a:kr(r.my_donations_today_cr??
-0),b:kr(d.donorDailyCr??0)}),$("input[name=not]",bf).value="",await yokla()}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`}finally{
-b.disabled=!1}})}function canliCipleriHtml(streams,{baslik=!0}={}){return(streams??[]).length?`<div class="canli-serit">${baslik?`<span class="ust-yazi">${ikon("radio")} ${\u00E7("Canl\u0131")}</span>`:
-""}${streams.map(s=>`<button type="button" class="cip canli-cip" data-yayin-ac="${esc(s.stream_id)}" title="${esc(s.title??"")}">${avatarKutu(s.streamer,s.streamer_id)}<span><b>${esc(s.streamer)}</b> \
-\xB7 ${esc(YAYIN_SAHNE[s.scene]?.ad??s.scene)} \xB7 ${ikon("users-round")} ${sayi(s.viewers??0)}</span></button>`).join("")}</div>`:""}function canliCipleriBagla(kok,sonra){for(const b of $$("[data-ya\
-yin-ac]",kok))b.onclick=()=>yayinOdasi(b.dataset.yayinAc,{sonra})}function kanalBolumuHtml(m,kurallar){const c=m.channel,f=kurallar?.data?.media?.video,st=kurallar?.data?.media?.stream;if(!c||!f)return"";
-const o=c.open_session,bitti=o?Date.parse(o.ends_at)<=Date.now():!1,q=f.quality;return`<section class="kart" id="medya-kanal">
-    <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kanal")}</p><h2 class="b2">${c.count?\u00E7("{n} video \xB7 {g} izlenme \xB7 {a} alk\u0131\u015F",{n:Number(c.count),g:Number(c.views??0),a:Number(
-c.applause??0)}):\u00E7("Hen\xFCz video yok")}</h2></div><span class="ik-kutu">${ikon("video")}</span></div>
+"Profil"),is:()=>profilAc(s.streamer_id)},...s.channel?[{ad:\u00E7("Kanal ad\u0131n\u0131 raporla"),sinif:"sade",is:()=>raporla({tur:"channel",ref:s.streamer_id,ad:s.channel})}]:[]]]});const perde=$("\
+.perde:last-child"),kareEl=$("#yayin-kare",perde);let anahtar="";const sahneCiz=st=>{const figurler=(st.figures??[]).filter(Boolean),yazar=figurler.find(x=>x.character_id===st.streamer_id)??st.streamer_figure??
+figurler[0],otekiler=figurler.filter(x=>x!==yazar),k=`${st.scene}|${[yazar,...otekiler].map(x=>x?.character_id+":"+(x?.emote??"")).join(",")}`;k!==anahtar&&(anahtar=k,kareEl.className="video-kare kare\
+-resim",delete kareEl.dataset.kareCizim,Kare.goster(kareEl,{photo_id:null,scene:st.scene,camera:"wide",frame:"none",filter:"none",author_figure:yazar,figures:otekiler},960,540),$("#yayin-figurler",perde).
+textContent=figurler.length>1?\u00E7("Sahnede: {liste}",{liste:figurler.map(x=>x.name).join(", ")}):"")},durumYaz=st=>{if($("#yayin-izleyici",perde).textContent=sayi(st.viewers??0),$("#yayin-alkis",perde).
+textContent=sayi(st.applause??0),$("#yayin-bagis",perde).textContent=kr(st.donations_cr??0),$("#yayin-bagislar",perde).innerHTML=(st.donations??[]).length?`<p class="ust-yazi">${\u00E7("Son ba\u011F\u0131\u015Flar")}\
+</p>${st.donations.map(b=>`<div class="yayin-bagis-satir">${ikon("gift")}<span><b>${esc(b.donor)}</b> ${\u00E7("{kr} kredi",{kr:kr(b.amount_cr)})}${b.note?` \xB7 \u201C${esc(b.note)}\u201D`:""}</span>\
+<span class="kucuk">${esc(zamanOnce(b.at))}</span></div>`).join("")}`:"",st.status!=="live"){$("#yayin-oda",perde).dataset.durum="ended",$("#yayin-canli",perde).innerHTML=`${ikon("radio")}${\u00E7("B\u0130\
+TT\u0130")}`,$("#yayin-bagis-form",perde)?.setAttribute("hidden","");const a=$("#yayin-alkisla",perde);a&&(a.disabled=!0),$("#yayin-bilgi",perde).textContent=`${st.streamer} \xB7 ${\u00E7("bitti: {ned\
+en}",{neden:YAYIN_BITIS[st.end_reason]??st.end_reason??""})} \xB7 ${\u00E7("{n} izleyici, {a} alk\u0131\u015F, {kr} kredi ba\u011F\u0131\u015F",{n:Number(st.viewers_total??0),a:Number(st.applause??0),
+kr:kr(st.donations_cr??0)})}`}sahneCiz(st)};durumYaz(s);const aralik=Math.max(15,Number(s.heartbeat_sec??45));let canli=s.status==="live";const yokla=async()=>{if(!perde.isConnected){clearInterval(saat),
+benim||Sunucu.cagir("stream_leave",{p_stream:s.stream_id}).catch(()=>{});return}if(canli)try{const st=await Sunucu.cagir(benim?"stream_ping":"stream_watch",{p_stream:s.stream_id});durumYaz(st),st.status!==
+"live"&&(canli=!1,benim&&Kanal.yayinBirak())}catch(e){tost(hataMetni(e),"circle-alert")}},saat=setInterval(yokla,aralik*1e3);benim&&canli&&Kanal.yayinSur(s.stream_id,aralik);const alkisla=$("#yayin-al\
+kisla",perde);alkisla&&(alkisla.onclick=async()=>{try{const r=await Sunucu.cagir("stream_applaud",{p_stream:s.stream_id});alkisla.setAttribute("aria-pressed","true"),$("span",alkisla).textContent=sayi(
+r.applause),$("#yayin-alkis",perde).textContent=sayi(r.applause)}catch(e){tost(hataMetni(e),"circle-alert")}});const bf=$("#yayin-bagis-form",perde);bf&&bf.addEventListener("submit",async e=>{e.preventDefault();
+const fd=new FormData(bf),tutar=Number(fd.get("tutar")),not=String(fd.get("not")??"").trim()||null,yer=$(".form-mesaj",bf),b=$("button[type=submit]",bf);b.disabled=!0,yer.innerHTML="";try{const r=await Sunucu.
+yap("stream_donate",{p_stream:s.stream_id,p_amount:tutar,p_note:not});tost(\u00E7("Ba\u011F\u0131\u015F\u0131n gitti: {kr} kredi ({y} yay\u0131nc\u0131ya).",{kr:kr(r.amount_cr),y:kr(r.streamer_cr)}),"\
+gift"),$("#yayin-bagis-bugun",perde).textContent=\u00E7("Bug\xFCn ba\u011F\u0131\u015Flad\u0131\u011F\u0131n: {a} / {b} kredi",{a:kr(r.my_donations_today_cr??0),b:kr(d.donorDailyCr??0)}),$("input[name\
+=not]",bf).value="",await yokla()}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`}finally{b.disabled=!1}})}function canliCipleriHtml(streams,{
+baslik=!0}={}){return(streams??[]).length?`<div class="canli-serit">${baslik?`<span class="ust-yazi">${ikon("radio")} ${\u00E7("Canl\u0131")}</span>`:""}${streams.map(s=>`<button type="button" class="\
+cip canli-cip" data-yayin-ac="${esc(s.stream_id)}" title="${esc(s.title??"")}">${avatarKutu(s.streamer,s.streamer_id)}<span><b>${esc(s.channel||s.streamer)}</b> \xB7 ${esc(YAYIN_SAHNE[s.scene]?.ad??s.
+scene)} \xB7 ${ikon("users-round")} ${sayi(s.viewers??0)}</span></button>`).join("")}</div>`:""}function canliCipleriBagla(kok,sonra){for(const b of $$("[data-yayin-ac]",kok))b.onclick=()=>yayinOdasi(
+b.dataset.yayinAc,{sonra})}const YAYIN_EKIPMAN_IK={"kamera@1":"camera","isik@1":"lamp","mikrofon@1":"mic"};function yayinKosesiDurumu(st){return st?st.home?st.at_home?st.ready?\u00E7("Haz\u0131r: {ekipman}\
+ \xE7antanda.",{ekipman:(st.equipment??[]).map(a=>varlikAdi(a)).join(", ")}):\u00E7("\xC7antanda kamera, \u0131\u015F\u0131k ya da mikrofon yok; en az biri gerek (\xC7ar\u015F\u0131 ya da at\xF6lye)."):
+\u00E7("Evinin \u015Fehrinde de\u011Filsin; evden yay\u0131n i\xE7in oraya git."):\u00E7("Evden yay\u0131n i\xE7in bir evin olmal\u0131."):""}function yayinKosesiKartHtml(st){if(!st)return"";const gerekli=st.
+equipment_needed??["kamera@1","isik@1","mikrofon@1"];return`<section class="kart" id="yayin-kosesi" data-hazir="${st.ready?1:0}">
+    <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Yay\u0131n k\xF6\u015Fesi")}</p><h2 class="b2">${st.live?\u00E7("Yay\u0131ndas\u0131n"):st.ready?\u00E7("Evden yay\u0131na haz\u0131r"):\u00E7(
+"Evden canl\u0131 yay\u0131n")}</h2></div><span class="ik-kutu">${ikon("radio")}</span></div>
+    <p class="aciklama">${\u00E7("Evinden canl\u0131 yay\u0131n a\xE7abilirsin: izleyenler odan\u0131 ve seni g\xF6r\xFCr, alk\u0131\u015Flar, ba\u011F\u0131\u015F yapar. Kamera, \u0131\u015F\u0131k ve mikrofondan en az biri \xE7antanda olmal\u0131; hepsi birden videonun \
+kalitesini de y\xFCkseltir.")}</p>
+    <div class="cip-satir" style="margin-top:8px">${gerekli.map(a=>`<span class="cip${(st.equipment??[]).includes(a)?" yesil":""}">${ikon(YAYIN_EKIPMAN_IK[a]??"package")}${esc(varlikAdi(a))}${(st.equipment??
+[]).includes(a)?" \u2713":""}</span>`).join("")}</div>
+    <p class="kucuk" style="margin-top:8px">${esc(yayinKosesiDurumu(st))}</p>
+    <div class="oneri-dugmeler" style="margin-top:10px">
+      ${st.live?`<button class="dugme kucuk-d" data-yayin-ac="${esc(st.live.stream_id)}">${ikon("radio")}${\u00E7("Odaya d\xF6n")}</button>`:`<button class="dugme ${st.ready?"altin":"ikincil"} kucuk-d\
+" id="yayin-kosesi-ac" ${st.ready?"":"disabled"}>${ikon("radio")}${\u00E7("Evden yay\u0131n a\xE7")}</button>`}
+      ${st.ready?"":`<button class="dugme sade kucuk-d" id="yayin-kosesi-carsi">${ikon("store")}${\u00E7("\xC7ar\u015F\u0131ya git")}</button>`}
+    </div>
+  </section>`}function yayinKosesiBagla(kap,tazele){$("#yayin-kosesi-ac",kap)?.addEventListener("click",()=>yayinAc({sahne:"home",sonra:tazele})),$("#yayin-kosesi-carsi",kap)?.addEventListener("click",
+()=>Kabuk.git("sehir/pazar")),canliCipleriBagla($("#yayin-kosesi",kap)??kap,tazele)}function kanalAdiAyarla(kariyer,sonra){const f=kariyer?.channel_rule??{nameMin:3,nameMax:30,renameDays:7},simdiki=kariyer?.
+channel_name??null,bekle=kariyer?.channel_rename_at&&Date.parse(kariyer.channel_rename_at)>Date.now()?kariyer.channel_rename_at:null;pencereForm({ust:\u00E7("Kanal"),baslik:simdiki?\u00E7("Kanal ad\u0131n\u0131\
+ de\u011Fi\u015Ftir"):\u00E7("Kanal ad\u0131 koy"),onayAd:\u00E7("Kaydet"),onayIkon:"tv",govde:`<p class="aciklama">${\u00E7('Kanal ad\u0131n videolar\u0131nda ve canl\u0131 yay\u0131nlar\u0131nda ad\u0131n\u0131n yan\u0131nda g\xF6r\xFCn\xFCr (\xF6r. \
+"Ege Haber"). {a}\u2013{b} harf; ba\u015Fkas\u0131n\u0131n ald\u0131\u011F\u0131 ad al\u0131nmaz; {g} g\xFCnde bir de\u011Fi\u015Ftirilir. Topluluk kurallar\u0131na uymayan ad kald\u0131r\u0131l\u0131r.',
+{a:Number(f.nameMin),b:Number(f.nameMax),g:Number(f.renameDays)})}</p>
+      ${bekle?`<div class="bilgi-kutusu">${ikon("hourglass")}<span>${\u00E7("Kanal ad\u0131n\u0131 en erken {zaman} de\u011Fi\u015Ftirebilirsin.",{zaman:esc(saatYaz(bekle))})}</span></div>`:""}
+      <label class="alan"><span>${\u00E7("Kanal ad\u0131")}</span><input name="ad" minlength="${Number(f.nameMin)}" maxlength="${Number(f.nameMax)}" required value="${esc(simdiki??"")}" placeholder="${\u00E7(
+"\xD6rn. Marmara TV")}" ${bekle?"disabled":""}></label>`,is:async d=>{if(bekle)throw new Error(\u00E7("Kanal ad\u0131n\u0131 en erken {zaman} de\u011Fi\u015Ftirebilirsin.",{zaman:saatYaz(bekle)}));const ad=String(
+d.get("ad")??"").trim();if(ad.length<Number(f.nameMin))throw new Error(\u00E7("Kanal ad\u0131 en az {n} harf olmal\u0131.",{n:Number(f.nameMin)}));try{await Sunucu.yap("channel_name_set",{p_name:ad})}catch(err){
+throw err?.kod==="TERMS_REQUIRED"&&kurallariKabul(),err}tost(\u00E7("Kanal ad\u0131n: {ad}",{ad}),"tv"),await sonra?.()}})}function kanalBolumuHtml(m,kurallar,kariyer=null){const c=m.channel,f=kurallar?.
+data?.media?.video,st=kurallar?.data?.media?.stream;if(!c||!f)return"";const o=c.open_session,bitti=o?Date.parse(o.ends_at)<=Date.now():!1,q=f.quality,kanalAdi=kariyer?.channel_name??null;return`<sect\
+ion class="kart" id="medya-kanal">
+    <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kanal")}${kanalAdi?` \xB7 ${esc(kanalAdi)}`:""}</p><h2 class="b2">${c.count?\u00E7("{n} video \xB7 {g} izlenme \xB7 {a} alk\u0131\u015F",{n:Number(
+c.count),g:Number(c.views??0),a:Number(c.applause??0)}):\u00E7("Hen\xFCz video yok")}</h2></div><span class="ik-kutu">${ikon("video")}</span></div>
+    ${kariyer&&kariyer.channel_rule?`<div class="satir" style="gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px"><span class="kucuk">${kanalAdi?\u00E7('Kanal ad\u0131n "{ad}" videolar\u0131nda ve yay\
+\u0131nlar\u0131nda ad\u0131n\u0131n yan\u0131nda g\xF6r\xFCn\xFCr.',{ad:esc(kanalAdi)}):\u00E7("Kanal ad\u0131 koy: videolar\u0131nda ve yay\u0131nlar\u0131nda ad\u0131n\u0131n yan\u0131nda g\xF6r\xFCn\xFCr.")}\
+</span>
+      <button class="dugme sade kucuk-d" type="button" id="kanal-ad">${ikon("tv")}${kanalAdi?\u00E7("Kanal ad\u0131n\u0131 de\u011Fi\u015Ftir"):\u00E7("Kanal ad\u0131 koy")}</button></div>`:""}
     <p class="kucuk">${\u00E7("\u0130\xE7erik \xFCretimi becerin {s} (e\u011Fitimle y\xFCkselir) \xB7 ekipman {e} / {n}: {liste}. Evde \xE7ekilen videonun kalitesi \u015Fimdi yakla\u015F\u0131k {q}.",
 {s:Number(c.skill??0),e:Number(c.equipment??0),n:q.equipment.length,liste:esc(q.equipment.map(a=>`${varlikAdi(a)}${(c.equipment_owned??[]).includes(a)?" \u2713":""}`).join(", ")),q:videoKalite(kurallar.
 data.media,Number(c.skill??0),Number(c.equipment??0),Number(f.moment?.home??0))})}</p>
@@ -6721,26 +6519,26 @@ n:Number(s.viewers_total??0),a:Number(s.applause??0),kr:kr(s.donations_cr??0)})}
     <p class="kucuk" style="margin-top:10px">${\u00E7("Ba\u011F\u0131\u015Flar: bug\xFCn {a} / {b} kredi, son 30 g\xFCn {c} kredi. Yay\u0131n en \xE7ok {dk} dakika, g\xFCnde {n}; ba\u011F\u0131\u015F {x}\u2013{y} kredi.",
 {a:kr(c.donations_today_cr??0),b:kr(st?.donation?.streamerDailyCr??0),c:kr(c.donations_received_cr??0),dk:Number(st?.maxMinutes??0),n:Number(st?.perDay??0),x:kr(st?.donation?.minCr??0),y:kr(st?.donation?.
 maxCr??0)})}</p>
-  </section>`}function kanalBagla(kap,m,tazele){const c=m.channel;if(!c)return;const videolar=new Map((c.recent??[]).map(v=>[v.video_id,v]));videoKartlariBagla($("#medya-kanal",kap)??kap,videolar,tazele),
-canliCipleriBagla(kap,tazele),$("#kanal-cek",kap)?.addEventListener("click",()=>videoCek({sonra:tazele})),$("#kanal-yayin",kap)?.addEventListener("click",()=>yayinAc({sonra:tazele})),$("#kanal-kurgula",
-kap)?.addEventListener("click",()=>videoKurgula(c.open_session,{sponsorluklar:(m.offers?.accepted??[]).filter(o=>o.kind==="sponsor"),sonra:tazele})),$("#kanal-vazgec",kap)?.addEventListener("click",()=>pencere(
-{ust:\u00E7("Kanal"),baslik:\u00E7("\xC7ekimden vazge\xE7"),govde:`<p class="aciklama">${\u00E7("\xC7ekim silinir; \xE7izelgen bo\u015Fal\u0131r. Bug\xFCnk\xFC video hakk\u0131n geri gelir.")}</p>`,dugmeler:[
-{ad:\u00E7("Kals\u0131n")},{ad:\u00E7("Vazge\xE7"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("video_shoot_cancel",{p_session:c.open_session.session_id}),tost(\u00E7("\xC7ekimden vazge\xE7ildi."),
-"x")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}}]}))}const TURNE_DURUM={planned:\u00E7("Planland\u0131"),active:\u00E7("S\xFCr\xFCyor"),done:\u00E7("Bitti"),cancelled:\u00E7("\u0130ptal edi\
-ldi")},TURNE_IPTAL_NEDEN={band:\u00E7("grup iptal etti"),dissolved:\u00E7("grup da\u011F\u0131ld\u0131"),venue:\u00E7("b\xFCt\xFCn duraklar mek\xE2n iptaliyle d\xFC\u015Ft\xFC")},TURNE_KOD={TOUR_STOPS_COUNT:\u00E7(
-"Turnede 3\u20136 durak olur."),TOUR_STOPS_DUP:\u00E7("Her durak ba\u015Fka bir \u015Fehirde olmal\u0131."),TOUR_STOPS_ORDER:\u00E7("Duraklar\u0131n saatleri s\u0131rayla artmal\u0131."),TOUR_STOPS_GAP:\u00E7(
-"Duraklar aras\u0131nda yer yok: sonraki konser, \xF6nceki konserin bitiminden en az bini\u015F (30 dk) + otob\xFCs yolculu\u011Fu + kurulum (60 dk) kadar sonra ba\u015Flamal\u0131."),NO_ROUTE:\u00E7(
-"\u0130ki durak aras\u0131nda karayolu yok."),CONCERT_SETLIST_COUNT:\u00E7("Set listesinde 3\u201312 \u015Fark\u0131 olur."),CONCERT_SETLIST_DUP:\u00E7("Set listesinde bir \u015Fark\u0131 bir kez olur."),
-CONCERT_SETLIST_TOO_LONG:\u00E7("\u015Eark\u0131lar\u0131n toplam s\xFCresi konserden uzun."),SONG_NOT_IN_REPERTOIRE:\u00E7("Set listesinin \u015Fark\u0131lar\u0131 repertuvardan se\xE7ilir.")},turneDurakHali=s=>s.
-status==="cancelled"?"iptal":s.status==="no_show"?"gelmedi":s.status==="done"?s.live?"canli":"bitti":s.status==="locked"?"basliyor":"bekliyor";function turneDurakHtml(s,t){const hal=turneDurakHali(s),
-durum=hal==="canli"?`<span class="cip konser-canli">${ikon("play")}${\u00E7("Canl\u0131")}</span>`:hal==="bitti"?`<span class="cip">${ikon("star")}${\u00E7("Kalite {q}",{q:Number(s.quality??0)})}</spa\
-n>`:hal==="basliyor"?`<span class="cip altin">${ikon("timer")}${\u00E7("Ba\u015Fl\u0131yor")}</span>`:hal==="gelmedi"?`<span class="cip mercan">${\u00E7("Grup gelmedi")}</span>`:hal==="iptal"?`<span c\
-lass="cip">${\u00E7("\u0130ptal edildi")}</span>`:`<span class="cip">${ikon("timer")}<b data-bitis="${esc(s.starts_at)}"></b></span>`,alt=hal==="bitti"||hal==="canli"?\u00E7("Seyirci {n} \xB7 {p} / {k} s\
-ahnede{b}",{n:sayi(s.audience??0),p:Number(s.present??0),k:Number(s.lineup??0),b:Number(s.buzz_ppm)>0?" \xB7 "+\u00E7("duyuru etkisi +%{n}",{n:Math.round(Number(s.buzz_ppm)/1e4)}):""})+(t.insider&&s.profit_cr!=
-null?` \xB7 ${Number(s.loss_cr)>0?\u00E7("zarar {kr} kredi",{kr:kr(s.loss_cr)}):\u00E7("k\xE2r {kr} kredi",{kr:kr(s.profit_cr)})}`:""):hal==="iptal"?KONSER_IPTAL[s.cancel_reason]??"":\u00E7("{n} / {k}\
- bilet",{n:sayi(s.tickets??0),k:sayi(s.capacity??0)})+(t.insider?` \xB7 ${\u00E7("kira {kr} kredi, {m} malzeme",{kr:kr(s.rent_cr??0),m:Number(s.stage_units??0)})}`:""),ben=s.in_lineup?s.me_present===!0?
-`<span class="cip yesil kucuk">${\u00E7("Sahnedeydin")}</span>`:s.me_present===!1?`<span class="cip mercan kucuk">${\u00E7("Gelmedin")}</span>`:"":"";return`<li class="turne-durak hal-${hal}" data-kon\
-ser="${esc(s.concert_id)}">
+  </section>`}function kanalBagla(kap,m,tazele,kariyer=null){const c=m.channel;if(!c)return;const videolar=new Map((c.recent??[]).map(v=>[v.video_id,v]));videoKartlariBagla($("#medya-kanal",kap)??kap,
+videolar,tazele),canliCipleriBagla(kap,tazele),$("#kanal-ad",kap)?.addEventListener("click",()=>kanalAdiAyarla(kariyer,tazele)),$("#kanal-cek",kap)?.addEventListener("click",()=>videoCek({sonra:tazele})),
+$("#kanal-yayin",kap)?.addEventListener("click",()=>yayinAc({sonra:tazele})),$("#kanal-kurgula",kap)?.addEventListener("click",()=>videoKurgula(c.open_session,{sponsorluklar:(m.offers?.accepted??[]).filter(
+o=>o.kind==="sponsor"),sonra:tazele})),$("#kanal-vazgec",kap)?.addEventListener("click",()=>pencere({ust:\u00E7("Kanal"),baslik:\u00E7("\xC7ekimden vazge\xE7"),govde:`<p class="aciklama">${\u00E7("\xC7ek\
+im silinir; \xE7izelgen bo\u015Fal\u0131r. Bug\xFCnk\xFC video hakk\u0131n geri gelir.")}</p>`,dugmeler:[{ad:\u00E7("Kals\u0131n")},{ad:\u00E7("Vazge\xE7"),sinif:"mercan",is:async()=>{try{await Sunucu.
+yap("video_shoot_cancel",{p_session:c.open_session.session_id}),tost(\u00E7("\xC7ekimden vazge\xE7ildi."),"x")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}}]}))}const TURNE_DURUM={planned:\u00E7(
+"Planland\u0131"),active:\u00E7("S\xFCr\xFCyor"),done:\u00E7("Bitti"),cancelled:\u00E7("\u0130ptal edildi")},TURNE_IPTAL_NEDEN={band:\u00E7("grup iptal etti"),dissolved:\u00E7("grup da\u011F\u0131ld\u0131"),
+venue:\u00E7("b\xFCt\xFCn duraklar mek\xE2n iptaliyle d\xFC\u015Ft\xFC")},TURNE_KOD={TOUR_STOPS_COUNT:\u00E7("Turnede 3\u20136 durak olur."),TOUR_STOPS_DUP:\u00E7("Her durak ba\u015Fka bir \u015Fehirde olmal\u0131."),
+TOUR_STOPS_ORDER:\u00E7("Duraklar\u0131n saatleri s\u0131rayla artmal\u0131."),TOUR_STOPS_GAP:\u00E7("Duraklar aras\u0131nda yer yok: sonraki konser, \xF6nceki konserin bitiminden en az bini\u015F (30 dk) + otob\xFCs\
+ yolculu\u011Fu + kurulum (60 dk) kadar sonra ba\u015Flamal\u0131."),NO_ROUTE:\u00E7("\u0130ki durak aras\u0131nda karayolu yok."),CONCERT_SETLIST_COUNT:\u00E7("Set listesinde 3\u201312 \u015Fark\u0131 olur."),
+CONCERT_SETLIST_DUP:\u00E7("Set listesinde bir \u015Fark\u0131 bir kez olur."),CONCERT_SETLIST_TOO_LONG:\u00E7("\u015Eark\u0131lar\u0131n toplam s\xFCresi konserden uzun."),SONG_NOT_IN_REPERTOIRE:\u00E7(
+"Set listesinin \u015Fark\u0131lar\u0131 repertuvardan se\xE7ilir.")},turneDurakHali=s=>s.status==="cancelled"?"iptal":s.status==="no_show"?"gelmedi":s.status==="done"?s.live?"canli":"bitti":s.status===
+"locked"?"basliyor":"bekliyor";function turneDurakHtml(s,t){const hal=turneDurakHali(s),durum=hal==="canli"?`<span class="cip konser-canli">${ikon("play")}${\u00E7("Canl\u0131")}</span>`:hal==="bitti"?
+`<span class="cip">${ikon("star")}${\u00E7("Kalite {q}",{q:Number(s.quality??0)})}</span>`:hal==="basliyor"?`<span class="cip altin">${ikon("timer")}${\u00E7("Ba\u015Fl\u0131yor")}</span>`:hal==="gelm\
+edi"?`<span class="cip mercan">${\u00E7("Grup gelmedi")}</span>`:hal==="iptal"?`<span class="cip">${\u00E7("\u0130ptal edildi")}</span>`:`<span class="cip">${ikon("timer")}<b data-bitis="${esc(s.starts_at)}\
+"></b></span>`,alt=hal==="bitti"||hal==="canli"?\u00E7("Seyirci {n} \xB7 {p} / {k} sahnede{b}",{n:sayi(s.audience??0),p:Number(s.present??0),k:Number(s.lineup??0),b:Number(s.buzz_ppm)>0?" \xB7 "+\u00E7(
+"duyuru etkisi +%{n}",{n:Math.round(Number(s.buzz_ppm)/1e4)}):""})+(t.insider&&s.profit_cr!=null?` \xB7 ${Number(s.loss_cr)>0?\u00E7("zarar {kr} kredi",{kr:kr(s.loss_cr)}):\u00E7("k\xE2r {kr} kredi",{
+kr:kr(s.profit_cr)})}`:""):hal==="iptal"?KONSER_IPTAL[s.cancel_reason]??"":\u00E7("{n} / {k} bilet",{n:sayi(s.tickets??0),k:sayi(s.capacity??0)})+(t.insider?` \xB7 ${\u00E7("kira {kr} kredi, {m} malze\
+me",{kr:kr(s.rent_cr??0),m:Number(s.stage_units??0)})}`:""),ben=s.in_lineup?s.me_present===!0?`<span class="cip yesil kucuk">${\u00E7("Sahnedeydin")}</span>`:s.me_present===!1?`<span class="cip mercan\
+ kucuk">${\u00E7("Gelmedin")}</span>`:"":"";return`<li class="turne-durak hal-${hal}" data-konser="${esc(s.concert_id)}">
     <span class="turne-sira">${Number(s.ord)}</span>
     <div class="turne-durak-govde"><span class="tur">${esc(konserMekanAdi(s.venue))} \xB7 ${esc(saatYaz(s.starts_at))}</span>
       <b>${esc(bolgeAdi(s.region_id))}</b><div class="alt">${esc(alt)}</div>
@@ -6807,16 +6605,17 @@ e"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Turne")}</p>
         <div><span class="tur">${esc(TURNE_DURUM[g.status]??g.status)} \xB7 ${esc(saatYaz(g.first_at))}</span><b>${esc(g.name)}</b><div class="alt">${esc(turneOzetYazi(g))}</div></div>
         <button class="dugme sade kucuk-d" data-turne-ac="${esc(g.tour_id)}">${\u00E7("Ayr\u0131nt\u0131")}</button></div>`).join("")}</div></details>`:""}
     <p class="kucuk" style="margin-top:8px">${\u00E7("Otob\xFCs \xF6nceki konserin bitiminden {b} dk sonra kalkar; kalk\u0131\u015F an\u0131nda \u015Fehirde olan \xFCyeler biner. Ayak bedeli kasadan \xF6denir. Biten turnede en az {m\
-} durakta sahnede olan \xFCye turne madalyas\u0131 kazan\u0131r.",{b:Number(K?.boardMinutes??30),m:Number(K?.medalMinStops??3)})}</p></section>`}async function turnePlanla(b,R,me,sonra){const K=R.tour??
-{},C=R.concert??{},rep=b.repertoire_list??[],enAz=Number(C.setlist?.min??3),enCok=Number(C.setlist?.max??12);if(rep.length<enAz){tost(\u00E7("Turne i\xE7in repertuvarda en az {n} \u015Fark\u0131 olmal\u0131.",
-{n:enAz}),"circle-alert");return}let harita=null;try{harita=await Durum.harita()}catch{harita=null}const acik=new Set(harita?.open_countries??[]),sahip=harita?.sahip??{},sehirler=Object.keys(DUNYA.bolgeler??
-{}).filter(id=>acik.has(sahip[id]??DUNYA.bolgeler[id]?.ulke)).sort((x,y)=>ulkeAdi(sahip[x]??DUNYA.bolgeler[x]?.ulke).localeCompare(ulkeAdi(sahip[y]??DUNYA.bolgeler[y]?.ulke),DIL.yerel)||bolgeAdi(x).localeCompare(
-bolgeAdi(y),DIL.yerel)),sehirSecenek=secili2=>{const gruplar=new Map;for(const id of sehirler){const u=sahip[id]??DUNYA.bolgeler[id]?.ulke;gruplar.has(u)||gruplar.set(u,[]),gruplar.get(u).push(id)}return[
-...gruplar].map(([u,ids])=>`<optgroup label="${esc(ulkeAdi(u))}">${ids.map(id=>`<option value="${esc(id)}" ${id===secili2?"selected":""}>${esc(bolgeAdi(id))}</option>`).join("")}</optgroup>`).join("")},
-yerel=t=>{const z=new Date(t);return z.setMinutes(z.getMinutes()-z.getTimezoneOffset()),z.toISOString().slice(0,16)},en=Date.now()+(Number(K.leadMinutes??120)+1)*6e4,son=Date.now()+Number(K.horizonDays??
-14)*864e5-6e4,ilk=new Date(en+30*6e4);ilk.setMinutes(0,0,0),ilk.setHours(Math.max(ilk.getHours()+1,20)),ilk.getTime()>son&&ilk.setTime(en);const sureler=C.durationsMin??[60,90,120],secili=[...rep].sort(
-(a,c)=>Number(c.avg_level??0)-Number(a.avg_level??0)).slice(0,enAz).map(x=>x.song_id),baslangic=[b.base_region_id,me?.region_id,...sehirler].filter((x,i,a)=>x&&a.indexOf(x)===i),mekanSecenek=secili2=>KONSER_MEKANLAR.
-map(m=>`<option value="${m}" ${m===secili2?"selected":""}>${esc(konserMekanAdi(m))}</option>`).join("");let n=0;const durakHtml=(bolge,mekan,zaman)=>(n++,`<div class="turne-durak-form" data-durak>
+} durakta sahnede olan \xFCye turne madalyas\u0131 kazan\u0131r.",{b:Number(K?.boardMinutes??30),m:Number(K?.medalMinStops??3)})}</p></section>`}async function turnePlanla(b,R,me,sonra){const dunyaOturumu=Sunucu.
+Giris.kusak;if(await Dunya.yukle(),dunyaOturumu!==Sunucu.Giris.kusak)return;const K=R.tour??{},C=R.concert??{},rep=b.repertoire_list??[],enAz=Number(C.setlist?.min??3),enCok=Number(C.setlist?.max??12);
+if(rep.length<enAz){tost(\u00E7("Turne i\xE7in repertuvarda en az {n} \u015Fark\u0131 olmal\u0131.",{n:enAz}),"circle-alert");return}let harita=null;try{harita=await Durum.harita()}catch{harita=null}const acik=new Set(
+harita?.open_countries??[]),sahip=harita?.sahip??{},sehirler=Object.keys(DUNYA.bolgeler??{}).filter(id=>acik.has(sahip[id]??DUNYA.bolgeler[id]?.ulke)).sort((x,y)=>ulkeAdi(sahip[x]??DUNYA.bolgeler[x]?.
+ulke).localeCompare(ulkeAdi(sahip[y]??DUNYA.bolgeler[y]?.ulke),DIL.yerel)||bolgeAdi(x).localeCompare(bolgeAdi(y),DIL.yerel)),sehirSecenek=secili2=>{const gruplar=new Map;for(const id of sehirler){const u=sahip[id]??
+DUNYA.bolgeler[id]?.ulke;gruplar.has(u)||gruplar.set(u,[]),gruplar.get(u).push(id)}return[...gruplar].map(([u,ids])=>`<optgroup label="${esc(ulkeAdi(u))}">${ids.map(id=>`<option value="${esc(id)}" ${id===
+secili2?"selected":""}>${esc(bolgeAdi(id))}</option>`).join("")}</optgroup>`).join("")},yerel=t=>{const z=new Date(t);return z.setMinutes(z.getMinutes()-z.getTimezoneOffset()),z.toISOString().slice(0,
+16)},en=Date.now()+(Number(K.leadMinutes??120)+1)*6e4,son=Date.now()+Number(K.horizonDays??14)*864e5-6e4,ilk=new Date(en+30*6e4);ilk.setMinutes(0,0,0),ilk.setHours(Math.max(ilk.getHours()+1,20)),ilk.getTime()>
+son&&ilk.setTime(en);const sureler=C.durationsMin??[60,90,120],secili=[...rep].sort((a,c)=>Number(c.avg_level??0)-Number(a.avg_level??0)).slice(0,enAz).map(x=>x.song_id),baslangic=[b.base_region_id,me?.
+region_id,...sehirler].filter((x,i,a)=>x&&a.indexOf(x)===i),mekanSecenek=secili2=>KONSER_MEKANLAR.map(m=>`<option value="${m}" ${m===secili2?"selected":""}>${esc(konserMekanAdi(m))}</option>`).join("");
+let n=0;const durakHtml=(bolge,mekan,zaman)=>(n++,`<div class="turne-durak-form" data-durak>
       <span class="turne-sira"></span>
       <label class="alan"><span>${\u00E7("\u015Eehir")}</span><select name="sehir">${sehirSecenek(bolge)}</select></label>
       <label class="alan"><span>${\u00E7("Mek\xE2n")}</span><select name="mekan">${mekanSecenek(mekan)}</select></label>
@@ -6972,14 +6771,15 @@ kayitlar=b.recordings??[],suren=kayitlar.filter(k=>k.status==="recording"),biten
 !st.en_route&&!st.detained,neden=st.open?st.en_route?\u00E7("Yoldas\u0131n; var\u0131nca st\xFCdyoya gir."):st.detained?\u00E7("G\xF6zalt\u0131ndayken kay\u0131t yap\u0131lmaz."):"":\u00E7("Bulundu\u011Fun\
  \u015Fehirde st\xFCdyo yok."),acikDolu=suren.length>=Number(S.openPerBand??2),kayitSatir=k=>`<div class="liste-satir studyo-kayit" data-kayit="${esc(k.song_id)}"><span class="liste-ikon"><span class=\
 "ozet-ikon">${ikon(k.status==="done"?"disc-3":"audio-lines")}</span></span>
-      <div><span class="tur">${k.status==="done"?\u00E7("Kay\u0131t kalitesi {q} \xB7 {sehir}",{q:Number(k.quality??0),sehir:esc(k.region_name??bolgeAdi(k.region_id))}):\u00E7("{n} / {k} birim \xB7 icra \
-ort. {p}",{n:Number(k.units),k:Number(k.needed??gereken),p:Number(k.performance_avg??0)})}</span><b>${esc(k.title)}</b>
+      <div><span class="tur">${k.status==="done"?\u00E7("Kay\u0131t kalitesi {q} \xB7 {sehir}",{q:Number(k.quality??0),sehir:esc(k.region_id?bolgeAdi(k.region_id):k.region_name??"")}):\u00E7("{n} / {k\
+} birim \xB7 icra ort. {p}",{n:Number(k.units),k:Number(k.needed??gereken),p:Number(k.performance_avg??0)})}${Number(k.bonus_avg)>0?" \xB7 "+esc(\u00E7("st\xFCdyo eki +{n}",{n:Number(k.bonus_avg)})):""}\
+</span><b>${esc(k.title)}</b>
         ${k.status==="done"?"":`<div class="muzik-ilerleme" role="img" aria-label="${esc(\u00E7("{n} / {k} birim",{n:Number(k.units),k:Number(k.needed??gereken)}))}"><span style="width:${Math.round(Number(
 k.units)/Math.max(1,Number(k.needed??gereken))*100)}%"></span></div>`}
         <div class="alt">${(k.roles??[]).map(r=>MUZIK_ROL[r]??r).join(", ")||"\u2014"}${k.on_ep?" \xB7 "+\u00E7("EP'de"):""}</div></div>
       ${k.status==="done"?`<span class="cip">${ikon("check")}${\u00E7("Kay\u0131tl\u0131")}</span>`:`<button class="dugme kucuk-d" data-kayit-yap="${esc(k.song_id)}" ${burada?"":"disabled"}>${ikon("mi\
-c")}${\u00E7("Kaydet")}</button>`}</div>`;return`<section class="kart" id="muzik-studyo"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kay\u0131t st\xFCdyosu")} \xB7 ${esc(st.region_name??bolgeAdi(
-st.region_id))}</p>
+c")}${\u00E7("Kaydet")}</button>`}</div>`;return`<section class="kart" id="muzik-studyo"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kay\u0131t st\xFCdyosu")} \xB7 ${esc(st.region_id?bolgeAdi(
+st.region_id):st.region_name??"")}</p>
       <h2 class="b2">${suren.length?\u00E7("{n} \u015Fark\u0131n\u0131n kayd\u0131 s\xFCr\xFCyor",{n:suren.length}):biten.length?\u00E7("{n} kay\u0131tl\u0131 \u015Fark\u0131",{n:biten.length}):\u00E7(
 "Hen\xFCz kay\u0131t yok")}</h2></div>
       <button class="dugme sade kucuk-d" data-git="sehir/studyo">${ikon("sliders-horizontal")}${\u00E7("St\xFCdyoya gir")}</button></div>
@@ -7001,21 +6801,33 @@ coverage??15),o:Number(S.openPerBand??2)})}</p></section>`}function kayitYap(b,m
 units_today??0)),enCok=Math.max(0,Math.min(Number(S.sessionUnits?.max??4),kalan,gunluk)),enAz=Number(S.sessionUnits?.min??1),dk=Number(m.me?.unit_minutes??30),ucret=Number(S.feePerUnitCr??100),beceri=Number(
 m.me?.music_skill??0),bilgi=Number(s?.my_level??k?.my_level??0),icra=Math.floor((beceri*Number(S.performancePct?.skill??60)+bilgi*Number(S.performancePct?.knowledge??40))/100);if(enCok<enAz){tost(gunluk<
 enAz?\u00E7("Bug\xFCnk\xFC \xE7al\u0131\u015Fma s\u0131n\u0131r\u0131na ula\u015Ft\u0131n; yar\u0131n kaydedersin."):\u00E7("Bu \u015Fark\u0131n\u0131n kayd\u0131na birim kalmad\u0131."),"circle-alert");
-return}const secim=Array.from({length:enCok-enAz+1},(_,i)=>enAz+i);pencereForm({ust:\u00E7("Kay\u0131t st\xFCdyosu \xB7 {sehir}",{sehir:st.region_name??bolgeAdi(st.region_id)}),baslik:\u00E7("Kaydet: \
-{ad}",{ad}),onayAd:\u00E7("Kayda ba\u015Fla"),onayIkon:"mic",govde:`<p class="aciklama">${k?\u00E7("Kayd\u0131n {n} / {g} birimi yap\u0131ld\u0131; {kalan} birim kald\u0131.",{n:Number(k.units),g:gereken,
-kalan}):\u00E7("Yeni kay\u0131t: \u015Fark\u0131 {g} birimde kaydedilir; birka\xE7 oturumda ve birden \xE7ok \xFCyeyle tamamlanabilir.",{g:gereken})}</p>
+return}const secim=Array.from({length:enCok-enAz+1},(_,i)=>enAz+i),studyolar=(st.studios??[]).filter(x=>x.status!=="closed"),ucretOf=id=>id?Number(studyolar.find(x=>x.venue_id===id)?.record_fee_cr??ucret):
+ucret,studyoSecenek=studyolar.length?`<fieldset class="alan"><legend>${\u00E7("St\xFCdyo")}</legend><div class="radyo-liste">
+      <label class="radyo"><input type="radio" name="studyo" value="" checked><span><b>${ikon("landmark")} ${\u00E7("Devletin st\xFCdyosu")}</b><span class="kucuk">${esc(\u00E7("Birim {kr} kredi \xB7 kal\
+ite eki yok \xB7 belediyeye",{kr:kr(ucret)}))}</span></span></label>
+      ${studyolar.map(x=>`<label class="radyo${x.allowed?"":" kapali"}"><input type="radio" name="studyo" value="${esc(x.venue_id)}" ${x.allowed?"":"disabled"}>
+        <span><b>${ikon("mic")} ${esc(x.name)}</b><span class="kucuk">${esc([\u00E7("Birim {kr} kredi",{kr:kr(x.record_fee_cr??0)}),\u00E7("kalite eki +{n}",{n:Number(x.studio_bonus??0)}),\u00E7("sahi\
+bi {ad}",{ad:x.owner??""}),x.allowed?null:x.status==="suspended"?\u00E7("ask\u0131da"):x.door==="closed"?\u00E7("kap\u0131s\u0131 kapal\u0131"):\u00E7("yaln\u0131z sahibinin arkada\u015Flar\u0131na a\xE7\u0131k")].
+filter(Boolean).join(" \xB7 "))}</span></span></label>`).join("")}
+    </div></fieldset>`:"";pencereForm({ust:\u00E7("Kay\u0131t st\xFCdyosu \xB7 {sehir}",{sehir:st.region_id?bolgeAdi(st.region_id):st.region_name??""}),baslik:\u00E7("Kaydet: {ad}",{ad}),onayAd:\u00E7(
+"Kayda ba\u015Fla"),onayIkon:"mic",govde:`<p class="aciklama">${k?\u00E7("Kayd\u0131n {n} / {g} birimi yap\u0131ld\u0131; {kalan} birim kald\u0131.",{n:Number(k.units),g:gereken,kalan}):\u00E7("Yeni k\
+ay\u0131t: \u015Fark\u0131 {g} birimde kaydedilir; birka\xE7 oturumda ve birden \xE7ok \xFCyeyle tamamlanabilir.",{g:gereken})}</p>
+      ${studyoSecenek}
       <fieldset class="alan"><legend>${\u00E7("Ka\xE7 birim")}</legend><div class="radyo-liste birlik-yatay ikili">${secim.map((n,i)=>`<label class="radyo"><input type="radio" name="birim" value="${n}\
 " ${i===secim.length-1?"checked":""}>
         <span><b>${\u00E7("{n} birim",{n})}</b><span class="kucuk">${n*dk<60?\u00E7("{d} dk",{d:n*dk}):n*dk%60?\u00E7("{s} sa {d} dk",{s:Math.floor(n*dk/60),d:n*dk%60}):\u00E7("{n} sa",{n:n*dk/60})} \xB7\
- ${\u00E7("{kr} kredi",{kr:kr(n*ucret)})}</span></span></label>`).join("")}</div></fieldset>
+ <span data-kira-birim="${n}">${\u00E7("{kr} kredi",{kr:kr(n*ucret)})}</span></span></span></label>`).join("")}</div></fieldset>
       <p class="kucuk">${\u00E7("\u0130cran {i} (beceri {b}, bu \u015Fark\u0131y\u0131 bilgin {s}); kay\u0131t \u015Fark\u0131 bilgini prova gibi art\u0131r\u0131r. Bug\xFCn {n} / {max} birim \xE7al\u0131\u015Ft\u0131n.",
 {i:icra,b:beceri,s:bilgi,n:Number(m.me?.units_today??0),max:Number(m.me?.daily_cap??8)})}</p>
       <p class="kucuk">${\u00E7("Kira kasadan hemen \xF6denir (kasada harcanabilir {kr} kredi). Oturum s\xFCresince \xE7izelgen dolu olur.",{kr:kr(Math.max(0,Number(b.treasury?.free??b.treasury?.balance??
-0)))})}</p>`,is:async f=>{const y=await Sunucu.yap("record_session",{p_song:songId,p_units:Number(f.get("birim")??enAz)});tost(y?.done?\u00E7("Kay\u0131t bitti: {ad}, kalite {q}.",{ad,q:Number(y.quality??
-0)}):\u00E7("Kay\u0131t s\xFCr\xFCyor: {n} / {g} birim.",{n:Number(y?.total??0),g:Number(y?.needed??gereken)}),y?.done?"disc-3":"mic"),Durum.ozet().catch(()=>{}),await sonra?.()}})}function epKartHtml(b,yetki,R){
-const E=R.ep??{},eps=b.eps??[],taslak=eps.filter(e=>e.status==="draft"),yayinda=eps.filter(e=>e.status==="released"),cekilen=eps.filter(e=>e.status==="withdrawn"),kayitli=(b.recordings??[]).filter(k=>k.
-status==="done"&&!k.on_ep).length,satir=e=>epSatirHtml(e,{grupsuz:!0,alt:e.status==="draft"?`<div class="oneri-dugmeler" style="margin-top:4px">${yetki?`<button class="dugme altin kucuk-d" data-ep-yay\
-imla="${esc(e.ep_id)}">${ikon("send")}${\u00E7("Yay\u0131mla")}</button>
+0)))})}</p>`,is:async f=>{const studyo=String(f.get("studyo")??"")||null,y=await Sunucu.yap("record_session",{p_song:songId,p_units:Number(f.get("birim")??enAz),p_venue:studyo});tost(y?.done?\u00E7("K\
+ay\u0131t bitti: {ad}, kalite {q}.",{ad,q:Number(y.quality??0)}):y?.venue?\u00E7("Kay\u0131t s\xFCr\xFCyor: {n} / {g} birim ({studyo}, ek +{e}).",{n:Number(y?.total??0),g:Number(y?.needed??gereken),studyo:y.
+venue,e:Number(y.bonus??0)}):\u00E7("Kay\u0131t s\xFCr\xFCyor: {n} / {g} birim.",{n:Number(y?.total??0),g:Number(y?.needed??gereken)}),y?.done?"disc-3":"mic"),Durum.ozet().catch(()=>{}),await sonra?.()}});
+const perde=document.querySelector(".perde:last-child");if(perde&&studyolar.length){const yenile=()=>{const u=ucretOf(String(perde.querySelector("input[name=studyo]:checked")?.value??"")||null);for(const el of perde.
+querySelectorAll("[data-kira-birim]"))el.textContent=\u00E7("{kr} kredi",{kr:kr(Number(el.dataset.kiraBirim)*u)})};for(const r of perde.querySelectorAll("input[name=studyo]"))r.addEventListener("chang\
+e",yenile)}}function epKartHtml(b,yetki,R){const E=R.ep??{},eps=b.eps??[],taslak=eps.filter(e=>e.status==="draft"),yayinda=eps.filter(e=>e.status==="released"),cekilen=eps.filter(e=>e.status==="withdr\
+awn"),kayitli=(b.recordings??[]).filter(k=>k.status==="done"&&!k.on_ep).length,satir=e=>epSatirHtml(e,{grupsuz:!0,alt:e.status==="draft"?`<div class="oneri-dugmeler" style="margin-top:4px">${yetki?`<b\
+utton class="dugme altin kucuk-d" data-ep-yayimla="${esc(e.ep_id)}">${ikon("send")}${\u00E7("Yay\u0131mla")}</button>
           <button class="dugme sade kucuk-d" data-ep-sil="${esc(e.ep_id)}">${ikon("trash")}${\u00E7("Sil")}</button>`:esc(\u00E7("Y\xF6netici ya da vekil yay\u0131mlar."))}</div>`:e.book?esc(\u00E7("g\
 er\xE7ek {a}, sim\xFClasyon {s} \xB7 \xFCyelere {kr} kredi",{a:sayi(e.sales??0),s:sayi(e.sim_sales??0),kr:kr(e.book.members_cr??0)})):""});return`<section class="kart" id="muzik-ep"><div class="kart-b\
 as"><div><p class="ust-yazi">${\u00E7("EP'ler")}</p>
@@ -7085,12 +6897,12 @@ y\u0131t st\xFCdyosunda \u015Fark\u0131lar\u0131n\u0131 kaydedip EP yay\u0131mla
 </p></section>`}const STUDYO_KOSE={vokal:{x:0,z:-1.25,kisi:[0,-1.85],ikinci:[.85,-1.95],eylem:"sahne"},telli:{x:-2.3,z:-2.2,kisi:[-1.75,-1.75],ikinci:[-2.55,-1.3],eylem:"prova"},ritim:{x:1.95,z:-2.55,
 kisi:[1.95,-3.1],ikinci:[1.1,-3],eylem:"alkis"},klavye_elektronik:{x:2.4,z:-1.35,kisi:[2.4,-1.9],ikinci:[3.1,-1.5],eylem:"dans"}},STUDYO_EN_COK=12;function studyoVerisi(s,benId){const hepsi=s.recording_now??
 [],kayitta=[...hepsi.filter(k=>k.character_id===benId),...hepsi.filter(k=>k.character_id!==benId)].slice(0,STUDYO_EN_COK).map(k=>({id:k.character_id,ad:k.name,gorunus:k.look??null,rol:k.stage_role??"v\
-okal",grup:k.band_name,tur:k.genre,sarki:k.title,ilerleme:Number(k.progress??0),gereken:Number(k.needed??8),bitis:k.ends_at,ben:k.character_id===benId}));return{anahtar:s.region_id,sehir:s.region_name??
-bolgeAdi(s.region_id),acik:s.open!==!1,kayitta,kayitSayi:hepsi.length,bugun:Number(s.today??0),kapaklar:(s.wall??[]).slice(0,6),son:(s.recent??[]).slice(0,6),tur:kayitta[0]?.tur??(s.wall??[])[0]?.genre??
-"pop",gece:bolgeGecesi(s.region_id)}}function studyoYerlesim(d){const dolu={};let fazla=0;return d.kayitta.map(k=>{const kose=STUDYO_KOSE[k.rol]??STUDYO_KOSE.vokal,n=dolu[k.rol]=(dolu[k.rol]??0)+1;if(n<=
-2){const[x,z]=n===1?kose.kisi:kose.ikinci;return{...k,x,z,yon:0,eylem:kose.eylem}}return{...k,x:-3.4+fazla++%4*.7,z:-2.9,yon:0,eylem:"alkis"}})}function studyo2b(d){const g0=Math.round((d.gece??0)*20)/
-20,karis=(a,b,t)=>epRenkKaris(a,b,t),P=(x,z)=>[350+x*58,150+(z+3.3)*20],kayit=d.kayitta.length>0,renk=MUZIK_TUR_RENK[d.tur]??"#2F6FB5",yer=studyoYerlesim(d),kisiler=[...yer].sort((a,b)=>a.z-b.z).map((k,i)=>{
-const[x,y]=P(k.x,k.z),r=meydanKisiRenk(k.gorunus,k.ad);return`<g class="studyo2b-kisi calar${k.ben?" ben":""}" data-studyo-kisi="${esc(k.id)}" style="animation-delay:${-(i*.37)%1.3}s">
+okal",grup:k.band_name,tur:k.genre,sarki:k.title,ilerleme:Number(k.progress??0),gereken:Number(k.needed??8),bitis:k.ends_at,ben:k.character_id===benId}));return{anahtar:s.region_id,sehir:s.region_id?bolgeAdi(
+s.region_id):s.region_name??"",acik:s.open!==!1,kayitta,kayitSayi:hepsi.length,bugun:Number(s.today??0),kapaklar:(s.wall??[]).slice(0,6),son:(s.recent??[]).slice(0,6),tur:kayitta[0]?.tur??(s.wall??[])[0]?.
+genre??"pop",gece:bolgeGecesi(s.region_id)}}function studyoYerlesim(d){const dolu={};let fazla=0;return d.kayitta.map(k=>{const kose=STUDYO_KOSE[k.rol]??STUDYO_KOSE.vokal,n=dolu[k.rol]=(dolu[k.rol]??0)+
+1;if(n<=2){const[x,z]=n===1?kose.kisi:kose.ikinci;return{...k,x,z,yon:0,eylem:kose.eylem}}return{...k,x:-3.4+fazla++%4*.7,z:-2.9,yon:0,eylem:"alkis"}})}function studyo2b(d){const g0=Math.round((d.gece??
+0)*20)/20,karis=(a,b,t)=>epRenkKaris(a,b,t),P=(x,z)=>[350+x*58,150+(z+3.3)*20],kayit=d.kayitta.length>0,renk=MUZIK_TUR_RENK[d.tur]??"#2F6FB5",yer=studyoYerlesim(d),kisiler=[...yer].sort((a,b)=>a.z-b.z).
+map((k,i)=>{const[x,y]=P(k.x,k.z),r=meydanKisiRenk(k.gorunus,k.ad);return`<g class="studyo2b-kisi calar${k.ben?" ben":""}" data-studyo-kisi="${esc(k.id)}" style="animation-delay:${-(i*.37)%1.3}s">
       ${k.ben?`<ellipse cx="${x}" cy="${y+2}" rx="16" ry="5" fill="none" stroke="#D9A548" stroke-width="2.5"/>`:""}
       <rect x="${x-9}" y="${y-34}" width="18" height="30" rx="5" fill="${r.giysi}"/><circle cx="${x}" cy="${y-42}" r="8.5" fill="${r.ten}"/></g>`}).join(""),kapaklar=d.kapaklar.map((e,i)=>`<g data-stu\
 dyo-ep="${esc(e.ep_id)}" class="studyo2b-tik" transform="translate(${34+i%3*46}, ${46+Math.floor(i/3)*46}) scale(0.4)"><rect x="-4" y="-4" width="108" height="108" fill="#2B2724"/>${epKapakSvg(e,100).
@@ -7520,22 +7332,22 @@ has(kart.el)||(kartlar.set(kart.el,{kart,oran:0}),gozcu?.observe(kart.el)),sec()
 canli(!0),sec())},kapat(){gozcu?.disconnect(),kartlar.clear(),b1()}}}const yaptirimSuresi=saat=>saat%24===0?\u00E7("{n} g\xFCn",{n:saat/24}):\u00E7("sure::{n} saat",{n:saat}),YAPTIRIM_TUR={warning:\u00E7(
 "Uyar\u0131"),mute:\u00E7("Susturma"),suspension:\u00E7("Ask\u0131")},YAPTIRIM_DURUM={pending_approval:\u00E7("Onay bekliyor"),active:\u00E7("Y\xFCr\xFCrl\xFCkte"),rejected:\u00E7("Onaylanmad\u0131"),
 lifted:\u00E7("Kald\u0131r\u0131ld\u0131")},ITIRAZ_DURUM={pending:\u00E7("\u0130tiraz\u0131n inceleniyor"),upheld:\u00E7("\u0130tiraz\u0131n reddedildi"),lifted:\u00E7("\u0130tiraz\u0131n kabul edildi")},
-RAPOR_TUR={message:\u00E7("Mesaj"),post:\u00E7("Payla\u015F\u0131m"),article:\u00E7("Makale"),petition:\u00E7("\u0130mza kampanyas\u0131"),photo:\u00E7("Kare"),video:\u00E7("Video"),comment:\u00E7("Yo\
-rum"),character:\u00E7("Oyuncu"),party:\u00E7("Parti"),unit:\u00E7("Birlik"),band:\u00E7("M\xFCzik grubu"),newspaper:\u00E7("Gazete"),group:\u00E7("Sohbet grubu"),song:\u00E7("\u015Eark\u0131"),ep:\u00E7(
-"EP"),company:\u00E7("\u0130\u015Fletme"),tour:\u00E7("Turne"),venue:\u00E7("Mek\xE2n"),pet:\u00E7("Evcil hayvan"),club:\u00E7("Futbol kul\xFCb\xFC"),announcement:\u00E7("H\xFCk\xFCmetin duyurusu"),chamber_post:\u00E7(
-"Oda ba\u015Fkan\u0131n\u0131n duyurusu")};function yaptirimAdi(s){return s.kind==="warning"?\u00E7("Uyar\u0131"):s.kind==="mute"?\u00E7("{sure} susturma",{sure:yaptirimSuresi(Number(s.hours??0))}):s.
-days==null?\u00E7("Kal\u0131c\u0131 ask\u0131"):\u00E7("{sure} ask\u0131",{sure:yaptirimSuresi(Number(s.days)*24)})}function toplulukMaddeleri(){const S=Durum.v.kurallar?.data?.moderation?.sanctions??
-{},sus=S.muteHours?.length?S.muteHours:[1,24,72,168],aski=S.suspensionDays?.length?S.suspensionDays:[1,3,7,30],aralik=(a,b)=>\u00E7("{a}\u2013{b}",{a,b});return[["heart-handshake",\u00E7("Sayg\u0131"),
-\u00E7("Hakaret, k\xFCf\xFCr, taciz, tehdit ve zorbal\u0131k yasak. Bir ki\u015Fiyi ya da toplulu\u011Fu k\xF6keni, dini, cinsiyeti, cinsel y\xF6nelimi ya da engeli y\xFCz\xFCnden a\u015Fa\u011F\u0131lamak nefret s\xF6ylemidir ve yasakt\u0131r.")],
-["scale",\u00E7("Yasa d\u0131\u015F\u0131 i\xE7erik"),\u00E7("Ter\xF6r \xF6rg\xFCtlerini, simgelerini ve \u015Fiddeti \xF6vmek, su\xE7a \xE7a\u011F\u0131rmak ve T\xFCrk hukukunda su\xE7 say\u0131lan ifadeler (\xF6r. Atat\xFCrk'\xFCn hat\u0131ras\u0131na hakaret, \
-devleti ve milleti a\u015Fa\u011F\u0131lama) yasak.")],["landmark",\u00E7("Ger\xE7ek siyaset"),\u00E7("Oyun ger\xE7ek d\xFCnya haritas\u0131nda ge\xE7er ama \xFClkeleri oyuncular y\xF6netir. Ger\xE7ek siyaset\xE7ilerin adlar\u0131n\
-\u0131 karakter, parti, gazete, birlik ya da grup ad\u0131 olarak kullanma; ger\xE7ek ki\u015Fileri taklit etme.")],["lock",\u00E7("Ki\u015Fisel bilgi"),\u00E7("Kendinin ya da ba\u015Fkas\u0131n\u0131n telefonunu, a\
-dresini, kimlik numaras\u0131n\u0131, okulunu ya da i\u015F yerini payla\u015Fma. Ba\u015Fkas\u0131n\u0131n foto\u011Fraf\u0131n\u0131 izinsiz payla\u015Fma.")],["eye-off",\u00E7("Cinsel i\xE7erik"),\u00E7(
-"Cinsel i\xE7erik yasak. \xC7ocuklar\u0131 i\xE7eren uygunsuz her i\xE7erik hesab\u0131n kal\u0131c\u0131 kapanmas\u0131yla sonu\xE7lan\u0131r.")],["key-round",\u00E7("Doland\u0131r\u0131c\u0131l\u0131k ve taklit"),
-\u00E7("Moderat\xF6r, y\xF6netici ya da destek ekibi gibi davranmak, parola ya da kredi istemek ve sahte s\xF6zle oyuncular\u0131 kand\u0131rmak yasak. Oyunun yetkilileri parolan\u0131 asla sormaz.")],
-["shield-half",\u00E7("Hile ve \xE7oklu hesap"),\u00E7("Ki\u015Fi ba\u015F\u0131na tek hesap. Hile, a\xE7\u0131k kullanma, bot ve otomatik dokunma programlar\u0131 yasak. Bir hata bulursan kullanma; Ayarlar \u2192 Geri bildirim'den b\
-ildir.")],["megaphone",\u00E7("Reklam ve spam"),\u00E7("Ayn\u0131 mesaj\u0131 tekrar tekrar yazmak, ba\u015Fka oyunlar\u0131n ya da sitelerin reklam\u0131n\u0131 yapmak yasak.")],["id-card",\u00E7("Ad\
-lar"),\u00E7("Karakter, parti, gazete, birlik, m\xFCzik grubu, \u015Fark\u0131, i\u015Fletme ve sohbet grubu adlar\u0131 da bu kurallara uyar. Uygunsuz ad\u0131 moderat\xF6r kald\u0131r\u0131r; sahibi yeni bir ad se\xE7er.")],
+RAPOR_TUR={message:\u00E7("Mesaj"),post:\u00E7("Payla\u015F\u0131m"),article:\u00E7("Makale"),petition:\u00E7("\u0130mza kampanyas\u0131"),photo:\u00E7("Kare"),postcard:\u00E7("Kartpostal"),video:\u00E7(
+"Video"),comment:\u00E7("Yorum"),character:\u00E7("Oyuncu"),party:\u00E7("Parti"),unit:\u00E7("Birlik"),band:\u00E7("M\xFCzik grubu"),newspaper:\u00E7("Gazete"),group:\u00E7("Sohbet grubu"),song:\u00E7(
+"\u015Eark\u0131"),ep:\u00E7("EP"),company:\u00E7("\u0130\u015Fletme"),tour:\u00E7("Turne"),venue:\u00E7("Mek\xE2n"),pet:\u00E7("Evcil hayvan"),club:\u00E7("Futbol kul\xFCb\xFC"),announcement:\u00E7("\
+H\xFCk\xFCmetin duyurusu"),chamber_post:\u00E7("Oda ba\u015Fkan\u0131n\u0131n duyurusu"),channel:\u00E7("Kanal ad\u0131")};function yaptirimAdi(s){return s.kind==="warning"?\u00E7("Uyar\u0131"):s.kind===
+"mute"?\u00E7("{sure} susturma",{sure:yaptirimSuresi(Number(s.hours??0))}):s.days==null?\u00E7("Kal\u0131c\u0131 ask\u0131"):\u00E7("{sure} ask\u0131",{sure:yaptirimSuresi(Number(s.days)*24)})}function toplulukMaddeleri(){
+const S=Durum.v.kurallar?.data?.moderation?.sanctions??{},sus=S.muteHours?.length?S.muteHours:[1,24,72,168],aski=S.suspensionDays?.length?S.suspensionDays:[1,3,7,30],aralik=(a,b)=>\u00E7("{a}\u2013{b}",
+{a,b});return[["heart-handshake",\u00E7("Sayg\u0131"),\u00E7("Hakaret, k\xFCf\xFCr, taciz, tehdit ve zorbal\u0131k yasak. Bir ki\u015Fiyi ya da toplulu\u011Fu k\xF6keni, dini, cinsiyeti, cinsel y\xF6nelimi ya da engeli y\xFCz\xFCnden\
+ a\u015Fa\u011F\u0131lamak nefret s\xF6ylemidir ve yasakt\u0131r.")],["scale",\u00E7("Yasa d\u0131\u015F\u0131 i\xE7erik"),\u00E7("Ter\xF6r \xF6rg\xFCtlerini, simgelerini ve \u015Fiddeti \xF6vmek, su\xE7a \xE7a\u011F\u0131rmak ve T\xFCr\
+k hukukunda su\xE7 say\u0131lan ifadeler (\xF6r. Atat\xFCrk'\xFCn hat\u0131ras\u0131na hakaret, devleti ve milleti a\u015Fa\u011F\u0131lama) yasak.")],["landmark",\u00E7("Ger\xE7ek siyaset"),\u00E7("O\
+yun ger\xE7ek d\xFCnya haritas\u0131nda ge\xE7er ama \xFClkeleri oyuncular y\xF6netir. Ger\xE7ek siyaset\xE7ilerin adlar\u0131n\u0131 karakter, parti, gazete, birlik ya da grup ad\u0131 olarak kullanma; ger\xE7ek ki\u015Fileri taklit etme.")],
+["lock",\u00E7("Ki\u015Fisel bilgi"),\u00E7("Kendinin ya da ba\u015Fkas\u0131n\u0131n telefonunu, adresini, kimlik numaras\u0131n\u0131, okulunu ya da i\u015F yerini payla\u015Fma. Ba\u015Fkas\u0131n\u0131n foto\u011Fraf\u0131n\u0131 izinsiz payla\u015Fma.")],
+["eye-off",\u00E7("Cinsel i\xE7erik"),\u00E7("Cinsel i\xE7erik yasak. \xC7ocuklar\u0131 i\xE7eren uygunsuz her i\xE7erik hesab\u0131n kal\u0131c\u0131 kapanmas\u0131yla sonu\xE7lan\u0131r.")],["key-ro\
+und",\u00E7("Doland\u0131r\u0131c\u0131l\u0131k ve taklit"),\u00E7("Moderat\xF6r, y\xF6netici ya da destek ekibi gibi davranmak, parola ya da kredi istemek ve sahte s\xF6zle oyuncular\u0131 kand\u0131rmak yasak. Oyunun \
+yetkilileri parolan\u0131 asla sormaz.")],["shield-half",\u00E7("Hile ve \xE7oklu hesap"),\u00E7("Ki\u015Fi ba\u015F\u0131na tek hesap. Hile, a\xE7\u0131k kullanma, bot ve otomatik dokunma programlar\u0131 yasak. Bir hata bulurs\
+an kullanma; Ayarlar \u2192 Geri bildirim'den bildir.")],["megaphone",\u00E7("Reklam ve spam"),\u00E7("Ayn\u0131 mesaj\u0131 tekrar tekrar yazmak, ba\u015Fka oyunlar\u0131n ya da sitelerin reklam\u0131n\u0131 yapmak yasak.")],
+["id-card",\u00E7("Adlar"),\u00E7("Karakter, parti, gazete, birlik, m\xFCzik grubu, \u015Fark\u0131, i\u015Fletme ve sohbet grubu adlar\u0131 da bu kurallara uyar. Uygunsuz ad\u0131 moderat\xF6r kald\u0131r\u0131r; sahibi yeni bir ad se\xE7er.")],
 ["gavel",\u00E7("Yapt\u0131r\u0131mlar"),\u00E7("Kurallara uymayan i\xE7erik gizlenebilir. Uyar\u0131, sohbetten susturma ({sus}) ya da hesab\u0131 ask\u0131ya alma ({aski} ya da kal\u0131c\u0131) uygulanabilir. {gun} g\xFCn ve dah\
 a uzun ask\u0131y\u0131 ikinci bir yetkili onaylar.",{sus:aralik(yaptirimSuresi(sus[0]),yaptirimSuresi(sus[sus.length-1])),aski:aralik(yaptirimSuresi(aski[0]*24),yaptirimSuresi(aski[aski.length-1]*24)),
 gun:Number(S.severeDays??7)})],["scale",\u00E7("\u0130tiraz"),\u00E7("Her yapt\u0131r\u0131m\u0131n nedenini g\xF6r\xFCrs\xFCn ve {gun} g\xFCn i\xE7inde bir kez itiraz edebilirsin. \u0130tiraz\u0131na yapt\u0131r\u0131m\u0131 verenden ba\u015Fka bir yetkili ba\
@@ -7602,40 +7414,41 @@ err.kod==="TERMS_REQUIRED"&&toplulukKurallari({kabul:!0}),tost(hataMetni(err),"c
 users-round",first_unit:"shield",first_house:"house",first_song:"eighth-notes",first_stage:"mic-vocal",first_article:"newspaper",first_conquest:"flag",citizenship:"id-card",elected:"landmark",medal:"m\
 edal",rank:"award",venue:"sofa",bond:"heart-handshake",house_party:"party-popper",party_guest:"party-popper",first_treatment:"stethoscope",first_lesson:"presentation",pet:"cat",cityevent_win:"trophy",
 cityevent_record:"timer",gym_level:"biceps-flexed",gym_record:"trophy",football_goal:"volleyball",football_hattrick:"goal",club_founded:"flag",club_debut:"shirt",league_title:"trophy",cup_won:"trophy",
-national_debut:"flag",football_award:"star",transfer:"arrow-right-left"};function gunlukMakam(d){return d.office==="president"?\u00E7("\xDClke ba\u015Fkan\u0131 ({ulke})",{ulke:ulkeAdi(d.country_id)}):
-d.office==="parliament"?\u00E7("Milletvekili ({ulke})",{ulke:ulkeAdi(d.country_id)}):d.office==="mayor"?\u00E7("Belediye ba\u015Fkan\u0131 ({sehir})",{sehir:bolgeAdi(d.region_id)}):d.office==="governo\
-r"?\u00E7("Vali ({bolge})",{bolge:bolgeAdi(d.region_id)}):d.office==="party_leader"?\u00E7("Parti ba\u015Fkan\u0131 ({parti})",{parti:d.party??""}):\u00E7("G\xF6rev")}function gunlukMetni(j){const d=j.
-data??{};switch(j.kind){case"arrival":return[\u00E7("Civora'ya geli\u015F"),ulkeAdi(d.country_id)];case"first_work":return[\u00E7("\u0130lk i\u015F"),d.company??(d.kind==="system"?\u00E7("Sistem i\u015Fi"):
-"")];case"first_sale":return[\u00E7("Pazarda ilk sat\u0131\u015F"),d.asset?\u00E7("{n} {urun}",{n:sayi(d.qty??0),urun:varlikAdi(d.asset)}):""];case"first_company":return[\u00E7("\u0130lk i\u015Fletme"),
-d.name??""];case"first_party":return[\u00E7("\u0130lk parti"),d.name??""];case"first_unit":return[\u00E7("\u0130lk asker\xEE birlik"),d.name??""];case"first_house":return[\u00E7("\u0130lk ev"),bolgeAdi(
-d.region_id)];case"first_song":return[\u00E7("\u0130lk \u015Fark\u0131"),d.title??""];case"first_stage":return[\u00E7("\u0130lk sahne"),[d.band,d.region_id?bolgeAdi(d.region_id):""].filter(Boolean).join(
-" \xB7 ")];case"first_article":return[\u00E7("\u0130lk makale"),d.title??""];case"first_conquest":return[\u00E7("\u0130lk fetih"),bolgeAdi(d.region_id)];case"citizenship":return[\u00E7("Vatanda\u015Fl\u0131k de\
-\u011Fi\u015Fti"),\u00E7("{a} \u2192 {b}",{a:d.from?ulkeAdi(d.from):"\u2014",b:d.to?ulkeAdi(d.to):"\u2014"})];case"elected":return[d.by_election?\u00E7("Ara se\xE7imle se\xE7ildi"):\u00E7("Se\xE7ildi"),
-gunlukMakam(d)];case"medal":{const m=(Durum.v.kurallar?.data?.medal?.medals??[]).find(x=>x.id===d.medal_id),tek=Array.isArray(m?.tiers)&&m.tiers.length<=1;return[\u00E7("Madalya"),tek?\u00E7v(d.name??
-""):\u00E7("{ad} \xB7 {n}. basamak",{ad:\u00E7v(d.name??""),n:Number(d.tier??1)})]}case"rank":return[\u00E7("R\xFCtbe"),\u00E7v(d.name??"")];case"venue":return[\u00E7("Mek\xE2n a\xE7t\u0131"),[d.name,
-MEKAN_TUR[d.kind]??null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"bond":return[d.tier==="kanka"?\u00E7("Kanka oldunuz"):\u00E7("Yak\u0131n dost oldunuz"),d.name??""];case"\
-house_party":return[\u00E7("Ev partisi verdi"),[partiTemaAdi(d.theme),\u00E7("{n} misafir",{n:sayi(d.guests??0)}),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"party_gue\
-st":return[\u00E7("Ev partisine kat\u0131ld\u0131"),[d.host?\u00E7("{ad} partisi",{ad:d.host}):null,partiTemaAdi(d.theme),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"f\
-irst_treatment":return[\u00E7("\u0130lk hastas\u0131n\u0131 muayene etti"),d.region_id?bolgeAdi(d.region_id):""];case"first_lesson":return[\u00E7("\u0130lk dersini verdi"),[beceriAdi(d.skill),d.region_id?
-bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"pet":return[\u00E7("Evcil hayvan sahiplendi"),[d.name,evcilCinsAdi(d.breed)].filter(Boolean).join(" \xB7 ")];case"cityevent_win":return[
-\u00E7("\u015Eehir etkinli\u011Finde birinci"),[etkinlikAdi(d.kind),d.result_sec?etkinlikSure(d.result_sec):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"cityevent_\
-record":return[\u00E7("\u015Eehir rekoru k\u0131rd\u0131"),[etkinlikAdi(d.kind),d.result_sec?etkinlikSure(d.result_sec):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"\
-gym_level":return[\u00E7("Atletik seviye {n}",{n:sayi(d.level??0)}),[\u00E7("v\xFCcut {n}/5",{n:Number(d.build??0)}),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"gym_re\
-cord":return[\u00E7("Salon rekoru k\u0131rd\u0131"),[sporRekorAdi(d.kind),d.value!=null?sporDeger(d.kind,d.value):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"foot\
-ball_goal":return[\u00E7("Hal\u0131 sahada ilk gol\xFC"),[Number(d.goals)>1?\u00E7("ma\xE7ta {n} gol",{n:sayi(d.goals)}):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"\
-football_hattrick":return[\u00E7("Hat-trick yapt\u0131"),[\u00E7("ma\xE7ta {n} gol",{n:sayi(d.goals??3)}),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"club_founded":return[
-\u00E7("Kul\xFCp kurdu: {ad}",{ad:d.name??""}),[d.short??null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"club_debut":return[\u00E7("Kul\xFCb\xFCyle ilk ma\xE7\u0131: {ad}",
-{ad:d.club??""}),[Number(d.goals)?\u00E7("ma\xE7ta {n} gol",{n:sayi(d.goals)}):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"league_title":return[\u00E7("Lig \u015Fampiy\
-onu: {ad}",{ad:d.club??""}),[ligAdi({tier:d.tier,grp:d.grp,continent:d.continent},d.country_id??null),\u00E7("{n}. sezon",{n:sayi(d.season??1)})].filter(Boolean).join(" \xB7 ")];case"cup_won":return[\u00E7(
-"Kupa kazand\u0131: {kupa}",{kupa:typeof kupaAdi=="function"?kupaAdi({competition:d.competition,country_id:d.country_id,continent:d.continent}):String(d.competition??"")}),[d.club??null,\u00E7("{n}. s\
-ezon",{n:sayi(d.season??1)}),Number(d.matches)?\u00E7("{n} ma\xE7",{n:sayi(d.matches)}):null].filter(Boolean).join(" \xB7 ")];case"national_debut":return[\u00E7("\u0130lk mill\xEE ma\xE7\u0131: {ulke}",
-{ulke:ulkeAdi(d.country_id)}),[d.region_id?bolgeAdi(d.region_id):null,Number(d.goals)?\u00E7("{n} gol",{n:sayi(d.goals)}):null].filter(Boolean).join(" \xB7 ")];case"football_award":return[d.kind==="sc\
-orer"?\u00E7("Gol Kral\u0131 se\xE7ildi"):\u00E7("Y\u0131l\u0131n Futbolcusu se\xE7ildi"),[ulkeAdi(d.country_id),\u00E7("{n}. sezon",{n:sayi(d.season??1)}),d.kind==="scorer"&&Number(d.value)?\u00E7("{\
-n} gol",{n:sayi(d.value)}):null].filter(Boolean).join(" \xB7 ")];case"transfer":return[\u00E7("Transfer oldu: {kulup}",{kulup:d.club??""}),[d.from_club?\u00E7("{kulup} kul\xFCb\xFCnden",{kulup:d.from_club}):
-null,Number(d.fee_cr)?\u00E7("{kr} kredi",{kr:kr(d.fee_cr)}):null].filter(Boolean).join(" \xB7 ")];default:return[\u00E7("Kay\u0131t"),""]}}function gunlukHtml(items,{kendi=!1}={}){if(!items?.length)return`\
-<p class="bos">${kendi?\u00E7("G\xFCnl\xFC\u011F\xFCn yeni ba\u015Fl\u0131yor: ilk i\u015Fin, ilk sat\u0131\u015F\u0131n ve se\xE7imlerin burada birikir."):\u00E7("G\xF6r\xFCn\xFCr kay\u0131t yok.")}<\
-/p>`;let yil=null;return`<ol class="gunluk">${items.map(j=>{const t=new Date(j.at),y=t.getFullYear(),ara=y!==yil?`<li class="gunluk-yil">${y}</li>`:"";yil=y;const[baslik,ayrinti]=gunlukMetni(j);return`${ara}\
-<li class="gunluk-kayit${j.hidden?" gizli":""}" data-gunluk="${j.entry_id}"><span class="ik-kutu">${ikon(GUNLUK_IKON[j.kind]??"scroll-text")}</span>
+national_debut:"flag",football_award:"star",transfer:"arrow-right-left",contest_won:"trophy"};function gunlukMakam(d){return d.office==="president"?\u00E7("\xDClke ba\u015Fkan\u0131 ({ulke})",{ulke:ulkeAdi(
+d.country_id)}):d.office==="parliament"?\u00E7("Milletvekili ({ulke})",{ulke:ulkeAdi(d.country_id)}):d.office==="mayor"?\u00E7("Belediye ba\u015Fkan\u0131 ({sehir})",{sehir:bolgeAdi(d.region_id)}):d.office===
+"governor"?\u00E7("Vali ({bolge})",{bolge:bolgeAdi(d.region_id)}):d.office==="party_leader"?\u00E7("Parti ba\u015Fkan\u0131 ({parti})",{parti:d.party??""}):\u00E7("G\xF6rev")}function gunlukMetni(j){const d=j.
+data??{};switch(j.kind){case"contest_won":return[\u00E7("\u015Eark\u0131 yar\u0131\u015Fmas\u0131 birincili\u011Fi"),\u00E7("{s}. sezon",{s:d.season??""})];case"arrival":return[\u00E7("Civora'ya geli\u015F"),
+ulkeAdi(d.country_id)];case"first_work":return[\u00E7("\u0130lk i\u015F"),d.company??(d.kind==="system"?\u00E7("Sistem i\u015Fi"):"")];case"first_sale":return[\u00E7("Pazarda ilk sat\u0131\u015F"),d.asset?
+\u00E7("{n} {urun}",{n:sayi(d.qty??0),urun:varlikAdi(d.asset)}):""];case"first_company":return[\u00E7("\u0130lk i\u015Fletme"),d.name??""];case"first_party":return[\u00E7("\u0130lk parti"),d.name??""];case"\
+first_unit":return[\u00E7("\u0130lk asker\xEE birlik"),d.name??""];case"first_house":return[\u00E7("\u0130lk ev"),bolgeAdi(d.region_id)];case"first_song":return[\u00E7("\u0130lk \u015Fark\u0131"),d.title??
+""];case"first_stage":return[\u00E7("\u0130lk sahne"),[d.band,d.region_id?bolgeAdi(d.region_id):""].filter(Boolean).join(" \xB7 ")];case"first_article":return[\u00E7("\u0130lk makale"),d.title??""];case"\
+first_conquest":return[\u00E7("\u0130lk fetih"),bolgeAdi(d.region_id)];case"citizenship":return[\u00E7("Vatanda\u015Fl\u0131k de\u011Fi\u015Fti"),\u00E7("{a} \u2192 {b}",{a:d.from?ulkeAdi(d.from):"\u2014",
+b:d.to?ulkeAdi(d.to):"\u2014"})];case"elected":return[d.by_election?\u00E7("Ara se\xE7imle se\xE7ildi"):\u00E7("Se\xE7ildi"),gunlukMakam(d)];case"medal":{const m=(Durum.v.kurallar?.data?.medal?.medals??
+[]).find(x=>x.id===d.medal_id),tek=Array.isArray(m?.tiers)&&m.tiers.length<=1;return[\u00E7("Madalya"),tek?\u00E7v(d.name??""):\u00E7("{ad} \xB7 {n}. basamak",{ad:\u00E7v(d.name??""),n:Number(d.tier??
+1)})]}case"rank":return[\u00E7("R\xFCtbe"),\u00E7v(d.name??"")];case"venue":return[\u00E7("Mek\xE2n a\xE7t\u0131"),[d.name,MEKAN_TUR[d.kind]??null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).
+join(" \xB7 ")];case"bond":return[d.tier==="kanka"?\u00E7("Kanka oldunuz"):\u00E7("Yak\u0131n dost oldunuz"),d.name??""];case"house_party":return[\u00E7("Ev partisi verdi"),[partiTemaAdi(d.theme),\u00E7(
+"{n} misafir",{n:sayi(d.guests??0)}),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"party_guest":return[\u00E7("Ev partisine kat\u0131ld\u0131"),[d.host?\u00E7("{ad} part\
+isi",{ad:d.host}):null,partiTemaAdi(d.theme),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"first_treatment":return[\u00E7("\u0130lk hastas\u0131n\u0131 muayene etti"),d.
+region_id?bolgeAdi(d.region_id):""];case"first_lesson":return[\u00E7("\u0130lk dersini verdi"),[beceriAdi(d.skill),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"pet":return[
+\u00E7("Evcil hayvan sahiplendi"),[d.name,evcilCinsAdi(d.breed)].filter(Boolean).join(" \xB7 ")];case"cityevent_win":return[\u00E7("\u015Eehir etkinli\u011Finde birinci"),[etkinlikAdi(d.kind),d.result_sec?
+etkinlikSure(d.result_sec):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"cityevent_record":return[\u00E7("\u015Eehir rekoru k\u0131rd\u0131"),[etkinlikAdi(d.kind),d.
+result_sec?etkinlikSure(d.result_sec):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"gym_level":return[\u00E7("Atletik seviye {n}",{n:sayi(d.level??0)}),[\u00E7("v\xFCc\
+ut {n}/5",{n:Number(d.build??0)}),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"gym_record":return[\u00E7("Salon rekoru k\u0131rd\u0131"),[sporRekorAdi(d.kind),d.value!=
+null?sporDeger(d.kind,d.value):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"football_goal":return[\u00E7("Hal\u0131 sahada ilk gol\xFC"),[Number(d.goals)>1?\u00E7(
+"ma\xE7ta {n} gol",{n:sayi(d.goals)}):null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"football_hattrick":return[\u00E7("Hat-trick yapt\u0131"),[\u00E7("ma\xE7ta {n} gol",
+{n:sayi(d.goals??3)}),d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"club_founded":return[\u00E7("Kul\xFCp kurdu: {ad}",{ad:d.name??""}),[d.short??null,d.region_id?bolgeAdi(
+d.region_id):null].filter(Boolean).join(" \xB7 ")];case"club_debut":return[\u00E7("Kul\xFCb\xFCyle ilk ma\xE7\u0131: {ad}",{ad:d.club??""}),[Number(d.goals)?\u00E7("ma\xE7ta {n} gol",{n:sayi(d.goals)}):
+null,d.region_id?bolgeAdi(d.region_id):null].filter(Boolean).join(" \xB7 ")];case"league_title":return[\u00E7("Lig \u015Fampiyonu: {ad}",{ad:d.club??""}),[ligAdi({tier:d.tier,grp:d.grp,continent:d.continent},
+d.country_id??null),\u00E7("{n}. sezon",{n:sayi(d.season??1)})].filter(Boolean).join(" \xB7 ")];case"cup_won":return[\u00E7("Kupa kazand\u0131: {kupa}",{kupa:typeof kupaAdi=="function"?kupaAdi({competition:d.
+competition,country_id:d.country_id,continent:d.continent}):String(d.competition??"")}),[d.club??null,\u00E7("{n}. sezon",{n:sayi(d.season??1)}),Number(d.matches)?\u00E7("{n} ma\xE7",{n:sayi(d.matches)}):
+null].filter(Boolean).join(" \xB7 ")];case"national_debut":return[\u00E7("\u0130lk mill\xEE ma\xE7\u0131: {ulke}",{ulke:ulkeAdi(d.country_id)}),[d.region_id?bolgeAdi(d.region_id):null,Number(d.goals)?
+\u00E7("{n} gol",{n:sayi(d.goals)}):null].filter(Boolean).join(" \xB7 ")];case"football_award":return[d.kind==="scorer"?\u00E7("Gol Kral\u0131 se\xE7ildi"):\u00E7("Y\u0131l\u0131n Futbolcusu se\xE7ildi"),
+[ulkeAdi(d.country_id),\u00E7("{n}. sezon",{n:sayi(d.season??1)}),d.kind==="scorer"&&Number(d.value)?\u00E7("{n} gol",{n:sayi(d.value)}):null].filter(Boolean).join(" \xB7 ")];case"transfer":return[\u00E7(
+"Transfer oldu: {kulup}",{kulup:d.club??""}),[d.from_club?\u00E7("{kulup} kul\xFCb\xFCnden",{kulup:d.from_club}):null,Number(d.fee_cr)?\u00E7("{kr} kredi",{kr:kr(d.fee_cr)}):null].filter(Boolean).join(
+" \xB7 ")];default:return[\u00E7("Kay\u0131t"),""]}}function gunlukHtml(items,{kendi=!1}={}){if(!items?.length)return`<p class="bos">${kendi?\u00E7("G\xFCnl\xFC\u011F\xFCn yeni ba\u015Fl\u0131yor: ilk i\u015Fin, ilk sat\u0131\u015F\u0131n ve se\
+\xE7imlerin burada birikir."):\u00E7("G\xF6r\xFCn\xFCr kay\u0131t yok.")}</p>`;let yil=null;return`<ol class="gunluk">${items.map(j=>{const t=new Date(j.at),y=t.getFullYear(),ara=y!==yil?`<li class="g\
+unluk-yil">${y}</li>`:"";yil=y;const[baslik,ayrinti]=gunlukMetni(j);return`${ara}<li class="gunluk-kayit${j.hidden?" gizli":""}" data-gunluk="${j.entry_id}"><span class="ik-kutu">${ikon(GUNLUK_IKON[j.
+kind]??"scroll-text")}</span>
       <div><b>${esc(baslik)}</b>${ayrinti?`<span>${esc(ayrinti)}</span>`:""}
         <small>${j.approx?`<span title="${\u00E7("Yakla\u015F\u0131k tarih: bu kay\u0131t g\xFCnl\xFCk a\xE7\u0131lmadan \xF6nce kazan\u0131ld\u0131.")}">\u2248 </span>`:""}${esc(t.toLocaleDateString(
 DIL.yerel,{day:"numeric",month:"long",year:"numeric"}))}${j.hidden?" \xB7 "+\u00E7("yaln\u0131z sen g\xF6r\xFCyorsun"):""}</small></div>
@@ -7699,9 +7512,9 @@ ymad\u0131\u011F\u0131 i\xE7in kald\u0131r\u0131ld\u0131; \u015Fimdilik "{ad}" g
 /\s+/g," ");if([...ad].length<3||[...ad].length>24)throw new Error(\u00E7("Ad {min}\u2013{max} karakter olmal\u0131.",{min:3,max:24}));await Sunucu.yap("character_rename",{p_name:ad}),await Durum.ozet(),
 tost(\u00E7("Yeni ad\u0131n kaydedildi: {ad}",{ad}),"badge-check")}})}const AD_KALDIRMA_YER={party:\u00E7("\xDClkem \u2192 Parti"),unit:\u00E7("\xDClkem \u2192 Birlik"),band:\u00E7("Hayat\u0131m \u2192 M\xFCzik"),
 newspaper:\u00E7("Hayat\u0131m \u2192 Medya"),group:\u00E7("Sohbet \u2192 \xD6zel"),venue:\u00E7("\u015Eehrim \u2192 Mek\xE2nlar \u2192 Y\xF6net"),pet:\u00E7("Hayat\u0131m \u2192 Evcil hayvan"),club:\u00E7(
-"\u015Eehrim \u2192 Stadyum \u2192 Kul\xFCb\xFCn sayfas\u0131")};function gazeteAdiYenile(g,sonra){pencereForm({ust:\u00E7("Gazete"),baslik:\u00E7("Gazetene yeni ad koy"),onayAd:\u00E7("Ad\u0131 kaydet"),
-onayIkon:"newspaper",govde:`<div class="bilgi-kutusu">${ikon("newspaper")}<span>${\u00E7("Gazetenin ad\u0131 topluluk kurallar\u0131na uymad\u0131\u011F\u0131 i\xE7in kald\u0131r\u0131ld\u0131 ({ad}). Yeni ad\u0131 bir kez se\xE7ebilirsin.",
-{ad:esc(g.name??"")})}</span></div>
+"\u015Eehrim \u2192 Stadyum \u2192 Kul\xFCb\xFCn sayfas\u0131"),channel:\u00E7("Hayat\u0131m \u2192 Medya \u2192 Kanal")};function gazeteAdiYenile(g,sonra){pencereForm({ust:\u00E7("Gazete"),baslik:\u00E7(
+"Gazetene yeni ad koy"),onayAd:\u00E7("Ad\u0131 kaydet"),onayIkon:"newspaper",govde:`<div class="bilgi-kutusu">${ikon("newspaper")}<span>${\u00E7("Gazetenin ad\u0131 topluluk kurallar\u0131na uymad\u0131\u011F\u0131 i\xE7in kald\
+\u0131r\u0131ld\u0131 ({ad}). Yeni ad\u0131 bir kez se\xE7ebilirsin.",{ad:esc(g.name??"")})}</span></div>
       <label class="alan"><span>${\u00E7("Gazetenin ad\u0131")}</span><input name="ad" minlength="3" maxlength="40" required autocomplete="off"></label>`,is:async d=>{await Sunucu.yap("newspaper_renam\
 e",{p_name:String(d.get("ad")??"").trim()}),tost(\u00E7("Gazetenin yeni ad\u0131 kaydedildi."),"newspaper"),await sonra?.()}})}const OPS_KUYRUK={contracts:\u00E7("i\u015F s\xF6zle\u015Fmesi"),market:\u00E7(
 "pazar ilan\u0131"),travel:\u00E7("yolculuk"),training:\u00E7("e\u011Fitim")};function opsMetin(kind,key,d={}){const n=(k,v=0)=>Number(d?.[k]??v);switch(kind){case"jobs.late":return \u00E7("Zamanlanm\u0131\
@@ -7727,20 +7540,22 @@ moderation.hide_video":\u00E7("Video gizlendi"),"moderation.hide_announcement":\
 rildi"),"staff.revoke":\u00E7("Yetki geri al\u0131nd\u0131"),"moderation.trust_review":\u00E7("Para a\u011F\u0131 bulgusu incelendi")},MOD_RAPOR_DURUM={open:\u00E7("a\xE7\u0131k"),actioned:\u00E7("i\u015Fl\
 em yap\u0131ld\u0131"),dismissed:\u00E7("reddedildi")},MOD_AKTOR={Y\u00F6netim:\u00E7("yetkili::Y\xF6netim"),Sistem:\u00E7("Sistem"),Oyuncu:\u00E7("Oyuncu")},modAktor=ad=>MOD_AKTOR[ad]??ad??"",MOD_ITIRAZ={
 pending:\u00E7("\u0130tiraz bekliyor"),upheld:\u00E7("\u0130tiraz reddedildi"),lifted:\u00E7("\u0130tiraz kabul edildi")},GUVEN_TUR={pair_trades:\u00E7("Tekrar eden al\u0131m-sat\u0131m"),price_outlier:\u00E7(
-"Fiyat sapmas\u0131"),young_to_one:\u00E7("Yeni hesaplardan tek al\u0131c\u0131ya"),heist_team:\u00E7("Tekrar eden vurgun ekibi"),black_pair:\u00E7("Kara borsa \xE7ifti")},GUVEN_ALICI={party:\u00E7("p\
-arti"),band:\u00E7("m\xFCzik grubu"),club:\u00E7("kul\xFCp"),unit:\u00E7("birlik"),seizure:\u00E7("darbe sand\u0131\u011F\u0131"),independence_chest:\u00E7("ba\u011F\u0131ms\u0131zl\u0131k sand\u0131\u011F\u0131"),
-resistance_chest:\u00E7("direni\u015F sand\u0131\u011F\u0131")},guvenVarlik=a=>{const[u,q]=String(a??"").split("@");return(URUN[u]?.ad??u)+(q&&q!=="1"?" \xB7 "+\u00E7("kalite {n}",{n:q}):"")};function guvenOzet(f){
-const d=f.detail??{},p=f.people??[],ad=i=>p[i]?.name??"?";switch(f.kind){case"pair_trades":return \u00E7("{n} al\u0131m-sat\u0131m \xB7 {kredi} kredi ({a} {x} kez, {b} {y} kez ald\u0131)",{n:Number(f.
-count),kredi:kr(f.total_cr),a:ad(0),x:Number(d.a_buys),b:ad(1),y:Number(d.b_buys)});case"price_outlier":return \u00E7("{kaynak}: {urun} {adet} adet, birim {fiyat} kredi; ortanca {orta} kredi ({oran}) \
-\xB7 alan {a}, satan {b}",{kaynak:d.source==="black"?\u00E7("Kara borsa"):\u00E7("Pazar"),urun:guvenVarlik(d.asset),adet:Number(d.qty),fiyat:kr(d.unit_cr),orta:kr(d.median_cr),oran:d.direction==="high"?
-\u00E7("{n} kat",{n:(Number(d.ratio_ppm)/1e6).toLocaleString(DIL.yerel,{maximumFractionDigits:1})}):\u00E7("%{n}",{n:Math.round(Number(d.ratio_ppm)/1e4)}),a:ad(0),b:ad(1)});case"young_to_one":return \u00E7(
-"{n} yeni hesap \u2192 {alici}: {kredi} kredi",{n:Number(f.count),kredi:kr(f.total_cr),alici:d.recipient?.kind==="character"?d.recipient?.name??"?":`${d.recipient?.name??"?"} (${GUVEN_ALICI[d.recipient?.
-kind]??d.recipient?.kind??""})`});case"heist_team":return \u00E7("{a} ve {b} {n} vurgunda birlikte ({k} ba\u015Far\u0131l\u0131, {kredi} kredi \xF6d\xFCl)",{a:ad(0),b:ad(1),n:Number(f.count),k:Number(
-d.wins),kredi:kr(f.total_cr)});case"black_pair":return \u00E7("{a} ve {b} kara borsada {n} kez \xB7 {kredi} kredi ({y} yakaland\u0131)",{a:ad(0),b:ad(1),n:Number(f.count),kredi:kr(f.total_cr),y:Number(
-d.caught??0)});default:return""}}function modAlinti(snap,state){const s=snap??{};return sohbetDuz(String(s.text??s.message?.body??s.post?.body??s.body??s.article?.title??s.title??s.party?.name??s.name??
-state?.text??"")).slice(0,400)}const modNedenler=r=>Object.entries(r??{}).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${RAPOR_NEDEN[k]??k} ${n}`).join(" \xB7 ");function modGerekce({baslik,aciklama="",onayAd,
-onaySinif="altin",onayIkon="check",varsayilan="",is}){const en=Number(Durum.v.kurallar?.data?.moderation?.sanctions?.reasonMin??10);pencereForm({ust:\u00E7("Moderasyon"),baslik,onayAd,onaySinif,onayIkon,
-govde:`${aciklama?`<p class="aciklama">${aciklama}</p>`:""}
+"Fiyat sapmas\u0131"),young_to_one:\u00E7("Yeni hesaplardan tek al\u0131c\u0131ya"),heist_team:\u00E7("Tekrar eden vurgun ekibi"),black_pair:\u00E7("Kara borsa \xE7ifti"),starter_pack:\u00E7("\u0130lk g\xFCn \
+paketi tek al\u0131c\u0131ya")},GUVEN_ALICI={party:\u00E7("parti"),band:\u00E7("m\xFCzik grubu"),club:\u00E7("kul\xFCp"),unit:\u00E7("birlik"),seizure:\u00E7("darbe sand\u0131\u011F\u0131"),independence_chest:\u00E7(
+"ba\u011F\u0131ms\u0131zl\u0131k sand\u0131\u011F\u0131"),resistance_chest:\u00E7("direni\u015F sand\u0131\u011F\u0131")},guvenVarlik=a=>{const[u,q]=String(a??"").split("@");return(URUN[u]?.ad??u)+(q&&
+q!=="1"?" \xB7 "+\u00E7("kalite {n}",{n:q}):"")};function guvenOzet(f){const d=f.detail??{},p=f.people??[],ad=i=>p[i]?.name??"?";switch(f.kind){case"pair_trades":return \u00E7("{n} al\u0131m-sat\u0131m \xB7 {kredi\
+} kredi ({a} {x} kez, {b} {y} kez ald\u0131)",{n:Number(f.count),kredi:kr(f.total_cr),a:ad(0),x:Number(d.a_buys),b:ad(1),y:Number(d.b_buys)});case"price_outlier":return \u00E7("{kaynak}: {urun} {adet}\
+ adet, birim {fiyat} kredi; ortanca {orta} kredi ({oran}) \xB7 alan {a}, satan {b}",{kaynak:d.source==="black"?\u00E7("Kara borsa"):\u00E7("Pazar"),urun:guvenVarlik(d.asset),adet:Number(d.qty),fiyat:kr(
+d.unit_cr),orta:kr(d.median_cr),oran:d.direction==="high"?\u00E7("{n} kat",{n:(Number(d.ratio_ppm)/1e6).toLocaleString(DIL.yerel,{maximumFractionDigits:1})}):\u00E7("%{n}",{n:Math.round(Number(d.ratio_ppm)/
+1e4)}),a:ad(0),b:ad(1)});case"young_to_one":return \u00E7("{n} yeni hesap \u2192 {alici}: {kredi} kredi",{n:Number(f.count),kredi:kr(f.total_cr),alici:d.recipient?.kind==="character"?d.recipient?.name??
+"?":`${d.recipient?.name??"?"} (${GUVEN_ALICI[d.recipient?.kind]??d.recipient?.kind??""})`});case"heist_team":return \u00E7("{a} ve {b} {n} vurgunda birlikte ({k} ba\u015Far\u0131l\u0131, {kredi} kredi \xF6d\xFCl)",
+{a:ad(0),b:ad(1),n:Number(f.count),k:Number(d.wins),kredi:kr(f.total_cr)});case"black_pair":return \u00E7("{a} ve {b} kara borsada {n} kez \xB7 {kredi} kredi ({y} yakaland\u0131)",{a:ad(0),b:ad(1),n:Number(
+f.count),kredi:kr(f.total_cr),y:Number(d.caught??0)});case"starter_pack":return \u00E7("{n} yeni hesap ilk g\xFCn paketini {alici} al\u0131c\u0131s\u0131na devretti: {mallar}",{n:Number(f.count),alici:d.
+recipient?.kind==="character"?d.recipient?.name??"?":`${d.recipient?.name??"?"} (${GUVEN_ALICI[d.recipient?.kind]??d.recipient?.kind??""})`,mallar:Object.entries(d.assets??{}).map(([a,n])=>`${Number(n)}\
+ ${guvenVarlik(a)}`).join(", ")||"\u2014"});default:return""}}function modAlinti(snap,state){const s=snap??{};return sohbetDuz(String(s.text??s.message?.body??s.post?.body??s.body??s.article?.title??s.
+title??s.party?.name??s.name??state?.text??"")).slice(0,400)}const modNedenler=r=>Object.entries(r??{}).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`${RAPOR_NEDEN[k]??k} ${n}`).join(" \xB7 ");function modGerekce({
+baslik,aciklama="",onayAd,onaySinif="altin",onayIkon="check",varsayilan="",is}){const en=Number(Durum.v.kurallar?.data?.moderation?.sanctions?.reasonMin??10);pencereForm({ust:\u00E7("Moderasyon"),baslik,
+onayAd,onaySinif,onayIkon,govde:`${aciklama?`<p class="aciklama">${aciklama}</p>`:""}
       <label class="alan"><span>${\u00E7("Gerek\xE7e")}</span><textarea name="gerekce" minlength="${en}" maxlength="500" required>${esc(varsayilan)}</textarea>
         <small>${\u00E7("En az {n} harf; denetim kayd\u0131na yaz\u0131l\u0131r.",{n:en})}</small></label>`,is:async d=>{const g=String(d.get("gerekce")??"").trim();if([...g].length<en)throw new Error(
 \u00E7("Gerek\xE7e en az {n} harf olmal\u0131.",{n:en}));await is(g)}})}function modYaptirimVer({character_id,name,report_id=null,yonetici=!1},sonra){const S=Durum.v.kurallar?.data?.moderation?.sanctions??
@@ -8183,35 +7998,37 @@ durum=()=>Sunucu.cagir("venue_state"),gir=(v,yer="main")=>Sunucu.yap("venue_ente
 if(!veritabani&&OdaYolu.hazir("venue"))try{return await OdaYolu.yuru("venue",x,z)}catch(e){if(e?.kod!=="ODA_YOK")throw e}return Sunucu.yap("venue_move",{p_x:Math.round(x),p_z:Math.round(z)})},eylem=(e,hedef2=null,oturak=null)=>Sunucu.
 yap("venue_emote",{p_emote:e,p_target:hedef2,p_seat:oturak}),cik=()=>(OdaYolu.birak("venue"),Sunucu.yap("venue_leave")),cikar=p=>Sunucu.yap("venue_kick",{p_presence:p}),siparis=(kalem,kime,fiyat)=>Sunucu.
 yap("venue_order",{p_item:kalem,p_for:kime,p_expected:fiyat}),fikra=n=>Sunucu.yap("venue_joke",{p_joke:n}),gul=f=>Sunucu.yap("venue_laugh",{p_feed:f}),ac=(tur,ad)=>Sunucu.yap("venue_open",{p_kind:tur,
-p_name:ad}),ayar=(v,a)=>Sunucu.yap("venue_settings",{p_venue:v,p_door:a.door??null,p_style:a.style??null,p_concert_rent:a.rent??null,p_night_price:a.night??null}),fiyatlar=(v,f)=>Sunucu.yap("venue_pri\
-ces_set",{p_venue:v,p_prices:f}),kasa=(v,t)=>Sunucu.yap("venue_cash",{p_venue:v,p_amount:t}),tezgah=(v,n)=>Sunucu.yap("venue_stock",{p_venue:v,p_qty:n}),duzen=(v,items)=>Sunucu.yap("venue_layout_save",
-{p_venue:v,p_items:items}),yonetici=(v,kisi,ekle)=>Sunucu.yap("venue_manager_set",{p_venue:v,p_target:kisi,p_add:!!ekle}),adDegistir=(v,ad)=>Sunucu.yap("venue_rename",{p_venue:v,p_name:ad}),kapat=v=>Sunucu.
-yap("venue_close",{p_venue:v}),yenidenAc=v=>Sunucu.yap("venue_reopen",{p_venue:v}),etkinlikAc=(v,tur,bas,saat)=>Sunucu.yap("venue_event_create",{p_venue:v,p_kind:tur,p_starts_at:bas,p_hours:saat}),etkinlikIptal=e=>Sunucu.
-yap("venue_event_cancel",{p_event:e}),ilgi=(e,acik)=>Sunucu.cagir("venue_event_interest",{p_event:e,p_on:!!acik}),kal=(v,gece,toplam)=>Sunucu.yap("hotel_stay",{p_venue:v,p_nights:gece,p_expected_total:toplam}),
-ayril=s=>Sunucu.yap("hotel_leave",{p_stay:s}),yakinliklar=()=>Sunucu.cagir("bonds_me"),iliski=k=>Sunucu.cagir("bond_with",{p_character:k}),hediyeler=()=>Sunucu.cagir("gifts_me"),hediyeSayisi=k=>Sunucu.
-cagir("gift_count",{p_character:k}),tercih=t=>Sunucu.cagir("treat_settings_set",{p_policy:t}),kulupler=bolge=>Sunucu.cagir("concert_clubs",{p_region:bolge}),dinle=(konu,fn)=>{const a=Sunucu.Canli.dinle(
-konu,(olay,yuk)=>{/^venue\./.test(olay)&&fn(olay,yuk?.data??{})}),b=OdaYolu.dinle("venue",konu,o=>fn("venue.moved",{p:o.p,x:o.x,z:o.z,at:o.at}));return()=>{a(),b()}};let hedef=null;return{burada,kart,
-durum,gir,yuru,eylem,cik,cikar,siparis,fikra,gul,ac,ayar,fiyatlar,kasa,tezgah,duzen,yonetici,adDegistir,kapat,yenidenAc,etkinlikAc,etkinlikIptal,ilgi,kal,ayril,yakinliklar,iliski,hediyeler,hediyeSayisi,
-tercih,kulupler,dinle,git:(mekan,yer="main",ek={})=>{hedef={mekan,yer,...ek};try{sessionStorage.setItem("civora.mekan",JSON.stringify(hedef))}catch{}Kabuk.git("sehir/mekan")},hedefAl:()=>{let h=hedef;
-if(hedef=null,!h)try{h=JSON.parse(sessionStorage.getItem("civora.mekan")??"null")}catch{h=null}return h?.mekan?h:null},hedefUnut:()=>{hedef=null;try{sessionStorage.removeItem("civora.mekan")}catch{}}}})(),
-MEKAN_TUR={kahvehane:\u00E7("Kahvehane"),kulup:\u00E7("Kul\xFCp"),otel:\u00E7("Otel")},MEKAN_TUR_IK={kahvehane:"armchair",kulup:"headphones",otel:"hotel"},MEKAN_TUR_ACIKLAMA={kahvehane:\u00E7("\xC7ay, ka\
-hve, tost ve simit; tavla masalar\u0131. Her \u015Fehirde a\xE7\u0131l\u0131r."),kulup:\u00E7("Sahne ve DJ kabini, bar tabureleri; \u015Fehrin konser mek\xE2nlar\u0131 aras\u0131nda g\xF6r\xFCn\xFCr. \u015Eehir 2. seviyede a\xE7\u0131l\u0131r."),
-otel:\u00E7("Lobide koltuklar ve kahvalt\u0131; d\xF6rt oda kiralan\u0131r. \u015Eehir 2. seviyede a\xE7\u0131l\u0131r.")},MEKAN_KAPI={open:\u00E7("Herkese a\xE7\u0131k"),friends:\u00E7("Arkada\u015Flar\u0131ma\
- a\xE7\u0131k"),closed:\u00E7("Kapal\u0131")},MEKAN_DURUM={open:\u00E7("A\xE7\u0131k"),suspended:\u00E7("Ask\u0131da"),closed:\u00E7("Kapand\u0131")},MENU_KALEM={cay:[\u00E7("\xC7ay"),"flame"],kahve:[
-\u00E7("T\xFCrk kahvesi"),"flame"],ayran:[\u00E7("Ayran"),"snowflake"],limonata:[\u00E7("Limonata"),"snowflake"],soda:[\u00E7("Soda"),"snowflake"],kokteyl:[\u00E7("Meyve kokteyli"),"snowflake"],tost:[
-\u00E7("Tost"),"croissant"],simit:[\u00E7("Simit"),"croissant"],atistirmalik:[\u00E7("At\u0131\u015Ft\u0131rmal\u0131k taba\u011F\u0131"),"croissant"],kahvalti:[\u00E7("Kahvalt\u0131 taba\u011F\u0131"),
-"croissant"],cicek:[\u00E7("\xC7i\xE7ek buketi"),"sprout"],cikolata:[\u00E7("\xC7ikolata kutusu"),"gift"],kitap:[\u00E7("Kitap"),"book-open"]},menuAdi=k=>MENU_KALEM[k]?.[0]??String(k??""),MENU_TUR={drink:\u00E7(
-"\u0130\xE7ecekler"),food:\u00E7("Yiyecekler"),gift:\u00E7("Hediyeler")},MEKAN_ETKINLIK={cay_saati:\u00E7("\xC7ay saati"),canli_muzik:\u00E7("Canl\u0131 m\xFCzik"),siir_gecesi:\u00E7("\u015Eiir gecesi"),
-dans_gecesi:\u00E7("Dans gecesi"),sohbet_aksami:\u00E7("Sohbet ak\u015Fam\u0131"),acilis:\u00E7("A\xE7\u0131l\u0131\u015F")},MEKAN_ETKINLIK_IK={cay_saati:"flame",canli_muzik:"guitar",siir_gecesi:"book\
--open",dans_gecesi:"disc-3",sohbet_aksami:"message-circle",acilis:"party-popper"},MEKAN_EYLEM=[["wave",\u00E7("El salla"),"hand"],["dance",\u00E7("Dans et"),"eighth-notes"],["sit",\u00E7("Otur"),"armc\
-hair"],["cheer",\u00E7("Alk\u0131\u015Fla"),"party-popper"],["laugh",\u00E7("G\xFCl"),"sparkles"]],BAG_TUR={acquaintance:\u00E7("Tan\u0131d\u0131k"),friend:\u00E7("Arkada\u015F"),close:\u00E7("Yak\u0131n d\
-ost"),kanka:\u00E7("Kanka")},BAG_IK={acquaintance:"hand",friend:"users-round",close:"heart",kanka:"heart-handshake"},ISMARLAMA_TERCIH={everyone:\u00E7("Herkes"),friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),
-nobody:\u00E7("Kimse")},MEKAN_DUSME={VENUE_KICKED:"cikarildi",VENUE_FRIENDS_ONLY:"kapi",VENUE_DOOR_CLOSED:"kapi",VENUE_NOT_HERE:"yolda",ON_THE_ROAD:"yolda",VENUE_NOT_FOUND:"kapandi",VENUE_SUSPENDED:"a\
-ski",VENUE_FULL:"dolu",VENUE_NO_SPACE:"dolu",VENUE_ROOM_PRIVATE:"oda",VENUE_ROOM_EMPTY:"oda"},mekanAdi=v=>v?.system?\u00E7("{sehir} Kahvehanesi",{sehir:bolgeAdi(v.region_id)}):String(v?.name??""),FIKRALAR=[
-\u00E7('fikra::Hoca eski giysileriyle d\xFC\u011F\xFCne gider, kimse y\xFCz\xFCne bakmaz. Eve d\xF6n\xFCp k\xFCrk\xFCn\xFC giyer, gelince ba\u015F k\xF6\u015Feye oturtulur. \xC7orbay\u0131 k\xFCrk\xFCn\xFCn yenine d\xF6ker: "Ye k\xFCrk\xFCm ye! \u0130tibar sana."'),
-\u00E7('fikra::Hoca g\xF6le maya \xE7al\u0131yormu\u015F. "Hocam, g\xF6l hi\xE7 maya tutar m\u0131?" demi\u015Fler. "Ya tutarsa!"'),\u00E7('fikra::Hoca kom\u015Fusunun kazan\u0131n\u0131 \xF6d\xFCn\xE7 al\u0131r, i\xE7ine bir tencer\
-e koyup geri verir: "Kazan\u0131n do\u011Furdu." Sonra kazan\u0131 yine al\u0131r, vermez: "Kazan\u0131n \xF6ld\xFC." "Kazan \xF6l\xFCr m\xFC?" "Do\u011Furdu\u011Funa inand\u0131n da \xF6ld\xFC\u011F\xFCne neden inanm\u0131yorsun?"'),
-\u00E7('fikra::Hoca e\u015Fe\u011Fine ters binmi\u015F. "Neden b\xF6yle?" demi\u015Fler. "D\xFCz binsem siz arkamda kal\u0131rs\u0131n\u0131z; \xF6n\xFCmde y\xFCr\xFCseniz ben arkan\u0131zda kal\u0131r\u0131m. B\xF6ylesi hepimize iyi."'),
+p_name:ad}),ayar=(v,a)=>Sunucu.yap("venue_settings",{p_venue:v,p_door:a.door??null,p_style:a.style??null,p_concert_rent:a.rent??null,p_night_price:a.night??null}),kayitUcreti=(v,ucret)=>Sunucu.yap("ve\
+nue_record_fee",{p_venue:v,p_fee:ucret}),fiyatlar=(v,f)=>Sunucu.yap("venue_prices_set",{p_venue:v,p_prices:f}),kasa=(v,t)=>Sunucu.yap("venue_cash",{p_venue:v,p_amount:t}),tezgah=(v,n)=>Sunucu.yap("ven\
+ue_stock",{p_venue:v,p_qty:n}),duzen=(v,items)=>Sunucu.yap("venue_layout_save",{p_venue:v,p_items:items}),yonetici=(v,kisi,ekle)=>Sunucu.yap("venue_manager_set",{p_venue:v,p_target:kisi,p_add:!!ekle}),
+adDegistir=(v,ad)=>Sunucu.yap("venue_rename",{p_venue:v,p_name:ad}),kapat=v=>Sunucu.yap("venue_close",{p_venue:v}),yenidenAc=v=>Sunucu.yap("venue_reopen",{p_venue:v}),etkinlikAc=(v,tur,bas,saat)=>Sunucu.
+yap("venue_event_create",{p_venue:v,p_kind:tur,p_starts_at:bas,p_hours:saat}),etkinlikIptal=e=>Sunucu.yap("venue_event_cancel",{p_event:e}),ilgi=(e,acik)=>Sunucu.cagir("venue_event_interest",{p_event:e,
+p_on:!!acik}),kal=(v,gece,toplam)=>Sunucu.yap("hotel_stay",{p_venue:v,p_nights:gece,p_expected_total:toplam}),ayril=s=>Sunucu.yap("hotel_leave",{p_stay:s}),yakinliklar=()=>Sunucu.cagir("bonds_me"),iliski=k=>Sunucu.
+cagir("bond_with",{p_character:k}),hediyeler=()=>Sunucu.cagir("gifts_me"),hediyeSayisi=k=>Sunucu.cagir("gift_count",{p_character:k}),tercih=t=>Sunucu.cagir("treat_settings_set",{p_policy:t}),kulupler=bolge=>Sunucu.
+cagir("concert_clubs",{p_region:bolge}),dinle=(konu,fn)=>{const a=Sunucu.Canli.dinle(konu,(olay,yuk)=>{/^venue\./.test(olay)&&fn(olay,yuk?.data??{})}),b=OdaYolu.dinle("venue",konu,o=>fn("venue.moved",
+{p:o.p,x:o.x,z:o.z,at:o.at}));return()=>{a(),b()}};let hedef=null;return{burada,kart,durum,gir,yuru,eylem,cik,cikar,siparis,fikra,gul,ac,ayar,kayitUcreti,fiyatlar,kasa,tezgah,duzen,yonetici,adDegistir,
+kapat,yenidenAc,etkinlikAc,etkinlikIptal,ilgi,kal,ayril,yakinliklar,iliski,hediyeler,hediyeSayisi,tercih,kulupler,dinle,git:(mekan,yer="main",ek={})=>{hedef={mekan,yer,...ek};try{sessionStorage.setItem(
+"civora.mekan",JSON.stringify(hedef))}catch{}Kabuk.git("sehir/mekan")},hedefAl:()=>{let h=hedef;if(hedef=null,!h)try{h=JSON.parse(sessionStorage.getItem("civora.mekan")??"null")}catch{h=null}return h?.
+mekan?h:null},hedefUnut:()=>{hedef=null;try{sessionStorage.removeItem("civora.mekan")}catch{}}}})(),MEKAN_TUR={kahvehane:\u00E7("Kahvehane"),kulup:\u00E7("Kul\xFCp"),otel:\u00E7("Otel"),studyo:\u00E7(
+"Kay\u0131t st\xFCdyosu")},MEKAN_TUR_IK={kahvehane:"armchair",kulup:"headphones",otel:"hotel",studyo:"mic"},MEKAN_TUR_ACIKLAMA={kahvehane:\u00E7("\xC7ay, kahve, tost ve simit; tavla masalar\u0131. Her \u015Fehirde\
+ a\xE7\u0131l\u0131r."),kulup:\u00E7("Sahne ve DJ kabini, bar tabureleri; \u015Fehrin konser mek\xE2nlar\u0131 aras\u0131nda g\xF6r\xFCn\xFCr. \u015Eehir 2. seviyede a\xE7\u0131l\u0131r."),otel:\u00E7(
+"Lobide koltuklar ve kahvalt\u0131; d\xF6rt oda kiralan\u0131r. \u015Eehir 2. seviyede a\xE7\u0131l\u0131r."),studyo:\u00E7("Ses masas\u0131, kabin, davul ve klavye; m\xFCzik gruplar\u0131 \u015Fark\u0131lar\u0131n\u0131 burada kayde\
+der, birim \xFCcreti sana kal\u0131r. S\xFCs e\u015Fyas\u0131 kayd\u0131n kalitesini art\u0131r\u0131r. \u015Eehir 2. seviyede a\xE7\u0131l\u0131r. Men\xFC yok.")},MEKAN_KAPI={open:\u00E7("Herkese a\xE7\u0131\
+k"),friends:\u00E7("Arkada\u015Flar\u0131ma a\xE7\u0131k"),closed:\u00E7("Kapal\u0131")},MEKAN_DURUM={open:\u00E7("A\xE7\u0131k"),suspended:\u00E7("Ask\u0131da"),closed:\u00E7("Kapand\u0131")},MENU_KALEM={
+cay:[\u00E7("\xC7ay"),"flame"],kahve:[\u00E7("T\xFCrk kahvesi"),"flame"],ayran:[\u00E7("Ayran"),"snowflake"],limonata:[\u00E7("Limonata"),"snowflake"],soda:[\u00E7("Soda"),"snowflake"],kokteyl:[\u00E7(
+"Meyve kokteyli"),"snowflake"],tost:[\u00E7("Tost"),"croissant"],simit:[\u00E7("Simit"),"croissant"],atistirmalik:[\u00E7("At\u0131\u015Ft\u0131rmal\u0131k taba\u011F\u0131"),"croissant"],kahvalti:[\u00E7(
+"Kahvalt\u0131 taba\u011F\u0131"),"croissant"],cicek:[\u00E7("\xC7i\xE7ek buketi"),"sprout"],cikolata:[\u00E7("\xC7ikolata kutusu"),"gift"],kitap:[\u00E7("Kitap"),"book-open"]},menuAdi=k=>MENU_KALEM[k]?.[0]??
+String(k??""),MENU_TUR={drink:\u00E7("\u0130\xE7ecekler"),food:\u00E7("Yiyecekler"),gift:\u00E7("Hediyeler")},MEKAN_ETKINLIK={cay_saati:\u00E7("\xC7ay saati"),canli_muzik:\u00E7("Canl\u0131 m\xFCzik"),
+siir_gecesi:\u00E7("\u015Eiir gecesi"),dans_gecesi:\u00E7("Dans gecesi"),sohbet_aksami:\u00E7("Sohbet ak\u015Fam\u0131"),acilis:\u00E7("A\xE7\u0131l\u0131\u015F")},MEKAN_ETKINLIK_IK={cay_saati:"flame",
+canli_muzik:"guitar",siir_gecesi:"book-open",dans_gecesi:"disc-3",sohbet_aksami:"message-circle",acilis:"party-popper"},MEKAN_EYLEM=[["wave",\u00E7("El salla"),"hand"],["dance",\u00E7("Dans et"),"eigh\
+th-notes"],["sit",\u00E7("Otur"),"armchair"],["cheer",\u00E7("Alk\u0131\u015Fla"),"party-popper"],["laugh",\u00E7("G\xFCl"),"sparkles"]],BAG_TUR={acquaintance:\u00E7("Tan\u0131d\u0131k"),friend:\u00E7(
+"Arkada\u015F"),close:\u00E7("Yak\u0131n dost"),kanka:\u00E7("Kanka")},BAG_IK={acquaintance:"hand",friend:"users-round",close:"heart",kanka:"heart-handshake"},ISMARLAMA_TERCIH={everyone:\u00E7("Herkes"),
+friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),nobody:\u00E7("Kimse")},MEKAN_DUSME={VENUE_KICKED:"cikarildi",VENUE_FRIENDS_ONLY:"kapi",VENUE_DOOR_CLOSED:"kapi",VENUE_NOT_HERE:"yolda",ON_THE_ROAD:"\
+yolda",VENUE_NOT_FOUND:"kapandi",VENUE_SUSPENDED:"aski",VENUE_FULL:"dolu",VENUE_NO_SPACE:"dolu",VENUE_ROOM_PRIVATE:"oda",VENUE_ROOM_EMPTY:"oda"},mekanAdi=v=>v?.system?\u00E7("{sehir} Kahvehanesi",{sehir:bolgeAdi(
+v.region_id)}):String(v?.name??""),FIKRALAR=[\u00E7('fikra::Hoca eski giysileriyle d\xFC\u011F\xFCne gider, kimse y\xFCz\xFCne bakmaz. Eve d\xF6n\xFCp k\xFCrk\xFCn\xFC giyer, gelince ba\u015F k\xF6\u015Feye oturtulur. \xC7orbay\u0131 k\xFCrk\xFCn\xFCn yenine d\xF6k\
+er: "Ye k\xFCrk\xFCm ye! \u0130tibar sana."'),\u00E7('fikra::Hoca g\xF6le maya \xE7al\u0131yormu\u015F. "Hocam, g\xF6l hi\xE7 maya tutar m\u0131?" demi\u015Fler. "Ya tutarsa!"'),\u00E7('fikra::Hoca ko\
+m\u015Fusunun kazan\u0131n\u0131 \xF6d\xFCn\xE7 al\u0131r, i\xE7ine bir tencere koyup geri verir: "Kazan\u0131n do\u011Furdu." Sonra kazan\u0131 yine al\u0131r, vermez: "Kazan\u0131n \xF6ld\xFC." "Kazan \xF6l\xFCr m\xFC?" "Do\u011Furdu\u011Funa inand\u0131n da \xF6ld\xFC\u011F\xFCne neden inanm\u0131yorsu\
+n?"'),\u00E7('fikra::Hoca e\u015Fe\u011Fine ters binmi\u015F. "Neden b\xF6yle?" demi\u015Fler. "D\xFCz binsem siz arkamda kal\u0131rs\u0131n\u0131z; \xF6n\xFCmde y\xFCr\xFCseniz ben arkan\u0131zda kal\u0131r\u0131m. B\xF6ylesi hepimize iyi."'),
 \u00E7(`fikra::Kom\u015Fusu Hoca'dan e\u015Fe\u011Fini ister. "E\u015Fek evde yok." O s\u0131rada ah\u0131rdan e\u015Fek an\u0131r\u0131r. "Hani yoktu?" "Sen benim s\xF6z\xFCme mi inan\u0131rs\u0131n, e\u015Fe\u011Fin s\xF6z\xFCne mi?"`),
 \u00E7('fikra::Hoca k\xFCrs\xFCye \xE7\u0131kar: "Ne anlataca\u011F\u0131m\u0131 biliyor musunuz?" "Hay\u0131r." "Bilmeyenlere ne anlatay\u0131m!" Ertesi hafta "Evet" derler: "Bilene ne anlatay\u0131m!" \xDC\xE7\xFCnc\xFCs\xFCnde yar\u0131s\u0131 bilir, yar\u0131s\u0131 bilmez: \
 "Bilenler bilmeyenlere anlats\u0131n!"'),\u00E7('fikra::Hoca kuyuya bak\u0131nca ay\u0131n aksini g\xF6r\xFCr: "Ay kuyuya d\xFC\u015Fm\xFC\u015F!" Kancay\u0131 atar, kanca ta\u015Fa tak\u0131l\u0131r, \xE7ekerken s\u0131rt\xFCst\xFC d\xFC\u015Fer. G\xF6kte ay\u0131 g\xF6r\xFCnce sevinir:\
@@ -8294,7 +8111,7 @@ tir mekan-satir${giremez?" kapali":""}" data-mekan-satir="${esc(v.venue_id)}" da
       ${v.kind==="otel"&&!v.system&&!v.role?`<button class="dugme ikincil kucuk-d" data-mekan-kal="${esc(v.venue_id)}" ${Number(v.rooms_free)>0&&v.status==="open"?"":"disabled"}>${ikon("bed")}${\u00E7(
 "Oda tut")}</button>`:""}
       ${v.role?`<button class="dugme ikincil kucuk-d" data-mekan-yonet="${esc(v.venue_id)}">${ikon("settings")}${\u00E7("Y\xF6net")}</button>`:""}
-    </div></div>`}function mekanAcPenceresi(r,sonra){const R=venueKurali(),Rk=R.kinds??r?.rule?.kinds??{},seviye=Number(r?.city_level??1),turler=["kahvehane","kulup","otel"],ilk=turler.find(t=>seviye>=
+    </div></div>`}function mekanAcPenceresi(r,sonra){const R=venueKurali(),Rk=R.kinds??r?.rule?.kinds??{},seviye=Number(r?.city_level??1),turler=["kahvehane","kulup","otel","studyo"],ilk=turler.find(t=>seviye>=
 Number(Rk[t]?.minLevel??1)),N=R.name??r?.rule?.name??{min:3,max:40,renameDays:30},gun=Number((R.suspend??r?.rule?.suspend)?.graceDays??14),L=R.limits??r?.rule?.limits??{};pencereForm({ust:\u00E7("Mek\xE2\
 n a\xE7 \xB7 {sehir}",{sehir:bolgeAdi(r?.region_id)}),baslik:\u00E7("Kendi mek\xE2n\u0131n\u0131 a\xE7"),onayAd:\u00E7("Ruhsat\u0131 al ve a\xE7"),onayIkon:"key-round",govde:`<fieldset class="alan"><l\
 egend>${\u00E7("T\xFCr\xFC")}</legend><div class="radyo-liste">${turler.map(t=>{const k=Rk[t]??{},acik=seviye>=Number(k.minLevel??1);return`<label class="radyo${acik?"":" kapali"}"><input type="radio"\
@@ -8397,6 +8214,7 @@ sandalyeye dokununca oturursun.")}</p>`,benGizli=!!ben()?.hides_name,masaIc=masa
           <button class="dugme ikincil kucuk-d" id="mekan-fikra">${ikon("sparkles")}${\u00E7("F\u0131kra anlat")}</button></div>
           <div id="mekan-akis">${akisHtml()}</div></div>
         <div class="oneri-dugmeler mekan-alt">
+          ${kareSahneDugmeHtml(v.kind==="kahvehane"?"cafe":"venue",v.venue_id)}
           ${staff()&&salon()&&!v.system?`<button class="dugme ikincil kucuk-d" id="mekan-dekor">${ikon("move")}${\u00E7("Dekor")}</button>
             <button class="dugme ikincil kucuk-d" id="mekan-yonet">${ikon("settings")}${\u00E7("Y\xF6net")}</button>`:""}
           <button class="dugme sade kucuk-d" id="mekan-cik">${ikon("door-open")}${salon()?\u00E7("Mek\xE2ndan \xE7\u0131k"):\u00E7("Odadan \xE7\u0131k")}</button>
@@ -8594,13 +8412,13 @@ sort((a,b)=>+!k.get(a.p.i)?.rug-+!k.get(b.p.i)?.rug);let rozetler="";const esyal
               stroke-linecap="round" stroke-linejoin="round">${IKON[OYUN_IK[oy.game]]??""}</g></g>`}return`<g class="oda2b-esya${i===secili&&duzen?" secili":""}${c.rug?" hali":""}${Number(c.seats)?" o\
 turak":""}" data-mekan-esya="${i}" data-esya="${esc(c.id)}">
           <rect x="${p.x+.06}" y="${p.z+.06}" width="${iz.w-.12}" height="${iz.d-.12}" rx="0.12" fill="${ODA_RENK[c.id]??"#bbb"}"/>
-          ${c.rug?`<text x="${p.x+.16}" y="${p.z+iz.d-.16}" class="oda2b-yazi" style="font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`:`<text x="${p.x+iz.w/2}" y="${p.z+iz.d/2+boy*.36}" text-anchor="\
-middle" class="oda2b-yazi" style="font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`}</g>`}).join("");let kisi2b="";if(!duzen){const dur=odaDuraklari(zs.grid,zs.items??[],zs.catalog??[]),kullanilan=new Map,
-simdi=Date.now(),ikramli=new Set((zs.served??[]).map(x=>x.p));kisi2b=kisiler().map(kk=>{let[fx,fz]=[Number(kk.x)+.5,Number(kk.z)+.5];const ot=kk.emote==="sit"&&kk.seat!=null?Number(kk.seat):null;if(ot!=
-null){const liste=[...dur.oturak,...dur.masa].filter(q=>q.ad.split(":")[1]===String(ot)),n=kullanilan.get(ot)??0;kullanilan.set(ot,n+1);const yq=liste[n%Math.max(1,liste.length)];yq&&([fx,fz]=yq.bas??
-[yq.x,yq.z])}const g=kk.look??varsayilanGorunus(kk.name||"?"),giysi=g.kiyafet==="uniforma"?UNIFORMA.kumas:GIYSI[g.renk]??GIYSI[0],ad=kk.me?\u00E7("Sen"):kk.hidden?"":String(kk.name??""),b=balonlar2b.get(
-kk.p),balon=b&&b.bitis>simdi?(()=>{const m=meydanKisa(b.metin,26),gen=Math.max(1.2,m.length*.17+.4);return`<g class="oda2b-balon" transform="translate(0 -0.95)"><rect x="${(-gen/2).toFixed(2)}" y="-0.\
-36" width="${gen.toFixed(2)}" height="0.46" rx="0.14"/>
+          ${c.rug?`<text x="${p.x+.16}" y="${p.z+iz.d-.16}" class="oda2b-yazi" style="${odaYaziRengi(ODA_RENK[c.id])}font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`:`<text x="${p.x+iz.w/2}" y="${p.z+
+iz.d/2+boy*.36}" text-anchor="middle" class="oda2b-yazi" style="${odaYaziRengi(ODA_RENK[c.id])}font-size:${boy.toFixed(3)}px">${esc(ad)}</text>`}</g>`}).join("");let kisi2b="";if(!duzen){const dur=odaDuraklari(
+zs.grid,zs.items??[],zs.catalog??[]),kullanilan=new Map,simdi=Date.now(),ikramli=new Set((zs.served??[]).map(x=>x.p));kisi2b=kisiler().map(kk=>{let[fx,fz]=[Number(kk.x)+.5,Number(kk.z)+.5];const ot=kk.
+emote==="sit"&&kk.seat!=null?Number(kk.seat):null;if(ot!=null){const liste=[...dur.oturak,...dur.masa].filter(q=>q.ad.split(":")[1]===String(ot)),n=kullanilan.get(ot)??0;kullanilan.set(ot,n+1);const yq=liste[n%
+Math.max(1,liste.length)];yq&&([fx,fz]=yq.bas??[yq.x,yq.z])}const g=kk.look??varsayilanGorunus(kk.name||"?"),giysi=g.kiyafet==="uniforma"?UNIFORMA.kumas:GIYSI[g.renk]??GIYSI[0],ad=kk.me?\u00E7("Sen"):
+kk.hidden?"":String(kk.name??""),b=balonlar2b.get(kk.p),balon=b&&b.bitis>simdi?(()=>{const m=meydanKisa(b.metin,26),gen=Math.max(1.2,m.length*.17+.4);return`<g class="oda2b-balon" transform="translate\
+(0 -0.95)"><rect x="${(-gen/2).toFixed(2)}" y="-0.36" width="${gen.toFixed(2)}" height="0.46" rx="0.14"/>
               <text y="-0.05" text-anchor="middle" class="oda2b-yazi" style="font-size:0.26px">${esc(m)}</text></g>`})():"";return`<g class="oda2b-kisi${kk.me?" ben":""}${kk.host?" ev-sahibi":""}" dat\
 a-mekan-kisi2b="${esc(kk.p)}" data-kare="${Number(kk.x)},${Number(kk.z)}" data-eylem="${esc(ot!=null?"oturak":kk.emote??"")}"${ot!=null?` data-oturak="${ot}"`:""}
             transform="translate(${fx.toFixed(2)} ${fz.toFixed(2)})"${kk.me?"":` role="button" tabindex="0" aria-label="${esc(ad||\u00E7("Ad\u0131n\u0131 gizleyen biri"))}"`}>
@@ -8620,24 +8438,24 @@ zs.items??[],cat=katalog(),duraklar=odaDuraklari(zs.grid,its,cat),e=canliEtkinli
 secili:duzen?secili:-1,duzen,sehir:secenek.sehir??1,gece,figur:null,duraklar,hedef:null,erzak:0,kiler:!1,hava:havaSahne(havaAn(v.region_id)),saatDilimi:odaSaatDilimi(v.region_id),ates:odaAtesi(havaAn(
 v.region_id),gece),radyo:"kapali",bulten:[],gramofon:!1,ziyaret:duzen?null:{ben:zs.presence_id,kisiler:kisiler(),kural:zs.rule,sunucu:zs.server_time,oturaklar:oturaklar(),sahibim:!1},mekan:{tur:tur3b(),
 ad:salon()?mekanAdi(v):"",menu:(v.menu??[]).map(m=>({item:m.item,price:Number(m.price)})),etkinlik:e?.kind??null,musteri:salon()&&!v.system?Number(zs.sim_visitors??0):0,ikram:(zs.served??[]).map(x=>({
-p:x.p,item:x.item,at:x.at})),masalar:duzen?[]:masa3b()}}}function sahneBirak(){oda3bOrnek&&Uc.cizici?.etkin===oda3bOrnek&&Uc.cizici.birak(oda3bOrnek)}async function sahneBagla(){const el=$("#mekan-sah\
-ne",yer);if(!el||mod!=="3b"){sahneBirak();return}try{const{THREE,cizici}=await Uc.yukle("98zh_mekan_ic.js");if(kapandi||mod!=="3b"||$("#mekan-sahne",yer)!==el||!el.isConnected)return;oda3bOrnek??=oda3bKur(
-THREE,cizici);const a=oda3bOrnek;if(a.dinle("secim",i=>{duzen&&(secili=i,uyari="",guncelle())}),a.dinle("tasi",(i,x,z)=>{duzen&&tasi(i,x,z)}),a.dinle("ye",()=>{}),a.dinle("kisi",p=>kisiKart(p)),a.dinle(
-"zemin",(x,z)=>zeminDokun(x,z)),a.dinle("oturak",i=>oturakDokun(i)),a.kapBagla(el,$("#mekan-etiketler",el)),a.durumYaz(durum3b()),!cizici.bagla(a,el))throw new Error("webgl-bagla");$("#mekan-yukleniyo\
-r",el)?.classList.add("bitti")}catch(e){if(console.warn("3B mek\xE2n a\xE7\u0131lamad\u0131:",e),kapandi)return;hata3b=!0,mod="2b",tost(\u00E7("3B mek\xE2n bu cihazda a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCm g\xF6steriliyo\
-r."),"layers"),ciz()}}secenek.duzenle&&staff()&&salon()&&yonetim()&&(items=(yonetim().items??[]).map(p=>({...p})),duzen=!0),ciz(),masaKonuBagla(),masalarOku();const b1=Gorunum.dinle(()=>{const yeni=Gorunum.
-uc()&&!hata3b?"3b":"2b";yeni!==mod&&(mod=yeni,ciz())}),saat=setInterval(()=>{!document.hidden&&!kapandi&&(duzen||akisYaz(),guncelle())},6e4);return()=>{kapandi=!0,b1(),zyBirak?.(),clearInterval(saat),
-sahneBirak(),clearTimeout(masaZaman),masaKonuBirak?.(),masaOlayBirak(),masaPen?.kapat()}}return{ac}})();Kabuk.gecikmeli("sehir/mekan","ek_98zh_mekan_ic");const PARTI_TEMA={sohbet:\u00E7("\xC7ay ve sohbet"),
-muzik:\u00E7("M\xFCzik gecesi"),kutlama:\u00E7("Kutlama"),sofra:\u00E7("Ak\u015Fam sofras\u0131")},PARTI_TEMA_IK={sohbet:"message-circle",muzik:"disc-3",kutlama:"party-popper",sofra:"croissant"},PARTI_TEMA_SUS={
-sohbet:\u00E7("Semaver, ince belli bardaklar ve \u0131\u015F\u0131k zinciri."),muzik:\u00E7("Pikap, hoparl\xF6rler ve renkli \u0131\u015F\u0131klar; se\xE7ti\u011Fin plak evdekilere \xE7alar."),kutlama:\u00E7(
-"Balonlar, flamalar, pasta ve konfeti."),sofra:\u00E7("\xD6rt\xFCl\xFC sofra, tabaklar ve mumlar.")},PARTI_IKRAM={sohbet:"cay",muzik:"atistirmalik",kutlama:"pasta",sofra:"kahvalti"},PARTI_IKRAM_AD={sohbet:\u00E7(
-"\xE7ay ve simit"),muzik:\u00E7("\xE7erez"),kutlama:\u00E7("pasta"),sofra:\u00E7("sofra taba\u011F\u0131")},PARTI_RENK={sohbet:["#E2B54A","#C0663E","#F1E6D2"],muzik:["#9B6BFF","#3FD0FF","#FF4FA3","#FF\
-D24F"],kutlama:["#E5577A","#F2C94C","#5FB0D2","#6F9B6A"],sofra:["#C9A227","#9C3F33","#F1E6D2"]},PARTI_YANIT={yes:\u00E7("Geliyor"),no:\u00E7("Gelemiyor")},PARTI_TERCIH={everyone:\u00E7("Arkada\u015Flar\u0131m v\
-e tan\u0131d\u0131klar\u0131m"),friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),nobody:\u00E7("Kimse")},partiTemaAdi=t=>PARTI_TEMA[t]??String(t??""),PARTI_MASA_SIRA=["yemek_masasi","sehpa","kahve\
-_masasi","bar_masasi","tavla_masasi","calisma_masasi"];function partiMasasi(items,catalog){const k=new Map((catalog??[]).map(c=>[c.id,c]));for(const id of PARTI_MASA_SIRA){const i=(items??[]).findIndex(
-p2=>p2.i===id),c=i>=0?k.get(id):null;if(!c)continue;const p=items[i],tek=p.r%2===1,w=tek?c.d:c.w,d=tek?c.w:c.d;return{i,id,x:p.x+w/2,z:p.z+d/2,w,d}}return null}const EvPartisi={durum:()=>Sunucu.cagir(
-"home_parties"),kur:(tema,bas,saat,davetli,plak2)=>Sunucu.yap("home_party_create",{p_theme:tema,p_starts_at:bas,p_hours:saat,p_invitees:davetli,p_ep:plak2}),davet:(parti,kisiler)=>Sunucu.yap("home_par\
-ty_invite",{p_party:parti,p_invitees:kisiler}),davetGeri:(parti,kisi)=>Sunucu.yap("home_party_uninvite",{p_party:parti,p_character:kisi}),yanit:(parti,evet)=>Sunucu.yap("home_party_reply",{p_party:parti,
+p:x.p,item:x.item,at:x.at})),masalar:duzen?[]:masa3b(),kayitta:(v.recording_now??[]).length}}}function sahneBirak(){oda3bOrnek&&Uc.cizici?.etkin===oda3bOrnek&&Uc.cizici.birak(oda3bOrnek)}async function sahneBagla(){
+const el=$("#mekan-sahne",yer);if(!el||mod!=="3b"){sahneBirak();return}try{const{THREE,cizici}=await Uc.yukle("98zh_mekan_ic.js");if(kapandi||mod!=="3b"||$("#mekan-sahne",yer)!==el||!el.isConnected)return;
+oda3bOrnek??=oda3bKur(THREE,cizici);const a=oda3bOrnek;if(a.dinle("secim",i=>{duzen&&(secili=i,uyari="",guncelle())}),a.dinle("tasi",(i,x,z)=>{duzen&&tasi(i,x,z)}),a.dinle("ye",()=>{}),a.dinle("kisi",
+p=>kisiKart(p)),a.dinle("zemin",(x,z)=>zeminDokun(x,z)),a.dinle("oturak",i=>oturakDokun(i)),a.kapBagla(el,$("#mekan-etiketler",el)),a.durumYaz(durum3b()),!cizici.bagla(a,el))throw new Error("webgl-bag\
+la");$("#mekan-yukleniyor",el)?.classList.add("bitti")}catch(e){if(console.warn("3B mek\xE2n a\xE7\u0131lamad\u0131:",e),kapandi)return;hata3b=!0,mod="2b",tost(\u00E7("3B mek\xE2n bu cihazda a\xE7\u0131lamad\u0131; h\
+afif g\xF6r\xFCn\xFCm g\xF6steriliyor."),"layers"),ciz()}}secenek.duzenle&&staff()&&salon()&&yonetim()&&(items=(yonetim().items??[]).map(p=>({...p})),duzen=!0),ciz(),masaKonuBagla(),masalarOku();const b1=Gorunum.
+dinle(()=>{const yeni=Gorunum.uc()&&!hata3b?"3b":"2b";yeni!==mod&&(mod=yeni,ciz())}),saat=setInterval(()=>{!document.hidden&&!kapandi&&(duzen||akisYaz(),guncelle())},6e4);return()=>{kapandi=!0,b1(),zyBirak?.(),
+clearInterval(saat),sahneBirak(),clearTimeout(masaZaman),masaKonuBirak?.(),masaOlayBirak(),masaPen?.kapat()}}return{ac}})();Kabuk.gecikmeli("sehir/mekan","ek_98zh_mekan_ic");const PARTI_TEMA={sohbet:\u00E7(
+"\xC7ay ve sohbet"),muzik:\u00E7("M\xFCzik gecesi"),kutlama:\u00E7("Kutlama"),sofra:\u00E7("Ak\u015Fam sofras\u0131")},PARTI_TEMA_IK={sohbet:"message-circle",muzik:"disc-3",kutlama:"party-popper",sofra:"\
+croissant"},PARTI_TEMA_SUS={sohbet:\u00E7("Semaver, ince belli bardaklar ve \u0131\u015F\u0131k zinciri."),muzik:\u00E7("Pikap, hoparl\xF6rler ve renkli \u0131\u015F\u0131klar; se\xE7ti\u011Fin plak evdekilere \xE7alar."),
+kutlama:\u00E7("Balonlar, flamalar, pasta ve konfeti."),sofra:\u00E7("\xD6rt\xFCl\xFC sofra, tabaklar ve mumlar.")},PARTI_IKRAM={sohbet:"cay",muzik:"atistirmalik",kutlama:"pasta",sofra:"kahvalti"},PARTI_IKRAM_AD={
+sohbet:\u00E7("\xE7ay ve simit"),muzik:\u00E7("\xE7erez"),kutlama:\u00E7("pasta"),sofra:\u00E7("sofra taba\u011F\u0131")},PARTI_RENK={sohbet:["#E2B54A","#C0663E","#F1E6D2"],muzik:["#9B6BFF","#3FD0FF",
+"#FF4FA3","#FFD24F"],kutlama:["#E5577A","#F2C94C","#5FB0D2","#6F9B6A"],sofra:["#C9A227","#9C3F33","#F1E6D2"]},PARTI_YANIT={yes:\u00E7("Geliyor"),no:\u00E7("Gelemiyor")},PARTI_TERCIH={everyone:\u00E7("\
+Arkada\u015Flar\u0131m ve tan\u0131d\u0131klar\u0131m"),friends:\u00E7("Yaln\u0131z arkada\u015Flar\u0131m"),nobody:\u00E7("Kimse")},partiTemaAdi=t=>PARTI_TEMA[t]??String(t??""),PARTI_MASA_SIRA=["yeme\
+k_masasi","sehpa","kahve_masasi","bar_masasi","tavla_masasi","calisma_masasi"];function partiMasasi(items,catalog){const k=new Map((catalog??[]).map(c=>[c.id,c]));for(const id of PARTI_MASA_SIRA){const i=(items??
+[]).findIndex(p2=>p2.i===id),c=i>=0?k.get(id):null;if(!c)continue;const p=items[i],tek=p.r%2===1,w=tek?c.d:c.w,d=tek?c.w:c.d;return{i,id,x:p.x+w/2,z:p.z+d/2,w,d}}return null}const EvPartisi={durum:()=>Sunucu.
+cagir("home_parties"),kur:(tema,bas,saat,davetli,plak2)=>Sunucu.yap("home_party_create",{p_theme:tema,p_starts_at:bas,p_hours:saat,p_invitees:davetli,p_ep:plak2}),davet:(parti,kisiler)=>Sunucu.yap("ho\
+me_party_invite",{p_party:parti,p_invitees:kisiler}),davetGeri:(parti,kisi)=>Sunucu.yap("home_party_uninvite",{p_party:parti,p_character:kisi}),yanit:(parti,evet)=>Sunucu.yap("home_party_reply",{p_party:parti,
 p_yes:evet}),simdi:parti=>Sunucu.yap("home_party_start_now",{p_party:parti}),bitir:parti=>Sunucu.yap("home_party_cancel",{p_party:parti}),plak:(parti,ep)=>Sunucu.yap("home_party_music",{p_party:parti,
 p_ep:ep}),tepsi:parti=>Sunucu.yap("home_party_tray",{p_party:parti}),al:()=>Sunucu.yap("home_party_take"),tercih:p=>Sunucu.cagir("party_invite_settings_set",{p_policy:p})},PartiMuzik=(()=>{let istek=null;
 const kimlik=p=>`parti:${p.party_id}:${p.music?.ep_id??""}:`;function cal(p,sira){const l=p.music?.tracks_list??[];if(!l.length)return;const n=sira%l.length,t=l[n].play??{};Ezgi.cal({kimlik:kimlik(p)+
@@ -8957,9 +8775,32 @@ const m=r?.mood;if(!m||typeof m!="object")return"";const a=Durum.v.askerlik;a&&(
 +{n}: {p} / {m}.",{n,p:Number(m.points??0),m:Number(m.max??100)}):kova&&Number(m.today?.[kova]??0)>=Number(m.caps?.[kova]??0)?" "+\u00E7("Bug\xFCnk\xFC {kova} keyfi doldu.",{kova:keyifKovaAdi(kova)}):
 ""}function keyifSiparisNotu(cat){const r=keyifKurali(),m=Durum.v.askerlik?.mood,kaynak={drink:"drink",food:"food",gift:"gift"}[cat];if(!kaynak||!r.gains?.[kaynak])return"";const kova=r.sources?.[kaynak],
 g=Number(r.gains[kaynak]);return kaynak==="gift"?\u00E7("Hediye alan\u0131n keyfini {n} art\u0131r\u0131r.",{n:g}):\u00E7("Kendine al\u0131rsan keyfin {n} artar (bug\xFCn {kova}: {a} / {b}); \u0131smarlarsan alan\u0131\
-nki.",{n:g,kova:keyifKovaAdi(kova),a:Number(m?.today?.[kova]??0),b:Number(r.caps?.[kova]??0)})}function keyifKarti(m){if(!m)return"";const kovalar=Object.entries(KEYIF_KOVA).filter(([k])=>m.caps?.[k]!=
-null).map(([k,x])=>{const n=Number(m.today?.[k]??0),t=Number(m.caps?.[k]??0);return`<div class="keyif-kova${n>=t&&t>0?" dolu":""}" data-keyif-kova="${k}" data-n="${n}">${ikon(x.ik)}<span><b>${esc(x.ad)}\
-</b>
+nki.",{n:g,kova:keyifKovaAdi(kova),a:Number(m?.today?.[kova]??0),b:Number(r.caps?.[kova]??0)})}const keyifGunAdi=gun=>new Date(gun+"T12:00:00Z").toLocaleDateString(DIL.yerel,{day:"numeric",month:"shor\
+t",timeZone:"UTC"});function keyifGecmisHtml(g,m){if(!g?.today)return"";const n=Math.max(2,Number(g.show??14)),en=Math.max(1,Number(g.max??100)),esik=Number(g.happy_at??70),bugun={...g.today,points:m?.
+points!=null?Number(m.points):Number(g.today.points??0)},gunler=[...g.items??[],bugun],bugunMs=Date.parse(String(g.today.day)+"T00:00:00Z"),sira=gun=>n-1-Math.round((bugunMs-Date.parse(String(gun)+"T0\
+0:00:00Z"))/864e5),X0=30,X1=326,Y0=10,Y1=90,B0=104,BH=28,x=i=>X0+i*(X1-X0)/(n-1),y=p=>Y1-Math.min(en,Math.max(0,p))/en*(Y1-Y0),noktalar=gunler.map(d=>({d,i:sira(d.day),p:Number(d.points??0),k:Number(d.
+gained??0)})).filter(o2=>o2.i>=0&&o2.i<n),enKazanc=Math.max(1,...noktalar.map(o2=>o2.k)),genis=Math.max(4,(X1-X0)/(n-1)*.5),cizgi=noktalar.map(o2=>`${x(o2.i).toFixed(1)},${y(o2.p).toFixed(1)}`).join("\
+ "),o=g.summary??{},ozet2=(g.items??[]).length?\u00E7("Son {n} g\xFCn: ortalama {o}, en y\xFCksek {e} ({gun}); keyfin {h} g\xFCn yerindeydi.",{n:sayi(Number(o.count??gunler.length)),o:sayi(Number(o.avg??
+0)),e:sayi(Number(o.best?.points??0)),gun:o.best?.day===g.today.day?\u00E7("bug\xFCn"):keyifGunAdi(o.best?.day??g.today.day),h:sayi(Number(o.happy_days??0))}):\u00E7("Her g\xFCn\xFCn sonundaki keyfin burada\
+ birikir; ilk g\xFCn yar\u0131n g\xF6r\xFCn\xFCr."),enCok=(o.top??[]).length?\u00E7("En \xE7ok keyif verenler: {liste}.",{liste:o.top.map(t=>`${KEYIF_KOVA[t.bucket]?.ad??t.bucket} +${sayi(Number(t.n))}`).
+join(", ")}):"",etiket=(i,yazi,hiza)=>`<text x="${x(i).toFixed(1)}" y="146" text-anchor="${hiza}" class="kg-etiket">${esc(yazi)}</text>`,ilkGun=new Date(bugunMs-(n-1)*864e5).toISOString().slice(0,10),
+ortaGun=new Date(bugunMs-Math.floor((n-1)/2)*864e5).toISOString().slice(0,10);return`<div class="keyif-gecmis" id="keyif-gecmis" data-gun="${noktalar.length}" data-ortalama="${Number(o.avg??0)}">
+    <p class="ust-yazi" style="margin-top:12px">${\u00E7("Son {n} g\xFCn",{n:sayi(n)})}</p>
+    <svg viewBox="0 0 336 150" role="img" aria-label="${esc(ozet2)}" preserveAspectRatio="xMidYMid meet">
+      ${[0,50,100].filter(p=>p<=en).map(p=>`<line x1="${X0}" x2="${X1}" y1="${y(p).toFixed(1)}" y2="${y(p).toFixed(1)}" class="kg-izgara"/><text x="${X0-6}" y="${(y(p)+3).toFixed(1)}" text-anchor="end\
+" class="kg-etiket">${sayi(p)}</text>`).join("")}
+      <line x1="${X0}" x2="${X1}" y1="${y(esik).toFixed(1)}" y2="${y(esik).toFixed(1)}" class="kg-esik"><title>${esc(\u00E7("Keyfin yerinde: {n} ve \xFCst\xFC",{n:sayi(esik)}))}</title></line>
+      ${noktalar.filter(p=>p.k>0).map(p=>`<rect x="${(x(p.i)-genis/2).toFixed(1)}" y="${(B0+BH-p.k/enKazanc*BH).toFixed(1)}" width="${genis.toFixed(1)}" height="${(p.k/enKazanc*BH).toFixed(1)}" rx="2"\
+ class="kg-kazanc" data-kazanc="${p.k}"><title>${esc(\u00E7("{gun}: +{n} keyif kazand\u0131n",{gun:p.d.day===g.today.day?\u00E7("Bug\xFCn"):keyifGunAdi(p.d.day),n:sayi(p.k)}))}</title></rect>`).join("")}\
+
+      ${noktalar.length>1?`<polyline points="${cizgi}" class="kg-cizgi"/>`:""}
+      ${noktalar.map(p=>`<circle cx="${x(p.i).toFixed(1)}" cy="${y(p.p).toFixed(1)}" r="${p.d.day===g.today.day?4.5:3}" class="kg-nokta${p.d.day===g.today.day?" bugun":""}${p.p>=esik?" yerinde":""}" d\
+ata-gun="${esc(p.d.day)}" data-puan="${p.p}"><title>${esc(\u00E7("{gun}: keyif {n}",{gun:p.d.day===g.today.day?\u00E7("Bug\xFCn"):keyifGunAdi(p.d.day),n:sayi(p.p)}))}</title></circle>`).join("")}
+      ${etiket(0,keyifGunAdi(ilkGun),"start")}${n>2?etiket(n-1-Math.floor((n-1)/2),keyifGunAdi(ortaGun),"middle"):""}${etiket(n-1,\u00E7("Bug\xFCn"),"end")}
+    </svg>
+    <p class="kucuk" id="keyif-gecmis-ozet">${esc(ozet2)}${enCok?" "+esc(enCok):""}</p>
+  </div>`}function keyifKarti(m,g=null){if(!m)return"";const kovalar=Object.entries(KEYIF_KOVA).filter(([k])=>m.caps?.[k]!=null).map(([k,x])=>{const n=Number(m.today?.[k]??0),t=Number(m.caps?.[k]??0);
+return`<div class="keyif-kova${n>=t&&t>0?" dolu":""}" data-keyif-kova="${k}" data-n="${n}">${ikon(x.ik)}<span><b>${esc(x.ad)}</b>
       <span class="kucuk">${esc(x.ipucu)}</span></span><span class="keyif-kova-sayi">${\u00E7("{n} / {m}",{n,m:t})}</span></div>`}).join("");return`<section class="kart keyif-kart" id="keyif-kart" dat\
 a-keyif="${esc(m.level??"calm")}" data-puan="${Number(m.points??0)}" data-dinlenme="${Number(m.rest??0)}">
     <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Keyif")}</p><h2 class="b2">${esc(KEYIF_AD[m.level]??"")} \xB7 ${\u00E7("{n} / {m}",{n:Number(m.points??0),m:Number(m.max??100)})}</h2></div\
@@ -8972,6 +8813,7 @@ ar.",{k:Number(m.comfort??0),d:Number(m.home_rest??m.rest??0)}))}</span>
       <button class="dugme sade kucuk-d" data-git="sehir/ev">${ikon("house")}${\u00E7("Evim")}</button></div>
     <p class="ust-yazi" style="margin-top:12px">${\u00E7("Bug\xFCn kazand\u0131klar\u0131n")}</p>
     <div class="keyif-kovalar">${kovalar}</div>
+    ${keyifGecmisHtml(g,m)}
     <div class="oneri-dugmeler" style="margin-top:10px">
       <button class="dugme ikincil kucuk-d" data-git="sehir/mekanlar">${ikon("coffee")}${\u00E7("Mek\xE2nlar")}</button>
       <button class="dugme ikincil kucuk-d" data-git="sehir/sahne">${ikon("ticket")}${\u00E7("Sahne")}</button>
@@ -9221,6 +9063,7 @@ o.cityevent.round)===Number(o.cityevent.rounds)?\u00E7("final"):Number(o.cityeve
 filter(Boolean).join(" \xB7 "))}</p>
           <h2 class="b2">${ikon(OYUN_IK[o.game]??"dices")} ${esc(oyunAdi(o.game))}</h2></div>
           <div class="kart-bas-dugmeler"><span class="cip${o.status==="playing"?" deniz":""}" data-masa-durum>${esc(durumCip)}</span>
+            ${kareSahneDugmeHtml("cafe",`board:${o.game_id}`)}
             ${o.status!=="waiting"&&o.rated!=null?`<span class="cip${o.rated?" altin":""}">${esc(o.rated?\u00E7("Puanl\u0131"):\u00E7("Puans\u0131z"))}</span>`:""}
             ${secenek.kapat?`<button class="dugme sade kucuk-d" data-masa-kapat aria-label="${esc(\u00E7("Kapat"))}">${ikon("x")}</button>`:""}</div></div>
         ${oyuncularHtml()}
@@ -10489,10 +10332,22 @@ max(Number(kr0.min_target??100),500)}" required></label>
         <p class="kucuk">${\u00E7("Vatanda\u015Flar\u0131n bir haftada toplad\u0131\u011F\u0131 puan say\u0131l\u0131r (en az {a}, en \xE7ok {b}). Meclis kabul ederse bu haftan\u0131n hedefi olur; bu haftan\u0131n hedefi varsa gelecek haftan\u0131n.",
 {a:sayi(kr0.min_target??100),b:sayi(kr0.max_target??1e6)})}</p>`,async is(d){const hedef=Number(d.get("hedef"));if(!Number.isInteger(hedef)||hedef<Number(kr0.min_target??100)||hedef>Number(kr0.max_target??
 1e6))throw new Error(\u00E7("Hedef {a} ile {b} puan aras\u0131nda bir tam say\u0131 olmal\u0131.",{a:sayi(kr0.min_target??100),b:sayi(kr0.max_target??1e6)}));await Sunucu.yap("motion_propose_goal",{p_metric:String(
-d.get("metrik")),p_target:hedef}),tost(\u00E7("Hedef \xF6nerisi meclise gitti."),"gavel"),sonra?.()}})}async function ozetCiz(el){if(!el)return;let s;try{s=await durum()}catch{el.innerHTML="";return}if(!el.
-isConnected||!s?.country_id){el.innerHTML="";return}el.innerHTML=emirKarti(s)+hedefKarti(s);const yeniden=()=>ozetCiz(el);for(const b of $$("[data-millet-git]",el))b.onclick=()=>Kabuk.git(b.dataset.milletGit);
-$("#millet-emir-ver",el)?.addEventListener("click",()=>emirPencere(s,yeniden)),$("#millet-hedef-oner",el)?.addEventListener("click",()=>hedefPencere(s,yeniden)),sayacKur(el,yeniden)}function turnuvaKarti(s){
-const t=s.tournament,ben=s.country_id,mine=t.mine,satir=x=>`<li class="liste-satir${x.country_id===ben?" ben":""}"><span class="liste-ikon"><b>${String(Number(x.rank))}</b></span>
+d.get("metrik")),p_target:hedef}),tost(\u00E7("Hedef \xF6nerisi meclise gitti."),"gavel"),sonra?.()}})}function marsKarti(s){const m=s.anthem;return`<section class="kart" id="millet-mars" data-mars="${m?
+esc(m.song_id):""}">
+      <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Milli mar\u015F")}</p><h2 class="b2">${m?esc(m.title):\u00E7("Mar\u015F se\xE7ilmedi")}</h2></div><span class="ik-kutu">${ikon("eighth-no\
+tes")}</span></div>
+      ${m?`<p class="aciklama">${esc(\u00E7("{grup} grubunun kayd\u0131; meclis {zaman} kabul etti.",{grup:m.band??"",zaman:saatYaz(m.set_at)}))}${m.proposed_by?" "+esc(\u00E7("\xD6neren: {ad}.",{ad:m.
+proposed_by})):""}</p>
+        <div class="satir" style="margin-top:10px;flex-wrap:wrap;gap:8px"><button class="dugme altin kucuk-d" id="millet-mars-dinle">${ikon("play")}${\u00E7("Dinle")}</button>
+          ${m.band_id?`<button class="dugme ikincil kucuk-d" data-millet-git="hayat/muzik">${ikon("eighth-notes")}${\u00E7("M\xFCzik")}</button>`:""}</div>`:`<p class="aciklama">${s.member?\u00E7("Mec\
+lis \xFClkenin bir grubunun kayd\u0131 bitmi\u015F \u015Fark\u0131s\u0131n\u0131 milli mar\u015F se\xE7ebilir (\xDClkem \u2192 Meclis \u2192 \xD6neri yap)."):\u00E7("Meclis \xFClkenin bir grubunun kayd\u0131 \
+bitmi\u015F \u015Fark\u0131s\u0131n\u0131 milli mar\u015F se\xE7ebilir; mar\u015F burada \xE7alar.")}</p>`}
+    </section>`}function marsCal(m){if(!m||typeof Ezgi!="object")return;const d=$("#millet-mars-dinle");Ezgi.cal({kimlik:`mars:${m.song_id}`,seed:Number(m.seed)||1,genre:m.genre,tempo:Number(m.tempo)||
+120,key_no:Number(m.key_no)||0}).catch(()=>{}),d&&(d.innerHTML=`${ikon("play")}${\u00E7("Dinle")}`)}async function ozetCiz(el){if(!el)return;let s;try{s=await durum()}catch{el.innerHTML="";return}if(!el.
+isConnected||!s?.country_id){el.innerHTML="";return}el.innerHTML=emirKarti(s)+hedefKarti(s)+marsKarti(s);const yeniden=()=>ozetCiz(el);$("#millet-mars-dinle",el)?.addEventListener("click",()=>marsCal(
+s.anthem));for(const b of $$("[data-millet-git]",el))b.onclick=()=>Kabuk.git(b.dataset.milletGit);$("#millet-emir-ver",el)?.addEventListener("click",()=>emirPencere(s,yeniden)),$("#millet-hedef-oner",
+el)?.addEventListener("click",()=>hedefPencere(s,yeniden)),sayacKur(el,yeniden)}function turnuvaKarti(s){const t=s.tournament,ben=s.country_id,mine=t.mine,satir=x=>`<li class="liste-satir${x.country_id===
+ben?" ben":""}"><span class="liste-ikon"><b>${String(Number(x.rank))}</b></span>
       <div><b><span class="ulke-nokta" style="background:${ulkeRenk(x.country_id)}"></span> ${esc(ulkeAdi(x.country_id))}</b><span class="kucuk">${\u00E7("{n} kat\u0131l\u0131mc\u0131",{n:Number(x.participants)})}\
 </span></div>
       <div class="sag-yazi"><b>${\u00E7("{p} puan",{p:sayi(x.points)})}</b></div></li>`,ustte=(t.rows??[]).some(x=>x.country_id===ben);return`<section class="kart" id="millet-turnuva">
@@ -11142,4 +10997,86 @@ zi">${\u00E7("Alb\xFCm")}</p>
           <span class="kucuk">${esc(\u00E7("{ad} \xB7 {baslik}",{ad:x.host??"",baslik:x.title??""}))}</span>
           <span class="kucuk">${esc(\u00E7("{sehir} meydan\u0131 \xB7 {zaman} \xB7 {n}. hat\u0131ra ({m} imza verildi)",{sehir:bolgeAdi(x.region_id),zaman:saatYaz(x.at),n:sayi(x.serial),m:sayi(x.signed??
 x.serial)}))}</span></span></li>`).join("")}</ul>`:`<p class="bos">${\u00E7("Hen\xFCz imzal\u0131 hat\u0131ran yok. Takip etti\u011Fin sanat\xE7\u0131lar, gazeteciler ve fenomenler imza g\xFCn\xFC d\xFCzenleyince haber al\u0131rs\u0131n; o g\xFCn m\
-eydanda ol.")}</p>`}</section>`}Parcalar.tamam("app");
+eydanda ol.")}</p>`}</section>`}function yarismaSahneVerisi(r){const w=r.winner??r.ranking?.[0]??{},s=Yarisma.sarki(w),uyeler=w.members??w.lineup??r.members??[];return{anahtar:"yarisma:"+r.season,hal:"\
+odul",mekan:"festival",bolge:null,grup:{id:w.band_id,ad:w.band_name??"",tur:s.genre},kadro:uyeler.map(m=>({id:m.character_id??m.id,ad:m.name??m.ad??"",gorunus:m.look??m.gorunus??null,rol:m.stage_role??
+"vokal",geldi:!0})),seyirci:140,kapasite:140,kalite:95,sarki:{...s,bis:!0},baslangic:null,sonuc:null,gece:1,odul:{rank:1,genre:s.genre}}}let yarisma3bOrnek=null;const YarismaGecesi=(()=>{function ac(){
+const el=document.createElement("section");el.className="kart konser-salon-kart",el.id="yarisma-gecesi";const kusak=Sunucu.Giris.kusak;let r=null,kapandi=!1,hata=!1,istek=0;const mod=()=>Gorunum.uc()&&
+!hata?"3b":"2b",yasiyor=()=>!kapandi&&kusak===Sunucu.Giris.kusak&&el.isConnected;function birak(){istek++,yarisma3bOrnek&&Uc.cizici?.etkin===yarisma3bOrnek&&(yarisma3bOrnek.kapBagla(null),Uc.cizici.birak(
+yarisma3bOrnek))}async function sahneBagla(){const kutu=$("[data-yarisma-sahne]",el),an=++istek;if(!kutu||mod()!=="3b"){birak();return}try{const{THREE,cizici}=await Uc.yukle("98zzw_yarisma3b_veri.js");
+if(!yasiyor()||an!==istek||mod()!=="3b"||$("[data-yarisma-sahne]",el)!==kutu)return;if(yarisma3bOrnek??=yarisma3bKur(THREE,cizici),yarisma3bOrnek.kapBagla(kutu),yarisma3bOrnek.yarismaYaz(r),!cizici.bagla(
+yarisma3bOrnek,kutu))throw new Error("webgl-bagla");kutu.dataset.kadro=yarisma3bOrnek.durum.kadro,$(".konser-on",kutu)?.classList.add("bitti")}catch(e){if(!yasiyor()||an!==istek)return;console.warn("3\
+B yar\u0131\u015Fma sahnesi a\xE7\u0131lamad\u0131:",e),hata=!0,ciz()}}function ciz(){if(!r||kapandi)return;const w=r.winner??r.ranking?.[0],s=Yarisma.sarki(w),d=yarismaSahneVerisi(r);el.innerHTML=`<d\
+iv class="kart-bas"><div><p class="ust-yazi">${\u00E7("Final gecesi")}</p><h2 class="b2">${esc(w?.band_name??"")}</h2></div>${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" type="button" data-\
+yarisma-mod aria-pressed="${mod()==="2b"}">${mod()==="3b"?\u00E7("2B"):\u00E7("3B")}</button>`:""}</div>
+        <p class="aciklama"><span class="cip altin">${ikon("medal")}${\u00E7("Yar\u0131\u015Fma birincisi, {n}. sezon",{n:Number(r.season)})}</span> ${esc(s.title)}</p>
+        <div class="konser-sahne sahne3b" data-yarisma-sahne data-mod="${mod()}">${mod()==="3b"?`<div class="yukleniyor konser-on" aria-label="${\u00E7("Final sahnesi a\xE7\u0131l\u0131yor\u2026")}">${konser2b(
+d)}</div>`:`<div class="konser-2b">${konser2b(d)}</div>`}</div>
+        <p class="kucuk">${\u00E7("Kazanan kadro sahnede; \xFClke renkleri ve puanlar arka ekranda. Tam puan listesi yukar\u0131da.")}</p>${s.seed!=null?muzikDinle(s):""}
+        <p class="kucuk">${\u00E7("Ezgi ger\xE7ek ses kayd\u0131 de\u011Fildir; \u015Fark\u0131n\u0131n verisinden oyunun kurallar\u0131yla \xFCretilir.")}</p>`,$("[data-yarisma-mod]",el)?.addEventListener(
+"click",()=>{const iki=mod()==="3b";hata=!1,Gorunum.ayarla(iki?"2b":"3b"),ciz()}),muzikDinleBagla(el),sahneBagla()}const gorunumBirak=Gorunum.dinle(()=>{r&&yasiyor()&&ciz()});return{el,birak,yaz(x){r=
+x,ciz()},kapat(){if(kapandi)return;kapandi=!0,birak(),gorunumBirak();const s=Yarisma.sarki(r?.winner??r?.ranking?.[0]);s.song_id&&Ezgi.calan===s.song_id&&Ezgi.durdur()}}}return{ac}})(),Yarisma=(()=>{const asama=v=>({
+applications:"application",applying:"application",entry:"application",national_vote:"national",final_vote:"final",result:"results",finished:"results"})[v?.phase]??v?.phase??"application",asamaAdi=v=>({
+application:\u00E7("Ba\u015Fvurular \xB7 1\u20138. haftalar"),national:\u00E7("Ulusal eleme \xB7 9. hafta"),final:\u00E7("Uluslararas\u0131 final \xB7 10\u201311. haftalar"),results:\u00E7("Sonu\xE7lar \xB7\
+ 12. hafta"),upcoming:\u00E7("Yeni sezon bekleniyor")})[asama(v)]??"",benim=v=>v?.mine??v?.me??{},ulkem=v=>benim(v).country_id??v?.country_id??Durum.v.ozet?.character?.citizenship,liste=v=>asama(v)===
+"final"?v?.finalists??v?.entries??[]:v?.entries??[],sarki=e=>({...e?.song??{},song_id:e?.song?.song_id??e?.song_id,title:e?.song?.title??e?.song_title??"",genre:e?.song?.genre??e?.genre??"pop"}),oyum=v=>asama(
+v)==="national"?benim(v).national_vote??benim(v).vote:benim(v).final_vote??benim(v).vote,oyVar=v=>!!oyum(v);function oyEngeli(v,e){if(!["national","final"].includes(asama(v)))return \u00E7("Bu a\u015Famada\
+ oy verilmez.");if(oyVar(v)||benim(v).vote_blocker==="already_voted")return \u00E7("Bu a\u015Famadaki gizli oyun kaydedildi; de\u011Fi\u015Ftirilmez.");if(asama(v)==="final"&&e.country_id===ulkem(v))return \u00E7(
+"Finalde kendi \xFClkene oy veremezsin.");if(asama(v)==="national"&&e.country_id!==ulkem(v))return \u00E7("Ulusal elemede yaln\u0131z kendi \xFClkenin gruplar\u0131na oy verirsin.");const m=benim(v);return m.
+can_vote===!1||m.eligible===!1?\u00E7("Oy i\xE7in hesab\u0131n en az 7 g\xFCnl\xFCk olmal\u0131 ve vatanda\u015Fl\u0131\u011F\u0131n bulunmal\u0131."):""}function kart(v,sadeceOy=!1){return sadeceOy&&
+(!v||!["national","final"].includes(asama(v)))?"":`<section class="kart" data-yarisma-kart><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("\u015Eark\u0131 Yar\u0131\u015Fmas\u0131")}</p><h2 c\
+lass="b2">${v?\u00E7("{n}. sezon",{n:Number(v.season)}):\u00E7("\xDClkeler aras\u0131 sahne")}</h2></div>${ikon("trophy")}</div>
+      <p class="aciklama">${esc(v?asamaAdi(v):\u00E7("\u015Eark\u0131n\u0131 g\xF6nder, \xFClkeni temsil et, finalde ba\u015Fka bir \xFClkeye oy ver."))}</p>
+      <button class="dugme ikincil" type="button" data-yarisma-git>${ikon("eighth-notes")}${\u00E7("Yar\u0131\u015Fmay\u0131 a\xE7")}</button></section>`}function bagla(kok){for(const b of $$("[data-y\
+arisma-git]",kok))b.onclick=()=>Kabuk.git("hayat/yarisma")}function puanlar(r){const l=r?.ranking??r?.results??[];return l.length?`<ol class="turne-yol" data-yarisma-puanlar aria-label="${\u00E7("\xDClke\
+ler aras\u0131 yar\u0131\u015Fma puanlar\u0131")}">${l.map((e,i)=>`<li class="turne-durak" data-yarisma-sonuc="${esc(e.entry_id)}"><span class="turne-sira">${Number(e.rank??i+1)}</span><div class="tur\
+ne-durak-govde"><span class="tur"><span class="ulke-nokta" style="background:${esc(ulkeRenk(e.country_id))}"></span> ${esc(e.country_name??ulkeAdi(e.country_id))}</span><b>${esc(e.band_name??"")}</b><\
+div class="alt">${esc(sarki(e).title)} \xB7 ${\u00E7("{n} \xFClkeden puan",{n:sayi(e.awarding_countries??0)})}</div></div><span class="cip altin">${\u00E7("{n} puan",{n:sayi(e.total_points??e.points??
+0)})}</span></li>`).join("")}</ol>`:`<p class="bos">${\u00E7("Hen\xFCz sonu\xE7 yok.")}</p>`}return{asama,asamaAdi,benim,ulkem,liste,sarki,oyVar,oyEngeli,kart,bagla,puanlar}})();Kabuk.gecikmeli("hayat\
+/yarisma","ek_98zzx_yarisma");function kartpostalGonder(foto,sonra){if(!kareKartpostalGonderebilir(foto))return;const kusak=Sunucu.Giris.kusak;let arama=0;const{form}=pencereForm({ust:\u00E7("Kare"),baslik:\u00E7(
+"Kartpostal g\xF6nder"),onayAd:\u00E7("G\xF6nder"),onayIkon:"send",govde:`<div class="kare-onizleme" data-kartpostal-onizleme></div>
+      <p class="kucuk">${\u00E7("Kendi Kare'ni ya da i\xE7inde bulundu\u011Fun payla\u015F\u0131lm\u0131\u015F bir Kare'yi k\u0131sa bir notla g\xF6nder.")}</p>
+      <label class="alan"><span>${\u00E7("Al\u0131c\u0131")}</span><input name="ara" placeholder="${esc(\u00E7("Oyuncunun ad\u0131"))}" minlength="2" maxlength="80" autocomplete="off"></label>
+      <div class="oneri-dugmeler"><button type="button" class="dugme ikincil kucuk-d" data-kartpostal-ara>${ikon("binoculars")}${\u00E7("Ara")}</button></div>
+      <fieldset class="alan"><legend>${\u00E7("Oyuncu se\xE7")}</legend><div class="yigin" data-kartpostal-sonuc aria-live="polite"><p class="kucuk">${\u00E7("Al\u0131c\u0131y\u0131 bulmak i\xE7in en az 2 harf yaz.")}\
+</p></div></fieldset>
+      <label class="alan"><span>${\u00E7("Not (iste\u011Fe ba\u011Fl\u0131; en \xE7ok 140 karakter)")}</span><textarea name="not" maxlength="140" rows="3"></textarea><small data-kartpostal-sayac>0 / ${sayi(
+140)}</small></label>
+      <p class="kucuk">${\u00E7("G\xFCnde en \xE7ok 5 kartpostal g\xF6nderebilirsin. Ayn\u0131 Kare ayn\u0131 ki\u015Fiye bir kez g\xF6nderilir.")}</p>
+      ${foto.shared===!1?`<p class="kucuk">${ikon("lock")}${\u00E7("Bu \xF6zel Kare yaln\u0131z kartpostal\u0131n al\u0131c\u0131s\u0131na da g\xF6r\xFCn\xFCr; Ak\u0131\u015F'ta yay\u0131mlanmaz.")}</\
+p>`:""}`,is:async d=>{const alici=d.get("alici");if(!alici)throw new Error(\u00E7("\xD6nce bir al\u0131c\u0131 se\xE7."));const not=String(d.get("not")??"").trim();if([...not].length>140)throw new Error(
+\u00E7("Not en \xE7ok 140 karakter olabilir."));await Sunucu.yap("postcard_send",{p_photo:foto.photo_id,p_to:alici,p_note:not||null}),!(kusak!==Sunucu.Giris.kusak||!form.isConnected)&&(tost(\u00E7("Ka\
+rtpostal g\xF6nderildi."),"send"),await sonra?.())}});Kare.goster($("[data-kartpostal-onizleme]",form),foto,480,360);const sonuc=$("[data-kartpostal-sonuc]",form),alan=$("input[name=ara]",form),dugme=$(
+"[data-kartpostal-ara]",form),ara=async()=>{const q=alan.value.trim(),sira=++arama;if(q.length<2){sonuc.innerHTML=`<p class="kucuk">${\u00E7("En az 2 harf yaz.")}</p>`;return}dugme.disabled=!0;try{const liste=(await Sunucu.
+cagir("character_search",{p_query:q})).filter(x=>x.character_id!==Durum.v.ozet?.character?.id);if(kusak!==Sunucu.Giris.kusak||!form.isConnected||sira!==arama||q!==alan.value.trim())return;sonuc.innerHTML=
+liste.length?liste.map(x=>`<label class="onay"><input type="radio" name="alici" value="${esc(x.character_id)}"><span><b>${esc(x.name)}</b><span class="kucuk">${esc(ulkeAdi(x.country_id??x.citizenship_country_id??
+""))}</span></span></label>`).join(""):`<p class="bos">${\u00E7("Bu adda oyuncu bulunamad\u0131.")}</p>`}catch(e){kusak===Sunucu.Giris.kusak&&form.isConnected&&sira===arama&&(sonuc.innerHTML=`<p class\
+="hata-kutusu" role="alert">${esc(hataMetni(e))}</p>`)}finally{sira===arama&&dugme.isConnected&&(dugme.disabled=!1)}};dugme.onclick=ara,alan.addEventListener("input",()=>{arama++,dugme.disabled=!1,sonuc.
+innerHTML=`<p class="kucuk">${\u00E7("Al\u0131c\u0131y\u0131 bulmak i\xE7in en az 2 harf yaz.")}</p>`}),alan.addEventListener("keydown",e=>{e.key==="Enter"&&(e.preventDefault(),ara())}),$("textarea[na\
+me=not]",form).addEventListener("input",e=>{$("[data-kartpostal-sayac]",form).textContent=`${[...e.target.value].length} / ${sayi(140)}`})}function kartpostalPulHtml(p){const ulke=DUNYA.ulkeler?.[p.sender_country_id],
+renk=ulkeRenk(p.sender_country_id);return`<span class="kartpostal-pul" title="${esc(ulkeAdi(p.sender_country_id))}" style="display:inline-flex;flex-direction:column;align-items:center;gap:4px;border:3\
+px dotted var(--kagit);outline:1px solid var(--cizgi);padding:8px 12px;background:${esc(renk)};color:#fff;text-shadow:0 1px 2px #333">
+    ${ikon("map-pin")}<b>${esc(ulke?.iso2??String(p.sender_country_id??"").toUpperCase())}</b></span>`}function kartpostalKartHtml(p,{buyuk=!1}={}){const foto=p.photo;return`<article class="kart kartp\
+ostal-kart" data-kartpostal="${esc(p.postcard_id)}" style="border:2px solid var(--cizgi);padding:14px;background:var(--kagit)">
+    <div class="satir" style="justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px">
+      <div><p class="ust-yazi">${esc(p.mine?\u00E7("G\xF6nderilen kartpostal"):\u00E7("Gelen kartpostal"))}</p><b>${esc(p.mine?p.recipient:p.sender)}</b>
+        <p class="kucuk">${esc(saatYaz(p.sent_at))}</p></div>${kartpostalPulHtml(p)}</div>
+    ${foto?`<div class="kartpostal-fotograf" style="padding:8px 8px 22px;background:var(--kagit-2);border:1px solid var(--cizgi)"><div data-kartpostal-resim="${esc(p.postcard_id)}"></div>
+      <p class="kucuk" style="margin-top:8px">${kareYerHtml(foto)}${foto.caption?` \xB7 ${esc(foto.caption)}`:""}</p></div>`:`<p class="bos">${\u00E7("Bu kartpostal\u0131n foto\u011Fraf\u0131 art\u0131k kullan\u0131lam\u0131yor.")}\
+</p>`}
+    ${p.note?`<p class="paylasim-metin" style="margin-top:14px;white-space:pre-wrap">${etiketli(p.note)}</p>`:""}
+    <div class="oneri-dugmeler" style="margin-top:12px">
+      ${!p.mine&&!p.read_at?`<span class="cip altin" data-kartpostal-okunmamis>${\u00E7("Okunmad\u0131")}</span>`:`<span class="cip">${esc(p.read_at?\u00E7("Okundu"):\u00E7("Hen\xFCz okunmad\u0131"))}\
+</span>`}
+      ${p.thanked_at?`<span class="cip yesil">${ikon("heart")}${\u00E7("Te\u015Fekk\xFCr edildi")}</span>`:""}
+      ${buyuk?"":`<button type="button" class="dugme ikincil kucuk-d" data-kartpostal-ac="${esc(p.postcard_id)}">${ikon("mail-open")}${\u00E7("A\xE7")}</button>`}
+    </div></article>`}function kartpostalResimleriBagla(kok,liste,buyuk=!1){kareYerAdlariniBagla(kok,liste.map(p=>p.photo).filter(Boolean));const kartlar=new Map(liste.map(p=>[p.postcard_id,p]));for(const el of $$(
+"[data-kartpostal-resim]",kok)){const p=kartlar.get(el.dataset.kartpostalResim);p?.photo&&Kare.goster(el,p.photo,buyuk?960:480,buyuk?720:360)}}async function kartpostalAc(p,sonra,kaynak=null){const kusak=Sunucu.
+Giris.kusak,ekran=kaynak?.closest(".ekran"),rota=Kabuk.etkin,gecerli=()=>kusak===Sunucu.Giris.kusak&&(!ekran||ekran.isConnected)&&(!rota||rota===Kabuk.etkin);try{if(!p.mine&&!p.read_at&&(p=await Sunucu.
+yap("postcard_read",{p_postcard:p.postcard_id})),!gecerli()||(await sonra?.(),!gecerli()))return;pencere({ust:\u00E7("Kartpostal"),baslik:p.mine?p.recipient:p.sender,govde:kartpostalKartHtml(p,{buyuk:!0}),
+dugmeler:[{ad:\u00E7("Kapat")},...!p.mine&&!p.thanked_at?[{ad:\u00E7("Te\u015Fekk\xFCr et"),ikon:"heart",is:async()=>{try{await Sunucu.yap("postcard_thank",{p_postcard:p.postcard_id}),kusak===Sunucu.Giris.
+kusak&&(tost(\u00E7("Te\u015Fekk\xFCr\xFCn g\xF6nderildi."),"heart"),await sonra?.())}catch(e){kusak===Sunucu.Giris.kusak&&tost(hataMetni(e),"circle-alert")}}}]:[],{ad:\u00E7("Kutumdan sil"),ikon:"tra\
+sh",sinif:"mercan",is:()=>kartpostalSil(p,sonra)},...p.mine?[]:[{ad:\u00E7("Raporla"),sinif:"mercan",is:()=>raporla({tur:"postcard",ref:p.postcard_id,ad:p.sender})}]]}),kartpostalResimleriBagla($(".pe\
+rde:last-child"),[p],!0)}catch(e){kusak===Sunucu.Giris.kusak&&tost(hataMetni(e),"circle-alert")}}function kartpostalSil(p,sonra){const kusak=Sunucu.Giris.kusak;pencereForm({ust:\u00E7("Kartpostal"),baslik:\u00E7(
+"Kartpostal\u0131 kutundan sil"),onayAd:\u00E7("Sil"),onaySinif:"mercan",onayIkon:"trash",govde:`<p class="aciklama">${\u00E7("Bu kartpostal senin kutundan kald\u0131r\u0131l\u0131r. Di\u011Fer ki\u015Finin kutusunda kal\u0131r.")}\
+</p>`,is:async()=>{await Sunucu.yap("postcard_delete",{p_postcard:p.postcard_id}),kusak===Sunucu.Giris.kusak&&(tost(\u00E7("Kartpostal kutundan silindi."),"trash"),await sonra?.())}})}Kabuk.gecikmeli(
+"hayat/kare-album","ek_98zzy_kartpostal"),Kabuk.gecikmeli("hayat/kartpostal","ek_98zzy_kartpostal"),Parcalar.tamam("app");

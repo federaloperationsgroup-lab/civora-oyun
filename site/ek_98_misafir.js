@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98_misafir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98_misafir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/misafir",{async ac(kap){let kapandi=!1,zy=null,odaKapat=null;const harita=await Durum.harita().catch(()=>null),birak=()=>{odaKapat?.(),odaKapat=null,zy?.kapat(),zy=null};async function liste(bildiri=null){
 birak(),EvYolu.hedefUnut();let r=null,hata=null;try{r=await EvYolu.komsular()}catch(e){hata=e}if(kapandi)return;const evler=r?.homes??[];kap.innerHTML=`<div class="sayfa">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("\u015Eehrim")}</p><h1 class="b1">${\u00E7("Misafirlik")}</h1>

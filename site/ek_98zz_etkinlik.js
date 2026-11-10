@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zz_etkinlik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zz_etkinlik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/etkinlikler",{async ac(kap){let v=null,hata=null,detay=null,secili=null,kapandi=!1,mesgul=!1,saatFarki=0,gorunus;const alan=EtkinlikAlani.ac();alan.dinle("sec",ad=>{$(ad==="program"?
 "#etkinlik-program":"#etkinlik-detay",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.rules??etkinlikKurali()??{},simdi=()=>Date.
 now()+saatFarki,program=()=>v?.program??[],burada=()=>!!v&&v.here===v.region_id;async function yukle(){try{const[x,bak]=await Promise.all([Sunucu.cagir("cityevents",{p_region:v?.region_id??null}),gorunus===

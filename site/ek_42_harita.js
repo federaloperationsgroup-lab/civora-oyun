@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("dunya/harita",{async ac(kap){const[veriTam]=await Promise.all([haritaVerisi(),Durum.ozet(),Durum.kurallar()]);let harita=await Durum.harita(!0);Devletler.haritaya(veriTam);let yolDurum=await Sunucu.
 cagir("travel_status").catch(()=>null),isb=await Sunucu.cagir("coop_map").catch(()=>null),trafik=await Sunucu.cagir("world_pulse").catch(()=>null);const filmIstek=HaritaFilm.bekleyen;HaritaFilm.bekleyen=
 null;let filmVeri=filmIstek?.veri??null;if(filmIstek&&!filmVeri&&(filmVeri=await Sunucu.cagir("season_film",{p_season:filmIstek.no??null}).catch(e=>(tost(hataMetni(e),"circle-alert"),null))),filmVeri)

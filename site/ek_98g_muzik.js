@@ -1,15 +1,15 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/muzik",{async ac(kap){let v=null,kanal=null,kanalBirak=null,kapandi=!1,durdur=()=>{};const arama={q:"",sonuc:null},oda=ProvaOdasi.ac();oda.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&
 profilAc(id,()=>tazele());return}if(ad==="calgi"){sahneRolu();return}const el=$({afis:"#muzik-ayar",gosterge:"#muzik-provalar",pano:"#muzik-repertuvar"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?
 "auto":"smooth",block:"start"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.m?.rule??Durum.v.kurallar?.data?.culture??
 {},RK=()=>({...R(),studio:v?.m?.studio_rule??R().studio??{},ep:v?.m?.ep_rule??R().ep??{}}),B=()=>v?.m?.band??null,yetki=a=>!!B()?.me?.can?.[a],benimRol=()=>B()?.me?.role??"member",cikarabilir=hedef=>yetki(
-"expel")&&hedef!=="manager"&&(benimRol()==="manager"||hedef==="member");async function yukle(){await Durum.kurallar().catch(()=>null);const[m,fv]=await Promise.all([Sunucu.cagir("music_overview"),Sunucu.
-cagir("festival_view",{p_season:null}).catch(()=>null)]);v={m,fv},kanalBagla()}function kanalBagla(){const id=B()?.band_id??null;id!==kanal&&(kanalBirak?.(),kanalBirak=null,kanal=id,id&&(kanalBirak=Sunucu.
-Canli.dinle("band:"+id,olay=>{/^(band\.|song\.)/.test(olay)&&yakinda()})))}let bekleyen=null;const yakinda=()=>{clearTimeout(bekleyen),bekleyen=setTimeout(()=>{kapandi||tazele()},350)},calismaYazi=()=>{
-const me=v.m.me??{};return \u00E7("Bug\xFCn {n} / {max} birim \xE7al\u0131\u015Ft\u0131n (bir birim {d} dakika). \u015Eark\u0131 yazmak ve ki\u015Fisel prova g\xFCnl\xFCk s\u0131n\u0131ra say\u0131l\u0131r; ortak prova say\u0131lmaz.",
-{n:Number(me.units_today??0),max:Number(me.daily_cap??8),d:Number(me.unit_minutes??30)})},birimSuresi=dk=>dk<60?\u00E7("{d} dk",{d:dk}):dk%60?\u00E7("{s} sa {d} dk",{s:Math.floor(dk/60),d:dk%60}):\u00E7(
-"{n} sa",{n:dk/60}),birimSecimi=(ad,min,max,secili)=>`<fieldset class="alan"><legend>${\u00E7("Ka\xE7 birim")}</legend><div class="radyo-liste birlik-yatay ikili">${Array.from({length:max-min+1},(_,i)=>min+
-i).map(n=>`<label class="radyo"><input type="radio" name="${ad}" value="${n}" ${n===secili?"checked":""}>
+"expel")&&hedef!=="manager"&&(benimRol()==="manager"||hedef==="member");async function yukle(){await Durum.kurallar().catch(()=>null);const[m,fv,yv]=await Promise.all([Sunucu.cagir("music_overview"),Sunucu.
+cagir("festival_view",{p_season:null}).catch(()=>null),Sunucu.cagir("contest_status").catch(()=>null)]);v={m,fv,yv},kanalBagla()}function kanalBagla(){const id=B()?.band_id??null;id!==kanal&&(kanalBirak?.(),
+kanalBirak=null,kanal=id,id&&(kanalBirak=Sunucu.Canli.dinle("band:"+id,olay=>{/^(band\.|song\.)/.test(olay)&&yakinda()})))}let bekleyen=null;const yakinda=()=>{clearTimeout(bekleyen),bekleyen=setTimeout(
+()=>{kapandi||tazele()},350)},calismaYazi=()=>{const me=v.m.me??{};return \u00E7("Bug\xFCn {n} / {max} birim \xE7al\u0131\u015Ft\u0131n (bir birim {d} dakika). \u015Eark\u0131 yazmak ve ki\u015Fisel prova g\xFCnl\xFCk s\u0131n\u0131ra say\u0131l\u0131r; ortak pr\
+ova say\u0131lmaz.",{n:Number(me.units_today??0),max:Number(me.daily_cap??8),d:Number(me.unit_minutes??30)})},birimSuresi=dk=>dk<60?\u00E7("{d} dk",{d:dk}):dk%60?\u00E7("{s} sa {d} dk",{s:Math.floor(dk/
+60),d:dk%60}):\u00E7("{n} sa",{n:dk/60}),birimSecimi=(ad,min,max,secili)=>`<fieldset class="alan"><legend>${\u00E7("Ka\xE7 birim")}</legend><div class="radyo-liste birlik-yatay ikili">${Array.from({length:max-
+min+1},(_,i)=>min+i).map(n=>`<label class="radyo"><input type="radio" name="${ad}" value="${n}" ${n===secili?"checked":""}>
         <span><b>${\u00E7("{n} birim",{n})}</b><span class="kucuk">${esc(birimSuresi(n*Number(v.m.me?.unit_minutes??30)))}</span></span></label>`).join("")}</div></fieldset>`,rolSecimi=(ad,secili)=>`<\
 fieldset class="alan"><legend>${\u00E7("Sahne rol\xFCn")}</legend><div class="radyo-liste birlik-yatay ikili">${(R().stageRoles??Object.keys(MUZIK_ROL)).map((r,i)=>`<label class="radyo"><input type="r\
 adio" name="${ad}" value="${r}" ${(secili?r===secili:i===0)?"checked":""}>
@@ -46,8 +46,8 @@ lass="ik-kutu">${ikon("graduation-cap")}</span></div>
         <div class="izgara iki" style="margin-top:16px">${biletlerHtml()}${koleksiyonHtml(v.m)}</div>`}function sarkilarHtml(b){const taslak=b.drafts??[],biten=b.finished??[],S=R().song??{},sarkiSatir=(s,tas)=>{
 const yazarlar=(s.writers??[]).map(w=>tas?`${esc(w.name)} (${\u00E7("{n} birim",{n:Number(w.units)})})`:`${esc(w.name)} ${esc(muzikYuzde(w.share_ppm??0))}`).join(", "),benimki=s.owner_id===ben().id;return`\
 <div class="muzik-sarki${tas?" taslak":""}" data-sarki="${esc(s.song_id)}">
-          <div class="muzik-sarki-bas"><div><b>${esc(s.title)}</b><span class="kucuk">${esc(MUZIK_TEMA[s.theme]??s.theme)} \xB7 ${esc(muzikSure(s.duration_s))} \xB7 ${\u00E7("{n} BPM",{n:Number(s.tempo)})}\
- \xB7 ${esc(muzikTon(s.key_no))}</span></div>
+          <div class="muzik-sarki-bas"><div><b>${esc(s.title)}</b>${muzikYarismaRozeti(s)}<span class="kucuk">${esc(MUZIK_TEMA[s.theme]??s.theme)} \xB7 ${esc(muzikSure(s.duration_s))} \xB7 ${\u00E7("{\
+n} BPM",{n:Number(s.tempo)})} \xB7 ${esc(muzikTon(s.key_no))}</span></div>
             ${tas?`<span class="cip">${\u00E7("Kalite \u015Fimdi {q}",{q:Number(s.quality_now??0)})}</span>`:`<span class="cip altin">${ikon("star")}${\u00E7("Kalite {q}",{q:Number(s.quality??0)})}</s\
 pan>`}</div>
           ${tas?`<div class="muzik-ilerleme" role="img" aria-label="${esc(\u00E7("{n} / {max} birim yaz\u0131ld\u0131",{n:Number(s.units),max:Number(S.maxUnits??16)}))}"><span style="width:${Math.round(
@@ -79,7 +79,7 @@ H.repertoireMax??20)})}</p>
           <h2 class="b2">${\u00E7("\xC7alabildi\u011Fimiz \u015Fark\u0131lar")}</h2></div><span class="ik-kutu">${ikon("scroll-text")}</span></div>
         ${l.length?`<div class="liste">${l.map(s=>`<div class="liste-satir muzik-rep" data-rep="${esc(s.song_id)}"><span class="liste-ikon"><span class="ozet-ikon">${ikon("eighth-notes")}</span></span\
 >
-            <div><span class="tur">${\u00E7("Bilgin {b} \xB7 grubun ortalamas\u0131 {o}",{b:Number(s.my_level??0),o:Number(s.avg_level??0)})}</span><b>${esc(s.title)}</b>
+            <div><span class="tur">${\u00E7("Bilgin {b} \xB7 grubun ortalamas\u0131 {o}",{b:Number(s.my_level??0),o:Number(s.avg_level??0)})}</span><b>${esc(s.title)}</b>${muzikYarismaRozeti(s)}
               <div class="muzik-bilgi" aria-hidden="true"><span style="width:${Math.min(100,Number(s.my_level??0))}%"></span></div></div>
             <span class="birlik-satir-dugmeler"><button class="dugme kucuk-d" data-calis="${esc(s.song_id)}">${ikon("repeat-2")}${\u00E7("Prova et")}</button>${muzikDinle(s)}
               ${yetki("repertoire")?`<button class="dugme sade kucuk-d" data-rep-cikar="${esc(s.song_id)}">${\u00E7("repertuvar::\xC7\u0131kar")}</button>`:""}</span></div>`).join("")}</div>`:`<p clas\
@@ -260,15 +260,15 @@ filter(x=>x.open).map(x=>x.dataset.ac)),kapaliDetay=new Set($$("details[data-ac]
  {n} \xFCye \xB7 \xFCs {sehir}",{tur:esc(MUZIK_TUR[b.genre]??b.genre),n:Number(b.members),sehir:esc(bolgeAdi(b.base_region_id))})}</p>`:`<h1 class="b1">${\u00E7("M\xFCzik")}</h1><p class="aciklama">${\u00E7(
 "Bir gruba kat\u0131l ya da kendi grubunu kur: \u015Fark\u0131 yaz, prova et, sahneye \xE7\u0131k.")}</p>`}</div>
           ${b?`<span class="cip" id="muzik-rol">${ikon(MUZIK_YETKI_IK[benimRol()]??"user-round")}${esc(MUZIK_YETKI[benimRol()]??"")}</span>`:""}</div>
-        ${b?grupHtml(b):bosHtml()}${b?ImzaGunu.yer("muzik"):""}</div>`,b){const yer=$("#prova-oda-yer",kap);yer&&(yer.replaceWith(oda.el),oda.yaz({b,ben:ben().id}))}else oda.birak();if(bagla(),odak){const g=$(
-"#muzik-ara input",kap);g?.focus({preventScroll:!0}),g?.setSelectionRange?.(g.value.length,g.value.length)}for(const dt of $$("details[data-ac]",kap))acikDetay.has(dt.dataset.ac)&&(dt.open=!0),kapaliDetay.
-has(dt.dataset.ac)&&(dt.open=!1);durdur=geriSay(kap,()=>setTimeout(()=>{kapandi||tazele()},gecikmeli(sayac)))}const sayac={n:0};async function islem(fn,args,mesaj,ik){try{const y=await Sunucu.yap(fn,args);
-return mesaj&&tost(typeof mesaj=="function"?mesaj(y):mesaj,ik??"check"),y??!0}catch(e){return tost(hataMetni(e),"circle-alert"),null}finally{await tazele()}}const konusmaTazele=()=>{try{Konusma.ozetYukle?.().
-catch(()=>{})}catch{}};function bagla(){muzikDinleBagla(kap),ImzaGunu.bagla(kap,"muzik",tazele);for(const b of $$("[data-profil]",kap))b.onclick=()=>profilAc(b.dataset.profil,()=>tazele());for(const b of $$(
-"[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$("[data-grup-ac]",kap))b.onclick=()=>muzikKartiAc(b.dataset.grupAc);for(const b of $$("[data-davet-kabul]",kap))b.onclick=()=>{
-const x=(v.m.invites??[]).find(q=>q.invite_id===b.dataset.davetKabul);pencereForm({ust:\u00E7("M\xFCzik"),baslik:\u00E7("Daveti kabul et: {grup}",{grup:x?.name??""}),onayAd:\u00E7("Kat\u0131l"),onayIkon:"\
-eighth-notes",govde:`<p class="aciklama">${\u00E7("{tur} grubuna kat\u0131l\u0131rs\u0131n; \xF6teki davetlerin d\xFC\u015Fer. Ayn\u0131 anda tek grupta olabilirsin; ayr\u0131l\u0131rsan {n} saat ba\u015Fka gruba giremezsin.",
-{tur:esc(MUZIK_TUR[x?.genre]??""),n:Number(R().band?.joinCooldownH??24)})}</p>
+        ${Yarisma.kart(v.yv)}${b?grupHtml(b):bosHtml()}${b?ImzaGunu.yer("muzik"):""}</div>`,b){const yer=$("#prova-oda-yer",kap);yer&&(yer.replaceWith(oda.el),oda.yaz({b,ben:ben().id}))}else oda.birak();
+if(bagla(),odak){const g=$("#muzik-ara input",kap);g?.focus({preventScroll:!0}),g?.setSelectionRange?.(g.value.length,g.value.length)}for(const dt of $$("details[data-ac]",kap))acikDetay.has(dt.dataset.
+ac)&&(dt.open=!0),kapaliDetay.has(dt.dataset.ac)&&(dt.open=!1);durdur=geriSay(kap,()=>setTimeout(()=>{kapandi||tazele()},gecikmeli(sayac)))}const sayac={n:0};async function islem(fn,args,mesaj,ik){try{
+const y=await Sunucu.yap(fn,args);return mesaj&&tost(typeof mesaj=="function"?mesaj(y):mesaj,ik??"check"),y??!0}catch(e){return tost(hataMetni(e),"circle-alert"),null}finally{await tazele()}}const konusmaTazele=()=>{
+try{Konusma.ozetYukle?.().catch(()=>{})}catch{}};function bagla(){muzikDinleBagla(kap),Yarisma.bagla(kap),ImzaGunu.bagla(kap,"muzik",tazele);for(const b of $$("[data-profil]",kap))b.onclick=()=>profilAc(
+b.dataset.profil,()=>tazele());for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$("[data-grup-ac]",kap))b.onclick=()=>muzikKartiAc(b.dataset.grupAc);for(const b of $$(
+"[data-davet-kabul]",kap))b.onclick=()=>{const x=(v.m.invites??[]).find(q=>q.invite_id===b.dataset.davetKabul);pencereForm({ust:\u00E7("M\xFCzik"),baslik:\u00E7("Daveti kabul et: {grup}",{grup:x?.name??
+""}),onayAd:\u00E7("Kat\u0131l"),onayIkon:"eighth-notes",govde:`<p class="aciklama">${\u00E7("{tur} grubuna kat\u0131l\u0131rs\u0131n; \xF6teki davetlerin d\xFC\u015Fer. Ayn\u0131 anda tek grupta olabilirsin; ayr\u0131l\u0131rsan {n} saat ba\
+\u015Fka gruba giremezsin.",{tur:esc(MUZIK_TUR[x?.genre]??""),n:Number(R().band?.joinCooldownH??24)})}</p>
             ${rolSecimi("rol")}
             <p class="kucuk">${\u00E7("{tur} i\xE7in a\u011F\u0131rl\u0131klar: {agirlik}.",{tur:esc(MUZIK_TUR[x?.genre]??""),agirlik:esc(agirliklar(x?.genre))})}</p>`,is:async f=>{await Sunucu.yap("b\
 and_invite_answer",{p_invite:b.dataset.davetKabul,p_accept:!0,p_stage_role:String(f.get("rol")??"")}),tost(\u00E7("Gruba kat\u0131ld\u0131n: {grup}.",{grup:x?.name??""}),"eighth-notes"),konusmaTazele(),
@@ -363,7 +363,8 @@ uired min="${yerel(en)}" max="${yerel(son)}" value="${yerel(oneri)}">
           ${birimSecimi("birim",Number(H.sessionUnits?.min??1),Number(H.sessionUnits?.max??4),2)}
           <fieldset class="alan"><legend>${\u00E7("\u015Eark\u0131lar (en \xE7ok {n})",{n:enCok})}</legend><div class="radyo-liste">${l.map((s,i)=>`<label class="radyo"><input type="checkbox" name="sa\
 rki" value="${esc(s.song_id)}" ${i<Math.min(2,enCok)?"checked":""}>
-            <span><b>${esc(s.title)}</b><span class="kucuk">${\u00E7("grubun ortalamas\u0131 {o}",{o:Number(s.avg_level??0)})}</span></span></label>`).join("")}</div></fieldset>
+            <span><b>${esc(s.title)}</b>${muzikYarismaRozeti(s)}<span class="kucuk">${\u00E7("grubun ortalamas\u0131 {o}",{o:Number(s.avg_level??0)})}</span></span></label>`).join("")}</div></fieldset\
+>
           <p class="kucuk">${\u00E7("Ay\u0131ran kendili\u011Finden kat\u0131l\u0131r (\xE7izelgesi bo\u015Fsa). Birimler \u015Fark\u0131lara s\u0131rayla gider.")}</p>`,is:async d=>{const z=new Date(
 String(d.get("zaman")??""));if(Number.isNaN(z.getTime()))throw new Error(\u00E7("Ba\u015Flang\u0131\xE7 zaman\u0131n\u0131 se\xE7."));const sarkilar=d.getAll("sarki").map(String);if(!sarkilar.length||
 sarkilar.length>enCok)throw new Error(\u00E7("1\u2013{n} \u015Fark\u0131 se\xE7.",{n:enCok}));await Sunucu.yap("rehearsal_book",{p_starts_at:z.toISOString(),p_units:Number(d.get("birim")),p_songs:sarkilar}),
@@ -517,6 +518,6 @@ small></label>
 const n=krediAlt(f.get("miktar"));if(!Number.isFinite(n)||n<=0)throw new Error(\u00E7("Kredi miktar\u0131n\u0131 yaz (\xF6r. 25 ya da 12,50)."));const y=await Sunucu.yap("band_public_donate",{p_amount:n});
 tost(\u00E7("Kasadan {ulke} hazinesine {kr} kredi ba\u011F\u0131\u015Fland\u0131.",{ulke:ulkeAdi(y?.country_id),kr:kr(n)}),"landmark"),await tazele()}})}const tazele=tazeleyici(async()=>{await yukle(),
 kapandi||ciz()});await yukle(),ciz();const ayir=KonserHedef.ayirAl();ayir&&(B()&&yetki("rehearse")?konserAyir(ayir.bolge):tost(B()?\u00E7("Konseri y\xF6netici ya da vekil ay\u0131r\u0131r."):\u00E7("K\
-onser vermek i\xE7in \xF6nce bir gruba kat\u0131l ya da grup kur."),"circle-alert"));const b1=Durum.dinle("olay",({olay})=>{/^band\./.test(olay)?(yakinda(),konusmaTazele()):/^(concert\.|instrument\.)/.
+onser vermek i\xE7in \xF6nce bir gruba kat\u0131l ya da grup kur."),"circle-alert"));const b1=Durum.dinle("olay",({olay})=>{/^band\./.test(olay)?(yakinda(),konusmaTazele()):/^(concert\.|instrument\.|contest\.)/.
 test(olay)&&yakinda()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazele()},6e4);return()=>{kapandi=!0,durdur(),b1(),clearInterval(saat),clearTimeout(bekleyen),kanalBirak?.(),
 kanalBirak=null,kanal=null,oda.kapat(),Ezgi.durdur()}}}),Parcalar.tamam("ek_98g_muzik");

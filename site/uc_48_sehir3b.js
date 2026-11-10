@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_48_sehir3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_48_sehir3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const SEHIR_PROJE_YER={kultur:{a:30,rr:3.55},egitim:{a:-150,rr:9.85},yol:{a:-48,rr:13.35},hizmet:{a:-132,rr:13.35}},SEHIR_PROJE_R=1.25;function sehir3bKur(THREE,OrbitControls,mergeGeometries,cizici){if(!cizici.
 kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,R=SEHIR_R,HALKA=SEHIR_HALKA,BANT=SEHIR_BANT,CADDE=SEHIR_CADDE,MEYDAN_R=SEHIR_MEYDAN_R,PALET=SEHIR_PALET,ISLETME_EN_COK=SEHIR_ISLETME_EN_COK,
 KAT=.44,CADDE_GEN=.95,HALKA_GEN=.62,DERECE=Math.PI/180,MAHALLE_BANT={merkez:1,ic:2,ara:3,kenar:4},ISCI_EN_COK=24,YAYA_EN_COK=40,ARAC_EN_COK=18,MITING_EN_COK=40,VAKIT={aksam:{gunes:"#FFC889",guc:3,gok:"\

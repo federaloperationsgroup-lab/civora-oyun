@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_32_diplomasi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_32_diplomasi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/diplomasi",{async ac(kap){let v=null;const secim={ulke:null,tur:"non_aggression",gun:null,bolgeler:new Set,bicimler:{}},BICIM_AD={direct:\u00E7("Do\u011Frudan y\xF6netim"),autonomous:\u00E7(
 "\xD6zerk b\xF6lge")},salon=DiplomasiSalonu.ac();async function yukle(){const[ulke,liste,kurallar,harita,koal,isb]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("treaties"),Durum.kurallar(),
 Durum.harita(!0),Sunucu.cagir("coalition_status"),Sunucu.cagir("coop_status").catch(()=>null),Durum.ozet()]);v={ulke,liste,kurallar,harita,koal,isb,hedef:null};const acik=(harita.open_countries??[]).filter(

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_38_gorunus_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_38_gorunus_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/gorunum",{async ac(kap){let v=null,secim=null,mod=null,hata3b=!1,kapandi=!1,gonderiliyor=!1,rutbeSayisi=12,magaza=null,gardirop=null;async function yukle(){const[l,kurallar,m,w]=await Promise.
 all([Sunucu.cagir("my_look"),Durum.kurallar(),Sunucu.cagir("store_view").catch(()=>null),Sunucu.cagir("wardrobe").catch(()=>null)]);v=l,magaza=m,gardirop=w,rutbeSayisi=kurallar?.data?.combat?.war2?.ranks?.
 length??12,secim=gorunusTaslak?.kimlik===v.character_id?{...gorunusTaslak.look}:{...kayitli()},giysiEsle()}function giysiEsle(){const gy=v?.look?.giysi;if(gy)secim={...secim,giysi:gy};else if(secim&&"\

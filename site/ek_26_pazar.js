@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_26_pazar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_26_pazar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/pazar",{async ac(kap){let secili="erzak@1",yalnizBurada=!1;try{secili=sessionStorage.getItem("civora.pazar")||"erzak@1",yalnizBurada=sessionStorage.getItem("civora.pazar.burada")===
 "1"}catch{}PAZAR_URUNLER.includes(secili)||(secili="erzak@1");let kaynak="";try{kaynak=sessionStorage.getItem("civora.pazar.kaynak")||"",sessionStorage.removeItem("civora.pazar.kaynak")}catch{}let ozetler=[],
 ilanlar=[],benim={open:[],recent:[]},nabiz=null,sehir=null,gorunus,lojistik=null,fisler=[],sozlesmeler={open:[],recent:[],rules:null},ilanHata=!1,ilanIstek=0;const carsi=CarsiSahnesi.ac(),benVerisi=()=>{

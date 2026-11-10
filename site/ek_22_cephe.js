@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_22_cephe.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_22_cephe.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/cephe",{async ac(kap){let a=await Durum.askerlik(),oturum=null,sonuc=null,secim={kesim:"center",durus:"assault",vurus:0},gonderiliyor=!1,bitis=null;const tatbikatKarti=()=>{const d=a.
 drill,hak=d.daily_limit-d.sessions_last_24h;return oturum?adimKarti():`<section class="kart">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Tatbikat cephesi \xB7 bota kar\u015F\u0131")}</p><h2 class="b2">${\u00E7("Vurmay\u0131 \xF6\u011Fren")}</h2></div><span class="ik-kutu"\
@@ -9,6 +9,8 @@ eyimine dokunmaz.")}${a.basic_training_done?"":" "+\u00E7("\u0130lk tatbikat\u01
         <div class="satir" style="margin-top:14px;flex-wrap:wrap">
           <button class="dugme altin" id="tb-basla" ${hak<=0?"disabled":""}>${ikon("play")}${d.open_session_id?\u00E7("Tatbikata devam et"):\u00E7("Tatbikat\u0131 ba\u015Flat")}</button>
           <span class="kucuk">${\u00E7("Bug\xFCn kalan hak: {kalan} / {toplam}",{kalan:Math.max(0,hak),toplam:Number(d.daily_limit)})}</span>
+          ${a.soldier?`<span class="kucuk" id="tb-silah">${ikon("shield-half")} ${a.soldier.weapon_max==null?\u00E7("Silah: en iyisi"):Number(a.soldier.weapon_max)===0?\u00E7("Silah: silahs\u0131z (se\xE7im)"):
+\u00E7("Silah: en \xE7ok {n}. kalite (se\xE7im)",{n:Number(a.soldier.weapon_max)})}</span>`:""}
         </div>
       </section>`},bitisKutusu=()=>`<div class="${bitis.won?"bilgi-kutusu":"hata-kutusu"}" style="margin-top:12px">${ikon(bitis.won?"trophy":"circle-alert")}
       <span>${bitis.won?\u00E7("Tatbikat\u0131 kazand\u0131n!"):\u00E7("Bu tatbikat\u0131 bot kazand\u0131; bir daha dene.")} ${\u00E7("Ortalama pay: <b>{pay}</b>.",{pay:payYuzde(bitis.total_x10/bitis.

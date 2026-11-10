@@ -1,7 +1,8 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/ev",{async ac(kap){let v=null,odaKapat=null,zy=null;const partiEl=document.createElement("div");partiEl.id="parti-yer",partiEl.style.marginTop="20px";const partiKapat=EvPartisiKart.
-ac(partiEl);async function yukle(){const[ev,kurallar,,oda,harita]=await Promise.all([Sunucu.cagir("my_home"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("home_layout"),Durum.harita().catch(()=>null)]),
-burasi=await Sunucu.cagir("city",{p_region:ev.location_region_id});v={ev,burasi,kurallar,oda,harita}}function evimKarti(ev,kurallar){const h=ev.house;if(!h)return`<section class="kart">
+ac(partiEl);async function yukle(){const[ev,kurallar,,oda,harita,kariyer]=await Promise.all([Sunucu.cagir("my_home"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("home_layout"),Durum.harita().catch(()=>null),
+Sunucu.cagir("media_career").catch(()=>null)]),burasi=await Sunucu.cagir("city",{p_region:ev.location_region_id});v={ev,burasi,kurallar,oda,harita,kariyer}}function evimKarti(ev,kurallar){const h=ev.house;
+if(!h)return`<section class="kart">
           <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Evim")}</p><h2 class="b2">${\u00E7("Hen\xFCz evin yok")}</h2></div><span class="ik-kutu">${ikon("bed")}</span></div>
           <p class="aciklama">${\u00E7("\u0130kamet etti\u011Fin \u015Fehirde \xFCcretsiz bir pansiyon odan var. Ev almak istersen bulundu\u011Fun \u015Fehrin sat\u0131l\u0131k evlerine bak.")}</p>
           <div class="yasa-bant">${ikon("key-round")}<span>${\u00E7("Ev oyunda g\xFC\xE7 vermez: sava\u015F g\xFCc\xFC, oy a\u011F\u0131rl\u0131\u011F\u0131 ya da gelir getirmez. \u015Eehirde evin g\xF6r\xFCn\xFCr; odan\u0131 d\xF6\u015Feyip arkada\u015Flar\u0131n\u0131 a\u011F\u0131rlayabilir\
@@ -64,21 +65,24 @@ orsun.")}${ev.next_move_at&&Date.parse(ev.next_move_at)>Date.now()?" "+\u00E7("S
 h),sehir:bolgeAdi(h.region_id)})):mekanBant("oda_pansiyon",\u00E7("Ba\u015Flang\u0131\xE7 odas\u0131 \xB7 i\xE7eriden"),\u00E7("Pansiyon odan"),\u00E7("{sehir} \xB7 \xFCcretsiz ve s\xFCresiz. Kira, bor\xE7 ya da \
 ceza yok; uzun s\xFCre girmesen de odan kaybolmaz.",{sehir:bolgeAdi(ev.residence_region_id)}));kap.innerHTML=`<div class="sayfa">
         ${bant}
+        <div class="oneri-dugmeler" style="margin-bottom:12px">${kareSahneDugmeHtml("home",Durum.v.ozet?.character?.id)}</div>
         <div id="oda-yer"></div>
         <div id="parti-tutucu"></div>
         <div id="evim-konfor-yer" style="margin-top:20px">${evKonforKarti(v.oda,Durum.v.askerlik?.mood)}</div>
         <div class="izgara iki" style="margin-top:20px">${evimKarti(ev,kurallar)}${ikametKarti(ev,kurallar)}</div>
+        ${v.kariyer?.home_studio?`<div style="margin-top:20px">${yayinKosesiKartHtml(v.kariyer.home_studio)}</div>`:""}
         <div class="izgara iki" style="margin-top:20px">${evlerKarti(ev,burasi)}${gelisimKarti(burasi,kurallar)}</div>
       </div>`,$("#parti-tutucu",kap)?.replaceWith(partiEl),bagla(),odaKapat?.(),odaKapat=OdaPaneli.ac($("#oda-yer",kap),v.oda,{sehir:Number(v.harita?.cities?.[v.oda.region_id]??1),yenile:()=>tazele(),
 ziyaret:zy,kaydedildi:yeni=>{v.oda=yeni,konforYaz(),Durum.askerlik().then(konforYaz).catch(()=>{})}})}function konforYaz(){const y=$("#evim-konfor-yer",kap);y&&v?.oda&&(y.innerHTML=evKonforKarti(v.oda,
-Durum.v.askerlik?.mood))}function bagla(){const{ev,burasi,kurallar}=v,h=ev.house;$("#ev-sat",kap)?.addEventListener("click",()=>satisaCikar(h,kurallar)),$("#ev-cek",kap)?.addEventListener("click",()=>islem(
-"house_unlist",{p_house:h.house_id},\u00E7("Evin sat\u0131\u015Ftan \xE7ekildi."),"house")),$("#ev-gorunur",kap)?.addEventListener("click",async()=>{try{await Sunucu.cagir("house_visibility",{p_visible:!h.
-visible}),tost(h.visible?\u00E7("Ad\u0131n evinde g\xF6r\xFCnmeyecek."):\u00E7("Ad\u0131n evinde g\xF6r\xFCnecek."),h.visible?"lock":"eye")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}),
-$("#tasin",kap)?.addEventListener("click",()=>islem("residence_move",{},\u00E7("\u0130kametin art\u0131k {sehir}.",{sehir:bolgeAdi(ev.location_region_id)}),"map-pin-house"));for(const b of $$("[data-e\
-v-al]",kap))b.onclick=()=>satinAlSor(burasi.houses.find(x=>x.house_id===b.dataset.evAl),ev,kurallar)}function satisaCikar(h,kurallar){const enCok=kurallar.data.city.housing.maxListingPriceCr,ucretPpm=kurallar.
-data.market.serviceFeePpm;pencereForm({ust:h.for_sale?\u00E7("Fiyat\u0131 de\u011Fi\u015Ftir"):\u00E7("Evi sat\u0131\u015Fa \xE7\u0131kar"),baslik:evAdres(h),onayAd:h.for_sale?\u00E7("Fiyat\u0131 kaydet"):
-\u00E7("Sat\u0131\u015Fa \xE7\u0131kar"),onayIkon:"hand-coins",govde:`<p class="aciklama">${\u00E7("Fiyat\u0131 sen belirlersin (en \xE7ok {kr} kredi). Sat\u0131\u015F vergisi b\xF6lgenin \xFClkesinin bug\xFCnk\xFC oran\u0131yla, ilan \
-an\u0131nda kilitlenir; hizmet bedeli {oran}. \u0130kisi sat\u0131l\u0131nca senin pay\u0131ndan d\xFC\u015F\xFCl\xFCr.",{kr:kr(enCok),oran:ppmYuzde(ucretPpm)})}</p>
+Durum.v.askerlik?.mood))}function bagla(){const{ev,burasi,kurallar}=v,h=ev.house;yayinKosesiBagla(kap,()=>tazele()),$("#ev-sat",kap)?.addEventListener("click",()=>satisaCikar(h,kurallar)),$("#ev-cek",
+kap)?.addEventListener("click",()=>islem("house_unlist",{p_house:h.house_id},\u00E7("Evin sat\u0131\u015Ftan \xE7ekildi."),"house")),$("#ev-gorunur",kap)?.addEventListener("click",async()=>{try{await Sunucu.
+cagir("house_visibility",{p_visible:!h.visible}),tost(h.visible?\u00E7("Ad\u0131n evinde g\xF6r\xFCnmeyecek."):\u00E7("Ad\u0131n evinde g\xF6r\xFCnecek."),h.visible?"lock":"eye")}catch(e){tost(hataMetni(
+e),"circle-alert")}await tazele()}),$("#tasin",kap)?.addEventListener("click",()=>islem("residence_move",{},\u00E7("\u0130kametin art\u0131k {sehir}.",{sehir:bolgeAdi(ev.location_region_id)}),"map-pin\
+-house"));for(const b of $$("[data-ev-al]",kap))b.onclick=()=>satinAlSor(burasi.houses.find(x=>x.house_id===b.dataset.evAl),ev,kurallar)}function satisaCikar(h,kurallar){const enCok=kurallar.data.city.
+housing.maxListingPriceCr,ucretPpm=kurallar.data.market.serviceFeePpm;pencereForm({ust:h.for_sale?\u00E7("Fiyat\u0131 de\u011Fi\u015Ftir"):\u00E7("Evi sat\u0131\u015Fa \xE7\u0131kar"),baslik:evAdres(h),
+onayAd:h.for_sale?\u00E7("Fiyat\u0131 kaydet"):\u00E7("Sat\u0131\u015Fa \xE7\u0131kar"),onayIkon:"hand-coins",govde:`<p class="aciklama">${\u00E7("Fiyat\u0131 sen belirlersin (en \xE7ok {kr} kredi). Sat\u0131\u015F ver\
+gisi b\xF6lgenin \xFClkesinin bug\xFCnk\xFC oran\u0131yla, ilan an\u0131nda kilitlenir; hizmet bedeli {oran}. \u0130kisi sat\u0131l\u0131nca senin pay\u0131ndan d\xFC\u015F\xFCl\xFCr.",{kr:kr(enCok),oran:ppmYuzde(
+ucretPpm)})}</p>
           <label class="alan"><span>${\u00E7("Fiyat (kredi)")}</span><input name="fiyat" inputmode="decimal" autocomplete="off" required value="${h.for_sale?kr(h.price):""}"></label>`,is:async d=>{const fiyat=krediAlt(
 d.get("fiyat"));if(!Number.isFinite(fiyat)||fiyat<100)throw new Error(\u00E7("Ge\xE7erli bir fiyat yaz (en az 1 kredi)."));if(fiyat>enCok)throw new Error(\u00E7("Fiyat en \xE7ok {kr} kredi olabilir.",
 {kr:kr(enCok)}));await Sunucu.yap("house_list",{p_house:h.house_id,p_price:fiyat}),tost(\u00E7("Evin {kr} krediden sat\u0131\u015Fta.",{kr:kr(fiyat)}),"hand-coins"),await tazele()}})}function satinAlSor(x,ev,kurallar){

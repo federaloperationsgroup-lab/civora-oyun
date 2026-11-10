@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98zzh_millet.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzh_millet.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/tarih",{async ac(kap){let t=null,h=null,sekme="tarih",kapandi=!1,hata3b=!1,muzeAyr="";const muzeMod=()=>Gorunum.uc()&&!hata3b?"3b":"2b";try{sekme=sessionStorage.getItem("civora.tari\
 h")||"tarih"}catch{}async function yukle(){[t,h]=await Promise.all([Sunucu.cagir("country_history"),Sunucu.cagir("country_hall")])}const madalyaAd=id=>{const m=(Durum.v.kurallar?.data?.medal?.medals??
 []).find(x=>x.id===id);return m?\u00E7v(m.name):id};function tarihHtml(){if(!t.rows.length)return`<p class="bos">${\u00E7("Hen\xFCz tarihe ge\xE7en bir olay yok.")}</p>`;let yil=null;return`<ol class=\

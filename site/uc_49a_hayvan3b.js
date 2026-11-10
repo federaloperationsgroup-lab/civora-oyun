@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_49a_hayvan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_49a_hayvan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const HAYVAN_EYLEM_SURE={bekle:4,yuru:.6,otur:4,yat:5,uyu:6,ye:2.8,oyna:1.6,sevin:2.2,kus:5,pati:2.4,yuvarlan:2.4,dans:3};function hayvanParcasi(THREE){const grup=new THREE.Group;let anahtar="",p=null;
 const malzeme=new Map,M=(renk,ek={})=>{const k=renk+JSON.stringify(ek);return malzeme.has(k)||malzeme.set(k,new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek})),malzeme.get(k)},golgeli=m=>(m.
 castShadow=!0,m.receiveShadow=!0,m),kur=h=>{const a=`${h?.species}|${h?.breed}`;if(a===anahtar)return;anahtar=a;for(const c of[...grup.children])grup.remove(c);const kedi=h?.species!=="kopek",C=evcilCins(

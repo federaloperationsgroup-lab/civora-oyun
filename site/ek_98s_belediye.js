@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98s_belediye.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98s_belediye.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/belediye",{async ac(kap){let s=null,bolge=bldBakilan;bldBakilan=null;let kapandi=!1,durdur=()=>{};const sandik=SandikBasi.ac(),oda=BelediyeOdasi.ac(),sira=sahneSirasiKur();let saatFarki=0;
 sandik.dinle("sec",ad=>{(ad==="adaylar"?$("#bld-adaylar",kap):$("#bld-oy",kap)??$("#bld-adaylar",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const odeme={q:"",sonuc:null,
 secilen:null,tutar:"",amac:"aid"},duzen={tur:"maraton",gun:"",saat:"15:00",havuz:""};let ev=null;async function yukle(){[s]=await Promise.all([Sunucu.cagir("municipal_status",{p_region:bolge}),Durum.ozet(),
@@ -94,6 +94,21 @@ ozkAmac(x))}</option>`).join("")}</select></label>
           ${odeme.sonuc?`<div class="koltuk-liste" style="margin-top:10px">${odeme.sonuc.length?odeme.sonuc.map(x=>`<div class="koltuk">${avatarKutu(x.name,x.character_id)}<div><b>${esc(x.name)}</b>
               <div class="kucuk">${esc(ulkeAdi(x.country_id))}</div></div><button class="dugme ikincil kucuk-d" data-bld-alici="${esc(x.character_id)}">${\u00E7("Se\xE7")}</button></div>`).join(""):`<\
 p class="kucuk">${\u00E7("Bu adla ba\u015Fkentte oturan bulunamad\u0131.")}</p>`}</div>`:""}`}
+      </section>`}function sponsorKarti(){const f=s.festival_sponsor;if(!f?.rule||!f.season)return"";const r=f.rule,koyuldu=Number(f.sponsored_cr??0)>0,ev2=f.is_host?\u00E7("Bu sezonun ev sahibi \xFClkem\
+iz ({sehir}).",{sehir:bolgeAdi(f.host_region_id)}):\u00E7("Bu sezonun ev sahibi {ulke} ({sehir}); katk\u0131y\u0131 ev sahibi \xFClkenin belediyesi koyar.",{ulke:ulkeAdi(f.host_country_id),sehir:bolgeAdi(
+f.host_region_id)});return`<section class="kart" id="bld-sponsor" data-sponsor="${koyuldu?"var":f.can?"uygun":"yok"}">
+        <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Festival sponsorlu\u011Fu \xB7 {n}. sezon",{n:Number(f.season)})}</p>
+          <h2 class="b2">${koyuldu?\u00E7("Belediye {kr} kredi katk\u0131 koydu",{kr:kr(f.sponsored_cr)}):f.is_host?\u00E7("Festivale katk\u0131"):\u00E7("Ev sahibi de\u011Filiz")}</h2></div><span cla\
+ss="ik-kutu">${ikon("disc-album")}</span></div>
+        <p class="kucuk">${esc(ev2)} ${esc(\u00E7("Katk\u0131 \xF6d\xFCl gecesinde vergisiz olarak gruplar\u0131n havuzuna eklenir; sezon iptal olursa b\xFCt\xE7eye d\xF6ner. S\u0131n\u0131r {a}\u2013{b} kredi ve b\xFCt\xE7enin harcanabilir yar\u0131s\
+\u0131; sezonda bir kez.",{a:kr(r.minCr??1e3),b:kr(r.maxCr??5e4)}))}${f.award_at?" "+esc(\u00E7("\xD6d\xFCl gecesi {zaman}.",{zaman:saatYaz(f.award_at)})):""}</p>
+        ${f.can?`<form class="form ozk-odeme" id="bld-sponsor-form" novalidate style="margin-top:8px">
+            <label class="alan"><span>${\u00E7("Katk\u0131 (kredi)")}</span><input name="tutar" inputmode="decimal" placeholder="${\u00E7("\xF6r. 100")}" aria-label="${\u00E7("Katk\u0131 (kredi)")}"><\
+/label>
+            <div class="satir"><button class="dugme altin" type="submit">${ikon("disc-album")}${\u00E7("Katk\u0131 koy")}</button><span class="kucuk">${\u00E7("\u015Eimdi en \xE7ok {kr} kredi",{kr:kr(
+f.max_now??0)})}</span></div>
+          </form>`:""}
+        <div class="satir" style="margin-top:8px"><button class="dugme ikincil kucuk-d" data-git="sehir/festival">${ikon("disc-album")}${\u00E7("Festival")}</button></div>
       </section>`}function etkinlikKarti(){if(!ev?.is_capital)return"";const r=ev.rules??etkinlikKurali()??{},mr=r.mayor??{},tz=ev.time_zone??"UTC",yak=(ev.program??[]).filter(e=>e.status==="scheduled"||
 e.status==="live"),bugun=etkinlikYerelGun(tz,Date.now()+saatFarki),gunler=Array.from({length:Number(mr.maxLeadDays??7)+1},(_,i)=>new Date(Date.parse(bugun+"T12:00:00Z")+i*864e5).toISOString().slice(0,
 10));gunler.includes(duzen.gun)||(duzen.gun=gunler[2]??gunler[0]);const saatler=[];for(let h=Number(mr.firstHour??10);h<=Number(mr.lastHour??23);h++)for(const dk of[0,30])(h<Number(mr.lastHour??23)||dk===
@@ -170,19 +185,23 @@ an yok"),"","landmark"];kap.innerHTML=`<div class="sayfa" data-bld-bolge-ekran="
           <span class="cip ${cip[1]}" id="bld-cip">${ikon(cip[2])}${esc(cip[0])}</span></div>
         <div class="izgara iki">
           <div class="yigin"><div id="bld-oda-yer"></div>${baskanKarti()}${sv?'<div id="bld-sandik-yer"></div>':""}${secimKarti()}${odemeKarti()}</div>
-          <div class="yigin">${projeKarti()}${etkinlikKarti()}${defterKarti()}${kurallarKarti()}</div>
+          <div class="yigin">${projeKarti()}${sponsorKarti()}${etkinlikKarti()}${defterKarti()}${kurallarKarti()}</div>
         </div></div>`,$("#bld-oda-yer",kap)?.replaceWith(oda.el),sira.ekle(oda),oda.yaz(s,saatFarki);const sy=$("#bld-sandik-yer",kap);sy&&sv?(sy.replaceWith(sandik.el),sira.ekle(sandik),sandik.yaz(sv)):
 sira.cikar(sandik),bagla();const an=[s.election?.candidacy_start,s.election?.voting_start,s.election?.voting_end,m?.term_end,...(s.projects??[]).map(p=>p.project?.status==="building"?p.project.ready_at:
 null)].filter(x=>x&&Date.parse(x)>Date.now()-6e4).sort()[0]??null;an!==sonAn&&(sonAn=an,sayac.n=0),durdur=geriSay(kap,()=>setTimeout(tazele,gecikmeli(sayac)))}let sonAn=null;const sayac={n:0};function onay({
 ust,baslik,govde,ad,sinif="altin",ik="check",is}){pencere({ust,baslik,govde,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad,sinif,ikon:ik,is:async()=>{try{await is()}catch(err){tost(hataMetni(err),"circle-aler\
-t")}await tazele()}}]})}function bagla(){const k=rm();for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);const ef=$("#bld-etkinlik-form",kap),efOku=()=>{const f=new FormData(ef);
-duzen.tur=String(f.get("tur")??duzen.tur),duzen.gun=String(f.get("gun")??duzen.gun),duzen.saat=String(f.get("saat")??duzen.saat),duzen.havuz=String(f.get("havuz")??"")};ef?.addEventListener("change",e=>{
-efOku(),e.target?.name!=="havuz"&&ciz()}),ef?.addEventListener("input",e=>{e.target.name==="havuz"&&(duzen.havuz=String(e.target.value??""))}),ef?.addEventListener("submit",e=>{e.preventDefault(),efOku();
-const r=ev?.rules??etkinlikKurali()??{},havuz=etkinlikKume(duzen.tur,r)==="senlik"||!duzen.havuz.trim()?0:krediAlt(duzen.havuz);if(havuz==null||havuz<0){tost(\u00E7("\xD6d\xFCl havuzunu kredi olarak yaz (\xF6r\
-. 100)."),"circle-alert");return}const an=etkinlikYerelAn(ev?.time_zone??"UTC",duzen.gun,duzen.saat),bedel=Number(r.kinds?.[duzen.tur]?.feeCr??0);onay({ust:\u00E7("\u015Eehir etkinli\u011Fi"),baslik:\u00E7(
-"{etkinlik} d\xFCzenle",{etkinlik:etkinlikAdi(duzen.tur)}),govde:`<p class="aciklama">${esc(havuz>0?\u00E7("{zaman}. B\xFCt\xE7eden {kr} kr bedel (etkinlik ba\u015Flarken yak\u0131l\u0131r) ve {h} kr \xF6d\xFCl havuzu emanete a\
-l\u0131n\u0131r. Ba\u015Flamas\u0131na {s} saat kalana dek iptal edebilirsin; bedel ve havuz b\xFCt\xE7eye d\xF6ner.",{zaman:saatYaz(an),kr:kr(bedel),h:kr(havuz),s:sayi(r.mayor?.cancelLeadH??24)}):\u00E7(
-"{zaman}. B\xFCt\xE7eden {kr} kr bedel (etkinlik ba\u015Flarken yak\u0131l\u0131r) emanete al\u0131n\u0131r. Ba\u015Flamas\u0131na {s} saat kalana dek iptal edebilirsin; bedel b\xFCt\xE7eye d\xF6ner.",
+t")}await tazele()}}]})}function bagla(){const k=rm();for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);$("#bld-sponsor-form",kap)?.addEventListener("submit",e=>{e.preventDefault();
+const tutar=krediAlt(String(new FormData(e.target).get("tutar")??""));if(tutar==null||tutar<=0){tost(\u00E7("Katk\u0131y\u0131 kredi olarak yaz (\xF6r. 100)."),"circle-alert");return}onay({ust:\u00E7(
+"Festival sponsorlu\u011Fu"),baslik:\u00E7("{kr} kredi katk\u0131 koy",{kr:kr(tutar)}),govde:`<p class="aciklama">${\u00E7("B\xFCt\xE7eden {kr} kredi festivalin havuzuna ge\xE7er; \xF6d\xFCl gecesinde sahneye \xE7\u0131kan \
+gruplara vergisiz da\u011F\u0131t\u0131l\u0131r. Sezon iptal olursa b\xFCt\xE7eye d\xF6ner. Bu sezon bir kez.",{kr:kr(tutar)})}</p>`,ad:\u00E7("Katk\u0131 koy"),ik:"disc-album",is:async()=>{await Sunucu.
+yap("festival_sponsor",{p_amount:tutar}),tost(\u00E7("Belediye festivale {kr} kredi katk\u0131 koydu.",{kr:kr(tutar)}),"disc-album")}})});const ef=$("#bld-etkinlik-form",kap),efOku=()=>{const f=new FormData(
+ef);duzen.tur=String(f.get("tur")??duzen.tur),duzen.gun=String(f.get("gun")??duzen.gun),duzen.saat=String(f.get("saat")??duzen.saat),duzen.havuz=String(f.get("havuz")??"")};ef?.addEventListener("chang\
+e",e=>{efOku(),e.target?.name!=="havuz"&&ciz()}),ef?.addEventListener("input",e=>{e.target.name==="havuz"&&(duzen.havuz=String(e.target.value??""))}),ef?.addEventListener("submit",e=>{e.preventDefault(),
+efOku();const r=ev?.rules??etkinlikKurali()??{},havuz=etkinlikKume(duzen.tur,r)==="senlik"||!duzen.havuz.trim()?0:krediAlt(duzen.havuz);if(havuz==null||havuz<0){tost(\u00E7("\xD6d\xFCl havuzunu kredi olarak\
+ yaz (\xF6r. 100)."),"circle-alert");return}const an=etkinlikYerelAn(ev?.time_zone??"UTC",duzen.gun,duzen.saat),bedel=Number(r.kinds?.[duzen.tur]?.feeCr??0);onay({ust:\u00E7("\u015Eehir etkinli\u011Fi"),
+baslik:\u00E7("{etkinlik} d\xFCzenle",{etkinlik:etkinlikAdi(duzen.tur)}),govde:`<p class="aciklama">${esc(havuz>0?\u00E7("{zaman}. B\xFCt\xE7eden {kr} kr bedel (etkinlik ba\u015Flarken yak\u0131l\u0131r) ve {h} kr \xF6d\xFCl ha\
+vuzu emanete al\u0131n\u0131r. Ba\u015Flamas\u0131na {s} saat kalana dek iptal edebilirsin; bedel ve havuz b\xFCt\xE7eye d\xF6ner.",{zaman:saatYaz(an),kr:kr(bedel),h:kr(havuz),s:sayi(r.mayor?.cancelLeadH??
+24)}):\u00E7("{zaman}. B\xFCt\xE7eden {kr} kr bedel (etkinlik ba\u015Flarken yak\u0131l\u0131r) emanete al\u0131n\u0131r. Ba\u015Flamas\u0131na {s} saat kalana dek iptal edebilirsin; bedel b\xFCt\xE7eye d\xF6ner.",
 {zaman:saatYaz(an),kr:kr(bedel),s:sayi(r.mayor?.cancelLeadH??24)}))}</p>`,ad:\u00E7("D\xFCzenle"),ik:"calendar-plus",is:async()=>{await Sunucu.yap("cityevent_schedule",{p_kind:duzen.tur,p_starts_at:an,
 p_pool_cr:havuz}),duzen.havuz="";const hv=$("#bld-etkinlik-form input[name=havuz]",kap);hv&&(hv.value=""),tost(\u00E7("{etkinlik} takvime girdi: {zaman}.",{etkinlik:etkinlikAdi(duzen.tur),zaman:saatYaz(
 an)}),"calendar-plus")}})});for(const b of $$("[data-bld-etkinlik-odul]",kap))b.onclick=()=>{const e=(ev?.program??[]).find(x=>x.id===b.dataset.bldEtkinlikOdul);if(!e)return;const r=ev?.rules??etkinlikKurali()??

@@ -1,13 +1,13 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
-"use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ulke/cephe",
-depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(()=>null),
-Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Durum.ozet()])}
-function hareketBandi(){if(!hk)return"";const x=hk.petition?.status==="open"?hk.petition:null,m=hk.no_confidence,e=hk.early_election,metin=x?\u00E7("<b>\u0130mza kampanyas\u0131 s\xFCr\xFCyor</b> \xB7 {n}/{esik} imza.",
-{n:sayi(x.signatures),esik:sayi(x.threshold)})+` <b data-bitis="${esc(x.closes_at)}"></b>`:m?\u00E7("<b>Mecliste g\xFCvensizlik oyu</b> \xB7 {e}/{n} evet.",{e:sayi(m.yes),n:sayi(m.required_yes)})+` <b\
- data-bitis="${esc(m.closes_at)}"></b>`:e?\u00E7("<b>Ola\u011Fan\xFCst\xFC se\xE7im</b> \xB7 {asama}.",{asama:esc(ASAMA[e.stage]??e.stage)}):"";return metin?`<div class="yasa-bant" data-ozet-hareket>${ikon(
-"megaphone")}<span>${metin}</span><button class="dugme kucuk-d ikincil" data-git="ulke/hareket">${\u00E7("A\xE7")}</button></div>`:""}function elKoymaBandi(){const a=ek?.active,gy=ek?.interim;return a?
-`<div class="yasa-bant uyari" data-ozet-elkoyma="mucadele">${ikon("swords")}<span>${\u00E7("<b>Ba\u015Fkentte y\xF6netime el koyma giri\u015Fimi</b> \xB7 {ad} ve arkada\u015Flar\u0131; m\xFCcadele s\xFCr\xFCyor.",
-{ad:esc(a.founder??"")})}
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,yv=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ul\
+ke/cephe",depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek,yv]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(
+()=>null),Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Sunucu.
+cagir("contest_status").catch(()=>null),Durum.ozet()])}function hareketBandi(){if(!hk)return"";const x=hk.petition?.status==="open"?hk.petition:null,m=hk.no_confidence,e=hk.early_election,metin=x?\u00E7(
+"<b>\u0130mza kampanyas\u0131 s\xFCr\xFCyor</b> \xB7 {n}/{esik} imza.",{n:sayi(x.signatures),esik:sayi(x.threshold)})+` <b data-bitis="${esc(x.closes_at)}"></b>`:m?\u00E7("<b>Mecliste g\xFCvensizlik oyu<\
+/b> \xB7 {e}/{n} evet.",{e:sayi(m.yes),n:sayi(m.required_yes)})+` <b data-bitis="${esc(m.closes_at)}"></b>`:e?\u00E7("<b>Ola\u011Fan\xFCst\xFC se\xE7im</b> \xB7 {asama}.",{asama:esc(ASAMA[e.stage]??e.
+stage)}):"";return metin?`<div class="yasa-bant" data-ozet-hareket>${ikon("megaphone")}<span>${metin}</span><button class="dugme kucuk-d ikincil" data-git="ulke/hareket">${\u00E7("A\xE7")}</button></d\
+iv>`:""}function elKoymaBandi(){const a=ek?.active,gy=ek?.interim;return a?`<div class="yasa-bant uyari" data-ozet-elkoyma="mucadele">${ikon("swords")}<span>${\u00E7("<b>Ba\u015Fkentte y\xF6netime el koyma gi\
+ri\u015Fimi</b> \xB7 {ad} ve arkada\u015Flar\u0131; m\xFCcadele s\xFCr\xFCyor.",{ad:esc(a.founder??"")})}
           <b data-bitis="${esc(a.ends_at)}"></b></span><button class="dugme kucuk-d mercan" data-git="ulke/hareket">${\u00E7("A\xE7")}</button></div>`:gy?`<div class="yasa-bant uyari" data-ozet-elkoym\
 a="gecici">${ikon("lock")}<span>${\u00E7("<b>Ge\xE7ici y\xF6netim</b> \xB7 {ad} y\xF6netime el koydu; sava\u015F ve vergi karar\u0131 alamaz. Fonda kalan {kr} kr.",{ad:esc(gy.head??""),kr:kr(Number(gy.
 fund_cr)-Number(gy.fund_used_cr))})} <b data-bitis="${esc(gy.until)}"></b></span>
@@ -23,7 +23,7 @@ mi")}</span></div>
         ${uykuBandi(o)}
         ${devletBandi(o)}
         ${elKoymaBandi()}
-        ${hareketBandi()}
+        ${hareketBandi()}<div id="yarisma-ulke-yer">${Yarisma.kart(yv,!0)}</div>
         <div class="izgara iki" id="millet-ozet" style="margin-bottom:16px"></div>
         <div class="izgara iki" id="gundem-ozet" style="margin-bottom:16px"></div>
         <div id="baskent-yer"></div>
@@ -102,21 +102,24 @@ s")}</h2></div>
               <div><b>${esc(m.name)}${m.character_id===benimKimlik()?" "+\u00E7("(sen)"):""}</b><div class="kucuk">${esc(m.party??\u00E7("Ba\u011F\u0131ms\u0131z"))}${l.deputy?.character_id===m.character_id?
 " \xB7 "+\u00E7("ba\u015Fkan vekili"):""}</div></div><span></span></div>`).join("")}</div>`:`<p class="bos">${\u00E7("Meclis bo\u015F. \u0130lk se\xE7imde sandalyeler dolacak.")}</p>`}
           </section>
-        </div></div>`,$("#baskent-yer",kap)?.replaceWith(baskent.el),baskent.yaz({o,cs});for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$("[data-ozet-devlet\
--bolge]",kap))b.onclick=()=>ozkBolgeAc(b.dataset.ozetDevletBolge);$("#vatandaslik-ac",kap).onclick=()=>vatandaslikAc(),$("#makam-ac",kap).onclick=()=>MakamPenceresi.ac(),Millet.ozetCiz($("#millet-ozet",
-kap)),Gundem.ozetCiz($("#gundem-ozet",kap)),ogreticiBagla(kap,()=>ciz()),durdur();const an=e?siradakiAn(e):null;an!==sonAn&&(sonAn=an,sayac.n=0),durdur=geriSay(kap,()=>setTimeout(tazele,gecikmeli(sayac)))}
-let durdur=()=>{},sonAn=null;const sayac={n:0},tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{/^(election\.|office\.|parliament\.|tax\.|citizenship\.policy|party\.|country\.|movement\.|seizure\.(struggle|exposed|result|fund_paid))/.
+        </div></div>`,Yarisma.bagla(kap),$("#baskent-yer",kap)?.replaceWith(baskent.el),baskent.yaz({o,cs});for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$(
+"[data-ozet-devlet-bolge]",kap))b.onclick=()=>ozkBolgeAc(b.dataset.ozetDevletBolge);$("#vatandaslik-ac",kap).onclick=()=>vatandaslikAc(),$("#makam-ac",kap).onclick=()=>MakamPenceresi.ac(),Millet.ozetCiz(
+$("#millet-ozet",kap)),Gundem.ozetCiz($("#gundem-ozet",kap)),ogreticiBagla(kap,()=>ciz()),durdur();const an=e?siradakiAn(e):null;an!==sonAn&&(sonAn=an,sayac.n=0),durdur=geriSay(kap,()=>setTimeout(tazele,
+gecikmeli(sayac)))}let durdur=()=>{},sonAn=null;const sayac={n:0},tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{/^(election\.|office\.|parliament\.|tax\.|citizenship\.policy|party\.|country\.|movement\.|seizure\.(struggle|exposed|result|fund_paid))/.
 test(olay)&&(tazele(),MakamPenceresi.tazele())}),b4=Durum.dinle("ulke-olay",({olay})=>{/^nation\./.test(olay)&&(Millet.ozetCiz($("#millet-ozet",kap)),MakamPenceresi.tazele())}),b5=Durum.dinle("ulke-ol\
-ay",({olay})=>{/^(issue|gov)\./.test(olay)&&Gundem.ozetCiz($("#gundem-ozet",kap))}),b2=Durum.dinle("devlet",()=>tazele()),b3=Durum.dinle("ozet",oz=>{o&&oz?.character?.citizenship&&oz.character.citizenship!==
-o.country_id&&tazele()});let kapandi=!1;const baskentSaat=setInterval(()=>{document.hidden||!o||Sunucu.cagir("capital_scene").then(x=>{kapandi||!x||(cs=x,baskent.yaz({o,cs}))}).catch(()=>{})},6e4);return()=>{
-kapandi=!0,durdur(),b1(),b2(),b3(),b4(),b5(),$("#millet-ozet",kap)?._dur?.(),$("#gundem-ozet",kap)?._dur?.(),clearInterval(baskentSaat),baskent.kapat(),MakamPenceresi.kapat()}}}),Kabuk.kaydet("ulke/se\
-cim",{async ac(kap){let v=null,durdur=()=>{};const isaret={president:new Set,parliament:new Set},gece=SecimGecesi.ac(),sandik=SandikBasi.ac(),SANDIK_ASAMA=["candidacy","voting","runoff"];sandik.dinle(
-"sec",ad=>{(ad==="adaylar"?$("#aday-listesi",kap):$("#pusula",kap)??$("#secim-takvim",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});async function yukle(){const[s,p,partim,
-kurallar,,es,bld,by]=await Promise.all([Sunucu.cagir("election_status"),Sunucu.cagir("parties"),Sunucu.cagir("my_party"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("election_scene").catch(()=>null),Sunucu.
-cagir("municipal_status").catch(()=>null),Sunucu.cagir("by_election_status").catch(()=>null)]);v={s,partiler:p.parties??[],istegim:p.my_request??null,partim,c:kurallar.data.civic,es,bld,by};const araAn=by?.
-election?.election_id??"";araAn!==araAnahtar&&(araIsaret.president.clear(),araIsaret.parliament.clear(),araAnahtar=araAn);const anahtar=s.election?`${s.election.election_id}|${s.election.stage}`:"";anahtar!==
-isaretAnahtar&&(isaret.president.clear(),isaret.parliament.clear(),isaretAnahtar=anahtar)}let isaretAnahtar=null,araAnahtar=null;const sandikVeri=()=>({e:v.s.election,es:v.es?.election,ulke:v.s.country_id}),
-sart=(tamam,ad,alt,dugme="")=>`<div class="sart ${tamam?"tamam":"eksik"}">${ikon(tamam?"badge-check":"circle-alert")}
+ay",({olay})=>{/^(issue|gov)\./.test(olay)&&Gundem.ozetCiz($("#gundem-ozet",kap))}),yarismaKusak=Sunucu.Giris.kusak,yarismaTazele=tazeleyici(async()=>{if(!(kapandi||!kap.isConnected||yarismaKusak!==Sunucu.
+Giris.kusak))try{const x=await Sunucu.cagir("contest_status"),yer=$("#yarisma-ulke-yer",kap);if(kapandi||!kap.isConnected||!yer||yarismaKusak!==Sunucu.Giris.kusak)return;yv=x,yer.innerHTML=Yarisma.kart(
+yv,!0),Yarisma.bagla(yer)}catch{}}),yarismaBirak=Durum.dinle("olay",({olay})=>{/^contest\./.test(olay)&&!kapandi&&yarismaTazele()}),yarismaSaat=setInterval(()=>{!kapandi&&!document.hidden&&yarismaTazele()},
+6e4),b2=Durum.dinle("devlet",()=>tazele()),b3=Durum.dinle("ozet",oz=>{o&&oz?.character?.citizenship&&oz.character.citizenship!==o.country_id&&tazele()});let kapandi=!1;const baskentSaat=setInterval(()=>{
+document.hidden||!o||Sunucu.cagir("capital_scene").then(x=>{kapandi||!x||(cs=x,baskent.yaz({o,cs}))}).catch(()=>{})},6e4);return()=>{kapandi=!0,durdur(),b1(),b2(),b3(),b4(),b5(),yarismaBirak(),clearInterval(
+yarismaSaat),$("#millet-ozet",kap)?._dur?.(),$("#gundem-ozet",kap)?._dur?.(),clearInterval(baskentSaat),baskent.kapat(),MakamPenceresi.kapat()}}}),Kabuk.kaydet("ulke/secim",{async ac(kap){let v=null,durdur=()=>{};
+const isaret={president:new Set,parliament:new Set},gece=SecimGecesi.ac(),sandik=SandikBasi.ac(),SANDIK_ASAMA=["candidacy","voting","runoff"];sandik.dinle("sec",ad=>{(ad==="adaylar"?$("#aday-listesi",
+kap):$("#pusula",kap)??$("#secim-takvim",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});async function yukle(){const[s,p,partim,kurallar,,es,bld,by]=await Promise.all([
+Sunucu.cagir("election_status"),Sunucu.cagir("parties"),Sunucu.cagir("my_party"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("election_scene").catch(()=>null),Sunucu.cagir("municipal_status").catch(()=>null),
+Sunucu.cagir("by_election_status").catch(()=>null)]);v={s,partiler:p.parties??[],istegim:p.my_request??null,partim,c:kurallar.data.civic,es,bld,by};const araAn=by?.election?.election_id??"";araAn!==araAnahtar&&
+(araIsaret.president.clear(),araIsaret.parliament.clear(),araAnahtar=araAn);const anahtar=s.election?`${s.election.election_id}|${s.election.stage}`:"";anahtar!==isaretAnahtar&&(isaret.president.clear(),
+isaret.parliament.clear(),isaretAnahtar=anahtar)}let isaretAnahtar=null,araAnahtar=null;const sandikVeri=()=>({e:v.s.election,es:v.es?.election,ulke:v.s.country_id}),sart=(tamam,ad,alt,dugme="")=>`<di\
+v class="sart ${tamam?"tamam":"eksik"}">${ikon(tamam?"badge-check":"circle-alert")}
       <span><b>${esc(ad)}</b><span class="kucuk">${esc(alt)}</span></span>${dugme||"<span></span>"}</div>`;function takvim(e){const simdi=Date.now(),sira=["scheduled","candidacy","voting","runoff","ce\
 rtified"],ogeler=[{asama:"scheduled",ad:\u00E7("Se\xE7men listesi donar"),an:e.freeze_at,alt:\u00E7("O ana kadar \u015Fartlar\u0131 sa\u011Flayan vatanda\u015Flar listeye girer.")},{asama:"candidacy",
 ad:\u00E7("Adayl\u0131k"),an:e.freeze_at,son:e.voting_start,alt:\u00E7("Listedekiler ba\u015Fkanl\u0131\u011Fa ya da meclise aday olur; partiler aday g\xF6sterir.")},{asama:"voting",ad:\u00E7("Oylama"),
@@ -199,18 +202,27 @@ x.round===tur))return`<div class="pusula">${bas}<div class="bilgi-kutusu">${ikon
 length)return`<div class="pusula">${bas}<p class="bos">${\u00E7("Bu yar\u0131\u015Fta aday yok.")}</p></div>`;const tip=ust===1?"radio":"checkbox";return`<fieldset class="pusula" data-yaris="${yaris}"\
  data-ust="${ust}"><legend>${bas}<span class="kucuk">${ust===1?\u00E7("Bir aday se\xE7."):\u00E7("En \xE7ok {n} aday se\xE7.",{n:Number(ust)})}</span></legend>
         ${adaylar.map(x=>`<label class="aday-sec"><input type="${tip}" name="oy-${yaris}" value="${esc(x.character_id)}" ${isaret[yaris].has(x.character_id)?"checked":""}>
-          ${avatarKutu(x.name,x.character_id)}<span><b>${esc(x.name)}</b><span class="kucuk">${esc(x.party??\u00E7("Ba\u011F\u0131ms\u0131z"))}</span></span></label>`).join("")}
-        <button class="dugme altin" type="button" data-oy-ver="${yaris}">${ikon("vote")}${\u00E7("Oyunu ver")}</button></fieldset>`}function adayListesi(e){return["candidacy","voting","runoff"].includes(
+          ${avatarKutu(x.name,x.character_id)}<span><b>${esc(x.name)}</b><span class="kucuk">${esc(x.party??\u00E7("Ba\u011F\u0131ms\u0131z"))}${(x.endorsements??[]).length?` \xB7 ${esc(\u00E7("{n} sa\
+nat\xE7\u0131 destekliyor",{n:x.endorsements.length}))}`:""}</span></span></label>`).join("")}
+        <button class="dugme altin" type="button" data-oy-ver="${yaris}">${ikon("vote")}${\u00E7("Oyunu ver")}</button></fieldset>`}const destekYazi=x=>(x.endorsements??[]).length?`<div class="kucuk a\
+day-destek" data-aday-destek="${esc(x.character_id)}">${ikon("eighth-notes")} ${esc(\u00E7("Destekleyen: {adlar}",{adlar:x.endorsements.map(d=>`${d.name} (${d.band})`).join(", ")}))}</div>`:"";function destekDugme(e,x){
+const d=e.endorse??{};return d.mine===x.character_id?`<button class="dugme sade kucuk-d" data-destek-cek="${esc(e.election_id)}">${ikon("x")}${\u00E7("Deste\u011Fini \xE7ek")}</button>`:!d.eligible||d.
+mine?"":`<button class="dugme ikincil kucuk-d" data-destekle="${esc(x.character_id)}" data-destek-ad="${esc(x.name)}">${ikon("eighth-notes")}${\u00E7("Destekle")}</button>`}function destekNotu(e){const d=e.
+endorse??{};return d.eligible||d.mine?`<p class="kucuk" id="destek-notu" data-destek="${d.mine?"var":"uygun"}">${d.mine?\u00E7("Sanat\xE7\u0131 olarak bu se\xE7imde bir aday\u0131 destekliyorsun; deste\u011Fin aday\u0131n kart\
+\u0131nda g\xF6r\xFCn\xFCr, ek oy vermez."):\u00E7("\xDCnl\xFC bir m\xFCzisyensin: bir aday\u0131 a\xE7\u0131k\xE7a destekleyebilirsin. Destek aday\u0131n kart\u0131nda g\xF6r\xFCn\xFCr, ek oy vermez; oylama bitene kadar geri \xE7ekilebilirsin.")}\
+</p>`:d.reason==="ENDORSE_NOT_FAMOUS"?`<p class="kucuk" id="destek-notu" data-destek="unsuz">${\u00E7("Grubunun \xFClkede en az {n} hayran\u0131 ya da bir unvan\u0131 olunca bir aday\u0131 a\xE7\u0131k\xE7a destekleyebilirsin (\u015Fi\
+mdi {h} hayran).",{n:sayi(Math.round(Number(d.min_fans_milli??5e4)/1e3)),h:sayi(Math.floor(Number(d.fans_milli??0)/1e3))})}</p>`:""}function adayListesi(e){return["candidacy","voting","runoff"].includes(
 e.stage)?`<section class="kart" id="aday-listesi"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("{n} aday",{n:e.candidates.length})}</p><h2 class="b2">${\u00E7("Adaylar")}</h2></div><span cl\
 ass="ik-kutu">${ikon("users-round")}</span></div>
+        ${destekNotu(e)}
         ${["president","parliament"].map(y=>{const l=e.candidates.filter(x=>x.race===y);return`<p class="ust-yazi" style="margin-top:6px">${esc(YARIS[y])} \xB7 ${sayi(l.length)}</p>
-            ${l.length?`<div class="koltuk-liste" style="margin:8px 0 14px">${l.map(x=>`<div class="koltuk">${avatarKutu(x.name,x.character_id)}
-              <div><b>${esc(x.name)}${x.character_id===benimKimlik()?" "+\u00E7("(sen)"):""}</b><div class="kucuk">${esc(x.party??\u00E7("Ba\u011F\u0131ms\u0131z"))}</div></div><span></span></div>`).join(
-"")}</div>`:`<p class="bos" style="margin:6px 0 14px">${\u00E7("Hen\xFCz aday yok.")}</p>`}`}).join("")}</section>`:""}function sonucHtml(sonuc,adaylar,baslik,alt){if(!sonuc)return"";const ad=new Map(
-(adaylar??[]).map(x=>[x.character_id,x])),yaris=y=>{const r=sonuc[y];if(!r)return"";const kazanan=new Set(r.winners??[]),ikinci=new Set(r.runoff??[]),kura=new Set(r.lot??[]),satirlar=Object.entries(r.
-votes??{}).sort((a,b)=>b[1]-a[1]||String(a[0]).localeCompare(b[0])),enCok=Math.max(1,...satirlar.map(([,n])=>n));return`<p class="ust-yazi" style="margin-top:6px">${esc(YARIS[y])} \xB7 ${\u00E7("{n} s\
-andalye",{n:Number(r.seats??(y==="president"?1:v.c.parliamentSeats))})}${r.method==="lot"?" \xB7 "+\u00E7("e\u015Fitlik kurayla \xE7\xF6z\xFCld\xFC"):r.method==="runoff"?" \xB7 "+\u00E7("ikinci tur"):
-""}</p>
+            ${l.length?`<div class="koltuk-liste" style="margin:8px 0 14px">${l.map(x=>`<div class="koltuk" data-aday-satir="${esc(x.character_id)}">${avatarKutu(x.name,x.character_id)}
+              <div><b>${esc(x.name)}${x.character_id===benimKimlik()?" "+\u00E7("(sen)"):""}</b><div class="kucuk">${esc(x.party??\u00E7("Ba\u011F\u0131ms\u0131z"))}</div>${destekYazi(x)}</div><span>${x.
+character_id===benimKimlik()?"":destekDugme(e,x)}</span></div>`).join("")}</div>`:`<p class="bos" style="margin:6px 0 14px">${\u00E7("Hen\xFCz aday yok.")}</p>`}`}).join("")}</section>`:""}function sonucHtml(sonuc,adaylar,baslik,alt){
+if(!sonuc)return"";const ad=new Map((adaylar??[]).map(x=>[x.character_id,x])),yaris=y=>{const r=sonuc[y];if(!r)return"";const kazanan=new Set(r.winners??[]),ikinci=new Set(r.runoff??[]),kura=new Set(r.
+lot??[]),satirlar=Object.entries(r.votes??{}).sort((a,b)=>b[1]-a[1]||String(a[0]).localeCompare(b[0])),enCok=Math.max(1,...satirlar.map(([,n])=>n));return`<p class="ust-yazi" style="margin-top:6px">${esc(
+YARIS[y])} \xB7 ${\u00E7("{n} sandalye",{n:Number(r.seats??(y==="president"?1:v.c.parliamentSeats))})}${r.method==="lot"?" \xB7 "+\u00E7("e\u015Fitlik kurayla \xE7\xF6z\xFCld\xFC"):r.method==="runoff"?
+" \xB7 "+\u00E7("ikinci tur"):""}</p>
           ${satirlar.length?satirlar.map(([id,n])=>{const x=ad.get(id),iki=r.round2?.[id];return`<div class="sonuc-satir ${kazanan.has(id)?"kazandi":""}"><span><b>${esc(x?.name??\u00E7("Silinmi\u015F hesap"))}\
 </b><span class="kucuk">${esc(x?.party??\u00E7("Ba\u011F\u0131ms\u0131z"))}</span></span>
               <span class="cubuk"><i style="width:${Math.round(n/enCok*100)}%"></i></span>
@@ -310,7 +322,11 @@ onclick=()=>{const yaris=b.dataset.aday;pencere({ust:\u00E7("Adayl\u0131k"),basl
 <p class="aciklama">${yaris==="president"?\u00E7("Ba\u015Fkan \xFClkeyi y\xF6netir: vergi ve sava\u015F yetkisi \xF6nerir, meclisin verdi\u011Fi yetkiyle sava\u015F ilan eder."):\u00E7("Milletvekili m\
 eclis oylamalar\u0131nda oy verir; vatanda\u015Fl\u0131k yasas\u0131, ba\u015Fkan vekili ve g\xF6revden alma \xF6nerebilir.")} ${\u00E7("Adayl\u0131\u011F\u0131n herkese g\xF6r\xFCn\xFCr.")}</p>`,dugmeler:[
 {ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Aday ol"),sinif:"altin",is:()=>islem("candidacy_register",{p_race:yaris},\u00E7("Adayl\u0131\u011F\u0131n kaydedildi."),"megaphone")}]})};for(const b of $$("[data-\
-adaylik-cekil]",kap))b.onclick=()=>{const yaris=b.dataset.adaylikCekil;pencere({ust:\u00E7("Adayl\u0131k"),baslik:yaris==="president"?\u00E7("Ba\u015Fkanl\u0131k adayl\u0131\u011F\u0131ndan \xE7ekil"):
+destekle]",kap))b.onclick=()=>{const aday=b.dataset.destekle,ad=b.dataset.destekAd,secim=v.s.election?.election_id;pencere({ust:\u00E7("Sanat\xE7\u0131 deste\u011Fi"),baslik:\u00E7("{ad} aday\u0131n\u0131 deste\
+kle",{ad}),govde:`<p class="aciklama">${\u00E7("Deste\u011Fin aday\u0131n kart\u0131nda ad\u0131n ve grubunla g\xF6r\xFCn\xFCr; ek oy vermez. Bu se\xE7imde tek bir aday\u0131 destekleyebilirsin; oylama bitene kadar geri \xE7ekebilirsin.")}\
+</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Destekle"),sinif:"altin",ikon:"eighth-notes",is:()=>islem("candidate_endorse",{p_election:secim,p_candidate:aday},\u00E7("Deste\u011Fin aday\u0131n kart\u0131na y\
+az\u0131ld\u0131."),"eighth-notes")}]})};for(const b of $$("[data-destek-cek]",kap))b.onclick=()=>islem("candidate_endorse_withdraw",{p_election:b.dataset.destekCek},\u00E7("Deste\u011Fini \xE7ektin."),
+"x");for(const b of $$("[data-adaylik-cekil]",kap))b.onclick=()=>{const yaris=b.dataset.adaylikCekil;pencere({ust:\u00E7("Adayl\u0131k"),baslik:yaris==="president"?\u00E7("Ba\u015Fkanl\u0131k adayl\u0131\u011F\u0131ndan \xE7ekil"):
 \u00E7("Meclis adayl\u0131\u011F\u0131ndan \xE7ekil"),govde:`<p class="aciklama">${\u00E7("Oylama ba\u015Flamadan yeniden aday olabilirsin.")}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("\xC7ekil"),
 sinif:"mercan",is:()=>islem("candidacy_withdraw",{p_race:yaris},\u00E7("Adayl\u0131ktan \xE7ekildin."),"x")}]})};const araId=$("#ara-secim",kap)?.dataset.araSecimId;for(const b of $$("[data-ara-aday-o\
 l]",kap))b.onclick=()=>{const yaris=b.dataset.araAdayOl;pencere({ust:\u00E7("Ara se\xE7im"),baslik:yaris==="president"?\u00E7("Ba\u015Fkanl\u0131k adayl\u0131\u011F\u0131"):\u00E7("Meclis adayl\u0131\u011F\u0131"),
@@ -382,9 +398,9 @@ m.proposer)}):""}</div></div>
 r.vekil)&&d.push(["sales_tax","percent",\u00E7("Sat\u0131\u015F vergisi")],["wage_tax","hand-coins",\u00E7("Maa\u015F vergisi")]),(r.baskan||r.vekil)&&v.g&&d.push(["customs","shield",\u00E7("G\xFCmr\xFCk ya\
 sas\u0131")]),r.baskan&&d.push(["war","swords",\u00E7("Sava\u015F yetkisi")]),(r.baskan||r.mv)&&d.push(["citizenship","id-card",\u00E7("Vatanda\u015Fl\u0131k yasas\u0131")]),r.mv&&d.push(["deputy","ba\
 dge-check",\u00E7("Ba\u015Fkan vekili")]),r.mv&&l.president&&d.push(["impeach","user-round",\u00E7("Ba\u015Fkan\u0131 g\xF6revden al")]),r.mv&&d.push(["no_confidence","megaphone",\u00E7("G\xFCvensizlik \xF6\
-nergesi")]),(r.baskan||r.vekil||r.mv)&&d.push(["national_goal","target",\u00E7("Haftal\u0131k \xFClke hedefi")]),`<section class="kart"><div class="kart-bas"><div><p class="ust-yazi">${r.baskan?\u00E7(
-"Ba\u015Fkans\u0131n"):r.vekil?\u00E7("Ba\u015Fkan vekilisin"):\u00E7("Milletvekilisin")}</p><h2 class="b2">${\u00E7("\xD6neri yap")}</h2></div><span class="ik-kutu">${ikon("notebook-pen")}</span></di\
-v>
+nergesi")]),(r.baskan||r.vekil||r.mv)&&d.push(["national_goal","target",\u00E7("Haftal\u0131k \xFClke hedefi")]),(r.baskan||r.vekil||r.mv)&&d.push(["anthem","eighth-notes",\u00E7("Milli mar\u015F")]),
+`<section class="kart"><div class="kart-bas"><div><p class="ust-yazi">${r.baskan?\u00E7("Ba\u015Fkans\u0131n"):r.vekil?\u00E7("Ba\u015Fkan vekilisin"):\u00E7("Milletvekilisin")}</p><h2 class="b2">${\u00E7(
+"\xD6neri yap")}</h2></div><span class="ik-kutu">${ikon("notebook-pen")}</span></div>
         <p class="aciklama">${\u00E7("\xD6neri meclis oylamas\u0131na a\xE7\u0131l\u0131r (en \xE7ok {n} saat). Ayn\u0131 t\xFCrden a\xE7\u0131k oylama varken yenisi a\xE7\u0131lmaz.",{n:Number(v.c.parliamentVoteH)})}\
 </p>
         <div class="oneri-dugmeler" style="margin-top:12px">${d.map(([k,ik,ad])=>`<button class="dugme ikincil kucuk-d" data-oneri="${k}">${ikon(ik)}${esc(ad)}</button>`).join("")}</div></section>`}function ilanHtml(r){
@@ -525,15 +541,26 @@ r, kalan\u0131 hazineye.")}</p>`:""}`,is:async d=>{const ceza=yuzdePpm(d.get("ce
 {kr:kr(r.budget_max_cr)}));const kolluk=d.get("kolluk")==null?null:krediAlt(d.get("kolluk"));if(kolluk!=null&&!(kolluk>=0&&kolluk<=r.police_budget_max_cr))throw new Error(\u00E7("Kolluk b\xFCt\xE7esi 0\u2013{kr}\
  kredi olmal\u0131.",{kr:kr(r.police_budget_max_cr)}));await Sunucu.yap("motion_propose_customs",{p_strictness:d.get("sikilik"),p_fine_ppm:ceza,p_banned:d.getAll("yasak"),p_budget_cr:butce,...d.get("d\
 enetim")?{p_inspection:d.get("denetim")}:{},...kolluk!=null?{p_police_budget_cr:kolluk}:{}}),tost(\u00E7("G\xFCmr\xFCk yasas\u0131 \xF6nerisi oylamaya a\xE7\u0131ld\u0131."),"gavel"),await tazele()}})}
-async function guvensizlikFormu(){let h;try{h=await Sunucu.cagir("movement_status")}catch(e){tost(hataMetni(e),"circle-alert");return}const b=h.blocker_no_confidence;if(b){tost(sunucuIletisi(b.code,b.
-hint)+(b.until?" "+\u00E7("A\xE7\u0131l\u0131\u015F: {zaman}.",{zaman:saatYaz(b.until)}):""),"circle-alert");return}pencere({ust:\u00E7("\xD6neri"),baslik:\u00E7("G\xFCvensizlik \xF6nergesi"),govde:`<\
-p class="aciklama">${\u00E7("Oylama {saat} saat s\xFCrer. Kabul i\xE7in dolu sandalyelerin \xFC\xE7te ikisi ve en az {n} evet gerekir. Kabul edilirse ola\u011Fan\xFCst\xFC se\xE7im olur; reddedilirse {gun} g\xFCn yeni hareket ba\u015F\
-lamaz.",{saat:sayi(h.rules.parliament_vote_h),n:sayi(h.rules.no_confidence.minYes),gun:sayi(h.rules.cooldown_days)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Oylamaya a\xE7"),sinif:"mercan",
-ikon:"gavel",is:async()=>{try{await Sunucu.yap("motion_propose_no_confidence",{}),tost(\u00E7("G\xFCvensizlik \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),"gavel")}catch(e){tost(hataMetni(e),"circle-al\
-ert")}await tazele()}}]})}const ONERI={sales_tax:vergiFormu("sales"),wage_tax:vergiFormu("wage"),war:()=>savasFormu().catch(e=>tost(hataMetni(e),"circle-alert")),citizenship:vatandaslikFormu,deputy:vekilFormu,
-impeach:gorevdenAlFormu,customs:gumrukFormu,no_confidence:guvensizlikFormu,national_goal:()=>Millet.hedefOner(()=>tazele()).catch(e=>tost(hataMetni(e),"circle-alert"))};function ilanEt(yetki,hedef,koken){
-const y=v.w.authorizations.find(x=>x.authorization_id===yetki);pencereForm({ust:\u00E7("Sava\u015F ilan\u0131"),baslik:bolgeAdi(hedef),onayAd:\u00E7("Sava\u015F ilan et"),onaySinif:"mercan",onayIkon:"\
-swords",govde:`<p class="aciklama">${\u00E7("Sald\u0131r\u0131 <b>{koken}</b> b\xF6lgesinden, hedef <b>{ulke}</b>.",{koken:esc(bolgeAdi(koken)),ulke:esc(ulkeAdi(y?.target_country_id))})}
+async function marsFormu(){const d=await Sunucu.cagir("anthem_songs"),l=(d?.songs??[]).filter(x=>!x.current);if(!l.length){tost(d?.anthem?\u00E7("Mar\u015F olabilecek ba\u015Fka kay\u0131tl\u0131 \u015Fark\u0131 yok: \xFClkenin grupl\
+ar\u0131 yeni bir \u015Fark\u0131 kaydedince \xF6nerilebilir."):\u00E7("Hen\xFCz mar\u015F olabilecek \u015Fark\u0131 yok: \xFClkenin bir grubu bir \u015Fark\u0131y\u0131 st\xFCdyoda kaydedince \xF6nerilebilir."),
+"circle-alert");return}pencereForm({ust:\u00E7("\xD6neri"),baslik:\u00E7("Milli mar\u015F"),onayAd:\u00E7("Oylamaya a\xE7"),onayIkon:"gavel",govde:`<p class="aciklama">${d?.anthem?\u00E7("Bug\xFCnk\xFC mar\u015F\
+: <b>{sarki}</b> ({grup}). Yeni mar\u015F \xF6nerisi meclisin salt \xE7o\u011Funlu\u011Fuyla kabul edilir.",{sarki:esc(d.anthem.title),grup:esc(d.anthem.band)}):\u00E7("Meclis \xFClkenin bir grubunun kay\
+d\u0131 bitmi\u015F \u015Fark\u0131s\u0131n\u0131 milli mar\u015F se\xE7er; salt \xE7o\u011Funluk yeter. Mar\u015F \xDClkem \u2192 \xD6zet'te \xE7alar, grup unvan al\u0131r; g\xFC\xE7 ya da oy vermez.")}\
+</p>
+          <fieldset class="alan"><legend>${\u00E7("\u015Eark\u0131")}</legend><div class="radyo-liste">${l.map((x,i)=>`<label class="radyo"><input type="radio" name="sarki" value="${esc(x.song_id)}" ${i===
+0?"checked":""}>
+            <span><b>${esc(x.title)}</b><span class="kucuk">${esc(\u00E7("{grup} \xB7 \u015Fark\u0131 kalitesi {k} \xB7 kay\u0131t kalitesi {kk}",{grup:x.band??"",k:Number(x.quality??0),kk:Number(x.recording_quality??
+0)}))}</span></span></label>`).join("")}</div></fieldset>`,is:async f=>{await Sunucu.yap("motion_propose_anthem",{p_song:String(f.get("sarki"))}),tost(\u00E7("Milli mar\u015F \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),
+"gavel"),await tazele()}})}async function guvensizlikFormu(){let h;try{h=await Sunucu.cagir("movement_status")}catch(e){tost(hataMetni(e),"circle-alert");return}const b=h.blocker_no_confidence;if(b){tost(
+sunucuIletisi(b.code,b.hint)+(b.until?" "+\u00E7("A\xE7\u0131l\u0131\u015F: {zaman}.",{zaman:saatYaz(b.until)}):""),"circle-alert");return}pencere({ust:\u00E7("\xD6neri"),baslik:\u00E7("G\xFCvensizlik \xF6n\
+ergesi"),govde:`<p class="aciklama">${\u00E7("Oylama {saat} saat s\xFCrer. Kabul i\xE7in dolu sandalyelerin \xFC\xE7te ikisi ve en az {n} evet gerekir. Kabul edilirse ola\u011Fan\xFCst\xFC se\xE7im olur; reddedilirse {gun} g\xFCn\
+ yeni hareket ba\u015Flamaz.",{saat:sayi(h.rules.parliament_vote_h),n:sayi(h.rules.no_confidence.minYes),gun:sayi(h.rules.cooldown_days)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Oylamaya\
+ a\xE7"),sinif:"mercan",ikon:"gavel",is:async()=>{try{await Sunucu.yap("motion_propose_no_confidence",{}),tost(\u00E7("G\xFCvensizlik \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),"gavel")}catch(e){tost(
+hataMetni(e),"circle-alert")}await tazele()}}]})}const ONERI={sales_tax:vergiFormu("sales"),wage_tax:vergiFormu("wage"),war:()=>savasFormu().catch(e=>tost(hataMetni(e),"circle-alert")),citizenship:vatandaslikFormu,
+deputy:vekilFormu,impeach:gorevdenAlFormu,customs:gumrukFormu,no_confidence:guvensizlikFormu,national_goal:()=>Millet.hedefOner(()=>tazele()).catch(e=>tost(hataMetni(e),"circle-alert")),anthem:()=>marsFormu().
+catch(e=>tost(hataMetni(e),"circle-alert"))};function ilanEt(yetki,hedef,koken){const y=v.w.authorizations.find(x=>x.authorization_id===yetki);pencereForm({ust:\u00E7("Sava\u015F ilan\u0131"),baslik:bolgeAdi(
+hedef),onayAd:\u00E7("Sava\u015F ilan et"),onaySinif:"mercan",onayIkon:"swords",govde:`<p class="aciklama">${\u00E7("Sald\u0131r\u0131 <b>{koken}</b> b\xF6lgesinden, hedef <b>{ulke}</b>.",{koken:esc(bolgeAdi(
+koken)),ulke:esc(ulkeAdi(y?.target_country_id))})}
             ${\u00E7("\u0130lan bedeli <b>{kr} kredi</b> hazineden d\xFC\u015Fer.",{kr:kr(v.w.declaration_cost_cr)})} ${esc(turTakvimi(v.combat))} ${\u00E7("\u0130lan iki \xFClkeye de duyurulur.")}</p\
 >
           <p class="kucuk">${\u00E7("\u0130lk turdan {n} saat \xF6ncesine kadar iptal edebilirsin; ilan bedeli geri gelmez.",{n:Number(v.w.cancel_cutoff_h??6)})}</p>`,is:async()=>{const s=await Sunucu.

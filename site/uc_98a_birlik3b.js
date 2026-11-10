@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (uc_98a_birlik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98a_birlik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const BIRLIK_TAM=[6,4],BIRLIK_OLCEK=.7;function birlikIkonCiz(g,ad,x,y,boy,renk,kalinlik=2){const kaynak=IKON[ad]??"";g.save(),g.translate(x,y),g.scale(boy/24,boy/24),g.strokeStyle=renk,g.lineWidth=kalinlik,
 g.lineCap="round",g.lineJoin="round";for(const m of kaynak.matchAll(/<path[^>]*\sd="([^"]+)"/g))try{g.stroke(new Path2D(m[1]))}catch{}for(const m of kaynak.matchAll(/<circle[^>]*cx="([\d.]+)"[^>]*cy="([\d.]+)"[^>]*r="([\d.]+)"/g))
 g.beginPath(),g.arc(Number(m[1]),Number(m[2]),Number(m[3]),0,Math.PI*2),g.stroke();g.restore()}function birlikDurusCiz(g,durus,cx,cy,s,renk){g.save(),g.translate(cx,cy),g.scale(s,s),g.lineCap="round",

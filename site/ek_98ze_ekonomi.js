@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-09-22f8ad98-68be21e (ek_98ze_ekonomi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98ze_ekonomi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ekonomi",{async ac(kap){let pano=null,kamu=null,stok=null,lojistik=null,kapandi=!1,ulkeSec=null;try{ulkeSec=sessionStorage.getItem("civora.ekonomi.ulke")||null}catch{}const sahne=EkonomiSahnesi.
 ac();sahne.dinle("sec",ad=>{if(ad==="pano"){$("#ekonomi-akis",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});return}const rota={pazar:"sehir/pazar",hazine:"ulke/ozet",belediye:"\
 sehir/belediye"}[ad];rota&&Kabuk.git(rota)});const vatandaslik=()=>Durum.v.ozet?.character?.citizenship??null;async function yukle(){await Durum.ozet(),lojistik=await Sunucu.cagir("logistics_me").catch(
