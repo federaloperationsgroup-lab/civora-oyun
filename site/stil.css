@@ -3643,6 +3643,8 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .mekan-menu { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .mekan-menu-tur { flex: 0 0 100%; font-weight: 700; }
 .mekan-kalem .mekan-fiyat { font-weight: 800; margin-left: 4px; opacity: 0.75; }
+/* Uzun ad ve fiyat dar telefonda taşmasın (ev yemeği: "Yaprak sarma 2. kalite · 1 tabak 6,50 kredi"): düğmenin içi alt satıra geçer */
+.mekan-menu .mekan-kalem { max-width: 100%; white-space: normal; flex-wrap: wrap; justify-content: flex-start; gap: 2px 8px; text-align: left; padding-block: 4px; }
 .mekan-menu-sec { margin-top: 6px; }
 .mekan-fikra-bas { justify-content: space-between; flex-wrap: wrap; }
 .mekan-fikra-bas .ust-yazi { margin: 0; }
@@ -3693,6 +3695,50 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .parti-bant-dugmeler { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .parti-bant-dugmeler:empty { display: none; }
 .parti-davet .satir .dugme { flex: none; }
+/* Ev partisinde tombala (D-207): kart 3 × 9 (telefonda da sığar), son sayı büyük top, iddia düğmesi büyük */
+.tombala { display: flex; flex-direction: column; gap: 10px; padding: 12px; margin-bottom: 8px; border-radius: var(--r-m);
+  border: 1px solid var(--cizgi-2); background: var(--kagit); }
+.tombala-ust { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.tombala-ust .ik-kutu { width: 36px; height: 36px; flex: none; }
+.tombala-ust-yazi { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tombala-cekilis { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.tombala-top { flex: none; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font: 700 28px/1 var(--f-baslik);
+  color: var(--murekkep); background: radial-gradient(circle at 35% 30%, #FFFFFF 0 18%, var(--altin-acik) 40%, var(--altin) 100%);
+  border: 2px solid var(--altin-2); box-shadow: var(--golge-2); }
+.tombala-top.bos { color: var(--soluk-2); background: var(--kagit-2); border-color: var(--cizgi-2); box-shadow: none; }
+.tombala-cekilis-yazi { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tombala-once { display: flex; gap: 4px; flex-wrap: wrap; }
+.tombala-once i { font-style: normal; font-size: 12px; min-width: 24px; padding: 2px 5px; text-align: center; border-radius: 999px;
+  background: var(--kagit-3); color: var(--soluk); }
+.tombala-kart { display: flex; flex-direction: column; gap: 4px; padding: 6px; border-radius: var(--r-s); background: var(--mercan-acik);
+  border: 2px solid var(--mercan); max-width: 420px; }
+.tombala-satir { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 3px; border-radius: 8px; padding: 2px; }
+.tombala-satir.tamam { background: var(--orman-acik-2); }
+.tombala-satir span { aspect-ratio: 1; display: grid; place-items: center; min-width: 0; border-radius: 6px; font: 600 15px/1 var(--f-govde);
+  background: var(--kagit); color: var(--murekkep); border: 1px solid var(--cizgi); }
+.tombala-satir span.bos { background: transparent; border-color: transparent; }
+.tombala-satir span.cekildi { background: var(--orman); color: #FFFFFF; border-color: var(--orman-2); }
+.tombala-satir span.son { box-shadow: 0 0 0 3px var(--altin); }
+.tombala-iddialar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tombala-iddia { min-height: 48px; font-size: 17px; padding-inline: 20px; flex: 1 1 auto; justify-content: center; }
+.tombala-iddia.hazir:not(:disabled) { animation: tombala-parla 1.1s ease-in-out infinite alternate; }
+@keyframes tombala-parla { from { box-shadow: 0 0 0 0 rgba(217, 165, 72, 0.0); } to { box-shadow: 0 0 0 6px rgba(217, 165, 72, 0.45); } }
+@media (prefers-reduced-motion: reduce) { .tombala-iddia.hazir:not(:disabled) { animation: none; box-shadow: 0 0 0 4px rgba(217, 165, 72, 0.45); } }
+.tombala-dereceler { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.tombala-dereceler li { display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: var(--r-s); background: var(--kagit-2);
+  border: 1px solid var(--cizgi); min-width: 0; font-size: 13px; }
+.tombala-dereceler li span { color: var(--soluk); overflow-wrap: anywhere; }
+.tombala-dereceler li.sirada { border-color: var(--altin); background: var(--altin-acik); }
+.tombala-dereceler li.alindi { border-color: var(--orman-3); background: var(--orman-acik); }
+.tombala-dereceler li.alindi span { color: var(--orman-2); font-weight: 600; }
+.tombala-torba summary { cursor: pointer; font-size: 13px; color: var(--soluk); }
+.tombala-torba-izgara { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; margin-top: 6px; max-width: 420px; }
+.tombala-torba-izgara span { font-size: 11px; text-align: center; padding: 3px 0; border-radius: 4px; background: var(--kagit-2); color: var(--soluk-2); }
+.tombala-torba-izgara span.cekildi { background: var(--deniz-acik); color: var(--orman-2); font-weight: 700; }
+@media (max-width: 420px) { .tombala-dereceler { grid-template-columns: 1fr; } .tombala-satir span { font-size: 14px; } }
+.oda2b-tombala-torba { fill: #B5452F; stroke: #6E2A1C; stroke-width: 0.03; }
+.oda2b-tombala-tahta { fill: #FBFAF5; stroke: #A9472C; stroke-width: 0.03; }
+.oda2b-tombala-sayi { fill: #16221E; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
 .oda2b-parti { pointer-events: none; }
 .oda2b-parti-isik { fill: #FFD47A; stroke: #B07F2C; stroke-width: 0.02; }
 .oda2b-parti-ip { stroke: #5B4632; stroke-width: 0.025; }
@@ -3708,6 +3754,19 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .oda2b-parti-pay { fill: #FBF4EA; stroke: #B07F2C; stroke-width: 0.02; }
 .oda2b-tabak { fill: #FBFAF5; stroke: rgba(0, 0, 0, 0.25); stroke-width: 0.02; }
 .oda2b-tabak-ic { fill: #D9A548; }
+/* Ev yemeği (D-210): masada kaseler (kenarı kalitesinin renginde), kartta ve bantta renkli nokta, mekânın menüsünde ev yemekleri */
+.oda2b-yemek-kase { fill: #FBFAF5; stroke-width: 0.035; }
+.oda2b-yemek-ic { fill: #C98B3E; }
+.parti-yemek-renk { display: inline-block; flex: none; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset; }
+.parti-yemekler { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 10px; }
+.parti-yemek { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; }
+.parti-yemek small { color: var(--soluk); overflow-wrap: anywhere; }
+.parti-yemek-al { max-width: 100%; }
+.mekan-yemek .parti-yemek-renk, .mekan-yemek-cip .parti-yemek-renk { margin-right: 4px; }
+.mekan-yemek small, .mekan-yemek-cip small { color: var(--soluk); margin-left: 2px; }
+.oneri-dil { display: flex; align-items: center; gap: 4px; color: var(--deniz); margin-top: 2px; }
+.oneri-dil .ik { width: 14px; height: 14px; flex: none; }
 .oda2b-konfeti { pointer-events: none; }
 .oda2b-konfeti rect { animation: oda2b-konfeti 1.4s ease-in infinite; transform-box: fill-box; }
 @keyframes oda2b-konfeti { 0% { transform: translateY(-0.2px) rotate(0deg); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(0.9px) rotate(220deg); opacity: 0; } }
@@ -3818,6 +3877,10 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .hobi-cubuk { height: 7px; }
 .hobi-tarif.kapali { opacity: 0.68; }
 .hobi-dil .liste-ikon, .hobi-tarif .liste-ikon, .hobi-kiler-satir .liste-ikon { flex: none; }
+/* Kilerin ve Mekânım'daki ev yemeğinin satırı (D-210): dört düğmeye kadar (Ye, Hediye et, Partiye koy, Mekâna koy); düğmeler yazının
+   altında (yan yana konunca dar kartta yazının sütunu sıfıra iniyordu) */
+.hobi-kiler-satir, .mekanim-yemek-satir { grid-template-columns: 52px minmax(0, 1fr); }
+.hobi-kiler-satir > .mekan-satir-dugmeler, .mekanim-yemek-satir > .mekan-satir-dugmeler { grid-column: 2 / -1; justify-content: flex-start; }
 #hobi-keyif .ik, #hobi-burada .ik { width: 14px; height: 14px; vertical-align: -2px; }
 .profil-diller { margin: 6px 0 0; }
 .profil-diller .ust-yazi { margin: 0 6px 0 2px; }
@@ -4004,6 +4067,44 @@ button.okey-tas { cursor: pointer; }
 .oyunlar-ad small { color: var(--soluk); font-size: 12px; }
 .oyunlar-puan { font-family: var(--f-baslik); font-size: 20px; font-weight: 600; color: var(--orman); font-variant-numeric: tabular-nums; }
 .oyunlar-son-satir .masa-puan-fark { font-size: 15px; }
+/* D-208: oyunu baştan izlemek, bu sezon, satranç süresi */
+.oyunlar-son-satir .dugme { flex: none; }
+.kahve-sezon-liste .oyunlar-puan { font-size: 18px; }
+.kahve-sezon-liste .masa-puan-fark.arti { color: var(--orman-3); }
+.kahve-sezon-liste .masa-puan-fark.eksi { color: var(--mercan-2); }
+.profil-izle { margin: 4px 0 0; }
+.profil-izle .ust-yazi { margin: 0 6px 0 2px; }
+.profil-izle .ik { width: 14px; height: 14px; vertical-align: -2px; }
+.satranc-sure-liste .radyo span { display: flex; flex-direction: column; gap: 2px; }
+.masa-izle-perde .pencere.masa-izle-pencere { width: min(720px, 100%); display: flex; flex-direction: column; gap: 10px; }
+.masa-izle-pencere .kart-bas { margin-bottom: 0; flex-wrap: nowrap; }
+.masa-izle-pencere .kart-bas > div:first-child { min-width: 0; flex: 1 1 auto; }
+.masa-izle-pencere .kart-bas h2 .ik { width: 22px; height: 22px; vertical-align: -3px; color: var(--altin-2); }
+.masa-izle-pencere .kart-bas-dugmeler { display: flex; flex: none; flex-direction: row; flex-wrap: nowrap; gap: 6px; align-items: center; }
+.masa-izle-ust { margin: 0; color: var(--soluk); overflow-wrap: anywhere; }
+.masa-izle-sahne { height: 340px; border-radius: var(--r-m); background: #3B2C22; overflow: hidden; touch-action: pan-y; }
+.masa-izle-sahne > canvas { width: 100%; height: 100%; display: block; }
+.masa-izle-2b .masa-izle-kart { border: 0; box-shadow: none; padding: 0; background: transparent; }
+.masa-izle-2b .masa-durum { display: none; }
+.masa-izle-adim { min-height: 42px; }
+.masa-izle-adim p { margin: 0; }
+.masa-izle-adim .okey-acik-el { margin-top: 6px; }
+.masa-izle-sonuc .ik { width: 15px; height: 15px; vertical-align: -2px; }
+.masa-izle-kaydir { width: 100%; accent-color: var(--altin-2); }
+.masa-izle-dugmeler { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.masa-izle-dugmeler .dugme[data-izle="oynat"] { min-width: 112px; justify-content: center; }
+.masa-izle-dugmeler .dugme[data-izle="hiz"] { min-width: 52px; justify-content: center; font-variant-numeric: tabular-nums; font-weight: 800; }
+@media (max-width: 560px) {
+  .masa-izle-perde { padding: 0; }
+  .masa-izle-perde .pencere.masa-izle-pencere { width: 100%; height: 100dvh; max-height: 100dvh; border-radius: 0; overflow-y: auto;
+    padding: calc(14px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
+  .masa-izle-sahne { height: 260px; }
+  /* Telefonda düğmeler tek sırada: oynat düğmesi kalan yeri alır */
+  .masa-izle-dugmeler { flex-wrap: nowrap; gap: 4px; }
+  .masa-izle-dugmeler .dugme { padding-inline: 9px; }
+  .masa-izle-dugmeler .dugme[data-izle="oynat"] { min-width: 0; flex: 1 1 auto; }
+  .masa-izle-dugmeler .dugme[data-izle="hiz"] { min-width: 40px; }
+}
 .profil-oyunlar { margin: 6px 0 0; }
 .profil-oyunlar .ust-yazi { margin: 0 6px 0 2px; }
 .profil-oyunlar .ik { width: 14px; height: 14px; vertical-align: -2px; }
@@ -4045,6 +4146,17 @@ button.okey-tas { cursor: pointer; }
 .arac-son { color: var(--mercan-2); }
 .profil-araclar { margin: 6px 0 0; }
 .profil-araclar .ust-yazi { margin: 0 6px 0 2px; }
+/* D-215: plaka (gerçek plaka gibi açık zemin, iki temada aynı) ve aracın adı */
+.plaka { display: inline-block; font: 700 12.5px/1.5 ui-monospace, "DejaVu Sans Mono", "SFMono-Regular", Menlo, monospace; letter-spacing: 0.06em;
+  color: #1E1C1A; background: #F7F5EF; border: 1.5px solid #2A2724; border-left: 7px solid #2D6CB5; border-radius: 4px; padding: 0 6px; white-space: nowrap; }
+.plaka.kucuk-plaka { font-size: 11px; padding: 0 4px; border-left-width: 5px; }
+.arac-kimlik { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 2px 0 10px; min-width: 0; }
+.arac-kimlik .arac-adi { font-size: 15px; overflow-wrap: anywhere; }
+.arac2b-plaka-yazi { font: 700 12px ui-monospace, "DejaVu Sans Mono", monospace; fill: #1E1C1A; letter-spacing: 0.05em; }
+.arac2b-ad { font: 700 13px var(--f-govde, sans-serif); fill: #2A2724; }
+.yol-secim { display: grid; gap: 6px; margin-top: 8px; }
+.yol-secim .secim-satir small { display: block; }
+.depo-arac { display: inline-flex; align-items: center; gap: 4px; }
 .profil-araclar > .ik { width: 14px; height: 14px; vertical-align: -2px; }
 /* Haritada öteki yolcuların araçları (2B) */
 .trafik2b-araba.arac-bisiklet circle { fill: none; stroke: #2E8B57; stroke-width: 1.5; }
@@ -4082,6 +4194,19 @@ button.okey-tas { cursor: pointer; }
 .giysi-dugmeler { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .butik-kart > .dugme { grid-column: 2; justify-self: start; margin-top: 6px; }
 .butik-fiyat { font-weight: 800; font-size: 15px; color: var(--murekkep); margin-top: 2px; }
+.butik-ikinci { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
+.butik-ikinci .cip { margin: 0; }
+/* Butiğin dükkânı (D-211): 3B ve 2B */
+.butik-dukkan { margin-bottom: 20px; }
+.butik-sahne { height: 400px; margin-top: 12px; border-radius: var(--r-m); background: #E9E1D4; touch-action: pan-y; }
+.butik-sahne .yukleniyor.butik-on { display: grid; place-items: stretch; padding: 0; background: #E9E1D4; z-index: 1; }
+.butik-sahne .yukleniyor.butik-on svg, .butik-2b svg { width: 100%; height: 100%; }
+.butik-2b { position: absolute; inset: 0; display: grid; }
+.butik-2b[hidden] { display: none; }
+.butik-sahne[data-mod="2b"] { height: auto; aspect-ratio: 700 / 340; }
+.butik2b-tik { cursor: pointer; }
+.butik2b-tik.benim > rect:first-child { stroke: var(--orman); stroke-width: 2px; stroke-dasharray: 4 3; }
+@media (max-width: 860px) { .butik-sahne { height: 280px; } }
 .liste-ikon.giysi-mini { padding: 2px; }
 .liste-ikon.giysi-mini svg { width: 26px; height: 36px; }
 #butik-kapsam .secim-cip .ik { width: 15px; height: 15px; }
@@ -4130,6 +4255,28 @@ button.okey-tas { cursor: pointer; }
 @keyframes evcil2b-top { 0% { transform: translateX(-10px); } 100% { transform: translateX(10px); } }
 @media (prefers-reduced-motion: reduce) { .hayvan2b-kuyruk, .hayvan2b-zipla, .hayvan2b-yuvarlan, .hayvan2b-pati, .evcil2b-kalp, .evcil2b-top-yuvarlan { animation: none; } }
 @media (max-width: 520px) { .evcil-cubuklar > div { grid-template-columns: 56px minmax(0, 1fr) 42px; } .evcil-resim { width: 76px; height: 62px; } .evcil-resim svg { width: 70px; height: 56px; } }
+/* Evcil hayvanın kalanı (D-209): kuş (şakır, kanat çırpar) ve balık (yüzer), meydanda yürüyüş notu, meydandaki hayvanın kartı, 2B
+   meydanda sahibinin yanındaki hayvan (sevilince zıplar, kalbi görünür) */
+.kus2b-sarki { animation: kus2b-sarki 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+.kus2b-nota { animation: kus2b-nota 1.6s ease-out infinite; }
+.kus2b-kanat { animation: kus2b-kanat 0.18s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 80% 100%; }
+.balik2b-yuz { animation: balik2b-yuz 2.4s ease-in-out infinite; }
+.evcil-yuru-not { margin-top: 8px; }
+.evcil-yuru-not .ik { width: 15px; height: 15px; vertical-align: -3px; color: var(--orman); }
+.meydan-hayvan-kart { display: flex; gap: 12px; align-items: center; }
+.meydan-hayvan-kart .aciklama { margin: 0; min-width: 0; }
+.meydan2b-hayvan { cursor: pointer; }
+.meydan2b-oyuncu.ben .meydan2b-hayvan { pointer-events: auto; }
+.meydan2b-hayvan-kalp { opacity: 0; }
+.meydan2b-hayvan.sevindi > g { animation: hayvan2b-zipla 0.5s ease-in-out 4; transform-box: fill-box; transform-origin: 50% 100%; }
+.meydan2b-hayvan.sevindi .meydan2b-hayvan-kalp { animation: meydan2b-kalp 1.3s ease-out 2; }
+@keyframes kus2b-sarki { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(-3deg); } }
+@keyframes kus2b-nota { 0% { transform: translate(0, 0); opacity: 1; } 100% { transform: translate(4px, -10px); opacity: 0; } }
+@keyframes kus2b-kanat { 0% { transform: rotate(0); } 100% { transform: rotate(-28deg); } }
+@keyframes balik2b-yuz { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-3px, -2px); } }
+@keyframes meydan2b-kalp { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-5px); } }
+@media (prefers-reduced-motion: reduce) { .kus2b-sarki, .kus2b-nota, .kus2b-kanat, .balik2b-yuz, .meydan2b-hayvan.sevindi > g { animation: none; }
+  .meydan2b-hayvan.sevindi .meydan2b-hayvan-kalp { animation: none; opacity: 1; } }
 /* Şehir etkinlikleri (D-152): Şehrim → Etkinlikler; alan (3B ya da 2B), program, ayrıntı, karne */
 .etkinlik-sahne { background: #CFE3EE; }
 #etkinlik-2b svg, #etkinlik-yukleniyor svg { width: 100%; height: auto; }
@@ -4213,6 +4360,26 @@ button.okey-tas { cursor: pointer; }
 @keyframes etk2b-fener { to { opacity: 0.55; } }
 @keyframes etk2b-patla { 0% { transform: scale(0.1); opacity: 0; } 15% { opacity: 1; } 100% { transform: scale(1.25); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .etk2b-kisi, .etk2b-podyum, .etk2b-fener, .etk2b-patla, .etk2b-halka { animation: none; } }
+/* D-214: sponsorların tabelası, takımlar ve davetler, rallinin aracı */
+.etkinlik-tabelalar { display: flex; flex-wrap: wrap; gap: 8px; }
+.etkinlik-tabela { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; align-items: center; min-width: 0; max-width: 100%; padding: 8px 12px;
+  border-radius: 8px; background: #F1EDE2; color: #2F4F3E; border: 2px solid #2F4F3E; }
+.etkinlik-tabela .ik { width: 16px; height: 16px; grid-row: span 2; }
+.etkinlik-tabela b { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.etkinlik-tabela small { font-size: 12px; color: #4E6B5E; }
+.etkinlik-tabela.soluk { opacity: 0.55; }
+.etkinlik-takim { padding: 10px; border-radius: 10px; background: var(--kagit-2); display: grid; gap: 6px; min-width: 0; }
+.etkinlik-takim.benim { box-shadow: inset 0 0 0 2px var(--altin); }
+.etkinlik-takim-bas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.etkinlik-takim-bas b { font-size: 14px; min-width: 0; overflow-wrap: anywhere; }
+.etkinlik-takim-bas .liste-ikon { width: 30px; height: 30px; }
+.etkinlik-takim-bas .etkinlik-zaman { margin-left: auto; }
+.etkinlik-takim-uyeler { display: flex; flex-wrap: wrap; gap: 6px; }
+.etkinlik-takim-uyeler .cip .ik { width: 13px; height: 13px; color: #B8862B; vertical-align: -2px; }
+.etkinlik-takim-uyeler .cip.soluk, .etkinlik-kayitlilar .cip.soluk { opacity: 0.55; }
+.etkinlik-davetler .bilgi-kutusu > span { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.etkinlik-davet-dugmeler { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.etkinlik-yarisci b small.etkinlik-arac { display: block; font-weight: 600; font-size: 12px; color: var(--soluk); white-space: normal; }
 @media (max-width: 560px) {
   .etkinlik-sayac { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .etkinlik-satir { grid-template-columns: 40px minmax(0, 1fr); padding: 10px 6px; }
@@ -4247,6 +4414,7 @@ button.okey-tas { cursor: pointer; }
 .spor2b-kisi.boks { animation: spor2b-boks 0.7s ease-in-out infinite alternate; }
 .spor2b-kisi.esne { animation: spor2b-esne 4s ease-in-out infinite; }
 .spor2b-kisi.gosteri { animation: spor2b-gosteri 1.2s ease-in-out infinite alternate; }
+.spor2b-kisi.antrenor { animation: spor2b-antrenor 1.8s ease-in-out infinite; }
 .spor2b-bant { animation: spor2b-bant 0.6s linear infinite; }
 .spor2b-torba { transform-box: fill-box; transform-origin: center top; animation: spor2b-torba 0.7s ease-in-out infinite alternate; }
 .spor2b-ter circle { animation: spor2b-ter 1.4s ease-in infinite; }
@@ -4261,6 +4429,7 @@ button.okey-tas { cursor: pointer; }
 @keyframes spor2b-ter { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(14px); opacity: 0; } }
 @keyframes spor2b-konfeti { 0% { transform: translateY(-20px); opacity: 1; } 100% { transform: translateY(150px) rotate(180deg); opacity: 0; } }
 @keyframes spor2b-isilti { to { stroke: #FFE7A3; stroke-width: 5px; } }
+@keyframes spor2b-antrenor { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-4deg); } 60% { transform: rotate(3deg) translateY(-1px); } }
 @media (prefers-reduced-motion: reduce) { .spor2b-kisi, .spor2b-bant, .spor2b-torba, .spor2b-ter circle, .spor2b-konfeti rect, .spor2b-isilti > rect:first-child { animation: none; } }
 @media (max-width: 560px) { .spor-kartlar { grid-template-columns: minmax(0, 1fr); } }
 
@@ -4282,6 +4451,20 @@ button.okey-tas { cursor: pointer; }
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.2); }
 .futbol-forma.bos { background: var(--kagit-2); color: var(--soluk); box-shadow: inset 0 0 0 2px var(--cizgi-2); }
 .futbol-takim .liste-satir { grid-template-columns: 34px minmax(0, 1fr) auto; }
+/* Özel maç (D-206): davet edilecekler (kişi başına kart: onay kutusu, ad, yakınlık; seçilince takımı), davet kartı */
+.futbol-adaylar { max-height: 320px; overflow-y: auto; padding-right: 2px; display: grid; gap: 8px; }
+.futbol-aday { display: grid; gap: 8px; padding: 10px 12px; border-radius: 12px; border: 2px solid var(--cizgi); background: #fff; min-width: 0; }
+.futbol-aday:has(.futbol-aday-kim input:checked) { border-color: var(--orman); box-shadow: 0 0 0 3px var(--orman-acik); }
+.futbol-aday:has(.futbol-aday-kim input:focus-visible) { outline: 2px solid var(--orman); outline-offset: 2px; }
+.futbol-aday-kim { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; cursor: pointer; min-width: 0; }
+.futbol-aday-kim b { display: block; font-size: 14.5px; overflow-wrap: anywhere; }
+.futbol-aday-kim .kucuk { display: block; }
+.alan .futbol-aday-kim input, .futbol-aday-kim input { width: 18px; height: 18px; min-height: 0; margin: 2px 0 0; padding: 0; border: 0; accent-color: var(--orman); }
+.futbol-aday-takim { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 8px; padding-left: 32px; }
+.futbol-aday:not(:has(.futbol-aday-kim input:checked)) .futbol-aday-takim { display: none; }
+.futbol-aday-takim select { min-width: 0; width: 100%; max-width: 240px; }
+.futbol-davet { grid-template-columns: 40px minmax(0, 1fr); }
+.futbol-davet .futbol-davet-dugmeler { grid-column: 1 / -1; margin-top: 6px; }
 .futbol-taktik { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .futbol-skor { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; margin: 6px 0 4px; padding: 10px 14px;
   border-radius: 14px; background: #101215; color: #FFFFFF; }
@@ -4795,6 +4978,11 @@ ul.liste, ol.liste { list-style: none; margin: 0; padding: 0; }
 .meydan2b-imza-esya { fill: #F1E7CF; stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.4; }
 .meydan2b-imza-lamba { fill: #FFD873; stroke: rgba(255, 216, 115, 0.5); stroke-width: 3; }
 .meydan2b-imza.canli .meydan2b-imza-masa { stroke: #FFD873; stroke-width: 1.2; }
+/* D-214: şehir etkinliği günü meydanın süsü (bayrak dizileri, afiş, damalı bayraklar, balonlar) */
+.meydan2b-etk-ip { stroke: #3B2E22; stroke-width: 0.8; fill: none; }
+.meydan2b-etk-direk { stroke: #3A3F45; stroke-width: 1.6; }
+.meydan2b-etk-afis-zemin { fill: #2F4F3E; stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.8; }
+.meydan2b-etk-balon { stroke: rgba(0, 0, 0, 0.25); stroke-width: 0.6; }
 
 /* Medya 3. parça (D-197): dev ekran (2B plan), kanal adı, makalenin olay bağlantısı, günün videosu, yayın köşesi */
 .meydan2b-devekran .meydan2b-ekran { fill: #1A1D21; stroke: #3A4149; }

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("dunya/harita",{async ac(kap){const[veriTam]=await Promise.all([haritaVerisi(),Durum.ozet(),Durum.kurallar()]);let harita=await Durum.harita(!0);Devletler.haritaya(veriTam);let yolDurum=await Sunucu.
 cagir("travel_status").catch(()=>null),isb=await Sunucu.cagir("coop_map").catch(()=>null),trafik=await Sunucu.cagir("world_pulse").catch(()=>null);const filmIstek=HaritaFilm.bekleyen;HaritaFilm.bekleyen=
 null;let filmVeri=filmIstek?.veri??null;if(filmIstek&&!filmVeri&&(filmVeri=await Sunucu.cagir("season_film",{p_season:filmIstek.no??null}).catch(e=>(tost(hataMetni(e),"circle-alert"),null))),filmVeri)
@@ -42,15 +42,15 @@ character??{};kap.innerHTML=`<div class="harita-ekran">
 location,ulkem:ch().citizenship,yol:yolDurum?.travel??null,saatFarki,isbirligi:isb,trafik,isgaller:harita.occupations??[],hasar:harita.damage??{}}),durumNesnesi=()=>{const d=canliDurum();return film?.
 an?{...d,sahip:film.an.sahip,savaslar:film.an.savaslar,girisimler:[],ozerkler:[],ozkSurecler:[],devletler:[],isgaller:[],hasar:{},yol:null,trafik:null,konum:null,filmIgneleri:film.an.igneler}:d};function rota2b(y){
 const r=[...y.route??[]];return r[0]!==y.from&&r.unshift(y.from),r[r.length-1]!==y.to&&r.push(y.to),r.map(id=>bolgeById.get(id)).filter(Boolean).map(b=>b.etiket)}function aracNoktasi2b(y){return kirikNokta(
-rota2b(y),(Date.now()+saatFarki-Date.parse(y.departs_at))/Math.max(1,Date.parse(y.arrives_at)-Date.parse(y.departs_at)))}function yolKendiArac2b(y){if(!y?.vehicle)return null;const v=yolculukVerisi({ys:{
-travel:y},harita:null}),an=yolculukAni(v,Date.now()+saatFarki);return an.kendi?an.vapur?v.aracD:v.aracK:null}function canliYaz(){const el=$("#harita-canli",kap);if(!el)return;if(!trafik){el.hidden=!0;
-return}const yolda=Number(trafik.travel_total??0),tic=(trafik.trade??[]).reduce((s,x)=>s+Number(x.trades??0),0),kon=(trafik.convoys??[]).length,oto=(trafik.tour_buses??[]).length,kargo=Number(trafik.cargo_total??
-0),parca=[yolda?\u00E7("{n} ki\u015Fi yolda",{n:sayi(yolda)}):\u00E7("\u015Eu an yolda kimse yok")];tic&&parca.push(\u00E7("son 10 dakikada {n} s\u0131n\u0131r \xF6tesi al\u0131\u015Fveri\u015F",{n:sayi(
-tic)})),kargo&&parca.push(\u00E7("{n} kargo yolda",{n:sayi(kargo)})),kon&&parca.push(\u00E7("{n} cephede sava\u015F turu s\xFCr\xFCyor",{n:sayi(kon)})),oto&&parca.push(oto===1?\u00E7("turne otob\xFCs\xFC yo\
-lda: {grup}",{grup:trafik.tour_buses[0].band??""}):\u00E7("{n} turne otob\xFCs\xFC yolda",{n:sayi(oto)})),el.innerHTML=`${ikon("route")}<span><b>${\u00E7("Canl\u0131")}</b> \xB7 ${parca.join(" \xB7 ")}\
-</span>`,el.hidden=!1}function kartHtml(){if(!secili)return"";const kapat=`<button class="kapat" data-kapat-kart aria-label="${\u00E7("Kapat")}">${ikon("x")}</button>`;if(secili.tur==="ulke"){const u=ulkeById.
-get(secili.id)?.u;if(!u)return"";const acik=(harita.open_countries??[]).includes(u.id),uyuyor=(harita.dormant_countries??[]).includes(u.id),ayrintili=veri.bolgeler.some(b6=>b6.ulke===u.id);return`<sec\
-tion class="bolge-karti cam">${kapat}
+rota2b(y),(Date.now()+saatFarki-Date.parse(y.departs_at))/Math.max(1,Date.parse(y.arrives_at)-Date.parse(y.departs_at)))}const yolPlaka=y=>[y?.vehicle?.land?.plate,y?.vehicle?.sea?.plate].filter(Boolean)[0]??
+null;function yolKendiArac2b(y){if(!y?.vehicle)return null;const v=yolculukVerisi({ys:{travel:y},harita:null}),an=yolculukAni(v,Date.now()+saatFarki);return an.kendi?an.vapur?v.aracD:v.aracK:null}function canliYaz(){
+const el=$("#harita-canli",kap);if(!el)return;if(!trafik){el.hidden=!0;return}const yolda=Number(trafik.travel_total??0),tic=(trafik.trade??[]).reduce((s,x)=>s+Number(x.trades??0),0),kon=(trafik.convoys??
+[]).length,oto=(trafik.tour_buses??[]).length,kargo=Number(trafik.cargo_total??0),parca=[yolda?\u00E7("{n} ki\u015Fi yolda",{n:sayi(yolda)}):\u00E7("\u015Eu an yolda kimse yok")];tic&&parca.push(\u00E7(
+"son 10 dakikada {n} s\u0131n\u0131r \xF6tesi al\u0131\u015Fveri\u015F",{n:sayi(tic)})),kargo&&parca.push(\u00E7("{n} kargo yolda",{n:sayi(kargo)})),kon&&parca.push(\u00E7("{n} cephede sava\u015F turu s\xFCr\xFC\
+yor",{n:sayi(kon)})),oto&&parca.push(oto===1?\u00E7("turne otob\xFCs\xFC yolda: {grup}",{grup:trafik.tour_buses[0].band??""}):\u00E7("{n} turne otob\xFCs\xFC yolda",{n:sayi(oto)})),el.innerHTML=`${ikon(
+"route")}<span><b>${\u00E7("Canl\u0131")}</b> \xB7 ${parca.join(" \xB7 ")}</span>`,el.hidden=!1}function kartHtml(){if(!secili)return"";const kapat=`<button class="kapat" data-kapat-kart aria-label="${\u00E7(
+"Kapat")}">${ikon("x")}</button>`;if(secili.tur==="ulke"){const u=ulkeById.get(secili.id)?.u;if(!u)return"";const acik=(harita.open_countries??[]).includes(u.id),uyuyor=(harita.dormant_countries??[]).
+includes(u.id),ayrintili=veri.bolgeler.some(b6=>b6.ulke===u.id);return`<section class="bolge-karti cam">${kapat}
           <p class="ust-yazi">${acik?uyuyor?\u00E7("Oyunda \xB7 uyuyan \xFClke"):\u00E7("Oyunda \xB7 uyan\u0131k"):\u00E7("Hen\xFCz a\xE7\u0131lmad\u0131")}</p><h2 class="b2">${esc(u.ad)}</h2>
           <p class="aciklama" style="font-size:14px">${acik?uyuyor?\u00E7("Etkin vatanda\u015F\u0131 az oldu\u011Fu i\xE7in uyuyor: sava\u015F a\xE7amaz, ona sava\u015F a\xE7\u0131lamaz. Yeterli etkin vatanda\u015Fa ula\u015F\u0131nca uyan\u0131r ve Kurucu Me\
 clis se\xE7imi ba\u015Flar."):\u00E7("Uyan\u0131k \xFClke: se\xE7imler ve sava\u015F a\xE7\u0131k."):\u00E7("Bu \xFClke hen\xFCz oyuna a\xE7\u0131lmad\u0131; s\u0131n\u0131rlar bug\xFCnk\xFC haritadan.")}\
@@ -210,11 +210,12 @@ hor="middle" class="y-kapali" data-oncelik="1">${esc(u.ad)}</text>`).join(""),ko
 1?`<polyline class="yol2b" points="${yolY.map(p=>p.join(",")).join(" ")}"/>`:"",kendi=aracN?yolKendiArac2b(d.yol):null,arac=aracN?`<g class="olcekli arac2b" data-x="${aracN[0].toFixed(1)}" data-y="${aracN[1].
 toFixed(1)}" data-yol-arac="${esc(kendi?.tur??"")}"><circle r="9" class="arac2b-govde"${kendi?` style="fill:${aracRengi(kendi.renk)}"`:""}/>
         <g class="arac2b-ikon"${kendi?` style="fill:${aracKarsit(kendi.renk)};stroke:${aracKarsit(kendi.renk)}"`:""}>${aracMini2b(kendi?.tur??"")}</g><text y="-15" text-anchor="middle" class="konum-ya\
-zi">${\u00E7("Yoldas\u0131n \xB7 {bolge}",{bolge:esc(bolgeById.get(d.yol.to)?.ad??"")})}</text></g>`:"",gece=`<path class="gece2b" d="${geceYolu2b(Date.now()+saatFarki,veri.tuval)}"/>`,nokta=id=>bolgeById.
-get(id)?.etiket??DUNYA.bolgeler?.[id]?.e??null,egri=(a,b,kalk)=>{const mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2-kalk;return`M${a[0]},${a[1]} Q${mx.toFixed(1)},${my.toFixed(1)} ${b[0]},${b[1]}`},hatlar=(d.isbirligi?.
-lines??[]).map(l=>{const a=nokta(l.region_a),b=nokta(l.region_b);if(!a||!b)return"";const insaat=l.status==="building",kapali=l.status==="built"&&l.weight_q==null,bakimsiz=l.status==="built"&&Number(l.
-weight_q)>2,sinif=insaat?"insaat":kapali?"kapali":`${l.kind}${bakimsiz?" bakimsiz":""}`,yol=egri(a,b,l.kind==="rail"?0:Math.hypot(b[0]-a[0],b[1]-a[1])*.18),m=[(a[0]+b[0])/2,(a[1]+b[1])/2];return`<path\
- class="hat2b ${sinif}" d="${yol}" data-hat2b="${esc(l.line_id)}" data-hat2b-durum="${esc(l.status)}"/>${l.kind==="rail"&&!insaat&&!kapali?`<path class="hat2b rail-ust" d="${yol}"/>`:""}
+zi"${yolPlaka(d.yol)?` data-harita-plaka="${esc(yolPlaka(d.yol))}"`:""}>${\u00E7("Yoldas\u0131n \xB7 {bolge}",{bolge:esc(bolgeById.get(d.yol.to)?.ad??"")})}${yolPlaka(d.yol)?" \xB7 "+esc(yolPlaka(d.yol)):
+""}</text></g>`:"",gece=`<path class="gece2b" d="${geceYolu2b(Date.now()+saatFarki,veri.tuval)}"/>`,nokta=id=>bolgeById.get(id)?.etiket??DUNYA.bolgeler?.[id]?.e??null,egri=(a,b,kalk)=>{const mx=(a[0]+
+b[0])/2,my=(a[1]+b[1])/2-kalk;return`M${a[0]},${a[1]} Q${mx.toFixed(1)},${my.toFixed(1)} ${b[0]},${b[1]}`},hatlar=(d.isbirligi?.lines??[]).map(l=>{const a=nokta(l.region_a),b=nokta(l.region_b);if(!a||
+!b)return"";const insaat=l.status==="building",kapali=l.status==="built"&&l.weight_q==null,bakimsiz=l.status==="built"&&Number(l.weight_q)>2,sinif=insaat?"insaat":kapali?"kapali":`${l.kind}${bakimsiz?
+" bakimsiz":""}`,yol=egri(a,b,l.kind==="rail"?0:Math.hypot(b[0]-a[0],b[1]-a[1])*.18),m=[(a[0]+b[0])/2,(a[1]+b[1])/2];return`<path class="hat2b ${sinif}" d="${yol}" data-hat2b="${esc(l.line_id)}" data-\
+hat2b-durum="${esc(l.status)}"/>${l.kind==="rail"&&!insaat&&!kapali?`<path class="hat2b rail-ust" d="${yol}"/>`:""}
           ${insaat?`<g class="olcekli hat2b-isaret insaat" data-x="${m[0].toFixed(1)}" data-y="${m[1].toFixed(1)}"><circle r="8"/><path d="M-3 4 L-3 -4 L4 -4 M1 -4 L1 1" stroke="#E0A23A" stroke-width=\
 "1.6" fill="none"/>
             <text y="-12" text-anchor="middle">${esc(yuzde(Number(l.progress_ppm??0)/1e6))}</text></g>`:""}`}).join(""),ticaret=kip!=="siyasi"?"":(d.isbirligi?.trade??[]).map(t=>{const u=ticaretUclari(

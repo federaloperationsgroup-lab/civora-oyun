@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,yv=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ul\
 ke/cephe",depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek,yv]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(
 ()=>null),Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Sunucu.

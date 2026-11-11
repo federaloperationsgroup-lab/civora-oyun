@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_91_ozerklik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_91_ozerklik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/bolge",{async ac(kap){let s=null,bolge=ozkBakilan;ozkBakilan=null;let kapandi=!1,durdur=()=>{};const sandik=SandikBasi.ac();sandik.dinle("sec",ad=>{(ad==="adaylar"?$("#ozk-adaylar",
 kap):$("#ozk-oy",kap)??$("#ozk-adaylar",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const odeme={q:"",sonuc:null,secilen:null,tutar:"",amac:"aid"};let secilenAd=null;
 async function yukle(){[s]=await Promise.all([Sunucu.cagir("autonomy_status",{p_region:bolge}),Durum.ozet(),Durum.kurallar()])}const r=()=>s.rule,bk=()=>s.independence?.rule??(()=>{const c=Durum.v.kurallar?.

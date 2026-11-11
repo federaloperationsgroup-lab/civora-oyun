@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzt_odalar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzt_odalar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/odalar",{async ac(kap){let o=null,h=null,secili=null,kapandi=!1,hata3b=!1,ayr="";const mod=()=>Gorunum.uc()&&!hata3b?"3b":"2b";async function yukle(){o=await Sunucu.cagir("chambers"),
 secili??=o?.member_kind??o?.kinds?.find(k=>k.members>0)?.kind??"sanayi",h=await Sunucu.cagir("chamber_hall",{p_kind:secili})}const veri=()=>odaSalonVerisi(h,secili),kural=()=>Durum.v.kurallar?.data?.profession?.
 chambers??{},sec_=()=>({minMembers:2,voidRetryDays:2,...kural().election??{},...h?.chamber?.rule?.election??{}}),yazi_=()=>({minLen:10,maxLen:280,perDay:1,...kural().post??{},...h?.chamber?.rule?.post??

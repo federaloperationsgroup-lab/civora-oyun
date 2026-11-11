@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzu_usta.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzu_usta.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/usta",{async ac(kap){let b=null,kapandi=!1;const yukle=async()=>{b=await Sunucu.cagir("mentor_board")},yap=async(ad,p,mesaj,ik="hand-heart")=>{try{await Sunucu.yap(ad,p),mesaj&&tost(
 mesaj,ik)}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()},kisi=k=>`<button class="baglanti" type="button" data-profil="${esc(k.character_id)}"><b>${esc(k.name??"")}</b></button>`;function bagKarti(x,r){
 const karsi=x.role==="mentor"?x.apprentice:x.mentor;return`<div class="usta-bag" data-bag="${esc(x.mentorship_id)}" data-rol="${esc(x.role??"")}">

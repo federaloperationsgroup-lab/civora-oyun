@@ -1,11 +1,11 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_38_gorunus_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_38_gorunus_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/gorunum",{async ac(kap){let v=null,secim=null,mod=null,hata3b=!1,kapandi=!1,gonderiliyor=!1,rutbeSayisi=12,magaza=null,gardirop=null;async function yukle(){const[l,kurallar,m,w]=await Promise.
 all([Sunucu.cagir("my_look"),Durum.kurallar(),Sunucu.cagir("store_view").catch(()=>null),Sunucu.cagir("wardrobe").catch(()=>null)]);v=l,magaza=m,gardirop=w,rutbeSayisi=kurallar?.data?.combat?.war2?.ranks?.
-length??12,secim=gorunusTaslak?.kimlik===v.character_id?{...gorunusTaslak.look}:{...kayitli()},giysiEsle()}function giysiEsle(){const gy=v?.look?.giysi;if(gy)secim={...secim,giysi:gy};else if(secim&&"\
-giysi"in secim){const{giysi,...kalan}=secim;secim=kalan}gorunusTaslak?.look&&(gy?gorunusTaslak.look.giysi=gy:delete gorunusTaslak.look.giysi)}const kayitli=()=>v.look??varsayilanGorunus(v.name),ALANLAR=[
-"ten","sacRenk","sac","sakal","yuz","beden","kiyafet","renk","zemin"],yuvalar=g=>Object.fromEntries(Object.entries(g?.urunler??{}).filter(([,x])=>typeof x=="string").sort()),degisti=()=>ALANLAR.some(k=>secim[k]!==
-kayitli()[k])||JSON.stringify(yuvalar(secim))!==JSON.stringify(yuvalar(kayitli()))||(secim.forma?.k??null)!==(kayitli().forma?.k??null),sahipler=yuva=>(magaza?.products??[]).filter(p=>p.owned&&p.kind===
-MAGAZA_YUVALAR[yuva]),ek=()=>({ulke:v.country_id,rutbe:v.rank});kap.innerHTML=`<div class="sayfa">
+length??12,secim=gorunusTaslak?.kimlik===v.character_id?{...gorunusTaslak.look}:{...kayitli()},giysiEsle()}function giysiEsle(){for(const alan of["giysi","takilar"]){const gy=v?.look?.[alan];if(gy)secim=
+{...secim,[alan]:gy};else if(secim&&alan in secim){const{[alan]:_x,...kalan}=secim;secim=kalan}gorunusTaslak?.look&&(gy?gorunusTaslak.look[alan]=gy:delete gorunusTaslak.look[alan])}}const kayitli=()=>v.
+look??varsayilanGorunus(v.name),ALANLAR=["ten","sacRenk","sac","sakal","yuz","beden","kiyafet","renk","zemin"],yuvalar=g=>Object.fromEntries(Object.entries(g?.urunler??{}).filter(([,x])=>typeof x=="st\
+ring").sort()),degisti=()=>ALANLAR.some(k=>secim[k]!==kayitli()[k])||JSON.stringify(yuvalar(secim))!==JSON.stringify(yuvalar(kayitli()))||(secim.forma?.k??null)!==(kayitli().forma?.k??null),sahipler=yuva=>(magaza?.
+products??[]).filter(p=>p.owned&&p.kind===MAGAZA_YUVALAR[yuva]),ek=()=>({ulke:v.country_id,rutbe:v.rank});kap.innerHTML=`<div class="sayfa">
       <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("G\xF6r\xFCn\xFCm")}</h1>
         <p class="aciklama">${\u00E7("Fig\xFCr\xFCn ve profil resmin. G\xF6r\xFCn\xFCm s\xFCst\xFCr: g\xFC\xE7, gelir ya da oy vermez; pilotta b\xFCt\xFCn se\xE7enekler \xFCcretsiz.")}</p></div></div>\
 
@@ -78,62 +78,95 @@ uva]",kap))b.onclick=()=>{const u={...secim.urunler??{}};b.dataset.deger?u[b.dat
 tgele",kap).onclick=()=>{const r=rastgele((Date.now()^Math.floor(Math.random()*1e9))>>>0),i=n=>Math.floor(r()*n),kiyafetler=K.outfits.filter(x=>!x.uniform||v.uniform_allowed),yuzler=K.faces??GORUNUS_VARSAYILAN_KURAL.
 faces,bedenler=K.bodies??GORUNUS_VARSAYILAN_KURAL.bodies;secim={ten:i(K.skin.length),sacRenk:i(K.hairColor.length),sac:K.hairStyles[i(K.hairStyles.length)].id,sakal:K.beards[i(K.beards.length)].id,yuz:yuzler[i(
 yuzler.length)].id,beden:bedenler[i(bedenler.length)].id,kiyafet:kiyafetler[i(kiyafetler.length)].id,renk:i(K.outfitColors.length),zemin:i(K.backgrounds.length),...secim.urunler?{urunler:secim.urunler}:
-{},...secim.giysi?{giysi:secim.giysi}:{},...secim.forma?{forma:secim.forma}:{}},degistir(),figur3bOrnek?.elSalla()},$("#gorunus-vazgec",kap).onclick=()=>{secim={...kayitli()},gorunusTaslak=null,degistir()},
-$("#gorunus-kaydet",kap).onclick=kaydet,$("[data-giysi-cikar]",kap)?.addEventListener("click",e=>isle(e.currentTarget,()=>giy(null)))}function gardiropCiz(){const el=$("#gorunus-gardirop",kap);if(!el||
-(el.hidden=!gardirop,!gardirop))return;const R=gardirop.rule??{},T=R.tailoring??terzilikKurali(),B=R.boutique??butikKurali(),liste=gardirop.garments??[],sinir=Number(T.wardrobeMax??30),ilanSayi=Number(
-gardirop.listings??0),kart=x=>{const satista=!!x.listing,giyili=!!x.worn,benim=x.source==="sewn",kimden=benim?\u00E7("Sen diktin"):x.maker_name?\u00E7("{ad} dikti \xB7 butikten ald\u0131n",{ad:x.maker_name}):
-\u00E7("Butikten ald\u0131n"),d=[];return satista||d.push(giyili?`<button type="button" class="dugme ikincil kucuk-d" data-giysi-giy="">${ikon("undo-2")}${\u00E7("\xC7\u0131kar")}</button>`:`<button t\
-ype="button" class="dugme altin kucuk-d" data-giysi-giy="${esc(x.garment_id)}">${ikon("shirt")}${\u00E7("Giy")}</button>`),benim&&!satista&&!giyili&&d.push(`<button type="button" class="dugme ikincil \
-kucuk-d" data-giysi-sat="${esc(x.garment_id)}" ${ilanSayi>=Number(B.listingsMax??6)?"disabled":""}>${ikon("shopping-bag")}${\u00E7("Buti\u011Fe koy")}</button>`),satista&&d.push(`<button type="button"\
- class="dugme ikincil kucuk-d" data-giysi-cek="${esc(x.garment_id)}">${ikon("undo-2")}${\u00E7("Sat\u0131\u015Ftan \xE7ek")}</button>`),!satista&&!giyili&&d.push(`<button type="button" class="dugme sa\
-de kucuk-d" data-giysi-at="${esc(x.garment_id)}">${ikon("trash")}${\u00E7("At")}</button>`),`<article class="giysi-kart${giyili?" giyili":""}" data-giysi="${esc(x.garment_id)}" data-model="${esc(x.model)}\
-" data-giyili="${giyili?1:0}" data-satista="${satista?1:0}">
-          <span class="giysi-resim">${giysiSvg(x.model,x.color1,x.color2,x.quality,{etiket:giysiModelAdi(x.model)})}</span>
+{},...secim.giysi?{giysi:secim.giysi}:{},...secim.takilar?{takilar:secim.takilar}:{},...secim.forma?{forma:secim.forma}:{}},degistir(),figur3bOrnek?.elSalla()},$("#gorunus-vazgec",kap).onclick=()=>{secim=
+{...kayitli()},gorunusTaslak=null,degistir()},$("#gorunus-kaydet",kap).onclick=kaydet,$("[data-giysi-cikar]",kap)?.addEventListener("click",e=>isle(e.currentTarget,()=>giy(null)))}function gardiropCiz(){
+const el=$("#gorunus-gardirop",kap);if(!el||(el.hidden=!gardirop,!gardirop))return;const R=gardirop.rule??{},T=R.tailoring??terzilikKurali(),B=R.boutique??butikKurali(),liste=gardirop.garments??[],sinir=Number(
+T.wardrobeMax??30),ilanSayi=Number(gardirop.listings??0),hediyeKalan=Math.max(0,Number(T.giftsPerDay??3)-Number(gardirop.gifts_today??0)),kart=x=>{const satista=!!x.listing,giyili=!!x.worn,benim=x.source===
+"sewn",yuva=x.slot??giysiYuvasi(x.model),kimden=benim?\u00E7("Sen diktin"):x.source==="gift"?x.maker_name&&x.gift_from_name?\u00E7("{ad} dikti \xB7 {kim} hediye etti",{ad:x.maker_name,kim:x.gift_from_name}):
+x.maker_name?\u00E7("{ad} dikti \xB7 hediye geldi",{ad:x.maker_name}):\u00E7("Hediye geldi"):x.maker_name?\u00E7("{ad} dikti \xB7 butikten ald\u0131n",{ad:x.maker_name}):\u00E7("Butikten ald\u0131n"),
+d=[];return satista||d.push(giyili?`<button type="button" class="dugme ikincil kucuk-d" data-giysi-giy="" data-yuva="${esc(x.worn_slot??"govde")}">${ikon("undo-2")}${\u00E7("\xC7\u0131kar")}</button>`:
+`<button type="button" class="dugme altin kucuk-d" data-giysi-giy="${esc(x.garment_id)}">${ikon("shirt")}${\u00E7("Giy")}</button>`),!satista&&!giyili&&!x.busy&&d.push(`<button type="button" class="du\
+gme ikincil kucuk-d" data-giysi-sat="${esc(x.garment_id)}" ${ilanSayi>=Number(B.listingsMax??6)?"disabled":""}>${ikon("shopping-bag")}${\u00E7("Buti\u011Fe koy")}</button>`),satista&&d.push(`<button t\
+ype="button" class="dugme ikincil kucuk-d" data-giysi-cek="${esc(x.garment_id)}">${ikon("undo-2")}${\u00E7("Sat\u0131\u015Ftan \xE7ek")}</button>`),!satista&&!x.busy&&d.push(`<button type="button" cla\
+ss="dugme ikincil kucuk-d" data-giysi-hediye="${esc(x.garment_id)}" ${hediyeKalan<=0?"disabled":""}>${ikon("gift")}${\u00E7("Hediye et")}</button>`),!satista&&!giyili&&d.push(`<button type="button" cl\
+ass="dugme sade kucuk-d" data-giysi-at="${esc(x.garment_id)}">${ikon("trash")}${\u00E7("At")}</button>`),`<article class="giysi-kart${giyili?" giyili":""}" data-giysi="${esc(x.garment_id)}" data-model\
+="${esc(x.model)}" data-giyili="${giyili?1:0}" data-satista="${satista?1:0}" data-yuva="${esc(yuva??"govde")}" data-kaynak="${esc(x.source)}">
+          <span class="giysi-resim">${giysiSvg(x.model,x.color1,x.color2,x.quality,{etiket:giysiModelAdi(x.model),desen:x.pattern})}</span>
           <div class="giysi-bilgi"><b>${esc(giysiModelAdi(x.model))}</b>
-            <span class="kucuk">${esc(giysiKumasYazisi(x.color1,x.color2))}</span>
-            <span class="kucuk"><span class="giysi-yildiz" aria-hidden="true">${giysiYildiz(x.quality)}</span> ${esc(GIYSI_KALITE_AD[x.quality]??"")}</span>
+            <span class="kucuk">${esc(giysiKumasYazisi(x.color1,x.color2,x.pattern))}</span>
+            <span class="kucuk"><span class="giysi-yildiz" aria-hidden="true">${giysiYildiz(x.quality)}</span> ${esc(GIYSI_KALITE_AD[x.quality]??"")}${Number(x.fabric??1)>1?` \xB7 ${esc(GIYSI_KUMAS_AD[x.
+fabric]??"")}`:""}</span>
             <span class="kucuk">${esc(kimden)}</span>
-            ${giyili?`<span class="cip yesil">${ikon("check")}${\u00E7("Giyiyorsun")}</span>`:""}
-            ${satista?`<span class="cip altin">${ikon("shopping-bag")}${esc(\u00E7("Butikte \xB7 {kr} kredi",{kr:kr(x.listing.price_cr)}))}</span>`:""}</div>
+            ${yuva?`<span class="cip">${ikon(yuva==="ayak"?"footprints":yuva==="boyun"?"ribbon":"crown")}${esc(GIYSI_YUVA_AD[yuva]??"")}</span>`:""}
+            ${giyili?`<span class="cip yesil">${ikon("check")}${esc(GIYSI_YUVA_YER[x.worn_slot??"govde"]??\u00E7("Giyiyorsun"))}</span>`:""}
+            ${x.busy?`<span class="cip">${ikon("sparkles")}${\u00E7("Defilede")}</span>`:""}
+            ${satista?`<span class="cip altin">${ikon("shopping-bag")}${esc(x.listing.second_hand?\u00E7("\u0130kinci el \xB7 {kr} kredi",{kr:kr(x.listing.price_cr)}):\u00E7("Butikte \xB7 {kr} kredi",
+{kr:kr(x.listing.price_cr)}))}</span>`:""}</div>
           <div class="giysi-dugmeler">${d.join("")}</div></article>`},satislar=gardirop.sales??[];el.innerHTML=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Gard\u0131robum")}</p><h2 class\
 ="b2">${\u00E7("{n} / {m} giysi",{n:sayi(liste.length),m:sayi(sinir)})}</h2></div>
           <span class="oneri-dugmeler"><button type="button" class="dugme sade kucuk-d" data-git="hayat/hobiler">${ikon("scissors")}${\u00E7("Terzilik")}</button>
             <button type="button" class="dugme sade kucuk-d" data-git="sehir/butik">${ikon("shopping-bag")}${\u00E7("Butik")}</button></span></div>
         ${liste.length?`<div class="gardirop-izgara">${liste.map(kart).join("")}</div>`:`<p class="bos">${\u00E7("Gard\u0131robun bo\u015F. Hayat\u0131m \u2192 Hobiler \u2192 Terzilik'te giysi dik ya da \u015Eehrim \u2192 Butik'ten al.")}\
 </p>`}
-        <p class="kucuk" style="margin-top:10px">${esc(\u00E7("Buti\u011Finde {n} / {m} giysi. Bug\xFCn {s} / {sm} sat\u0131\u015F, {a} / {am} al\u0131m. Sat\u0131\u015Ftan %{oran} komisyon yak\u0131l\u0131r; butikten al\u0131nan giysi yeniden sat\u0131\
-lmaz.",{n:sayi(ilanSayi),m:sayi(B.listingsMax??6),s:sayi(gardirop.sold_today??0),sm:sayi(B.sellerPerDay??5),a:sayi(gardirop.bought_today??0),am:sayi(B.buyerPerDay??5),oran:sayi(Number(B.feePpm??5e4)/1e4)}))}\
-</p>
+        <p class="kucuk" style="margin-top:10px" id="gardirop-not">${esc(\u00E7("Buti\u011Finde {n} / {m} giysi. Bug\xFCn {s} / {sm} sat\u0131\u015F, {a} / {am} al\u0131m, {g} / {gm} hediye. Sat\u0131\u015Ftan %{oran} komisyon yak\u0131l\u0131\
+r; ba\u015Fkas\u0131ndan gelen giysi ikinci el sat\u0131l\u0131r (ilk sat\u0131\u015F fiyat\u0131n\u0131n en \xE7ok %{t}'i).",{n:sayi(ilanSayi),m:sayi(B.listingsMax??6),s:sayi(gardirop.sold_today??0),
+sm:sayi(B.sellerPerDay??5),a:sayi(gardirop.bought_today??0),am:sayi(B.buyerPerDay??5),g:sayi(gardirop.gifts_today??0),gm:sayi(T.giftsPerDay??3),oran:sayi(Number(B.feePpm??5e4)/1e4),t:sayi(Number(B.secondHand?.
+capPpm??7e5)/1e4)}))}</p>
+        ${(gardirop.gifts_received??[]).length?`<details class="gardirop-hediyeler" id="gardirop-hediyeler" style="margin-top:8px"><summary>${esc(\u00E7("Gelen hediyeler ({n})",{n:sayi(gardirop.gifts_received.
+length)}))}</summary>
+          <div class="liste" style="margin-top:8px">${gardirop.gifts_received.map(x=>`<div class="liste-satir"><span class="liste-ikon yesil">${ikon("gift")}</span>
+            <div><span class="tur">${esc(zamanOnce(x.at))}</span><b>${esc(giysiModelAdi(x.model))} \xB7 ${esc(giysiKumasYazisi(x.color1,x.color2,x.pattern))}</b>
+              <div class="alt">${x.from_name?`<button class="baglanti" type="button" data-profil="${esc(x.from_id)}">${esc(x.from_name)}</button>`:esc(\u00E7("Silinmi\u015F hesap"))}</div></div><span>\
+</span></div>`).join("")}</div></details>`:""}
         ${satislar.length?`<details class="gardirop-satislar" style="margin-top:8px"><summary>${esc(\u00E7("Son sat\u0131\u015Flar\u0131n ({n})",{n:sayi(satislar.length)}))}</summary>
           <div class="liste" style="margin-top:8px">${satislar.map(x=>`<div class="liste-satir"><span class="liste-ikon altin">${ikon("shopping-bag")}</span>
             <div><span class="tur">${esc(zamanOnce(x.at))}</span><b>${esc(giysiModelAdi(x.model))} \xB7 ${esc(giysiKumasYazisi(x.color1,x.color2))}</b>
               <div class="alt">${esc(\u00E7("{kr} kredi \xB7 komisyon {k} \xB7 eline {n} kredi ge\xE7ti",{kr:kr(x.price_cr),k:kr(x.fee_cr),n:kr(Number(x.price_cr)-Number(x.fee_cr))}))}</div></div><spa\
-n></span></div>`).join("")}</div></details>`:""}`;for(const b of $$("[data-git]",el))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$("[data-giysi-giy]",el))b.onclick=()=>isle(b,()=>giy(b.dataset.
-giysiGiy||null));for(const b of $$("[data-giysi-sat]",el))b.onclick=()=>satPenceresi((gardirop.garments??[]).find(x=>x.garment_id===b.dataset.giysiSat));for(const b of $$("[data-giysi-cek]",el))b.onclick=
-()=>isle(b,async()=>{const g=(gardirop.garments??[]).find(x=>x.garment_id===b.dataset.giysiCek);gardirop=await Sunucu.yap("boutique_unlist",{p_garment:b.dataset.giysiCek}),tost(\u00E7("{model} sat\u0131\u015Fta\
-n \xE7ekildi; gard\u0131robunda.",{model:giysiModelAdi(g?.model)}),"undo-2"),gardiropCiz()});for(const b of $$("[data-giysi-at]",el))b.onclick=()=>{const g=(gardirop.garments??[]).find(x=>x.garment_id===
-b.dataset.giysiAt);g&&pencere({ust:\u00E7("Gard\u0131robum"),baslik:\u00E7("{model} at\u0131ls\u0131n m\u0131?",{model:giysiModelAdi(g.model)}),govde:`<p class="aciklama">${esc(\u00E7("At\u0131lan giysi ge\
-ri gelmez ({kumas}, {kalite}).",{kumas:giysiKumasYazisi(g.color1,g.color2),kalite:GIYSI_KALITE_AD[g.quality]??""}))}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("At"),sinif:"mercan",ikon:"trash",
-is:()=>isle(null,async()=>{gardirop=await Sunucu.yap("garment_discard",{p_garment:g.garment_id}),tost(\u00E7("{model} at\u0131ld\u0131.",{model:giysiModelAdi(g.model)}),"trash"),gardiropCiz()})}]})}}async function isle(dugme,is){
-if(!dugme?.disabled){dugme&&(dugme.disabled=!0);try{await is()}catch(e){tost(hataMetni(e),"circle-alert")}finally{dugme?.isConnected&&(dugme.disabled=!1)}}}async function giy(kimlik){if(kimlik&&!v.look){
-pencere({ust:\u00E7("Gard\u0131robum"),baslik:\u00E7("\xD6nce g\xF6r\xFCn\xFCm\xFCn\xFC kaydet"),govde:`<p class="aciklama">${\u00E7("Giysi kay\u0131tl\u0131 g\xF6r\xFCn\xFCm\xFCn\xFCn \xFCst\xFCne giyilir. \u015Eu anki se\xE7imin kaydedil\
-ip giysi giyilsin mi?")}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Kaydet ve giy"),sinif:"altin",ikon:"check",is:()=>isle(null,async()=>{await kaydet(),v.look&&await giyGonder(kimlik)})}]});
-return}await giyGonder(kimlik)}async function giyGonder(kimlik){const r=await Sunucu.yap("garment_wear",{p_garment:kimlik}),{look,...w}=r??{};gardirop=w,look&&(v=look),giysiEsle(),Gorunus.yaz(v.character_id,
-{character_id:v.character_id,look:v.look,country_id:v.country_id,rank:v.rank});const g=(gardirop.garments??[]).find(x=>x.garment_id===kimlik);tost(kimlik?\u00E7("{model} giydin.",{model:giysiModelAdi(
-g?.model)}):\u00E7("Giysiyi \xE7\u0131kard\u0131n; k\u0131yafetin g\xF6r\xFCn\xFCyor."),kimlik?"shirt":"undo-2"),kapandi||(degistir(),gardiropCiz())}function satPenceresi(g){if(!g)return;const B=gardirop?.
-rule?.boutique??butikKurali(),p=pencereForm({ust:\u00E7("Butik"),baslik:\u00E7("{model} buti\u011Fe konsun",{model:giysiModelAdi(g.model)}),onayAd:\u00E7("Buti\u011Fe koy"),onayIkon:"shopping-bag",govde:`\
-<div class="dik-pencere"><div class="dik-onizleme">${giysiSvg(g.model,g.color1,g.color2,g.quality)}<b>${esc(giysiModelAdi(g.model))}</b>
-            <span class="kucuk">${esc(giysiKumasYazisi(g.color1,g.color2))} \xB7 ${esc(GIYSI_KALITE_AD[g.quality]??"")}</span></div>
-          <div class="dik-secim"><label class="alan"><span>${\u00E7("Fiyat (kredi)")}</span><input name="fiyat" inputmode="decimal" value="${krediGirdi(Math.max(Number(B.minCr??500),1500))}"></label>
+n></span></div>`).join("")}</div></details>`:""}`;for(const b of $$("[data-git]",el))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$("[data-profil]",el))b.onclick=()=>profilAc(b.dataset.profil);
+for(const b of $$("[data-giysi-giy]",el))b.onclick=()=>isle(b,()=>giy(b.dataset.giysiGiy||null,b.dataset.yuva||null));for(const b of $$("[data-giysi-hediye]",el))b.onclick=()=>{b.disabled||hediyePenceresi(
+(gardirop.garments??[]).find(x=>x.garment_id===b.dataset.giysiHediye))};for(const b of $$("[data-giysi-sat]",el))b.onclick=()=>satPenceresi((gardirop.garments??[]).find(x=>x.garment_id===b.dataset.giysiSat));
+for(const b of $$("[data-giysi-cek]",el))b.onclick=()=>isle(b,async()=>{const g=(gardirop.garments??[]).find(x=>x.garment_id===b.dataset.giysiCek);gardirop=await Sunucu.yap("boutique_unlist",{p_garment:b.
+dataset.giysiCek}),tost(\u00E7("{model} sat\u0131\u015Ftan \xE7ekildi; gard\u0131robunda.",{model:giysiModelAdi(g?.model)}),"undo-2"),gardiropCiz()});for(const b of $$("[data-giysi-at]",el))b.onclick=
+()=>{const g=(gardirop.garments??[]).find(x=>x.garment_id===b.dataset.giysiAt);g&&pencere({ust:\u00E7("Gard\u0131robum"),baslik:\u00E7("{model} at\u0131ls\u0131n m\u0131?",{model:giysiModelAdi(g.model)}),
+govde:`<p class="aciklama">${esc(\u00E7("At\u0131lan giysi geri gelmez ({kumas}, {kalite}).",{kumas:giysiKumasYazisi(g.color1,g.color2),kalite:GIYSI_KALITE_AD[g.quality]??""}))}</p>`,dugmeler:[{ad:\u00E7(
+"Vazge\xE7")},{ad:\u00E7("At"),sinif:"mercan",ikon:"trash",is:()=>isle(null,async()=>{gardirop=await Sunucu.yap("garment_discard",{p_garment:g.garment_id}),tost(\u00E7("{model} at\u0131ld\u0131.",{model:giysiModelAdi(
+g.model)}),"trash"),gardiropCiz()})}]})}}async function isle(dugme,is){if(!dugme?.disabled){dugme&&(dugme.disabled=!0);try{await is()}catch(e){tost(hataMetni(e),"circle-alert")}finally{dugme?.isConnected&&
+(dugme.disabled=!1)}}}async function giy(kimlik,yuva=null){if(kimlik&&!v.look){pencere({ust:\u00E7("Gard\u0131robum"),baslik:\u00E7("\xD6nce g\xF6r\xFCn\xFCm\xFCn\xFC kaydet"),govde:`<p class="aciklam\
+a">${\u00E7("Giysi kay\u0131tl\u0131 g\xF6r\xFCn\xFCm\xFCn\xFCn \xFCst\xFCne giyilir. \u015Eu anki se\xE7imin kaydedilip giysi giyilsin mi?")}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Kayde\
+t ve giy"),sinif:"altin",ikon:"check",is:()=>isle(null,async()=>{await kaydet(),v.look&&await giyGonder(kimlik)})}]});return}await giyGonder(kimlik,yuva)}function gardiropYanit(r){const{look,gift,...w}=r??
+{};return gardirop=w,look&&(v=look),giysiEsle(),Gorunus.yaz(v.character_id,{character_id:v.character_id,look:v.look,country_id:v.country_id,rank:v.rank}),gift??null}async function giyGonder(kimlik,yuva=null){
+const once=(gardirop?.garments??[]).find(x=>x.worn&&(x.worn_slot??"govde")===(yuva??"govde")),r=await Sunucu.yap("garment_wear",{p_garment:kimlik,...!kimlik&&yuva&&yuva!=="govde"?{p_slot:yuva}:{}});gardiropYanit(
+r);const g=(gardirop.garments??[]).find(x=>x.garment_id===kimlik);tost(kimlik?\u00E7("{model} giydin.",{model:giysiModelAdi(g?.model)}):yuva&&yuva!=="govde"?\u00E7("{model} \xE7\u0131kard\u0131n.",{model:giysiModelAdi(
+once?.model)}):\u00E7("Giysiyi \xE7\u0131kard\u0131n; k\u0131yafetin g\xF6r\xFCn\xFCyor."),kimlik?"shirt":"undo-2"),kapandi||(degistir(),gardiropCiz())}function hediyePenceresi(g){if(!g)return;const T=gardirop?.
+rule?.tailoring??terzilikKurali();isle(null,async()=>{const adaylar=(await Sunucu.cagir("friends")).friends??[];if(!adaylar.length){tost(\u00E7("Giysi yaln\u0131z arkada\u015Flara hediye edilir; \xF6nce Meydan \u2192 A\
+rkada\u015Flar'dan arkada\u015F ekle."),"users-round");return}const kalan=Math.max(0,Number(T.giftsPerDay??3)-Number(gardirop?.gifts_today??0));pencereForm({ust:\u00E7("Gard\u0131robum \xB7 hediye"),baslik:\u00E7(
+"{model} kime gitsin?",{model:giysiModelAdi(g.model)}),onayAd:\u00E7("G\xF6nder"),onayIkon:"gift",govde:`<div class="dik-pencere"><div class="dik-onizleme">${giysiSvg(g.model,g.color1,g.color2,g.quality,
+{desen:g.pattern})}<b>${esc(giysiModelAdi(g.model))}</b>
+              <span class="kucuk">${esc(giysiKumasYazisi(g.color1,g.color2,g.pattern))} \xB7 ${esc(GIYSI_KALITE_AD[g.quality]??"")}</span></div>
+            <div class="dik-secim"><p class="aciklama">${esc(\u00E7("Giysi arkada\u015F\u0131n\u0131n gard\u0131robuna gider; ikinizin yak\u0131nl\u0131\u011F\u0131 ve onun keyfi artar. Dikenin ad\u0131 giysinin \xFCst\xFCnde kal\u0131r.{giyili}",
+{giyili:g.worn?" "+\u00E7("Giyiyorsun: \xF6nce \xE7\u0131kar\u0131l\u0131r."):""}))}</p>
+              <div class="radyo-liste">${adaylar.map((f,i)=>`<label class="radyo"><input type="radio" name="kisi" value="${esc(f.character_id)}" ${i===0?"checked":""}>
+                <span><b>${esc(f.name)}</b>${f.country_id?`<span class="kucuk">${esc(ulkeAdi(f.country_id))}</span>`:""}</span></label>`).join("")}</div>
+              <p class="kucuk" id="hediye-hak">${esc(\u00E7("Bug\xFCn {n} hediye hakk\u0131n kald\u0131 (g\xFCnde {m}).",{n:sayi(kalan),m:sayi(T.giftsPerDay??3)}))}</p></div></div>`,is:async d=>{const r=await Sunucu.
+yap("garment_gift",{p_garment:g.garment_id,p_to:d.get("kisi")}),x=gardiropYanit(r);tost(\u00E7("{model} {ad} adl\u0131 arkada\u015F\u0131na g\xF6nderildi.",{model:giysiModelAdi(g.model),ad:x?.to_name??
+""}),"gift"),kapandi||(degistir(),gardiropCiz())}})})}function satPenceresi(g){if(!g)return;const B=gardirop?.rule?.boutique??butikKurali(),ikinci=g.second_hand??g.source!=="sewn",tavan=Number(ikinci?
+g.cap_cr??B.maxCr??2e4:B.maxCr??2e4),oran=sayi(Number(B.secondHand?.capPpm??7e5)/1e4),tavanYazi=ikinci?g.first_price_cr?\u00E7("\u0130kinci el: en \xE7ok {kr} kredi (ilk sat\u0131\u015F fiyat\u0131 {ilk} kredinin %{oran}'i)\
+.",{kr:kr(tavan),ilk:kr(g.first_price_cr),oran}):\u00E7("\u0130kinci el: en \xE7ok {kr} kredi (hi\xE7 sat\u0131lmam\u0131\u015F {kalite} giysinin taban fiyat\u0131n\u0131n %{oran}'i).",{kr:kr(tavan),kalite:(GIYSI_KALITE_AD[g.
+quality]??"").toLocaleLowerCase(DIL.yerel),oran}):"",p=pencereForm({ust:\u00E7("Butik"),baslik:\u00E7("{model} buti\u011Fe konsun",{model:giysiModelAdi(g.model)}),onayAd:\u00E7("Buti\u011Fe koy"),onayIkon:"\
+shopping-bag",govde:`<div class="dik-pencere"><div class="dik-onizleme">${giysiSvg(g.model,g.color1,g.color2,g.quality,{desen:g.pattern})}<b>${esc(giysiModelAdi(g.model))}</b>
+            <span class="kucuk">${esc(giysiKumasYazisi(g.color1,g.color2,g.pattern))} \xB7 ${esc(GIYSI_KALITE_AD[g.quality]??"")}</span></div>
+          <div class="dik-secim"><label class="alan"><span>${\u00E7("Fiyat (kredi)")}</span><input name="fiyat" inputmode="decimal" value="${krediGirdi(Math.min(tavan,Math.max(Number(B.minCr??500),1500)))}\
+"></label>
+            ${ikinci?`<p class="kucuk" id="butik-tavan">${esc(tavanYazi)}</p>`:""}
             <p class="kucuk" id="butik-ozet"></p>
             <p class="kucuk">${esc(\u00E7("Buti\u011Fin \u015Fehri bulundu\u011Fun yer: {yer}. Alan \xF6der; komisyon yak\u0131l\u0131r, kalan\u0131 sana ge\xE7er. Sat\u0131\u015Ftan \xE7ekene ya da sat\u0131lana kadar giyemezsin.",
 {yer:bolgeAdi(Durum.v.ozet?.character?.location)}))}</p></div></div>`,is:async d=>{const fiyat=krediAlt(d.get("fiyat"));if(!(fiyat>=Number(B.minCr??500)&&fiyat<=Number(B.maxCr??2e4)))throw new Error(\u00E7(
-"Fiyat {a}\u2013{b} kredi aras\u0131nda olmal\u0131.",{a:kr(B.minCr??500),b:kr(B.maxCr??2e4)}));gardirop=await Sunucu.yap("boutique_list",{p_garment:g.garment_id,p_price:fiyat}),tost(\u00E7("{model} b\
-utikte: {kr} kredi.",{model:giysiModelAdi(g.model),kr:kr(fiyat)}),"shopping-bag"),gardiropCiz()}}),ozet=()=>{const f=krediAlt(new FormData(p.form).get("fiyat")),el=$("#butik-ozet",p.form);if(!el)return;
-if(!(f>0)){el.textContent=\u00E7("Fiyat\u0131 yaz ({a}\u2013{b} kredi).",{a:kr(B.minCr??500),b:kr(B.maxCr??2e4)});return}const kom=Math.floor(f*Number(B.feePpm??5e4)/1e6);el.textContent=\u00E7("Sat\u0131l\u0131\
-nca komisyon {k} kredi yak\u0131l\u0131r; eline {n} kredi ge\xE7er.",{k:kr(kom),n:kr(f-kom)})};p.form.addEventListener("input",ozet),ozet()}function onizlemeCiz(){const resim=avatarSvg(v.name,secim,ek());
-$("#gorunus-onizleme",kap).innerHTML=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Profil resmin")}</p><h2 class="b2">${\u00E7("Ba\u015Fkalar\u0131 seni b\xF6yle g\xF6r\xFCr")}</h2></div><\
-/div>
+"Fiyat {a}\u2013{b} kredi aras\u0131nda olmal\u0131.",{a:kr(B.minCr??500),b:kr(B.maxCr??2e4)}));if(ikinci&&fiyat>tavan)throw new Error(\u00E7("\u0130kinci elin fiyat\u0131 en \xE7ok {kr} kredi olur.",
+{kr:kr(tavan)}));gardirop=await Sunucu.yap("boutique_list",{p_garment:g.garment_id,p_price:fiyat}),tost(\u00E7("{model} butikte: {kr} kredi.",{model:giysiModelAdi(g.model),kr:kr(fiyat)}),"shopping-bag"),
+gardiropCiz()}}),ozet=()=>{const f=krediAlt(new FormData(p.form).get("fiyat")),el=$("#butik-ozet",p.form);if(!el)return;if(!(f>0)){el.textContent=\u00E7("Fiyat\u0131 yaz ({a}\u2013{b} kredi).",{a:kr(B.
+minCr??500),b:kr(B.maxCr??2e4)});return}const kom=Math.floor(f*Number(B.feePpm??5e4)/1e6);el.textContent=\u00E7("Sat\u0131l\u0131nca komisyon {k} kredi yak\u0131l\u0131r; eline {n} kredi ge\xE7er.",{k:kr(
+kom),n:kr(f-kom)})};p.form.addEventListener("input",ozet),ozet()}function onizlemeCiz(){const resim=avatarSvg(v.name,secim,ek());$("#gorunus-onizleme",kap).innerHTML=`<div class="kart-bas"><div><p cla\
+ss="ust-yazi">${\u00E7("Profil resmin")}</p><h2 class="b2">${\u00E7("Ba\u015Fkalar\u0131 seni b\xF6yle g\xF6r\xFCr")}</h2></div></div>
         <div class="gorunus-onizleme"><span class="avatar gorunus-buyuk">${resim}</span><span class="avatar gorunus-orta">${resim}</span><span class="avatar">${resim}</span>
           <p class="kucuk">${\u00E7("Meclis ve aday listelerinde, Meydan'da, sohbette ve profil penceresinde bu resim g\xF6r\xFCn\xFCr. Kaydedince herkeste de\u011Fi\u015Fir.")}</p></div>`}const durum3b=()=>({
 anahtar:v.character_id,ad:v.name,gorunus:secim,ulke:v.country_id,rutbe:{sira:v.rank??0,sayi:rutbeSayisi},uniformaAcik:!!v.uniform_allowed});let onceki2b=null;function figur2bCiz(){const el=$("#figur-2\
@@ -154,6 +187,6 @@ dene(id)}),a.dinle("kilit",()=>tost(\u00E7("\xDCniforma, temel asker\xEE e\u011F
 iki.hidden=!0,iki.replaceChildren(),mod="3b",sahneEl.dataset.mod="3b",yuk.classList.add("bitti"),ipucuCiz();return}catch(e){console.warn("3B fig\xFCr a\xE7\u0131lamad\u0131:",e),hata3b=!0,kapandi||tost(
 \u00E7("3B fig\xFCr bu cihazda a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCm g\xF6steriliyor."),"layers")}}kapandi||(sahneBirak(),Uc.cizici?.renderer?.domElement.parentElement===sahneEl&&Uc.cizici.renderer.
 domElement.remove(),mod="2b",sahneEl.dataset.mod="2b",iki.hidden=!1,figur2bCiz(),yuk.classList.add("bitti"),ipucuCiz())}await yukle(),seceneklerCiz(),onizlemeCiz(),gardiropCiz(),$("#figur-mod",kap).onclick=
-()=>{hata3b=!1,Gorunum.ayarla(mod==="3b"?"2b":"3b")},await modKur();const b0=Gorunum.dinle(()=>{kapandi||(hata3b=!1,modKur())}),b1=Durum.dinle("olay",({olay})=>{if(/^(boutique\.|hobby\.completed)/.test(
-olay)){Sunucu.cagir("wardrobe").then(w=>{kapandi||!w||(gardirop=w,gardiropCiz())}).catch(()=>{});return}/^(war\.|progress\.)/.test(olay)&&Sunucu.cagir("my_look").then(l=>{kapandi||(v=l,giysiEsle(),degistir())}).
-catch(()=>{})});return()=>{kapandi=!0,b0(),b1();for(const x of["eylemBitti","kiyafet","kilit"])figur3bOrnek?.dinle(x,null);sahneBirak()}}}),Parcalar.tamam("ek_38_gorunus_ekran");
+()=>{hata3b=!1,Gorunum.ayarla(mod==="3b"?"2b":"3b")},await modKur();const b0=Gorunum.dinle(()=>{kapandi||(hata3b=!1,modKur())}),b1=Durum.dinle("olay",({olay})=>{if(/^(boutique\.|hobby\.completed|garment\.gift)/.
+test(olay)){Sunucu.cagir("wardrobe").then(w=>{kapandi||!w||(gardirop=w,gardiropCiz())}).catch(()=>{});return}/^(war\.|progress\.)/.test(olay)&&Sunucu.cagir("my_look").then(l=>{kapandi||(v=l,giysiEsle(),
+degistir())}).catch(()=>{})});return()=>{kapandi=!0,b0(),b1();for(const x of["eylemBitti","kiyafet","kilit"])figur3bOrnek?.dinle(x,null);sahneBirak()}}}),Parcalar.tamam("ek_38_gorunus_ekran");

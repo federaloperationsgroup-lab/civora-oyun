@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98h_konser3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98h_konser3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const KONSER_OLCEK=.66,KONSER_SEYIRCI_OLCEK=.92,KONSER_CALGI_OLCEK=.85;function konserSeyirciYeri(mekan,n,tohum){const y=KONSER_YER[mekan]??KONSER_YER.kahvehane,s=konserSahneYeri(y),r=rastgele(tohum),
 zc=(s.zArka+s.zOn)/2,yon=(x,z)=>Math.atan2(-x*.55,zc-z),x0=-y.W/2+.55,x1=y.W/2-.55,z0=s.zOn+.75,z1=y.D/2-.45,oturaklar=[];if(y.duzen==="masa")for(const z of[z0+.75,z0+2.25])for(const x of[-y.W*.3,0,y.
 W*.3])for(const[dx,dz]of[[-.55,0],[.55,0],[0,.55]])oturaklar.push([x+dx,z+dz,x,z]);else if(y.duzen==="sira")for(let z=z0+.3;z<=z1-1.25;z+=.82)for(let x=.62;x<=x1;x+=.62)oturaklar.push([x,z]),oturaklar.

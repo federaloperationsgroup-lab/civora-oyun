@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98j_medya.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98j_medya.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/medya",{async ac(kap){let v={m:null,sirketler:[],kurallar:null,kariyer:null,okunmamis:0};const kareler=new Map;async function yukle(){const[m,kurallar,kariyer,kartpostallar]=await Promise.
 all([Sunucu.cagir("media_overview"),Durum.kurallar(),Sunucu.cagir("media_career").catch(()=>null),Sunucu.cagir("postcards",{p_limit:1})]);v.m=m,v.kurallar=kurallar,v.kariyer=kariyer,v.okunmamis=Number(
 kartpostallar.unread??0),v.sirketler=await Promise.all((m.companies??[]).map(c=>Sunucu.cagir("company_sponsorships",{p_company:c.company_id}).catch(()=>({company_id:c.company_id,company:c.name,offers:[]})))),

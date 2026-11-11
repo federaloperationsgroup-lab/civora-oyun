@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- İçerik güvenlik politikası (D-098): derlemede yazılır (tools/istemci/build.ts); satır içi betiklerin özetleri dahil -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-NV0XOQ46CqgcarkEuDRTqfffMD1Nq6DhOXdtBh3JjcA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co wss://civora-oda-768582.fly.dev; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-UK9O+rbB3KhDsGQrE55qyNAJCpV7WHc47zV2U5f4bE4=' 'sha256-WmXdfQq/dOLi8dxlcy5MRN2GKTGc3/FF/vOjArKcToQ='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co wss://civora-oda-768582.fly.dev; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Civora</title>
 <meta name="description" content="Civora: gerçek dünya haritasında, ülkeleri oyuncuların yönettiği strateji oyunu.">
@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
-<link rel="stylesheet" href="stil.css?v=2026-11-10-07201b6c-c3ff3d2">
+<link rel="stylesheet" href="stil.css?v=2026-11-11-88bf220f-2e9125c">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
@@ -62,7 +62,7 @@
       var onYukle = en ? ["veri/en.js", "app.js"] : ["app.js"];
       for (var j = 0; j < onYukle.length; j++) {
         var l = document.createElement("link");
-        l.rel = "preload"; l.as = "script"; l.href = onYukle[j] + "?v=2026-11-10-07201b6c-c3ff3d2";
+        l.rel = "preload"; l.as = "script"; l.href = onYukle[j] + "?v=2026-11-11-88bf220f-2e9125c";
         document.head.appendChild(l);
       }
     }
@@ -70,7 +70,7 @@
                       : [["acilis.js", "acilis"]];
     for (var i = 0; i < parcalar.length; i++) {
       var b = document.createElement("script");
-      b.src = parcalar[i][0] + "?v=2026-11-10-07201b6c-c3ff3d2";
+      b.src = parcalar[i][0] + "?v=2026-11-11-88bf220f-2e9125c";
       b.async = false;
       b.setAttribute("data-parca", parcalar[i][1]);
       b.onerror = function () { this.setAttribute("data-parca-durum", "hata"); };

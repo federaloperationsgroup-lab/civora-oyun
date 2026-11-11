@@ -1,21 +1,21 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zp_hobi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zp_hobi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/hobiler",{async ac(kap){let v=null,kapandi=!1,durdur=()=>{};const sahne=HobiSahnesi.ac();sahne.dinle("sec",ad=>{const el=$({mutfak:"#hobi-mutfak",diller:"#hobi-diller",kiler:"#hobi\
 -kiler",terzi:"#hobi-terzi"}[ad]??"#hobi-seans",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vu\
-rgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let gorunus,bekleyenZaman=null,kirli=!1,bekleyen=!1,kapaliAcik=!1,terziKapaliAcik=!1,sonRenk=[5,1];kap.addEventListener("toggle",e=>{e.target?.id===
-"hobi-kapali"&&(kapaliAcik=e.target.open),e.target?.id==="hobi-terzi-kapali"&&(terziKapaliAcik=e.target.open)},!0),kap.addEventListener("input",e=>{e.target.closest("#hobi-dil-form")&&(kirli=!0)}),kap.
-addEventListener("change",e=>{e.target.closest("#hobi-dil-form")&&(kirli=!0)});const tazeleIste=()=>{kirli?bekleyen=!0:arkaTazele()},yakinda=()=>{clearTimeout(bekleyenZaman),bekleyenZaman=setTimeout(()=>{
-kapandi||tazeleIste()},600)};async function yukle(){const[x,bak]=await Promise.all([Sunucu.cagir("hobbies"),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);v=x,gorunus===void 0&&(gorunus=
-bak?.look??null);const t=v.session?.kind==="tailoring"?v.session:v.last?.kind==="tailoring"?v.last:null;t&&(sonRenk=[Number(t.color1??5),Number(t.color2??1)])}const R=()=>v?.rule?{...hobiKurali(),...v.
-rule}:hobiKurali(),kalan=()=>Math.max(0,Number(v.left_today??0)),suren=()=>v.session??null;function seansEngeli(){return suren()?\u00E7("S\xFCren bir seans\u0131n var"):kalan()<=0?\u00E7("Bug\xFCnk\xFC sean\
-slar\u0131n bitti"):null}const dilEngeli=seviye=>Number(seviye)>=Number(R().max??100)?\u00E7("En \xFCst seviyedesin"):null;function tarifEngeli(t){return Number(v.cooking?.level??0)>=Number(R().max??100)?
-\u00E7("En \xFCst seviyedesin"):Number(v.stock?.erzak??0)<Number(t.erzak)||Number(v.stock?.tahil??0)<Number(t.tahil)?\u00E7("Malzeme yok"):null}function seansHtml(){const s=suren(),toplam=Number(R().session?.
-daily??3),kullanilan=Number(v.used_today??0),noktalar=Array.from({length:toplam},(_,i)=>`<span class="hobi-hak${i<kullanilan?" dolu":""}"></span>`).join(""),m=v.mood,kova=Number(m?.today?.hobby??0),tavan=Number(
-m?.caps?.hobby??0);let govde;if(s){const dil=s.kind==="language",terzi=s.kind==="tailoring",ad=dil?dilAdi(s.lang):terzi?giysiModelAdi(s.model):yemekAdi(s.recipe),kaz=hobiKazanc(s.from_level,s.bonus),alt=dil?
-\u00E7("Seviye {a} \u2192 {b}{ek}",{a:sayi(s.from_level),b:sayi(Math.min(Number(R().max??100),Number(s.from_level)+kaz)),ek:Number(s.bonus)?" "+\u00E7("(dilin \xFClkesinde +{n})",{n:Number(s.bonus)}):
-""}):terzi?\u00E7("{kumas} \xB7 {kalite} \xB7 terzilik {a} \u2192 {b}",{kumas:giysiKumasYazisi(s.color1,s.color2),kalite:GIYSI_KALITE_AD[s.quality]??"",a:sayi(s.from_level),b:sayi(Number(s.from_level)+
-kaz)}):\u00E7("{n} porsiyon \xB7 {kalite} \xB7 a\u015F\xE7\u0131l\u0131k {a} \u2192 {b}",{n:sayi(s.portions??0),kalite:HOBI_KALITE[s.quality]??"",a:sayi(s.from_level),b:sayi(Number(s.from_level)+kaz)}),
-sinif=dil?"deniz":terzi?"mor":"mercan";govde=`<div class="liste"><div class="liste-satir" id="hobi-suren" data-tur="${esc(s.kind)}" data-bitti="${s.due?1:0}"><span class="liste-ikon ${sinif}">${ikon(dil?
-"languages":terzi?"scissors":"cooking-pot")}</span>
+rgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let gorunus,bekleyenZaman=null,kirli=!1,bekleyen=!1,kapaliAcik=!1,terziKapaliAcik=!1,takiKapaliAcik=!1,sonRenk=[5,1],sonKumas=1,sonDesen=0;kap.addEventListener(
+"toggle",e=>{e.target?.id==="hobi-kapali"&&(kapaliAcik=e.target.open),e.target?.id==="hobi-terzi-kapali"&&(terziKapaliAcik=e.target.open),e.target?.id==="hobi-taki-kapali"&&(takiKapaliAcik=e.target.open)},
+!0),kap.addEventListener("input",e=>{e.target.closest("#hobi-dil-form")&&(kirli=!0)}),kap.addEventListener("change",e=>{e.target.closest("#hobi-dil-form")&&(kirli=!0)});const tazeleIste=()=>{kirli?bekleyen=
+!0:arkaTazele()},yakinda=()=>{clearTimeout(bekleyenZaman),bekleyenZaman=setTimeout(()=>{kapandi||tazeleIste()},600)};async function yukle(){const[x,bak]=await Promise.all([Sunucu.cagir("hobbies"),gorunus===
+void 0?Sunucu.cagir("my_look").catch(()=>null):null]);v=x,gorunus===void 0&&(gorunus=bak?.look??null);const t=v.session?.kind==="tailoring"?v.session:v.last?.kind==="tailoring"?v.last:null;t&&(sonRenk=
+[Number(t.color1??5),Number(t.color2??1)],sonKumas=Number(t.fabric??1),sonDesen=Number(t.pattern??0))}const R=()=>v?.rule?{...hobiKurali(),...v.rule}:hobiKurali(),kalan=()=>Math.max(0,Number(v.left_today??
+0)),suren=()=>v.session??null;function seansEngeli(){return suren()?\u00E7("S\xFCren bir seans\u0131n var"):kalan()<=0?\u00E7("Bug\xFCnk\xFC seanslar\u0131n bitti"):null}const dilEngeli=seviye=>Number(
+seviye)>=Number(R().max??100)?\u00E7("En \xFCst seviyedesin"):null;function tarifEngeli(t){return Number(v.cooking?.level??0)>=Number(R().max??100)?\u00E7("En \xFCst seviyedesin"):Number(v.stock?.erzak??
+0)<Number(t.erzak)||Number(v.stock?.tahil??0)<Number(t.tahil)?\u00E7("Malzeme yok"):null}function seansHtml(){const s=suren(),toplam=Number(R().session?.daily??3),kullanilan=Number(v.used_today??0),noktalar=Array.
+from({length:toplam},(_,i)=>`<span class="hobi-hak${i<kullanilan?" dolu":""}"></span>`).join(""),m=v.mood,kova=Number(m?.today?.hobby??0),tavan=Number(m?.caps?.hobby??0);let govde;if(s){const dil=s.kind===
+"language",terzi=s.kind==="tailoring",ad=dil?dilAdi(s.lang):terzi?giysiModelAdi(s.model):yemekAdi(s.recipe),kaz=hobiKazanc(s.from_level,s.bonus),alt=dil?\u00E7("Seviye {a} \u2192 {b}{ek}",{a:sayi(s.from_level),
+b:sayi(Math.min(Number(R().max??100),Number(s.from_level)+kaz)),ek:Number(s.bonus)?" "+\u00E7("(dilin \xFClkesinde +{n})",{n:Number(s.bonus)}):""}):terzi?\u00E7("{kumas} \xB7 {kalite} \xB7 terzilik {a} \u2192 {b\
+}",{kumas:giysiKumasYazisi(s.color1,s.color2,s.pattern),kalite:GIYSI_KALITE_AD[s.quality]??"",a:sayi(s.from_level),b:sayi(Number(s.from_level)+kaz)}):\u00E7("{n} porsiyon \xB7 {kalite} \xB7 a\u015F\xE7\u0131l\u0131k {a} \u2192 {b\
+}",{n:sayi(s.portions??0),kalite:HOBI_KALITE[s.quality]??"",a:sayi(s.from_level),b:sayi(Number(s.from_level)+kaz)}),sinif=dil?"deniz":terzi?"mor":"mercan";govde=`<div class="liste"><div class="liste-s\
+atir" id="hobi-suren" data-tur="${esc(s.kind)}" data-bitti="${s.due?1:0}"><span class="liste-ikon ${sinif}">${ikon(dil?"languages":terzi?"scissors":"cooking-pot")}</span>
             <div><span class="tur">${esc(dil?\u00E7("Dil \xE7al\u0131\u015F\u0131yorsun"):terzi?\u00E7("Dikiyorsun"):\u00E7("Ocakta"))} \xB7 ${s.due?esc(\u00E7("s\xFCre doldu")):`<span data-bitis="${esc(
 s.ends_at)}"></span>`}</span>
               <b>${esc(ad)}</b><div class="alt">${esc(alt)}</div>
@@ -30,8 +30,8 @@ son.kind)}"><span class="liste-ikon yesil">${ikon(son.kind==="language"?"languag
             <div><span class="tur">${esc(\u00E7("Son seans"))} \xB7 ${esc(zamanOnce(son.closed_at))}</span><b>${esc(son.kind==="language"?dilAdi(son.lang):son.kind==="tailoring"?giysiModelAdi(son.model):
 yemekAdi(son.recipe))}</b>
               <div class="alt">${esc(son.kind==="language"?\u00E7("+{n}: seviye {s}{b}",{n:sayi(son.gain??0),s:sayi(son.to_level??0),b:dilBasamagi(son.to_level)?" \xB7 "+dilBasamagi(son.to_level):""}):
-son.kind==="tailoring"?\u00E7("Gard\u0131robuna kondu \xB7 {kumas} \xB7 terzilik {s}",{kumas:giysiKumasYazisi(son.color1,son.color2),s:sayi(son.to_level??0)}):\u00E7("{n} porsiyon kilere kondu \xB7 a\u015F\xE7\u0131l\
-\u0131k {s}",{n:sayi(son.portions??0),s:sayi(son.to_level??0)}))}</div></div>
+son.kind==="tailoring"?\u00E7("Gard\u0131robuna kondu \xB7 {kumas} \xB7 terzilik {s}",{kumas:giysiKumasYazisi(son.color1,son.color2,son.pattern),s:sayi(son.to_level??0)}):\u00E7("{n} porsiyon kilere k\
+ondu \xB7 a\u015F\xE7\u0131l\u0131k {s}",{n:sayi(son.portions??0),s:sayi(son.to_level??0)}))}</div></div>
               ${son.kind==="tailoring"?`<button class="dugme sade kucuk-d" data-git="hayat/gorunum">${ikon("shirt")}${\u00E7("Gard\u0131robum")}</button>`:"<span></span>"}</div></div>`:"",durum=kalan()<=
 0?\u00E7("Bug\xFCnk\xFC seanslar\u0131n\u0131 yapt\u0131n; yar\u0131n (UTC gece yar\u0131s\u0131) yeniden."):son?"":\u00E7("\u015Eu an seans yok. A\u015Fa\u011F\u0131dan bir dil se\xE7, bir tarif pi\u015Fir ya da bir giysi dik.");
 govde=sonKart+(durum?`<p class="bos"${sonKart?' style="margin-top:8px"':""}>${durum}</p>`:"")}return`<section class="kart" id="hobi-seans"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Bug\xFC\
@@ -89,40 +89,62 @@ pi\u015Fince harcan\u0131r.",{e:sayi(v.stock?.erzak??0),t:sayi(v.stock?.tahil??0
         <div class="liste" style="margin-top:10px">${acikT.map(satir).join("")}</div>
         ${kapaliT.length?`<details class="hobi-kapali" id="hobi-kapali" style="margin-top:12px"${kapaliAcik?" open":""}><summary>${ikon("lock")}${esc(\u00E7("A\xE7\u0131lacak tarifler: {n} (s\u0131radaki {yemek}, \
 a\u015F\xE7\u0131l\u0131k {s})",{n:sayi(kapaliT.length),yemek:yemekAdi(kapaliT[0].id),s:sayi(kapaliT[0].minLevel)}))}</summary><div class="liste">${kapaliT.map(satir).join("")}</div></details>`:""}
-      </section>`}function kilerHtml(){const r=R(),k=v.pantry??[],kalanHediye=Number(v.gifts_left??0),gelen=v.gifts_in??[],keyif=keyifKurali(),satir=p=>`<div class="liste-satir hobi-kiler-satir" data-\
-hobi-kiler="${esc(p.recipe)}|${Number(p.quality)}"><span class="liste-ikon" style="color:${HOBI_KALITE_RENK[p.quality]??""}">${ikon("soup")}</span>
-          <div><span class="tur">${esc(HOBI_KALITE[p.quality]??"")}</span><b>${esc(yemekAdi(p.recipe))}</b><div class="alt">${esc(\u00E7("{n} porsiyon",{n:sayi(p.qty)}))}</div></div>
+      </section>`}const partiYemekKurali=()=>v.party?.meal_rule??null,partiYemekYeri=()=>Math.max(0,Number(partiYemekKurali()?.maxPortions??0)-Number(v.party?.meal_portions??0)),mekanYemekKurali=()=>v.
+meal_rules?.venue??null,mekanlarim=()=>(v.venues??[]).filter(m=>m.status==="open");function kilerHtml(){const r=R(),k=v.pantry??[],kalanHediye=Number(v.gifts_left??0),gelen=v.gifts_in??[],keyif=keyifKurali(),
+partiAcik=!!partiYemekKurali()&&partiYemekYeri()>0,mekanAcik=!!mekanYemekKurali()&&mekanlarim().length>0,satir=p=>`<div class="liste-satir hobi-kiler-satir" data-hobi-kiler="${esc(p.recipe)}|${Number(
+p.quality)}"><span class="liste-ikon" style="color:${HOBI_KALITE_RENK[p.quality]??""}">${ikon("soup")}</span>
+          <div><span class="tur">${esc(HOBI_KALITE[p.quality]??"")}</span><b>${esc(yemekAdi(p.recipe))}</b><div class="alt">${esc(\u00E7("{n} porsiyon",{n:sayi(p.qty)}))}${mekanAcik&&Number(p.sellable??
+0)<Number(p.qty)?" \xB7 "+esc(Number(p.sellable??0)>0?\u00E7("{n} porsiyonu mek\xE2na konabilir",{n:sayi(p.sellable)}):\u00E7("hediye gelen; mek\xE2na konmaz")):""}</div></div>
           <div class="mekan-satir-dugmeler"><button class="dugme kucuk-d" data-hobi-ye="${esc(p.recipe)}|${Number(p.quality)}">${ikon("croissant")}${\u00E7("Ye (+{n})",{n:Number(keyif.gains?.["meal"+p.
 quality]??0)})}</button>
-            <button class="dugme ikincil kucuk-d" data-hobi-hediye="${esc(p.recipe)}|${Number(p.quality)}" ${kalanHediye<=0?"disabled":""}>${ikon("gift")}${\u00E7("Hediye et")}</button></div></div>`;return`\
-<section class="kart" id="hobi-kiler"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kiler")}</p>
+            <button class="dugme ikincil kucuk-d" data-hobi-hediye="${esc(p.recipe)}|${Number(p.quality)}" ${kalanHediye<=0?"disabled":""}>${ikon("gift")}${\u00E7("Hediye et")}</button>
+            ${partiAcik?`<button class="dugme ikincil kucuk-d" data-hobi-parti="${esc(p.recipe)}|${Number(p.quality)}">${ikon("party-popper")}${\u00E7("Partiye koy")}</button>`:""}
+            ${mekanAcik&&Number(p.sellable??0)>0?`<button class="dugme ikincil kucuk-d" data-hobi-mekan="${esc(p.recipe)}|${Number(p.quality)}">${ikon("store")}${\u00E7("Mek\xE2na koy")}</button>`:""}\
+</div></div>`,disarida=v.meals_out??[],disariSatir=m=>`<div class="liste-satir hobi-disari" data-hobi-disari="${esc(m.where)}" data-hobi-disari-yemek="${esc(m.recipe)}|${Number(m.quality)}"><span clas\
+s="liste-ikon ${m.where==="party"?"mercan":"altin"}">${ikon(m.where==="party"?"party-popper":"store")}</span>
+          <div><span class="tur">${esc(m.where==="party"?\u00E7("Partinin sofras\u0131nda"):\u00E7("{mekan} \xB7 {sehir}",{mekan:m.venue??"",sehir:bolgeAdi(m.region_id)}))}</span><b>${esc(yemekAdi(m.recipe))}\
+ \xB7 ${esc(HOBI_KALITE[m.quality]??"")}</b>
+            <div class="alt">${esc(m.where==="party"?\u00E7("{n} tabak kald\u0131 \xB7 {m} al\u0131nd\u0131",{n:sayi(m.qty),m:sayi(m.taken??0)}):\u00E7("{n} tabak \xB7 {kr} kredi \xB7 {s} sat\u0131ld\u0131",
+{n:sayi(m.qty),kr:kr(m.price??0),s:sayi(m.sold??0)}))}</div></div>
+          ${m.where==="venue"?`<button class="dugme sade kucuk-d" data-hobi-geri="${Number(m.meal_id)}">${ikon("undo-2")}${\u00E7("Men\xFCden al")}</button>`:"<span></span>"}</div>`,not=[\u00E7("Ev ye\
+me\u011Fi yenir, arkada\u015F\u0131na hediye edilir, partinde misafirlerine ikram edilir ya da (kendi pi\u015Firdi\u011Fin) mek\xE2n\u0131nda sat\u0131l\u0131r."),\u00E7("Bug\xFCn {n} hediye hakk\u0131n kald\u0131\
+ (g\xFCnde {m}).",{n:kalanHediye,m:Number(r.cooking?.giftsPerDay??5)})];return`<section class="kart" id="hobi-kiler"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kiler")}</p>
           <h2 class="b2">${\u00E7("{n} porsiyon ev yeme\u011Fi",{n:sayi(k.reduce((t,p)=>t+Number(p.qty??0),0))})}</h2></div><span class="ik-kutu">${ikon("soup")}</span></div>
         ${k.length?`<div class="liste">${k.map(satir).join("")}</div>`:`<p class="bos">${\u00E7("Kilerin bo\u015F. Evinde yemek pi\u015Firince porsiyonlar buraya gelir.")}</p>`}
-        <p class="kucuk" style="margin-top:8px">${esc(\u00E7("Ev yeme\u011Fi sat\u0131lmaz; yenir ya da arkada\u015F\u0131na hediye edilir. Bug\xFCn {n} hediye hakk\u0131n kald\u0131 (g\xFCnde {m}).",
-{n:kalanHediye,m:Number(r.cooking?.giftsPerDay??5)}))}</p>
+        ${disarida.length?`<p class="ust-yazi" style="margin-top:12px">${\u00E7("Partide ve mek\xE2nda")}</p><div class="liste" id="hobi-disari">${disarida.map(disariSatir).join("")}</div>`:""}
+        <p class="kucuk" style="margin-top:8px">${esc(not.join(" "))}</p>
         ${gelen.length?`<p class="ust-yazi" style="margin-top:12px">${\u00E7("Gelen hediyeler")}</p><div class="liste">${gelen.map(g=>`<div class="liste-satir"><span class="liste-ikon yesil">${ikon("g\
 ift")}</span>
             <div><span class="tur">${esc(zamanOnce(g.at))}</span><b>${esc(yemekAdi(g.recipe))} \xB7 ${esc(HOBI_KALITE[g.quality]??"")}</b>
               <div class="alt"><button class="baglanti" type="button" data-profil="${esc(g.from_id)}">${esc(g.from_name??"")}</button></div></div><span></span></div>`).join("")}</div>`:""}
       </section>`}function terziHtml(){const r=R(),T=r.tailoring??terzilikKurali(),t=v.tailoring??{},sev=Number(t.level??0),q=giysiKalitesi(sev),sonrakiKalite=(T.quality??[]).find(x=>Number(x.min)>sev),
-kumas=Number(v.stock?.kumas??0),adet=Number(t.wardrobe??0),sinir=Number(t.wardrobe_max??T.wardrobeMax??30),dolu=adet>=sinir,enUst=sev>=Number(r.max??100),ortak=seansEngeli(),kapali=ortak||!v.home?.at_home||
-dolu||enUst,satir=mo=>{const acik=sev>=Number(mo.minLevel),yok=kumas<Number(mo.kumas);return`<div class="liste-satir hobi-model${acik?"":" kapali"}" data-hobi-model-satir="${esc(mo.id)}">
+kumaslar=[Number(v.stock?.kumas??0),Number(v.stock?.kumas2??0),Number(v.stock?.kumas3??0)],enIyi=Math.max(...kumaslar),adet=Number(t.wardrobe??0),sinir=Number(t.wardrobe_max??T.wardrobeMax??30),dolu=adet>=
+sinir,enUst=sev>=Number(r.max??100),ortak=seansEngeli(),kapali=ortak||!v.home?.at_home||dolu||enUst,satir=mo=>{const acik=sev>=Number(mo.minLevel),yok=enIyi<Number(mo.kumas),yuva=mo.slot??giysiYuvasi(
+mo.id);return`<div class="liste-satir hobi-model${acik?"":" kapali"}" data-hobi-model-satir="${esc(mo.id)}">
           <span class="hobi-model-resim">${giysiSvg(mo.id,acik?5:11,1,acik?q:1)}</span>
-          <div><span class="tur">${esc(acik?\u00E7("seviye {n}",{n:sayi(mo.minLevel)}):\u00E7("seviye {n} gerekir",{n:sayi(mo.minLevel)}))}</span><b>${esc(giysiModelAdi(mo.id))}</b>
+          <div><span class="tur">${esc(acik?\u00E7("seviye {n}",{n:sayi(mo.minLevel)}):\u00E7("seviye {n} gerekir",{n:sayi(mo.minLevel)}))}${yuva?" \xB7 "+esc(GIYSI_YUVA_AD[yuva]??""):""}</span><b>${esc(
+giysiModelAdi(mo.id))}</b>
             <div class="alt">${esc(\u00E7("{n} kuma\u015F",{n:sayi(mo.kumas)}))}</div>
             ${acik&&yok?`<div class="alt saglik-engel">${esc(\u00E7("Kuma\u015F yetmiyor"))}</div>`:""}</div>
-          ${acik?`<button class="dugme kucuk-d" data-hobi-dik="${esc(mo.id)}" ${kapali||yok?"disabled":""}>${ikon("scissors")}${\u00E7("Dik")}</button>`:"<span></span>"}</div>`},modeller=T.models??[],
-acikM=modeller.filter(m=>sev>=Number(m.minLevel)),kapaliM=modeller.filter(m=>sev<Number(m.minLevel)),engel=ortak??(dolu?\u00E7("Gard\u0131robun dolu; bir giysiyi at ya da sat."):enUst?\u00E7("Terzilik\
-te en \xFCst seviyedesin"):null);return`<section class="kart" id="hobi-terzi"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Terzilik")}</p>
+          ${acik?`<button class="dugme kucuk-d" data-hobi-dik="${esc(mo.id)}" ${kapali||yok?"disabled":""}>${ikon("scissors")}${\u00E7("Dik")}</button>`:"<span></span>"}</div>`},modeller=(T.models??[]).
+filter(m=>!(m.slot??GIYSI_TAKI[m.id])),takilar=(T.models??[]).filter(m=>m.slot??GIYSI_TAKI[m.id]),acikM=modeller.filter(m=>sev>=Number(m.minLevel)),kapaliM=modeller.filter(m=>sev<Number(m.minLevel)),acikT=takilar.
+filter(m=>sev>=Number(m.minLevel)),kapaliT=takilar.filter(m=>sev<Number(m.minLevel)).sort((a,b)=>a.minLevel-b.minLevel),engel=ortak??(dolu?\u00E7("Gard\u0131robun dolu; bir giysiyi at ya da sat."):enUst?
+\u00E7("Terzilikte en \xFCst seviyedesin"):null),desenler=(T.patterns??[]).slice(1),sonrakiDesen=desenler.find(d=>Number(d.minLevel)>sev);return`<section class="kart" id="hobi-terzi"><div class="kart-\
+bas"><div><p class="ust-yazi">${\u00E7("Terzilik")}</p>
           <h2 class="b2">${\u00E7("Diki\u015F \xB7 seviye {n}",{n:sayi(sev)})}</h2></div><span class="ik-kutu">${ikon("scissors")}</span></div>
         <div class="cubuk hobi-cubuk"><i style="width:${Math.min(100,sev)}%;background:var(--mor)"></i></div>
         <p class="kucuk" style="margin-top:6px">${esc(\u00E7("Giysilerin {kalite}.",{kalite:GIYSI_KALITE_AD[q]??""})+(sonrakiKalite?" "+\u00E7("Terzilik {n} olunca {kalite}.",{n:sonrakiKalite.min,kalite:GIYSI_KALITE_AD[sonrakiKalite.
 q]??""}):""))}</p>
+        ${T.fabricBonus?`<p class="kucuk" id="hobi-kumas-ek">${esc(\u00E7("\u0130yi kuma\u015F i\u015F\xE7ili\u011Fe eklenir: 2. kalite kuma\u015F +{a}, 3. kalite +{b} puan (bug\xFCn {k1} \xB7 {k2} \xB7 {k3}).",
+{a:sayi(T.fabricBonus[1]??0),b:sayi(T.fabricBonus[2]??0),k1:GIYSI_KALITE_AD[giysiKalitesi(sev,1)]??"",k2:GIYSI_KALITE_AD[giysiKalitesi(sev,2)]??"",k3:GIYSI_KALITE_AD[giysiKalitesi(sev,3)]??""}))}</p>`:
+""}
+        ${desenler.length?`<p class="kucuk" id="hobi-desenler">${esc(\u00E7("Desen: {acik}.",{acik:[giysiDesenAdi(0),...desenler.filter(d=>sev>=Number(d.minLevel)).map(d=>giysiDesenAdi((T.patterns??[]).
+indexOf(d)))].join(", ")})+(sonrakiDesen?" "+\u00E7("{desen} terzilik {n} olunca.",{desen:giysiDesenAdi((T.patterns??[]).indexOf(sonrakiDesen)),n:sayi(sonrakiDesen.minLevel)}):""))}</p>`:""}
         ${v.home?.at_home?"":`<div class="bilgi-kutusu" style="margin-top:10px" id="hobi-terzi-uzak">${ikon("house")}<span>${esc(\u00E7("Diki\u015F makinen evinde: {sehir}. \u015Eu an evinin \u015Fehrinde de\u011Filsin.",
 {sehir:v.home?.region_id?bolgeAdi(v.home.region_id):""}))}</span>
           <button class="dugme sade kucuk-d" data-git="sehir/yol">${ikon("route")}${\u00E7("Seyahat")}</button></div>`}
-        <div class="bilgi-kutusu" style="margin-top:10px" id="hobi-kumas">${ikon("spool")}<span>${esc(\u00E7("\xC7antanda {n} kuma\u015F (1. kalite). Kuma\u015F diki\u015Fe ba\u015Flarken ayr\u0131l\u0131r, giysi dikilince harcan\u0131r.",
-{n:sayi(kumas)}))}</span>
+        <div class="bilgi-kutusu" style="margin-top:10px" id="hobi-kumas">${ikon("spool")}<span>${esc(\u00E7("\xC7antanda kuma\u015F: 1. kalite {a}, 2. kalite {b}, 3. kalite {c}. Kuma\u015F diki\u015Fe ba\u015Flarken ayr\u0131l\u0131\
+r, giysi dikilince harcan\u0131r.",{a:sayi(kumaslar[0]),b:sayi(kumaslar[1]),c:sayi(kumaslar[2])}))}</span>
           <button class="dugme sade kucuk-d" data-git="sehir/pazar" data-pazar-urun="kumas@1">${ikon("store")}${\u00E7("Pazar")}</button></div>
         <div class="satir hobi-gardirop" style="margin-top:10px" id="hobi-gardirop" data-adet="${adet}"><span class="kucuk">${ikon("shirt")} ${esc(\u00E7("Gard\u0131robunda {n} / {m} giysi.",{n:sayi(adet),
 m:sayi(sinir)}))}</span>
@@ -132,26 +154,46 @@ m:sayi(sinir)}))}</span>
         <div class="liste" style="margin-top:10px">${acikM.map(satir).join("")}</div>
         ${kapaliM.length?`<details class="hobi-kapali" id="hobi-terzi-kapali" style="margin-top:12px"${terziKapaliAcik?" open":""}><summary>${ikon("lock")}${esc(\u00E7("A\xE7\u0131lacak modeller: {n} (s\u0131radak\
 i {model}, terzilik {s})",{n:sayi(kapaliM.length),model:giysiModelAdi(kapaliM[0].id),s:sayi(kapaliM[0].minLevel)}))}</summary><div class="liste">${kapaliM.map(satir).join("")}</div></details>`:""}
-        <p class="kucuk" style="margin-top:8px">${esc(\u00E7("Giysi s\xFCst\xFCr: g\xFC\xE7, gelir ya da oy vermez. Dikti\u011Fini giyersin ya da butikte satars\u0131n; butikten al\u0131nan giysi yeniden sat\u0131lmaz."))}\
-</p>
-      </section>`}function dikPenceresi(id){const r=R(),T=r.tailoring??terzilikKurali(),sev=Number(v.tailoring?.level??0),q=giysiKalitesi(sev),acik=(T.models??[]).filter(m=>sev>=Number(m.minLevel));if(!acik.
-length)return;let model=acik.some(m=>m.id===id)?id:acik[0].id,r1=Number(sonRenk[0]??5),r2=Number(sonRenk[1]??1);const renkler=(ad,alan)=>`<p class="ust-yazi" style="margin:12px 0 6px">${esc(ad)}</p><d\
-iv class="renk-sec" role="group" aria-label="${esc(ad)}">${(T.colors??[]).map((c,i)=>`<button type="button" class="renk-kutu" data-dik-renk="${alan}" data-deger="${i}" style="--renk:${esc(c.hex)}" ari\
-a-label="${esc(giysiRenkAdi(i))}"
-          title="${esc(giysiRenkAdi(i))}" aria-pressed="false"></button>`).join("")}</div>`,p=pencereForm({ust:\u00E7("Terzilik"),baslik:\u00E7("Giysi dik"),onayAd:\u00E7("Dikmeye ba\u015Fla"),onayIkon:"\
-scissors",govde:`<div class="dik-pencere"><div class="dik-onizleme" id="dik-onizleme"></div>
-            <div class="dik-secim"><p class="ust-yazi" style="margin:0 0 6px">${\u00E7("Model")}</p><div class="secim-sec" role="group" aria-label="${\u00E7("Model")}">${acik.map(m=>`<button type="but\
-ton" class="secim-cip" data-dik-model="${esc(m.id)}" aria-pressed="false">${esc(giysiModelAdi(m.id))}</button>`).join("")}</div>
-            ${renkler(\u00E7("Ana kuma\u015F"),"1")}${renkler(\u00E7("\u0130kinci kuma\u015F"),"2")}</div></div>
-          <p class="kucuk" id="dik-ozet" style="margin-top:10px"></p>`,is:async()=>{const x=await Sunucu.yap("tailor_start",{p_model:model,p_color1:r1,p_color2:r2});sonRenk=[r1,r2],tost(\u00E7("Diki\u015F \
-ba\u015Flad\u0131: {model} ({kumas}), {dk} dakika.",{model:giysiModelAdi(model),kumas:giysiKumasYazisi(r1,r2),dk:sayi(R().session?.minutes??20)}),"scissors"),kirli=!1,yanit(x)}}),yaz=()=>{const mo=acik.
-find(m=>m.id===model),on=$("#dik-onizleme",p.form);on&&(on.innerHTML=`${giysiSvg(model,r1,r2,q,{etiket:\u00E7("{model} \xF6nizlemesi",{model:giysiModelAdi(model)})})}
-          <b>${esc(giysiModelAdi(model))}</b><span class="kucuk">${esc(giysiKumasYazisi(r1,r2))} \xB7 ${esc(GIYSI_KALITE_AD[q]??"")} ${giysiYildiz(q)}</span>`);for(const b of $$("[data-dik-model]",p.form))
-b.setAttribute("aria-pressed",String(b.dataset.dikModel===model));for(const b of $$("[data-dik-renk]",p.form))b.setAttribute("aria-pressed",String(Number(b.dataset.deger)===(b.dataset.dikRenk==="1"?r1:
-r2)));const oz=$("#dik-ozet",p.form);oz&&(oz.textContent=\u00E7("{n} kuma\u015F (\xE7antanda {m}) \xB7 {dk} dakika \xB7 seviye kazanc\u0131 +{k}. Kuma\u015F ba\u015Flarken \xE7antandan ayr\u0131l\u0131r; vazge\xE7ersen d\xF6ner.",
-{n:sayi(mo?.kumas??0),m:sayi(v.stock?.kumas??0),dk:sayi(R().session?.minutes??20),k:hobiKazanc(sev)}))};p.form.addEventListener("click",e=>{const m=e.target.closest("[data-dik-model]"),c=e.target.closest(
-"[data-dik-renk]");m&&(model=m.dataset.dikModel,yaz()),c&&(c.dataset.dikRenk==="1"?r1=Number(c.dataset.deger):r2=Number(c.dataset.deger),yaz())}),yaz()}function ciz(){durdur(),kirli=!1,bekleyen&&(bekleyen=
-!1,setTimeout(()=>arkaTazele())),kap.innerHTML=`<div class="sayfa">
+        ${takilar.length?`<p class="ust-yazi" style="margin-top:14px">${\u00E7("Aksesuarlar")}</p>
+          ${acikT.length?`<div class="liste" id="hobi-takilar">${acikT.map(satir).join("")}</div>`:""}
+          ${kapaliT.length?`<details class="hobi-kapali" id="hobi-taki-kapali" style="margin-top:8px"${takiKapaliAcik?" open":""}><summary>${ikon("lock")}${esc(\u00E7("A\xE7\u0131lacak aksesuarlar: {n} (s\u0131rad\
+aki {model}, terzilik {s})",{n:sayi(kapaliT.length),model:giysiModelAdi(kapaliT[0].id),s:sayi(kapaliT[0].minLevel)}))}</summary><div class="liste">${kapaliT.map(satir).join("")}</div></details>`:""}`:
+""}
+        <p class="kucuk" style="margin-top:8px">${esc(\u00E7("Giysi s\xFCst\xFCr: g\xFC\xE7, gelir ya da oy vermez. Dikti\u011Fini giyer, arkada\u015F\u0131na hediye eder ya da butikte satars\u0131n; ba\u015Fkas\u0131ndan gelen giysi ikinci e\
+l sat\u0131l\u0131r."))}</p>
+      </section>`}function dikPenceresi(id){const r=R(),T=r.tailoring??terzilikKurali(),sev=Number(v.tailoring?.level??0),acik=(T.models??[]).filter(m=>sev>=Number(m.minLevel));if(!acik.length)return;
+const kumaslar=[Number(v.stock?.kumas??0),Number(v.stock?.kumas2??0),Number(v.stock?.kumas3??0)];let model=acik.some(m=>m.id===id)?id:acik[0].id,r1=Number(sonRenk[0]??5),r2=Number(sonRenk[1]??1);const desenler=T.
+patterns??[],kumasVar=!!T.fabricBonus;let kumas=kumasVar?Math.max(1,Math.min(3,sonKumas)):1,desen=sonDesen>0&&sonDesen<desenler.length&&sev>=Number(desenler[sonDesen].minLevel)?sonDesen:0;const yeter=k=>kumaslar[k-
+1]>=Number(acik.find(m=>m.id===model)?.kumas??1);yeter(kumas)||(kumas=[1,2,3].find(k=>(kumasVar||k===1)&&yeter(k))??1);const renkler=(ad,alan)=>`<p class="ust-yazi" style="margin:12px 0 6px">${esc(ad)}\
+</p><div class="renk-sec" role="group" aria-label="${esc(ad)}">${(T.colors??[]).map((c,i)=>`<button type="button" class="renk-kutu" data-dik-renk="${alan}" data-deger="${i}" style="--renk:${esc(c.hex)}\
+" aria-label="${esc(giysiRenkAdi(i))}"
+          title="${esc(giysiRenkAdi(i))}" aria-pressed="false"></button>`).join("")}</div>`,modelCip=m=>`<button type="button" class="secim-cip" data-dik-model="${esc(m.id)}" aria-pressed="false">${esc(
+giysiModelAdi(m.id))}</button>`,govdeM=acik.filter(m=>!(m.slot??GIYSI_TAKI[m.id])),takiM=acik.filter(m=>m.slot??GIYSI_TAKI[m.id]),p=pencereForm({ust:\u00E7("Terzilik"),baslik:\u00E7("Giysi dik"),onayAd:\u00E7(
+"Dikmeye ba\u015Fla"),onayIkon:"scissors",govde:`<div class="dik-pencere"><div class="dik-onizleme" id="dik-onizleme"></div>
+            <div class="dik-secim"><p class="ust-yazi" style="margin:0 0 6px">${\u00E7("Model")}</p><div class="secim-sec" role="group" aria-label="${\u00E7("Model")}">${govdeM.map(modelCip).join("")}\
+</div>
+            ${takiM.length?`<p class="ust-yazi" style="margin:10px 0 6px">${\u00E7("Aksesuar")}</p><div class="secim-sec" role="group" aria-label="${\u00E7("Aksesuar")}" id="dik-taki">${takiM.map(modelCip).
+join("")}</div>`:""}
+            ${renkler(\u00E7("Ana kuma\u015F"),"1")}${renkler(\u00E7("\u0130kinci kuma\u015F"),"2")}
+            ${kumasVar?`<p class="ust-yazi" style="margin:12px 0 6px">${\u00E7("Kuma\u015F\u0131n kalitesi")}</p><div class="secim-sec" role="group" aria-label="${\u00E7("Kuma\u015F\u0131n kalitesi")}\
+" id="dik-kumas">${[1,2,3].map(k=>`<button type="button" class="secim-cip" data-dik-kumas="${k}" aria-pressed="false">${esc(\u00E7("{k}. kalite ({n})",{k,n:sayi(kumaslar[k-1])}))}</button>`).join("")}\
+</div>`:""}
+            ${desenler.length>1?`<p class="ust-yazi" style="margin:12px 0 6px">${\u00E7("Desen")}</p><div class="secim-sec" role="group" aria-label="${\u00E7("Desen")}" id="dik-desen">${desenler.map((d,i)=>{
+const kilit=sev<Number(d.minLevel);return`<button type="button" class="secim-cip" data-dik-desen="${i}" aria-pressed="false" ${kilit?"disabled":""} title="${esc(kilit?\u00E7("terzilik {n} gerekir",{n:sayi(
+d.minLevel)}):giysiDesenAdi(i))}">${kilit?ikon("lock"):""}${esc(giysiDesenAdi(i))}</button>`}).join("")}</div>`:""}</div></div>
+          <p class="kucuk" id="dik-ozet" style="margin-top:10px"></p>`,is:async()=>{const x=await Sunucu.yap("tailor_start",{p_model:model,p_color1:r1,p_color2:r2,...kumasVar?{p_fabric:kumas}:{},...desenler.
+length>1?{p_pattern:desen}:{}});sonRenk=[r1,r2],sonKumas=kumas,sonDesen=desen,tost(\u00E7("Diki\u015F ba\u015Flad\u0131: {model} ({kumas}), {dk} dakika.",{model:giysiModelAdi(model),kumas:giysiKumasYazisi(
+r1,r2,desen),dk:sayi(R().session?.minutes??20)}),"scissors"),kirli=!1,yanit(x)}}),yaz=()=>{const mo=acik.find(m=>m.id===model),q=giysiKalitesi(sev,kumas),on=$("#dik-onizleme",p.form);on&&(on.innerHTML=
+`${giysiSvg(model,r1,r2,q,{etiket:\u00E7("{model} \xF6nizlemesi",{model:giysiModelAdi(model)}),desen})}
+          <b>${esc(giysiModelAdi(model))}</b><span class="kucuk">${esc(giysiKumasYazisi(r1,r2,desen))} \xB7 ${esc(GIYSI_KALITE_AD[q]??"")} ${giysiYildiz(q)}</span>`);for(const b of $$("[data-dik-model\
+]",p.form))b.setAttribute("aria-pressed",String(b.dataset.dikModel===model));for(const b of $$("[data-dik-renk]",p.form))b.setAttribute("aria-pressed",String(Number(b.dataset.deger)===(b.dataset.dikRenk===
+"1"?r1:r2)));for(const b of $$("[data-dik-kumas]",p.form)){const k=Number(b.dataset.dikKumas);b.setAttribute("aria-pressed",String(k===kumas)),b.disabled=kumaslar[k-1]<Number(mo?.kumas??1)}for(const b of $$(
+"[data-dik-desen]",p.form))b.setAttribute("aria-pressed",String(Number(b.dataset.dikDesen)===desen));const oz=$("#dik-ozet",p.form);oz&&(oz.textContent=\u00E7("{n} kuma\u015F, {k}. kalite (\xE7antanda {m}) \xB7 \
+{dk} dakika \xB7 seviye kazanc\u0131 +{kz}. Kuma\u015F ba\u015Flarken \xE7antandan ayr\u0131l\u0131r; vazge\xE7ersen d\xF6ner.",{n:sayi(mo?.kumas??0),k:kumas,m:sayi(kumaslar[kumas-1]),dk:sayi(R().session?.
+minutes??20),kz:hobiKazanc(sev)}))};p.form.addEventListener("click",e=>{const m=e.target.closest("[data-dik-model]"),c=e.target.closest("[data-dik-renk]"),k=e.target.closest("[data-dik-kumas]"),d=e.target.
+closest("[data-dik-desen]");m&&(model=m.dataset.dikModel,yeter(kumas)||(kumas=[1,2,3].find(x=>(kumasVar||x===1)&&yeter(x))??kumas),yaz()),c&&(c.dataset.dikRenk==="1"?r1=Number(c.dataset.deger):r2=Number(
+c.dataset.deger),yaz()),k&&!k.disabled&&(kumas=Number(k.dataset.dikKumas),yaz()),d&&!d.disabled&&(desen=Number(d.dataset.dikDesen),yaz())}),yaz()}function ciz(){durdur(),kirli=!1,bekleyen&&(bekleyen=!1,
+setTimeout(()=>arkaTazele())),kap.innerHTML=`<div class="sayfa">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m \xB7 Hobiler")}</p><h1 class="b1">${\u00E7("Hobiler")}</h1>
           <p class="aciklama">${\u00E7("Bo\u015F zaman\u0131nda bir dil \xF6\u011Fren, evinde yemek pi\u015Fir ya da giysi dik. Seans {dk} dakika s\xFCrer, i\u015Fini ve e\u011Fitimini durdurmaz; g\xFCnde {n} seans. Hobiler sava\u015F g\xFCc\xFC verm\
 ez; keyif ve madalya kazand\u0131r\u0131r, dikti\u011Fin giysiyi giyer ya da butikte satars\u0131n.",{dk:sayi(R().session?.minutes??20),n:sayi(R().session?.daily??3)})}</p></div>
@@ -182,8 +224,11 @@ quality]??""}):\u00E7("{yemek} pi\u015Fti: {n} porsiyon kilere kondu.",{yemek:ye
 n; hakk\u0131n ve malzemen geri d\xF6nd\xFC."):s?.kind==="tailoring"?\u00E7("Vazge\xE7tin; hakk\u0131n ve kuma\u015F\u0131n geri d\xF6nd\xFC."):\u00E7("Vazge\xE7tin; hakk\u0131n geri d\xF6nd\xFC."),"u\
 ndo-2"),yanit(r)});for(const b of $$("[data-hobi-ye]",kap))b.onclick=()=>isle(b,async()=>{const[tarif,kalite]=b.dataset.hobiYe.split("|"),r=await Sunucu.yap("meal_eat",{p_recipe:tarif,p_quality:Number(
 kalite)});tost(\u00E7("Afiyet olsun: {yemek}.",{yemek:yemekAdi(tarif)})+keyifEki(r,r?.mood_source),"croissant"),yanit(r)});for(const b of $$("[data-hobi-hediye]",kap))b.onclick=()=>{const[tarif,kalite]=b.
-dataset.hobiHediye.split("|");hediyePenceresi(tarif,Number(kalite))};const f=$("#hobi-dil-form",kap);f?.addEventListener("submit",e=>{e.preventDefault();const dil=String(new FormData(f).get("dil")??"");
-dil&&isle($("button[type=submit]",f),()=>basla("language",dil))})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()}),arkaTazele=tazeleyici(async()=>{if(await yukle(),!kapandi){if(kirli){
-bekleyen=!0;return}ciz()}});await Promise.all([Durum.kurallar().catch(()=>null),Durum.ozet().catch(()=>null)]),await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(hobby\.|meal\.|travel\.arrived|mood\.)/.
+dataset.hobiHediye.split("|");hediyePenceresi(tarif,Number(kalite))};for(const b of $$("[data-hobi-parti]",kap))b.onclick=()=>{v.party&&partiYemekPenceresi(v.party,v.pantry,()=>tazele(),b.dataset.hobiParti)};
+for(const b of $$("[data-hobi-mekan]",kap))b.onclick=()=>mekanYemekPenceresi({kural:mekanYemekKurali(),mekanlar:mekanlarim(),kiler:v.pantry,secili:b.dataset.hobiMekan,sonra:()=>tazele()});for(const b of $$(
+"[data-hobi-geri]",kap))b.onclick=()=>isle(b,async()=>{const r=await MekanYolu.yemekGeri(Number(b.dataset.hobiGeri));tost(\u00E7("{n} tabak {yemek} kilerine d\xF6nd\xFC.",{n:sayi(r?.returned??0),yemek:yemekAdi(
+r?.meal?.recipe)}),"undo-2"),await tazele()});const f=$("#hobi-dil-form",kap);f?.addEventListener("submit",e=>{e.preventDefault();const dil=String(new FormData(f).get("dil")??"");dil&&isle($("button[t\
+ype=submit]",f),()=>basla("language",dil))})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()}),arkaTazele=tazeleyici(async()=>{if(await yukle(),!kapandi){if(kirli){bekleyen=!0;return}ciz()}});
+await Promise.all([Durum.kurallar().catch(()=>null),Durum.ozet().catch(()=>null)]),await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(hobby\.|meal\.|travel\.arrived|mood\.|venue\.meal_|homeparty\.)/.
 test(olay)&&yakinda()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazeleIste()},3e4);return()=>{kapandi=!0,durdur(),b1(),clearInterval(saat),clearTimeout(bekleyenZaman),
 sahne.kapat()}}}),Parcalar.tamam("ek_98zp_hobi");

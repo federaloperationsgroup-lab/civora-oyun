@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98p_studyo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98p_studyo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/studyo",{async ac(kap){let v=null,m=null,kapandi=!1,durdur=()=>{};const sahne=StudyoSahnesi.ac();sahne.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}if(ad===
 "ep"){id&&epKartiAc(id,()=>tazele());return}const el=$({masa:"#studyo-kayitta",levha:"#studyo-son"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"}),el.classList.
 remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let bekleyen=null;const yakinda=()=>{clearTimeout(bekleyen),bekleyen=setTimeout(()=>{kapandi||

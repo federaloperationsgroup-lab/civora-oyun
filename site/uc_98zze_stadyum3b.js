@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98zze_stadyum3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98zze_stadyum3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const STADYUM_K=1.75,STADYUM_YK=1.5,STADYUM_OLCEK=.6,STADYUM_TRIBUN={1:{uzak:6,uc:0,cati:!1,direk:2,kose:0},2:{uzak:9,uc:5,cati:!1,direk:4,kose:0},3:{uzak:13,uc:9,cati:!1,direk:4,kose:.5},4:{uzak:17,uc:13,
 cati:!0,direk:4,kose:.8},5:{uzak:21,uc:17,cati:!0,direk:4,kose:1}},STADYUM_SEYIRCI_EN_COK={1:260,2:700,3:1300,4:1900,5:2400},STADYUM_NOTR=["#D8D4CC","#3B4A63","#7A2E2E","#2F5D4A","#C9A227","#5B5F66","\
 #E8E2D6","#8A5A3C","#2A2D33","#9DB7CC"];function stadyumOrtami(THREE,A){const{sahne,M,golgeli,kutu,silindir,tuvalDoku,tiklanir,kirlet}=A,K=1.75,YK=1.5,L=FUTBOL_L*K,W=FUTBOL_W*K,YL=L/2,YW=W/2,KALE={en:FUTBOL_KALE.

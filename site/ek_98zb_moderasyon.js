@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/moderasyon",{async ac(kap){const roller=Durum.v.ozet?.character?.staff??[],moderator=roller.some(r=>r==="moderator"||r==="admin"),teknik=roller.some(r=>["admin","release","support"].
 includes(r)),v={genel:null,sekme:moderator?"rapor":"sunucu",tur:null,kuyruk:null,bekleyen:null,arama:"",sonuc:null,kayit:null,kayitSonu:!1,sunucu:null,isler:!1,guven:null,guvenTur:null};try{const s=sessionStorage.
 getItem("civora.moderasyon");(moderator&&["rapor","bekleyen","inceleme","oyuncu","kayit"].includes(s)||teknik&&s==="sunucu")&&(v.sekme=s)}catch{}await Durum.kurallar().catch(()=>null);async function yukle(){

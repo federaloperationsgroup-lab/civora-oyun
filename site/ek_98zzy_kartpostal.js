@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzy_kartpostal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzy_kartpostal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/kare-album",{async ac(kap){const kusak=Sunucu.Giris.kusak;let kapandi=!1,fotolar=[],ozel=0,devam=!1,sayfalaniyor=!1;const gecerli=()=>!kapandi&&kap.isConnected&&kusak===Sunucu.Giris.
 kusak,kareler=new Map;async function yukle(ekle=!1){if(!gecerli())return;const r=await Sunucu.cagir("photo_album",{p_limit:30,p_before:ekle?fotolar.at(-1)?.created_at??null:null});if(!gecerli())return;
 const yeni=r.photos??[];fotolar=ekle?[...fotolar,...yeni.filter(p=>!kareler.has(p.photo_id))]:yeni,ozel=Number(r.private_count??0),devam=yeni.length===30,kareler.clear();for(const p of fotolar)kareler.

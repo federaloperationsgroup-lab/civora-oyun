@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_30_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_30_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("meydan/akis",{async ac(kap){const TUR={all:\u00E7("Hepsi"),post:\u00E7("Payla\u015F\u0131mlar"),photo:\u00E7("Kare"),video:\u00E7("Kanal"),article:\u00E7("Gazete")};let v={kapsam:"all",kip:"\
 recent",tur:"all",posts:[],photos:[],videos:[],streams:[],articles:[],official:[],trends:[],sonu:!1,yeni:0,kurallar:null,partim:null};try{const k=JSON.parse(sessionStorage.getItem("civora.akis")??"{}");
 KAPSAM[k.kapsam]&&(v.kapsam=k.kapsam),k.kip&&(v.kip=k.kip),TUR[k.tur]&&(v.tur=k.tur)}catch{}const kareler=new Map,makaleler=new Map,videolar=new Map;let gundemDur=()=>{};const kareKipi=()=>({friends:"\
@@ -87,10 +87,10 @@ await yukle(),ciz()});await yukle(),ciz();const yeniVar=olay=>{(olay==="square.n
 dinle("public:square",olay=>yeniVar(olay));return()=>{b1(),b2(),gundemDur()}}}),Kabuk.kaydet("meydan/arkadas",{async ac(kap){let v={a:null,ayar:null,sonuc:null,arama:"",foto:null,gorunus:void 0,engeller:[],
 oneriler:[],baglar:null,parti:null},davetSayac=null;const foto=ArkadasFoto.ac();Sunucu.cagir("ping").catch(()=>{});async function yukle(){const[a,ayar2,f,bak,asker,engeller,oneri,baglar,parti]=await Promise.
 all([Sunucu.cagir("friends"),Sunucu.cagir("social_settings"),Sunucu.cagir("friends_photo").catch(()=>v.foto),v.gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null,Durum.askerlik().catch(()=>null),
-Sunucu.cagir("square_blocks").catch(()=>[]),Sunucu.cagir("friend_suggestions").catch(()=>({items:[]})),MekanYolu.yakinliklar().catch(()=>null),EvPartisi.durum().catch(()=>null)]);v.a=a,v.ayar=ayar2,v.
-foto=f,v.asker=asker,v.engeller=engeller??[],v.oneriler=oneri?.items??[],v.baglar=baglar,v.parti=parti,v.gorunus===void 0&&(v.gorunus=bak?.look??null)}const kisi=(x,sag="")=>`<div class="koltuk">${avatarKutu(
-x.name,x.character_id)}<div><button class="baglanti" data-profil="${esc(x.character_id)}">${x.online?`<span class="cevrimici-nokta" title="${\u00E7("\xE7evrimi\xE7i")}"></span>`:""}<b>${esc(x.name)}</\
-b></button>
+Sunucu.cagir("square_blocks").catch(()=>[]),Sunucu.cagir("friend_suggestions").catch(()=>({items:[]})),MekanYolu.yakinliklar().catch(()=>null),EvPartisi.durum().catch(()=>null),Durum.kurallar().catch(
+()=>null)]);v.a=a,v.ayar=ayar2,v.foto=f,v.asker=asker,v.engeller=engeller??[],v.oneriler=oneri?.items??[],v.baglar=baglar,v.parti=parti,v.gorunus===void 0&&(v.gorunus=bak?.look??null)}const kisi=(x,sag="")=>`\
+<div class="koltuk">${avatarKutu(x.name,x.character_id)}<div><button class="baglanti" data-profil="${esc(x.character_id)}">${x.online?`<span class="cevrimici-nokta" title="${\u00E7("\xE7evrimi\xE7i")}\
+"></span>`:""}<b>${esc(x.name)}</b></button>
       ${x.country_id?`<div class="kucuk">${esc(ulkeAdi(x.country_id))}</div>`:x.decided_at?`<div class="kucuk">${esc(beriYaz(x.decided_at))}</div>`:""}</div>${sag||"<span></span>"}</div>`,bagHaritasi=()=>new Map(
 (v.baglar?.friends??[]).map(x=>[x.character_id,x])),bagCip=x=>{const b=bagHaritasi().get(x.character_id);return b&&(b.tier==="close"||b.tier==="kanka")?` <span class="cip ${b.tier==="kanka"?"mercan":"\
 mor"} bag-cip" data-bag="${esc(b.tier)}">${ikon(BAG_IK[b.tier])}${esc(BAG_TUR[b.tier])}</span>`:""};function ciz(){const a=v.a,bh=bagHaritasi(),arkadaslar=[...a.friends].sort((x,y)=>Number(bh.get(y.character_id)?.
@@ -130,12 +130,13 @@ button>
 </h2></div><span class="ik-kutu">${ikon("user-round-plus")}</span></div>
           <div class="koltuk-liste">${v.oneriler.map(x=>`<div class="koltuk">${avatarKutu(x.name,x.character_id)}<div><button class="baglanti" data-profil="${esc(x.character_id)}">${x.online?`<span cl\
 ass="cevrimici-nokta" title="${\u00E7("\xE7evrimi\xE7i")}"></span>`:""}<b>${esc(x.name)}</b></button>
-              <div class="kucuk">${esc(oneriNedeni(x))}</div></div>
+              <div class="kucuk">${esc(oneriNedeni(x))}</div>
+              ${x.language?`<div class="kucuk oneri-dil" data-oneri-dil="${esc(x.language)}">${ikon("languages")} ${esc(\u00E7("Ortak dil: {dil}",{dil:dilAdi(x.language)}))}</div>`:""}</div>
             <span class="satir" style="gap:6px"><button class="dugme kucuk-d" data-oneri-ekle="${esc(x.character_id)}">${ikon("user-round-plus")}${\u00E7("Ekle")}</button>
               <button class="dugme sade kucuk-d oneri-kisi-gizle" data-oneri-gizle="${esc(x.character_id)}" aria-label="${\u00E7("\xD6neriyi gizle")}" title="${\u00E7("\xD6neriyi gizle")}">${ikon("x")}\
 </button></span></div>`).join("")}</div>
-          <p class="kucuk">${\u00E7("Ortak arkada\u015F, birlik, m\xFCzik grubu, parti ve \u015Fehrinden; son g\xFCnlerde oyunu a\xE7anlar. Gizledi\u011Fin ki\u015Fi {n} g\xFCn \xF6nerilmez.",{n:Number(
-Durum.v.kurallar?.data?.social?.friends?.suggestions?.hideDays??30)})}</p></section>`:""}
+          <p class="kucuk">${\u00E7("Ortak arkada\u015F, birlik, m\xFCzik grubu, parti, \u015Fehir ve ortak dilden; son g\xFCnlerde oyunu a\xE7anlar. Gizledi\u011Fin ki\u015Fi {n} g\xFCn \xF6nerilmez.",
+{n:Number(Durum.v.kurallar?.data?.social?.friends?.suggestions?.hideDays??30)})}</p></section>`:""}
         ${a.outgoing.length?`<section class="kart"><p class="ust-yazi">${\u00E7("G\xF6nderdi\u011Fin istekler")}</p><div class="koltuk-liste" style="margin-top:10px">${a.outgoing.map(x=>kisi(x,`<butto\
 n class="dugme sade kucuk-d" data-geri="${esc(x.character_id)}">${\u00E7("Geri \xE7ek")}</button>`)).join("")}</div></section>`:""}
         <section class="kart"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Gizlilik")}</p><h2 class="b2">${\u00E7("Kim ula\u015Fabilir?")}</h2></div><span class="ik-kutu">${ikon("lock")}</\

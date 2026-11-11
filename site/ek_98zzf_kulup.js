@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98zzf_kulup.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzf_kulup.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/stadyum",{async ac(kap){let v=null,kul=null,mac=null,lig=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=null,kulupId=null,ligSecili=null,arama={q:"",sonuc:null},sonGenel=0,
 yoklamaZaman=null;const saha=FutbolKart.ac({kulup:!0}),spiker=MacSpikeri.ac("stadyum-spiker"),ben=()=>Durum.v.ozet?.character??{},KR=()=>kulupKurali()??v?.rule?.club??{},simdi=()=>Date.now()+saatFarki,
 git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});saha.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}git("#stadyum-mac")});let saat={rtt:1/0,an:0};

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_98zzc_futbol3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98zzc_futbol3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const FUTBOL_OLCEK=.52,FUTBOL_POS=["kaleci","defans","orta","forvet"];function futbol3bKur(THREE,cizici,secenek={}){if(!cizici.kur())throw new Error("webgl-yok");const stad=!!secenek.stadyum,K=stad?STADYUM_K:
 1,YK=stad?STADYUM_YK:1,OLCEK=stad?STADYUM_OLCEK:.52,YUVA=stad?22:10,TOP_R=stad?.13:.1,tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,stad?340:160);let w=1,
 h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d=futbolVerisi(null,null,0,{kulup:stad}),motor=futbolMotoru();const dinleyici={},etkinMi=()=>cizici.etkin===api,kirlet=()=>{kirli=!0},malzeme=new Map,M=(renk,ek={})=>{

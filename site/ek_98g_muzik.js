@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/muzik",{async ac(kap){let v=null,kanal=null,kanalBirak=null,kapandi=!1,durdur=()=>{};const arama={q:"",sonuc:null},oda=ProvaOdasi.ac();oda.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&
 profilAc(id,()=>tazele());return}if(ad==="calgi"){sahneRolu();return}const el=$({afis:"#muzik-ayar",gosterge:"#muzik-provalar",pano:"#muzik-repertuvar"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?
 "auto":"smooth",block:"start"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.m?.rule??Durum.v.kurallar?.data?.culture??

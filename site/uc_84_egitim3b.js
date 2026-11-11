@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_84_egitim3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_84_egitim3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function egitim3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,80);let w=1,h=1,
 kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={anahtar:"",ad:"",gorunus:null,ulke:null,rutbe:{sira:0,sayi:12},madalyalar:[],beceri:"military",benim:!1,baslangic:null,bitis:null,oteki:0};const dinleyici={},
 etkinMi=()=>cizici.etkin===api,malzeme=new Map,M=(renk,ek={})=>{const k=renk+JSON.stringify(ek);return malzeme.has(k)||malzeme.set(k,new THREE.MeshStandardMaterial({color:renk,roughness:.8,...ek})),malzeme.

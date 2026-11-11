@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/ev",{async ac(kap){let v=null,odaKapat=null,zy=null;const partiEl=document.createElement("div");partiEl.id="parti-yer",partiEl.style.marginTop="20px";const partiKapat=EvPartisiKart.
 ac(partiEl);async function yukle(){const[ev,kurallar,,oda,harita,kariyer]=await Promise.all([Sunucu.cagir("my_home"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("home_layout"),Durum.harita().catch(()=>null),
 Sunucu.cagir("media_career").catch(()=>null)]),burasi=await Sunucu.cagir("city",{p_region:ev.location_region_id});v={ev,burasi,kurallar,oda,harita,kariyer}}function evimKarti(ev,kurallar){const h=ev.house;
@@ -95,8 +95,9 @@ askerlik().catch(()=>null),Sunucu.cagir("station_board").catch(()=>null)]);v={ys
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Yoldas\u0131n")}</p><h2 class="b2">${esc(bolgeAdi(tr.to))}</h2></div><span class="ik-kutu">${ikon("route")}</span></div>
         <div class="rota">${tr.route.map(r=>`<span class="cip">${esc(bolgeAdi(r))}</span>`).join(ikon("arrow-right"))}</div>
         ${tr.vehicle?`<p class="kucuk arac-yol" data-yol-arac="${esc(String(tr.vehicle.ppm))}">${[tr.vehicle.land,tr.vehicle.sea].filter(Boolean).map(x=>`${ikon(ARAC_IK[x.kind]??"car")} ${\u00E7("{ara\
-c} ile ({n} kenar)",{arac:esc(aracRenkliAd(x.kind,x.color)),n:Number(x.edges)})}`).join(" \xB7 ")}${tr.vehicle.minutes_before?` \xB7 ${\u00E7("{a} yerine {b} dakika",{a:sayi(tr.vehicle.minutes_before),
-b:sayi(tr.minutes)})}`:""}</p>`:""}
+c} ile ({n} kenar)",{arac:esc(aracRenkliAd(x.kind,x.color)),n:Number(x.edges)})}${x.plate?` <span class="plaka kucuk-plaka" data-yol-kart-plaka="${esc(x.plate)}">${esc(x.plate)}</span>`:""}${x.name?` \
+<b>${esc(x.name)}</b>`:""}${x.owner?` \xB7 ${esc(\u00E7("kiral\u0131k (sahibi {ad})",{ad:x.owner}))}`:""}`).join(" \xB7 ")}${tr.vehicle.minutes_before?` \xB7 ${\u00E7("{a} yerine {b} dakika",{a:sayi(tr.
+vehicle.minutes_before),b:sayi(tr.minutes)})}`:""}</p>`:""}
         <div class="cubuk deniz"><i data-ilerleme="${tr.departs_at}|${tr.arrives_at}"></i></div>
         <p class="kucuk" style="margin-top:8px">${\u00E7("Var\u0131\u015F: <b>{zaman}</b>",{zaman:esc(saatYaz(tr.arrives_at))})} \xB7 ${\u00E7("kalan")} <b data-bitis="${tr.arrives_at}"></b></p>
         <p class="aciklama">${\u00E7("Yolculuk sunucuda s\xFCrer; uygulamay\u0131 kapatsan da var\u0131rs\u0131n. Yoldayken \xE7al\u0131\u015Famaz, cephede vuramazs\u0131n.")}</p>

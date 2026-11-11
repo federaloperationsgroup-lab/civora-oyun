@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-10-07201b6c-c3ff3d2 (uc_41_harita3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_41_harita3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function harita3bKur(THREE,MapControls,cizici,veri){if(!cizici.kur())throw new Error("webgl-yok");const S=.1,YUK_KAPALI=.32,YUK_ACIK=.62,YUK_NOTR=.22,SIS=new THREE.Color("#E8E4D6"),[W,H]=veri.tuval,sahne=new THREE.
 Scene,kamera=new THREE.PerspectiveCamera(36,1,.5,1200);let kontrol=null,kap=null,etiketKap=null,ipucuEl=null,boyutW=1,boyutH=1;const isinci=new THREE.Raycaster,isaretci=new THREE.Vector2,secilebilir=[],
 bolgeMesh=new Map,ulkeMesh=new Map,sehirKume=new Map,baskentEtiket=new Map,etiketler=[],surekli=[];let kip="siyasi",secili=null,uzerinde=null;const zaman={value:0};let kameraDegisti=!0,ciz=!0,kaliteAdi="\
@@ -208,10 +208,11 @@ an, uUzun; uniform vec3 uRenk;
         #include <colorspace_fragment>
         }`}));tup.renderOrder=3,yolArac=new THREE.Group;const genel=arabaYap();yolArac.add(genel),yolArac.userData={genel,kasa:genel.userData.kasa,kara:null,deniz:null,veri:y.vehicle?yolculukVerisi({ys:{
 travel:y},harita:null}):null};for(const[ad,x]of[["kara",yolArac.userData.veri?.aracK],["deniz",yolArac.userData.veri?.aracD]]){if(!x)continue;const m=aracModeli(THREE,x.tur,aracRengi(x.renk));m.scale.
-setScalar(x.tur==="otomobil"?.32:x.tur==="tekne"?.3:.45),m.visible=!1,yolArac.add(m),yolArac.userData[ad]=m}return yolGrubu=new THREE.Group,yolGrubu.add(tup,yolArac),sahne.add(yolGrubu),yolEtiketi=etiketEkle(
-`<span class="e-konum">${ikon("route")}${\u00E7("Yoldas\u0131n \xB7 {bolge}",{bolge:esc(bolgeById.get(y.to)?.ad??"")})}</span>`,"",new THREE.Vector3,97,null,!1),yolGuncelle(),!0}function yolGuncelle(){
-if(!yolEgri||!yolArac||!durum.yol)return;const bas=Date.parse(durum.yol.departs_at),son=Date.parse(durum.yol.arrives_at),u=THREE.MathUtils.clamp((Date.now()+(durum.saatFarki??0)-bas)/Math.max(1,son-bas),
-0,1);yolEgri.getPointAt(u,yolArac.position),yolEgri.getTangentAt(Math.min(.999,Math.max(.001,u)),_ileri),yolArac.rotation.y=Math.atan2(_ileri.x,_ileri.z);const ua=yolArac.userData;if(ua?.veri){const an=yolculukAni(
+setScalar(x.tur==="otomobil"?.32:x.tur==="tekne"?.3:.45),m.visible=!1,yolArac.add(m),yolArac.userData[ad]=m}yolGrubu=new THREE.Group,yolGrubu.add(tup,yolArac),sahne.add(yolGrubu);const plaka=[y.vehicle?.
+land?.plate,y.vehicle?.sea?.plate].filter(Boolean)[0]??null;return yolEtiketi=etiketEkle(`<span class="e-konum">${ikon("route")}${\u00E7("Yoldas\u0131n \xB7 {bolge}",{bolge:esc(bolgeById.get(y.to)?.ad??
+"")})}${plaka?` \xB7 <span class="plaka kucuk-plaka" data-harita-plaka="${esc(plaka)}">${esc(plaka)}</span>`:""}</span>`,"",new THREE.Vector3,97,null,!1),yolGuncelle(),!0}function yolGuncelle(){if(!yolEgri||
+!yolArac||!durum.yol)return;const bas=Date.parse(durum.yol.departs_at),son=Date.parse(durum.yol.arrives_at),u=THREE.MathUtils.clamp((Date.now()+(durum.saatFarki??0)-bas)/Math.max(1,son-bas),0,1);yolEgri.
+getPointAt(u,yolArac.position),yolEgri.getTangentAt(Math.min(.999,Math.max(.001,u)),_ileri),yolArac.rotation.y=Math.atan2(_ileri.x,_ileri.z);const ua=yolArac.userData;if(ua?.veri){const an=yolculukAni(
 ua.veri,Date.now()+(durum.saatFarki??0)),m=an.kendi?an.vapur?ua.deniz:ua.kara:null;for(const x of[ua.kara,ua.deniz])x&&(x.visible=x===m);ua.genel.visible=!m,ua.kasa=(m??ua.genel).userData.kasa,kap&&kap.
 dataset.yolArac!==(an.kendi?an.arac:"")&&(kap.dataset.yolArac=an.kendi?an.arac:"")}else kap&&kap.dataset.yolArac&&(kap.dataset.yolArac="");yolEtiketi?.konum.copy(yolArac.position).setY(YUK_ACIK+1),kameraDegisti=
 !0,ciz=!0}const geceU={uGunes:{value:new THREE.Vector2},uBoyut:{value:new THREE.Vector2(W*S,H*S)},uTuval:{value:new THREE.Vector2(W,H)},uRenk:{value:new THREE.Vector3(.36,.42,.66)}},geceOrtu=new THREE.
