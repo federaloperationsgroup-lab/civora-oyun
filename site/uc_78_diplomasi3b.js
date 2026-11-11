@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_78_diplomasi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_78_diplomasi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function diplomasi3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,120);let w=1,
 h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={biz:"",bizRenk:"#87938C",karsi:null,karsiRenk:"#87938C",durum:"bos",capraz:!1,tur:"",muhur:[!1,!1],cerceveler:[],harita:null,ucak:null,imza:null,gece:0};
 const dinleyici={},etkinMi=()=>cizici.etkin===api,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.82,...ek}),golgeli=m=>(m.castShadow=!0,m.receiveShadow=!0,m),kutu=(g,gx,gy,gz,renk,x=0,y=0,z=0)=>{

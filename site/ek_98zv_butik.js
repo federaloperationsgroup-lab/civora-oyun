@@ -1,12 +1,12 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zv_butik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
-"use strict";Kabuk.kaydet("sehir/butik",{async ac(kap){let v=null,w=null,kapsam="world",model=null,kapandi=!1,gorunus;try{kapsam=sessionStorage.getItem("civora.butik.kapsam")==="city"?"city":"world",model=sessionStorage.
-getItem("civora.butik.model")||null}catch{}model&&!GIYSI_MODELLER.includes(model)&&!BUTIK_YUVA_SUZGEC[model]&&(model=null);const ben=()=>Durum.v.ozet?.character??{},sahne=ButikSahnesi.ac();async function yukle(){
-const[b,g,bak]=await Promise.all([Sunucu.cagir("boutique",{p_scope:kapsam,p_model:model}),Sunucu.cagir("wardrobe").catch(()=>null),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);v=b,w=
-g,gorunus===void 0&&(gorunus=bak?.look??null)}const B=()=>v?.rule?.boutique??butikKurali(),T=()=>v?.rule?.tailoring??terzilikKurali(),alimKalan=()=>Math.max(0,Number(B().buyerPerDay??5)-Number(v?.bought_today??
-0)),gardiropDolu=()=>w&&(w.garments??[]).length>=Number(T().wardrobeMax??30),ikinciOran=()=>sayi(Number(B().secondHand?.capPpm??7e5)/1e4),ilan=id=>(v?.listings??[]).find(x=>x.garment_id===id)??null,kimYazisi=x=>x.
-second_hand&&x.maker_name?\u00E7("dikti: {ad}",{ad:x.maker_name}):"";function kartHtml(x){const benim=!!x.mine,engel=benim?null:alimKalan()<=0?\u00E7("Bug\xFCnk\xFC al\u0131m hakk\u0131n bitti"):gardiropDolu()?
-\u00E7("Gard\u0131robun dolu"):null,yuva=x.slot??giysiYuvasi(x.model);return`<article class="butik-kart${benim?" benim":""}" data-butik="${esc(x.garment_id)}" data-model="${esc(x.model)}" data-fiyat="${Number(
-x.price_cr)}"${x.second_hand?' data-ikinci="1"':""}>
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zv_butik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";Kabuk.kaydet("sehir/butik",{async ac(kap){let v=null,w=null,moda=null,kapsam="world",model=null,kapandi=!1,gorunus;try{kapsam=sessionStorage.getItem("civora.butik.kapsam")==="city"?"city":"world",model=
+sessionStorage.getItem("civora.butik.model")||null}catch{}model&&!GIYSI_MODELLER.includes(model)&&!BUTIK_YUVA_SUZGEC[model]&&(model=null);const ben=()=>Durum.v.ozet?.character??{},sahne=ButikSahnesi.ac();
+async function yukle(){const[b,g,bak,m]=await Promise.all([Sunucu.cagir("boutique",{p_scope:kapsam,p_model:model}),Sunucu.cagir("wardrobe").catch(()=>null),gorunus===void 0?Sunucu.cagir("my_look").catch(
+()=>null):null,Sunucu.cagir("fashionweek").catch(()=>null)]);v=b,w=g,moda=m,gorunus===void 0&&(gorunus=bak?.look??null)}const B=()=>v?.rule?.boutique??butikKurali(),T=()=>v?.rule?.tailoring??terzilikKurali(),
+alimKalan=()=>Math.max(0,Number(B().buyerPerDay??5)-Number(v?.bought_today??0)),gardiropDolu=()=>w&&(w.garments??[]).length>=Number(T().wardrobeMax??30),ikinciOran=()=>sayi(Number(B().secondHand?.capPpm??
+7e5)/1e4),ilan=id=>(v?.listings??[]).find(x=>x.garment_id===id)??null,kimYazisi=x=>x.second_hand&&x.maker_name?\u00E7("dikti: {ad}",{ad:x.maker_name}):"";function kartHtml(x){const benim=!!x.mine,engel=benim?
+null:alimKalan()<=0?\u00E7("Bug\xFCnk\xFC al\u0131m hakk\u0131n bitti"):gardiropDolu()?\u00E7("Gard\u0131robun dolu"):null,yuva=x.slot??giysiYuvasi(x.model);return`<article class="butik-kart${benim?" \
+benim":""}" data-butik="${esc(x.garment_id)}" data-model="${esc(x.model)}" data-fiyat="${Number(x.price_cr)}"${x.second_hand?' data-ikinci="1"':""}>
         <span class="butik-resim">${giysiSvg(x.model,x.color1,x.color2,x.quality,{etiket:giysiModelAdi(x.model),desen:x.pattern})}</span>
         <div class="butik-bilgi"><b>${esc(giysiModelAdi(x.model))}</b>
           <span class="kucuk">${esc(giysiKumasYazisi(x.color1,x.color2,x.pattern))}${yuva?" \xB7 "+esc(GIYSI_YUVA_AD[yuva]??""):""}</span>
@@ -43,13 +43,21 @@ x.model))} \xB7 ${esc(\u00E7("{kr} kredi",{kr:kr(x.listing.price_cr)}))}</b>
 x.model))}</b>
               <div class="alt">${esc(\u00E7("{kr} kredi \xB7 komisyon {k} \xB7 eline {n} kredi ge\xE7ti",{kr:kr(x.price_cr),k:kr(x.fee_cr),n:kr(Number(x.price_cr)-Number(x.fee_cr))}))}</div></div><spa\
 n></span></div>`).join("")}</div>`:""}
-      </section>`}function ciz(){const liste=v?.listings??[],yer=v?.region_id?bolgeAdi(v.region_id):null,bk=B(),govdeModelleri=(T().models??[]).filter(m=>!(m.slot??GIYSI_TAKI[m.id]));kap.innerHTML=`<d\
-iv class="sayfa">
+      </section>`}function modaDuyuruHtml(){const h=moda?.fashion_week;if(h){const ilk=(h.shows??[]).find(x=>x.status==="scheduled"||x.status==="live"),yazi=h.status==="finished"?(h.standings??[])[0]?
+\u00E7("{hafta} bitti: haftan\u0131n y\u0131ld\u0131z\u0131 {ad} ({p} puan).",{hafta:modaHaftasiAdi(h.no),ad:h.standings[0].name??\u00E7("Silinmi\u015F hesap"),p:sayi(h.standings[0].points)}):\u00E7("\
+{hafta} bitti.",{hafta:modaHaftasiAdi(h.no)}):\u00E7("{hafta}: {tarih}, {n} ba\u015Fkentte defile.",{hafta:modaHaftasiAdi(h.no),tarih:modaHaftasiAraligi(h.week_start),n:sayi(h.hosts??0)})+(ilk?" "+\u00E7(
+"S\u0131radaki: {sehir}, {zaman}.",{sehir:bolgeAdi(ilk.region_id),zaman:saatYaz(ilk.starts_at)}):"")+(h.mine?" "+\u00E7("S\u0131ralamada {n}. s\u0131radas\u0131n ({p} puan).",{n:sayi(h.mine.rank),p:sayi(
+h.mine.points)}):"");return`<div class="bilgi-kutusu moda-duyuru" id="butik-moda" data-moda-hafta="${esc(h.id)}" style="margin-bottom:14px">${ikon("sparkles")}<span>${esc(yazi)}
+          <button class="baglanti" type="button" data-git="sehir/etkinlikler">${\u00E7("Etkinlikler")}</button></span></div>`}return moda?.next?`<p class="kucuk moda-duyuru" id="butik-moda" style="mar\
+gin:0 0 14px">${ikon("sparkles")} ${esc(\u00E7("S\u0131radaki moda haftas\u0131: {tarih}. Her ba\u015Fkentin defilesine kendi dikti\u011Fin ba\u015Fka bir giysiyle kat\u0131l.",{tarih:modaHaftasiAraligi(
+moda.next)}))}</p>`:""}function ciz(){const liste=v?.listings??[],yer=v?.region_id?bolgeAdi(v.region_id):null,bk=B(),govdeModelleri=(T().models??[]).filter(m=>!(m.slot??GIYSI_TAKI[m.id]));kap.innerHTML=
+`<div class="sayfa">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("\u015Eehrim \xB7 Butik")}</p><h1 class="b1">${\u00E7("Butik")}</h1>
           <p class="aciklama">${esc(\u00E7("Terzilerin dikti\u011Fi giysiler ve aksesuarlar. Alan \xF6der; %{oran} komisyon yak\u0131l\u0131r, kalan\u0131 satana ge\xE7er. Giysi hemen gard\u0131robuna gelir; ba\u015Fkas\u0131ndan ald\u0131\u011F\u0131n giy\
 siyi ikinci el olarak yeniden satabilirsin (ilk fiyat\u0131n\u0131n en \xE7ok %{ikinci}'i). G\xFCnde en \xE7ok {n} al\u0131m.",{oran:sayi(Number(bk.feePpm??5e4)/1e4),ikinci:ikinciOran(),n:sayi(bk.buyerPerDay??
 5)}))}</p></div>
           <div class="oneri-dugmeler"><button class="dugme ikincil kucuk-d" data-git="hayat/hobiler">${ikon("scissors")}${\u00E7("Terzilik")}</button></div></div>
+        ${modaDuyuruHtml()}
         <div id="butik-dukkan-yer"></div>
         <section class="kart" id="butik-vitrin">
           <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Vitrin")}</p><h2 class="b2">${liste.length?\u00E7("{n} giysi",{n:sayi(liste.length)}):\u00E7("Vitrin bo\u015F")}</h2></div>

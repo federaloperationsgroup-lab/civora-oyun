@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zg_mekan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zg_mekan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/mekanlar",{async ac(kap){let r=null,hata=null;const bildiri=mekanBildiri;mekanBildiri=null,await Durum.kurallar().catch(()=>null);async function yukle(){try{r=await MekanYolu.burada(),
 hata=null}catch(e){hata=e}}function ciz(){if(hata&&!r){kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(hata))}</span></div>
           <button class="dugme ikincil" style="margin-top:14px" id="mekan-yeniden">${\u00E7("Yeniden dene")}</button></div>`,$("#mekan-yeniden",kap).onclick=()=>tazele();return}const sis=r.system,venues=r.
@@ -64,8 +64,8 @@ b2(),clearInterval(saat)}}}),Kabuk.kaydet("sehir/mekanim",{async ac(kap){let r=n
 mekanimHedef=null,await Durum.kurallar().catch(()=>null);async function yukle(){try{r=await MekanYolu.burada();const l=r.mine??[];if(v=l.find(x=>x.venue_id===id)??l[0]??null,v){id=v.venue_id;try{sessionStorage.
 setItem("civora.mekanim",id)}catch{}}v?.role==="owner"&&ark===null&&(ark=(await Sunucu.cagir("friends").catch(()=>null))?.friends??[]),hata=null}catch(e){hata=e}}const R=()=>venueKurali();let kirli=!1,
 bekleyen=!1;const yazilan=new Map,alanGrubu=el=>[...el.closest("[data-mekanim-kasa],[data-mekanim-tezgah],[data-mekanim-fiyat],[data-mekanim-ayar],[data-mekanim-etkinlik],[data-mekanim-yonetici],[data\
--mekanim-ad]")?.attributes??[]].map(a=>a.name).find(n=>n.startsWith("data-mekanim-")),degisti=e=>{kirli=!0;const el=e.target,grup=el?.name?alanGrubu(el):null;if(!grup)return;const secimli=el.type==="c\
-heckbox"||el.type==="radio",k=`${grup}/${el.name}${secimli?"/"+el.value:""}`;yazilan.delete(k),(secimli||el.value!=="")&&yazilan.set(k,secimli?{secili:el.checked}:{deger:el.value})};kap.addEventListener(
+-mekanim-ad],[data-mekanim-sahne]")?.attributes??[]].map(a=>a.name).find(n=>n.startsWith("data-mekanim-")),degisti=e=>{kirli=!0;const el=e.target,grup=el?.name?alanGrubu(el):null;if(!grup)return;const secimli=el.
+type==="checkbox"||el.type==="radio",k=`${grup}/${el.name}${secimli?"/"+el.value:""}`;yazilan.delete(k),(secimli||el.value!=="")&&yazilan.set(k,secimli?{secili:el.checked}:{deger:el.value})};kap.addEventListener(
 "input",degisti),kap.addEventListener("change",degisti);const tazeleIste=()=>{kirli?bekleyen=!0:arkaTazele()},yazilaniUnut=grup=>{for(const k of[...yazilan.keys()])k.startsWith(grup+"/")&&yazilan.delete(
 k)},yazilaniGeriKoy=odakAnahtari=>{for(const[k,y]of yazilan){const[grup,ad,deger]=k.split("/"),el=deger===void 0?$(`[${grup}] [name="${ad}"]`,kap):$(`[${grup}] [name="${ad}"][value="${CSS.escape(deger)}\
 "]`,kap);if(!el){yazilan.delete(k);continue}"secili"in y?el.checked=y.secili:el.value=y.deger,k===odakAnahtari&&el.focus({preventScroll:!0})}kirli=yazilan.size>0};function ciz(){const odak=document.activeElement,
@@ -92,6 +92,7 @@ venue_id===v.venue_id}">${ikon(MEKAN_TUR_IK[x.kind]??"sofa")}${esc(x.name)}</but
 </span></div>`:""}
         <div class="izgara mekanim-izgara">
           ${gunHtml(v,m)}${kasaHtml(m,sahibi)}${tezgahHtml(m,sahibi)}${fiyatHtml(v)}${yemekMenuAcik(v)?yemekHtml(v,m,sahibi):""}${ayarHtml(v)}${v.kind==="otel"?odalarHtml(m):""}
+          ${v.kind==="kulup"&&v.stage_policy?sahneYonetHtml(v,m):""}
           ${etkinlikHtml(m)}${yoneticiHtml(m,sahibi)}${sahibi?adHtml(v):""}${sahibi?kapatHtml():""}
         </div></div>`,bagla(),yazilaniGeriKoy(odakAnahtari)}function askiHtml(v2,m,sahibi){const son=v2.manage?.suspended_at?new Date(Date.parse(v2.manage.suspended_at)+Number(m.grace_days??14)*864e5).
 toISOString():null;return`<div class="hata-kutusu mekanim-aski" style="margin-bottom:14px">${ikon("circle-alert")}<span>${\u00E7("Mek\xE2n ask\u0131da: g\xFCnl\xFCk gider \xF6denemedi, bor\xE7 {kr} kredi. Kap\u0131 kapal\u0131, sa\
@@ -180,9 +181,25 @@ ucret.default??0))}" autocomplete="off">
               <small>${esc(\u00E7("{a}\u2013{b} kredi. Devletin st\xFCdyosu birim ba\u015F\u0131na {d} kredi al\u0131r; grup birim ba\u015F\u0131na \xF6dedi\u011Fini kasana b\u0131rak\u0131r. Kayd\u0131n kalite eki \u015Fu an +{e} (s\xFCs e\u015Fyas\u0131yla en \xE7ok +{m}).",
 {a:kr(ucret.min??0),b:kr(ucret.max??0),d:kr(Durum.v.kurallar?.data?.culture?.studio?.feePerUnitCr??100),e:Number(v2.studio_bonus??0),m:Number(v2.bonus_max??Rr.studio?.qualityBonusMax??10)}))}</small><\
 /label>`:""}
-          <button class="dugme kucuk-d" type="submit">${ikon("check")}${\u00E7("Kaydet")}</button><div class="form-mesaj"></div></form></section>`}function odalarHtml(m){const H=R().hotel??{},l=m.stays??
-[];return`<section class="kart" id="mekanim-odalar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Otel")}</p><h2 class="b2">${esc(\u00E7("{n} / {m} oda dolu",{n:l.length,m:Number(H.rooms??4)}))}\
-</h2></div><span class="ik-kutu">${ikon("bed")}</span></div>
+          <button class="dugme kucuk-d" type="submit">${ikon("check")}${\u00E7("Kaydet")}</button><div class="form-mesaj"></div></form></section>`}function sahneYonetHtml(v2,m){const R2=m.stage_rule??
+{},l=m.stage_today??[],kapilar=R2.policies??["herkes","arkadaslar","yonetim"],satir=s=>{const canli=s.status==="live",kim=s.kind==="canli"?s.band??"":(s.performers??[]).map(x=>x??\u00E7("Biri")).join(
+", ");return`<div class="liste-satir" data-sahne-set="${esc(s.id)}" data-durum="${esc(s.status)}"><span class="liste-ikon ${canli?"mor":""}">${ikon(SAHNE_TUR_IK[s.kind]??"headphones")}</span>
+          <div><span class="tur">${esc(saatYaz(s.started_at))} \xB7 ${esc(\u00E7("{n} dakika",{n:Number(s.minutes??0)}))}</span><b>${esc(SAHNE_TUR[s.kind]??s.kind)}${kim?" \xB7 "+esc(kim):""}</b>
+            <div class="alt">${esc([canli?\u00E7("s\xFCr\xFCyor"):SAHNE_BITIS[s.end_reason]??"",\u00E7("{n} dinleyici",{n:sayi(s.listeners??0)}),\u00E7("{n} alk\u0131\u015F",{n:sayi(s.applause??0)})].
+filter(Boolean).join(" \xB7 "))}</div></div>
+          ${canli?`<button class="dugme sade kucuk-d" data-sahne-bitir="${esc(s.id)}">${ikon("x")}${\u00E7("Seti bitir")}</button>`:"<span></span>"}</div>`};return`<section class="kart" id="mekanim-sa\
+hne"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Sahne")}</p><h2 class="b2">${\u00E7("DJ ve canl\u0131 performans")}</h2></div><span class="ik-kutu">${ikon("headphones")}</span></div>
+        <form class="form" data-mekanim-sahne novalidate>
+          <fieldset class="alan"><legend>${\u00E7("Sahneye kim \xE7\u0131kar")}</legend><div class="radyo-liste">${kapilar.map(k=>`<label class="radyo"><input type="radio" name="sahne_kapi" value="${esc(
+k)}" ${v2.stage_policy===k?"checked":""}>
+            <span><b>${esc(SAHNE_KAPI[k]??k)}</b><span class="kucuk">${esc(SAHNE_KAPI_ACIKLAMA[k]??"")}</span></span></label>`).join("")}</div></fieldset>
+          <button class="dugme kucuk-d" type="submit">${ikon("check")}${\u00E7("Kaydet")}</button><div class="form-mesaj"></div></form>
+        <p class="ust-yazi" style="margin-top:12px">${esc(\u00E7("Bug\xFCnk\xFC setler: {n} / {m}",{n:l.length,m:Number(R2.perVenuePerDay??8)}))}</p>
+        ${l.length?`<div class="liste">${l.map(satir).join("")}</div>`:`<p class="bos">${\u00E7("Bug\xFCn sahneye \xE7\u0131kan olmad\u0131.")}</p>`}
+        <p class="kucuk">${\u00E7("Kul\xFCpteki oyuncular DJ seti ya da canl\u0131 performans yapar; \u015Fark\u0131lar kul\xFCpte herkese \xE7alar. Sahne para kazand\u0131rmaz: sahnedekiler \xFCn, dinleyenler keyif kazan\u0131r. Sen ve \
+y\xF6neticilerin her zaman sahneye \xE7\u0131kar ve s\xFCren seti bitirebilirsiniz.")}</p></section>`}function odalarHtml(m){const H=R().hotel??{},l=m.stays??[];return`<section class="kart" id="mekani\
+m-odalar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Otel")}</p><h2 class="b2">${esc(\u00E7("{n} / {m} oda dolu",{n:l.length,m:Number(H.rooms??4)}))}</h2></div><span class="ik-kutu">${ikon(
+"bed")}</span></div>
         ${l.length?`<div class="liste">${l.map(s=>`<div class="liste-satir"><span class="liste-ikon lacivert">${ikon("bed")}</span><div><span class="tur">${esc(\u00E7("{n}. oda",{n:Number(s.room)}))}<\
 /span><b>${esc(s.guest??"")}</b>
             <div class="alt">${esc(\u00E7("{a} / {b} gece \xF6dendi \xB7 \xE7\u0131k\u0131\u015F {zaman}",{a:Number(s.nights_paid),b:Number(s.nights),zaman:saatYaz(s.ends_at)}))}</div></div><span></sp\
@@ -258,23 +275,29 @@ fa);return}a.rent=k}if(v.kind==="otel"){const g=krediAlt(fd.get("gece")),b=Rr.ho
 di aras\u0131nda olur.",{a:kr(b.min??0),b:kr(b.max??0)})),formSerbest(fa);return}a.night=g}let ucretYeni=null;if(v.kind==="studyo"){const u=krediAlt(fd.get("ucret")),b=Rr.studio?.feeCr??{};if(!Number.
 isFinite(u)||u<Number(b.min??0)||u>Number(b.max??1/0)){yaz(\u00E7("Kay\u0131t \xFCcreti {a}\u2013{b} kredi aras\u0131nda olur.",{a:kr(b.min??0),b:kr(b.max??0)})),formSerbest(fa);return}u!==Number(v.record_fee_cr??
 b.default??0)&&(ucretYeni=u)}const d=$("button[type=submit]",fa);d.disabled=!0;try{let kart=await MekanYolu.ayar(v.venue_id,a);ucretYeni!==null&&(kart=await MekanYolu.kayitUcreti(v.venue_id,ucretYeni)),
-kartAl(kart),tost(\u00E7("Ayarlar kaydedildi."),"door-open"),yazilaniUnut("data-mekanim-ayar"),ciz()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fa)}});for(const b of $$("[data-et\
-kinlik-iptal]",kap))b.onclick=()=>{const e=(v.manage?.events??[]).find(x=>x.event_id===b.dataset.etkinlikIptal);pencere({ust:\u00E7("Etkinlik"),baslik:\u00E7("{tur} iptal edilsin mi?",{tur:MEKAN_ETKINLIK[e?.
-kind]??""}),govde:`<p class="aciklama">${\u00E7("\u0130lgilenenlere iptal haberi gider.")}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("\u0130ptal et"),sinif:"mercan",ikon:"x",is:()=>mekanIsle(
-null,async()=>{await MekanYolu.etkinlikIptal(b.dataset.etkinlikIptal),tost(\u00E7("Etkinlik iptal edildi."),"x"),await tazele()})}]})};const fe=$("[data-mekanim-etkinlik]",kap);fe?.addEventListener("s\
-ubmit",async e=>{e.preventDefault();const yaz=m=>{$(".form-mesaj",fe).innerHTML=m?`<div class="hata-kutusu" style="margin-top:10px">${ikon("circle-alert")}<span>${esc(m)}</span></div>`:""},fd=new FormData(
-fe),z=new Date(String(fd.get("zaman")??""));if(Number.isNaN(z.getTime())){yaz(\u00E7("Ba\u015Flang\u0131\xE7 zaman\u0131n\u0131 se\xE7.")),formSerbest(fe);return}const d=$("button[type=submit]",fe);d.
-disabled=!0;try{await MekanYolu.etkinlikAc(v.venue_id,String(fd.get("tur")),z.toISOString(),Number(fd.get("saat"))),tost(\u00E7("Etkinlik a\xE7\u0131ld\u0131: {tur}, {zaman}.",{tur:MEKAN_ETKINLIK[String(
-fd.get("tur"))]??"",zaman:saatYaz(z.toISOString())}),"calendar"),yazilaniUnut("data-mekanim-etkinlik"),await tazele()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fe)}});const fy=$(
-"[data-mekanim-yonetici]",kap);$("[data-yonetici-ekle]",fy??kap)?.addEventListener("click",e=>mekanIsle(e.currentTarget,async()=>{const k=$("select[name=kisi]",fy)?.value;k&&(kartAl(await MekanYolu.yonetici(
-v.venue_id,k,!0)),tost(\u00E7("Y\xF6netici eklendi."),"key-round"),yazilaniUnut("data-mekanim-yonetici"),ciz())}));for(const b of $$("[data-yonetici-cikar]",kap))b.onclick=()=>mekanIsle(b,async()=>{kartAl(
-await MekanYolu.yonetici(v.venue_id,b.dataset.yoneticiCikar,!1)),tost(\u00E7("Y\xF6neticilikten \xE7\u0131kar\u0131ld\u0131."),"key-round"),ciz()});const fd2=$("[data-mekanim-ad]",kap);fd2?.addEventListener(
-"submit",async e=>{e.preventDefault();const N=R().name??{min:3,max:40},yaz=m=>{$(".form-mesaj",fd2).innerHTML=m?`<div class="hata-kutusu" style="margin-top:10px">${ikon("circle-alert")}<span>${esc(m)}\
-</span></div>`:""},ad=String(new FormData(fd2).get("ad")??"").trim().replace(/\s+/g," ");if(ad.length<Number(N.min)||ad.length>Number(N.max)){yaz(\u00E7("Mek\xE2n\u0131n ad\u0131 {a}\u2013{b} harf olmal\u0131.",
-{a:Number(N.min),b:Number(N.max)})),formSerbest(fd2);return}const d=$("button[type=submit]",fd2);d.disabled=!0;try{kartAl(await MekanYolu.adDegistir(v.venue_id,ad)),tost(\u00E7("Mek\xE2n\u0131n ad\u0131 de\u011Fi\u015Fti: {\
-ad}.",{ad}),"id-card"),yazilaniUnut("data-mekanim-ad"),await tazele()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fd2)}}),$("#mekanim-kapat",kap)?.addEventListener("click",()=>{pencere(
-{ust:\u00E7("Mek\xE2n\u0131 kapat"),baslik:v.name,govde:`<p class="aciklama">${\u00E7("Mek\xE2n kapan\u0131r ve geri a\xE7\u0131lmaz; ruhsat geri verilmez. Kasadaki kredi ve tezg\xE2htaki erzak sana d\xF6ner.")}\
-</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Kapat"),sinif:"mercan",ikon:"x",is:()=>mekanIsle(null,async()=>{await MekanYolu.kapat(v.venue_id),tost(\u00E7("Mek\xE2n\u0131n kapand\u0131: {ad}.",
-{ad:v.name}),"x"),Durum.ozet().catch(()=>{});try{sessionStorage.removeItem("civora.mekanim")}catch{}Kabuk.git("sehir/mekanlar")})}]})})}const tazele=tazeleyici(async()=>{await yukle(),ciz()}),arkaTazele=tazeleyici(
-async()=>{if(await yukle(),kirli){bekleyen=!0;return}ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^venue\./.test(olay)&&tazeleIste()}),saat=setInterval(()=>{!document.hidden&&!$(
-":focus",kap)&&tazeleIste()},6e4);return()=>{b1(),clearInterval(saat),kap.removeEventListener("input",degisti),kap.removeEventListener("change",degisti)}}}),Parcalar.tamam("ek_98zg_mekan");
+kartAl(kart),tost(\u00E7("Ayarlar kaydedildi."),"door-open"),yazilaniUnut("data-mekanim-ayar"),ciz()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fa)}});const fs=$("[data-mekanim-s\
+ahne]",kap);fs?.addEventListener("submit",async e=>{e.preventDefault();const yaz=m=>{$(".form-mesaj",fs).innerHTML=m?`<div class="hata-kutusu" style="margin-top:10px">${ikon("circle-alert")}<span>${esc(
+m)}</span></div>`:""},k=String(new FormData(fs).get("sahne_kapi")??""),d=$("button[type=submit]",fs);d.disabled=!0;try{kartAl(await MekanYolu.sahneKapi(v.venue_id,k)),tost(\u00E7("Sahnenin kap\u0131s\u0131 kayd\
+edildi."),"headphones"),yazilaniUnut("data-mekanim-sahne"),ciz()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fs)}});for(const b of $$("[data-sahne-bitir]",kap))b.onclick=()=>{pencere(
+{ust:\u00E7("Sahne"),baslik:\u00E7("Set bitsin mi?"),govde:`<p class="aciklama">${\u00E7("Sahnedekilerin seti biter; o ana dek gelen dinleyicilerin \xFCn\xFC verilir.")}</p>`,dugmeler:[{ad:\u00E7("Vaz\
+ge\xE7")},{ad:\u00E7("Seti bitir"),sinif:"mercan",ikon:"x",is:()=>mekanIsle(null,async()=>{const j=await MekanYolu.sahneBitir(v.venue_id);tost(\u00E7("Set bitti: {n} dinleyici, {m} alk\u0131\u015F.",{
+n:sayi(j?.ended?.listeners??0),m:sayi(j?.ended?.applause??0)}),"headphones"),await tazele()})}]})};for(const b of $$("[data-etkinlik-iptal]",kap))b.onclick=()=>{const e=(v.manage?.events??[]).find(x=>x.
+event_id===b.dataset.etkinlikIptal);pencere({ust:\u00E7("Etkinlik"),baslik:\u00E7("{tur} iptal edilsin mi?",{tur:MEKAN_ETKINLIK[e?.kind]??""}),govde:`<p class="aciklama">${\u00E7("\u0130lgilenenlere iptal \
+haberi gider.")}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("\u0130ptal et"),sinif:"mercan",ikon:"x",is:()=>mekanIsle(null,async()=>{await MekanYolu.etkinlikIptal(b.dataset.etkinlikIptal),tost(
+\u00E7("Etkinlik iptal edildi."),"x"),await tazele()})}]})};const fe=$("[data-mekanim-etkinlik]",kap);fe?.addEventListener("submit",async e=>{e.preventDefault();const yaz=m=>{$(".form-mesaj",fe).innerHTML=
+m?`<div class="hata-kutusu" style="margin-top:10px">${ikon("circle-alert")}<span>${esc(m)}</span></div>`:""},fd=new FormData(fe),z=new Date(String(fd.get("zaman")??""));if(Number.isNaN(z.getTime())){yaz(
+\u00E7("Ba\u015Flang\u0131\xE7 zaman\u0131n\u0131 se\xE7.")),formSerbest(fe);return}const d=$("button[type=submit]",fe);d.disabled=!0;try{await MekanYolu.etkinlikAc(v.venue_id,String(fd.get("tur")),z.
+toISOString(),Number(fd.get("saat"))),tost(\u00E7("Etkinlik a\xE7\u0131ld\u0131: {tur}, {zaman}.",{tur:MEKAN_ETKINLIK[String(fd.get("tur"))]??"",zaman:saatYaz(z.toISOString())}),"calendar"),yazilaniUnut(
+"data-mekanim-etkinlik"),await tazele()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fe)}});const fy=$("[data-mekanim-yonetici]",kap);$("[data-yonetici-ekle]",fy??kap)?.addEventListener(
+"click",e=>mekanIsle(e.currentTarget,async()=>{const k=$("select[name=kisi]",fy)?.value;k&&(kartAl(await MekanYolu.yonetici(v.venue_id,k,!0)),tost(\u00E7("Y\xF6netici eklendi."),"key-round"),yazilaniUnut(
+"data-mekanim-yonetici"),ciz())}));for(const b of $$("[data-yonetici-cikar]",kap))b.onclick=()=>mekanIsle(b,async()=>{kartAl(await MekanYolu.yonetici(v.venue_id,b.dataset.yoneticiCikar,!1)),tost(\u00E7(
+"Y\xF6neticilikten \xE7\u0131kar\u0131ld\u0131."),"key-round"),ciz()});const fd2=$("[data-mekanim-ad]",kap);fd2?.addEventListener("submit",async e=>{e.preventDefault();const N=R().name??{min:3,max:40},
+yaz=m=>{$(".form-mesaj",fd2).innerHTML=m?`<div class="hata-kutusu" style="margin-top:10px">${ikon("circle-alert")}<span>${esc(m)}</span></div>`:""},ad=String(new FormData(fd2).get("ad")??"").trim().replace(
+/\s+/g," ");if(ad.length<Number(N.min)||ad.length>Number(N.max)){yaz(\u00E7("Mek\xE2n\u0131n ad\u0131 {a}\u2013{b} harf olmal\u0131.",{a:Number(N.min),b:Number(N.max)})),formSerbest(fd2);return}const d=$(
+"button[type=submit]",fd2);d.disabled=!0;try{kartAl(await MekanYolu.adDegistir(v.venue_id,ad)),tost(\u00E7("Mek\xE2n\u0131n ad\u0131 de\u011Fi\u015Fti: {ad}.",{ad}),"id-card"),yazilaniUnut("data-mekan\
+im-ad"),await tazele()}catch(err){yaz(hataMetni(err)),d.disabled=!1}finally{formSerbest(fd2)}}),$("#mekanim-kapat",kap)?.addEventListener("click",()=>{pencere({ust:\u00E7("Mek\xE2n\u0131 kapat"),baslik:v.
+name,govde:`<p class="aciklama">${\u00E7("Mek\xE2n kapan\u0131r ve geri a\xE7\u0131lmaz; ruhsat geri verilmez. Kasadaki kredi ve tezg\xE2htaki erzak sana d\xF6ner.")}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},
+{ad:\u00E7("Kapat"),sinif:"mercan",ikon:"x",is:()=>mekanIsle(null,async()=>{await MekanYolu.kapat(v.venue_id),tost(\u00E7("Mek\xE2n\u0131n kapand\u0131: {ad}.",{ad:v.name}),"x"),Durum.ozet().catch(()=>{});
+try{sessionStorage.removeItem("civora.mekanim")}catch{}Kabuk.git("sehir/mekanlar")})}]})})}const tazele=tazeleyici(async()=>{await yukle(),ciz()}),arkaTazele=tazeleyici(async()=>{if(await yukle(),kirli){
+bekleyen=!0;return}ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^venue\./.test(olay)&&tazeleIste()}),saat=setInterval(()=>{!document.hidden&&!$(":focus",kap)&&tazeleIste()},6e4);
+return()=>{b1(),clearInterval(saat),kap.removeEventListener("input",degisti),kap.removeEventListener("change",degisti)}}}),Parcalar.tamam("ek_98zg_mekan");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98zze_stadyum3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_98zze_stadyum3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const STADYUM_K=1.75,STADYUM_YK=1.5,STADYUM_OLCEK=.6,STADYUM_TRIBUN={1:{uzak:6,uc:0,cati:!1,direk:2,kose:0},2:{uzak:9,uc:5,cati:!1,direk:4,kose:0},3:{uzak:13,uc:9,cati:!1,direk:4,kose:.5},4:{uzak:17,uc:13,
 cati:!0,direk:4,kose:.8},5:{uzak:21,uc:17,cati:!0,direk:4,kose:1}},STADYUM_SEYIRCI_EN_COK={1:260,2:700,3:1300,4:1900,5:2400},STADYUM_NOTR=["#D8D4CC","#3B4A63","#7A2E2E","#2F5D4A","#C9A227","#5B5F66","\
 #E8E2D6","#8A5A3C","#2A2D33","#9DB7CC"];function stadyumOrtami(THREE,A){const{sahne,M,golgeli,kutu,silindir,tuvalDoku,tiklanir,kirlet}=A,K=1.75,YK=1.5,L=FUTBOL_L*K,W=FUTBOL_W*K,YL=L/2,YW=W/2,KALE={en:FUTBOL_KALE.
@@ -117,19 +117,23 @@ Math.random()*7,hiz:.6+Math.random()*.9,faz:Math.random()*6.28,don:Math.random()
 c.set(renkler[i%renkler.length]));return m.instanceMatrix.needsUpdate=!0,m.instanceColor&&(m.instanceColor.needsUpdate=!0),m.frustumCulled=!1,m.visible=!1,sahne.add(m),konfeti={m,parcalar,o},konfeti}let konfetiSes=!1;
 function konfetiGuncelle(t,acik){if(!acik){konfeti&&(konfeti.m.visible=!1),konfetiSes=!1;return}const k=konfetiKur();konfetiSes||(konfetiSes=!0,typeof Ses=="object"&&Ses.kutla()),k.m.visible=!0;for(let i=0;i<
 KONFETI_N;i++){const p=k.parcalar[i],y=p.h-(t*p.hiz+p.faz)%(p.h+.5);k.o.position.set(p.x+Math.sin(t*1.7+p.faz)*.25,Math.max(.02,y),p.z+Math.cos(t*1.3+p.faz)*.2),k.o.rotation.set(t*p.don,p.faz,t*.5*p.don),
-k.o.updateMatrix(),k.m.setMatrixAt(i,k.o.matrix)}k.m.instanceMatrix.needsUpdate=!0,kirlet()}function tabelaYaz(An,el){const d=A.veri(),T=futbolTabela(d,An,el),a=JSON.stringify([T,DIL.kod,d.renk?.a??null,
-d.renk?.b??null]);if(a===ekranDoku.son)return;ekranDoku.son=a;const g=ekranDoku.g;if(g.fillStyle="#0B0D10",g.fillRect(0,0,768,256),g.textAlign="center",g.textBaseline="middle",d.bos)g.fillStyle="#8FA0\
-AE",g.font="700 34px Figtree, system-ui, sans-serif",g.fillText(T.ust,384,52,720),g.fillStyle="#7FE0A8",g.font="800 56px Figtree, system-ui, sans-serif",g.fillText(T.orta,384,128,730),g.fillStyle="#CF\
-E9DD",g.font="600 30px Figtree, system-ui, sans-serif",g.fillText(T.alt,384,202,720);else{const ra=futbolTarafRengi(d,"a"),rb=futbolTarafRengi(d,"b");g.fillStyle=ra,g.fillRect(18,24,190,40),g.fillStyle=
-rb,g.fillRect(560,24,190,40),g.font="900 30px Figtree, system-ui, sans-serif",g.fillStyle=futbolYaziRengi(ra),g.fillText(futbolTakimKisa(d,"a").toLocaleUpperCase(DIL.yerel),113,45,180),g.fillStyle=futbolYaziRengi(
-rb),g.fillText(futbolTakimKisa(d,"b").toLocaleUpperCase(DIL.yerel),655,45,180),g.fillStyle="#7FE0A8",g.font="800 112px ui-monospace, Menlo, monospace",g.fillText(`${T.a??0}`,190,150),g.fillText(`${T.b??
-0}`,578,150),g.fillStyle="#3B4148",g.fillText("-",384,146),g.fillStyle="#F2C75A",g.font="800 44px ui-monospace, Menlo, monospace",g.fillText(T.alt,384,82,300);const alt=[d.adlar?.a,d.adlar?.b].filter(
-Boolean).join(" \u2014 ");g.fillStyle="#9FB0BE",g.font="600 26px Figtree, system-ui, sans-serif",g.fillText(alt||d.sehir,384,226,740)}ekranDoku.t.needsUpdate=!0,kirlet()}let isikAcik=!1,gorunumSon=!1;
-return{kaleler,tabelaYaz,tabelaSifirla(){ekranDoku.son=""},yaz(d){kur(d)},kalite(k){kalite=k==="dusuk"?"dusuk":"yuksek",kurulan="",kur(A.veri())},isik(g,d){const tesis=!!(d?.stadyum?.isik&&!d.bos);isikAcik=
-g>.25||tesis&&g>.1,projektor.visible=isikAcik,projektor.intensity=isikAcik?.9+g*.8:0,lambaMat.emissiveIntensity=isikAcik?1.6:0},kamera(dar){return dar?{noktalar:[[-7.6,0,YW+.9],[7.6,0,YW+.9],[-7.6,0,-YW-
-1.6],[7.6,0,-YW-1.6],[-7.6,.6,-YW-1.6],[7.6,.6,-YW-1.6]].map(([a,b,c])=>new THREE.Vector3(a,b,c)),yon:new THREE.Vector3(0,1.05,1).normalize(),sinir:{x:.99,ust:.97,alt:-.97},takip:YL+1.2-7.6}:{noktalar:[
-[-YL-1.2,0,YW+1.4],[YL+1.2,0,YW+1.4],[-YL-1.6,0,-YW-2],[YL+1.6,0,-YW-2],[EKRAN.x-EKRAN.gen/2,EKRAN.y+EKRAN.yuk+.1,EKRAN.z],[EKRAN.x+EKRAN.gen/2,EKRAN.y+EKRAN.yuk+.1,EKRAN.z]].map(([a,b,c])=>new THREE.
-Vector3(a,b,c)),yon:new THREE.Vector3(0,.66,1).normalize(),sinir:{x:.99,ust:.97,alt:-.97}}},guncelle(t,An,el,azalt){if(!azalt)for(const p of panolar)p.t.offset.x=t*.035%1;const v=An?.vurgu,d=A.veri(),
-toren=!!(d?.kupa?.toren&&An?.bitti),zipla=(g,acik)=>{g&&(g.position.y=acik&&!azalt?Math.abs(Math.sin(t*9))*.16:0)};zipla(seyirci.ev,v?.tur==="gol"&&v.taraf==="a"||toren&&d.kupa.kazanan==="a"),zipla(seyirci.
-dep,v?.tur==="gol"&&v.taraf==="b"||toren&&d.kupa.kazanan==="b"),konfetiGuncelle(t,toren&&!azalt),gorunumGuncelle(t,An,el,azalt)!==gorunumSon&&(gorunumSon=!gorunumSon,kirlet())},get gorunumAcik(){return gorunumSon},
-get torenAcik(){return!!konfeti?.m.visible},get seyirciSayisi(){return seyirci.sayi??0}}}Parcalar.tamam("uc_98zze_stadyum3b");
+k.o.updateMatrix(),k.m.setMatrixAt(i,k.o.matrix)}k.m.instanceMatrix.needsUpdate=!0,kirlet()}let kursu=null;function kursuKur(){if(kursu)return kursu;const g=new THREE.Group,h=FUTBOL_KURSU_Y*K,govde=new THREE.
+Mesh(new THREE.CylinderGeometry(.5,.56,h,28),new THREE.MeshStandardMaterial({color:"#8E2B2B",roughness:.6}));govde.position.y=h/2,govde.castShadow=!0,govde.receiveShadow=!0;const kenar=new THREE.Mesh(
+new THREE.TorusGeometry(.5,.025,8,36).rotateX(Math.PI/2),new THREE.MeshStandardMaterial({color:"#E2B33C",metalness:.7,roughness:.3}));return kenar.position.y=h,g.add(govde,kenar),g.position.set(FUTBOL_KURSU[0]*
+K,0,FUTBOL_KURSU[1]*K),g.visible=!1,sahne.add(g),kursu=g,g}function kursuGuncelle(acik){if(!acik&&!kursu)return;const g=kursuKur();g.visible!==acik&&(g.visible=acik,kirlet())}function tabelaYaz(An,el){
+const d=A.veri(),T=futbolTabela(d,An,el),a=JSON.stringify([T,DIL.kod,d.renk?.a??null,d.renk?.b??null]);if(a===ekranDoku.son)return;ekranDoku.son=a;const g=ekranDoku.g;if(g.fillStyle="#0B0D10",g.fillRect(
+0,0,768,256),g.textAlign="center",g.textBaseline="middle",d.bos)g.fillStyle="#8FA0AE",g.font="700 34px Figtree, system-ui, sans-serif",g.fillText(T.ust,384,52,720),g.fillStyle="#7FE0A8",g.font="800 56\
+px Figtree, system-ui, sans-serif",g.fillText(T.orta,384,128,730),g.fillStyle="#CFE9DD",g.font="600 30px Figtree, system-ui, sans-serif",g.fillText(T.alt,384,202,720);else{const ra=futbolTarafRengi(d,
+"a"),rb=futbolTarafRengi(d,"b");g.fillStyle=ra,g.fillRect(18,24,190,40),g.fillStyle=rb,g.fillRect(560,24,190,40),g.font="900 30px Figtree, system-ui, sans-serif",g.fillStyle=futbolYaziRengi(ra),g.fillText(
+futbolTakimKisa(d,"a").toLocaleUpperCase(DIL.yerel),113,45,180),g.fillStyle=futbolYaziRengi(rb),g.fillText(futbolTakimKisa(d,"b").toLocaleUpperCase(DIL.yerel),655,45,180),g.fillStyle="#7FE0A8",g.font=
+"800 112px ui-monospace, Menlo, monospace",g.fillText(`${T.a??0}`,190,150),g.fillText(`${T.b??0}`,578,150),g.fillStyle="#3B4148",g.fillText("-",384,146),g.fillStyle="#F2C75A",g.font="800 44px ui-monos\
+pace, Menlo, monospace",g.fillText(T.alt,384,82,300);const alt=[d.adlar?.a,d.adlar?.b].filter(Boolean).join(" \u2014 ");g.fillStyle="#9FB0BE",g.font="600 26px Figtree, system-ui, sans-serif",g.fillText(
+alt||d.sehir,384,226,740)}ekranDoku.t.needsUpdate=!0,kirlet()}let isikAcik=!1,gorunumSon=!1;return{kaleler,tabelaYaz,tabelaSifirla(){ekranDoku.son=""},yaz(d){kur(d)},kalite(k){kalite=k==="dusuk"?"dusu\
+k":"yuksek",kurulan="",kur(A.veri())},isik(g,d){const tesis=!!(d?.stadyum?.isik&&!d.bos);isikAcik=g>.25||tesis&&g>.1,projektor.visible=isikAcik,projektor.intensity=isikAcik?.9+g*.8:0,lambaMat.emissiveIntensity=
+isikAcik?1.6:0},kamera(dar){return dar?{noktalar:[[-7.6,0,YW+.9],[7.6,0,YW+.9],[-7.6,0,-YW-1.6],[7.6,0,-YW-1.6],[-7.6,.6,-YW-1.6],[7.6,.6,-YW-1.6]].map(([a,b,c])=>new THREE.Vector3(a,b,c)),yon:new THREE.
+Vector3(0,1.05,1).normalize(),sinir:{x:.99,ust:.97,alt:-.97},takip:YL+1.2-7.6}:{noktalar:[[-YL-1.2,0,YW+1.4],[YL+1.2,0,YW+1.4],[-YL-1.6,0,-YW-2],[YL+1.6,0,-YW-2],[EKRAN.x-EKRAN.gen/2,EKRAN.y+EKRAN.yuk+
+.1,EKRAN.z],[EKRAN.x+EKRAN.gen/2,EKRAN.y+EKRAN.yuk+.1,EKRAN.z]].map(([a,b,c])=>new THREE.Vector3(a,b,c)),yon:new THREE.Vector3(0,.66,1).normalize(),sinir:{x:.99,ust:.97,alt:-.97}}},guncelle(t,An,el,azalt){
+if(!azalt)for(const p of panolar)p.t.offset.x=t*.035%1;const v=An?.vurgu,d=A.veri(),toren=!!(d?.kupa?.toren&&An?.bitti),zipla=(g,acik)=>{g&&(g.position.y=acik&&!azalt?Math.abs(Math.sin(t*9))*.16:0)};zipla(
+seyirci.ev,v?.tur==="gol"&&v.taraf==="a"||toren&&d.kupa.kazanan==="a"),zipla(seyirci.dep,v?.tur==="gol"&&v.taraf==="b"||toren&&d.kupa.kazanan==="b"),konfetiGuncelle(t,toren&&!azalt),kursuGuncelle(!!(An?.
+kupa&&An.kupa.evre!=="dizil")),gorunumGuncelle(t,An,el,azalt)!==gorunumSon&&(gorunumSon=!gorunumSon,kirlet())},get gorunumAcik(){return gorunumSon},get torenAcik(){return!!konfeti?.m.visible},get kursuAcik(){
+return!!kursu?.visible},get seyirciSayisi(){return seyirci.sayi??0}}}Parcalar.tamam("uc_98zze_stadyum3b");

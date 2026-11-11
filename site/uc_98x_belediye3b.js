@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98x_belediye3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_98x_belediye3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const BLD_KASA={yigin:[15,9],sikke:8},BLD_MAKET_YER={yol:[-1.34,-.52],egitim:[1.34,-.52],kultur:[-1.34,.5],hizmet:[1.34,.5],spor:[0,.82],saglik:[0,-.86]},BLD_MAKET_KAIDE={spor:[.72,.5],saglik:[.72,.5]},
 BLD_MAKET_ARKA_LEVHA=new Set(["saglik"]),BLD_MAKET_OLCEK=.36,BLD_DURUM_RENK={none:"#A9A79F",building:"#D9A548",active:"#2F8F62",suspended:"#C65A3B"};function bldProjeModeli(THREE,tur,renk="#C65A3B"){const g=new THREE.
 Group,parcalar=[],canli=[];let oyna=()=>{},yuk=1,ayak=[1.5,1.1];const ekle=(geo,r,x,y,z,ek={})=>{const m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:r,roughness:ek.parlak?.35:.82,metalness:ek.

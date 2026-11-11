@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_41_harita3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_41_harita3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function harita3bKur(THREE,MapControls,cizici,veri){if(!cizici.kur())throw new Error("webgl-yok");const S=.1,YUK_KAPALI=.32,YUK_ACIK=.62,YUK_NOTR=.22,SIS=new THREE.Color("#E8E4D6"),[W,H]=veri.tuval,sahne=new THREE.
 Scene,kamera=new THREE.PerspectiveCamera(36,1,.5,1200);let kontrol=null,kap=null,etiketKap=null,ipucuEl=null,boyutW=1,boyutH=1;const isinci=new THREE.Raycaster,isaretci=new THREE.Vector2,secilebilir=[],
 bolgeMesh=new Map,ulkeMesh=new Map,sehirKume=new Map,baskentEtiket=new Map,etiketler=[],surekli=[];let kip="siyasi",secili=null,uzerinde=null;const zaman={value:0};let kameraDegisti=!0,ciz=!0,kaliteAdi="\

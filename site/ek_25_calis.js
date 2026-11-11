@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_25_calis.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_25_calis.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/is",{async ac(kap){let durdur=()=>{},birimler=1,depoAdet=1;const atolye=AtolyeSahnesi.ac(),isletmeKart=IsletmeSahnesi.ac({calisan:!0});let veri=null,nabiz=null,gorunus,isletme=null;
 async function yukle(){const[is,ilan,depo,kurallar,hatlar,nb,bak,,onarim]=await Promise.all([Sunucu.cagir("my_work"),Sunucu.cagir("job_offers"),Sunucu.cagir("depot_status"),Durum.kurallar(),Sunucu.cagir(
 "coop_map").catch(()=>null),Sunucu.cagir("city_pulse").catch(()=>null),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null,Durum.askerlik(),Sunucu.cagir("repair_status").catch(()=>null)]);nb&&

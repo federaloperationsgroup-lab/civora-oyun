@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_23_ayarlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_23_ayarlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/ayarlar",{async ac(kap){const[liste,silme,dog,guven]=await Promise.all([Sunucu.cagir("my_feedback").catch(()=>null),Sunucu.cagir("account_deletion_status").catch(()=>null),Sunucu.cagir(
 "verification_status").catch(()=>null),Sunucu.cagir("trust_status").catch(()=>null)]),email=Sunucu.Giris.kullanici?.email??"",misafir=Sunucu.Giris.misafirMi,gbler=Array.isArray(liste)?liste:liste?.items??
 [],bekleyenSilme=silme?.status==="pending",baslangicKarti=()=>{const o=Durum.v.ozet?.onboarding;if(!o||typeof Rehber!="object")return"";const rol=o.role?Rehber.ROL[o.role]:null;return`<section class="\

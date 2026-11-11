@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_29_uretim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_29_uretim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/uretim",{async ac(kap){let v=null,gorunus;const sahneKart=IsletmeSahnesi.ac();sahneKart.dinle("git",({ne,id})=>{const co=v?.isletmeler.find(x=>x.company_id===id);co&&(ne==="girdi"?
 aktar(id,"in","girdi"):ne==="cikti"?co.balances.some(b=>b.asset!=="CR"&&b.amount-b.held>0)?aktar(id,"out","mal"):tost(\u00E7("Depoda \xE7ekilecek \xFCr\xFCn yok."),"package"):ne==="kasa"?aktar(id,"in",
 "CR"):ne==="ilan"&&ilanAc(id))});async function yukle(){const[isletmeler,kurallar,o,bak]=await Promise.all([Sunucu.cagir("my_companies"),Durum.kurallar(),Durum.ozet(),gorunus===void 0?Sunucu.cagir("my\

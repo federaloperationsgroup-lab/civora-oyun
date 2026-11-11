@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_30_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_30_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("meydan/akis",{async ac(kap){const TUR={all:\u00E7("Hepsi"),post:\u00E7("Payla\u015F\u0131mlar"),photo:\u00E7("Kare"),video:\u00E7("Kanal"),article:\u00E7("Gazete")};let v={kapsam:"all",kip:"\
 recent",tur:"all",posts:[],photos:[],videos:[],streams:[],articles:[],official:[],trends:[],sonu:!1,yeni:0,kurallar:null,partim:null};try{const k=JSON.parse(sessionStorage.getItem("civora.akis")??"{}");
 KAPSAM[k.kapsam]&&(v.kapsam=k.kapsam),k.kip&&(v.kip=k.kip),TUR[k.tur]&&(v.tur=k.tur)}catch{}const kareler=new Map,makaleler=new Map,videolar=new Map;let gundemDur=()=>{};const kareKipi=()=>({friends:"\

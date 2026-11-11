@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98w_parti.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98w_parti.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/parti",{async ac(kap){let v=null,durdur=()=>{},uyeGoster=50,istekGoster=30,bagisTaslak="",bagisOdak=!1;const merkez=PartiMerkezi.ac(),liderIsaret={e:null,id:null};async function yukle(){
 const[p,liste,kurallar]=await Promise.all([Sunucu.cagir("my_party"),Sunucu.cagir("parties").catch(()=>null),Durum.kurallar(),Durum.ozet()]);v={p,liste,c:kurallar.data.civic}}function uyelikHtml(p,lider){
 const mr=p.membership_rule;if(!mr)return"";const tumIstekler=p.requests??[],istekler=tumIstekler.slice(0,istekGoster);return`<section class="kart" id="parti-uyelik"><div class="kart-bas"><div><p class\

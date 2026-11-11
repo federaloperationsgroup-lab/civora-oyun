@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zk_saglik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zk_saglik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/saglik",{async ac(kap){let c=null,kapandi=!1,durdur=()=>{};const sahne=SaglikSahnesi.ac();sahne.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}const hedef=ad===
 "doktor"&&id?`[data-saglik-nobet="${CSS.escape(id)}"]`:{ben:c?.my_visit?"#saglik-siram":"#saglik-yorgunluk",sira:"#saglik-doktorlar",oda:"#saglik-doktorluk",yorgunluk:"#saglik-yorgunluk",doktor:"#sagl\
 ik-doktorlar"}[ad],el=hedef?$(hedef,kap):null;el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});

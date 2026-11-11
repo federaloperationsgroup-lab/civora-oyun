@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,yv=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ul\
 ke/cephe",depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek,yv]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(
 ()=>null),Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Sunucu.
@@ -545,7 +545,7 @@ async function marsFormu(){const d=await Sunucu.cagir("anthem_songs"),l=(d?.song
 ar\u0131 yeni bir \u015Fark\u0131 kaydedince \xF6nerilebilir."):\u00E7("Hen\xFCz mar\u015F olabilecek \u015Fark\u0131 yok: \xFClkenin bir grubu bir \u015Fark\u0131y\u0131 st\xFCdyoda kaydedince \xF6nerilebilir."),
 "circle-alert");return}pencereForm({ust:\u00E7("\xD6neri"),baslik:\u00E7("Milli mar\u015F"),onayAd:\u00E7("Oylamaya a\xE7"),onayIkon:"gavel",govde:`<p class="aciklama">${d?.anthem?\u00E7("Bug\xFCnk\xFC mar\u015F\
 : <b>{sarki}</b> ({grup}). Yeni mar\u015F \xF6nerisi meclisin salt \xE7o\u011Funlu\u011Fuyla kabul edilir.",{sarki:esc(d.anthem.title),grup:esc(d.anthem.band)}):\u00E7("Meclis \xFClkenin bir grubunun kay\
-d\u0131 bitmi\u015F \u015Fark\u0131s\u0131n\u0131 milli mar\u015F se\xE7er; salt \xE7o\u011Funluk yeter. Mar\u015F \xDClkem \u2192 \xD6zet'te \xE7alar, grup unvan al\u0131r; g\xFC\xE7 ya da oy vermez.")}\
+d\u0131 bitmi\u015F \u015Fark\u0131s\u0131n\u0131 milli mar\u015F se\xE7er; salt \xE7o\u011Funluk yeter. Mar\u015F \xDClkem \u2192 \xD6zet'te, m\xFCzede ve t\xF6renlerde \xE7alar, grup unvan al\u0131r; g\xFC\xE7 ya da oy vermez.")}\
 </p>
           <fieldset class="alan"><legend>${\u00E7("\u015Eark\u0131")}</legend><div class="radyo-liste">${l.map((x,i)=>`<label class="radyo"><input type="radio" name="sarki" value="${esc(x.song_id)}" ${i===
 0?"checked":""}>

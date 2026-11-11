@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zx_evcil.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zx_evcil.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/evcil",{async ac(kap){let v=null,yuklendi=0,kapandi=!1,mesgul=!1,gorunus,tur="kedi",cins="tekir";const sahne=EvcilSahnesi.ac();sahne.dinle("sec",ad=>{const ilk=(v?.pets??[]).find(p=>p.
 state==="ac"||p.state==="acikti")??(v?.pets??[])[0],esyadaki=ad==="kafes"||ad==="akvaryum"?(v?.pets??[]).find(p=>p.species===(ad==="kafes"?"kus":"balik")):null,sec=ad.startsWith("hayvan:")?`#evcil-${ad.
 slice(7)}`:esyadaki?`#evcil-${esyadaki.id}`:ad==="mama"&&ilk?`#evcil-${ilk.id}`:ad==="ben"?"#evcil-dost":(v?.pets??[]).length?`#evcil-${v.pets[0].id}`:"#evcil-barinak",el=$(sec,kap);el&&(el.scrollIntoView(
@@ -34,6 +34,7 @@ esc(sevAd)}</button>`:""}
 eydana gelsin")}</button>`:""}
         </div>
         ${yuruNot?`<p class="kucuk evcil-yuru-not" data-evcil-yuru-not="${esc(p.walk??"")}">${ikon("footprints")} ${esc(yuruNot)}</p>`:""}
+        ${Array.isArray(p.friends)?dostlarHtml(p):""}
         ${esyaYok?`<div class="bilgi-kutusu uyari-kutusu" style="margin-top:10px" data-evcil-esya-yok="${esc(ister)}">${ikon("circle-alert")}<span>${esc(ister==="kus_kafesi"?\u00E7("{ad} i\xE7in evinde k\
 u\u015F kafesi yok. Evim \u2192 D\xFCzenle \u2192 E\u015Fya ekle'den yeniden kur.",{ad:p.name}):\u00E7("{ad} i\xE7in evinde akvaryum yok. Evim \u2192 D\xFCzenle \u2192 E\u015Fya ekle'den yeniden kur.",
 {ad:p.name}))}
@@ -47,12 +48,22 @@ eposundan alabilirsin."))}
           <button class="dugme sade kucuk-d" data-evcil-ad="${esc(p.id)}" ${bekle(p.rename_wait)>0||mesgul?"disabled":""}>${ikon("pencil")}${\u00E7("Ad\u0131n\u0131 de\u011Fi\u015Ftir")}</button>
           <button class="dugme sade kucuk-d" data-evcil-birak="${esc(p.id)}" ${mesgul?"disabled":""}>${ikon("house")}${\u00E7("Bar\u0131na\u011Fa geri ver")}</button>
         </div>
-      </section>`}function barinakHtml(){const r=R(),max=Number(r.max??2),n=hayvanlar().length;if(n>=max)return"";const ucret=Number(r.adoption?.feeCr??2e3),bugun=Number(v.adopted_today??0)>=Number(r.
-adoption?.perDay??1),yetmez=krediSerbest()<ucret,turler=evcilTurleri().map(s=>s.id);turler.includes(tur)||(tur=turler[0]??"kedi");const cinsler=evcilTurleri().find(s=>s.id===tur)?.breeds??[];cinsler.some(
-b=>b.id===cins)||(cins=cinsler[0]?.id??cins);const ister=evcilIster(tur),esyaVar=!ister||!!v.items?.[ister],odada=v.home?.kind==="room",esyaEngel=esyaVar?null:ister==="kus_kafesi"?\u00E7("Ku\u015F i\xE7in evi\
-nde ku\u015F kafesi olmal\u0131. Evim \u2192 D\xFCzenle \u2192 E\u015Fya ekle'den kur (mobilyayla)."):odada?\u00E7("Bal\u0131k i\xE7in akvaryum gerekir; akvaryum pansiyon odas\u0131na konmaz, yaln\u0131z evde kurulur. \
-\u015Eehrinden bir ev al\u0131nca kurabilirsin."):\u00E7("Bal\u0131k i\xE7in evinde akvaryum olmal\u0131. Evim \u2192 D\xFCzenle \u2192 E\u015Fya ekle'den kur (mobilyayla)."),engel=bugun?\u00E7("Bug\xFCn\
- bir hayvan sahiplendin; yar\u0131n yeniden gel."):yetmez?\u00E7("Bar\u0131na\u011Fa ba\u011F\u0131\u015F i\xE7in kredin yetmiyor."):esyaEngel;return`<section class="kart" id="evcil-barinak">
+      </section>`}function dostlarHtml(p){const l=p.friends??[];if(!l.length)return`<div class="evcil-dostlar" data-evcil-dostlar="${esc(p.id)}" data-sayi="0"><p class="kucuk">${ikon("paw-print")} ${esc(
+\u00E7('{ad} hen\xFCz meydanda ba\u015Fka bir hayvanla oynamad\u0131. Yan\u0131nda y\xFCr\xFCrken ba\u015Fkas\u0131n\u0131n kedisine ya da k\xF6pe\u011Fine dokun: "Oynas\u0131nlar".',{ad:p.name}))}</p\
+></div>`;const kucukHarf=t=>String(t??"").toLocaleLowerCase(DIL.yerel);return`<div class="evcil-dostlar" data-evcil-dostlar="${esc(p.id)}" data-sayi="${l.length}">
+        <p class="ust-yazi">${esc(\u00E7("Arkada\u015Flar\u0131 ({n})",{n:l.length}))}</p>
+        <ul class="evcil-dost-liste">${l.map(f=>`<li data-evcil-dost="${esc(f.pet_id)}" data-basamak="${esc(f.tier??"")}" data-gun="${Number(f.days??0)}">
+          <span class="evcil-dost-resim">${hayvanSvg(f,f.today?"sevin":"otur",{etiket:f.name??evcilCinsAdi(f.breed)})}</span>
+          <span class="evcil-dost-yazi"><b>${esc(f.name?evcilTanim(f):evcilCinsAdi(f.breed))}</b>
+            <small>${esc([f.owner?\u00E7("sahibi {ad}",{ad:f.owner}):\u00E7("sahibi ad\u0131n\u0131 gizliyor"),\u00E7("{n} g\xFCn birlikte",{n:Number(f.days??0)}),f.next?\u00E7("{n} g\xFCn sonra {basamak\
+}",{n:Number(f.next.left??0),basamak:kucukHarf(EVCIL_DOST_AD[f.next.tier])}):null,f.today?\u00E7("bug\xFCn oynad\u0131lar"):null].filter(Boolean).join(" \xB7 "))}</small></span>
+          <span class="cip ${f.tier==="yakin"?"yesil":f.tier==="arkadas"?"deniz":""}">${ikon("paw-print")}${esc(EVCIL_DOST_AD[f.tier]??"")}</span></li>`).join("")}</ul></div>`}function barinakHtml(){const r=R(),
+max=Number(r.max??2),n=hayvanlar().length;if(n>=max)return"";const ucret=Number(r.adoption?.feeCr??2e3),bugun=Number(v.adopted_today??0)>=Number(r.adoption?.perDay??1),yetmez=krediSerbest()<ucret,turler=evcilTurleri().
+map(s=>s.id);turler.includes(tur)||(tur=turler[0]??"kedi");const cinsler=evcilTurleri().find(s=>s.id===tur)?.breeds??[];cinsler.some(b=>b.id===cins)||(cins=cinsler[0]?.id??cins);const ister=evcilIster(
+tur),esyaVar=!ister||!!v.items?.[ister],odada=v.home?.kind==="room",esyaEngel=esyaVar?null:ister==="kus_kafesi"?\u00E7("Ku\u015F i\xE7in evinde ku\u015F kafesi olmal\u0131. Evim \u2192 D\xFCzenle \u2192 E\u015Fya ekle'den kur (mobilyayl\
+a)."):odada?\u00E7("Bal\u0131k i\xE7in akvaryum gerekir; akvaryum pansiyon odas\u0131na konmaz, yaln\u0131z evde kurulur. \u015Eehrinden bir ev al\u0131nca kurabilirsin."):\u00E7("Bal\u0131k i\xE7in evinde ak\
+varyum olmal\u0131. Evim \u2192 D\xFCzenle \u2192 E\u015Fya ekle'den kur (mobilyayla)."),engel=bugun?\u00E7("Bug\xFCn bir hayvan sahiplendin; yar\u0131n yeniden gel."):yetmez?\u00E7("Bar\u0131na\u011Fa ba\u011F\u0131\u015F i\xE7\
+in kredin yetmiyor."):esyaEngel;return`<section class="kart" id="evcil-barinak">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Bar\u0131nak")}</p><h2 class="b2">${n?\u00E7("Bir dost daha sahiplen"):\u00E7("Bir dost sahiplen")}</h2></div>
           <span class="ik-kutu">${ikon("house")}</span></div>
         <p class="kucuk">${esc(\u00E7("Bar\u0131na\u011Fa {kr} kredi ba\u011F\u0131\u015F yap\u0131l\u0131r (yak\u0131l\u0131r). G\xFCnde bir hayvan, en \xE7ok {n} hayvan. Hayvan evinde ya\u015Far; misafirlerin de g\xF6r\xFCr.",
@@ -80,6 +91,10 @@ ost">
         <div class="cubuk altin" style="margin-top:8px"><i style="width:${oran.toFixed(1)}%"></i></div>
         ${m?`<p class="kucuk" style="margin-top:10px" id="evcil-keyif">${ikon("face-grinning")} ${esc(\u00E7("Evcil hayvan keyfi bug\xFCn {a} / {b}: tok hayvan\u0131 sevmek +{s}, oynamak +{o}.",{a:sayi(
 m.used??0),b:sayi(m.cap??0),s:sayi(m.pet??0),o:sayi(m.play??0)}))}</p>`:""}
+        ${v.plays?`<p class="kucuk" style="margin-top:6px" id="evcil-oyun" data-bugun="${Number(v.plays.today??0)}" data-alinan="${Number(v.plays.received_today??0)}" data-dost="${Number(k.friends_made??
+0)}">${ikon("paw-print")} ${esc(\u00E7("Bug\xFCn meydanda {a} / {b} oyun ba\u015Flatt\u0131n.",{a:sayi(v.plays.today??0),b:sayi(v.plays.per_day??5)}))}${Number(v.plays.received_today??0)?" "+esc(\u00E7(
+"Hayvanlar\u0131nla bug\xFCn {n} kez oynad\u0131lar.",{n:Number(v.plays.received_today)})):""} ${esc(\u00E7("Patili Dostluk Madalyas\u0131: {n} arkada\u015F.",{n:Number(k.friends_made??0)}))}</p>`:""}\
+
         ${v.greets?`<p class="kucuk" style="margin-top:6px" id="evcil-sevme" data-bugun="${Number(v.greets.today??0)}" data-alinan="${Number(v.greets.received_today??0)}">${ikon("hand-heart")} ${esc(\u00E7(
 "Bug\xFCn meydanda ba\u015Fkalar\u0131n\u0131n hayvanlar\u0131ndan {a} / {b} sevdin.",{a:sayi(v.greets.today??0),b:sayi(v.greets.per_day??5)}))}${Number(v.greets.received_today??0)?" "+esc(\u00E7("Hay\
 vanlar\u0131n\u0131 bug\xFCn {n} kez sevdiler.",{n:sayi(v.greets.received_today)})):""}</p>`:""}
@@ -90,6 +105,8 @@ vanlar\u0131n\u0131 bug\xFCn {n} kez sevdiler.",{n:sayi(v.greets.received_today)
 </li>
           <li>${esc(\u00E7("Ku\u015F kafeste, bal\u0131k akvaryumda ya\u015Far; ikisi de evde kal\u0131r. Tok ve mutlu kedi ya da k\xF6pek meydanda arkandan y\xFCr\xFCr."))}</li>
           <li>${esc(\u00E7("Meydanda ba\u015Fkas\u0131n\u0131n hayvan\u0131n\u0131 g\xFCnde 5 kez (ayn\u0131 hayvan\u0131 bir kez), ev partisinde bir kez sevebilirsin; sahibine haber gider."))}</li>
+          ${v.plays?`<li>${esc(\u00E7("Meydanda yan\u0131nda y\xFCr\xFCyen kedin ya da k\xF6pe\u011Fin ba\u015Fkas\u0131n\u0131n kedisi ya da k\xF6pe\u011Fiyle oynar: ayn\u0131 iki hayvan g\xFCnde bir kez, sen g\xFCnde 5 oyun. \u0130kisinin sevgisi artar, ik\
+i sahibe keyif. 1 g\xFCn tan\u0131d\u0131k, 3 g\xFCn arkada\u015F, 7 g\xFCn yak\u0131n arkada\u015F."))}</li>`:""}
           <li>${esc(\u00E7("Hayvan \xF6lmez, kaybolmaz, sat\u0131lmaz; a\xE7 ya da k\xFCs kal\u0131r. Sava\u015Fa, oylara ve gelire etkisi yoktur."))}</li>
         </ul>
         ${hayvanlar().length?`<p class="kucuk">${ikon("map-pin")} ${esc(\u00E7("Evin: {sehir}",{sehir:bolgeAdi(v.home?.region_id)||"\u2014"}))} \xB7 ${esc(\u00E7("\xC7antanda {n} mama",{n:sayi(v.food_stock??

@@ -1,19 +1,48 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zz_etkinlik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
-"use strict";Kabuk.kaydet("sehir/etkinlikler",{async ac(kap){let v=null,hata=null,detay=null,secili=null,kapandi=!1,mesgul=!1,saatFarki=0,gorunus;const alan=EtkinlikAlani.ac();alan.dinle("sec",ad=>{$(ad==="program"?
-"#etkinlik-program":"#etkinlik-detay",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.rules??etkinlikKurali()??{},simdi=()=>Date.
-now()+saatFarki,program=()=>v?.program??[],burada=()=>!!v&&v.here===v.region_id;async function yukle(){try{const[x,bak]=await Promise.all([Sunucu.cagir("cityevents",{p_region:v?.region_id??null}),gorunus===
-void 0?Sunucu.cagir("my_look").catch(()=>null):null,Durum.kurallar().catch(()=>null)]);v=x,gorunus===void 0&&(gorunus=bak?.look??null),hata=null;const hepsi=[...program(),...v.recent??[]];(!secili||!hepsi.
-some(e=>e.id===secili))&&(secili=(program().find(e=>e.status==="live")??program().find(e=>e.status==="scheduled")??(v.recent??[])[0]??program()[0])?.id??null),await detayYukle()}catch(e){hata=e}}async function detayYukle(){
-if(!secili){detay=null;return}try{detay=await Sunucu.cagir("cityevent_get",{p_event:secili}),saatFarki=detay?.server_time?Date.parse(detay.server_time)-Date.now():saatFarki}catch{detay=null}}function satirHtml(e){
-const r=R(),kume=etkinlikKume(e.kind,r),m=e.mine,durum=e.status==="scheduled"&&Date.parse(e.starts_at)<=simdi()?\u00E7("Ba\u015Fl\u0131yor"):ETKINLIK_DURUM[e.status]??e.status,renk=e.status==="live"?"\
-deniz":e.status==="cancelled"?"mercan":e.status==="finished"?"":"altin",alt=[];return kume!=="senlik"&&alt.push(Number(e.pool_cr)>0?\u00E7("\xD6d\xFCl havuzu {kr} kredi",{kr:kr(e.pool_cr)}):\u00E7("\xD6d\
-\xFCls\xFCz")),kume!=="senlik"&&e.status==="scheduled"&&alt.push(\u00E7("{n}/{m} kay\u0131tl\u0131",{n:sayi(e.count??0),m:sayi(e.max??0)})),Number(e.team_count)>0&&alt.push(\u00E7("{n} tak\u0131m",{n:sayi(
-e.team_count)})),etkinlikSponsorAdlari(e).length&&alt.push(\u00E7("{n} sponsor",{n:sayi(etkinlikSponsorAdlari(e).length)})),e.status==="finished"&&(e.winners??[])[0]?.name&&alt.push(\u00E7("Birinci: {\
-ad}",{ad:e.winners[0].name})),e.status==="cancelled"&&alt.push(ETKINLIK_IPTAL[e.cancel_reason]??""),`<button type="button" class="liste-satir etkinlik-satir${e.id===secili?" secili":""}" data-etkinlik\
-="${esc(e.id)}" data-tur="${esc(e.kind)}" data-durum="${esc(e.status)}"
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zz_etkinlik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";Kabuk.kaydet("sehir/etkinlikler",{async ac(kap){let v=null,hata=null,detay=null,secili=null,kapandi=!1,mesgul=!1,saatFarki=0,bolge=null,ilkBolge=null,gorunus;const alan=EtkinlikAlani.ac();alan.dinle("\
+sec",ad=>{$(ad==="program"?"#etkinlik-program":"#etkinlik-detay",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.rules??
+etkinlikKurali()??{},simdi=()=>Date.now()+saatFarki,program=()=>v?.program??[],burada=(e=null)=>!!v&&v.here===(e?.region_id??v.region_id);async function yukle(){try{const[x,bak]=await Promise.all([Sunucu.
+cagir("cityevents",{p_region:bolge??v?.region_id??null}),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null,Durum.kurallar().catch(()=>null)]);v=x,ilkBolge??=v.region_id??null,gorunus===void 0&&
+(gorunus=bak?.look??null),hata=null;const hepsi=[...program(),...v.recent??[]],moda=(v.fashion_week?.shows??[]).map(x2=>x2.event_id);(!secili||!(hepsi.some(e=>e.id===secili)||moda.includes(secili)))&&
+(secili=(program().find(e=>e.status==="live")??program().find(e=>e.status==="scheduled")??(v.recent??[])[0]??program()[0])?.id??null),await detayYukle()}catch(e){hata=e}}async function detayYukle(){if(!secili){
+detay=null;return}try{detay=await Sunucu.cagir("cityevent_get",{p_event:secili}),saatFarki=detay?.server_time?Date.parse(detay.server_time)-Date.now():saatFarki}catch{detay=null}}function modaHtml(){const w=v.
+fashion_week,f=w?.rules??modaKurali(R());if(!w||!f)return"";const gosteriler=w.shows??[],basladi=gosteriler.some(x=>x.status==="live"||x.status==="finished"),durum=w.status==="finished"?\u00E7("Bitti"):
+basladi?\u00E7("S\xFCr\xFCyor"):\u00E7("Takvimde"),sehir=x=>{const m=x.mine,alt=[];x.status==="scheduled"&&alt.push(\u00E7("{n}/{m} kay\u0131tl\u0131",{n:sayi(x.count??0),m:sayi(w.max??20)})),Number(x.
+pool_cr)>0&&alt.push(\u00E7("\xD6d\xFCl havuzu {kr} kredi",{kr:kr(x.pool_cr)})),x.status==="finished"&&x.winner?.name&&alt.push(\u00E7("Birinci: {ad}",{ad:x.winner.name})),x.status==="cancelled"&&alt.
+push(ETKINLIK_IPTAL[x.cancel_reason]??"");const ben3=m?m.status==="finished"&&m.place?\u00E7("{n}. oldun \xB7 {p} puan",{n:sayi(m.place),p:sayi(m.points??modaPuani(m.place,f))}):m.status==="dns"?\u00E7(
+"Gelmedin"):etkinlikKayitDurum(m,"contest"):"",renk=x.status==="live"?"deniz":x.status==="cancelled"?"mercan":x.status==="finished"?"":"altin";return`<button type="button" class="liste-satir etkinlik-\
+satir moda-sehir${x.region_id===v.region_id?" secili":""}" data-moda-sehir="${esc(x.region_id)}" data-moda-etkinlik="${esc(x.event_id)}"
+            data-durum="${esc(x.status)}" aria-current="${x.region_id===v.region_id?"true":"false"}">
+          <span class="liste-ikon ${x.region_id===v.here?"yesil":""}">${ikon(x.region_id===v.here?"map-pin":"shirt")}</span>
+          <div><span class="tur">${esc(saatYaz(x.starts_at))}</span><b>${esc(bolgeAdi(x.region_id))}</b>
+            <div class="alt">${esc(alt.filter(Boolean).join(" \xB7 "))}</div></div>
+          <span class="etkinlik-satir-sag"><span class="cip ${renk}">${esc(ETKINLIK_DURUM[x.status]??x.status)}</span>${ben3?`<span class="cip yesil kucuk-cip" data-moda-ben>${ikon("check")}${esc(ben3)}\
+</span>`:""}</span>
+        </button>`},l=w.standings??[],ben2=w.mine,siraSatir=x=>`<li class="moda-sira-satir${x.character_id===ben2?.character_id?" ben":""}" data-moda-sira="${sayi(x.rank)}">
+          <span class="moda-sira-no">${Number(x.rank)<=3?ikon(Number(x.rank)===1?"trophy":"medal"):esc(sayi(x.rank))}</span>
+          <b>${esc(x.name??\u00E7("Silinmi\u015F hesap"))}</b><small>${esc(\u00E7("{p} puan \xB7 {n} defile",{p:sayi(x.points),n:sayi(x.shows)}))}</small></li>`,siralama=l.length?`<ol class="moda-sira\
+" id="moda-sira">${l.map(siraSatir).join("")}</ol>
+          ${ben2&&!l.some(x=>x.character_id===ben2.character_id)?`<p class="kucuk" data-moda-benim>${esc(\u00E7("Sen {n}. s\u0131radas\u0131n: {p} puan, {d} defile.",{n:sayi(ben2.rank),p:sayi(ben2.points),
+d:sayi(ben2.shows)}))}</p>`:""}`:`<p class="kucuk">${esc(w.status==="finished"?\u00E7("Bu hafta defileler yap\u0131lamad\u0131; s\u0131ralama yok."):\u00E7("S\u0131ralama ilk defile bitince ba\u015Flar."))}\
+</p>`,yildiz=w.status==="finished"&&l[0]?`<div class="bilgi-kutusu moda-yildiz" data-moda-yildiz>${ikon("sparkles")}<span>${esc(\u00E7("Haftan\u0131n y\u0131ld\u0131z\u0131: {ad} ({p} puan).",{ad:l[0].
+name??\u00E7("Silinmi\u015F hesap"),p:sayi(l[0].points)}))}</span></div>`:"";return`<section class="kart moda-hafta" id="etkinlik-moda" data-moda-hafta="${esc(w.id)}" data-durum="${esc(w.status)}">
+        <div class="kart-bas"><div><p class="ust-yazi">${esc(modaHaftasiAraligi(w.week_start))} \xB7 ${esc(\u00E7("{n} \u015Fehir",{n:sayi(w.hosts??gosteriler.length)}))}</p>
+          <h2 class="b2">${esc(modaHaftasiAdi(w.no))}</h2></div><span class="cip ${w.status==="finished"?"":basladi?"deniz":"altin"}" data-moda-durum>${esc(durum)}</span></div>
+        <p class="kucuk">${esc(\u00E7("D\xF6rt haftada bir uyan\u0131k ba\u015Fkentlerde moda haftas\u0131: her \u015Fehirde bir defile, \xFClkenin saatiyle {s}:00. \u015Eehre dokun, program\u0131na ge\xE7; ba\u015Flarken o \u015Fehirde ol.",
+{s:sayi(f.hour??20)}))} ${esc(modaKuralYazisi(f))}</p>
+        ${yildiz}
+        <div class="yigin moda-sehirler" style="gap:6px">${gosteriler.map(sehir).join("")}</div>
+        <p class="ust-yazi" style="margin-top:12px">${esc(w.status==="finished"?\u00E7("Haftan\u0131n s\u0131ralamas\u0131"):\u00E7("Haftan\u0131n s\u0131ralamas\u0131 (biten defilelerden)"))}</p>
+        ${siralama}
+      </section>`}function satirHtml(e){const r=R(),kume=etkinlikKume(e.kind,r),m=e.mine,durum=e.status==="scheduled"&&Date.parse(e.starts_at)<=simdi()?\u00E7("Ba\u015Fl\u0131yor"):ETKINLIK_DURUM[e.status]??
+e.status,renk=e.status==="live"?"deniz":e.status==="cancelled"?"mercan":e.status==="finished"?"":"altin",alt=[];return kume!=="senlik"&&alt.push(Number(e.pool_cr)>0?\u00E7("\xD6d\xFCl havuzu {kr} kredi",
+{kr:kr(e.pool_cr)}):\u00E7("\xD6d\xFCls\xFCz")),kume!=="senlik"&&e.status==="scheduled"&&alt.push(\u00E7("{n}/{m} kay\u0131tl\u0131",{n:sayi(e.count??0),m:sayi(e.max??0)})),Number(e.team_count)>0&&alt.
+push(\u00E7("{n} tak\u0131m",{n:sayi(e.team_count)})),etkinlikSponsorAdlari(e).length&&alt.push(\u00E7("{n} sponsor",{n:sayi(etkinlikSponsorAdlari(e).length)})),e.status==="finished"&&(e.winners??[])[0]?.
+name&&alt.push(\u00E7("Birinci: {ad}",{ad:e.winners[0].name})),e.status==="cancelled"&&alt.push(ETKINLIK_IPTAL[e.cancel_reason]??""),`<button type="button" class="liste-satir etkinlik-satir${e.id===secili?
+" secili":""}" data-etkinlik="${esc(e.id)}" data-tur="${esc(e.kind)}" data-durum="${esc(e.status)}"
           aria-pressed="${e.id===secili}">
-        <span class="liste-ikon ${e.status==="live"?"deniz":e.source==="mayor"?"altin":""}">${ikon(etkinlikIkon(e.kind))}</span>
-        <div><span class="tur">${esc(saatYaz(e.starts_at))} \xB7 ${esc(e.source==="mayor"?\u00E7("Ba\u015Fkan {ad}",{ad:e.organizer?.name??\u00E7("Silinmi\u015F hesap")}):\u00E7("Gelenek"))}</span>
+        <span class="liste-ikon ${e.status==="live"?"deniz":e.source==="mayor"||e.source==="fashionweek"?"altin":""}">${ikon(etkinlikIkon(e.kind))}</span>
+        <div><span class="tur">${esc(saatYaz(e.starts_at))} \xB7 ${esc(etkinlikKaynak(e))}</span>
           <b>${esc(etkinlikAdi(e.kind))}</b>
           <div class="alt">${esc(alt.filter(Boolean).join(" \xB7 "))}</div></div>
         <span class="etkinlik-satir-sag"><span class="cip ${renk}">${esc(durum)}</span>${m?`<span class="cip yesil kucuk-cip" data-etkinlik-ben>${ikon("check")}${esc(etkinlikKayitDurum(m,kume))}</span\
@@ -70,13 +99,13 @@ e.id)}" data-kaptan ${mesgul?"disabled":""}>${ikon("log-out")}${\u00E7("Tak\u013
 zaten=new Set((e.sponsors??[]).map(x=>x.company_id)),isl=v.mine?.companies??[],hepsiSponsor=isl.every(c=>zaten.has(c.company_id)),uygun=isl.some(c=>!zaten.has(c.company_id)&&Number(c.season_count??0)<
 Number(r.sponsor.perCompanySeason??6)),ad=hepsiSponsor?\u00E7("\u0130\u015Fletmen sponsor"):yerVar?uygun?\u00E7("Sponsor ol"):\u00E7("Sezonun s\u0131n\u0131r\u0131 doldu"):\u00E7("Sponsor yerleri dolu");
 d.push(`<button class="dugme ikincil" data-etkinlik-sponsor="${esc(e.id)}" ${mesgul||!yerVar||!uygun?"disabled":""}>${ikon("store")}${ad}</button>`)}if(kume==="senlik"&&sureli&&d.push(m?`<span class="\
-cip yesil">${ikon("check")}${\u00E7("\u015Eenli\u011Fe kat\u0131ld\u0131n")}</span>`:`<button class="dugme altin" data-etkinlik-katil="${esc(e.id)}" ${mesgul||!burada()?"disabled":""}>${ikon("party-po\
-pper")}${\u00E7("\u015Eenli\u011Fe kat\u0131l")}</button>`),kume==="tournament"&&e.status==="live"&&m&&m.status==="started"){const mac=(e.matches??[]).filter(x=>x.game_id&&(x.a?.id===ben().id||x.b?.id===
+cip yesil">${ikon("check")}${\u00E7("\u015Eenli\u011Fe kat\u0131ld\u0131n")}</span>`:`<button class="dugme altin" data-etkinlik-katil="${esc(e.id)}" ${mesgul||!burada(e)?"disabled":""}>${ikon("party-p\
+opper")}${\u00E7("\u015Eenli\u011Fe kat\u0131l")}</button>`),kume==="tournament"&&e.status==="live"&&m&&m.status==="started"){const mac=(e.matches??[]).filter(x=>x.game_id&&(x.a?.id===ben().id||x.b?.id===
 ben().id)).sort((a,b)=>b.round-a.round)[0];mac&&mac.game_status==="playing"&&d.push(`<button class="dugme altin" data-git="sehir/oyunlar">${ikon(etkinlikIkon(e.kind))}${\u00E7("Ma\xE7\u0131na git")}</\
 button>`)}v.mayor&&e.region_id===v.region_id&&acik&&kume!=="senlik"&&d.push(`<button class="dugme ikincil" data-etkinlik-odul="${esc(e.id)}" ${mesgul?"disabled":""}>${ikon("hand-coins")}${\u00E7("\xD6d\xFCl\
- koy")}</button>`);const uyari=[];return(acik||sureli)&&!burada()&&kume!=="contest"&&uyari.push(kume==="senlik"?\u00E7("\u015Eenli\u011Fe kat\u0131lmak i\xE7in \u015Fenli\u011Fin \u015Fehrinde ({sehir}) olmal\u0131s\u0131n.",
+ koy")}</button>`);const uyari=[];return(acik||sureli)&&!burada(e)&&kume!=="contest"&&uyari.push(kume==="senlik"?\u00E7("\u015Eenli\u011Fe kat\u0131lmak i\xE7in \u015Fenli\u011Fin \u015Fehrinde ({sehir}) olmal\u0131s\u0131n.",
 {sehir:bolgeAdi(e.region_id)}):\u00E7("Etkinlik ba\u015Flarken etkinli\u011Fin \u015Fehrinde ({sehir}) olmal\u0131s\u0131n; olmazsan gelmemi\u015F say\u0131l\u0131rs\u0131n.",{sehir:bolgeAdi(e.region_id)})),
-kume==="contest"&&(acik||sureli)&&!burada()&&uyari.push(\u00E7("Yar\u0131\u015Fmac\u0131lar ba\u015Flarken, oy verenler oylama s\u0131ras\u0131nda etkinli\u011Fin \u015Fehrinde ({sehir}) olmal\u0131.",
+kume==="contest"&&(acik||sureli)&&!burada(e)&&uyari.push(\u00E7("Yar\u0131\u015Fmac\u0131lar ba\u015Flarken, oy verenler oylama s\u0131ras\u0131nda etkinli\u011Fin \u015Fehrinde ({sehir}) olmal\u0131.",
 {sehir:bolgeAdi(e.region_id)})),(d.length?`<div class="oneri-dugmeler etkinlik-dugmeler" style="margin-top:10px">${d.join("")}</div>`:"")+(uyari.length?`<div class="bilgi-kutusu" style="margin-top:10p\
 x">${ikon("map-pin")}<span>${esc(uyari.join(" "))} <button class="baglanti" type="button" data-git="sehir/yol">${\u00E7("Seyahat")}</button></span></div>`:"")}function yarisHtml(e){if(etkinlikBayrakMi(
 e.kind,R()))return bayrakHtml(e);const girenler=(e.entries??[]).filter(x=>x.status!=="dns"&&x.status!=="registered"),yolda=new Map((e.progress??[]).map(p=>[p.character_id,Number(p.ppm)])),varan=girenler.
@@ -145,8 +174,8 @@ s="liste-satir" data-yarismaci="${esc(x.character_id)}">
             <div class="alt">${esc(etkinlikGetirilen(x))}${e.status==="finished"&&x.score!=null?" \xB7 "+esc(\u00E7("j\xFCri {j}, {o} oy, puan {p}",{j:sayi(x.jury??0),o:sayi(x.votes??0),p:(Number(x.score)/
 1e3).toLocaleString(DIL.yerel,{maximumFractionDigits:1})})):""}
               ${Number(x.prize_cr)>0?" \xB7 "+esc(\u00E7("{kr} kr \xF6d\xFCl",{kr:kr(x.prize_cr)})):""}</div></div>
-          ${sureli&&x.status==="started"&&x.character_id!==ben().id?e.voted_for===x.character_id?`<span class="cip yesil">${ikon("check")}${\u00E7("Oyun burada")}</span>`:`<button class="dugme ${burada()?
-"altin":"ikincil"} kucuk-d" data-etkinlik-oy="${esc(x.character_id)}" ${!burada()||mesgul?"disabled":""}>${ikon("vote")}${\u00E7("Oy ver")}</button>`:"<span></span>"}
+          ${sureli&&x.status==="started"&&x.character_id!==ben().id?e.voted_for===x.character_id?`<span class="cip yesil">${ikon("check")}${\u00E7("Oyun burada")}</span>`:`<button class="dugme ${burada(
+e)?"altin":"ikincil"} kucuk-d" data-etkinlik-oy="${esc(x.character_id)}" ${!burada(e)||mesgul?"disabled":""}>${ikon("vote")}${\u00E7("Oy ver")}</button>`:"<span></span>"}
         </div>`).join("")||`<p class="kucuk">${\u00E7("Hen\xFCz kay\u0131t yok.")}</p>`}</div>`}function kayitlilarHtml(e){const l=e.entries??[];return l.length?`<div class="etkinlik-kayitlilar">${l.map(
 x=>`<span class="cip${x.character_id===ben().id?" yesil":""}${x.status==="dns"?" soluk":""}" data-kayitli="${esc(x.character_id)}">${esc(x.name??\u00E7("Silinmi\u015F hesap"))}${x.status==="dns"?" \xB7 "+
 esc(\u00E7("gelmedi")):""}</span>`).join("")}</div>`:`<p class="kucuk">${etkinlikKume(e.kind,R())==="senlik"?\u00E7("Hen\xFCz kat\u0131lan yok."):\u00E7("Hen\xFCz kay\u0131t yok. \u0130lk kaydolan sen ol!")}\
@@ -164,10 +193,13 @@ if(!e)return`<section class="kart" id="etkinlik-detay"><p class="bos">${\u00E7("
 cancel_reason]??""}))}</span></p>`:kume==="race"&&e.status!=="scheduled"?yarisHtml(e):kume==="tournament"&&e.status!=="scheduled"?agacHtml(e):kume==="contest"?yarismaHtml(e):kayitlilarHtml(e);return`<\
 section class="kart" id="etkinlik-detay" data-etkinlik-detay="${esc(e.id)}" data-tur="${esc(e.kind)}" data-durum="${esc(e.status)}">
         <div class="kart-bas"><div><p class="ust-yazi">${esc(saatYaz(e.starts_at))} \xB7 ${esc(\u00E7("{dk} dakika",{dk:sayi(sureDk)}))}${e.source==="mayor"?" \xB7 "+esc(\u00E7("D\xFCzenleyen: Ba\u015Fkan {ad\
-}",{ad:e.organizer?.name??\u00E7("Silinmi\u015F hesap")})):" \xB7 "+esc(\u00E7("Gelenek"))}</p>
+}",{ad:e.organizer?.name??\u00E7("Silinmi\u015F hesap")})):" \xB7 "+esc(etkinlikKaynak(e))}</p>
           <h2 class="b2">${ikon(etkinlikIkon(e.kind))} ${esc(etkinlikAdi(e.kind))}</h2></div>
           <span class="cip ${e.status==="live"?"deniz":e.status==="cancelled"?"mercan":e.status==="scheduled"?"altin":""}" data-etkinlik-durum>${esc(ETKINLIK_DURUM[e.status]??e.status)}</span></div>
         <p class="kucuk">${esc(aciklama(e))}</p>
+        ${e.source==="fashionweek"?`<p class="kucuk etkinlik-moda-not" data-moda-not>${ikon("sparkles")} ${esc(\u00E7("Bu defile moda haftas\u0131n\u0131n par\xE7as\u0131 ({tarih}): yerin haftan\u0131n s\u0131ralamas\u0131na puan get\
+irir; ayn\u0131 giysi bir haftada bir kez y\xFCr\xFCr.",{tarih:modaHaftasiAraligi(e.fashion_week?.week_start??"")}))} <button class="baglanti" type="button" data-moda-git>${\u00E7("Haftan\u0131n s\u0131ralamas\u0131")}\
+</button></p>`:""}
         ${kume!=="senlik"?`<p class="kucuk etkinlik-odul" data-havuz="${esc(String(e.pool_cr??0))}" data-sponsor-cr="${esc(String(e.sponsor_cr??0))}">${ikon("hand-coins")} ${Number(e.pool_cr)>0?esc((()=>{
 const paylar=odul.map((x,i)=>kume==="tournament"&&i>=2?\u00E7("yar\u0131 finalcilere {kr}",{kr:kr(x)}):etkinlikBayrakMi(e.kind,r)?\u00E7("{n}. tak\u0131m {kr}",{n:i+1,kr:kr(x)}):\u00E7("{n}. {kr}",{n:i+
 1,kr:kr(x)})).join(", ");return Number(e.sponsor_cr)>0?Number(e.sponsor_cr)>=Number(e.pool_cr)?\u00E7("\xD6d\xFCl havuzu {kr} kredi (sponsorlardan): {paylar}.",{kr:kr(e.pool_cr),paylar}):\u00E7("\xD6d\xFCl \
@@ -223,12 +255,15 @@ ik daha d\xFCzenler; bedeli (\u015Fenlik {s}, yar\u0131\u015F {y}, yar\u0131\u01
 r.mayor?.perWeek??2),s:kr(ucret.senlik?.feeCr??15e3),y:kr(ucret.maraton?.feeCr??1e4),m:kr(ucret.yemek?.feeCr??8e3),t:kr(ucret.satranc?.feeCr??6e3),h:kr(r.pool?.maxCr??5e4)})],["hand-coins",\u00E7("\xD6d\xFC\
 l: yar\u0131\u015F ve yar\u0131\u015Fmada 1. %50, 2. %30, 3. %20; turnuvada 1. %50, 2. %30, yar\u0131 finalcilere %10'ar. \u015Eehrin ba\u015Fkan\u0131 ve karakteri {g} g\xFCnden yeni olan \xF6d\xFCl almaz; ki\u015Fi ba\u015F\u0131na {d} g\xFCnde en \xE7ok {kr} kredi.",
 {g:sayi(r.prize?.minCharacterDays??7),d:sayi(r.prize?.weekDays??7),kr:kr(r.prize?.weekCapCr??1e5)})],["sparkles",\u00E7("\u0130lk \xFC\xE7e \xFCn, keyif ve madalya (\u015Eenlik, Yar\u0131\u015F\xE7\u0131, \u015Eampiyon); birincilik ya\u015Fam g\xFCnl\
-\xFC\u011F\xFCne yaz\u0131l\u0131r. Bunlar g\xFC\xE7, oy ya da gelir vermez; bahis yoktur.")]];return r.sponsor&&maddeler.push(["store",\u00E7("Sponsor: bu \u015Fehirde i\u015Fletmesi olan, \xF6d\xFCll\xFC etkinli\u011Fe i\u015Fl\
-etmenin kasas\u0131ndan {a}\u2013{b} kredi koyar (etkinlik ba\u015F\u0131na en \xE7ok {n} i\u015Fletme, bir i\u015Fletme bir sezonda en \xE7ok {s} etkinlik). \u0130\u015Fletmenin ad\u0131 tabelada ve meydanda g\xF6r\xFCn\xFCr; iptalde tutar\u0131n tamam\u0131, sonunda d\
-a\u011F\u0131t\u0131lmayan \xF6d\xFCl\xFCn pay\u0131 i\u015Fletmeye d\xF6ner.",{a:kr(r.sponsor.minCr??500),b:kr(r.sponsor.maxCr??2e4),n:sayi(r.sponsor.perEvent??3),s:sayi(r.sponsor.perCompanySeason??6)})]),
-r.teams&&maddeler.push(["users-round",\u00E7("Tak\u0131m: kaptan kurar ve arkada\u015Flar\u0131n\u0131 davet eder (ayn\u0131 anda en \xE7ok {d} davet). Maraton ve bisiklet turunda {a}\u2013{b} ki\u015Fi, bayrak ko\u015Fusunda {c} ki\u015Fi. Tak\u0131m\u0131n\
- \xF6d\xFCl\xFC bitiren \xFCyelere e\u015Fit payla\u015F\u0131l\u0131r; kalan kuru\u015F kaptana.",{d:sayi(r.teams.invitesMax??6),a:sayi(r.teams.min??3),b:sayi(r.teams.max??4),c:sayi(r.teams.relaySize??
-4)})]),r.rally&&maddeler.push(["car",\u00E7("Ralli: garaj\u0131nda motosiklet ya da otomobil gerekir; sonu\xE7 arac\u0131n durumu, lojistik becerin ve \u015Fanstan. Rallide ara\xE7 a\u015F\u0131n\u0131r; \xF6mr\xFC dolarsa hurdaya ayr\u0131l\u0131r.")]),
+\xFC\u011F\xFCne yaz\u0131l\u0131r. Bunlar g\xFC\xE7, oy ya da gelir vermez; bahis yoktur.")]];r.sponsor&&maddeler.push(["store",\u00E7("Sponsor: bu \u015Fehirde i\u015Fletmesi olan, \xF6d\xFCll\xFC etkinli\u011Fe i\u015Fletmenin\
+ kasas\u0131ndan {a}\u2013{b} kredi koyar (etkinlik ba\u015F\u0131na en \xE7ok {n} i\u015Fletme, bir i\u015Fletme bir sezonda en \xE7ok {s} etkinlik). \u0130\u015Fletmenin ad\u0131 tabelada ve meydanda g\xF6r\xFCn\xFCr; iptalde tutar\u0131n tamam\u0131, sonunda da\u011F\u0131t\u0131lm\
+ayan \xF6d\xFCl\xFCn pay\u0131 i\u015Fletmeye d\xF6ner.",{a:kr(r.sponsor.minCr??500),b:kr(r.sponsor.maxCr??2e4),n:sayi(r.sponsor.perEvent??3),s:sayi(r.sponsor.perCompanySeason??6)})]),r.teams&&maddeler.
+push(["users-round",\u00E7("Tak\u0131m: kaptan kurar ve arkada\u015Flar\u0131n\u0131 davet eder (ayn\u0131 anda en \xE7ok {d} davet). Maraton ve bisiklet turunda {a}\u2013{b} ki\u015Fi, bayrak ko\u015Fusunda {c} ki\u015Fi. Tak\u0131m\u0131n \xF6d\xFCl\xFC bitiren \xFCye\
+lere e\u015Fit payla\u015F\u0131l\u0131r; kalan kuru\u015F kaptana.",{d:sayi(r.teams.invitesMax??6),a:sayi(r.teams.min??3),b:sayi(r.teams.max??4),c:sayi(r.teams.relaySize??4)})]),r.rally&&maddeler.push(
+["car",\u00E7("Ralli: garaj\u0131nda motosiklet ya da otomobil gerekir; sonu\xE7 arac\u0131n durumu, lojistik becerin ve \u015Fanstan. Rallide ara\xE7 a\u015F\u0131n\u0131r; \xF6mr\xFC dolarsa hurdaya ayr\u0131l\u0131r.")]);
+const mf=modaKurali(r);return mf&&maddeler.push(["sparkles",\u00E7("Moda haftas\u0131: d\xF6rt haftada bir uyan\u0131k ba\u015Fkentlerde birer defile (\xFClkenin saatiyle {s}:00; \u015Fehirler do\u011Fudan bat\u0131ya Pazartesi, Sal\u0131, P\
+er\u015Fembe, Cuma ve Pazar'a da\u011F\u0131l\u0131r). Hafta sekiz g\xFCn \xF6nceden takvime girer.",{s:sayi(mf.hour??20)})+(v.fashion_week_next?" "+\u00E7("S\u0131radaki moda haftas\u0131: {tarih}.",
+{tarih:modaHaftasiAraligi(v.fashion_week_next)}):"")+" "+modaKuralYazisi(mf)+" "+\u00E7("Haftan\u0131n ilk \xFC\xE7\xFCne \xFCn, Moda Haftas\u0131 Madalyas\u0131 ve ya\u015Fam g\xFCnl\xFC\u011F\xFC.")]),
 `<section class="kart" id="etkinlik-kurallar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kurallar")}</p><h2 class="b2">${\u00E7("Etkinlikler nas\u0131l i\u015Fler?")}</h2></div><span cla\
 ss="ik-kutu">${ikon("book-open")}</span></div>
         <div class="liste">${maddeler.map(([ik,m])=>`<div class="liste-satir"><span class="liste-ikon">${ikon(ik)}</span><div><div class="alt" style="margin:0">${esc(m)}</div></div><span></span></div>`).
@@ -241,11 +276,13 @@ kap.innerHTML=`<div class="sayfa" data-etkinlik-bolge="${esc(v.region_id)}">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("\u015Eehrim")}</p><h1 class="b1">${esc(\u00E7("{sehir} etkinlikleri",{sehir:bolgeAdi(v.region_id)}))}</h1>
           <p class="aciklama">${\u00E7("Ba\u015Fkentin \u015Fenlikleri, yar\u0131\u015Flar\u0131, yar\u0131\u015Fmalar\u0131 ve turnuvalar\u0131. Kaydol, haz\u0131rlan, kat\u0131l; \xF6d\xFCller belediye b\xFCt\xE7esinden.")}\
 </p></div>
-          <span class="cip ${burada()?"yesil":""}" id="etkinlik-burada">${ikon("map-pin")}${esc(burada()?\u00E7("\u015Eehirdesin"):v.here?\u00E7("\u015Eu an: {sehir}",{sehir:bolgeAdi(v.here)}):\u00E7(
-"Yoldas\u0131n"))}</span></div>
+          <span class="etkinlik-bas-sag"><span class="cip ${burada()?"yesil":""}" id="etkinlik-burada">${ikon("map-pin")}${esc(burada()?\u00E7("\u015Eehirdesin"):v.here?\u00E7("\u015Eu an: {sehir}",{sehir:bolgeAdi(
+v.here)}):\u00E7("Yoldas\u0131n"))}</span>
+            ${ilkBolge&&v.region_id!==ilkBolge?`<button class="dugme sade kucuk-d" type="button" data-etkinlik-don>${ikon("map-pin-house")}${esc(\u00E7("{sehir} program\u0131na d\xF6n",{sehir:bolgeAdi(
+ilkBolge)}))}</button>`:""}</span></div>
         <div id="etkinlik-alan-yer"></div>
         <div class="izgara iki etkinlik-izgara" style="margin-top:20px">
-          <div class="yigin">${programHtml()}${detayHtml()}</div>
+          <div class="yigin">${modaHtml()}${programHtml()}${detayHtml()}</div>
           <div class="yigin">${benHtml()}${rekorHtml()}${sonHtml()}${kurallarHtml()}</div>
         </div></div>`,$("#etkinlik-alan-yer",kap)?.replaceWith(alan.el),alan.yaz({olay:detay,ben:{id:ben().id,ad:ben().name,gorunus,ulke:ben().citizenship},saatFarki}),bagla();const yk=$("#etkinlik-yo\
 rumlar",kap);yk&&detay&&(yk.dataset.kimlik=detay.id,yorumEski&&yorumKimlik===detay.id?yk.replaceWith(yorumEski):yorumlarKur(yk,"cityevent",detay.id))}async function isle(fn,basari){if(!mesgul){mesgul=
@@ -261,20 +298,22 @@ ayat\u0131m \u2192 Hobiler'de evinde yemek pi\u015Fir; pi\u015Fen porsiyonlar ki
               <span><b>${esc(yemekAdi(p.recipe))}</b> <small>${esc(HOBI_KALITE[p.quality]??"")} \xB7 ${esc(\u00E7("{n} porsiyon",{n:sayi(p.qty)}))}</small></span></label>`).join("")}</div>`,is:async f=>{
 const[recipe,q]=String(f.get("porsiyon")??"").split("|");if(!recipe)throw new Error(\u00E7("Bir porsiyon se\xE7."));await kaydet({recipe,quality:Number(q)})}});return}if(e.kind==="defile"){const giysiler=m.
 garments??[];if(!giysiler.length){pencere({ust,baslik,govde:`<p class="aciklama">${esc(\u00E7("Defileye yaln\u0131z kendi dikti\u011Fin giysiyle kat\u0131l\u0131rs\u0131n. Hayat\u0131m \u2192 Hobiler'de terzilikle giysi dik."))}\
-</p>`,dugmeler:[{ad:\u00E7("Kapat")},{ad:\u00E7("Hobiler"),sinif:"altin",ikon:"shirt",is:()=>Kabuk.git("hayat/hobiler")}]});return}const ilk=giysiler.find(g=>!g.listed&&!g.busy);pencereForm({ust,baslik,
-onayAd:\u00E7("Kaydol"),onayIkon:"ticket",govde:`<p class="aciklama">${esc(\u00E7("Kendi dikti\u011Fin bir giysi se\xE7. Kay\u0131tl\u0131yken buti\u011Fe konmaz ve at\u0131lmaz; giyebilirsin. Modeller podyumda kendi giysileriyl\
-e y\xFCr\xFCr."))}</p>
-            <div class="secim-liste" role="radiogroup" aria-label="${esc(\u00E7("Giysi"))}">${giysiler.map(g=>{const kapali=g.listed||g.busy;return`<label class="secim-satir${kapali?" kapali":""}"><in\
-put type="radio" name="giysi" value="${esc(g.garment_id)}" ${kapali?"disabled":""} ${ilk&&g.garment_id===ilk.garment_id?"checked":""}>
+</p>`,dugmeler:[{ad:\u00E7("Kapat")},{ad:\u00E7("Hobiler"),sinif:"altin",ikon:"shirt",is:()=>Kabuk.git("hayat/hobiler")}]});return}const hafta=e.fashion_week?.id??null,yurudu=g=>!!hafta&&!g.busy&&!g.listed&&
+(g.walked??[]).includes(hafta),ilk=giysiler.find(g=>!g.listed&&!g.busy&&!yurudu(g));pencereForm({ust,baslik,onayAd:\u00E7("Kaydol"),onayIkon:"ticket",govde:`<p class="aciklama">${esc(\u00E7("Kendi dik\
+ti\u011Fin bir giysi se\xE7. Kay\u0131tl\u0131yken buti\u011Fe konmaz ve at\u0131lmaz; giyebilirsin. Modeller podyumda kendi giysileriyle y\xFCr\xFCr."))}${hafta?" "+esc(\u00E7("Moda haftas\u0131nda ayn\u0131 g\
+iysi bir kez y\xFCr\xFCr; her \u015Fehrin defilesine ba\u015Fka bir giysiyle kat\u0131l.")):""}</p>
+            <div class="secim-liste" role="radiogroup" aria-label="${esc(\u00E7("Giysi"))}">${giysiler.map(g=>{const kapali=g.listed||g.busy||yurudu(g);return`<label class="secim-satir${kapali?" kapal\
+i":""}"><input type="radio" name="giysi" value="${esc(g.garment_id)}" ${kapali?"disabled":""} ${ilk&&g.garment_id===ilk.garment_id?"checked":""}>
                 <span class="etkinlik-kumas" style="--r1:${giysiRengi(g.color1)};--r2:${giysiRengi(g.color2)}"></span>
                 <span><b>${esc(giysiModelAdi(g.model))}</b> <small>${esc(giysiKumasYazisi(g.color1,g.color2))} \xB7 ${esc(GIYSI_KALITE_AD[g.quality]??"")}${g.listed?" \xB7 "+esc(\u00E7("butikte sat\u0131\u015Ft\
-a")):g.busy?" \xB7 "+esc(\u00E7("ba\u015Fka defilede")):""}</small></span></label>`}).join("")}</div>`,is:async f=>{const id=String(f.get("giysi")??"");if(!id)throw new Error(\u00E7("Bir giysi se\xE7."));
-await kaydet({garment_id:id})}});return}let govde=`<p class="aciklama">${esc(aciklama(e))}</p>`;if(e.kind==="ralli"&&r.rally){const b=m.bike,turler=r.rally.vehicles??["motosiklet","otomobil"],uygun=b&&
-turler.includes(b.kind);if(!uygun||Number(b.wear)>=Number(b.durability??0)){pencere({ust,baslik,govde:`<p class="aciklama">${esc(uygun?\u00E7("Arac\u0131n y\u0131prand\u0131; ralliye a\u015F\u0131nmas\u0131 dolmam\u0131\u015F bir motosiklet\
- ya da otomobil gerekir. Hayat\u0131m \u2192 Ara\xE7lar\u0131m'da onarabilirsin."):\u00E7("Ralliye garaj\u0131nda bir motosiklet ya da otomobil gerekir. Hayat\u0131m \u2192 Ara\xE7lar\u0131m'dan bayiden alabilir, garaj\u0131na k\
-oyabilirsin."))}</p>`,dugmeler:[{ad:\u00E7("Kapat")},{ad:\u00E7("Ara\xE7lar\u0131m"),sinif:"altin",ikon:"car",is:()=>Kabuk.git("hayat/araclar")}]});return}const asinma=Number(Durum.v.kurallar?.data?.vehicle?.
-rallyWear??10),son2=Number(b.wear)+Math.min(asinma,Number(b.durability)-Number(b.wear));govde+=`<p class="kucuk" data-ralli-arac="${esc(b.kind)}">${ikon(ARAC_IK[b.kind]??"car")} ${esc(\u00E7("Rallide \
-{arac} ile yar\u0131\u015F\u0131rs\u0131n: a\u015F\u0131nma {a}/{d}, ralliden sonra {s}/{d}.",{arac:aracRenkliAd(b.kind,b.color),a:sayi(b.wear),s:sayi(son2),d:sayi(b.durability)}))}
+a")):g.busy?" \xB7 "+esc(\u00E7("ba\u015Fka defilede")):yurudu(g)?" \xB7 "+esc(\u00E7("bu moda haftas\u0131nda y\xFCr\xFCd\xFC")):""}</small></span></label>`}).join("")}</div>`,is:async f=>{const id=String(
+f.get("giysi")??"");if(!id)throw new Error(\u00E7("Bir giysi se\xE7."));await kaydet({garment_id:id})}});return}let govde=`<p class="aciklama">${esc(aciklama(e))}</p>`;if(e.kind==="ralli"&&r.rally){const b=m.
+bike,turler=r.rally.vehicles??["motosiklet","otomobil"],uygun=b&&turler.includes(b.kind);if(!uygun||Number(b.wear)>=Number(b.durability??0)){pencere({ust,baslik,govde:`<p class="aciklama">${esc(uygun?
+\u00E7("Arac\u0131n y\u0131prand\u0131; ralliye a\u015F\u0131nmas\u0131 dolmam\u0131\u015F bir motosiklet ya da otomobil gerekir. Hayat\u0131m \u2192 Ara\xE7lar\u0131m'da onarabilirsin."):\u00E7("Rall\
+iye garaj\u0131nda bir motosiklet ya da otomobil gerekir. Hayat\u0131m \u2192 Ara\xE7lar\u0131m'dan bayiden alabilir, garaj\u0131na koyabilirsin."))}</p>`,dugmeler:[{ad:\u00E7("Kapat")},{ad:\u00E7("Ar\
+a\xE7lar\u0131m"),sinif:"altin",ikon:"car",is:()=>Kabuk.git("hayat/araclar")}]});return}const asinma=Number(Durum.v.kurallar?.data?.vehicle?.rallyWear??10),son2=Number(b.wear)+Math.min(asinma,Number(b.
+durability)-Number(b.wear));govde+=`<p class="kucuk" data-ralli-arac="${esc(b.kind)}">${ikon(ARAC_IK[b.kind]??"car")} ${esc(\u00E7("Rallide {arac} ile yar\u0131\u015F\u0131rs\u0131n: a\u015F\u0131nma {a}/{d}, ralliden sonra {s}/{d\
+}.",{arac:aracRenkliAd(b.kind,b.color),a:sayi(b.wear),s:sayi(son2),d:sayi(b.durability)}))}
           ${son2>=Number(b.durability)?esc(\u00E7("Arac\u0131n \xF6mr\xFC bu rallide doluyor; yar\u0131\u015Ftan sonra hurdaya ayr\u0131l\u0131r.")):""}</p>
           <p class="kucuk">${ikon("route")} ${esc(\u00E7("Lojistik becerin {n}: rallide {sure} kazand\u0131r\u0131r.",{n:sayi(v.mine?.logistics??0),sure:sporSure(Math.min(100,Number(v.mine?.logistics??
 0))*Number(r.rally.skillSec??6))}))}</p>`}if(kume==="race"&&r.race?.[e.kind]?.vehicle){const b=m.bike;if(!(b&&b.kind===r.race[e.kind].vehicle&&Number(b.wear)<Number(b.durability??0))){pencere({ust,baslik,
@@ -311,36 +350,39 @@ e.kind,r)),d:sayi(r.teams?.invitesMax??6)}))}</p>
           <div class="radyo-liste">${adaylar.map((f,i)=>`<label class="radyo"><input type="radio" name="kisi" value="${esc(f.character_id)}" ${i===0?"checked":""}>
             <span><b>${esc(f.name)}</b>${f.country_id?`<span class="kucuk">${esc(ulkeAdi(f.country_id))}</span>`:""}</span></label>`).join("")}</div>`,is:async d=>{const kim=String(d.get("kisi")??"");
 if(!kim)throw new Error(\u00E7("Bir arkada\u015F se\xE7."));await isle(()=>Sunucu.yap("cityevent_team_invite",{p_event:e.id,p_character:kim}),()=>tost(\u00E7("Davet g\xF6nderildi."),"user-round-plus"))}})}
-const bul=id=>(detay?.id===id?detay:null)??[...program(),...v.recent??[]].find(e=>e.id===id)??null;function bagla(){for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$(
-"[data-etkinlik]",kap))b.onclick=async()=>{if(secili===b.dataset.etkinlik){$("#etkinlik-detay",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});return}secili=b.dataset.etkinlik,
-await detayYukle(),kapandi||(ciz(),$("#etkinlik-alan",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"nearest"}))};for(const b of $$("[data-etkinlik-kayit]",kap))b.onclick=()=>{const e=bul(
-b.dataset.etkinlikKayit);e&&kayitPenceresi(e)};for(const b of $$("[data-etkinlik-vazgec]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikVazgec);e&&pencere({ust:etkinlikAdi(e.kind),baslik:\u00E7("K\
-ayd\u0131ndan vazge\xE7"),govde:`<p class="aciklama">${esc(e.kind==="yemek"?\u00E7("Porsiyonun kilere d\xF6ner. Etkinlik ba\u015Flayana dek yeniden kaydolabilirsin."):e.mine?.preps?\u00E7("Haz\u0131rl\u0131klar\
-\u0131n silinir. Etkinlik ba\u015Flayana dek yeniden kaydolabilirsin."):\u00E7("Etkinlik ba\u015Flayana dek yeniden kaydolabilirsin."))}${e.mine?.team_id?" "+esc(e.mine.captain?\u00E7("Kaptan\u0131 oldu\u011Fun\
- tak\u0131m da\u011F\u0131l\u0131r."):\u00E7("Tak\u0131m\u0131ndan da \xE7\u0131kars\u0131n.")):""}</p>`,dugmeler:[{ad:\u00E7("Kay\u0131tl\u0131 kal")},{ad:\u00E7("Vazge\xE7"),sinif:"mercan",ikon:"x",
-is:()=>isle(()=>Sunucu.yap("cityevent_withdraw",{p_event:e.id}),()=>tost(\u00E7("Kayd\u0131ndan vazge\xE7tin."),"x"))}]})};for(const b of $$("[data-etkinlik-hazirlik]",kap))b.onclick=()=>{const id=b.dataset.
-etkinlikHazirlik;isle(()=>Sunucu.yap("cityevent_prep",{p_event:id}),y=>{tost(\u00E7("Haz\u0131rl\u0131k yapt\u0131n ({n}). Yar\u0131n yeniden.",{n:sayi(y?.mine?.preps??0)}),"dumbbell"),alan.oyna("hazi\
-rlik")})};for(const b of $$("[data-etkinlik-katil]",kap))b.onclick=()=>{const id=b.dataset.etkinlikKatil;isle(()=>Sunucu.yap("cityevent_attend",{p_event:id}),y=>{tost(Number(y?.bond_points)>0?\u00E7("\
-\u015Eenli\u011Fe kat\u0131ld\u0131n; arkada\u015Flar\u0131nla yak\u0131nla\u015Ft\u0131n."):\u00E7("\u015Eenli\u011Fe kat\u0131ld\u0131n! Keyfin yerine geldi."),"party-popper"),alan.oyna("katil")})};
-for(const b of $$("[data-etkinlik-oy]",kap))b.onclick=()=>{const kim=b.dataset.etkinlikOy,x=(detay?.entries??[]).find(y=>y.character_id===kim);isle(()=>Sunucu.yap("cityevent_vote",{p_event:detay.id,p_entry:kim}),
-()=>tost(\u00E7("Oyunu {ad} adl\u0131 yar\u0131\u015Fmac\u0131ya verdin.",{ad:x?.name??""}),"vote"))};for(const b of $$("[data-etkinlik-odul]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikOdul);e&&
-odulPenceresi(e)};for(const b of $$("[data-etkinlik-sponsor]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikSponsor);e&&sponsorPenceresi(e)};for(const b of $$("[data-etkinlik-takim-kur]",kap))b.onclick=
-()=>{const e=bul(b.dataset.etkinlikTakimKur);if(!e)return;const bayrak=etkinlikBayrakMi(e.kind,R());pencere({ust:\u00E7("{etkinlik} \xB7 {saat}",{etkinlik:etkinlikAdi(e.kind),saat:saatYaz(e.starts_at)}),
-baslik:\u00E7("Tak\u0131m kur"),govde:`<p class="aciklama">${esc(bayrak?\u00E7("Tak\u0131m\u0131n kaptan\u0131 olursun ve bayrak ko\u015Fusuna kaydolursun. Sonra {n} arkada\u015F\u0131n\u0131 davet et; tak\u0131m ba\u015Flarken tam ({m} ki\u015Fi) ve\
- hepiniz \u015Fehirde olmal\u0131s\u0131n\u0131z, yoksa tak\u0131m gelmemi\u015F say\u0131l\u0131r.",{n:sayi(etkinlikTakimMax(e.kind,R())-1),m:sayi(etkinlikTakimMax(e.kind,R()))}):\u00E7("Tak\u0131m\u0131n kapt\
-an\u0131 olursun (kay\u0131tl\u0131 de\u011Filsen kayd\u0131n da a\xE7\u0131l\u0131r). Sonra arkada\u015Flar\u0131n\u0131 davet et; tak\u0131m\u0131n s\xFCresi en iyi {c} \xFCyenin s\xFCresinden.",{c:sayi(
-R().teams?.scoreBest??3)}))}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Tak\u0131m kur"),sinif:"altin",ikon:"users-round",is:()=>isle(()=>Sunucu.yap("cityevent_team_create",{p_event:e.id}),()=>tost(
-bayrak?\u00E7("Tak\u0131m\u0131n\u0131 kurdun ve kaydoldun; arkada\u015Flar\u0131n\u0131 davet et."):\u00E7("Tak\u0131m\u0131n\u0131 kurdun; arkada\u015Flar\u0131n\u0131 davet et."),"users-round"))}]})};
-for(const b of $$("[data-etkinlik-takim-davet]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikTakimDavet);e&&davetPenceresi(e)};for(const b of $$("[data-etkinlik-takim-ayril]",kap))b.onclick=()=>{
-const e=bul(b.dataset.etkinlikTakimAyril);if(!e)return;const kaptan=b.hasAttribute("data-kaptan"),bayrak=etkinlikBayrakMi(e.kind,R());pencere({ust:etkinlikAdi(e.kind),baslik:kaptan?\u00E7("Tak\u0131m\u0131 da\u011F\u0131\
-t"):\u00E7("Tak\u0131mdan ayr\u0131l"),govde:`<p class="aciklama">${esc(kaptan?bayrak?\u00E7("Tak\u0131m\u0131n da\u011F\u0131l\u0131r, davetler d\xFC\u015Fer; bayrak ko\u015Fusunda \xFCyelerin ve senin kayd\u0131n da silinir."):
-\u00E7("Tak\u0131m\u0131n da\u011F\u0131l\u0131r, davetler d\xFC\u015Fer; sen ve \xFCyeler tak\u0131ms\u0131z kay\u0131tl\u0131 kal\u0131rs\u0131n\u0131z."):bayrak?\u00E7("Tak\u0131mdan ayr\u0131l\u0131rs\u0131n; bayrak \
-ko\u015Fusunda kayd\u0131n da silinir."):\u00E7("Tak\u0131mdan ayr\u0131l\u0131rs\u0131n; tak\u0131ms\u0131z kay\u0131tl\u0131 kal\u0131rs\u0131n."))}</p>`,dugmeler:[{ad:\u00E7("Kal")},{ad:kaptan?\u00E7(
-"Tak\u0131m\u0131 da\u011F\u0131t"):\u00E7("Tak\u0131mdan ayr\u0131l"),sinif:"mercan",ikon:"log-out",is:()=>isle(()=>Sunucu.yap("cityevent_team_leave",{p_event:e.id}),()=>tost(kaptan?\u00E7("Tak\u0131m\u0131n\u0131 \
-da\u011F\u0131tt\u0131n."):\u00E7("Tak\u0131mdan ayr\u0131ld\u0131n."),"log-out"))}]})};for(const b of $$("[data-takim-kabul]",kap))b.onclick=()=>{const id=b.dataset.takimKabul,x=(v.mine?.invites??[]).
-find(y=>y.team_id===id);isle(()=>Sunucu.yap("cityevent_team_answer",{p_team:id,p_accept:!0}),y=>{tost(\u00E7("{kaptan} tak\u0131m\u0131na kat\u0131ld\u0131n.",{kaptan:x?.captain??""}),"users-round"),y?.
-id&&y.id!==secili&&(secili=y.id)})};for(const b of $$("[data-takim-ret]",kap))b.onclick=()=>{const id=b.dataset.takimRet;isle(()=>Sunucu.yap("cityevent_team_answer",{p_team:id,p_accept:!1}),()=>tost(\u00E7(
-"Daveti reddettin."),"x"))}}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()});if(await yukle(),!kap.isConnected)return alan.kapat(),()=>{};ciz();
-const b1=Durum.dinle("olay",({olay})=>{/^cityevent\.|^board\.ended$/.test(olay)&&tazele()}),b2=Durum.dinle("ulke-olay",({olay})=>{/^cityevent\./.test(olay)&&tazele()});let son=0;const saat=setInterval(
-()=>{if(kapandi||document.hidden)return;const canli=detay?.status==="live"||program().some(e=>e.status==="scheduled"&&Date.parse(e.starts_at)<=simdi()+6e4);Date.now()-son>=(canli?1e4:3e4)&&(son=Date.now(),
-tazele())},5e3);return()=>{kapandi=!0,b1(),b2(),clearInterval(saat),alan.kapat()}}}),Parcalar.tamam("ek_98zz_etkinlik");
+const bul=id=>(detay?.id===id?detay:null)??[...program(),...v.recent??[]].find(e=>e.id===id)??null;function bagla(){for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);const kaydir=(sec,blok="\
+start")=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:blok});for(const b of $$("[data-moda-sehir]",kap))b.onclick=async()=>{if(mesgul)return;const r=b.dataset.modaSehir,id=b.
+dataset.modaEtkinlik||null;if(r===v.region_id){id&&id!==secili&&(secili=id,await detayYukle(),kapandi||ciz()),kaydir("#etkinlik-detay");return}bolge=r,secili=id,await yukle(),kapandi||(ciz(),kaydir("#\
+etkinlik-detay"))};for(const b of $$("[data-etkinlik-don]",kap))b.onclick=async()=>{mesgul||(bolge=ilkBolge,secili=null,await yukle(),kapandi||(ciz(),window.scrollTo({top:0,behavior:hareketAzalt?"auto":
+"smooth"})))};for(const b of $$("[data-moda-git]",kap))b.onclick=()=>kaydir("#etkinlik-moda");for(const b of $$("[data-etkinlik]",kap))b.onclick=async()=>{if(secili===b.dataset.etkinlik){$("#etkinlik-\
+detay",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});return}secili=b.dataset.etkinlik,await detayYukle(),kapandi||(ciz(),$("#etkinlik-alan",kap)?.scrollIntoView({behavior:hareketAzalt?
+"auto":"smooth",block:"nearest"}))};for(const b of $$("[data-etkinlik-kayit]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikKayit);e&&kayitPenceresi(e)};for(const b of $$("[data-etkinlik-vazgec]",
+kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikVazgec);e&&pencere({ust:etkinlikAdi(e.kind),baslik:\u00E7("Kayd\u0131ndan vazge\xE7"),govde:`<p class="aciklama">${esc(e.kind==="yemek"?\u00E7("Porsiy\
+onun kilere d\xF6ner. Etkinlik ba\u015Flayana dek yeniden kaydolabilirsin."):e.mine?.preps?\u00E7("Haz\u0131rl\u0131klar\u0131n silinir. Etkinlik ba\u015Flayana dek yeniden kaydolabilirsin."):\u00E7("\
+Etkinlik ba\u015Flayana dek yeniden kaydolabilirsin."))}${e.mine?.team_id?" "+esc(e.mine.captain?\u00E7("Kaptan\u0131 oldu\u011Fun tak\u0131m da\u011F\u0131l\u0131r."):\u00E7("Tak\u0131m\u0131ndan da \xE7\u0131kars\u0131n.")):
+""}</p>`,dugmeler:[{ad:\u00E7("Kay\u0131tl\u0131 kal")},{ad:\u00E7("Vazge\xE7"),sinif:"mercan",ikon:"x",is:()=>isle(()=>Sunucu.yap("cityevent_withdraw",{p_event:e.id}),()=>tost(\u00E7("Kayd\u0131ndan vazge\
+\xE7tin."),"x"))}]})};for(const b of $$("[data-etkinlik-hazirlik]",kap))b.onclick=()=>{const id=b.dataset.etkinlikHazirlik;isle(()=>Sunucu.yap("cityevent_prep",{p_event:id}),y=>{tost(\u00E7("Haz\u0131rl\u0131k \
+yapt\u0131n ({n}). Yar\u0131n yeniden.",{n:sayi(y?.mine?.preps??0)}),"dumbbell"),alan.oyna("hazirlik")})};for(const b of $$("[data-etkinlik-katil]",kap))b.onclick=()=>{const id=b.dataset.etkinlikKatil;
+isle(()=>Sunucu.yap("cityevent_attend",{p_event:id}),y=>{tost(Number(y?.bond_points)>0?\u00E7("\u015Eenli\u011Fe kat\u0131ld\u0131n; arkada\u015Flar\u0131nla yak\u0131nla\u015Ft\u0131n."):\u00E7("\u015Eenl\
+i\u011Fe kat\u0131ld\u0131n! Keyfin yerine geldi."),"party-popper"),alan.oyna("katil")})};for(const b of $$("[data-etkinlik-oy]",kap))b.onclick=()=>{const kim=b.dataset.etkinlikOy,x=(detay?.entries??[]).
+find(y=>y.character_id===kim);isle(()=>Sunucu.yap("cityevent_vote",{p_event:detay.id,p_entry:kim}),()=>tost(\u00E7("Oyunu {ad} adl\u0131 yar\u0131\u015Fmac\u0131ya verdin.",{ad:x?.name??""}),"vote"))};
+for(const b of $$("[data-etkinlik-odul]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikOdul);e&&odulPenceresi(e)};for(const b of $$("[data-etkinlik-sponsor]",kap))b.onclick=()=>{const e=bul(b.dataset.
+etkinlikSponsor);e&&sponsorPenceresi(e)};for(const b of $$("[data-etkinlik-takim-kur]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikTakimKur);if(!e)return;const bayrak=etkinlikBayrakMi(e.kind,R());
+pencere({ust:\u00E7("{etkinlik} \xB7 {saat}",{etkinlik:etkinlikAdi(e.kind),saat:saatYaz(e.starts_at)}),baslik:\u00E7("Tak\u0131m kur"),govde:`<p class="aciklama">${esc(bayrak?\u00E7("Tak\u0131m\u0131n kaptan\u0131 o\
+lursun ve bayrak ko\u015Fusuna kaydolursun. Sonra {n} arkada\u015F\u0131n\u0131 davet et; tak\u0131m ba\u015Flarken tam ({m} ki\u015Fi) ve hepiniz \u015Fehirde olmal\u0131s\u0131n\u0131z, yoksa tak\u0131m gelmemi\u015F say\u0131l\u0131r.",
+{n:sayi(etkinlikTakimMax(e.kind,R())-1),m:sayi(etkinlikTakimMax(e.kind,R()))}):\u00E7("Tak\u0131m\u0131n kaptan\u0131 olursun (kay\u0131tl\u0131 de\u011Filsen kayd\u0131n da a\xE7\u0131l\u0131r). Sonra arkada\u015Flar\u0131n\u0131 davet et; tak\u0131m\u0131n s\xFCresi en iyi \
+{c} \xFCyenin s\xFCresinden.",{c:sayi(R().teams?.scoreBest??3)}))}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Tak\u0131m kur"),sinif:"altin",ikon:"users-round",is:()=>isle(()=>Sunucu.yap("cit\
+yevent_team_create",{p_event:e.id}),()=>tost(bayrak?\u00E7("Tak\u0131m\u0131n\u0131 kurdun ve kaydoldun; arkada\u015Flar\u0131n\u0131 davet et."):\u00E7("Tak\u0131m\u0131n\u0131 kurdun; arkada\u015Flar\u0131n\u0131 davet et."),
+"users-round"))}]})};for(const b of $$("[data-etkinlik-takim-davet]",kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikTakimDavet);e&&davetPenceresi(e)};for(const b of $$("[data-etkinlik-takim-ayril]",
+kap))b.onclick=()=>{const e=bul(b.dataset.etkinlikTakimAyril);if(!e)return;const kaptan=b.hasAttribute("data-kaptan"),bayrak=etkinlikBayrakMi(e.kind,R());pencere({ust:etkinlikAdi(e.kind),baslik:kaptan?
+\u00E7("Tak\u0131m\u0131 da\u011F\u0131t"):\u00E7("Tak\u0131mdan ayr\u0131l"),govde:`<p class="aciklama">${esc(kaptan?bayrak?\u00E7("Tak\u0131m\u0131n da\u011F\u0131l\u0131r, davetler d\xFC\u015Fer; bayrak ko\u015Fusunda \xFCyelerin ve senin\
+ kayd\u0131n da silinir."):\u00E7("Tak\u0131m\u0131n da\u011F\u0131l\u0131r, davetler d\xFC\u015Fer; sen ve \xFCyeler tak\u0131ms\u0131z kay\u0131tl\u0131 kal\u0131rs\u0131n\u0131z."):bayrak?\u00E7("T\
+ak\u0131mdan ayr\u0131l\u0131rs\u0131n; bayrak ko\u015Fusunda kayd\u0131n da silinir."):\u00E7("Tak\u0131mdan ayr\u0131l\u0131rs\u0131n; tak\u0131ms\u0131z kay\u0131tl\u0131 kal\u0131rs\u0131n."))}</p\
+>`,dugmeler:[{ad:\u00E7("Kal")},{ad:kaptan?\u00E7("Tak\u0131m\u0131 da\u011F\u0131t"):\u00E7("Tak\u0131mdan ayr\u0131l"),sinif:"mercan",ikon:"log-out",is:()=>isle(()=>Sunucu.yap("cityevent_team_leave",
+{p_event:e.id}),()=>tost(kaptan?\u00E7("Tak\u0131m\u0131n\u0131 da\u011F\u0131tt\u0131n."):\u00E7("Tak\u0131mdan ayr\u0131ld\u0131n."),"log-out"))}]})};for(const b of $$("[data-takim-kabul]",kap))b.onclick=
+()=>{const id=b.dataset.takimKabul,x=(v.mine?.invites??[]).find(y=>y.team_id===id);isle(()=>Sunucu.yap("cityevent_team_answer",{p_team:id,p_accept:!0}),y=>{tost(\u00E7("{kaptan} tak\u0131m\u0131na kat\u0131ld\u0131n.",
+{kaptan:x?.captain??""}),"users-round"),y?.id&&y.id!==secili&&(secili=y.id)})};for(const b of $$("[data-takim-ret]",kap))b.onclick=()=>{const id=b.dataset.takimRet;isle(()=>Sunucu.yap("cityevent_team_\
+answer",{p_team:id,p_accept:!1}),()=>tost(\u00E7("Daveti reddettin."),"x"))}}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()});if(await yukle(),
+!kap.isConnected)return alan.kapat(),()=>{};ciz();const b1=Durum.dinle("olay",({olay})=>{/^cityevent\.|^fashionweek\.|^board\.ended$/.test(olay)&&tazele()}),b2=Durum.dinle("ulke-olay",({olay})=>{/^(cityevent|fashionweek)\./.
+test(olay)&&tazele()});let son=0;const saat=setInterval(()=>{if(kapandi||document.hidden)return;const canli=detay?.status==="live"||program().some(e=>e.status==="scheduled"&&Date.parse(e.starts_at)<=simdi()+
+6e4);Date.now()-son>=(canli?1e4:3e4)&&(son=Date.now(),tazele())},5e3);return()=>{kapandi=!0,b1(),b2(),clearInterval(saat),alan.kapat()}}}),Parcalar.tamam("ek_98zz_etkinlik");

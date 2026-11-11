@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_22_cephe.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_22_cephe.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/cephe",{async ac(kap){let a=await Durum.askerlik(),oturum=null,sonuc=null,secim={kesim:"center",durus:"assault",vurus:0},gonderiliyor=!1,bitis=null;const tatbikatKarti=()=>{const d=a.
 drill,hak=d.daily_limit-d.sessions_last_24h;return oturum?adimKarti():`<section class="kart">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Tatbikat cephesi \xB7 bota kar\u015F\u0131")}</p><h2 class="b2">${\u00E7("Vurmay\u0131 \xF6\u011Fren")}</h2></div><span class="ik-kutu"\

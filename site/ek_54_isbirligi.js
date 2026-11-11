@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_54_isbirligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_54_isbirligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/isbirligi",{async ac(kap){let v=null,sekme="ortaklar";const akisKart=AkisKarti.ac();akisKart.dinle("sec",async(ad,ulke)=>{ad!=="ortak"||!ulke||(sekme="ortaklar",await tazele(),$(`[d\
 ata-is-ortak="${CSS.escape(ulke)}"]`,kap)?.scrollIntoView({behavior:"smooth",block:"center"}))});let akisVeri=null,akisAn=0,hatId=null,hat=null,kanal=null,kanalVeri=null,elcilikSec=null,sonMesaj=0,kapandi=!1,
 durdur=()=>{},elcilikMod=Gorunum.uc()?"3b":"2b",santiyeMod=Gorunum.uc()?"3b":"2b",elcilikHata=!1,santiyeHata=!1,santiyeOynat=!1;const form={ulke:null,maddeler:new Set(["embassy","trade"]),yardimUlke:null,

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_43_arena3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_43_arena3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function arena3bKur(THREE,birlestir,cizici){if(!cizici.kur())throw new Error("webgl-yok");const PPM=1e6,KES=["left","center","right"],KISA={left:\u00E7("Sol"),center:\u00E7("Merkez"),right:\u00E7("Sa\u011F")},
 LANE_X={left:-4.3,center:0,right:4.3},LANE_W=3.9,Z_UC=10.2,Z_MENZIL=8.4,ASKER_N=7,IZ_BEN="#FFE066",IZ_BIZ="#FF9F68",IZ_ONLAR="#C98BFF",payZ=onlarPay=>(onlarPay/PPM-.5)*2*Z_MENZIL,sahne=new THREE.Scene,
 kamera=new THREE.PerspectiveCamera(36,1,.5,300),tuval=cizici.renderer.domElement;let w=1,h=1,kirli=!0,ciz=!1,kaliteAdi="orta",hizliAn=0,oncekiIz=0,kap=null,etiketKap=null,kapUst=null;const etiketler={},

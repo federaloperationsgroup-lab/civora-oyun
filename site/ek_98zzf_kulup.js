@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzf_kulup.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zzf_kulup.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/stadyum",{async ac(kap){let v=null,kul=null,mac=null,lig=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=null,kulupId=null,ligSecili=null,arama={q:"",sonuc:null},sonGenel=0,
 yoklamaZaman=null;const saha=FutbolKart.ac({kulup:!0}),spiker=MacSpikeri.ac("stadyum-spiker"),ben=()=>Durum.v.ozet?.character??{},KR=()=>kulupKurali()??v?.rule?.club??{},simdi=()=>Date.now()+saatFarki,
 git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});saha.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}git("#stadyum-mac")});let saat={rtt:1/0,an:0};
@@ -83,14 +83,17 @@ b:onlar}))}
 kazanc?\u00E7("futbol becerin +{n}",{n:sayi(kazanc)}):null].filter(Boolean).join(" \xB7 "))}</span></div>`}const adam=m.motm?`<p class="kucuk" data-kulup-adam="${m.motm.me?"ben":"1"}">${ikon("star")} ${esc(
 m.motm.me?\u00E7("Ma\xE7\u0131n adam\u0131 sensin!"):\u00E7("Ma\xE7\u0131n adam\u0131: {ad}",{ad:m.motm.name??\u00E7("ad\u0131n\u0131 gizleyen biri")}))}</p>`:"",benimKulup=v?.mine?.id,oneriYanit=m.phase===
 "proposed"&&benimKulup===m.away?.id&&(v.mine.coach||v.mine.president),oneriGeri=m.phase==="proposed"&&benimKulup===m.home?.id&&(v.mine.coach||v.mine.president),kupaUst=typeof kupaMacUstYazi=="function"?
-kupaMacUstYazi(m):null;return`<section class="kart" id="stadyum-mac" data-kulup-mac="${esc(m.id)}" data-kulup-evre="${esc(m.phase)}"${m.cup?` data-kulup-kupa="${esc(m.cup.competition)}"`:""}${m.final?
-' data-kulup-final="1"':""}>
+kupaMacUstYazi(m):null,marsYazi=m.kind==="national"&&(m.anthems?.a?.song_id||m.anthems?.b?.song_id)&&!["finished","cancelled"].includes(m.phase)?\u00E7("Ba\u015Flama d\xFCd\xFC\u011F\xFCnden \xF6nce mill\xEE mar\u015Flar \xE7alar: {l\
+iste}.",{liste:[["a",m.home],["b",m.away]].map(([x,k])=>m.anthems?.[x]?.song_id?\u00E7("{ulke}: {sarki}",{ulke:ulkeAdi(k?.country_id),sarki:m.anthems[x].title??""}):\u00E7("{ulke}: mar\u015F se\xE7ilmedi",
+{ulke:ulkeAdi(k?.country_id)})).join(" \xB7 ")}):"";return`<section class="kart" id="stadyum-mac" data-kulup-mac="${esc(m.id)}" data-kulup-evre="${esc(m.phase)}"${m.cup?` data-kulup-kupa="${esc(m.cup.
+competition)}"`:""}${m.final?' data-kulup-final="1"':""}>
         <div class="kart-bas"><div><p class="ust-yazi">${esc([kupaUst??kulupMacTuru(m),!kupaUst&&m.round?\u00E7("{n}. hafta",{n:sayi(m.round)}):null,bolgeAdi(m.region_id),m.ground?.own?\u00E7("kul\xFCb\xFCn\
  stadyumu"):\u00E7("belediye stadyumu")].filter(Boolean).join(" \xB7 "))}</p>
           <h2 class="b2">${ikon("land-plot")} ${esc(\u00E7("{ev} \u2013 {dep}",{ev:m.home?.short??"",dep:m.away?.short??""}))}</h2></div>
           <span class="cip ${kulupEvreRenk(m.phase)}">${esc(kulupEvreAdi(m.phase))}</span></div>
         <div class="kulup-mac-takimlar">${takimHtml(m,"a")}${orta}${takimHtml(m,"b")}</div>
         ${yazi?`<p class="kucuk">${esc(yazi)}</p>`:""}
+        ${marsYazi?`<p class="kucuk" data-kulup-marslar>${ikon("eighth-notes")} ${esc(marsYazi)}</p>`:""}
         ${!m.watch&&m.phase==="live"?`<p class="bilgi-kutusu" style="margin-top:6px">${ikon("map-pin")}<span>${esc(\u00E7("Ma\xE7\u0131 izlemek i\xE7in \u015Fehirde olmal\u0131s\u0131n; sonucu ma\xE7 bitince g\xF6r\xFCn\xFCr."))}\
 </span></p>`:""}
         ${oneriYanit?`<div class="oneri-dugmeler"><button class="dugme altin" id="stadyum-oneri-kabul" ${mesgul?"disabled":""}>${ikon("handshake")}${\u00E7("Kabul et")}</button>

@@ -1,13 +1,13 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/moderasyon",{async ac(kap){const roller=Durum.v.ozet?.character?.staff??[],moderator=roller.some(r=>r==="moderator"||r==="admin"),teknik=roller.some(r=>["admin","release","support"].
 includes(r)),v={genel:null,sekme:moderator?"rapor":"sunucu",tur:null,kuyruk:null,bekleyen:null,arama:"",sonuc:null,kayit:null,kayitSonu:!1,sunucu:null,isler:!1,guven:null,guvenTur:null};try{const s=sessionStorage.
 getItem("civora.moderasyon");(moderator&&["rapor","bekleyen","inceleme","oyuncu","kayit"].includes(s)||teknik&&s==="sunucu")&&(v.sekme=s)}catch{}await Durum.kurallar().catch(()=>null);async function yukle(){
 v.genel=moderator?await Sunucu.cagir("mod_overview"):{roles:roller,is_admin:roller.includes("admin")},v.sekme==="rapor"?v.kuyruk=await Sunucu.cagir("mod_queue",{p_kind:v.tur,p_limit:100}):v.sekme==="b\
 ekleyen"?v.bekleyen=await Sunucu.cagir("mod_pending"):v.sekme==="kayit"?(v.kayit=await Sunucu.cagir("mod_log",{p_before:null,p_limit:50}),v.kayitSonu=v.kayit.length<50):v.sekme==="inceleme"?v.guven=await Sunucu.
-cagir("mod_trust",{p_kind:null}):v.sekme==="sunucu"&&(v.sunucu=await Sunucu.cagir("ops_status"))}const sonra=Object.assign(async()=>{await tazele()},{get genel(){return v.genel}});function raporlarHtml(){
-const l=v.kuyruk?.items??[];v.tur||(v.turVar=[...new Set(l.map(x=>x.kind))]);const turler=(v.turVar??[]).length>1||v.tur?v.turVar??[]:[];return`${turler.length?`<div class="secim-sec mod-turler" style\
-="margin-bottom:10px">${[null,...turler].map(k=>`<button class="secim-cip" type="button" data-mod-tur="${k??""}" aria-pressed="${v.tur===k}">${esc(k?RAPOR_TUR[k]:\u00E7("T\xFCm\xFC"))}</button>`).join(
-"")}</div>`:""}
+cagir("mod_trust",{p_kind:null}):v.sekme==="sunucu"&&([v.sunucu,v.ekonomi]=await Promise.all([Sunucu.cagir("ops_status"),Sunucu.cagir("economy_balance",{p_days:14}).catch(()=>null)]))}const sonra=Object.
+assign(async()=>{await tazele()},{get genel(){return v.genel}});function raporlarHtml(){const l=v.kuyruk?.items??[];v.tur||(v.turVar=[...new Set(l.map(x=>x.kind))]);const turler=(v.turVar??[]).length>
+1||v.tur?v.turVar??[]:[];return`${turler.length?`<div class="secim-sec mod-turler" style="margin-bottom:10px">${[null,...turler].map(k=>`<button class="secim-cip" type="button" data-mod-tur="${k??""}"\
+ aria-pressed="${v.tur===k}">${esc(k?RAPOR_TUR[k]:\u00E7("T\xFCm\xFC"))}</button>`).join("")}</div>`:""}
         <div class="yigin">${l.map(x=>`<div class="mod-satir" data-mod-rapor="${esc(x.report_id)}" role="button" tabindex="0">
             <div class="satir" style="gap:8px;flex-wrap:wrap;align-items:center"><span class="cip">${esc(RAPOR_TUR[x.kind]??x.kind)}</span>
               <b>${\u00E7("{n} rapor",{n:Number(x.count)})}</b><span class="kucuk">${esc(zamanOnce(x.last_at))}</span>
@@ -70,6 +70,7 @@ aman})",{hata:opsYoklama(son.error,son.status),zaman:zamanOnce(son.at)}):\u00E7(
 \u00E7("kapal\u0131 (y\xFCr\xFCme Supabase'ten)");return`<p class="ust-yazi">${\u00E7("A\xE7\u0131k uyar\u0131lar ({n})",{n:acik.length})}</p>
         <div class="yigin" id="ops-acik">${acik.map(a=>uyari(a)).join("")||`<p class="bos">${\u00E7("Uyar\u0131 yok.")}${s.checked_at?" "+\u00E7("Son denetim {zaman}.",{zaman:esc(zamanOnce(s.checked_at))}):
 ""}</p>`}</div>
+        ${ekonomiKarti(v.ekonomi)}
         <p class="ust-yazi" style="margin-top:14px">${\u00E7("Son {n} dakika",{n:Number(w.minutes??5)})}</p>
         <p id="ops-pencere">${\u00E7("{n} istek",{n:Number(w.count??0)})} \xB7 ${\u00E7("{n} sunucu hatas\u0131",{n:Number(w.errors??0)})} (%${Math.floor(Number(w.ppm??0)/1e4)})${w.mean_ms!=null?" \xB7 "+
 \u00E7("ortalama {ms} ms",{ms:Number(w.mean_ms)}):""}

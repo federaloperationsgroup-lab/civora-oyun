@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzx_yarisma.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zzx_yarisma.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/yarisma",{async ac(kap){const kusak=Sunucu.Giris.kusak,rota=Kabuk.etkin;let kapandi=!1,v=null,sonuc=null,gecmis=null,mesgul=!1,gecikme=null,pencereSon=null;function formAc(o){return pencereSon?.
 kapat(),pencereSon=pencereForm(o),pencereSon}const gece=YarismaGecesi.ac(),yasiyor=()=>!kapandi&&kusak===Sunucu.Giris.kusak&&rota===Kabuk.etkin&&kap.isConnected;async function yukle(){if(!yasiyor())return;
 const s=await Sunucu.cagir("contest_status");if(!yasiyor())return;const r=await Sunucu.cagir("contest_results",{p_season:gecmis??Number(s.season)});yasiyor()&&(v=s,sonuc=r)}const basvurum=()=>{const e=Yarisma.

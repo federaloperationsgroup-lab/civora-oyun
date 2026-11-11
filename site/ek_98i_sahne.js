@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98i_sahne.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98i_sahne.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/sahne",{async ac(kap){let v=null,plaklar=[],fv=null,disari=null,kulupler=[],kapandi=!1,durdur=()=>{};const hedef=KonserHedef.sahneAl();let bolge=hedef?.bolge??null,secili=hedef?.konser??
 null;const salon=KonserSalonu.ac();salon.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}ad==="ekran"&&salon.secili&&konserKartiAc(salon.secili,()=>tazele())});const ben=()=>Durum.
 v.ozet?.character??{},tum=()=>[...v?.live??[],...v?.upcoming??[],...v?.recent??[]];async function yukle(){[v,plaklar,fv]=await Promise.all([Sunucu.cagir("city_concerts",{p_region:bolge}),Sunucu.cagir(

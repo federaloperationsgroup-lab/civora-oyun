@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/ev",{async ac(kap){let v=null,odaKapat=null,zy=null;const partiEl=document.createElement("div");partiEl.id="parti-yer",partiEl.style.marginTop="20px";const partiKapat=EvPartisiKart.
 ac(partiEl);async function yukle(){const[ev,kurallar,,oda,harita,kariyer]=await Promise.all([Sunucu.cagir("my_home"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("home_layout"),Durum.harita().catch(()=>null),
 Sunucu.cagir("media_career").catch(()=>null)]),burasi=await Sunucu.cagir("city",{p_region:ev.location_region_id});v={ev,burasi,kurallar,oda,harita,kariyer}}function evimKarti(ev,kurallar){const h=ev.house;
@@ -91,13 +91,17 @@ yap(fn,args),tost(mesaj,ik)}catch(e){tost(hataMetni(e),"circle-alert")}await taz
 zy.gir();const b1=Durum.dinle("olay",({olay})=>{/^(house\.|travel\.)/.test(olay)&&tazele()});return()=>{b1(),odaKapat?.(),partiKapat(),zy.kapat()}}}),Kabuk.kaydet("sehir/yol",{async ac(kap){let durdur=()=>{},
 v=null,varisDeneme=0;const yolculuk=YolculukSahnesi.ac();yolculuk.dinle("arac",()=>$("#yol-kart",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"}));const istasyon=IstasyonKarti.
 ac(),sira=sahneSirasiKur();let istZaman=null;async function yukle(){const[ys,harita,kurallar,,,ist]=await Promise.all([Sunucu.cagir("travel_status"),Durum.harita(),Durum.kurallar(),Durum.ozet(),Durum.
-askerlik().catch(()=>null),Sunucu.cagir("station_board").catch(()=>null)]);v={ys,harita,kurallar,ist}}function yolKarti(tr){return`<section class="kart" id="yol-kart">
+askerlik().catch(()=>null),Sunucu.cagir("station_board").catch(()=>null)]);v={ys,harita,kurallar,ist}}function yolKazasi(a){const ad=a.severity==="agir"?\u00E7("A\u011F\u0131r kaza"):\u00E7("Hafif kaz\
+a"),sonuc=a.insured?\u00E7("sigorta kar\u015F\u0131lad\u0131, ara\xE7 a\u015F\u0131nmad\u0131"):Number(a.applied)>0?\u00E7("a\u015F\u0131nma +{n} ({a}/{b})",{n:sayi(a.applied),a:sayi(a.wear_after),b:sayi(
+a.durability)}):\u00E7("ara\xE7 daha fazla a\u015F\u0131nmad\u0131");return`<p class="kucuk arac-kaza" data-yol-kart-kaza="${esc(a.severity)}">${ikon(a.insured?"shield-check":"triangle-alert")} ${esc(
+\u00E7("{ad}: {arac}, {sonuc}.",{ad,arac:aracRenkliAd(a.kind,a.color),sonuc}))}</p>`}function yolKarti(tr){return`<section class="kart" id="yol-kart">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Yoldas\u0131n")}</p><h2 class="b2">${esc(bolgeAdi(tr.to))}</h2></div><span class="ik-kutu">${ikon("route")}</span></div>
         <div class="rota">${tr.route.map(r=>`<span class="cip">${esc(bolgeAdi(r))}</span>`).join(ikon("arrow-right"))}</div>
         ${tr.vehicle?`<p class="kucuk arac-yol" data-yol-arac="${esc(String(tr.vehicle.ppm))}">${[tr.vehicle.land,tr.vehicle.sea].filter(Boolean).map(x=>`${ikon(ARAC_IK[x.kind]??"car")} ${\u00E7("{ara\
 c} ile ({n} kenar)",{arac:esc(aracRenkliAd(x.kind,x.color)),n:Number(x.edges)})}${x.plate?` <span class="plaka kucuk-plaka" data-yol-kart-plaka="${esc(x.plate)}">${esc(x.plate)}</span>`:""}${x.name?` \
 <b>${esc(x.name)}</b>`:""}${x.owner?` \xB7 ${esc(\u00E7("kiral\u0131k (sahibi {ad})",{ad:x.owner}))}`:""}`).join(" \xB7 ")}${tr.vehicle.minutes_before?` \xB7 ${\u00E7("{a} yerine {b} dakika",{a:sayi(tr.
 vehicle.minutes_before),b:sayi(tr.minutes)})}`:""}</p>`:""}
+        ${tr.vehicle?[tr.vehicle.land,tr.vehicle.sea].filter(x=>x?.accident).map(x=>yolKazasi(x.accident)).join(""):""}
         <div class="cubuk deniz"><i data-ilerleme="${tr.departs_at}|${tr.arrives_at}"></i></div>
         <p class="kucuk" style="margin-top:8px">${\u00E7("Var\u0131\u015F: <b>{zaman}</b>",{zaman:esc(saatYaz(tr.arrives_at))})} \xB7 ${\u00E7("kalan")} <b data-bitis="${tr.arrives_at}"></b></p>
         <p class="aciklama">${\u00E7("Yolculuk sunucuda s\xFCrer; uygulamay\u0131 kapatsan da var\u0131rs\u0131n. Yoldayken \xE7al\u0131\u015Famaz, cephede vuramazs\u0131n.")}</p>
@@ -160,6 +164,6 @@ ekle(istasyon),istasyon.yaz(v.ist)):sira.cikar(istasyon),bagla(),durdur=geriSay(
 ad:\u00E7("\u0130ptal et"),sinif:"mercan",ikon:"x",is:iptal}]}))}async function iptal(){try{const r=await Sunucu.yap("travel_cancel");tost(r.status==="arrived"?\u00E7("Yolculuk zaten bitmi\u015Fti; vard\u0131n."):
 \u00E7("Yolculuk iptal edildi; \xE7\u0131kt\u0131\u011F\u0131n b\xF6lgede kald\u0131n."),"map-pin")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}async function varis(){if(!(!v.ys.travel||
 varisDeneme>=6||!kap.isConnected)){varisDeneme++;try{await Sunucu.cagir("travel_arrive")}catch(e){e.kod!=="TRAVEL_NOT_DUE"&&e.kod!=="NOT_TRAVELING"&&tost(hataMetni(e),"circle-alert")}await tazele()}}const tazele=tazeleyici(
-async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^travel\./.test(olay)&&(varisDeneme=0,tazele())});return istZaman=setInterval(()=>{document.hidden||!kap.isConnected||
-!v?.ist||Sunucu.cagir("station_board").then(b=>{b&&kap.isConnected&&(v.ist=b,istasyon.yaz(b))}).catch(()=>{})},3e4),()=>{durdur(),b1(),clearInterval(istZaman),sira.kapat(),yolculuk.kapat(),istasyon.kapat()}}}),
-Parcalar.tamam("ek_31_sehir");
+async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(travel\.|vehicle\.accident$)/.test(olay)&&(varisDeneme=0,tazele())});return istZaman=setInterval(()=>{document.
+hidden||!kap.isConnected||!v?.ist||Sunucu.cagir("station_board").then(b=>{b&&kap.isConnected&&(v.ist=b,istasyon.yaz(b))}).catch(()=>{})},3e4),()=>{durdur(),b1(),clearInterval(istZaman),sira.kapat(),yolculuk.
+kapat(),istasyon.kapat()}}}),Parcalar.tamam("ek_31_sehir");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zu_araclar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zu_araclar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/araclar",{async ac(kap){let v=null,kapandi=!1,mesgul=!1,gorunus;const sahne=AracSahnesi.ac();sahne.dinle("sec",ad=>{const el=$({land:"#arac-yer-land",sea:"#arac-yer-sea",kit:"#arac\
 -kurallar",ben:"#arac-bayi"}[ad]??"#arac-bayi",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vur\
 gu-yan"))});const ben=()=>Durum.v.ozet?.character??{};async function yukle(){const[x,bak]=await Promise.all([Sunucu.cagir("vehicles"),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);v=
@@ -23,8 +23,17 @@ ehrinde; sen oradayken g\xF6r\xFCn\xFCr.",{sehir:bolgeAdi(x.region_id)})):""}</s
           <div class="oneri-dugmeler" style="margin-top:8px"><button class="dugme ikincil kucuk-d" data-arac-ilan-kaldir="${esc(x.rental_id)}" ${mesgul?"disabled":""}>${ikon("x")}${\u00E7("\u0130lan\u0131 kald\u0131\
 r")}</button></div>`}return`<div class="oneri-dugmeler" style="margin-top:10px"><button class="dugme ikincil kucuk-d" data-arac-kiraya="${m}" ${v.traveling||!v.place||u.busy||mesgul?"disabled":""}>${ikon(
 "hand-coins")}${\u00E7("Kiraya ver")}</button></div>`}const hizYazisi=k=>k.medium==="sea"?\u00E7("Deniz ge\xE7i\u015Finde s\xFCre {oran} k\u0131sa",{oran:ppmYuzde(k.speedPpm)}):\u00E7("Karada s\xFCre {or\
-an} k\u0131sa",{oran:ppmYuzde(k.speedPpm)});function yerHtml(m){const u=(v.garage??[]).find(x=>x.medium===m);if(!u){const cantada=(R().kinds??[]).filter(k2=>k2.medium===m&&Number(v.stock?.[k2.id]??0)>
-0);return`<section class="kart" id="arac-yer-${m}" data-arac-yer="${m}" data-tur="">
+an} k\u0131sa",{oran:ppmYuzde(k.speedPpm)}),SI=()=>R().insurance??null,sigortaNedeni=kod=>({VEHICLE_INSURE_AHEAD:\u00E7("Sigorta \u015Fu andan en \xE7ok {n} g\xFCn ileriye uzat\u0131l\u0131r.",{n:sayi(
+SI()?.maxAheadDays??28)}),VEHICLE_INSURE_MONEY:\u00E7("Sigortan\u0131n bedeli i\xE7in kredin yetmiyor."),VEHICLE_INSURE_OFF:\u00E7("Bu ara\xE7 sigortalanmaz.")})[kod]??"";function sigortaHtml(u,m){const s=u.
+insurance,k=SI();if(!s||!k)return"";const kaza=Number(u.accident_ppm_edge??0)>0?" "+\u00E7("Yolda kaza olas\u0131l\u0131\u011F\u0131 yol ba\u015F\u0131na {oran}.",{oran:ppmYuzde(u.accident_ppm_edge)}):
+"",dugme=s.active?\u00E7("Sigortay\u0131 uzat ({kr} kredi, {n} g\xFCn)",{kr:kr(s.premium_cr),n:sayi(k.days)}):\u00E7("Sigorta yapt\u0131r ({kr} kredi, {n} g\xFCn)",{kr:kr(s.premium_cr),n:sayi(k.days)});
+return`<div class="bilgi-kutusu${s.active?"":" deniz-kutusu"}" data-arac-sigorta="${s.active?"var":"yok"}" style="margin-top:10px">${ikon(s.active?"shield-check":"shield")}<span>${esc(s.active?\u00E7(
+"Sigortal\u0131: {zaman} saatine dek. Yola \xE7\u0131karken sigortas\u0131 ge\xE7erli ara\xE7ta yolda kaza a\u015F\u0131nma eklemez.",{zaman:saatYaz(s.ends_at)}):\u00E7("Sigortas\u0131z: yolda kaza olursa \
+ara\xE7 a\u015F\u0131n\u0131r."))}${esc(kaza)}</span></div>
+        <div class="oneri-dugmeler" style="margin-top:8px"><button class="dugme ikincil kucuk-d" data-arac-sigortala="${m}" ${s.code||mesgul?"disabled":""}>${ikon("shield-check")}${esc(dugme)}</button\
+></div>
+        ${s.code?`<p class="kucuk" data-arac-sigorta-neden="${esc(s.code)}">${esc(sigortaNedeni(s.code))}</p>`:""}`}function yerHtml(m){const u=(v.garage??[]).find(x=>x.medium===m);if(!u){const cantada=(R().
+kinds??[]).filter(k2=>k2.medium===m&&Number(v.stock?.[k2.id]??0)>0);return`<section class="kart" id="arac-yer-${m}" data-arac-yer="${m}" data-tur="">
           <div class="kart-bas"><div><p class="ust-yazi">${esc(ORTAM_AD[m])}</p><h2 class="b2">${esc(m==="sea"?\u00E7("Teknenin yeri bo\u015F"):\u00E7("Kara arac\u0131n\u0131n yeri bo\u015F"))}</h2></\
 div>
             <span class="ik-kutu">${ikon(m==="sea"?"sailboat":"car")}</span></div>
@@ -57,7 +66,7 @@ v.kits??0)),kilit=kilitli(u),renkler=(R().colors??[]).map(r=>`<button class="ara
         <div class="arac-renkler" role="group" aria-label="${esc(\u00E7("Renk"))}">${renkler}</div>
         <label class="arac-kullan"><input type="checkbox" data-arac-etkin="${m}" ${u.active?"checked":""} ${mesgul||kilit?"disabled":""}> ${\u00E7("Yolculukta kullan")}</label>
         ${u.active?"":`<p class="kucuk">${esc(\u00E7("Kapal\u0131yken yolculuklar\u0131n ara\xE7s\u0131z (bilet ve otob\xFCsle) olur; ara\xE7 a\u015F\u0131nmaz."))}</p>`}
-        ${kargoHtml(u)}${kiraHtml(u,m)}
+        ${kargoHtml(u)}${kiraHtml(u,m)}${sigortaHtml(u,m)}
         <div class="oneri-dugmeler" style="margin-top:10px">
           <button class="dugme altin kucuk-d" data-arac-onar="${m}" data-kit="${kit}" ${!u.wear||!kit||mesgul||kilit?"disabled":""}>${ikon("wrench")}${u.wear?\u00E7("Onar ({n} kit)",{n:sayi(Math.max(1,
 kit))}):\u00E7("Onar\u0131m gerekmiyor")}</button>
@@ -78,7 +87,10 @@ traveling?" "+esc(\u00E7("Yoldayken garaj\u0131ndaki arac\u0131 de\u011Fi\u015Ft
 /div>
               <div class="alt">${esc(\u00E7("Onar\u0131m bedeli \u015Fimdilik {kr} kredi; rezervin {dep} kredi, kalan\u0131 d\xF6n\xFC\u015Fte serbest kal\u0131r.",{kr:kr(x.repair_now??0),dep:kr(x.deposit_cr??
 0)}))}</div>
-              ${u.busy?`<div class="alt">${esc(\u00E7("Kargoda; var\u0131\u015F {zaman}.",{zaman:saatYaz(u.busy.arrives_at)}))}</div>`:""}</div><span></span></div>`}).join("")}</div>
+              ${u.busy?`<div class="alt">${esc(\u00E7("Kargoda; var\u0131\u015F {zaman}.",{zaman:saatYaz(u.busy.arrives_at)}))}</div>`:""}
+              ${SI()?`<div class="alt" data-arac-kiralik-sigorta="${u.insured_until?"var":"yok"}">${esc(u.insured_until?\u00E7("Sahibinin sigortas\u0131 {zaman} saatine dek: yolda kazada ara\xE7 a\u015F\u0131nmaz.",
+{zaman:saatYaz(u.insured_until)}):\u00E7("Sigortas\u0131z: yolda kaza olursa a\u015F\u0131n\u0131r; bedeli d\xF6n\xFC\u015Fte onar\u0131m rezervinden."))}</div>`:""}</div><span></span></div>`}).join("")}\
+</div>
         <p class="kucuk" style="margin-top:8px">${esc(\u00E7("Kiralad\u0131\u011F\u0131n ara\xE7 yolculuklar\u0131nda kendili\u011Finden kullan\u0131l\u0131r; kom\u015Fu \xFClkedeki depona kargo da ta\u015F\u0131yabilirsin. S\xFCre bitince sahibine d\xF6ner; yol\
  s\xFCreden uzunsa ara\xE7 kullan\u0131lmaz."))}</p>
       </section>`:""}function ilanlarHtml(){const k=KR();if(!k)return"";const l=v.offers_here??[],kredi=Number(v.credits??0);return`<section class="kart" id="arac-ilanlar">
@@ -91,6 +103,8 @@ traveling?" "+esc(\u00E7("Yoldayken garaj\u0131ndaki arac\u0131 de\u011Fi\u015Ft
               <div class="alt">${esc(\u00E7("Sahibi {ad} \xB7 g\xFCnl\xFCk {kr} kredi \xB7 en \xE7ok {gun} g\xFCn",{ad:o.owner?.name??"",kr:kr(o.day_cr),gun:sayi(o.max_days)}))}</div>
               <div class="alt">${esc(\u00E7("A\u015F\u0131nma {a}/{b}",{a:sayi(o.wear??0),b:sayi(o.durability??0)}))}${Number(o.capacity??0)>0?" \xB7 "+esc(\u00E7("{n} adet ta\u015F\u0131r",{n:sayi(o.
 capacity)})):""}</div>
+              ${SI()?`<div class="alt" data-arac-ilan-sigorta="${o.insured_until?"var":"yok"}">${esc(o.insured_until?\u00E7("Sigortal\u0131: {zaman} saatine dek",{zaman:saatYaz(o.insured_until)}):\u00E7(
+"Sigortas\u0131z"))}</div>`:""}
               ${engel?`<div class="alt saglik-engel">${esc(engel)}</div>`:""}</div>
             <span class="oneri-dugmeler"><button class="dugme altin kucuk-d" data-arac-kirala="${esc(o.rental_id)}" ${engel||mesgul?"disabled":""}>${ikon("key-round")}${\u00E7("Kirala")}</button>
               ${o.name?`<button class="dugme sade kucuk-d" data-arac-bildir="${esc(o.vehicle_id)}" data-ad="${esc(o.name)}" title="${esc(\u00E7("Arac\u0131n ad\u0131n\u0131 raporla"))}" aria-label="${esc(
@@ -144,6 +158,30 @@ satir" data-arac-kira-gecmis="${esc(x.rental_id)}">
               <div class="alt">${esc(sahip?\u00E7("Kirac\u0131 {ad} \xB7 {gun} g\xFCn \xB7 {kr} kredi",{ad:x.renter?.name??"",gun:sayi(x.days??0),kr:kr(x.fee_cr??0)}):\u00E7("Sahibi {ad} \xB7 {gun} g\xFCn \xB7\
  {kr} kredi",{ad:x.owner?.name??"",gun:sayi(x.days??0),kr:kr(x.fee_cr??0)}))}${x.status!=="active"?" \xB7 "+esc(\u00E7("onar\u0131m {kr} kredi",{kr:kr(x.repair_cr??0)})):""}</div></div><span></span></\
 div>`}).join("")}</div>`:""}
+      </section>`}const KAZA_AGIRLIK={hafif:\u00E7("Hafif kaza"),agir:\u00E7("A\u011F\u0131r kaza")};function kazaSonucu(a){return a.insured?\u00E7("Sigorta kar\u015F\u0131lad\u0131; ara\xE7 a\u015F\u0131nmad\u0131."):
+a.wear_after==null?\u00E7("Ara\xE7 art\u0131k garajda de\u011Fildi."):Number(a.applied)?\u00E7("A\u015F\u0131nma +{n} ({a} \u2192 {b} / {c}).",{n:sayi(a.applied),a:sayi(a.wear_before),b:sayi(a.wear_after),
+c:sayi(a.durability)}):\u00E7("Ara\xE7 son yolundayd\u0131; daha fazla a\u015F\u0131nmad\u0131.")}function kazaHtml(){const a=R().accident,k=SI();if(!a&&!k)return"";const l=v.accidents??[],benim=ben().
+id,oran=id=>ppmYuzde(a?.perEdgePpm?.[id]??0);return`<section class="kart" id="arac-kaza">
+        <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Yolda")}</p><h2 class="b2">${\u00E7("Kaza ve sigorta")}</h2></div><span class="ik-kutu">${ikon("triangle-alert")}</span></div>
+        <ul class="arac-kural">
+          ${a?`<li>${esc(\u00E7("Ara\xE7la yolda kaza olabilir. Olas\u0131l\u0131k kullan\u0131lan her yol i\xE7in: bisiklet {b}, motosiklet {m}, otomobil {o}, tekne {t}; a\u015F\u0131nm\u0131\u015F ara\xE7ta iki kat\u0131, en \xE7ok {en}.",
+{b:oran("bisiklet"),m:oran("motosiklet"),o:oran("otomobil"),t:oran("tekne"),en:ppmYuzde(a.maxPpm)}))}</li>
+          <li>${esc(\u00E7("Lojistik becerin y\xFCkseldik\xE7e kaza azal\u0131r: her seviye {oran} (100'de yar\u0131ya). Senin becerin: {n}.",{oran:ppmYuzde(a.skillCutPpm),n:sayi(v.skill??0)}))}</li>
+          <li>${esc(\u00E7("Hafif kaza arac\u0131n \xF6mr\xFCnden %{h}, a\u011F\u0131r kaza %{a} g\xF6t\xFCr\xFCr; bir kazan\u0131n a\u011F\u0131r olma olas\u0131l\u0131\u011F\u0131 {oran}. Kaza arac\u0131 hurdaya ay\u0131rmaz; haber yolun ortas\u0131nda gelir.",
+{h:sayi(a.damagePct?.hafif??5),a:sayi(a.damagePct?.agir??25),oran:ppmYuzde(a.severePpm)}))}</li>`:""}
+          ${k?`<li>${esc(\u00E7("Sigorta {n} g\xFCnl\xFCk: bisiklet {b}, motosiklet {m}, otomobil {o}, tekne {t} kredi; bedel sisteme gider. En \xE7ok {en} g\xFCn ileriye uzat\u0131l\u0131r.",{n:sayi(
+k.days),b:kr(k.premiumCr?.bisiklet??0),m:kr(k.premiumCr?.motosiklet??0),o:kr(k.premiumCr?.otomobil??0),t:kr(k.premiumCr?.tekne??0),en:sayi(k.maxAheadDays)}))}</li>
+          <li>${esc(\u00E7("Yola \xE7\u0131karken sigortas\u0131 ge\xE7erli ara\xE7ta kaza a\u015F\u0131nma eklemez; kiraya verdi\u011Finde kirac\u0131n\u0131 da kapsar. Sigortas\u0131z kiral\u0131k ara\xE7ta kazan\u0131n a\u015F\u0131nmas\u0131 kirac\u0131n\u0131n onar\u0131m bedeline girer\
+."))}</li>`:""}
+        </ul>
+        ${l.length?`<p class="ust-yazi" style="margin-top:12px">${\u00E7("Son kazalar\u0131n")}</p><div class="liste">${l.map(x=>{const kim=x.driver_id&&x.driver_id!==benim?\u00E7("Kirac\u0131n {ad} kullan\
+\u0131yordu.",{ad:x.driver??\u00E7("silinmi\u015F hesap")}):x.owner_id&&x.owner_id!==benim?\u00E7("Kiralad\u0131\u011F\u0131n ara\xE7 (sahibi {ad}).",{ad:x.owner??\u00E7("silinmi\u015F hesap")}):"";return`\
+<div class="liste-satir" data-arac-kaza="${esc(x.id)}" data-kaza-agirlik="${esc(x.severity)}">
+            <span class="liste-ikon ${x.insured?"yesil":""}">${ikon(x.insured?"shield-check":"triangle-alert")}</span>
+            <div><span class="tur">${esc(saatYaz(x.at))} \xB7 ${esc(x.context==="cargo"?\u00E7("Kargo yolunda"):\u00E7("Yolculukta"))}</span><b>${esc(KAZA_AGIRLIK[x.severity]??x.severity)} \xB7 ${esc(
+aracRenkliAdBas(x.kind,x.color))} \xB7 ${esc(x.plate??"")}</b>
+              <div class="alt">${esc(bolgeAdi(x.from))} \u2192 ${esc(bolgeAdi(x.to))} \xB7 ${esc(kazaSonucu(x))}</div>
+              ${kim?`<div class="alt">${esc(kim)}</div>`:""}</div><span></span></div>`}).join("")}</div>`:`<p class="bos">${esc(\u00E7("Hen\xFCz kaza yapmad\u0131n."))}</p>`}
       </section>`}function ciz(){kap.innerHTML=`<div class="sayfa sayfa-dar">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("Ara\xE7lar\u0131m")}</h1>
           <p class="aciklama">${\u00E7("Bisikletten tekneye: ara\xE7 yolculuklar\u0131n\u0131 k\u0131salt\u0131r. Kara arac\u0131 ve tekne garaj\u0131nda durur; her yolculukta biraz a\u015F\u0131n\u0131r.")}\
@@ -152,6 +190,7 @@ div>`}).join("")}</div>`:""}
         <div class="izgara iki" style="margin-top:20px">${yerHtml("land")}${yerHtml("sea")}</div>
         ${(()=>{const a=kiraladiklarimHtml(),b=ilanlarHtml();return a||b?`<div class="izgara iki" style="margin-top:20px">${a}${b}</div>`:""})()}
         <div class="izgara iki" style="margin-top:20px">${bayiHtml()}${kurallarHtml()}</div>
+        ${(()=>{const k=kazaHtml();return k?`<div style="margin-top:20px">${k}</div>`:""})()}
       </div>`,$("#arac-garaj-yer",kap)?.replaceWith(sahne.el),sahne.yaz({v,ben:{id:ben().id,ad:ben().name,gorunus,ulke:ben().citizenship}}),bagla()}async function isle(fn,basari){if(!mesgul){mesgul=!0;
 try{const y=await fn();if(kapandi)return;y?.rule&&(v=y),basari?.(y),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert"),await yukle().catch(()=>{})}finally{mesgul=!1,kapandi||ciz()}}}
 async function pencereIs(fn,basari){const y=await fn();kapandi||(y?.rule&&(v=y),basari?.(y),Durum.ozet().catch(()=>{}),mesgul||ciz())}function adPenceresi(m){const n=R().name,u=(v.garage??[]).find(x=>x.
@@ -184,17 +223,29 @@ bel>
           <p class="kucuk">${esc(\u00E7("D\xF6n\xFC\u015Fte yapt\u0131\u011F\u0131n a\u015F\u0131nman\u0131n bedeli (her birim {a} kredi) rezervden sahibine ge\xE7er.",{a:kr(k.wearCr)}))}</p>`,is:async f=>{
 const g=Number(f.get("gun"));await pencereIs(()=>Sunucu.yap("vehicle_rent",{p_rental:id,p_days:g,p_expected_total:Number(o.day_cr)*g}),()=>tost(\u00E7("Kiralad\u0131n: {arac}, {gun} g\xFCn. Yolculuklar\u0131nda ku\
 llan\u0131l\u0131r.",{arac:aracRenkliAd(o.kind,o.color),gun:sayi(g)}),"key-round"))}}),s=$("select[name=gun]",p.form),oz=$("[data-kira-ozet]",p.form);s?.addEventListener("change",()=>{oz&&(oz.textContent=
-ozet(Number(s.value)))})}function bagla(){for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git);for(const b of $$("[data-arac-ad]",kap))b.onclick=()=>adPenceresi(b.dataset.aracAd);
-for(const b of $$("[data-arac-kiraya]",kap))b.onclick=()=>kirayaVerPenceresi(b.dataset.aracKiraya);for(const b of $$("[data-arac-ilan-kaldir]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_rent_canc\
-el",{p_rental:b.dataset.aracIlanKaldir}),()=>tost(\u00E7("Kiral\u0131k ilan kald\u0131r\u0131ld\u0131."),"x"));for(const b of $$("[data-arac-kirala]",kap))b.onclick=()=>kiralaPenceresi(b.dataset.aracKirala);
-for(const b of $$("[data-arac-bildir]",kap))b.onclick=()=>raporla({tur:"vehicle",ref:b.dataset.aracBildir,ad:b.dataset.ad});for(const b of $$("[data-arac-al]",kap))b.onclick=()=>isle(()=>Sunucu.yap("v\
-ehicle_dealer_buy",{p_kind:b.dataset.aracAl,p_use:!0}),y=>tost(y?.used?\u00E7("Ald\u0131n: {arac}; garaj\u0131na kondu.",{arac:aracAdi(y.bought)}):\u00E7("Ald\u0131n: {arac}; \xE7antanda duruyor.",{arac:aracAdi(
-y?.bought)}),"car"));for(const b of $$("[data-arac-garaja]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_register",{p_kind:b.dataset.aracGaraja,p_color:null}),()=>tost(\u00E7("{arac} garaj\u0131na kondu\
-.",{arac:aracAdi(b.dataset.aracGaraja)}),"warehouse"));for(const b of $$("[data-arac-renk]",kap))b.onclick=()=>{const[m,r]=b.dataset.aracRenk.split("|");isle(()=>Sunucu.yap("vehicle_set",{p_medium:m,p_color:r,
-p_active:null}))};for(const b of $$("[data-arac-etkin]",kap))b.onchange=()=>isle(()=>Sunucu.yap("vehicle_set",{p_medium:b.dataset.aracEtkin,p_color:null,p_active:b.checked}),()=>tost(b.checked?\u00E7(
-"Yolculuklar\u0131nda arac\u0131n\u0131 kullanacaks\u0131n."):\u00E7("Yolculuklar\u0131nda arac\u0131n\u0131 kullanmayacaks\u0131n."),"route"));for(const b of $$("[data-arac-onar]",kap))b.onclick=()=>isle(
-()=>Sunucu.yap("vehicle_repair",{p_medium:b.dataset.aracOnar,p_kits:Math.max(1,Number(b.dataset.kit))}),y=>tost(\u00E7("Onar\u0131ld\u0131: a\u015F\u0131nma {n}.",{n:sayi(y?.wear??0)}),"wrench"));for(const b of $$(
-"[data-arac-cikar]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_release",{p_medium:b.dataset.aracCikar}),y=>tost(\u00E7("{arac} garajdan \xE7\u0131kt\u0131; \xE7antanda.",{arac:aracAdi(y?.released)}),
+ozet(Number(s.value)))})}function sigortaPenceresi(m){const u=(v.garage??[]).find(x=>x.medium===m),s=u?.insurance,k=SI();if(!u||!s||!k)return;const arac=aracRenkliAdBas(u.kind,u.color);pencere({ust:\u00E7(
+"Ara\xE7lar\u0131m \xB7 {plaka}",{plaka:u.plate??""}),baslik:s.active?\u00E7("{arac}: sigortay\u0131 uzat",{arac}):\u00E7("{arac}: sigorta yapt\u0131r",{arac}),govde:`<p class="aciklama">${esc(\u00E7(
+"{n} g\xFCnl\xFCk sigorta: {kr} kredi. Bedel sisteme gider; geri verilmez.",{n:sayi(k.days),kr:kr(s.premium_cr)}))}</p>
+          <div class="bilgi-izgara">
+            <div><small>${\u00E7("Bedel")}</small><b>${esc(\u00E7("{kr} kredi",{kr:kr(s.premium_cr)}))}</b></div>
+            <div><small>${\u00E7("Sigortan\u0131n biti\u015Fi")}</small><b data-sigorta-bitis>${esc(saatYaz(s.next_ends_at))}</b></div>
+          </div>
+          <p class="kucuk">${esc(\u00E7("Yola \xE7\u0131karken sigortas\u0131 ge\xE7erli ara\xE7ta yolda kaza a\u015F\u0131nma eklemez; kiraya verdi\u011Finde kirac\u0131n\u0131 da kapsar. Sigorta en \xE7ok {n} g\xFCn ileriye uzat\u0131l\u0131r; ara\xE7 garajdan \
+\xE7\u0131k\u0131nca ya da hurdaya ayr\u0131l\u0131nca biter.",{n:sayi(k.maxAheadDays)}))}</p>
+          ${Number(v.credits??0)<Number(s.premium_cr)?`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(\u00E7("Sigortan\u0131n bedeli i\xE7in kredin yetmiyor."))}</span></div>`:""}`,dugmeler:[
+{ad:\u00E7("Vazge\xE7")},{ad:s.active?\u00E7("Uzat"):\u00E7("Sigorta yapt\u0131r"),sinif:"altin",ikon:"shield-check",is:()=>isle(()=>Sunucu.yap("vehicle_insure",{p_medium:m,p_expected_cr:Number(s.premium_cr)}),
+y=>tost(\u00E7("{arac} {zaman} saatine dek sigortal\u0131.",{arac,zaman:saatYaz(y?.insured?.ends_at)}),"shield-check"))}]})}function bagla(){for(const b of $$("[data-git]",kap))b.onclick=()=>Kabuk.git(
+b.dataset.git);for(const b of $$("[data-arac-ad]",kap))b.onclick=()=>adPenceresi(b.dataset.aracAd);for(const b of $$("[data-arac-kiraya]",kap))b.onclick=()=>kirayaVerPenceresi(b.dataset.aracKiraya);for(const b of $$(
+"[data-arac-sigortala]",kap))b.onclick=()=>sigortaPenceresi(b.dataset.aracSigortala);for(const b of $$("[data-arac-ilan-kaldir]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_rent_cancel",{p_rental:b.
+dataset.aracIlanKaldir}),()=>tost(\u00E7("Kiral\u0131k ilan kald\u0131r\u0131ld\u0131."),"x"));for(const b of $$("[data-arac-kirala]",kap))b.onclick=()=>kiralaPenceresi(b.dataset.aracKirala);for(const b of $$(
+"[data-arac-bildir]",kap))b.onclick=()=>raporla({tur:"vehicle",ref:b.dataset.aracBildir,ad:b.dataset.ad});for(const b of $$("[data-arac-al]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_dealer_buy",
+{p_kind:b.dataset.aracAl,p_use:!0}),y=>tost(y?.used?\u00E7("Ald\u0131n: {arac}; garaj\u0131na kondu.",{arac:aracAdi(y.bought)}):\u00E7("Ald\u0131n: {arac}; \xE7antanda duruyor.",{arac:aracAdi(y?.bought)}),
+"car"));for(const b of $$("[data-arac-garaja]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_register",{p_kind:b.dataset.aracGaraja,p_color:null}),()=>tost(\u00E7("{arac} garaj\u0131na kondu.",{arac:aracAdi(
+b.dataset.aracGaraja)}),"warehouse"));for(const b of $$("[data-arac-renk]",kap))b.onclick=()=>{const[m,r]=b.dataset.aracRenk.split("|");isle(()=>Sunucu.yap("vehicle_set",{p_medium:m,p_color:r,p_active:null}))};
+for(const b of $$("[data-arac-etkin]",kap))b.onchange=()=>isle(()=>Sunucu.yap("vehicle_set",{p_medium:b.dataset.aracEtkin,p_color:null,p_active:b.checked}),()=>tost(b.checked?\u00E7("Yolculuklar\u0131nda a\
+rac\u0131n\u0131 kullanacaks\u0131n."):\u00E7("Yolculuklar\u0131nda arac\u0131n\u0131 kullanmayacaks\u0131n."),"route"));for(const b of $$("[data-arac-onar]",kap))b.onclick=()=>isle(()=>Sunucu.yap("ve\
+hicle_repair",{p_medium:b.dataset.aracOnar,p_kits:Math.max(1,Number(b.dataset.kit))}),y=>tost(\u00E7("Onar\u0131ld\u0131: a\u015F\u0131nma {n}.",{n:sayi(y?.wear??0)}),"wrench"));for(const b of $$("[da\
+ta-arac-cikar]",kap))b.onclick=()=>isle(()=>Sunucu.yap("vehicle_release",{p_medium:b.dataset.aracCikar}),y=>tost(\u00E7("{arac} garajdan \xE7\u0131kt\u0131; \xE7antanda.",{arac:aracAdi(y?.released)}),
 "package"));for(const b of $$("[data-arac-hurda]",kap))b.onclick=()=>{const u=(v.garage??[]).find(x=>x.medium===b.dataset.aracHurda);pencere({ust:\u00E7("Ara\xE7lar\u0131m"),baslik:\u00E7("Hurdaya ay\u0131\
 rmak istiyor musun?"),govde:`<p class="aciklama">${esc(\u00E7("{arac} t\xFCkenir; geri al\u0131nmaz.",{arac:aracAdi(u?.kind)}))}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Hurdaya ay\u0131r"),
 sinif:"mercan",ikon:"trash",is:()=>isle(()=>Sunucu.yap("vehicle_scrap",{p_medium:b.dataset.aracHurda}),()=>tost(\u00E7("Arac\u0131n hurdaya ayr\u0131ld\u0131."),"trash"))}]})}}const tazele=tazeleyici(

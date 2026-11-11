@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98zv_butik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_98zv_butik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const BUTIK_OLCEK=.62,BUTIK_DOKU={en:160,boy:224,gen:.6,yuk:.84},BUTIK_MANKEN={ten:0,sacRenk:0,sac:"kel",sakal:"yok",yuz:"sakin",beden:"orta",kiyafet:"gunluk",renk:0,zemin:0};function butik3bKur(THREE,cizici){
 if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,120);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,
 d={anahtar:"",bolge:null,sehir:"",gece:0,kapsam:"world",askilar:[],raf:[],vitrin:null,toplam:0,ben:{id:"",ad:"",gorunus:null}};const dinleyici={},etkinMi=()=>cizici.etkin===api,malzeme=new Map,M=(renk,ek={})=>{

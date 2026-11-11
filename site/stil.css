@@ -2252,6 +2252,10 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 @keyframes toren2b-yag { from { transform: translateY(0) rotate(0); } to { transform: translateY(320px) rotate(540deg); } }
 @media (max-width: 560px) { .toren-sahne { height: 240px; } }
 @media (prefers-reduced-motion: reduce) { .toren2b-konfeti { animation: none; display: none; } }
+/* Milli marş törende (D-217): adı ve Dinle/Durdur; dar ekranda düğme alta iner */
+.toren-mars { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; color: var(--soluk); font-size: 14px; }
+.toren-mars > span { flex: 1; min-width: 160px; overflow-wrap: anywhere; }
+.toren-mars[hidden] { display: none; }
 /* Zafer geçidi ve anma (D-136 #2, T-59): gündüz göğü ya da akşam; mumlar titrer (2B; canlı başkentin anmasında da) */
 .toren-sahne[data-tur="zafer"] { background: #BFD6E6; }
 .toren-sahne[data-tur="anma"] { background: #2E3440; }
@@ -3185,6 +3189,18 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .kare-poster-kisi { width: 17%; max-width: 110px; display: block; }
 .kare-poster-kisi .avatar, .kare-poster-kisi svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25)); }
 .kare-resim[data-kare-cizim="3b"] .kare-poster { visibility: hidden; }
+/* Tarih filminin karesi (D-224): 2B harita resmi, üstte başlık, altta hafta ve olay; poster koyu, ortada klaket */
+.kare-resim[data-kare-cizim="film"] .kare-poster { visibility: hidden; }
+.kare-resim .film-kare-poster { background: #22313A; color: #E9DFC6; align-items: center; padding: 0; }
+.film-kare-poster .ik { width: 22%; height: auto; opacity: 0.55; }
+.film-kare-ust, .film-kare-alt { position: absolute; left: 0; right: 0; color: #FFFFFF; padding: 2.5% 3.5%; font-size: 12px; line-height: 1.3;
+  pointer-events: none; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+.film-kare-ust { top: 0; display: flex; align-items: center; gap: 6px; font-weight: 700;
+  background: linear-gradient(rgba(18, 26, 31, 0.72), rgba(18, 26, 31, 0)); }
+.film-kare-ust .ik { width: 14px; height: 14px; flex: none; }
+.film-kare-alt { bottom: 0; display: grid; gap: 2px; background: linear-gradient(rgba(18, 26, 31, 0), rgba(18, 26, 31, 0.8)); }
+.film-kare-alt span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kare-buyuk .film-kare-ust, .kare-buyuk .film-kare-alt { font-size: 14px; }
 /* Çerçeveler */
 .kare-cerceve-wood { border: 10px solid #8A5A3C; box-shadow: inset 0 0 0 2px #C8A06A; }
 .kare-cerceve-gold { border: 10px solid #D9B45A; box-shadow: inset 0 0 0 2px #FFF1C2, 0 0 0 1px #A77F2A; }
@@ -3658,6 +3674,28 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .mekan-fikra-sec .radyo > span { white-space: normal; }
 .mekan-alt { padding-top: 12px; border-top: 1px solid var(--cizgi-2); }
 .mekan2b-ikram { fill: #F3D27A; stroke: #8C6E52; stroke-width: 0.03; }
+/* Kulüpte sahne (D-216): sahnenin bölümü, süren set, sahnedekiler; şarkı seçimi; 2B'de parlayan kabin ya da sahne ve rozet */
+.mekan-sahne-bas { justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.mekan-sahne-bas .ust-yazi { margin: 0; }
+.mekan-set { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 12px; border-radius: var(--r-m);
+  background: var(--mor-acik); color: #4A3266; }
+.mekan-set .ik-kutu { width: 40px; height: 40px; background: var(--mor); color: #FFFFFF; }
+.mekan-set b { overflow-wrap: anywhere; }
+.mekan-set .alt { font-size: 13px; opacity: 0.85; }
+.mekan-set-simdi { margin: 4px 0 0; font-style: italic; overflow-wrap: anywhere; min-height: 1.2em; }
+.mekan-set-kisiler .cip small { margin-left: 4px; opacity: 0.7; font-weight: 600; }
+.mekan-sahne-engel { color: var(--soluk); }
+.sahne-sarkilar { max-height: 300px; overflow-y: auto; }
+.sahne-sarkilar .radyo > span { white-space: normal; min-width: 0; overflow-wrap: anywhere; }
+.sahne-sira { font-weight: 800; color: var(--mor); }
+.oda2b-esya.sahne-canli rect { stroke: #FF4FA3; stroke-width: 0.1; filter: drop-shadow(0 0 0.12px #FF4FA3); }
+.mekan2b-sahnede { color: #FFFFFF; pointer-events: none; }
+.mekan2b-sahnede circle { fill: var(--mor); stroke: #FFFFFF; stroke-width: 0.04; }
+.oda2b-kisi.sahnede .oda2b-figur-govde { stroke: #FF4FA3; stroke-width: 0.06; }
+@media (prefers-reduced-motion: no-preference) {
+  .mekan-sahne-blok[data-sahne="dj"] .mekan-set .ik-kutu, .mekan-sahne-blok[data-sahne="canli"] .mekan-set .ik-kutu { animation: sahne-atis 1s ease-in-out infinite; }
+}
+@keyframes sahne-atis { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 .oda-2b svg[data-tur="kahvehane"] .mekan2b-doseme { fill: #E9DCC6; }
 .oda-2b svg[data-tur="kulup"] .mekan2b-doseme { fill: #4A3F5C; }
 .oda-2b svg[data-tur="otel"] .mekan2b-doseme { fill: #EFE7DA; }
@@ -4144,6 +4182,10 @@ button.okey-tas { cursor: pointer; }
 .arac-yol .arac-kural .ik, p.arac-yol .ik { width: 15px; height: 15px; flex: none; vertical-align: -3px; }
 .arac-yol > div { min-width: 0; }
 .arac-son { color: var(--mercan-2); }
+/* D-220: yolda kaza (yolculuğun kartı, kargo satırı) ve teklifteki kaza olasılığı */
+.arac-kaza { display: block; margin-top: 6px; color: var(--mercan-2); }
+.arac-kaza .ik, .arac-kaza-olasilik .ik { width: 15px; height: 15px; vertical-align: -3px; }
+.arac-kaza-olasilik { margin: 6px 0 0; }
 .profil-araclar { margin: 6px 0 0; }
 .profil-araclar .ust-yazi { margin: 0 6px 0 2px; }
 /* D-215: plaka (gerçek plaka gibi açık zemin, iki temada aynı) ve aracın adı */
@@ -4277,6 +4319,22 @@ button.okey-tas { cursor: pointer; }
 @keyframes meydan2b-kalp { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-5px); } }
 @media (prefers-reduced-motion: reduce) { .kus2b-sarki, .kus2b-nota, .kus2b-kanat, .balik2b-yuz, .meydan2b-hayvan.sevindi > g { animation: none; }
   .meydan2b-hayvan.sevindi .meydan2b-hayvan-kalp { animation: none; opacity: 1; } }
+/* Hayvanlar arası arkadaşlık (D-222): Evcil hayvan kartında arkadaşlar; meydandaki hayvan kartında arkadaşlık satırı; 2B meydanda oyun */
+.evcil-dostlar { margin-top: 12px; border-top: 1px solid var(--cizgi); padding-top: 10px; }
+.evcil-dostlar .ik { width: 15px; height: 15px; vertical-align: -3px; }
+.evcil-dost-liste { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 6px; }
+.evcil-dost-liste li { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.evcil-dost-resim { flex: none; width: 46px; height: 37px; display: grid; place-items: center; border-radius: 9px; background: linear-gradient(#F6EFE1, #EADFC7); }
+.evcil-dost-resim svg { width: 42px; height: 34px; }
+.evcil-dost-yazi { display: grid; min-width: 0; flex: 1; }
+.evcil-dost-yazi b, .evcil-dost-yazi small { overflow-wrap: anywhere; }
+.evcil-dost-liste .cip { flex: none; }
+.meydan-hayvan-yazi { min-width: 0; display: grid; gap: 6px; }
+.meydan-hayvan-dost { margin: 0; }
+.meydan-hayvan-dost .ik { width: 15px; height: 15px; vertical-align: -3px; color: var(--orman); }
+.meydan2b-hayvan.oynadi > g { animation: hayvan2b-zipla 0.4s ease-in-out 7; transform-box: fill-box; transform-origin: 50% 100%; }
+.meydan2b-hayvan.oynadi .meydan2b-hayvan-kalp { animation: meydan2b-kalp 1.5s ease-out 2; }
+@media (prefers-reduced-motion: reduce) { .meydan2b-hayvan.oynadi > g { animation: none; } .meydan2b-hayvan.oynadi .meydan2b-hayvan-kalp { animation: none; opacity: 1; } }
 /* Şehir etkinlikleri (D-152): Şehrim → Etkinlikler; alan (3B ya da 2B), program, ayrıntı, karne */
 .etkinlik-sahne { background: #CFE3EE; }
 #etkinlik-2b svg, #etkinlik-yukleniyor svg { width: 100%; height: auto; }
@@ -4389,6 +4447,21 @@ button.okey-tas { cursor: pointer; }
   .etkinlik-kursu-yer { flex: 1 1 0; min-width: 0; max-width: none; padding-inline: 4px; }
   .etkinlik-kursu-yer b { font-size: 13px; }
 }
+/* Moda haftası (D-221): haftanın şehirleri (programın satırları gibi) ve sıralaması; başka şehrin programından dönüş */
+.moda-hafta { border-top: 4px solid #7D5FA0; }
+.moda-sira { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; }
+.moda-sira-satir { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 6px 10px; border-radius: 10px; background: var(--kagit-2); }
+.moda-sira-satir b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+.moda-sira-satir small { color: var(--soluk); white-space: nowrap; }
+.moda-sira-satir.ben { box-shadow: inset 0 0 0 2px var(--altin); }
+.moda-sira-no { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--kagit); font-weight: 800; font-size: 13px; color: var(--orman); }
+.moda-sira-no .ik { width: 15px; height: 15px; color: #B8862B; }
+.moda-yildiz { margin-top: 8px; }
+.etkinlik-bas-sag { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; }
+@media (max-width: 560px) {
+  .moda-sira-satir small { white-space: normal; text-align: right; }
+  .etkinlik-bas-sag { justify-content: flex-start; }
+}
 
 /* ---------- Spor salonu (D-153) ---------- */
 .spor-sahne { background: #D9D3C6; }
@@ -4447,6 +4520,16 @@ button.okey-tas { cursor: pointer; }
 .futbol-takim-bas { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
 .futbol-takim-bas .cip { margin-left: auto; }
 .futbol-renk { display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: var(--forma); vertical-align: -2px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15); }
+/* Mahalle ligi (D-219): takımın rengi büyük, üyeler, kendi seçimlerin, fikstürün skoru ve takımının maçları */
+.futbol-renk.buyuk { width: 22px; height: 22px; border-radius: 6px; vertical-align: -4px; }
+.lig-uyeler .liste-satir { grid-template-columns: minmax(0, 1fr) auto; }
+.lig-kisi { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: center; background: none; border: 0; padding: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; min-width: 0; }
+div.lig-kisi { cursor: default; }
+.lig-ben { display: grid; gap: 10px; }
+.lig-ben .dugme { justify-self: start; }
+.lig-skor { display: inline-block; min-width: 38px; text-align: center; font-variant-numeric: tabular-nums; font-weight: 800; }
+.lig-benim { background: var(--orman-acik); border-radius: 12px; }
+@media (max-width: 560px) { .lig-uyeler .liste-satir { grid-template-columns: minmax(0, 1fr); } .lig-uyeler .oneri-dugmeler { justify-content: flex-start; } }
 .futbol-forma { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--forma); color: #FFFFFF; font-weight: 800; font-size: 13px;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.2); }
 .futbol-forma.bos { background: var(--kagit-2); color: var(--soluk); box-shadow: inset 0 0 0 2px var(--cizgi-2); }
@@ -4603,6 +4686,20 @@ button.okey-tas { cursor: pointer; }
 .ops-uyari b { overflow-wrap: anywhere; }
 .ops-isler td { font-size: 12.5px; }
 .ops-isler td:first-child { overflow-wrap: anywhere; }
+/* Ekonominin dengesi (D-225): Yönetim → Sunucu'nun kartı; günlük yaratılan (orman) ve yakılan (mercan) para sütunları */
+.ekonomi-denge #ekonomi-pencere { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0 8px; }
+.ekonomi-grafik { display: flex; align-items: flex-end; gap: 3px; height: 86px; padding: 6px 4px 0; border-bottom: 1px solid var(--kagit-3, #ECE9DE);
+  background: repeating-linear-gradient(to top, transparent 0 21px, rgba(22, 34, 30, 0.06) 21px 22px); }
+.ekonomi-gun { flex: 1 1 0; min-width: 0; height: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 1px; }
+.ekonomi-gun i { display: block; width: 45%; max-width: 12px; min-height: 1px; border-radius: 2px 2px 0 0; }
+.ekonomi-gun i.yaratilan, .ekonomi-anahtar span.yaratilan { background: var(--orman, #174A40); }
+.ekonomi-gun i.yakilan, .ekonomi-anahtar span.yakilan { background: var(--mercan, #C65A3B); }
+.ekonomi-anahtar span { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin: 0 4px -1px 0; }
+.ekonomi-listeler { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4px 16px; margin-top: 8px; }
+.ekonomi-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.ekonomi-liste li { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; border-bottom: 1px dotted var(--kagit-3, #ECE9DE); padding: 2px 0; }
+.ekonomi-liste li span { min-width: 0; overflow-wrap: anywhere; }
+.ekonomi-liste li b { white-space: nowrap; }
 .ops-isler td:not(:first-child), .ops-isler th:not(:first-child) { white-space: normal; padding-left: 8px; }
 .ops-isler tr.sorunlu td { color: var(--mercan, #C65A3B); font-weight: 700; }
 @media (max-width: 560px) { .ops-isler td:nth-child(2), .ops-isler th:nth-child(2) { display: none; } }

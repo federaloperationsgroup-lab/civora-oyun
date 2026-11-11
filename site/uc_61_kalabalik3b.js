@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_61_kalabalik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_61_kalabalik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function kalabalikKur(THREE,en){const grup=new THREE.Group,M=(ek={})=>new THREE.MeshStandardMaterial({color:"#FFFFFF",roughness:.75,...ek}),G={bacak:new THREE.CapsuleGeometry(.075,.3,3,8).translate(0,
 -.22,0),govde:new THREE.CapsuleGeometry(.19,.24,4,12),bas:new THREE.SphereGeometry(.27,16,12),kol:new THREE.CapsuleGeometry(.055,.26,3,8).translate(0,-.18,0),sapka:new THREE.CylinderGeometry(.2,.25,.12,
 14),kapuson:new THREE.SphereGeometry(.31,16,10,Math.PI/2+.85,Math.PI*2-1.7,0,Math.PI*.78),goz:new THREE.SphereGeometry(.034,8,6),semsiye:new THREE.ConeGeometry(.56,.24,12,1,!0).translate(0,.12,0),sap:new THREE.

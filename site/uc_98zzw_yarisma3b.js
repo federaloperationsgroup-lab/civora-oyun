@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98zzw_yarisma3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_98zzw_yarisma3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function yarisma3bKur(THREE,cizici){const a=konser3bKur(THREE,cizici),tuval=document.createElement("canvas");tuval.width=1536,tuval.height=614;const kalem=tuval.getContext("2d"),doku=new THREE.CanvasTexture(
 tuval);doku.colorSpace=THREE.SRGBColorSpace;const levha=new THREE.Mesh(new THREE.PlaneGeometry(6.4,2.56),new THREE.MeshBasicMaterial({map:doku,toneMapped:!1})),y=KONSER_YER.festival,yer=konserSahneYeri(
 y);levha.position.set(0,y.sY+1.35+1.28,yer.zArka+.055),a.sahne.add(levha);let anahtar="";return a.yarismaYaz=r=>{const d=yarismaSahneVerisi(r);a.durumYaz(d);const siralama=r.ranking??r.results??[],yeni=JSON.

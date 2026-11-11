@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (uc_98zt_arac3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_98zt_arac3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const aracKurali=()=>Durum.v.kurallar?.data?.vehicle??{},aracTuru=id=>(aracKurali().kinds??[]).find(k=>k.id===id)??null;function aracModeli(THREE,tur,renk){const g=new THREE.Group,kasa=new THREE.Group;
 g.add(kasa);const mats=[],geos=[],M=(c,ek={})=>{const m=new THREE.MeshStandardMaterial({color:c,roughness:.55,...ek});return mats.push(m),m},boya=M(renk,{roughness:.38,metalness:.12}),koyu=M("#2A2724",
 {roughness:.8}),krom=M("#C9CED3",{roughness:.3,metalness:.6}),cam=M("#2C3E50",{roughness:.12,metalness:.25}),far=M("#FFF3C4",{emissive:new THREE.Color("#FFE7A0"),emissiveIntensity:.45}),stop=M("#B3261\

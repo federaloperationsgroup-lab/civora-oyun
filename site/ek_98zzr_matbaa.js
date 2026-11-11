@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzr_matbaa.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zzr_matbaa.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/matbaa",{async ac(kap){let n=null,b=null,kapandi=!1,hata3b=!1,ayr="",okunuyor=!1;const mod=()=>Gorunum.uc()&&!hata3b?"3b":"2b",makaleler=new Map;async function yukle(){[n,b]=await Promise.
 all([Sunucu.cagir("news_feed",{p_mode:"recent",p_limit:20}).catch(()=>({articles:[]})),Sunucu.cagir("morning_bulletin").catch(()=>null)]),makaleler.clear();for(const a of n?.articles??[])makaleler.set(
 a.article_id,a)}const veri=()=>matbaaVerisi(n,b),bultenSatirlari=()=>{const l=gundemBultenSatirlari(b,{sabah:!0}),kayit=(b?.records??[]).map(r=>resmiMetin(r)[1]).filter(m=>m&&m!==\u00E7("Resm\xEE kay\u0131t")),

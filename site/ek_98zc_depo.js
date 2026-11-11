@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zc_depo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zc_depo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/depo",{async ac(kap){let v=null,harita=null,teklif=null,teklifNo=0,teklifSaat=null,durdur=()=>{},geriZaman=null,yoldaAnahtar="";const bekleme={n:0},form={kaynak:"bag",varlik:null,hedef:null,
 miktar:"1",yol:"kargo"};try{const x=JSON.parse(sessionStorage.getItem("civora.depo")??"null");sessionStorage.removeItem("civora.depo"),x?.kaynak&&Object.assign(form,x,{yol:"kargo"})}catch{}async function yukle(){
 [v,harita]=await Promise.all([Sunucu.cagir("logistics_me"),Durum.harita(),Durum.ozet()]);const a=(v.in_transit??[]).map(s=>s.shipment_id).join(",");a!==yoldaAnahtar&&(yoldaAnahtar=a,bekleme.n=0)}const depoBul=id=>(v.
@@ -72,7 +72,8 @@ vehicles??[];return l.length?`<div class="yol-secim" role="radiogroup" aria-labe
           <span><b class="depo-arac">${ikon(ARAC_IK[x.kind]??"car")}${esc((x.rented?KIRALIK_ARACLA:KENDI_ARACINLA)[x.kind]??aracAdi(x.kind))}</b>
             <span class="plaka kucuk-plaka">${esc(x.plate??"")}</span>
             <small>${esc(x.code?aracNedeni(x):\u00E7("{dk} dakika \xB7 navlun yok \xB7 a\u015F\u0131nma {a} \u2192 {b} / {c}",{dk:sayi(x.minutes??0),a:sayi(x.wear),b:sayi(x.wear_after??x.wear),c:sayi(
-x.durability)}))}${!x.code&&x.scrapped?" \xB7 "+esc(\u00E7("son yolu: var\u0131nca hurdaya ayr\u0131l\u0131r")):""}</small></span></label>`).join("")}
+x.durability)}))}${!x.code&&x.scrapped?" \xB7 "+esc(\u00E7("son yolu: var\u0131nca hurdaya ayr\u0131l\u0131r")):""}${!x.code&&Number(x.accident_ppm??0)>0?" \xB7 "+esc(\u00E7("kaza olas\u0131l\u0131\u011F\u0131 {oran}, {s\
+igorta}",{oran:ppmYuzde(x.accident_ppm),sigorta:x.insured?\u00E7("sigortal\u0131"):\u00E7("sigortas\u0131z")})):""}</small></span></label>`).join("")}
       </div>
       <p class="kucuk">${esc(\u00E7("Kendi arac\u0131nla g\xF6nderince navlun yok; ara\xE7 var\u0131\u015Fa dek kargoda kal\u0131r, yolculukta kullan\u0131lmaz."))}</p>`:""}function teklifHtml(){const t=teklif;
 return t?t.hata?`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(t.hata)}</span></div>`:t.instant?`<div class="bilgi-kutusu">${ikon("check")}<span>${\u00E7("Ayn\u0131 \xFClkenin i\xE7inde: mal hemen \

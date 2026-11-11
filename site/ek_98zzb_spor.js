@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zzb_spor.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zzb_spor.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/spor",{async ac(kap){let v=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,gorunus,secilen=null,rekorSekme="sehir";const siralama={country:null,world:null},siralamaHata={country:null,
 world:null},salon=SporSalonu.ac(),ben=()=>Durum.v.ozet?.character??{},R=()=>sporKurali()??v?.rule??{},simdi=()=>Date.now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?
 "auto":"smooth",block:"start"});salon.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad==="alet"){git(me().active?"#spor-antrenman":`#spor-kart-${id}`);return}if(ad==="tablo"){git("#\

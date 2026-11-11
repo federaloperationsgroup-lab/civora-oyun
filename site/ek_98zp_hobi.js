@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-88bf220f-2e9125c (ek_98zp_hobi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zp_hobi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/hobiler",{async ac(kap){let v=null,kapandi=!1,durdur=()=>{};const sahne=HobiSahnesi.ac();sahne.dinle("sec",ad=>{const el=$({mutfak:"#hobi-mutfak",diller:"#hobi-diller",kiler:"#hobi\
 -kiler",terzi:"#hobi-terzi"}[ad]??"#hobi-seans",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vu\
 rgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let gorunus,bekleyenZaman=null,kirli=!1,bekleyen=!1,kapaliAcik=!1,terziKapaliAcik=!1,takiKapaliAcik=!1,sonRenk=[5,1],sonKumas=1,sonDesen=0;kap.addEventListener(
