@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_95_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_95_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("meydan/meydan",{async ac(kap){let sc=null,d=null,kapandi=!1,yer=null,dinleBirak=null,sonTellal;const kart=MeydanSahnesi.ac(),benimUlke=()=>Durum.v.ozet?.character?.citizenship??null;let ms=null,
 kanalBirak=null,kalp=null,kalpMs=0,durumZaman=null,sonEylem=0,giriyor=null,dbEylem=!1;const kisiler=new Map,yuruS={son:0,pencere:0,n:0,bekleyen:null,zaman:null};let benYerel=null;const benimki=()=>ms?
 kisiler.get(ms.presence_id)??null:null;let evcilim=null;const evcilYuruyenler=()=>(evcilim?.pets??[]).filter(p=>evcilYuruyen(p.species));async function evcilYukle(){const x=await Sunucu.cagir("pets").
@@ -76,8 +76,10 @@ dost="${esc(dost?.tier??"")}"
 hip}. Bug\xFCn onu sevdin.",{cins:evcilCinsAdi(h.breed),sahip}):\u00E7("{cins} \xB7 sahibi {sahip}. Sevince sahibine haber gider; g\xFCnde 5 hayvan, ayn\u0131 hayvan\u0131 bir kez sevebilirsin.",{cins:evcilCinsAdi(
 h.breed),sahip}))}</p>
           ${dostMetni?`<p class="kucuk meydan-hayvan-dost" data-meydan-dost>${ikon("paw-print")} ${esc(dostMetni)}</p>`:""}</div></div>`,dugmeler:k.me?[{ad:\u00E7("Eve g\xF6nder"),ikon:"house",is:()=>hayvanTercih(
-null)},{ad:\u00E7("Kapat")}]:[...oynar?[{ad:\u00E7("Oynas\u0131nlar"),ikon:"paw-print",sinif:"altin",is:()=>hayvanOynat(p)}]:[],...h.greeted?[]:[{ad:\u00E7("Sev"),ikon:"hand-heart",sinif:oynar?"":"alt\
-in",is:()=>hayvanSev(p)}],{ad:k.hidden?\u00E7("Sahibi"):k.name,ikon:"user-round",is:()=>kisiKart(p)},{ad:\u00E7("Kapat")}]})}async function hayvanOynat(p){const k=kisiler.get(p);if(k?.pet)try{const r=await Sunucu.
+null)},...kareDugme(h),{ad:\u00E7("Kapat")}]:[...oynar?[{ad:\u00E7("Oynas\u0131nlar"),ikon:"paw-print",sinif:"altin",is:()=>hayvanOynat(p)}]:[],...h.greeted?[]:[{ad:\u00E7("Sev"),ikon:"hand-heart",sinif:oynar?
+"":"altin",is:()=>hayvanSev(p)}],...kareDugme(h),{ad:k.hidden?\u00E7("Sahibi"):k.name,ikon:"user-round",is:()=>kisiKart(p)},{ad:\u00E7("Kapat")}]})}function kareDugme(h){return(Durum.v.kurallar?.data?.
+media?.photo?.petScenes??[]).includes("square")?[{ad:\u00E7("Foto\u011Fraf \xE7ek"),ikon:"camera",is:()=>{const b=$("[data-sahne-kare]",kap);if(!b)return;const benim=benimki()?.pet?.id??null;kareStudyo(
+{sahne:"square",yer:b.dataset.kareYer||null,kaynak:b,hayvanlar:[h.id,...benim&&benim!==h.id?[benim]:[]]})}}]:[]}async function hayvanOynat(p){const k=kisiler.get(p);if(k?.pet)try{const r=await Sunucu.
 yap("pet_friend_play",{p_pet:k.pet.id}),f=r.friend??{};k.pet.friend={days:Number(f.days??1),tier:f.tier??"tanidik",today:Number(f.today??1)},kart.hayvanOyna(ms?.presence_id,p);const benimAd=r.pet?.name??
 "",ad=r.played?.name??evcilCinsAdi(k.pet.breed),ust=r.up&&f.tier!=="tanidik"?EVCIL_DOST_OLDU[f.tier]?.({benim:benimAd,ad})??"":\u00E7("{benim} ile {ad} oynad\u0131; ikisinin sevgisi artt\u0131.",{benim:benimAd,
 ad});tost(`${ust} ${\u00E7("Bug\xFCn {n} / {m} oyun.",{n:sayi(r.today??0),m:sayi(r.per_day??5)})}`,"paw-print"),evcilim?.plays&&(evcilim.plays.today=Number(r.today??0))}catch(e){e?.kod==="PET_PLAY_ALR\

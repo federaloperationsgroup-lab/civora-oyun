@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_47_vitrin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_47_vitrin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function vitrin3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(28,1,.1,100),tuval=cizici.renderer.domElement;let w=1,h=1,
 kirli=!0,ciz=!1,kaliteAdi="orta",kap=null;const dinleyici={};let d={anahtar:"",rutbe:{sira:0,ad:\u00E7("Er"),sayi:12},madalyalar:[],secili:null};const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,
 roughness:.8,...ek}),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y,z),m.castShadow=!0,m.receiveShadow=!0,m};function doku(gen,yuk,fn){
@@ -62,8 +62,9 @@ g.arc(c,c+W*.3,W*.05,0,Math.PI*2),g.fill();break;case"mahalle":yol([[-.16,-.28],
 -Math.PI*.5,s<0?Math.PI*1.5:Math.PI*.5),g.stroke();yol([[0,-.04],[0,.06]]),yol([[-.1,.08],[.1,.08]]),yol([[-.3,.3],[-.3,.17],[-.17,.1],[-.04,.17],[-.04,.3]]),yol([[.04,.3],[.04,.17],[.17,.1],[.3,.17],
 [.3,.3]]);break;case"moda_haftasi":g.beginPath(),g.arc(c,c-W*.3,W*.045,Math.PI*.85,Math.PI*2.15),g.stroke(),yol([[0,-.255],[0,-.22]]),yol([[-.25,-.1],[0,-.22],[.25,-.1]],!0),yol([[-.09,-.1],[.09,-.1],
 [.13,0],[.07,.03],[.21,.3],[-.21,.3],[-.07,.03],[-.13,0]],!0,!0);break;case"patili_dost":for(const[x,y,s]of[[-.13,.08,1],[.13,-.06,1]]){g.beginPath(),g.ellipse(c+x*W,c+(y+.08)*W,W*.085*s,W*.07*s,0,0,Math.
-PI*2),g.fill();for(const[dx,dy]of[[-.085,-.03],[-.03,-.085],[.03,-.085],[.085,-.03]])g.beginPath(),g.arc(c+(x+dx)*W,c+(y+dy)*W,W*.032,0,Math.PI*2),g.fill()}break;case"ilk_gun":yol([[-.26,.22],[-.1,-.02],
-[.08,.12],[.26,-.22]]),g.beginPath(),g.arc(c+W*.26,c-W*.22,W*.06,0,Math.PI*2),g.fill();break;case"gorev":for(const y of[-.16,0,.16])yol([[-.26,y-.04],[-.2,y+.03],[-.12,y-.08]]),yol([[-.02,y],[.26,y]]);
+PI*2),g.fill();for(const[dx,dy]of[[-.085,-.03],[-.03,-.085],[.03,-.085],[.085,-.03]])g.beginPath(),g.arc(c+(x+dx)*W,c+(y+dy)*W,W*.032,0,Math.PI*2),g.fill()}break;case"finalist":yol([[-.2,-.32],[-.05,-.04]]),
+yol([[.2,-.32],[.05,-.04]]),g.beginPath(),g.arc(c,c+W*.12,W*.17,0,Math.PI*2),g.fill(),g.fillStyle="#FFFFFF",yildiz5(.08,.035,.12),g.fillStyle="#6A6A6A";break;case"ilk_gun":yol([[-.26,.22],[-.1,-.02],[
+.08,.12],[.26,-.22]]),g.beginPath(),g.arc(c+W*.26,c-W*.22,W*.06,0,Math.PI*2),g.fill();break;case"gorev":for(const y of[-.16,0,.16])yol([[-.26,y-.04],[-.2,y+.03],[-.12,y-.08]]),yol([[-.02,y],[.26,y]]);
 break;case"sezon":yol([[-.26,-.18],[.26,-.18],[.26,.26],[-.26,.26]],!0),yol([[-.26,-.06],[.26,-.06]]);for(const x of[-.14,.14])yol([[x,-.28],[x,-.12]]);for(const[x,y]of[[-.13,.06],[0,.06],[.13,.06],[-.13,
 .17],[0,.17]])g.beginPath(),g.arc(c+x*W,c+y*W,W*.03,0,Math.PI*2),g.fill();break;case"gorev_bilinci":yol([[-.2,.3],[-.2,-.28]]),yol([[-.2,-.26],[.26,-.2],[.14,-.06],[.26,.06],[-.2,.02]],!0,!0);break;case"\
 ulke_hedefi":for(const r of[.27,.17])g.beginPath(),g.arc(c,c,W*r,0,Math.PI*2),g.stroke();g.beginPath(),g.arc(c,c,W*.06,0,Math.PI*2),g.fill(),yol([[.04,-.04],[.3,-.3]]),yol([[.3,-.3],[.3,-.18]]),yol([[

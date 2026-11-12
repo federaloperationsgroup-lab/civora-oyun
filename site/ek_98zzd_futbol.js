@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zzd_futbol.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zzd_futbol.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/futbol",{async ac(kap){let v=null,mac=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=futbolIzlenecek;futbolIzlenecek=null;let sonCanli=0,sonGenel=0,yoklamaZaman=null,sonEvre=null;
 const saha=HaliSaha.ac(),spiker=MacSpikeri.ac("futbol-spiker"),ben=()=>Durum.v.ozet?.character??{},R=()=>futbolKurali()??v?.rule??{},simdi=()=>Date.now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.
 scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});saha.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad==="ben"){git("#futbol-ben");return}git("#futbol-macim")});
@@ -68,8 +68,10 @@ t?" secili":""}" data-futbol-taktik="${t}" aria-pressed="${m[`tactic_${kaptan}`]
 gi-kutusu" style="margin-top:8px" data-futbol-lig="${esc(m.league.fixture_id??"")}">${ikon("trophy")}<span>${esc(\u00E7('Mahalle ligi, {n}. tur: {ev} \u2013 {konuk}. \xDCcretsiz; iki tak\u0131m\u0131n \xFCyeleri kendi tak\
 \u0131m\u0131nda oynar. Kilitte \u015Fehirde olan ve "kendili\u011Finden oyna" diyen \xFCyeler kadroya girer.',{n:sayi(m.league.round??1),ev:takimAdi("a",m),konuk:takimAdi("b",m)}))}
           ${lm?" "+esc(lm.skip?\u00E7("Bu ma\xE7ta yokum dedin."):mineMi?\u00E7("Bu ma\xE7a yaz\u0131ld\u0131n."):lm.auto?\u00E7("Kilitte \u015Fehirdeysen kendili\u011Finden oynars\u0131n."):\u00E7("K\
-endili\u011Finden oynam\u0131yorsun; oynamak i\xE7in ma\xE7a kat\u0131l.")):""}</span></div>`:"";return`<section class="kart" id="futbol-macim" data-futbol-mac="${esc(m.id)}" data-futbol-evre="${esc(m.
-phase)}">
+endili\u011Finden oynam\u0131yorsun; oynamak i\xE7in ma\xE7a kat\u0131l.")):""}
+          ${m.league.postponed_from?" "+esc(\u00E7("Ma\xE7 ertelendi (\xF6nceki saat: {zaman}).",{zaman:saatYaz(m.league.postponed_from)})):""}
+          ${m.league.postpone&&m.phase==="open"?" "+esc(\u00E7("Erteleme \xF6nerisi var: {zaman} (Mahalle ligi'nde kaptanlar yan\u0131tlar).",{zaman:saatYaz(m.league.postpone.to_at)})):""}</span></div\
+>`:"";return`<section class="kart" id="futbol-macim" data-futbol-mac="${esc(m.id)}" data-futbol-evre="${esc(m.phase)}">
         <div class="kart-bas"><div><p class="ust-yazi">${esc(mineMi?\u00E7("Ma\xE7\u0131n"):\u00E7("\u0130zledi\u011Fin ma\xE7"))} \xB7 ${esc(bolgeAdi(m.region_id))} \xB7 ${esc(\u00E7("saha {n}",{n:sayi(
 m.pitch)}))}${m.private?` \xB7 ${ikon("lock")} ${esc(\u00E7("\xF6zel ma\xE7"))}`:""}</p>
           <h2 class="b2">${ikon("goal")} ${esc(\u00E7("{saat} ma\xE7\u0131",{saat:saatKisa(m.starts_at)}))}</h2></div>
@@ -132,7 +134,7 @@ x.skip?\u00E7("Gelirim"):\u00E7("Bu ma\xE7ta yokum"))}</button>`:""}
             ${["locked","live","closing"].includes(x.phase)?`<button class="dugme sade kucuk-d" data-futbol-izle="${esc(x.match_id)}">${ikon("eye")}${\u00E7("\u0130zle")}</button>`:""}
           </div>`}return`<section class="kart" id="futbol-lig">
         <div class="kart-bas"><div><p class="ust-yazi">${esc(t?mahalleTakimAdi(t):\u00E7("Mahalle tak\u0131m\u0131 yok"))}</p><h2 class="b2">${\u00E7("Mahalle ligi")}</h2></div>
-          ${t?`<span class="futbol-renk buyuk" style="--forma:${esc(t.color??FUTBOL_RENK.a)}" aria-hidden="true"></span>`:`<span class="ik-kutu">${ikon("trophy")}</span>`}</div>
+          ${t?mahalleArma(t,28):`<span class="ik-kutu">${ikon("trophy")}</span>`}</div>
         ${govde}
         <button class="baglanti" type="button" data-git="sehir/lig" style="margin-top:8px">${ikon("table-2")} ${esc(t?\u00E7("Tak\u0131m\u0131n, puan durumu ve fikst\xFCr"):\u00E7("Tak\u0131m kur, davetler\
 in ve \u015Fehrin ligi"))}</button>

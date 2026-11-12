@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98s_belediye.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98s_belediye.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/belediye",{async ac(kap){let s=null,bolge=bldBakilan;bldBakilan=null;let kapandi=!1,durdur=()=>{};const sandik=SandikBasi.ac(),oda=BelediyeOdasi.ac(),sira=sahneSirasiKur();let saatFarki=0;
 sandik.dinle("sec",ad=>{(ad==="adaylar"?$("#bld-adaylar",kap):$("#bld-oy",kap)??$("#bld-adaylar",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const odeme={q:"",sonuc:null,
 secilen:null,tutar:"",amac:"aid"},duzen={tur:"maraton",gun:"",saat:"15:00",havuz:""};let ev=null;async function yukle(){[s]=await Promise.all([Sunucu.cagir("municipal_status",{p_region:bolge}),Durum.ozet(),
@@ -14,6 +14,8 @@ utton>
 ></div></div>`:`<p class="kucuk">${\u00E7("G\xF6revde belediye ba\u015Fkan\u0131 yok: b\xFCt\xE7e birikir, projelerin bak\u0131m\u0131 \xF6denmeye devam eder; se\xE7ilen ba\u015Fkan g\xF6reve ba\u015Flay\u0131nca b\xFCt\xE7eyi o kullan\u0131r.")}\
 </p>`}
         <div class="ozk-butce" data-bld-butce="${esc(String(s.budget_cr??0))}"><span>${\u00E7("Belediye b\xFCt\xE7esi")}</span><b>${\u00E7("{kr} kr",{kr:kr(s.budget_cr??0)})}</b></div>
+        ${Durum.v.kurallar?.data?.ops?.economyPlace?`<div class="satir" style="margin-top:8px"><button class="dugme ikincil kucuk-d" type="button" id="bld-para-akisi">${ikon("coins")}${\u00E7("\u015Eehrin \
+para ak\u0131\u015F\u0131")}</button></div>`:""}
         <p class="kucuk">${\u00E7("Gelir: ba\u015Fkentte toplanan sat\u0131\u015F ve maa\u015F vergisinin belediye pay\u0131, konser ve st\xFCdyo kiralar\u0131. Gider: projelerin kurulu\u015Fu ve g\xFCnl\xFCk bak\u0131m\u0131 ({kr} kr/g\xFCn), ba\u015Fkan\u0131n \xF6dem\
 eleri.",{kr:kr(s.upkeep_per_day_cr??0)})}</p>
         ${yeniSecim?`<p class="kucuk">${esc(yeniSecim)}</p>`:""}
@@ -230,35 +232,35 @@ String(f.get("tutar")??""));if(!alt||alt<=0)throw new Error(\u00E7("Tutar\u0131 
 vuzuna {kr} kredi kondu.",{kr:kr(alt)}),"hand-coins"),await tazele()}})};for(const b of $$("[data-bld-etkinlik-iptal]",kap))b.onclick=()=>{const e=(ev?.program??[]).find(x=>x.id===b.dataset.bldEtkinlikIptal);
 e&&onay({ust:\u00E7("\u015Eehir etkinli\u011Fi"),baslik:\u00E7("{etkinlik} iptal edilsin mi?",{etkinlik:etkinlikAdi(e.kind)}),govde:`<p class="aciklama">${esc(\u00E7("Bedel ve \xF6d\xFCl havuzu b\xFCt\xE7eye d\xF6ne\
 r; kay\u0131tl\u0131lara haber gider, porsiyonlar kilere d\xF6ner."))}</p>`,ad:\u00E7("\u0130ptal et"),sinif:"mercan",ik:"x",is:async()=>{await Sunucu.yap("cityevent_cancel",{p_event:e.id}),tost(\u00E7(
-"{etkinlik} iptal edildi.",{etkinlik:etkinlikAdi(e.kind)}),"x")}})};for(const b of $$("[data-bld-profil]",kap))b.onclick=()=>profilAc(b.dataset.bldProfil);$("#bld-aday",kap)?.addEventListener("click",
-()=>onay({ust:\u00E7("Belediye ba\u015Fkan\u0131 se\xE7imi"),baslik:\u00E7("Belediye ba\u015Fkan\u0131 aday\u0131 ol"),govde:`<p class="aciklama">${\u00E7("Ad\u0131n aday listesinde herkese g\xF6r\xFCn\xFCr. Kazan\u0131\
-rsan {gun} g\xFCn belediye ba\u015Fkan\u0131 olursun; b\xFCt\xE7eyle proje kurar, sakinlere herkese a\xE7\u0131k kay\u0131tla \xF6dersin.",{gun:sayi(k.election?.termDays??28)})}</p>`,ad:\u00E7("Aday o\
-l"),ik:"user-round-plus",is:async()=>{await Sunucu.yap("mayor_register",{p_election:s.election.election_id}),tost(\u00E7("Belediye ba\u015Fkan\u0131 adayl\u0131\u011F\u0131n kaydedildi."),"user-round-\
-plus")}})),$("#bld-cekil",kap)?.addEventListener("click",async()=>{try{await Sunucu.yap("mayor_withdraw",{p_election:s.election.election_id}),tost(\u00E7("Adayl\u0131ktan \xE7ekildin."),"check")}catch(err){
-tost(hataMetni(err),"circle-alert")}await tazele()});for(const b of $$("[data-bld-oy]",kap))b.addEventListener("click",()=>{const aday=(s.election?.candidates??[]).find(c=>c.character_id===b.dataset.bldOy);
-OyKabini.ac({ust:\u00E7("Belediye ba\u015Fkan\u0131 se\xE7imi"),baslik:\u00E7("{ad} i\xE7in oy ver",{ad:aday?.name??""}),secim:\u00E7("Belediye ba\u015Fkan\u0131 se\xE7imi"),pusula:[{ad:aday?.name??"",
-alt:aday?.party??null,secili:!0}],not:`<p class="aciklama">${\u00E7("Oyun gizlidir ve de\u011Fi\u015Ftirilemez.")}</p>`,ad:\u00E7("Oy ver"),sayac:{oy:Number(s.election?.turnout??0),secmen:s.election?.
-voters??null},gonder:async()=>{await Sunucu.yap("mayor_vote",{p_election:s.election.election_id,p_candidate:b.dataset.bldOy}),tost(\u00E7("Oyun sand\u0131\u011Fa at\u0131ld\u0131."),"vote")},sonra:()=>tazele()})});
-$("#bld-istifa",kap)?.addEventListener("click",()=>onay({ust:\u00E7("Belediye ba\u015Fkan\u0131"),baslik:\u00E7("Belediye ba\u015Fkanl\u0131\u011F\u0131ndan istifa et"),govde:`<p class="aciklama">${\u00E7(
-"G\xF6revin hemen biter; s\u0131radaki belediye se\xE7iminin adayl\u0131\u011F\u0131 hemen ba\u015Flar.")}</p>`,ad:\u00E7("\u0130stifa et"),sinif:"mercan",ik:"door-open",is:async()=>{await Sunucu.yap(
-"mayor_resign",{}),tost(\u00E7("Belediye ba\u015Fkanl\u0131\u011F\u0131ndan istifa ettin."),"door-open")}}));for(const b of $$("[data-bld-baslat]",kap))b.onclick=()=>{const p=(s.projects??[]).find(x=>x.
-id===b.dataset.bldBaslat);p&&onay({ust:\u00E7("Belediye projesi"),baslik:\u00E7("{proje} projesini ba\u015Flat",{proje:\u00E7v(p.name)}),govde:`<p class="aciklama">${\u00E7("B\xFCt\xE7eden {kr} kr yak\u0131l\u0131r; \
-proje {g} g\xFCn sonra haz\u0131r olur ve her g\xFCn {b} kr bak\u0131m \xF6denir. {etki}",{kr:kr(p.costCr??0),g:sayi(p.buildDays??1),b:kr(p.upkeepCrPerDay??0),etki:esc(bldEtki(p))})}</p>`,ad:\u00E7("B\
-a\u015Flat"),ik:"hammer",is:async()=>{await Sunucu.yap("municipal_project_start",{p_kind:p.id}),tost(\u00E7("{proje} projesi ba\u015Flad\u0131.",{proje:\u00E7v(p.name)}),"hammer")}})};for(const b of $$(
-"[data-bld-iptal]",kap))b.onclick=()=>{const p=(s.projects??[]).find(x=>x.id===b.dataset.bldIptal);p&&onay({ust:\u00E7("Belediye projesi"),baslik:\u00E7("{proje} projesini iptal et",{proje:\u00E7v(p.name)}),
-govde:`<p class="aciklama">${\u00E7("Projenin etkisi hemen biter; kurulu\u015F bedeli geri gelmez, bak\u0131m \xF6denmez. Sonra yeniden kurulabilir (bedel yeniden \xF6denir).")}</p>`,ad:\u00E7("\u0130ptal \
-et"),sinif:"mercan",ik:"x",is:async()=>{await Sunucu.yap("municipal_project_cancel",{p_kind:p.id}),tost(\u00E7("{proje} projesi iptal edildi.",{proje:\u00E7v(p.name)}),"x")}})};$("#bld-spor-bakim",kap)?.
-addEventListener("click",()=>onay({ust:\u00E7("Ba\u015Fkentin spor salonu"),baslik:\u00E7("Bak\u0131m yapt\u0131r"),govde:`<p class="aciklama">${\u00E7("{kr} kredi belediye b\xFCt\xE7esinden harcan\u0131r (beled\
-iye defterine yaz\u0131l\u0131r); aletler %100 olur.",{kr:kr(s.gym?.cost_cr??0)})}</p>`,ad:\u00E7("Bak\u0131m yapt\u0131r"),ik:"wrench",is:async()=>{await Sunucu.yap("gym_maintain",{p_region:s.region_id}),
-tost(\u00E7("Aletlerin bak\u0131m\u0131 yap\u0131ld\u0131: %100."),"wrench")}})),$("#bld-alici-ara",kap)?.addEventListener("submit",async e=>{if(e.preventDefault(),odeme.q=String(new FormData(e.target).
-get("q")??"").trim(),odeme.q.length<2){tost(\u00E7("En az 2 harf yaz."),"circle-alert");return}try{odeme.sonuc=await Sunucu.cagir("mayor_resident_search",{p_query:odeme.q}),ciz()}catch(err){tost(hataMetni(
-err),"circle-alert")}});for(const b of $$("[data-bld-alici]",kap))b.onclick=()=>{odeme.secilen=odeme.sonuc?.find(x=>x.character_id===b.dataset.bldAlici)??null,ciz()};$("#bld-alici-degis",kap)?.addEventListener(
-"click",()=>{odeme.secilen=null,ciz()});const of=$("#bld-odeme",kap);of?.addEventListener("input",()=>{const f=new FormData(of);odeme.tutar=String(f.get("tutar")??""),odeme.amac=String(f.get("amac")??
-"aid")}),of?.addEventListener("submit",e=>{e.preventDefault();const f=new FormData(of),alt=krediAlt(String(f.get("tutar")??""));if(odeme.amac=String(f.get("amac")??"aid"),!alt||alt<=0){tost(\u00E7("Tu\
-tar\u0131 kredi olarak yaz (\xF6r. 25 ya da 12,50)."),"circle-alert");return}const kisi=odeme.secilen;onay({ust:\u00E7("Belediye b\xFCt\xE7esi"),baslik:\u00E7("\xD6demeyi onayla"),govde:`<p class="aci\
-klama">${\u00E7("{ad} adl\u0131 ki\u015Fiye {kr} kr \xF6denecek ({amac}). \xD6deme herkese a\xE7\u0131k resm\xEE kayda girer.",{ad:esc(kisi.name),kr:kr(alt),amac:esc(ozkAmac(odeme.amac))})}</p>`,ad:\u00E7(
-"\xD6de"),ik:"hand-coins",is:async()=>{await Sunucu.yap("mayor_pay",{p_recipient:kisi.character_id,p_amount:alt,p_purpose:odeme.amac}),odeme.tutar="",odeme.q="",odeme.secilen=null,odeme.sonuc=null,tost(
-\u00E7("\xD6deme yap\u0131ld\u0131; resm\xEE kayda girdi."),"hand-coins")}})})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{
-/^(mayor\.|municipal\.|cityevent\.)/.test(olay)&&tazele()}),saat=setInterval(()=>{kapandi||document.visibilityState!=="visible"||(sandik.el.isConnected?tazele():s?.municipality&&oda.el.isConnected&&(s.
-projects??[]).some(p=>p.project?.status==="building")&&oda.yaz(s,saatFarki))},6e4);return()=>{kapandi=!0,durdur(),b1(),clearInterval(saat),sira.kapat(),oda.kapat(),sandik.kapat()}}}),Parcalar.tamam("e\
-k_98s_belediye");
+"{etkinlik} iptal edildi.",{etkinlik:etkinlikAdi(e.kind)}),"x")}})};for(const b of $$("[data-bld-profil]",kap))b.onclick=()=>profilAc(b.dataset.bldProfil);const pa=$("#bld-para-akisi",kap);pa&&(pa.onclick=
+()=>{try{sessionStorage.setItem("civora.ekonomi.sehir",s.region_id)}catch{}Kabuk.git("ulke/ekonomi")}),$("#bld-aday",kap)?.addEventListener("click",()=>onay({ust:\u00E7("Belediye ba\u015Fkan\u0131 se\xE7imi"),
+baslik:\u00E7("Belediye ba\u015Fkan\u0131 aday\u0131 ol"),govde:`<p class="aciklama">${\u00E7("Ad\u0131n aday listesinde herkese g\xF6r\xFCn\xFCr. Kazan\u0131rsan {gun} g\xFCn belediye ba\u015Fkan\u0131 olursun; b\xFCt\xE7eyle proje kurar\
+, sakinlere herkese a\xE7\u0131k kay\u0131tla \xF6dersin.",{gun:sayi(k.election?.termDays??28)})}</p>`,ad:\u00E7("Aday ol"),ik:"user-round-plus",is:async()=>{await Sunucu.yap("mayor_register",{p_election:s.
+election.election_id}),tost(\u00E7("Belediye ba\u015Fkan\u0131 adayl\u0131\u011F\u0131n kaydedildi."),"user-round-plus")}})),$("#bld-cekil",kap)?.addEventListener("click",async()=>{try{await Sunucu.yap(
+"mayor_withdraw",{p_election:s.election.election_id}),tost(\u00E7("Adayl\u0131ktan \xE7ekildin."),"check")}catch(err){tost(hataMetni(err),"circle-alert")}await tazele()});for(const b of $$("[data-bld-\
+oy]",kap))b.addEventListener("click",()=>{const aday=(s.election?.candidates??[]).find(c=>c.character_id===b.dataset.bldOy);OyKabini.ac({ust:\u00E7("Belediye ba\u015Fkan\u0131 se\xE7imi"),baslik:\u00E7(
+"{ad} i\xE7in oy ver",{ad:aday?.name??""}),secim:\u00E7("Belediye ba\u015Fkan\u0131 se\xE7imi"),pusula:[{ad:aday?.name??"",alt:aday?.party??null,secili:!0}],not:`<p class="aciklama">${\u00E7("Oyun giz\
+lidir ve de\u011Fi\u015Ftirilemez.")}</p>`,ad:\u00E7("Oy ver"),sayac:{oy:Number(s.election?.turnout??0),secmen:s.election?.voters??null},gonder:async()=>{await Sunucu.yap("mayor_vote",{p_election:s.election.
+election_id,p_candidate:b.dataset.bldOy}),tost(\u00E7("Oyun sand\u0131\u011Fa at\u0131ld\u0131."),"vote")},sonra:()=>tazele()})});$("#bld-istifa",kap)?.addEventListener("click",()=>onay({ust:\u00E7("B\
+elediye ba\u015Fkan\u0131"),baslik:\u00E7("Belediye ba\u015Fkanl\u0131\u011F\u0131ndan istifa et"),govde:`<p class="aciklama">${\u00E7("G\xF6revin hemen biter; s\u0131radaki belediye se\xE7iminin adayl\u0131\u011F\u0131 hemen \
+ba\u015Flar.")}</p>`,ad:\u00E7("\u0130stifa et"),sinif:"mercan",ik:"door-open",is:async()=>{await Sunucu.yap("mayor_resign",{}),tost(\u00E7("Belediye ba\u015Fkanl\u0131\u011F\u0131ndan istifa ettin."),
+"door-open")}}));for(const b of $$("[data-bld-baslat]",kap))b.onclick=()=>{const p=(s.projects??[]).find(x=>x.id===b.dataset.bldBaslat);p&&onay({ust:\u00E7("Belediye projesi"),baslik:\u00E7("{proje} p\
+rojesini ba\u015Flat",{proje:\u00E7v(p.name)}),govde:`<p class="aciklama">${\u00E7("B\xFCt\xE7eden {kr} kr yak\u0131l\u0131r; proje {g} g\xFCn sonra haz\u0131r olur ve her g\xFCn {b} kr bak\u0131m \xF6denir. {etki}",
+{kr:kr(p.costCr??0),g:sayi(p.buildDays??1),b:kr(p.upkeepCrPerDay??0),etki:esc(bldEtki(p))})}</p>`,ad:\u00E7("Ba\u015Flat"),ik:"hammer",is:async()=>{await Sunucu.yap("municipal_project_start",{p_kind:p.
+id}),tost(\u00E7("{proje} projesi ba\u015Flad\u0131.",{proje:\u00E7v(p.name)}),"hammer")}})};for(const b of $$("[data-bld-iptal]",kap))b.onclick=()=>{const p=(s.projects??[]).find(x=>x.id===b.dataset.
+bldIptal);p&&onay({ust:\u00E7("Belediye projesi"),baslik:\u00E7("{proje} projesini iptal et",{proje:\u00E7v(p.name)}),govde:`<p class="aciklama">${\u00E7("Projenin etkisi hemen biter; kurulu\u015F bedeli g\
+eri gelmez, bak\u0131m \xF6denmez. Sonra yeniden kurulabilir (bedel yeniden \xF6denir).")}</p>`,ad:\u00E7("\u0130ptal et"),sinif:"mercan",ik:"x",is:async()=>{await Sunucu.yap("municipal_project_cancel",
+{p_kind:p.id}),tost(\u00E7("{proje} projesi iptal edildi.",{proje:\u00E7v(p.name)}),"x")}})};$("#bld-spor-bakim",kap)?.addEventListener("click",()=>onay({ust:\u00E7("Ba\u015Fkentin spor salonu"),baslik:\u00E7(
+"Bak\u0131m yapt\u0131r"),govde:`<p class="aciklama">${\u00E7("{kr} kredi belediye b\xFCt\xE7esinden harcan\u0131r (belediye defterine yaz\u0131l\u0131r); aletler %100 olur.",{kr:kr(s.gym?.cost_cr??0)})}\
+</p>`,ad:\u00E7("Bak\u0131m yapt\u0131r"),ik:"wrench",is:async()=>{await Sunucu.yap("gym_maintain",{p_region:s.region_id}),tost(\u00E7("Aletlerin bak\u0131m\u0131 yap\u0131ld\u0131: %100."),"wrench")}})),
+$("#bld-alici-ara",kap)?.addEventListener("submit",async e=>{if(e.preventDefault(),odeme.q=String(new FormData(e.target).get("q")??"").trim(),odeme.q.length<2){tost(\u00E7("En az 2 harf yaz."),"circle\
+-alert");return}try{odeme.sonuc=await Sunucu.cagir("mayor_resident_search",{p_query:odeme.q}),ciz()}catch(err){tost(hataMetni(err),"circle-alert")}});for(const b of $$("[data-bld-alici]",kap))b.onclick=
+()=>{odeme.secilen=odeme.sonuc?.find(x=>x.character_id===b.dataset.bldAlici)??null,ciz()};$("#bld-alici-degis",kap)?.addEventListener("click",()=>{odeme.secilen=null,ciz()});const of=$("#bld-odeme",kap);
+of?.addEventListener("input",()=>{const f=new FormData(of);odeme.tutar=String(f.get("tutar")??""),odeme.amac=String(f.get("amac")??"aid")}),of?.addEventListener("submit",e=>{e.preventDefault();const f=new FormData(
+of),alt=krediAlt(String(f.get("tutar")??""));if(odeme.amac=String(f.get("amac")??"aid"),!alt||alt<=0){tost(\u00E7("Tutar\u0131 kredi olarak yaz (\xF6r. 25 ya da 12,50)."),"circle-alert");return}const kisi=odeme.
+secilen;onay({ust:\u00E7("Belediye b\xFCt\xE7esi"),baslik:\u00E7("\xD6demeyi onayla"),govde:`<p class="aciklama">${\u00E7("{ad} adl\u0131 ki\u015Fiye {kr} kr \xF6denecek ({amac}). \xD6deme herkese a\xE7\u0131k resm\xEE kayda gi\
+rer.",{ad:esc(kisi.name),kr:kr(alt),amac:esc(ozkAmac(odeme.amac))})}</p>`,ad:\u00E7("\xD6de"),ik:"hand-coins",is:async()=>{await Sunucu.yap("mayor_pay",{p_recipient:kisi.character_id,p_amount:alt,p_purpose:odeme.
+amac}),odeme.tutar="",odeme.q="",odeme.secilen=null,odeme.sonuc=null,tost(\u00E7("\xD6deme yap\u0131ld\u0131; resm\xEE kayda girdi."),"hand-coins")}})})}const tazele=tazeleyici(async()=>{await yukle(),
+kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{/^(mayor\.|municipal\.|cityevent\.)/.test(olay)&&tazele()}),saat=setInterval(()=>{kapandi||document.visibilityState!=="\
+visible"||(sandik.el.isConnected?tazele():s?.municipality&&oda.el.isConnected&&(s.projects??[]).some(p=>p.project?.status==="building")&&oda.yaz(s,saatFarki))},6e4);return()=>{kapandi=!0,durdur(),b1(),
+clearInterval(saat),sira.kapat(),oda.kapat(),sandik.kapat()}}}),Parcalar.tamam("ek_98s_belediye");

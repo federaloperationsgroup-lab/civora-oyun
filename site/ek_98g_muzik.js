@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/muzik",{async ac(kap){let v=null,kanal=null,kanalBirak=null,kapandi=!1,durdur=()=>{};const arama={q:"",sonuc:null},oda=ProvaOdasi.ac();oda.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&
 profilAc(id,()=>tazele());return}if(ad==="calgi"){sahneRolu();return}const el=$({afis:"#muzik-ayar",gosterge:"#muzik-provalar",pano:"#muzik-repertuvar"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?
 "auto":"smooth",block:"start"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.m?.rule??Durum.v.kurallar?.data?.culture??
@@ -154,9 +154,9 @@ button></div>`:""}`:""}
 const t=b.treasury??{},g=b.goods??{},defter=t.ledger??[],satir=l=>{const ad=esc(l.name??"");switch(l.kind){case"donation":return \u00E7("{ad} kasaya koydu: {kr} kredi",{ad,kr:kr(l.amount)});case"goods":
 return \u00E7("{ad} kasaya {n} sahne malzemesi koydu",{ad,n:sayi(l.amount)});case"shop":return \u00E7("{ad} kasayla sahne malzemesi ald\u0131: {kr} kredi",{ad,kr:kr(l.amount)});case"public":return \u00E7(
 "{ad} kasadan kamuya ba\u011F\u0131\u015Flad\u0131: {kr} kredi",{ad,kr:kr(l.amount)});case"tour":return \u00E7("Turne otob\xFCs\xFC: {kr} kredi",{kr:kr(l.amount)});case"studio":return \u00E7("{ad} st\xFC\
-dyo kiras\u0131 \xF6dedi: {kr} kredi",{ad,kr:kr(l.amount)});case"ep":return \u00E7("EP sat\u0131\u015F\u0131ndan kasaya: {kr} kredi",{kr:kr(l.amount)});default:return \u00E7("Da\u011F\u0131lmada pay: {ad}, {kr}\
- kredi",{ad,kr:kr(l.amount)})}};return`<section class="kart" id="muzik-kasa"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Grubun kasas\u0131")}</p><h2 class="b2">${\u00E7("{kr} kredi",{kr:kr(
-Number(t.balance??0))})}</h2></div>
+dyo kiras\u0131 \xF6dedi: {kr} kredi",{ad,kr:kr(l.amount)});case"ep":return \u00E7("EP sat\u0131\u015F\u0131ndan kasaya: {kr} kredi",{kr:kr(l.amount)});case"tip":return \u00E7("Kul\xFCpte sahneye bah\u015Fi\u015F:\
+ {kr} kredi",{kr:kr(l.amount)});default:return \u00E7("Da\u011F\u0131lmada pay: {ad}, {kr} kredi",{ad,kr:kr(l.amount)})}};return`<section class="kart" id="muzik-kasa"><div class="kart-bas"><div><p cla\
+ss="ust-yazi">${\u00E7("Grubun kasas\u0131")}</p><h2 class="b2">${\u00E7("{kr} kredi",{kr:kr(Number(t.balance??0))})}</h2></div>
           <button class="dugme altin kucuk-d" id="muzik-bagis">${ikon("hand-coins")}${\u00E7("Kasaya koy")}</button></div>
         <div class="konser-kasa">
           <div><small>${\u00E7("Harcanabilir")}</small><b>${\u00E7("{kr} kredi",{kr:kr(Number(t.free??t.balance??0))})}</b></div>

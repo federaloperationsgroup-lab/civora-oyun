@@ -1,13 +1,13 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/moderasyon",{async ac(kap){const roller=Durum.v.ozet?.character?.staff??[],moderator=roller.some(r=>r==="moderator"||r==="admin"),teknik=roller.some(r=>["admin","release","support"].
 includes(r)),v={genel:null,sekme:moderator?"rapor":"sunucu",tur:null,kuyruk:null,bekleyen:null,arama:"",sonuc:null,kayit:null,kayitSonu:!1,sunucu:null,isler:!1,guven:null,guvenTur:null};try{const s=sessionStorage.
 getItem("civora.moderasyon");(moderator&&["rapor","bekleyen","inceleme","oyuncu","kayit"].includes(s)||teknik&&s==="sunucu")&&(v.sekme=s)}catch{}await Durum.kurallar().catch(()=>null);async function yukle(){
 v.genel=moderator?await Sunucu.cagir("mod_overview"):{roles:roller,is_admin:roller.includes("admin")},v.sekme==="rapor"?v.kuyruk=await Sunucu.cagir("mod_queue",{p_kind:v.tur,p_limit:100}):v.sekme==="b\
 ekleyen"?v.bekleyen=await Sunucu.cagir("mod_pending"):v.sekme==="kayit"?(v.kayit=await Sunucu.cagir("mod_log",{p_before:null,p_limit:50}),v.kayitSonu=v.kayit.length<50):v.sekme==="inceleme"?v.guven=await Sunucu.
-cagir("mod_trust",{p_kind:null}):v.sekme==="sunucu"&&([v.sunucu,v.ekonomi]=await Promise.all([Sunucu.cagir("ops_status"),Sunucu.cagir("economy_balance",{p_days:14}).catch(()=>null)]))}const sonra=Object.
-assign(async()=>{await tazele()},{get genel(){return v.genel}});function raporlarHtml(){const l=v.kuyruk?.items??[];v.tur||(v.turVar=[...new Set(l.map(x=>x.kind))]);const turler=(v.turVar??[]).length>
-1||v.tur?v.turVar??[]:[];return`${turler.length?`<div class="secim-sec mod-turler" style="margin-bottom:10px">${[null,...turler].map(k=>`<button class="secim-cip" type="button" data-mod-tur="${k??""}"\
- aria-pressed="${v.tur===k}">${esc(k?RAPOR_TUR[k]:\u00E7("T\xFCm\xFC"))}</button>`).join("")}</div>`:""}
+cagir("mod_trust",{p_kind:null}):v.sekme==="sunucu"&&([v.sunucu,v.ekonomi,v.yerler]=await Promise.all([Sunucu.cagir("ops_status"),Sunucu.cagir("economy_balance",{p_days:14}).catch(()=>null),Sunucu.cagir(
+"economy_places").catch(()=>null)]))}const sonra=Object.assign(async()=>{await tazele()},{get genel(){return v.genel}});function raporlarHtml(){const l=v.kuyruk?.items??[];v.tur||(v.turVar=[...new Set(
+l.map(x=>x.kind))]);const turler=(v.turVar??[]).length>1||v.tur?v.turVar??[]:[];return`${turler.length?`<div class="secim-sec mod-turler" style="margin-bottom:10px">${[null,...turler].map(k=>`<button \
+class="secim-cip" type="button" data-mod-tur="${k??""}" aria-pressed="${v.tur===k}">${esc(k?RAPOR_TUR[k]:\u00E7("T\xFCm\xFC"))}</button>`).join("")}</div>`:""}
         <div class="yigin">${l.map(x=>`<div class="mod-satir" data-mod-rapor="${esc(x.report_id)}" role="button" tabindex="0">
             <div class="satir" style="gap:8px;flex-wrap:wrap;align-items:center"><span class="cip">${esc(RAPOR_TUR[x.kind]??x.kind)}</span>
               <b>${\u00E7("{n} rapor",{n:Number(x.count)})}</b><span class="kucuk">${esc(zamanOnce(x.last_at))}</span>
@@ -71,6 +71,7 @@ aman})",{hata:opsYoklama(son.error,son.status),zaman:zamanOnce(son.at)}):\u00E7(
         <div class="yigin" id="ops-acik">${acik.map(a=>uyari(a)).join("")||`<p class="bos">${\u00E7("Uyar\u0131 yok.")}${s.checked_at?" "+\u00E7("Son denetim {zaman}.",{zaman:esc(zamanOnce(s.checked_at))}):
 ""}</p>`}</div>
         ${ekonomiKarti(v.ekonomi)}
+        ${ekonomiYerleriHtml(v.yerler)}
         <p class="ust-yazi" style="margin-top:14px">${\u00E7("Son {n} dakika",{n:Number(w.minutes??5)})}</p>
         <p id="ops-pencere">${\u00E7("{n} istek",{n:Number(w.count??0)})} \xB7 ${\u00E7("{n} sunucu hatas\u0131",{n:Number(w.errors??0)})} (%${Math.floor(Number(w.ppm??0)/1e4)})${w.mean_ms!=null?" \xB7 "+
 \u00E7("ortalama {ms} ms",{ms:Number(w.mean_ms)}):""}
@@ -114,24 +115,25 @@ g.pending_approvals??0)})} \xB7 ${\u00E7("{n} itiraz",{n:Number(g.pending_appeal
         <div class="secim-sec" role="tablist" style="margin:10px 0">${sekmeler.map(([k,ad,n])=>`<button class="secim-cip" type="button" data-mod-sekme="${k}" aria-pressed="${v.sekme===k}">${esc(ad)}${n?
 ` <b class="sayi-rozet">${n}</b>`:""}</button>`).join("")}</div>
         <section class="kart" id="mod-icerik">${v.sekme==="rapor"?raporlarHtml():v.sekme==="bekleyen"?bekleyenHtml():v.sekme==="inceleme"?incelemeHtml():v.sekme==="oyuncu"?oyuncuHtml():v.sekme==="sunu\
-cu"?sunucuHtml():kayitHtml()}</section></div>`,bagla()}function bagla(){$("#mod-yenile",kap).onclick=()=>tazele();for(const b of $$("[data-mod-sekme]",kap))b.onclick=async()=>{v.sekme=b.dataset.modSekme;
-try{sessionStorage.setItem("civora.moderasyon",v.sekme)}catch{}await tazele()};for(const b of $$("[data-mod-tur]",kap))b.onclick=async()=>{v.tur=b.dataset.modTur||null,await tazele()};for(const b of $$(
-"[data-guven-tur]",kap))b.onclick=()=>{v.guvenTur=b.dataset.guvenTur||null,ciz()};for(const b of $$("[data-guven-incele]",kap))b.onclick=()=>{const[tur,ref]=[b.dataset.guvenIncele.slice(0,b.dataset.guvenIncele.
-indexOf("|")),b.dataset.guvenIncele.slice(b.dataset.guvenIncele.indexOf("|")+1)];modGerekce({baslik:\u00E7("Bulgu incelendi"),aciklama:esc(\u00E7("Notun kayda ge\xE7er; ceza de\u011Fildir. Yapt\u0131r\u0131m gerekiyors\
-a oyuncunun kart\u0131ndan ver.")),onayAd:\u00E7("\u0130ncelendi"),is:async not=>{await Sunucu.yap("mod_trust_review",{p_kind:tur,p_ref:ref,p_note:not}),tost(\u00E7("Bulgu incelendi."),"badge-check"),
-await tazele()}})};for(const s of $$("[data-mod-rapor]",kap))s.onclick=()=>modRaporAc(s.dataset.modRapor,sonra),s.onkeydown=e=>{(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),s.click())};for(const b of $$(
-"[data-mod-onay]",kap))b.onclick=()=>{const[id,evet]=b.dataset.modOnay.split("|");modGerekce({baslik:evet==="1"?\u00E7("Ask\u0131 onaylans\u0131n m\u0131?"):\u00E7("Ask\u0131 onaylanmas\u0131n m\u0131?"),
-aciklama:esc(evet==="1"?\u00E7("Onaylay\u0131nca ask\u0131 ba\u015Flar."):\u00E7("Ask\u0131 ba\u015Flamaz; kay\u0131t reddedildi olarak kal\u0131r.")),onayAd:evet==="1"?\u00E7("Onayla"):\u00E7("Onayla\
-ma"),onaySinif:evet==="1"?"mercan":"ikincil",is:async g=>{await Sunucu.yap("mod_sanction_approve",{p_sanction:id,p_approve:evet==="1",p_note:g}),tost(evet==="1"?\u00E7("Ask\u0131 onayland\u0131."):\u00E7(
-"Ask\u0131 onaylanmad\u0131."),"badge-check"),await tazele()}})};for(const b of $$("[data-mod-itiraz]",kap))b.onclick=()=>{const[id,kaldir]=b.dataset.modItiraz.split("|");modGerekce({baslik:kaldir==="\
-1"?\u00E7("\u0130tiraz kabul edilsin mi?"):\u00E7("\u0130tiraz reddedilsin mi?"),aciklama:esc(\u00E7("Karar\u0131n ve notun ki\u015Fiye bildirilir.")),onayAd:kaldir==="1"?\u00E7("Kabul et, kald\u0131r"):
-\u00E7("Reddet, s\xFCrs\xFCn"),is:async g=>{await Sunucu.yap("mod_appeal_decide",{p_sanction:id,p_lift:kaldir==="1",p_note:g}),tost(\u00E7("\u0130tiraz karara ba\u011Fland\u0131."),"scale"),await tazele()}})};
-for(const b of $$("[data-mod-incele]",kap))b.onclick=()=>modGerekce({baslik:\u00E7("Y\xF6neticinin karar\u0131 incelendi"),onayAd:\u00E7("\u0130ncelendi"),is:async g=>{await Sunucu.yap("mod_sanction_r\
-eview",{p_sanction:b.dataset.modIncele,p_note:g}),tost(\u00E7("Karar incelendi."),"badge-check"),await tazele()}});for(const b of $$("[data-mod-kaldir]",kap))b.onclick=()=>modGerekce({baslik:\u00E7("Y\
-apt\u0131r\u0131m kald\u0131r\u0131ls\u0131n m\u0131?"),onayAd:\u00E7("Kald\u0131r"),onayIkon:"undo-2",is:async g=>{await Sunucu.yap("mod_sanction_lift",{p_sanction:b.dataset.modKaldir,p_reason:g}),tost(
-\u00E7("Yapt\u0131r\u0131m kald\u0131r\u0131ld\u0131."),"badge-check"),await tazele()}});$("#mod-ara",kap)?.addEventListener("submit",async e=>{if(e.preventDefault(),v.arama=String(new FormData(e.target).
-get("q")??"").trim(),[...v.arama].length<2){tost(\u00E7("En az 2 harf yaz."),"circle-alert");return}try{v.sonuc=await Sunucu.cagir("mod_player_search",{p_query:v.arama}),ciz()}catch(err){tost(hataMetni(
-err),"circle-alert")}});for(const b of $$("[data-mod-oyuncu]",kap))b.onclick=()=>modOyuncuAc(b.dataset.modOyuncu,sonra);$("#ops-isler-ac",kap)?.addEventListener("click",()=>{v.isler=!v.isler,ciz()}),$(
-"#mod-kayit-daha",kap)?.addEventListener("click",async()=>{const son=(v.kayit??[]).at(-1);try{const x=await Sunucu.cagir("mod_log",{p_before:son?Number(son.id):null,p_limit:50});v.kayit=[...v.kayit??[],
-...x],v.kayitSonu=x.length<50,ciz()}catch(err){tost(hataMetni(err),"circle-alert")}})}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const saat=setInterval(()=>{!document.
-hidden&&kap.isConnected&&!document.querySelector(".perde")&&tazele()},6e4);return()=>clearInterval(saat)}}),Parcalar.tamam("ek_98zb_moderasyon");
+cu"?sunucuHtml():kayitHtml()}</section></div>`,bagla()}function bagla(){$("#mod-yenile",kap).onclick=()=>tazele();for(const b of $$("[data-ekonomi-yer]",kap))b.onclick=()=>paraAkisiPenceresi(b.dataset.
+ekonomiYer);for(const b of $$("[data-mod-sekme]",kap))b.onclick=async()=>{v.sekme=b.dataset.modSekme;try{sessionStorage.setItem("civora.moderasyon",v.sekme)}catch{}await tazele()};for(const b of $$("[\
+data-mod-tur]",kap))b.onclick=async()=>{v.tur=b.dataset.modTur||null,await tazele()};for(const b of $$("[data-guven-tur]",kap))b.onclick=()=>{v.guvenTur=b.dataset.guvenTur||null,ciz()};for(const b of $$(
+"[data-guven-incele]",kap))b.onclick=()=>{const[tur,ref]=[b.dataset.guvenIncele.slice(0,b.dataset.guvenIncele.indexOf("|")),b.dataset.guvenIncele.slice(b.dataset.guvenIncele.indexOf("|")+1)];modGerekce(
+{baslik:\u00E7("Bulgu incelendi"),aciklama:esc(\u00E7("Notun kayda ge\xE7er; ceza de\u011Fildir. Yapt\u0131r\u0131m gerekiyorsa oyuncunun kart\u0131ndan ver.")),onayAd:\u00E7("\u0130ncelendi"),is:async not=>{
+await Sunucu.yap("mod_trust_review",{p_kind:tur,p_ref:ref,p_note:not}),tost(\u00E7("Bulgu incelendi."),"badge-check"),await tazele()}})};for(const s of $$("[data-mod-rapor]",kap))s.onclick=()=>modRaporAc(
+s.dataset.modRapor,sonra),s.onkeydown=e=>{(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),s.click())};for(const b of $$("[data-mod-onay]",kap))b.onclick=()=>{const[id,evet]=b.dataset.modOnay.split(
+"|");modGerekce({baslik:evet==="1"?\u00E7("Ask\u0131 onaylans\u0131n m\u0131?"):\u00E7("Ask\u0131 onaylanmas\u0131n m\u0131?"),aciklama:esc(evet==="1"?\u00E7("Onaylay\u0131nca ask\u0131 ba\u015Flar."):
+\u00E7("Ask\u0131 ba\u015Flamaz; kay\u0131t reddedildi olarak kal\u0131r.")),onayAd:evet==="1"?\u00E7("Onayla"):\u00E7("Onaylama"),onaySinif:evet==="1"?"mercan":"ikincil",is:async g=>{await Sunucu.yap(
+"mod_sanction_approve",{p_sanction:id,p_approve:evet==="1",p_note:g}),tost(evet==="1"?\u00E7("Ask\u0131 onayland\u0131."):\u00E7("Ask\u0131 onaylanmad\u0131."),"badge-check"),await tazele()}})};for(const b of $$(
+"[data-mod-itiraz]",kap))b.onclick=()=>{const[id,kaldir]=b.dataset.modItiraz.split("|");modGerekce({baslik:kaldir==="1"?\u00E7("\u0130tiraz kabul edilsin mi?"):\u00E7("\u0130tiraz reddedilsin mi?"),aciklama:esc(
+\u00E7("Karar\u0131n ve notun ki\u015Fiye bildirilir.")),onayAd:kaldir==="1"?\u00E7("Kabul et, kald\u0131r"):\u00E7("Reddet, s\xFCrs\xFCn"),is:async g=>{await Sunucu.yap("mod_appeal_decide",{p_sanction:id,
+p_lift:kaldir==="1",p_note:g}),tost(\u00E7("\u0130tiraz karara ba\u011Fland\u0131."),"scale"),await tazele()}})};for(const b of $$("[data-mod-incele]",kap))b.onclick=()=>modGerekce({baslik:\u00E7("Y\xF6n\
+eticinin karar\u0131 incelendi"),onayAd:\u00E7("\u0130ncelendi"),is:async g=>{await Sunucu.yap("mod_sanction_review",{p_sanction:b.dataset.modIncele,p_note:g}),tost(\u00E7("Karar incelendi."),"badge-c\
+heck"),await tazele()}});for(const b of $$("[data-mod-kaldir]",kap))b.onclick=()=>modGerekce({baslik:\u00E7("Yapt\u0131r\u0131m kald\u0131r\u0131ls\u0131n m\u0131?"),onayAd:\u00E7("Kald\u0131r"),onayIkon:"\
+undo-2",is:async g=>{await Sunucu.yap("mod_sanction_lift",{p_sanction:b.dataset.modKaldir,p_reason:g}),tost(\u00E7("Yapt\u0131r\u0131m kald\u0131r\u0131ld\u0131."),"badge-check"),await tazele()}});$("\
+#mod-ara",kap)?.addEventListener("submit",async e=>{if(e.preventDefault(),v.arama=String(new FormData(e.target).get("q")??"").trim(),[...v.arama].length<2){tost(\u00E7("En az 2 harf yaz."),"circle-ale\
+rt");return}try{v.sonuc=await Sunucu.cagir("mod_player_search",{p_query:v.arama}),ciz()}catch(err){tost(hataMetni(err),"circle-alert")}});for(const b of $$("[data-mod-oyuncu]",kap))b.onclick=()=>modOyuncuAc(
+b.dataset.modOyuncu,sonra);$("#ops-isler-ac",kap)?.addEventListener("click",()=>{v.isler=!v.isler,ciz()}),$("#mod-kayit-daha",kap)?.addEventListener("click",async()=>{const son=(v.kayit??[]).at(-1);try{
+const x=await Sunucu.cagir("mod_log",{p_before:son?Number(son.id):null,p_limit:50});v.kayit=[...v.kayit??[],...x],v.kayitSonu=x.length<50,ciz()}catch(err){tost(hataMetni(err),"circle-alert")}})}const tazele=tazeleyici(
+async()=>{await yukle(),ciz()});await yukle(),ciz();const saat=setInterval(()=>{!document.hidden&&kap.isConnected&&!document.querySelector(".perde")&&tazele()},6e4);return()=>clearInterval(saat)}}),Parcalar.
+tamam("ek_98zb_moderasyon");

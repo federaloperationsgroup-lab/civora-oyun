@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zc_rehber.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zc_rehber.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/gorevler",{async ac(kap){let g=null;const yukle=async()=>{g=await Sunucu.cagir("missions")};await yukle();const ciz=()=>{const rol=g.role?Rehber.ROL[g.role]:null;kap.innerHTML=`<di\
 v class="sayfa sayfa-dar">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("G\xFCn\xFCn g\xF6revleri")}</h1>

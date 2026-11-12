@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_98zzl_muze3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98zzl_muze3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function muze3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,80);let w=1,h=1,kirli=!0,
 kapEl=null,gorunur=!0,gozcu=null,d=muzeVerisi(null);const dinleyici={},etkinMi=()=>cizici.etkin===api,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.8,...ek}),KUTU=new THREE.BoxGeometry(
 1,1,1).translate(0,.5,0),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(KUTU,typeof mat=="string"?M(mat):mat);return m.scale.set(gx,gy,gz),m.position.set(x,y,z),m.castShadow=!0,m.receiveShadow=
@@ -28,39 +28,48 @@ SphereGeometry(.155,16,8,0,Math.PI*2,0,Math.PI*.45),M("#2B211C",{roughness:.9}))
 MeshStandardMaterial({map:lv.t,roughness:.4,metalness:.3}));return l.position.set(0,.72,.252),g.add(l),sahne.add(g),tiklanir.push({nesne:g,ad:"baskan:"+i}),{g,kaide,kaideUst,kusak,bas,boyun,sac,lv}}),
 kurucuDoku=tuvalDoku(512,400),kurucuTasi=new THREE.Group;kutu(kurucuTasi,1.7,.2,.62,"#BDB3A0",0,0,0);const tas=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.15,.18),[M("#D8D0BF"),M("#D8D0BF"),M("#D8D0BF"),
 M("#D8D0BF"),new THREE.MeshStandardMaterial({map:kurucuDoku.t,roughness:.9}),M("#D8D0BF")]);tas.position.set(0,.2+.575,0),tas.castShadow=!0,kurucuTasi.add(tas),kurucuTasi.position.set(-W/2+1.6,0,D/2-.9),
-kurucuTasi.rotation.y=.35,sahne.add(kurucuTasi),tiklanir.push({nesne:kurucuTasi,ad:"kurucu:0"});const yazLevha=(lv,metin,ek={})=>{const{x,c,t}=lv;x.clearRect(0,0,c.width,c.height),x.fillStyle=ek.zemin??
-"#C9A55A",x.fillRect(0,0,c.width,c.height),x.fillStyle=ek.renk??"#3A2A14",x.textAlign="center",x.textBaseline="middle",x.font=`700 ${ek.boy??26}px Georgia, serif`,x.fillText(metin,c.width/2,c.height/2+
-1,c.width-16),t.needsUpdate=!0};function tabloCiz(tb,z){const{x,c,t}=tb.resim,[g1,g2]=muzeTabloRenk(z.tur),renk=muzeRenk(d.ulke),gr=x.createLinearGradient(0,0,0,c.height);gr.addColorStop(0,g2),gr.addColorStop(
-1,g1),x.fillStyle=gr,x.fillRect(0,0,c.width,c.height),x.fillStyle="rgba(90, 100, 120, 0.45)",x.beginPath(),x.moveTo(0,150),x.lineTo(70,105),x.lineTo(140,140),x.lineTo(230,90),x.lineTo(320,135),x.lineTo(
-384,110),x.lineTo(384,200),x.lineTo(0,200),x.fill(),x.fillStyle="#6E8B4E",x.beginPath(),x.moveTo(0,200),x.quadraticCurveTo(120,150,200,170),x.quadraticCurveTo(300,185,384,165),x.lineTo(384,270),x.lineTo(
-0,270),x.fill(),x.fillStyle="#5A5048",x.fillRect(180,126,60,46),x.fillRect(172,116,16,16),x.fillRect(232,116,16,16),x.fillStyle="#3A3633",x.fillRect(205,82,3,46),x.fillStyle=renk,x.fillRect(208,82,40,
-24),x.fillStyle="rgba(255,255,255,0.92)",x.fillRect(208,91,40,6);const n=Math.min(MUZE_ASKER,z.vuran);for(let k=0;k<n;k++){const sx=30+k%12*28+Math.floor(k/12)%2*12,sy=208+Math.floor(k/12)*24;x.fillStyle=
-"#E8BC94",x.beginPath(),x.arc(sx,sy-12,4.5,0,Math.PI*2),x.fill(),x.fillStyle="#3A4656",x.fillRect(sx-4,sy-7,8,14),x.fillStyle="#4A5532",x.fillRect(sx-5,sy-18,10,3)}x.strokeStyle="rgba(40, 28, 16, 0.6)",
-x.lineWidth=6,x.strokeRect(3,3,c.width-6,c.height-6),t.needsUpdate=!0,yazLevha(tb.lv,`${bolgeAdi(z.bolge)} \xB7 ${muzeYil(z.an)} \xB7 ${sayi(z.bizim)}\u2013${sayi(z.onlarin)}`,{boy:22})}function sancakCiz(s,r){
-const{x,c,t}=s.doku,renk=s.kayip?muzeRenk(r.kime):muzeRenk(d.ulke);if(x.clearRect(0,0,c.width,c.height),x.fillStyle=renk,x.beginPath(),x.moveTo(0,0),x.lineTo(c.width,0),x.lineTo(c.width,c.height),x.lineTo(
-c.width/2,c.height-34),x.lineTo(0,c.height),x.fill(),x.fillStyle="rgba(255,255,255,0.92)",x.fillRect(0,70,c.width,22),s.kayip&&(x.strokeStyle="#1F1F1F",x.lineWidth=16,x.beginPath(),x.moveTo(0,16),x.lineTo(
-c.width,130),x.stroke(),r.geri)){x.fillStyle="#D9B865",x.beginPath();for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?9:20;x.lineTo(64+Math.cos(a)*rr,150+Math.sin(a)*rr)}x.fill()}t.needsUpdate=
-!0,s.bez.material.opacity=!s.kayip&&!r.elde?.5:1,yazLevha(s.lv,bolgeAdi(r.bolge),{boy:24})}function kurucuCiz(){const{x,c,t}=kurucuDoku;x.fillStyle="#D8D0BF",x.fillRect(0,0,c.width,c.height),x.strokeStyle=
-"#A69C86",x.lineWidth=6,x.strokeRect(12,12,c.width-24,c.height-24),x.fillStyle="#4E4636",x.textAlign="center",x.textBaseline="middle",x.font="700 34px Georgia, serif",x.fillText(\u00E7("KURUCULAR"),c.
-width/2,48),x.fillRect(166,74,180,3);const l=d.kurucular.slice(0,30),sutun=l.length>10?3:l.length>5?2:1,satir=Math.max(1,Math.ceil(l.length/sutun)),boy=Math.min(26,Math.floor(290/satir));x.font=`500 ${Math.
-max(12,boy-4)}px Georgia, serif`,x.textAlign="left",l.forEach((k,i)=>{const s=Math.floor(i/satir),y=96+i%satir*boy+boy/2,ad=k.ad??"\u2014";x.fillText(`${k.sira}. ${ad.length>14?ad.slice(0,13)+"\u2026":
-ad}`,30+s*(452/sutun),y,452/sutun-10)}),l.length||(x.textAlign="center",x.font="italic 24px Georgia, serif",x.fillText(\u00E7("\u0130lk kurucular bekleniyor"),c.width/2,220)),d.kurucular.length>l.length&&
-(x.textAlign="center",x.font="italic 20px Georgia, serif",x.fillText(\u00E7("ve {n} kurucu daha",{n:sayi(d.kurucular.length-l.length)}),c.width/2,c.height-34)),t.needsUpdate=!0}let anahtar="";function yaz(){
-const yeni=JSON.stringify(d);if(yeni===anahtar){kirli=!0;return}anahtar=yeni;const renk=muzeRenk(d.ulke);{const{x,c,t}=tabela;x.clearRect(0,0,c.width,c.height),x.fillStyle="#4E4636",x.textAlign="cente\
-r",x.textBaseline="middle",x.font="700 52px Georgia, serif",x.fillText(\u00E7("{ulke} M\xFCzesi",{ulke:ulkeAdi(d.ulke??"")}).toLocaleUpperCase(DIL?.yerel??"tr"),c.width/2,50,c.width-40),t.needsUpdate=
+kurucuTasi.rotation.y=.35,sahne.add(kurucuTasi),tiklanir.push({nesne:kurucuTasi,ad:"kurucu:0"});const marsDoku=tuvalDoku(512,400),bronz=M("#A8742F",{metalness:.55,roughness:.38}),marsPlaket=new THREE.
+Group;kutu(marsPlaket,1.6,.2,.62,"#7A5A3E",0,0,0);const levha=new THREE.Mesh(new THREE.BoxGeometry(1.42,1.1,.08),[bronz,bronz,bronz,bronz,new THREE.MeshStandardMaterial({map:marsDoku.t,roughness:.42,metalness:.4}),
+bronz]);levha.position.set(0,.2+.6,0),levha.rotation.x=-.08,levha.castShadow=!0,marsPlaket.add(levha),marsPlaket.position.set(W/2-1.6,0,D/2-.9),marsPlaket.rotation.y=-.35,marsPlaket.visible=!1,sahne.add(
+marsPlaket),tiklanir.push({nesne:marsPlaket,ad:"mars:0"});const yazLevha=(lv,metin,ek={})=>{const{x,c,t}=lv;x.clearRect(0,0,c.width,c.height),x.fillStyle=ek.zemin??"#C9A55A",x.fillRect(0,0,c.width,c.height),
+x.fillStyle=ek.renk??"#3A2A14",x.textAlign="center",x.textBaseline="middle",x.font=`700 ${ek.boy??26}px Georgia, serif`,x.fillText(metin,c.width/2,c.height/2+1,c.width-16),t.needsUpdate=!0};function tabloCiz(tb,z){
+const{x,c,t}=tb.resim,[g1,g2]=muzeTabloRenk(z.tur),renk=muzeRenk(d.ulke),gr=x.createLinearGradient(0,0,0,c.height);gr.addColorStop(0,g2),gr.addColorStop(1,g1),x.fillStyle=gr,x.fillRect(0,0,c.width,c.height),
+x.fillStyle="rgba(90, 100, 120, 0.45)",x.beginPath(),x.moveTo(0,150),x.lineTo(70,105),x.lineTo(140,140),x.lineTo(230,90),x.lineTo(320,135),x.lineTo(384,110),x.lineTo(384,200),x.lineTo(0,200),x.fill(),
+x.fillStyle="#6E8B4E",x.beginPath(),x.moveTo(0,200),x.quadraticCurveTo(120,150,200,170),x.quadraticCurveTo(300,185,384,165),x.lineTo(384,270),x.lineTo(0,270),x.fill(),x.fillStyle="#5A5048",x.fillRect(
+180,126,60,46),x.fillRect(172,116,16,16),x.fillRect(232,116,16,16),x.fillStyle="#3A3633",x.fillRect(205,82,3,46),x.fillStyle=renk,x.fillRect(208,82,40,24),x.fillStyle="rgba(255,255,255,0.92)",x.fillRect(
+208,91,40,6);const n=Math.min(MUZE_ASKER,z.vuran);for(let k=0;k<n;k++){const sx=30+k%12*28+Math.floor(k/12)%2*12,sy=208+Math.floor(k/12)*24;x.fillStyle="#E8BC94",x.beginPath(),x.arc(sx,sy-12,4.5,0,Math.
+PI*2),x.fill(),x.fillStyle="#3A4656",x.fillRect(sx-4,sy-7,8,14),x.fillStyle="#4A5532",x.fillRect(sx-5,sy-18,10,3)}x.strokeStyle="rgba(40, 28, 16, 0.6)",x.lineWidth=6,x.strokeRect(3,3,c.width-6,c.height-
+6),t.needsUpdate=!0,yazLevha(tb.lv,`${bolgeAdi(z.bolge)} \xB7 ${muzeYil(z.an)} \xB7 ${sayi(z.bizim)}\u2013${sayi(z.onlarin)}`,{boy:22})}function sancakCiz(s,r){const{x,c,t}=s.doku,renk=s.kayip?muzeRenk(
+r.kime):muzeRenk(d.ulke);if(x.clearRect(0,0,c.width,c.height),x.fillStyle=renk,x.beginPath(),x.moveTo(0,0),x.lineTo(c.width,0),x.lineTo(c.width,c.height),x.lineTo(c.width/2,c.height-34),x.lineTo(0,c.height),
+x.fill(),x.fillStyle="rgba(255,255,255,0.92)",x.fillRect(0,70,c.width,22),s.kayip&&(x.strokeStyle="#1F1F1F",x.lineWidth=16,x.beginPath(),x.moveTo(0,16),x.lineTo(c.width,130),x.stroke(),r.geri)){x.fillStyle=
+"#D9B865",x.beginPath();for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?9:20;x.lineTo(64+Math.cos(a)*rr,150+Math.sin(a)*rr)}x.fill()}t.needsUpdate=!0,s.bez.material.opacity=!s.kayip&&!r.elde?
+.5:1,yazLevha(s.lv,bolgeAdi(r.bolge),{boy:24})}function kurucuCiz(){const{x,c,t}=kurucuDoku;x.fillStyle="#D8D0BF",x.fillRect(0,0,c.width,c.height),x.strokeStyle="#A69C86",x.lineWidth=6,x.strokeRect(12,
+12,c.width-24,c.height-24),x.fillStyle="#4E4636",x.textAlign="center",x.textBaseline="middle",x.font="700 34px Georgia, serif",x.fillText(\u00E7("KURUCULAR"),c.width/2,48),x.fillRect(166,74,180,3);const l=d.
+kurucular.slice(0,30),sutun=l.length>10?3:l.length>5?2:1,satir=Math.max(1,Math.ceil(l.length/sutun)),boy=Math.min(26,Math.floor(290/satir));x.font=`500 ${Math.max(12,boy-4)}px Georgia, serif`,x.textAlign=
+"left",l.forEach((k,i)=>{const s=Math.floor(i/satir),y=96+i%satir*boy+boy/2,ad=k.ad??"\u2014";x.fillText(`${k.sira}. ${ad.length>14?ad.slice(0,13)+"\u2026":ad}`,30+s*(452/sutun),y,452/sutun-10)}),l.length||
+(x.textAlign="center",x.font="italic 24px Georgia, serif",x.fillText(\u00E7("\u0130lk kurucular bekleniyor"),c.width/2,220)),d.kurucular.length>l.length&&(x.textAlign="center",x.font="italic 20px Geor\
+gia, serif",x.fillText(\u00E7("ve {n} kurucu daha",{n:sayi(d.kurucular.length-l.length)}),c.width/2,c.height-34)),t.needsUpdate=!0}function marsCiz(){const{x,c,t}=marsDoku,m=d.mars,gr=x.createLinearGradient(
+0,0,c.width,c.height);gr.addColorStop(0,"#C9934A"),gr.addColorStop(.5,"#B07A35"),gr.addColorStop(1,"#8E5E26"),x.fillStyle=gr,x.fillRect(0,0,c.width,c.height),x.strokeStyle="#5C3D17",x.lineWidth=8,x.strokeRect(
+14,14,c.width-28,c.height-28),x.fillStyle="#3B2810",x.textAlign="center",x.textBaseline="middle",x.font="700 30px Georgia, serif",x.fillText(\u00E7("M\u0130LL\u0130 MAR\u015E"),c.width/2,50,c.width-80),
+x.beginPath(),x.ellipse(64,66,9,7,-.4,0,Math.PI*2),x.fill(),x.fillRect(71,30,3,36),x.fillRect(71,30,16,4),x.fillRect(c.width/2-90,72,180,3),x.font="700 28px Georgia, serif",x.fillText(m.baslik.length>
+26?m.baslik.slice(0,25)+"\u2026":m.baslik,c.width/2,106,c.width-60),x.font="500 20px Georgia, serif",x.fillText(`${m.grup} \xB7 ${m.yil}`,c.width/2,138,c.width-60),x.font="italic 22px Georgia, serif",
+m.soz.length?m.soz.slice(0,4).forEach((dz,i)=>x.fillText(dz,c.width/2,192+i*42,c.width-60)):x.fillText(\u00E7("S\xF6zleri hen\xFCz se\xE7ilmedi."),c.width/2,250,c.width-60),t.needsUpdate=!0}let anahtar="";
+function yaz(){const yeni=JSON.stringify(d);if(yeni===anahtar){kirli=!0;return}anahtar=yeni;const renk=muzeRenk(d.ulke);{const{x,c,t}=tabela;x.clearRect(0,0,c.width,c.height),x.fillStyle="#4E4636",x.textAlign=
+"center",x.textBaseline="middle",x.font="700 52px Georgia, serif",x.fillText(\u00E7("{ulke} M\xFCzesi",{ulke:ulkeAdi(d.ulke??"")}).toLocaleUpperCase(DIL?.yerel??"tr"),c.width/2,50,c.width-40),t.needsUpdate=
 !0}const tl=d.zaferler.slice(0,MUZE_TABLO),ara=Math.min(1.9,(W-1.4)/Math.max(1,tl.length));if(tablolar.forEach((tb,i)=>{const z=tl[i];tb.g.visible=!!z,z&&(tb.g.position.x=(i-(tl.length-1)/2)*ara,tabloCiz(
 tb,z))}),bosM.visible=!tl.length,!tl.length){const{x,c,t}=bosTablo;x.clearRect(0,0,c.width,c.height),x.fillStyle="#7A6E5C",x.textAlign="center",x.textBaseline="middle",x.font="italic 40px Georgia, ser\
 if",x.fillText(\u00E7("Hen\xFCz kazan\u0131lan sava\u015F yok"),c.width/2,c.height/2,c.width-20),t.needsUpdate=!0}for(const s of sancaklar){const r=(s.kayip?d.kaybedilen:d.kazanilan)[s.i];s.g.visible=
 !!r,r&&sancakCiz(s,r)}const bl=d.baskanlar,arka=bl.length>3?Math.ceil(bl.length/2):bl.length;if(bustler.forEach((b,i)=>{const p=bl[i];if(b.g.visible=!!p,!p)return;const on=i>=arka,k=on?i-arka:i,say=on?
 bl.length-arka:arka;b.g.position.set((k-(say-1)/2)*1.4,0,on?1.1:bl.length>3?-.4:.3);const[ten,sac]=gorunusRenkleri(p.ad,p.id);b.bas.material.color.set(ten),b.boyun.material.color.set(ten),b.sac.material.
 color.set(sac),b.kusak.material.color.set(renk),b.kaideUst.material.color.set(p.gorevde?"#D9B865":"#BDB3A0"),b.kaideUst.material.metalness=p.gorevde?.6:0,yazLevha(b.lv,p.ad.length>18?p.ad.slice(0,17)+
-"\u2026":p.ad,{boy:24})}),kurucuCiz(),kapEl){const ds=kapEl.dataset,v={tablo:String(tl.length),kazanilan:String(Math.min(MUZE_SANCAK,d.kazanilan.length)),kaybedilen:String(Math.min(MUZE_SANCAK,d.kaybedilen.
-length)),bust:String(bl.length),kurucu:String(d.kurucular.length)};for(const[k,x]of Object.entries(v))ds[k]!==x&&(ds[k]=x)}kirli=!0}const YON=new THREE.Vector3(0,.62,1).normalize(),YON_DAR=new THREE.Vector3(
-0,.9,1).normalize();function kameraKur(){kamera.aspect=w/h;const dar=w/h<1.3,n=[[-W/2,0,D/2],[W/2,0,D/2],[-W/2,H,-D/2],[W/2,H,-D/2]].map(([a,b,c])=>new THREE.Vector3(a,b,c));kameraSigdir(THREE,kamera,
-n,dar?YON_DAR:YON,{x:.99,ust:.96,alt:-.97}),kirli=!0}const isin=new THREE.Raycaster,imlec=new THREE.Vector2;tuval.addEventListener("pointerup",e=>{if(!etkinMi())return;const rr=tuval.getBoundingClientRect();
-imlec.set((e.clientX-rr.left)/rr.width*2-1,-((e.clientY-rr.top)/rr.height)*2+1),isin.setFromCamera(imlec,kamera);const vur=isin.intersectObjects(tiklanir.filter(x=>x.nesne.visible).map(x=>x.nesne),!0)[0];
-if(!vur)return;let o=vur.object;for(;o&&!tiklanir.some(x=>x.nesne===o);)o=o.parent;const t=tiklanir.find(x=>x.nesne===o);t&&dinleyici.sec?.(t.ad)});const api={get etiket(){return \u00E7("\xDClke m\xFCzesi (\
-3B): sava\u015F tablolar\u0131, sancaklar, ba\u015Fkanlar\u0131n b\xFCstleri ve kurucular ta\u015F\u0131")},sahne,kamera,get kareMs(){return 250},dinle(ad,fn){dinleyici[ad]=fn},kapBagla(el){kapEl=el??
-null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<"u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),anahtar="",yaz()},get cizimSayisi(){
-let n=0;return sahne.traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){d={...d,...y},yaz()},kalite(k){isik.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&
-(kirli=!0)},guncelle(){},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zzl_muze3b");
+"\u2026":p.ad,{boy:24})}),kurucuCiz(),marsPlaket.visible=!!d.mars,d.mars&&marsCiz(),kapEl){const ds=kapEl.dataset,v={tablo:String(tl.length),kazanilan:String(Math.min(MUZE_SANCAK,d.kazanilan.length)),
+kaybedilen:String(Math.min(MUZE_SANCAK,d.kaybedilen.length)),bust:String(bl.length),kurucu:String(d.kurucular.length),mars:d.mars?d.mars.soz.length?"sozlu":"sozsuz":"0"};for(const[k,x]of Object.entries(
+v))ds[k]!==x&&(ds[k]=x)}kirli=!0}const YON=new THREE.Vector3(0,.62,1).normalize(),YON_DAR=new THREE.Vector3(0,.9,1).normalize();function kameraKur(){kamera.aspect=w/h;const dar=w/h<1.3,n=[[-W/2,0,D/2],
+[W/2,0,D/2],[-W/2,H,-D/2],[W/2,H,-D/2]].map(([a,b,c])=>new THREE.Vector3(a,b,c));kameraSigdir(THREE,kamera,n,dar?YON_DAR:YON,{x:.99,ust:.96,alt:-.97}),kirli=!0}const isin=new THREE.Raycaster,imlec=new THREE.
+Vector2;tuval.addEventListener("pointerup",e=>{if(!etkinMi())return;const rr=tuval.getBoundingClientRect();imlec.set((e.clientX-rr.left)/rr.width*2-1,-((e.clientY-rr.top)/rr.height)*2+1),isin.setFromCamera(
+imlec,kamera);const vur=isin.intersectObjects(tiklanir.filter(x=>x.nesne.visible).map(x=>x.nesne),!0)[0];if(!vur)return;let o=vur.object;for(;o&&!tiklanir.some(x=>x.nesne===o);)o=o.parent;const t=tiklanir.
+find(x=>x.nesne===o);t&&dinleyici.sec?.(t.ad)});const api={get etiket(){return \u00E7("\xDClke m\xFCzesi (3B): sava\u015F tablolar\u0131, sancaklar, ba\u015Fkanlar\u0131n b\xFCstleri, kurucular ta\u015F\u0131 ve mar\u015F\u0131n plaketi")},
+sahne,kamera,get kareMs(){return 250},dinle(ad,fn){dinleyici[ad]=fn},kapBagla(el){kapEl=el??null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<"u"&&(gozcu=new IntersectionObserver(
+g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),anahtar="",yaz()},get cizimSayisi(){let n=0;return sahne.traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){d={...d,...y},yaz()},
+kalite(k){isik.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(){},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.
+tamam("uc_98zzl_muze3b");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (uc_68_yolculuk3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_68_yolculuk3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const YOL_KESIM=9;function yolculuk3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,160);let w=1,h=1,kirli=!0,kapEl=null,
 gorunur=!0,gozcu=null,d={rota:[],deniz:[],bas:null,bit:null,seviye:{},ulke:null,gece:0,aracK:null,aracD:null};const dinleyici={},M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,
 ...ek}),golgeli=m=>(m.castShadow=!0,m.receiveShadow=!0,m),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=golgeli(new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat));return m.position.set(x,y+gy/2,z),m},tuvalDoku=(gen,yuk)=>{
@@ -63,25 +63,25 @@ c.arac.renk));m.rotation.y=Math.PI/2,m.scale.setScalar(c.arac.tur==="otomobil"?1
 0,YAN_Z-(c.denizde?.3:0))})}const direkler=new THREE.Group,direkGeo=new THREE.BoxGeometry(.06,.5,.06),direkMat=M("#E9E0CE");for(let k=0;k<8;k++){const m=new THREE.Mesh(direkGeo,direkMat);m.position.set(
 k*1.5,.25,.78),direkler.add(m)}sahne.add(direkler);const bulutlar=[],bulutMat=new THREE.MeshStandardMaterial({color:"#FFFFFF",roughness:1,transparent:!0,opacity:.85});for(let k=0;k<6;k++){const b=new THREE.
 Group;for(let j=0;j<3;j++){const m=new THREE.Mesh(new THREE.IcosahedronGeometry(.4+j*.08,1),bulutMat);m.position.set(j*.45-.45,Math.sin(j)*.1,0),b.add(m)}b.position.set(k*6,4+k%3*.6,-6-k%2*2),b.userData.
-hiz=.08+k%3*.04,sahne.add(b),bulutlar.push(b)}let ilerleme=0,kamX=null,aracTur="otobus",bolgeSimdi=null,durum="bekliyor";function ilerlemeHesapla(simdi=Date.now()){if(!d.bas||!d.bit)return 0;const a=Date.
-parse(d.bas),b=Date.parse(d.bit);return Math.max(0,Math.min(1,(simdi-a)/Math.max(1,b-a)))}function yerYaz(t,dt){const yolda=!!(d.bas&&d.bit);ilerleme=ilerlemeHesapla(),durum=yolda?ilerleme>=1?"vardi":
-"yolda":"bekliyor";const x=ilerleme*uzunluk,k=Math.min(Math.max(0,d.rota.length-2),Math.floor(x/9)),kesimU=x/9-k,denizde=yolda&&durum==="yolda"&&d.deniz.includes(k)&&kesimU>.18&&kesimU<.82;aracTur=yolculukAracTur(
-d,k,denizde);const kendi=aracTur!=="otobus"&&aracTur!=="vapur";otobus.visible=!denizde&&!kendi,vapur.visible=denizde&&!kendi,ozelK.visible=!denizde&&kendi,ozelD.visible=denizde&&kendi;const surus=durum===
-"yolda"&&!hareketAzalt,sallan=surus?Math.abs(Math.sin(t*11))*.02:0;if(otobus.position.set(x,sallan,0),ozelK.position.set(x,sallan*.6,.05),vapur.position.set(x,Math.sin(t*1.6)*.03,-.2),vapur.rotation.z=
-surus?Math.sin(t*1.2)*.03:0,ozelD.position.set(x,-.22+Math.sin(t*1.6)*.03,-.1),ozelD.rotation.z=vapur.rotation.z,surus){for(const tk of tekerlekler)tk.rotation.z-=dt*7;ozelK.visible&&aracTekerDondur(ozelK.
-children[0],dt*8)}direkler.visible=surus&&!denizde,direkler.visible&&direkler.children.forEach((m,i)=>{m.position.x=x-6+((i*1.5-t*3.2)%12+12)%12}),bolgeSimdi=(kesimler.find(s=>x>=s.a0&&x<s.a1)??kesimler[kesimler.
-length-1])?.bolge??null;const hedefX=x+(durum==="bekliyor"?-.5:1.6);kamX=kamX==null?hedefX:kamX+(hedefX-kamX)*Math.min(1,dt*3),kameraKaydir();for(const b of bulutlar)b.position.x-=hareketAzalt?0:b.userData.
-hiz*dt,b.position.x<kamX-18&&(b.position.x+=36),b.position.x>kamX+18&&(b.position.x-=36);for(const y of denizler)y.rotation.z=hareketAzalt?0:Math.sin(t*1.3+y.userData.salin)*.05;yanYaz(t)}const YON=new THREE.
-Vector3(0,.42,1).normalize(),YON_DAR=new THREE.Vector3(0,.55,1).normalize(),kamOfs=new THREE.Vector3,bakOfs=new THREE.Vector3;function kameraKur(){kamera.aspect=w/h;const dar=w/h<1.4,gen=dar?5.2:8.5,n=[
-[-gen,0,1.4],[gen,0,1.4],[-gen,2.6,-4.6],[gen,2.6,-4.6]].map(([a,b,c])=>new THREE.Vector3(a,b,c));kameraSigdir(THREE,kamera,n,dar?YON_DAR:YON,{x:.99,ust:.98,alt:-.98}),kamOfs.copy(kamera.position),bakOfs.
-set(0,0,-1).applyQuaternion(kamera.quaternion).multiplyScalar(kamera.position.length()).add(kamera.position),kameraKaydir()}function kameraKaydir(){const x=kamX??0;kamera.position.set(kamOfs.x+x,kamOfs.
-y,kamOfs.z),kamera.lookAt(bakOfs.x+x,bakOfs.y,bakOfs.z),kamera.updateMatrixWorld(),gunes.position.set(x-6,12,8),gunes.target.position.set(x,0,-1),kirli=!0}function geceUygula(){const g=d.gece??0;sahne.
-background.copy(gokGun).lerp(gokGece,g),yari.intensity=1.3-g*.85,gunes.intensity=2.2*(1-g)+.12,pencereMat.emissiveIntensity=g>.4?1.1:0,camlar.material.emissiveIntensity=g>.4?.6:0,far.visible=g>.3,farIsik.
-intensity=g>.3?6:0,kirli=!0}const tuval=cizici.renderer.domElement,isin=new THREE.Raycaster,imlec=new THREE.Vector2;tuval.addEventListener("pointerup",e=>{if(cizici.etkin!==api)return;const r=tuval.getBoundingClientRect();
-imlec.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1),isin.setFromCamera(imlec,kamera),isin.intersectObjects([otobus,vapur,ozelK,ozelD].filter(o=>o.visible),!0).length&&dinleyici.
-arac?.()});let sonT=0;const api={get etiket(){return \u00E7("Yolculuk (3B): rota, arazi ve otob\xFCs")},sahne,kamera,surekli:!0,get kareMs(){return!gorunur||hareketAzalt?1e3:telefon()?50:33},dinle(ad,fn){
-dinleyici[ad]=fn},kapBagla(el){kapEl=el??null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<"u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),
-gozcu.observe(kapEl)),kirli=!0},get durum(){return{durum,ilerleme:Math.round(ilerleme*100),arac:aracTur,bolge:bolgeSimdi??"",tabela:tabelalar.length,yoldas:yanSayi}},get cizimSayisi(){let n=0;return sahne.
-traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){const geceDegisti=y.gece!==d.gece;d={...d,...y},seritKur(),ozelKur(),seritMat.color.set(d.ulke?ulkeRenk(d.ulke):"#C65A3B"),geceDegisti&&geceUygula(),
-yerYaz(sonT,.016),kirli=!0},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){sonT=t,gorunur&&(yerYaz(t,dt),kirli=
-!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return geceUygula(),api}Parcalar.tamam("uc_68_yolculuk3b");
+hiz=.08+k%3*.04,sahne.add(b),bulutlar.push(b)}let ilerleme=0,kamX=null,aracTur="otobus",bolgeSimdi=null,durum="bekliyor";function ilerlemeHesapla(simdi=Date.now()){return!d.bas||!d.bit?0:yolOrani(Date.
+parse(d.bas),Date.parse(d.bit),simdi,d.durus??[])}function yerYaz(t,dt){const yolda=!!(d.bas&&d.bit),simdi=Date.now();ilerleme=ilerlemeHesapla(simdi);const durdu=yolda&&(d.durus??[]).some(p=>simdi>=p.
+atMs&&simdi<p.atMs+p.ms);durum=yolda?ilerleme>=1&&!durdu?"vardi":"yolda":"bekliyor";const x=ilerleme*uzunluk,k=Math.min(Math.max(0,d.rota.length-2),Math.floor(x/9)),kesimU=x/9-k,denizde=yolda&&durum===
+"yolda"&&d.deniz.includes(k)&&kesimU>.18&&kesimU<.82;aracTur=yolculukAracTur(d,k,denizde);const kendi=aracTur!=="otobus"&&aracTur!=="vapur";otobus.visible=!denizde&&!kendi,vapur.visible=denizde&&!kendi,
+ozelK.visible=!denizde&&kendi,ozelD.visible=denizde&&kendi;const surus=durum==="yolda"&&!durdu&&!hareketAzalt,sallan=surus?Math.abs(Math.sin(t*11))*.02:0;if(otobus.position.set(x,sallan,0),ozelK.position.
+set(x,sallan*.6,.05),vapur.position.set(x,Math.sin(t*1.6)*.03,-.2),vapur.rotation.z=surus?Math.sin(t*1.2)*.03:0,ozelD.position.set(x,-.22+Math.sin(t*1.6)*.03,-.1),ozelD.rotation.z=vapur.rotation.z,surus){
+for(const tk of tekerlekler)tk.rotation.z-=dt*7;ozelK.visible&&aracTekerDondur(ozelK.children[0],dt*8)}direkler.visible=surus&&!denizde,direkler.visible&&direkler.children.forEach((m,i)=>{m.position.x=
+x-6+((i*1.5-t*3.2)%12+12)%12}),bolgeSimdi=(kesimler.find(s=>x>=s.a0&&x<s.a1)??kesimler[kesimler.length-1])?.bolge??null;const hedefX=x+(durum==="bekliyor"?-.5:1.6);kamX=kamX==null?hedefX:kamX+(hedefX-
+kamX)*Math.min(1,dt*3),kameraKaydir();for(const b of bulutlar)b.position.x-=hareketAzalt?0:b.userData.hiz*dt,b.position.x<kamX-18&&(b.position.x+=36),b.position.x>kamX+18&&(b.position.x-=36);for(const y of denizler)
+y.rotation.z=hareketAzalt?0:Math.sin(t*1.3+y.userData.salin)*.05;yanYaz(t)}const YON=new THREE.Vector3(0,.42,1).normalize(),YON_DAR=new THREE.Vector3(0,.55,1).normalize(),kamOfs=new THREE.Vector3,bakOfs=new THREE.
+Vector3;function kameraKur(){kamera.aspect=w/h;const dar=w/h<1.4,gen=dar?5.2:8.5,n=[[-gen,0,1.4],[gen,0,1.4],[-gen,2.6,-4.6],[gen,2.6,-4.6]].map(([a,b,c])=>new THREE.Vector3(a,b,c));kameraSigdir(THREE,
+kamera,n,dar?YON_DAR:YON,{x:.99,ust:.98,alt:-.98}),kamOfs.copy(kamera.position),bakOfs.set(0,0,-1).applyQuaternion(kamera.quaternion).multiplyScalar(kamera.position.length()).add(kamera.position),kameraKaydir()}
+function kameraKaydir(){const x=kamX??0;kamera.position.set(kamOfs.x+x,kamOfs.y,kamOfs.z),kamera.lookAt(bakOfs.x+x,bakOfs.y,bakOfs.z),kamera.updateMatrixWorld(),gunes.position.set(x-6,12,8),gunes.target.
+position.set(x,0,-1),kirli=!0}function geceUygula(){const g=d.gece??0;sahne.background.copy(gokGun).lerp(gokGece,g),yari.intensity=1.3-g*.85,gunes.intensity=2.2*(1-g)+.12,pencereMat.emissiveIntensity=
+g>.4?1.1:0,camlar.material.emissiveIntensity=g>.4?.6:0,far.visible=g>.3,farIsik.intensity=g>.3?6:0,kirli=!0}const tuval=cizici.renderer.domElement,isin=new THREE.Raycaster,imlec=new THREE.Vector2;tuval.
+addEventListener("pointerup",e=>{if(cizici.etkin!==api)return;const r=tuval.getBoundingClientRect();imlec.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1),isin.setFromCamera(imlec,
+kamera),isin.intersectObjects([otobus,vapur,ozelK,ozelD].filter(o=>o.visible),!0).length&&dinleyici.arac?.()});let sonT=0;const api={get etiket(){return \u00E7("Yolculuk (3B): rota, arazi ve otob\xFCs")},
+sahne,kamera,surekli:!0,get kareMs(){return!gorunur||hareketAzalt?1e3:telefon()?50:33},dinle(ad,fn){dinleyici[ad]=fn},kapBagla(el){kapEl=el??null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<
+"u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),kirli=!0},get durum(){return{durum,ilerleme:Math.round(ilerleme*100),arac:aracTur,bolge:bolgeSimdi??
+"",tabela:tabelalar.length,yoldas:yanSayi}},get cizimSayisi(){let n=0;return sahne.traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){const geceDegisti=y.gece!==d.gece;d={...d,...y},seritKur(),ozelKur(),
+seritMat.color.set(d.ulke?ulkeRenk(d.ulke):"#C65A3B"),geceDegisti&&geceUygula(),yerYaz(sonT,.016),kirli=!0},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){
+acik&&(kirli=!0)},guncelle(dt,t){sonT=t,gorunur&&(yerYaz(t,dt),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return geceUygula(),api}Parcalar.tamam("uc_68_yolculuk3b");

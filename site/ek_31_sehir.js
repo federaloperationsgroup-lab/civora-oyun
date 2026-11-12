@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/ev",{async ac(kap){let v=null,odaKapat=null,zy=null;const partiEl=document.createElement("div");partiEl.id="parti-yer",partiEl.style.marginTop="20px";const partiKapat=EvPartisiKart.
 ac(partiEl);async function yukle(){const[ev,kurallar,,oda,harita,kariyer]=await Promise.all([Sunucu.cagir("my_home"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("home_layout"),Durum.harita().catch(()=>null),
 Sunucu.cagir("media_career").catch(()=>null)]),burasi=await Sunucu.cagir("city",{p_region:ev.location_region_id});v={ev,burasi,kurallar,oda,harita,kariyer}}function evimKarti(ev,kurallar){const h=ev.house;
@@ -93,8 +93,9 @@ v=null,varisDeneme=0;const yolculuk=YolculukSahnesi.ac();yolculuk.dinle("arac",(
 ac(),sira=sahneSirasiKur();let istZaman=null;async function yukle(){const[ys,harita,kurallar,,,ist]=await Promise.all([Sunucu.cagir("travel_status"),Durum.harita(),Durum.kurallar(),Durum.ozet(),Durum.
 askerlik().catch(()=>null),Sunucu.cagir("station_board").catch(()=>null)]);v={ys,harita,kurallar,ist}}function yolKazasi(a){const ad=a.severity==="agir"?\u00E7("A\u011F\u0131r kaza"):\u00E7("Hafif kaz\
 a"),sonuc=a.insured?\u00E7("sigorta kar\u015F\u0131lad\u0131, ara\xE7 a\u015F\u0131nmad\u0131"):Number(a.applied)>0?\u00E7("a\u015F\u0131nma +{n} ({a}/{b})",{n:sayi(a.applied),a:sayi(a.wear_after),b:sayi(
-a.durability)}):\u00E7("ara\xE7 daha fazla a\u015F\u0131nmad\u0131");return`<p class="kucuk arac-kaza" data-yol-kart-kaza="${esc(a.severity)}">${ikon(a.insured?"shield-check":"triangle-alert")} ${esc(
-\u00E7("{ad}: {arac}, {sonuc}.",{ad,arac:aracRenkliAd(a.kind,a.color),sonuc}))}</p>`}function yolKarti(tr){return`<section class="kart" id="yol-kart">
+a.durability)}):\u00E7("ara\xE7 daha fazla a\u015F\u0131nmad\u0131"),gec=Number(a.delay_ms??0)>0?" "+\u00E7("Kazada gecikme: {sure} (ara\xE7 kazan\u0131n yerinde bekler; var\u0131\u015F o kadar ileri).",
+{sure:gecikmeYaz(a.delay_ms)}):"";return`<p class="kucuk arac-kaza" data-yol-kart-kaza="${esc(a.severity)}"${gec?` data-yol-kart-gecikme="${esc(String(a.delay_ms))}"`:""}>${ikon(a.insured?"shield-chec\
+k":"triangle-alert")} ${esc(\u00E7("{ad}: {arac}, {sonuc}.",{ad,arac:aracRenkliAd(a.kind,a.color),sonuc})+gec)}</p>`}function yolKarti(tr){return`<section class="kart" id="yol-kart">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Yoldas\u0131n")}</p><h2 class="b2">${esc(bolgeAdi(tr.to))}</h2></div><span class="ik-kutu">${ikon("route")}</span></div>
         <div class="rota">${tr.route.map(r=>`<span class="cip">${esc(bolgeAdi(r))}</span>`).join(ikon("arrow-right"))}</div>
         ${tr.vehicle?`<p class="kucuk arac-yol" data-yol-arac="${esc(String(tr.vehicle.ppm))}">${[tr.vehicle.land,tr.vehicle.sea].filter(Boolean).map(x=>`${ikon(ARAC_IK[x.kind]??"car")} ${\u00E7("{ara\
@@ -102,7 +103,7 @@ c} ile ({n} kenar)",{arac:esc(aracRenkliAd(x.kind,x.color)),n:Number(x.edges)})}
 <b>${esc(x.name)}</b>`:""}${x.owner?` \xB7 ${esc(\u00E7("kiral\u0131k (sahibi {ad})",{ad:x.owner}))}`:""}`).join(" \xB7 ")}${tr.vehicle.minutes_before?` \xB7 ${\u00E7("{a} yerine {b} dakika",{a:sayi(tr.
 vehicle.minutes_before),b:sayi(tr.minutes)})}`:""}</p>`:""}
         ${tr.vehicle?[tr.vehicle.land,tr.vehicle.sea].filter(x=>x?.accident).map(x=>yolKazasi(x.accident)).join(""):""}
-        <div class="cubuk deniz"><i data-ilerleme="${tr.departs_at}|${tr.arrives_at}"></i></div>
+        <div class="cubuk deniz"><i data-ilerleme="${tr.departs_at}|${tr.arrives_at}" data-duruslar="${esc(durusYaz(tr.pauses))}"></i></div>
         <p class="kucuk" style="margin-top:8px">${\u00E7("Var\u0131\u015F: <b>{zaman}</b>",{zaman:esc(saatYaz(tr.arrives_at))})} \xB7 ${\u00E7("kalan")} <b data-bitis="${tr.arrives_at}"></b></p>
         <p class="aciklama">${\u00E7("Yolculuk sunucuda s\xFCrer; uygulamay\u0131 kapatsan da var\u0131rs\u0131n. Yoldayken \xE7al\u0131\u015Famaz, cephede vuramazs\u0131n.")}</p>
         <button class="dugme ikincil kucuk-d" id="yol-iptal">${ikon("x")}${\u00E7("Yolculu\u011Fu iptal et")}</button>

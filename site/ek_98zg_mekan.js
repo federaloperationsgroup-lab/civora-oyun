@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zg_mekan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zg_mekan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/mekanlar",{async ac(kap){let r=null,hata=null;const bildiri=mekanBildiri;mekanBildiri=null,await Durum.kurallar().catch(()=>null);async function yukle(){try{r=await MekanYolu.burada(),
 hata=null}catch(e){hata=e}}function ciz(){if(hata&&!r){kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(hata))}</span></div>
           <button class="dugme ikincil" style="margin-top:14px" id="mekan-yeniden">${\u00E7("Yeniden dene")}</button></div>`,$("#mekan-yeniden",kap).onclick=()=>tazele();return}const sis=r.system,venues=r.
@@ -185,8 +185,9 @@ ucret.default??0))}" autocomplete="off">
 {},l=m.stage_today??[],kapilar=R2.policies??["herkes","arkadaslar","yonetim"],satir=s=>{const canli=s.status==="live",kim=s.kind==="canli"?s.band??"":(s.performers??[]).map(x=>x??\u00E7("Biri")).join(
 ", ");return`<div class="liste-satir" data-sahne-set="${esc(s.id)}" data-durum="${esc(s.status)}"><span class="liste-ikon ${canli?"mor":""}">${ikon(SAHNE_TUR_IK[s.kind]??"headphones")}</span>
           <div><span class="tur">${esc(saatYaz(s.started_at))} \xB7 ${esc(\u00E7("{n} dakika",{n:Number(s.minutes??0)}))}</span><b>${esc(SAHNE_TUR[s.kind]??s.kind)}${kim?" \xB7 "+esc(kim):""}</b>
-            <div class="alt">${esc([canli?\u00E7("s\xFCr\xFCyor"):SAHNE_BITIS[s.end_reason]??"",\u00E7("{n} dinleyici",{n:sayi(s.listeners??0)}),\u00E7("{n} alk\u0131\u015F",{n:sayi(s.applause??0)})].
-filter(Boolean).join(" \xB7 "))}</div></div>
+            <div class="alt">${esc([canli?\u00E7("s\xFCr\xFCyor"):SAHNE_BITIS[s.end_reason]??"",\u00E7("{n} dinleyici",{n:sayi(s.listeners??0)}),\u00E7("{n} alk\u0131\u015F",{n:sayi(s.applause??0)}),Number(
+s.tips_count??0)>0?\u00E7("{n} bah\u015Fi\u015F ({kr} kredi)",{n:sayi(s.tips_count),kr:kr(s.tips_cr??0)}):"",Number(s.requests_played??0)>0?\u00E7("{n} istek \xE7al\u0131nd\u0131",{n:sayi(s.requests_played)}):
+""].filter(Boolean).join(" \xB7 "))}</div></div>
           ${canli?`<button class="dugme sade kucuk-d" data-sahne-bitir="${esc(s.id)}">${ikon("x")}${\u00E7("Seti bitir")}</button>`:"<span></span>"}</div>`};return`<section class="kart" id="mekanim-sa\
 hne"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Sahne")}</p><h2 class="b2">${\u00E7("DJ ve canl\u0131 performans")}</h2></div><span class="ik-kutu">${ikon("headphones")}</span></div>
         <form class="form" data-mekanim-sahne novalidate>
@@ -196,10 +197,10 @@ k)}" ${v2.stage_policy===k?"checked":""}>
           <button class="dugme kucuk-d" type="submit">${ikon("check")}${\u00E7("Kaydet")}</button><div class="form-mesaj"></div></form>
         <p class="ust-yazi" style="margin-top:12px">${esc(\u00E7("Bug\xFCnk\xFC setler: {n} / {m}",{n:l.length,m:Number(R2.perVenuePerDay??8)}))}</p>
         ${l.length?`<div class="liste">${l.map(satir).join("")}</div>`:`<p class="bos">${\u00E7("Bug\xFCn sahneye \xE7\u0131kan olmad\u0131.")}</p>`}
-        <p class="kucuk">${\u00E7("Kul\xFCpteki oyuncular DJ seti ya da canl\u0131 performans yapar; \u015Fark\u0131lar kul\xFCpte herkese \xE7alar. Sahne para kazand\u0131rmaz: sahnedekiler \xFCn, dinleyenler keyif kazan\u0131r. Sen ve \
-y\xF6neticilerin her zaman sahneye \xE7\u0131kar ve s\xFCren seti bitirebilirsiniz.")}</p></section>`}function odalarHtml(m){const H=R().hotel??{},l=m.stays??[];return`<section class="kart" id="mekani\
-m-odalar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Otel")}</p><h2 class="b2">${esc(\u00E7("{n} / {m} oda dolu",{n:l.length,m:Number(H.rooms??4)}))}</h2></div><span class="ik-kutu">${ikon(
-"bed")}</span></div>
+        <p class="kucuk">${\u00E7("Kul\xFCpteki oyuncular DJ seti ya da canl\u0131 performans yapar; \u015Fark\u0131lar kul\xFCpte herkese \xE7alar. Sahnedekiler \xFCn ve dinleyicilerin bah\u015Fi\u015Fini, dinleyenler keyif kazan\u0131r; din\
+leyiciler \u015Fark\u0131 da ister. Bah\u015Fi\u015Fin hizmet pay\u0131 yak\u0131l\u0131r, kul\xFCb\xFCn kasas\u0131na girmez. Sen ve y\xF6neticilerin her zaman sahneye \xE7\u0131kar ve s\xFCren seti bitirebilirsiniz.")}\
+</p></section>`}function odalarHtml(m){const H=R().hotel??{},l=m.stays??[];return`<section class="kart" id="mekanim-odalar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Otel")}</p><h2 clas\
+s="b2">${esc(\u00E7("{n} / {m} oda dolu",{n:l.length,m:Number(H.rooms??4)}))}</h2></div><span class="ik-kutu">${ikon("bed")}</span></div>
         ${l.length?`<div class="liste">${l.map(s=>`<div class="liste-satir"><span class="liste-ikon lacivert">${ikon("bed")}</span><div><span class="tur">${esc(\u00E7("{n}. oda",{n:Number(s.room)}))}<\
 /span><b>${esc(s.guest??"")}</b>
             <div class="alt">${esc(\u00E7("{a} / {b} gece \xF6dendi \xB7 \xE7\u0131k\u0131\u015F {zaman}",{a:Number(s.nights_paid),b:Number(s.nights),zaman:saatYaz(s.ends_at)}))}</div></div><span></sp\

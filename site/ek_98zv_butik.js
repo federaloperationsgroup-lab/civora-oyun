@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zv_butik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zv_butik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/butik",{async ac(kap){let v=null,w=null,moda=null,kapsam="world",model=null,kapandi=!1,gorunus;try{kapsam=sessionStorage.getItem("civora.butik.kapsam")==="city"?"city":"world",model=
 sessionStorage.getItem("civora.butik.model")||null}catch{}model&&!GIYSI_MODELLER.includes(model)&&!BUTIK_YUVA_SUZGEC[model]&&(model=null);const ben=()=>Durum.v.ozet?.character??{},sahne=ButikSahnesi.ac();
 async function yukle(){const[b,g,bak,m]=await Promise.all([Sunucu.cagir("boutique",{p_scope:kapsam,p_model:model}),Sunucu.cagir("wardrobe").catch(()=>null),gorunus===void 0?Sunucu.cagir("my_look").catch(
@@ -47,7 +47,8 @@ n></span></div>`).join("")}</div>`:""}
 \u00E7("{hafta} bitti: haftan\u0131n y\u0131ld\u0131z\u0131 {ad} ({p} puan).",{hafta:modaHaftasiAdi(h.no),ad:h.standings[0].name??\u00E7("Silinmi\u015F hesap"),p:sayi(h.standings[0].points)}):\u00E7("\
 {hafta} bitti.",{hafta:modaHaftasiAdi(h.no)}):\u00E7("{hafta}: {tarih}, {n} ba\u015Fkentte defile.",{hafta:modaHaftasiAdi(h.no),tarih:modaHaftasiAraligi(h.week_start),n:sayi(h.hosts??0)})+(ilk?" "+\u00E7(
 "S\u0131radaki: {sehir}, {zaman}.",{sehir:bolgeAdi(ilk.region_id),zaman:saatYaz(ilk.starts_at)}):"")+(h.mine?" "+\u00E7("S\u0131ralamada {n}. s\u0131radas\u0131n ({p} puan).",{n:sayi(h.mine.rank),p:sayi(
-h.mine.points)}):"");return`<div class="bilgi-kutusu moda-duyuru" id="butik-moda" data-moda-hafta="${esc(h.id)}" style="margin-bottom:14px">${ikon("sparkles")}<span>${esc(yazi)}
+h.mine.points)}):"")+(Number(h.pool_cr)>0?" "+\u00E7("Haftan\u0131n \xF6d\xFCl havuzu {kr} kredi.",{kr:kr(h.pool_cr)}):"");return`<div class="bilgi-kutusu moda-duyuru" id="butik-moda" data-moda-hafta=\
+"${esc(h.id)}" style="margin-bottom:14px">${ikon("sparkles")}<span>${esc(yazi)}
           <button class="baglanti" type="button" data-git="sehir/etkinlikler">${\u00E7("Etkinlikler")}</button></span></div>`}return moda?.next?`<p class="kucuk moda-duyuru" id="butik-moda" style="mar\
 gin:0 0 14px">${ikon("sparkles")} ${esc(\u00E7("S\u0131radaki moda haftas\u0131: {tarih}. Her ba\u015Fkentin defilesine kendi dikti\u011Fin ba\u015Fka bir giysiyle kat\u0131l.",{tarih:modaHaftasiAraligi(
 moda.next)}))}</p>`:""}function ciz(){const liste=v?.listings??[],yer=v?.region_id?bolgeAdi(v.region_id):null,bk=B(),govdeModelleri=(T().models??[]).filter(m=>!(m.slot??GIYSI_TAKI[m.id]));kap.innerHTML=

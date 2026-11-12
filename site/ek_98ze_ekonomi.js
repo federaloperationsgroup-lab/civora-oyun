@@ -1,11 +1,13 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98ze_ekonomi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
-"use strict";Kabuk.kaydet("ulke/ekonomi",{async ac(kap){let pano=null,kamu=null,stok=null,lojistik=null,kapandi=!1,ulkeSec=null;try{ulkeSec=sessionStorage.getItem("civora.ekonomi.ulke")||null}catch{}const sahne=EkonomiSahnesi.
-ac();sahne.dinle("sec",ad=>{if(ad==="pano"){$("#ekonomi-akis",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});return}const rota={pazar:"sehir/pazar",hazine:"ulke/ozet",belediye:"\
-sehir/belediye"}[ad];rota&&Kabuk.git(rota)});const vatandaslik=()=>Durum.v.ozet?.character?.citizenship??null;async function yukle(){await Durum.ozet(),lojistik=await Sunucu.cagir("logistics_me").catch(
-()=>lojistik),[vatandaslik(),lojistik?.country_id].filter(Boolean).includes(ulkeSec)||(ulkeSec=null);const ulke=ulkeSec??vatandaslik();[pano,kamu,stok]=await Promise.all([Sunucu.cagir("economy_board",
-ulke?{p_country:ulke}:{}),Sunucu.cagir("procurement_list",ulke?{p_country:ulke}:{}),ulke===vatandaslik()?Sunucu.cagir("state_stock_status").catch(()=>null):null])}function ulkeSecimi(){const v0=vatandaslik(),
-b=lojistik?.country_id;if(!v0||!b||b===v0)return"";const sec=biz(),d=(u,ad)=>`<button class="dugme ${u===sec?"":"ikincil"} kucuk-d" type="button" data-ekonomi-ulke="${esc(u)}" aria-pressed="${u===sec}\
-">
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98ze_ekonomi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+"use strict";Kabuk.kaydet("ulke/ekonomi",{async ac(kap){let pano=null,kamu=null,stok=null,lojistik=null,kapandi=!1,para=null,paraSehir=null;try{paraSehir=sessionStorage.getItem("civora.ekonomi.sehir")||null,sessionStorage.
+removeItem("civora.ekonomi.sehir")}catch{}let ulkeSec=null;try{ulkeSec=sessionStorage.getItem("civora.ekonomi.ulke")||null}catch{}const sahne=EkonomiSahnesi.ac();sahne.dinle("sec",ad=>{if(ad==="pano"){
+$("#ekonomi-akis",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});return}const rota={pazar:"sehir/pazar",hazine:"ulke/ozet",belediye:"sehir/belediye"}[ad];rota&&Kabuk.git(rota)});
+const vatandaslik=()=>Durum.v.ozet?.character?.citizenship??null;async function yukle(){await Durum.ozet(),lojistik=await Sunucu.cagir("logistics_me").catch(()=>lojistik),[vatandaslik(),lojistik?.country_id].
+filter(Boolean).includes(ulkeSec)||(ulkeSec=null);const ulke=ulkeSec??vatandaslik();[pano,kamu,stok,para]=await Promise.all([Sunucu.cagir("economy_board",ulke?{p_country:ulke}:{}),Sunucu.cagir("procur\
+ement_list",ulke?{p_country:ulke}:{}),ulke===vatandaslik()?Sunucu.cagir("state_stock_status").catch(()=>null):null,Durum.v.kurallar?.data?.ops?.economyPlace?paraAkisiYukle(ulke,paraSehir).catch(()=>null):
+null])}function paraBagla(){const sec=$("#para-yer",kap);sec&&(sec.onchange=async()=>{paraSehir=sec.value||null;try{para=await paraAkisiYukle(biz(),paraSehir)}catch(e){tost(hataMetni(e),"circle-alert");
+return}if(kapandi)return;const k=$("#para-akisi",kap);k&&(k.outerHTML=paraAkisiHtml(para.v,paraAkisiSecici(para.ulkeV,paraSehir)),paraBagla())})}function ulkeSecimi(){const v0=vatandaslik(),b=lojistik?.
+country_id;if(!v0||!b||b===v0)return"";const sec=biz(),d=(u,ad)=>`<button class="dugme ${u===sec?"":"ikincil"} kucuk-d" type="button" data-ekonomi-ulke="${esc(u)}" aria-pressed="${u===sec}">
         <span class="ulke-nokta" style="background:${ulkeRenk(u)}"></span> ${esc(ad)}</button>`;return`<div class="oneri-dugmeler" style="margin:0 0 14px" role="group" aria-label="${esc(\u00E7("G\xF6ster\
 ilen \xFClke"))}">
         ${d(v0,\u00E7("Vatanda\u015F\u0131 oldu\u011Fun \xFClke \xB7 {ulke}",{ulke:ulkeAdi(v0)}))}${d(b,\u00E7("Bulundu\u011Fun \xFClke \xB7 {ulke}",{ulke:ulkeAdi(b)}))}</div>`}const biz=()=>pano?.country_id??
@@ -84,19 +86,20 @@ g.left_today),en:sayi(g.daily_cap)})}</span></span>
         ${ulkeSecimi()}
         <div id="ekonomi-yer"></div>
         <div class="izgara iki">${akisKarti()}${disTicaretKarti()}</div>
+        ${para?paraAkisiHtml(para.v,paraAkisiSecici(para.ulkeV,paraSehir)):""}
         ${kamuKarti()}
         ${stokKarti()}
       </div>`,$("#ekonomi-yer",kap)?.replaceWith(sahne.el),sahne.yaz(pano),bagla()}async function islem(fn,args,mesaj,ik="landmark"){try{await Sunucu.yap(fn,args),mesaj&&tost(mesaj,ik)}catch(e){tost(hataMetni(
-e),"circle-alert")}await tazele()}const siparisBul=id=>[...kamu?.open??[],...kamu?.recent??[]].find(p=>p.procurement_id===id);function bagla(){for(const b of $$("[data-ekonomi-ulke]",kap))b.onclick=()=>{
-ulkeSec=b.dataset.ekonomiUlke===vatandaslik()?null:b.dataset.ekonomiUlke;try{ulkeSec?sessionStorage.setItem("civora.ekonomi.ulke",ulkeSec):sessionStorage.removeItem("civora.ekonomi.ulke")}catch{}tazele()};
-$("#kamu-yeni",kap)?.addEventListener("click",yeniSiparis);for(const b of $$("[data-kamu-iptal]",kap))b.onclick=()=>{const p=siparisBul(b.dataset.kamuIptal);pencere({ust:\u00E7("Kamu sipari\u015Fi"),baslik:\u00E7(
-"Sipari\u015Fi iptal et"),govde:`<p class="aciklama">${\u00E7("Teslim edilmemi\u015F k\u0131sm\u0131n b\xFCt\xE7esi ({kr} kredi) hazineye d\xF6ner; teslim edilen mal kamu sto\u011Funda kal\u0131r. \u0130ptal resm\xEE kayda ge\xE7er.",
-{kr:kr(p?.budget_left_cr??0)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("\u0130ptal et"),sinif:"mercan",ikon:"x",is:()=>islem("procurement_cancel",{p_procurement:b.dataset.kamuIptal},\u00E7(
-"Kamu sipari\u015Fi iptal edildi."))}]})};for(const b of $$("[data-kamu-sira]",kap))b.onclick=()=>siraPenceresi(siparisBul(b.dataset.kamuSira));for(const b of $$("[data-kamu-teslim]",kap))b.onclick=()=>teslimPenceresi(
-siparisBul(b.dataset.kamuTeslim));for(const b of $$("[data-stok-al]",kap))b.onclick=()=>stokAl((stok?.goods??[]).find(g=>g.asset===b.dataset.stokAl))}async function siraPenceresi(p){if(!p)return;let l=[];
-try{l=await Sunucu.cagir("procurement_deliveries",{p_procurement:p.procurement_id})}catch(e){tost(hataMetni(e),"circle-alert");return}pencere({ust:\u00E7("Kamu sipari\u015Fi"),baslik:\u00E7("Teslim s\u0131\
-ras\u0131 \xB7 {urun}",{urun:varlikAdi(p.asset)}),govde:l.length?`<p class="kucuk">${\u00E7("Herkese a\xE7\u0131k: kim, nereden, ne kadar, ne zaman. Fiyat herkese ayn\u0131: birimi {kr} kredi.",{kr:kr(
-p.unit_price)})}</p>
+e),"circle-alert")}await tazele()}const siparisBul=id=>[...kamu?.open??[],...kamu?.recent??[]].find(p=>p.procurement_id===id);function bagla(){paraBagla();for(const b of $$("[data-ekonomi-ulke]",kap))
+b.onclick=()=>{ulkeSec=b.dataset.ekonomiUlke===vatandaslik()?null:b.dataset.ekonomiUlke,paraSehir=null;try{ulkeSec?sessionStorage.setItem("civora.ekonomi.ulke",ulkeSec):sessionStorage.removeItem("civo\
+ra.ekonomi.ulke")}catch{}tazele()};$("#kamu-yeni",kap)?.addEventListener("click",yeniSiparis);for(const b of $$("[data-kamu-iptal]",kap))b.onclick=()=>{const p=siparisBul(b.dataset.kamuIptal);pencere(
+{ust:\u00E7("Kamu sipari\u015Fi"),baslik:\u00E7("Sipari\u015Fi iptal et"),govde:`<p class="aciklama">${\u00E7("Teslim edilmemi\u015F k\u0131sm\u0131n b\xFCt\xE7esi ({kr} kredi) hazineye d\xF6ner; teslim edilen mal kamu sto\u011Fu\
+nda kal\u0131r. \u0130ptal resm\xEE kayda ge\xE7er.",{kr:kr(p?.budget_left_cr??0)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("\u0130ptal et"),sinif:"mercan",ikon:"x",is:()=>islem("procureme\
+nt_cancel",{p_procurement:b.dataset.kamuIptal},\u00E7("Kamu sipari\u015Fi iptal edildi."))}]})};for(const b of $$("[data-kamu-sira]",kap))b.onclick=()=>siraPenceresi(siparisBul(b.dataset.kamuSira));for(const b of $$(
+"[data-kamu-teslim]",kap))b.onclick=()=>teslimPenceresi(siparisBul(b.dataset.kamuTeslim));for(const b of $$("[data-stok-al]",kap))b.onclick=()=>stokAl((stok?.goods??[]).find(g=>g.asset===b.dataset.stokAl))}
+async function siraPenceresi(p){if(!p)return;let l=[];try{l=await Sunucu.cagir("procurement_deliveries",{p_procurement:p.procurement_id})}catch(e){tost(hataMetni(e),"circle-alert");return}pencere({ust:\u00E7(
+"Kamu sipari\u015Fi"),baslik:\u00E7("Teslim s\u0131ras\u0131 \xB7 {urun}",{urun:varlikAdi(p.asset)}),govde:l.length?`<p class="kucuk">${\u00E7("Herkese a\xE7\u0131k: kim, nereden, ne kadar, ne zaman. Fiyat he\
+rkese ayn\u0131: birimi {kr} kredi.",{kr:kr(p.unit_price)})}</p>
           <ol class="kamu-sira">${l.map(x=>`<li data-sira="${Number(x.n)}"><b>${esc(x.supplier??"")}</b> <span class="kucuk">${esc(x.source==="company"?\u00E7("i\u015Fletmesinden ({ad})",{ad:x.company??
 ""}):x.source==="warehouse"?\u00E7("deposundan"):\u00E7("\xE7antas\u0131ndan"))}
             \xB7 ${\u00E7("{n} adet \xB7 {kr} kredi",{n:sayi(x.qty),kr:kr(x.amount)})} \xB7 ${esc(saatYaz(x.at))}</span></li>`).join("")}</ol>`:`<p class="bos">${\u00E7("Hen\xFCz teslim yok.")}</p>`})}

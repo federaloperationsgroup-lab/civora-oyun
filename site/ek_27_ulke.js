@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,yv=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ul\
 ke/cephe",depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek,yv]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(
 ()=>null),Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Sunucu.
@@ -399,8 +399,9 @@ r.vekil)&&d.push(["sales_tax","percent",\u00E7("Sat\u0131\u015F vergisi")],["wag
 sas\u0131")]),r.baskan&&d.push(["war","swords",\u00E7("Sava\u015F yetkisi")]),(r.baskan||r.mv)&&d.push(["citizenship","id-card",\u00E7("Vatanda\u015Fl\u0131k yasas\u0131")]),r.mv&&d.push(["deputy","ba\
 dge-check",\u00E7("Ba\u015Fkan vekili")]),r.mv&&l.president&&d.push(["impeach","user-round",\u00E7("Ba\u015Fkan\u0131 g\xF6revden al")]),r.mv&&d.push(["no_confidence","megaphone",\u00E7("G\xFCvensizlik \xF6\
 nergesi")]),(r.baskan||r.vekil||r.mv)&&d.push(["national_goal","target",\u00E7("Haftal\u0131k \xFClke hedefi")]),(r.baskan||r.vekil||r.mv)&&d.push(["anthem","eighth-notes",\u00E7("Milli mar\u015F")]),
-`<section class="kart"><div class="kart-bas"><div><p class="ust-yazi">${r.baskan?\u00E7("Ba\u015Fkans\u0131n"):r.vekil?\u00E7("Ba\u015Fkan vekilisin"):\u00E7("Milletvekilisin")}</p><h2 class="b2">${\u00E7(
-"\xD6neri yap")}</h2></div><span class="ik-kutu">${ikon("notebook-pen")}</span></div>
+(r.baskan||r.vekil||r.mv)&&Durum.v.kurallar?.data?.nation?.anthem?.lyrics&&d.push(["anthem_lyrics","scroll-text",\u00E7("Mar\u015F\u0131n s\xF6zleri")]),`<section class="kart"><div class="kart-bas"><d\
+iv><p class="ust-yazi">${r.baskan?\u00E7("Ba\u015Fkans\u0131n"):r.vekil?\u00E7("Ba\u015Fkan vekilisin"):\u00E7("Milletvekilisin")}</p><h2 class="b2">${\u00E7("\xD6neri yap")}</h2></div><span class="ik\
+-kutu">${ikon("notebook-pen")}</span></div>
         <p class="aciklama">${\u00E7("\xD6neri meclis oylamas\u0131na a\xE7\u0131l\u0131r (en \xE7ok {n} saat). Ayn\u0131 t\xFCrden a\xE7\u0131k oylama varken yenisi a\xE7\u0131lmaz.",{n:Number(v.c.parliamentVoteH)})}\
 </p>
         <div class="oneri-dugmeler" style="margin-top:12px">${d.map(([k,ik,ad])=>`<button class="dugme ikincil kucuk-d" data-oneri="${k}">${ikon(ik)}${esc(ad)}</button>`).join("")}</div></section>`}function ilanHtml(r){
@@ -551,16 +552,27 @@ d\u0131 bitmi\u015F \u015Fark\u0131s\u0131n\u0131 milli mar\u015F se\xE7er; salt
 0?"checked":""}>
             <span><b>${esc(x.title)}</b><span class="kucuk">${esc(\u00E7("{grup} \xB7 \u015Fark\u0131 kalitesi {k} \xB7 kay\u0131t kalitesi {kk}",{grup:x.band??"",k:Number(x.quality??0),kk:Number(x.recording_quality??
 0)}))}</span></span></label>`).join("")}</div></fieldset>`,is:async f=>{await Sunucu.yap("motion_propose_anthem",{p_song:String(f.get("sarki"))}),tost(\u00E7("Milli mar\u015F \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),
-"gavel"),await tazele()}})}async function guvensizlikFormu(){let h;try{h=await Sunucu.cagir("movement_status")}catch(e){tost(hataMetni(e),"circle-alert");return}const b=h.blocker_no_confidence;if(b){tost(
-sunucuIletisi(b.code,b.hint)+(b.until?" "+\u00E7("A\xE7\u0131l\u0131\u015F: {zaman}.",{zaman:saatYaz(b.until)}):""),"circle-alert");return}pencere({ust:\u00E7("\xD6neri"),baslik:\u00E7("G\xFCvensizlik \xF6n\
-ergesi"),govde:`<p class="aciklama">${\u00E7("Oylama {saat} saat s\xFCrer. Kabul i\xE7in dolu sandalyelerin \xFC\xE7te ikisi ve en az {n} evet gerekir. Kabul edilirse ola\u011Fan\xFCst\xFC se\xE7im olur; reddedilirse {gun} g\xFCn\
- yeni hareket ba\u015Flamaz.",{saat:sayi(h.rules.parliament_vote_h),n:sayi(h.rules.no_confidence.minYes),gun:sayi(h.rules.cooldown_days)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Oylamaya\
- a\xE7"),sinif:"mercan",ikon:"gavel",is:async()=>{try{await Sunucu.yap("motion_propose_no_confidence",{}),tost(\u00E7("G\xFCvensizlik \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),"gavel")}catch(e){tost(
-hataMetni(e),"circle-alert")}await tazele()}}]})}const ONERI={sales_tax:vergiFormu("sales"),wage_tax:vergiFormu("wage"),war:()=>savasFormu().catch(e=>tost(hataMetni(e),"circle-alert")),citizenship:vatandaslikFormu,
+"gavel"),await tazele()}})}async function sozFormu(){const[d]=await Promise.all([Sunucu.cagir("anthem_songs"),Durum.kurallar().catch(()=>null)]),m=d?.anthem,liste=milliMarsDizeleri(),n=milliMarsDizeSayisi(),
+u=d?.country_id??null;if(!m?.song_id){tost(\u00E7("\xD6nce meclis milli mar\u015F\u0131 se\xE7meli: s\xF6zler mar\u015F\u0131nd\u0131r."),"circle-alert");return}if(!liste.length){tost(\u00E7("Bu kural\
+ s\xFCr\xFCm\xFCnde mar\u015F\u0131n s\xF6zleri yok."),"circle-alert");return}const ilk=Array.isArray(m.lyrics)&&m.lyrics.length===n?m.lyrics:liste.slice(0,n),secim=i=>`<label class="alan"><span>${esc(
+\u00E7("{n}. dize",{n:i+1}))}</span><select name="dize" data-soz-dize="${i}">${liste.map(x=>`<option value="${esc(x)}" ${x===ilk[i]?"selected":""}>${esc(milliMarsDize(x,u))}</option>`).join("")}</sele\
+ct></label>`,pf=pencereForm({ust:\u00E7("\xD6neri"),baslik:\u00E7("Mar\u015F\u0131n s\xF6zleri"),onayAd:\u00E7("Oylamaya a\xE7"),onayIkon:"gavel",govde:`<p class="aciklama">${esc(\u00E7("Milli mar\u015F: {\
+sarki} ({grup}). Meclis oyunun dize listesinden {n} dize se\xE7er; her dize ezginin bir c\xFCmlesinde s\xF6ylenir. Salt \xE7o\u011Funluk yeter.",{sarki:m.title??"",grup:m.band??"",n}))}</p>
+          ${Array.isArray(m.lyrics)&&m.lyrics.length?`<p class="kucuk">${\u00E7("Bug\xFCnk\xFC s\xF6zler se\xE7ili geldi; de\u011Fi\u015Ftirmek istedi\u011Fin dizeyi se\xE7.")}</p>`:""}
+          ${Array.from({length:n},(_,i)=>secim(i)).join("")}
+          <div class="mars-soz-onizleme"><p class="ust-yazi">${\u00E7("\xD6nizleme")}</p><ol class="mars-soz" data-soz-onizleme>${ilk.map(x=>`<li>${esc(milliMarsDize(x,u))}</li>`).join("")}</ol></div>`,
+is:async f=>{await Sunucu.yap("motion_propose_anthem_lyrics",{p_lyrics:f.getAll("dize").map(String)}),tost(\u00E7("Mar\u015F\u0131n s\xF6zleri \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),"gavel"),await tazele()}}),
+on=$("[data-soz-onizleme]",pf.form);for(const sel of $$("select[data-soz-dize]",pf.form))sel.addEventListener("change",()=>{on.innerHTML=$$("select[data-soz-dize]",pf.form).map(x=>`<li>${esc(milliMarsDize(
+x.value,u))}</li>`).join("")})}async function guvensizlikFormu(){let h;try{h=await Sunucu.cagir("movement_status")}catch(e){tost(hataMetni(e),"circle-alert");return}const b=h.blocker_no_confidence;if(b){
+tost(sunucuIletisi(b.code,b.hint)+(b.until?" "+\u00E7("A\xE7\u0131l\u0131\u015F: {zaman}.",{zaman:saatYaz(b.until)}):""),"circle-alert");return}pencere({ust:\u00E7("\xD6neri"),baslik:\u00E7("G\xFCvensizl\
+ik \xF6nergesi"),govde:`<p class="aciklama">${\u00E7("Oylama {saat} saat s\xFCrer. Kabul i\xE7in dolu sandalyelerin \xFC\xE7te ikisi ve en az {n} evet gerekir. Kabul edilirse ola\u011Fan\xFCst\xFC se\xE7im olur; reddedilirse {\
+gun} g\xFCn yeni hareket ba\u015Flamaz.",{saat:sayi(h.rules.parliament_vote_h),n:sayi(h.rules.no_confidence.minYes),gun:sayi(h.rules.cooldown_days)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7(
+"Oylamaya a\xE7"),sinif:"mercan",ikon:"gavel",is:async()=>{try{await Sunucu.yap("motion_propose_no_confidence",{}),tost(\u00E7("G\xFCvensizlik \xF6nergesi oylamaya a\xE7\u0131ld\u0131."),"gavel")}catch(e){
+tost(hataMetni(e),"circle-alert")}await tazele()}}]})}const ONERI={sales_tax:vergiFormu("sales"),wage_tax:vergiFormu("wage"),war:()=>savasFormu().catch(e=>tost(hataMetni(e),"circle-alert")),citizenship:vatandaslikFormu,
 deputy:vekilFormu,impeach:gorevdenAlFormu,customs:gumrukFormu,no_confidence:guvensizlikFormu,national_goal:()=>Millet.hedefOner(()=>tazele()).catch(e=>tost(hataMetni(e),"circle-alert")),anthem:()=>marsFormu().
-catch(e=>tost(hataMetni(e),"circle-alert"))};function ilanEt(yetki,hedef,koken){const y=v.w.authorizations.find(x=>x.authorization_id===yetki);pencereForm({ust:\u00E7("Sava\u015F ilan\u0131"),baslik:bolgeAdi(
-hedef),onayAd:\u00E7("Sava\u015F ilan et"),onaySinif:"mercan",onayIkon:"swords",govde:`<p class="aciklama">${\u00E7("Sald\u0131r\u0131 <b>{koken}</b> b\xF6lgesinden, hedef <b>{ulke}</b>.",{koken:esc(bolgeAdi(
-koken)),ulke:esc(ulkeAdi(y?.target_country_id))})}
+catch(e=>tost(hataMetni(e),"circle-alert")),anthem_lyrics:()=>sozFormu().catch(e=>tost(hataMetni(e),"circle-alert"))};function ilanEt(yetki,hedef,koken){const y=v.w.authorizations.find(x=>x.authorization_id===
+yetki);pencereForm({ust:\u00E7("Sava\u015F ilan\u0131"),baslik:bolgeAdi(hedef),onayAd:\u00E7("Sava\u015F ilan et"),onaySinif:"mercan",onayIkon:"swords",govde:`<p class="aciklama">${\u00E7("Sald\u0131r\u0131 <b>\
+{koken}</b> b\xF6lgesinden, hedef <b>{ulke}</b>.",{koken:esc(bolgeAdi(koken)),ulke:esc(ulkeAdi(y?.target_country_id))})}
             ${\u00E7("\u0130lan bedeli <b>{kr} kredi</b> hazineden d\xFC\u015Fer.",{kr:kr(v.w.declaration_cost_cr)})} ${esc(turTakvimi(v.combat))} ${\u00E7("\u0130lan iki \xFClkeye de duyurulur.")}</p\
 >
           <p class="kucuk">${\u00E7("\u0130lk turdan {n} saat \xF6ncesine kadar iptal edebilirsin; ilan bedeli geri gelmez.",{n:Number(v.w.cancel_cutoff_h??6)})}</p>`,is:async()=>{const s=await Sunucu.

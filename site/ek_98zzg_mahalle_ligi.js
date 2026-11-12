@@ -1,12 +1,12 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zzg_mahalle_ligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zzg_mahalle_ligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/lig",{async ac(kap){let v=null,hata=null,kapandi=!1,mesgul=!1,bolge=null,zaman=null;const R=()=>v?.rule??futbolKurali()?.neighborhood??{},T=()=>v?.my_team??null;async function yukle(){
 try{v=await Sunucu.cagir("football_neighborhood",bolge?{p_region:bolge}:{}),hata=null}catch(e){hata=e}}async function yap(fn,p,mesaj,ik="badge-check"){if(!mesgul){mesgul=!0;try{await Sunucu.yap(fn,p),
 mesaj&&tost(mesaj,ik),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}finally{mesgul=!1,await yukle(),kapandi||ciz()}}}const gunAdi=iso=>new Date(iso).toLocaleDateString(DIL.yerel,
-{weekday:"short",day:"numeric",month:"short"}),renkKutusu=(r,buyuk=!1)=>`<span class="futbol-renk${buyuk?" buyuk":""}" style="--forma:${esc(r??FUTBOL_RENK.a)}" aria-hidden="true"></span>`,takimYazi=t=>`${renkKutusu(
-t?.color)} ${esc(mahalleTakimAdi(t))}`;function davetlerHtml(){const l=v.invites??[];return l.length?`<section class="kart" id="lig-davetler">
+{weekday:"short",day:"numeric",month:"short"}),renkKutusu=(r,buyuk=!1)=>`<span class="futbol-renk${buyuk?" buyuk":""}" style="--forma:${esc(r??FUTBOL_RENK.a)}" aria-hidden="true"></span>`,takimYazi=t=>`${mahalleArma(
+t,18)} ${esc(mahalleTakimAdi(t))}`;function davetlerHtml(){const l=v.invites??[];return l.length?`<section class="kart" id="lig-davetler">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Mahalle tak\u0131m\u0131")}</p><h2 class="b2">${\u00E7("Tak\u0131m davetlerin")}</h2></div><span class="ik-kutu">${ikon("mail-open")}</\
 span></div>
-        <div class="liste">${l.map(x=>`<div class="liste-satir" data-lig-davet="${esc(x.id)}"><span class="liste-ikon">${renkKutusu(x.color)}</span>
+        <div class="liste">${l.map(x=>`<div class="liste-satir" data-lig-davet="${esc(x.id)}"><span class="liste-ikon">${mahalleArma(x,28)}</span>
           <div><b>${esc(\u00E7("{ad} seni {takim} tak\u0131m\u0131na \xE7a\u011F\u0131r\u0131yor",{ad:x.by??\u00E7("Kaptan"),takim:mahalleTakimAdi(x)}))}</b>
             <div class="alt">${esc([bolgeAdi(x.region_id),\u00E7("{n} \xFCye",{n:sayi(x.members??0)}),Number(x.titles)?\u00E7("{n} \u015Fampiyonluk",{n:sayi(x.titles)}):null,\u00E7("son g\xFCn {t}",{t:saatYaz(
 x.expires_at)})].filter(Boolean).join(" \xB7 "))}</div></div>
@@ -33,7 +33,7 @@ etler")}</p>
           <div class="alt">${esc(\u00E7("son g\xFCn {t}",{t:saatYaz(i.expires_at)}))}</div></div><span></span></div>`).join("")}</div>`:"",sayi_=Number(t.size??(t.members??[]).length)+(t.captain?(t.invites??
 []).length:0);return`<section class="kart" id="lig-takim" data-lig-takim="${esc(t.id)}">
         <div class="kart-bas"><div><p class="ust-yazi">${esc([bolgeAdi(t.region_id),t.captain?\u00E7("kaptans\u0131n"):null].filter(Boolean).join(" \xB7 "))}</p>
-          <h2 class="b2">${renkKutusu(t.color,!0)} ${esc(mahalleTakimAdi(t))}</h2></div>
+          <h2 class="b2">${mahalleArma(t,30)} ${esc(mahalleTakimAdi(t))}</h2></div>
           <span class="cip ${Number(t.titles)?"altin":""}" data-lig-sampiyonluk="${sayi(t.titles??0)}">${ikon("trophy")}${esc(\u00E7("{n} \u015Fampiyonluk",{n:sayi(t.titles??0)}))}</span></div>
         ${t.name_reset?`<div class="bilgi-kutusu uyari-kutusu" data-lig-adsiz>${ikon("id-card")}<span>${esc(t.captain?\u00E7("Tak\u0131m\u0131n ad\u0131 topluluk kurallar\u0131na uymad\u0131\u011F\u0131 i\xE7in kald\u0131r\u0131ld\u0131; yeni ad ver."):
 \u00E7("Tak\u0131m\u0131n ad\u0131 kald\u0131r\u0131ld\u0131; kaptan yeni ad verecek."))}</span></div>`:""}
@@ -50,7 +50,7 @@ etler")}</p>
           </div>`:""}
         <div class="oneri-dugmeler" style="margin-top:12px">
           ${t.captain?`<button class="dugme ikincil" id="lig-davet-et" ${mesgul||sayi_>=Number(r.team?.maxMembers??8)?"disabled":""}>${ikon("user-round-plus")}${\u00E7("Davet et")}</button>
-            <button class="dugme ikincil" id="lig-duzenle" ${mesgul?"disabled":""}>${ikon("pencil")}${\u00E7("Ad, renk ve taktik")}</button>`:""}
+            <button class="dugme ikincil" id="lig-duzenle" ${mesgul?"disabled":""}>${ikon("pencil")}${\u00E7("Tak\u0131m\u0131 d\xFCzenle")}</button>`:""}
           <button class="dugme sade" id="lig-ayril" ${mesgul?"disabled":""}>${ikon("door-open")}${\u00E7("Tak\u0131mdan ayr\u0131l")}</button>
         </div>
       </section>`}function kayitHtml(){const t=T(),r=R(),n=v.next;if(!n)return"";const g=t?.registration,benim=!!t&&t.region_id===v.region,takimlar=n.teams??[],bedel=Number(r.league?.entryCr??1e3);let dugme="";
@@ -74,17 +74,29 @@ elecek haftan\u0131n ligi")}</h2></div>
 ">
         <td>${sayi(x.rank??i+1)}</td><td><span class="kulup-tablo-ad">${takimYazi(x)}${l.champion?.id===x.id?` ${ikon("trophy")}`:""}</span></td>
         <td>${sayi(x.played)}</td><td>${sayi(x.won)}</td><td>${sayi(x.drawn)}</td><td>${sayi(x.lost)}</td><td>${sayi(Number(x.gf)-Number(x.ga))}</td><td><b>${sayi(x.points)}</b></td></tr>`).join("")}<\
-/tbody></table></div>`}function fiksturHtml(l){return[...new Set((l.fixtures??[]).map(f=>f.round))].map(k=>{const f0=(l.fixtures??[]).filter(f=>f.round===k);return`<p class="ust-yazi" style="margin-to\
-p:12px">${esc(\u00E7("{n}. tur \xB7 {gun}",{n:sayi(k),gun:gunAdi(f0[0].starts_at)}))}</p>
+/tbody></table></div>`}function fiksturHtml(l){const turlar=[...new Set((l.fixtures??[]).map(f=>f.round))],kaptanim=!!T()?.captain&&!!l.mine&&T()?.id===l.mine&&l.status==="active",P=R().postpone,mp=l.
+my_postpones;return(kaptanim&&P&&mp?`<p class="kucuk" style="margin-top:8px" data-lig-erteleme-hakki="${sayi(mp.accepted??0)}/${sayi(mp.requests??0)}">${ikon("calendar-clock")} ${esc(Number(mp.pending??
+0)?\u00E7("Erteleme: tak\u0131m\u0131n\u0131n yan\u0131t bekleyen bir \xF6nerisi var; yan\u0131tlanana dek ba\u015Fka ma\xE7 ertelenemez."):\u00E7("Erteleme: tak\u0131m\u0131n bu ligde {a}/{p} ma\xE7 erteledi, {r}\
+/{q} \xF6neri yapt\u0131.",{a:sayi(mp.accepted??0),p:sayi(P.perTeam??1),r:sayi(mp.requests??0),q:sayi(P.requestsPerTeam??2)}))}</p>`:"")+turlar.map(k=>{const f0=(l.fixtures??[]).filter(f=>f.round===k),
+g0=f0.find(f=>!f.postponed_from)??f0[0];return`<p class="ust-yazi" style="margin-top:12px">${esc(\u00E7("{n}. tur \xB7 {gun}",{n:sayi(k),gun:gunAdi(g0.postponed_from??g0.starts_at)}))}</p>
           <div class="liste">${f0.map(f=>{const sonuc=f.status==="played"||f.status==="forfeit"?`${sayi(f.score_home??0)}\u2013${sayi(f.score_away??0)}`:null,durum=f.status==="forfeit"?f.absent==="bot\
 h"?\u00E7("iki tak\u0131m da gelmedi"):\u00E7("h\xFCkmen"):f.status==="void"?\u00E7("oynanmad\u0131"):f.status==="scheduled"&&f.phase?futbolEvreAdi(f.phase):null,benim=l.mine&&(f.home?.id===l.mine||f.
-away?.id===l.mine),izle=f.match_id&&["locked","live","ended","finished","closing"].includes(f.phase);return`<div class="liste-satir${benim?" lig-benim":""}" data-lig-fikstur="${esc(f.id)}" data-durum=\
-"${esc(f.status)}"><span class="liste-ikon ${f.phase==="live"?"mercan":""}">${ikon(f.status==="played"?"goal":f.status==="forfeit"?"flag":"calendar-days")}</span>
+away?.id===l.mine),izle=f.match_id&&["locked","live","ended","finished","closing"].includes(f.phase),er=f.status==="scheduled"?f.postpone:null,secenek=Array.isArray(f.postpone_options)&&f.postpone_options.
+length>0,oneri=er?`<div class="lig-erteleme" data-lig-erteleme="${esc(er.id)}">${ikon("hourglass")}<span>${esc(\u00E7("Erteleme \xF6nerisi ({takim}): {zaman} \xB7 yan\u0131t i\xE7in son {saat}",{takim:mahalleTakimAdi(
+er.team_id===f.home?.id?f.home:f.away),zaman:saatYaz(er.to_at),saat:saatKisa(er.expires_at)}))}</span>
+              ${kaptanim&&benim?er.team_id===l.mine?`<div class="oneri-dugmeler"><button class="dugme sade kucuk-d" data-lig-ertele-geri="${esc(er.id)}" ${mesgul?"disabled":""}>${ikon("undo-2")}${\u00E7(
+"Geri al")}</button></div>`:`<div class="oneri-dugmeler"><button class="dugme altin kucuk-d" data-lig-ertele-kabul="${esc(er.id)}" data-zaman="${esc(er.to_at)}" ${mesgul?"disabled":""}>${ikon("calenda\
+r-check")}${\u00E7("Kabul et")}</button>
+                  <button class="dugme sade kucuk-d" data-lig-ertele-red="${esc(er.id)}" ${mesgul?"disabled":""}>${ikon("x")}${\u00E7("Geri \xE7evir")}</button></div>`:""}</div>`:"",sag=izle?`<button \
+class="dugme sade kucuk-d" data-lig-izle="${esc(f.match_id)}">${ikon("eye")}${\u00E7("\u0130zle")}</button>`:secenek&&kaptanim&&!er?`<div class="oneri-dugmeler"><button class="dugme sade kucuk-d" data\
+-lig-ertele="${esc(f.id)}" ${mesgul?"disabled":""}>${ikon("calendar-clock")}${\u00E7("Ertele")}</button></div>`:"<span></span>";return`<div class="liste-satir lig-fikstur-satir${benim?" lig-benim":""}\
+" data-lig-fikstur="${esc(f.id)}" data-durum="${esc(f.status)}"${f.postponed_from?` data-lig-ertelendi="${esc(f.postponed_from)}"`:""}><span class="liste-ikon ${f.phase==="live"?"mercan":""}">${ikon(f.
+status==="played"?"goal":f.status==="forfeit"?"flag":f.postponed_from?"calendar-clock":"calendar-days")}</span>
               <div><b>${takimYazi(f.home)} <span class="lig-skor">${esc(sonuc??"\u2013")}</span> ${takimYazi(f.away)}</b>
-                <div class="alt">${esc([saatKisa(f.starts_at),f.pitch?\u00E7("saha {n}",{n:sayi(f.pitch)}):null,durum].filter(Boolean).join(" \xB7 "))}</div></div>
-              ${izle?`<button class="dugme sade kucuk-d" data-lig-izle="${esc(f.match_id)}">${ikon("eye")}${\u00E7("\u0130zle")}</button>`:"<span></span>"}</div>`}).join("")}</div>`}).join("")}function ligHtml(){
-const l=v.league;return!l||l.status==="registration"?`<section class="kart" id="lig-bu-hafta"><div class="kart-bas"><div><p class="ust-yazi">${esc(v.region?bolgeAdi(v.region):"")}</p><h2 class="b2">${\u00E7(
-"Bu haftan\u0131n ligi")}</h2></div><span class="ik-kutu">${ikon("trophy")}</span></div>
+                <div class="alt">${esc([f.postponed_from?gunAdi(f.starts_at)+" "+saatKisa(f.starts_at):saatKisa(f.starts_at),f.pitch?\u00E7("saha {n}",{n:sayi(f.pitch)}):null,durum,f.postponed_from?\u00E7(
+"ertelendi (\xF6nceki: {zaman})",{zaman:saatYaz(f.postponed_from)}):null].filter(Boolean).join(" \xB7 "))}</div>${oneri}</div>
+              ${sag}</div>`}).join("")}</div>`}).join("")}function ligHtml(){const l=v.league;return!l||l.status==="registration"?`<section class="kart" id="lig-bu-hafta"><div class="kart-bas"><div><p\
+ class="ust-yazi">${esc(v.region?bolgeAdi(v.region):"")}</p><h2 class="b2">${\u00E7("Bu haftan\u0131n ligi")}</h2></div><span class="ik-kutu">${ikon("trophy")}</span></div>
           <p class="bos">${esc(\u00E7("Bu hafta bu \u015Fehirde lig yok. Gelecek haftan\u0131n ligine en az {n} tak\u0131m yaz\u0131l\u0131rsa lig Pazartesi kurulur.",{n:sayi(R().league?.minTeams??2)}))}\
 </p></section>`:l.status==="cancelled"?`<section class="kart" id="lig-bu-hafta"><div class="kart-bas"><div><p class="ust-yazi">${esc(bolgeAdi(l.region_id))}</p><h2 class="b2">${\u00E7("Bu haftan\u0131n lig\
 i")}</h2></div><span class="cip">${\u00E7("Kurulmad\u0131")}</span></div>
@@ -102,7 +114,7 @@ l.champion)}):\u00E7("Lig bitti; \u015Fampiyon \xE7\u0131kmad\u0131 (hi\xE7 puan
         <p>${l.champion?`<b>${takimYazi(l.champion)}</b>`:esc(\u00E7("\u015Eampiyon \xE7\u0131kmad\u0131."))}</p>
         ${tabloHtml(l)}</section>`:""}function takimlarHtml(){const l=v.teams??[],benim=T()?.id;return`<section class="kart" id="lig-takimlar"><div class="kart-bas"><div><p class="ust-yazi">${esc(v.region?
 bolgeAdi(v.region):"")}</p><h2 class="b2">${\u00E7("\u015Eehrin tak\u0131mlar\u0131")}</h2></div><span class="ik-kutu">${ikon("users-round")}</span></div>
-        ${l.length?`<div class="liste">${l.map(x=>`<div class="liste-satir" data-lig-sehir-takim="${esc(x.id)}"><span class="liste-ikon">${renkKutusu(x.color)}</span>
+        ${l.length?`<div class="liste">${l.map(x=>`<div class="liste-satir" data-lig-sehir-takim="${esc(x.id)}"><span class="liste-ikon">${mahalleArma(x,28)}</span>
           <div><b>${esc(mahalleTakimAdi(x))}</b><div class="alt">${esc([\u00E7("{n} \xFCye",{n:sayi(x.members??0)}),Number(x.titles)?\u00E7("{n} \u015Fampiyonluk",{n:sayi(x.titles)}):null,x.registered?
 \u00E7("gelecek haftan\u0131n liginde"):null].filter(Boolean).join(" \xB7 "))}</div></div>
           ${x.id!==benim&&x.name?`<button class="dugme sade kucuk-d" type="button" data-lig-rapor="${esc(x.id)}" data-ad="${esc(x.name)}" aria-label="${esc(\u00E7("Tak\u0131m\u0131n ad\u0131n\u0131 raporla"))}\
@@ -116,35 +128,60 @@ er tekrarlan\u0131r (en \xE7ok {n} tur).",{h:sayi(L.kickoffHour??19),n:sayi(L.ma
 er (\xF6nce ma\xE7a kendisi yaz\u0131lanlar); "Bu ma\xE7ta yokum" diyen girmez. Bo\u015F yerlere mahalleden yedek. Takti\u011Fi kaptan se\xE7er.')],["flag",\u00E7("Bir tak\u0131mdan \u015Fehirde kimse yoksa h\xFCk\
 men: gelen tak\u0131m {g}\u20130 kazan\u0131r; ikisi de yoksa ikisi de yenik say\u0131l\u0131r.",{g:sayi(L.forfeitGoals??3)})],["trophy",\u00E7("Galibiyet {w}, beraberlik {d} puan; s\u0131ra puan, averaj, \
 at\u0131lan gol. Son ma\xE7tan sonra lider \u015Fampiyondur: o ligde tak\u0131m\u0131nda oynayanlara Mahalle \u015Eampiyonu madalyas\u0131 ve ya\u015Fam g\xFCnl\xFC\u011F\xFCnde yer. Para \xF6d\xFCl\xFC ve bahis yok.",
-{w:sayi(L.points?.win??3),d:sayi(L.points?.draw??1)})],["goal",\u00E7("Lig ma\xE7lar\u0131 hal\u0131 sahan\u0131n \xFCcretsiz ma\xE7lar\u0131d\u0131r: futbol becerin, saya\xE7lar\u0131n ve madalyalar\u0131n hal\u0131 sahadaki gibi i\u015Fler.")]];
-return`<section class="kart" id="lig-kurallar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kurallar")}</p><h2 class="b2">${\u00E7("Mahalle ligi nas\u0131l i\u015Fler?")}</h2></div><span c\
-lass="ik-kutu">${ikon("book-open")}</span></div>
+{w:sayi(L.points?.win??3),d:sayi(L.points?.draw??1)})],["goal",\u00E7("Lig ma\xE7lar\u0131 hal\u0131 sahan\u0131n \xFCcretsiz ma\xE7lar\u0131d\u0131r: futbol becerin, saya\xE7lar\u0131n ve madalyalar\u0131n hal\u0131 sahadaki gibi i\u015Fler.")],
+r.crest?["shield",\u00E7("Tak\u0131m\u0131n armas\u0131n\u0131 kaptan se\xE7er (kul\xFCplerin bi\xE7im ve simgelerinden); arma tak\u0131m\u0131n renginde, her listede ve ma\xE7ta g\xF6r\xFCn\xFCr.")]:
+null,r.postpone?["calendar-clock",\u00E7("Ma\xE7\u0131 erteleme: ma\xE7\u0131n tak\u0131mlar\u0131ndan birinin kaptan\u0131 ligin kalan g\xFCnlerinden birine ({h}.00) erteleme \xF6nerir (ma\xE7tan en az {a} dakika \xF6nce); \xF6b\xFCr tak\u0131m\u0131n kaptan\
+\u0131 ma\xE7tan {b} dakika \xF6ncesine dek kabul eder ya da geri \xE7evirir. Bir ma\xE7 bir kez ertelenir; tak\u0131m ligde bir ma\xE7\u0131n\u0131 erteler ve en \xE7ok {n} \xF6neri yapar.",{h:sayi(r.
+postpone.hour??21),a:sayi(r.postpone.minLeadMinutes??60),b:sayi(r.postpone.answerLeadMinutes??30),n:sayi(r.postpone.requestsPerTeam??2)})]:null].filter(Boolean);return`<section class="kart" id="lig-ku\
+rallar"><div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Kurallar")}</p><h2 class="b2">${\u00E7("Mahalle ligi nas\u0131l i\u015Fler?")}</h2></div><span class="ik-kutu">${ikon("book-open")}</sp\
+an></div>
         <div class="liste">${maddeler.map(([ik,x])=>`<div class="liste-satir"><span class="liste-ikon">${ikon(ik)}</span><div><div class="alt" style="margin:0">${esc(x)}</div></div><span></span></div>`).
 join("")}</div>
       </section>`}const renkSecimi=secili=>`<fieldset class="alan"><legend>${\u00E7("Tak\u0131m\u0131n rengi")}</legend><div class="renk-sec">${(R().colors??KULUP_RENK_VARSAYILAN).map((c,i)=>`<label c\
 lass="birlik-renk">
         <input type="radio" name="renk" value="${esc(c)}" ${(secili?c===secili:i===0)?"checked":""}><span style="--renk:${esc(c)}" aria-label="${esc(\u00E7("Renk {n}",{n:i+1}))}"></span></label>`).join(
-"")}</div></fieldset>`;function kurPencere(){const r=R();pencereForm({ust:\u00E7("Mahalle tak\u0131m\u0131"),baslik:\u00E7("Tak\u0131m kur"),onayAd:\u00E7("Kur"),onayIkon:"flag",govde:`<p class="acikl\
-ama">${esc(\u00E7("Tak\u0131m\u0131n {sehir} \u015Fehrinde kurulur; kaptan sen olursun.",{sehir:bolgeAdi(v.here)}))}</p>
+"")}</div></fieldset>`;function armaSecimi(sekil,sembol){const C=R().crest;if(!C)return"";const radyo=(ad,alan,liste,sec,cizim,adi)=>`<p class="ust-yazi" style="margin-top:10px">${esc(ad)}</p><div cla\
+ss="kulup-secim" role="radiogroup" aria-label="${esc(ad)}">${liste.map((x,i)=>`<label title="${esc(adi(x))}">
+        <input type="radio" name="${alan}" value="${i}" ${i===sec?"checked":""} aria-label="${esc(adi(x))}"><span class="sekil-ornek">${cizim(x,i)}</span></label>`).join("")}</div>`;return`<div class=\
+"lig-arma-onizleme" data-lig-arma-onizleme aria-hidden="true"></div>
+        ${radyo(\u00E7("Arman\u0131n bi\xE7imi"),"sekil",C.shapes??[],sekil,(_x,i)=>mahalleArmaSvg({color:"#8A8F98",crest:{shape:i,symbol:-1}},30),x=>KULUP_SEKIL_AD[x]??x)}
+        ${radyo(\u00E7("Arman\u0131n simgesi"),"sembol",C.symbols??[],sembol,x=>ikon(x),x=>KULUP_SEMBOL_AD[x]??x)}`}function armaOnizle(form){const yer=$("[data-lig-arma-onizleme]",form);if(!yer)return;
+const f=new FormData(form);yer.innerHTML=mahalleArmaSvg({color:String(f.get("renk")??""),crest:{shape:Number(f.get("sekil")??0),symbol:Number(f.get("sembol")??0)}},64)}function kurPencere(){const r=R(),
+ff=pencereForm({ust:\u00E7("Mahalle tak\u0131m\u0131"),baslik:\u00E7("Tak\u0131m kur"),onayAd:\u00E7("Kur"),onayIkon:"flag",govde:`<p class="aciklama">${esc(\u00E7("Tak\u0131m\u0131n {sehir} \u015Fehrinde kurulur; k\
+aptan sen olursun.",{sehir:bolgeAdi(v.here)}))}</p>
           <label class="alan"><span>${\u00E7("Tak\u0131m\u0131n ad\u0131")}</span><input name="ad" maxlength="${Number(r.team?.name?.max??24)}" required autocomplete="off"></label>
           ${renkSecimi(null)}
+          ${armaSecimi(0,0)}
           <label class="alan"><span>${\u00E7("Mevkin")}</span><select name="mevki">${MAHALLE_POS.map(p=>`<option value="${p}" ${p==="orta"?"selected":""}>${esc(futbolPosAdi(p))}</option>`).join("")}</\
 select></label>
           <p class="kucuk">${esc(\u00E7("Ad topluluk kurallar\u0131na uymal\u0131; ger\xE7ek spor kul\xFCplerinin adlar\u0131 kullan\u0131lamaz."))}</p>`,is:async d=>{const ad=String(d.get("ad")??"").
 trim().replace(/\s+/g," ");if([...ad].length<Number(r.team?.name?.min??3)||[...ad].length>Number(r.team?.name?.max??24))throw new Error(\u00E7("Ad {min}\u2013{max} karakter olmal\u0131.",{min:Number(r.
-team?.name?.min??3),max:Number(r.team?.name?.max??24)}));await Sunucu.yap("football_team_create",{p_name:ad,p_color:String(d.get("renk")??""),p_pos:String(d.get("mevki")??"orta")}),tost(\u00E7("{takim\
-} kuruldu; kaptans\u0131n. \u015Eimdi arkada\u015Flar\u0131n\u0131 davet et.",{takim:ad}),"flag"),bolge=null,await yukle(),kapandi||ciz()}})}function duzenlePencere(){const t=T();pencereForm({ust:mahalleTakimAdi(
-t),baslik:\u00E7("Ad, renk ve taktik"),onayAd:\u00E7("Kaydet"),onayIkon:"check",govde:`<label class="alan"><span>${\u00E7("Tak\u0131m\u0131n ad\u0131")}</span><input name="ad" maxlength="${Number(R().
+team?.name?.min??3),max:Number(r.team?.name?.max??24)}));await Sunucu.yap("football_team_create",{p_name:ad,p_color:String(d.get("renk")??""),p_pos:String(d.get("mevki")??"orta")});const sekil=Number(
+d.get("sekil")??0),sembol=Number(d.get("sembol")??0);if(r.crest&&(sekil!==0||sembol!==0))try{await Sunucu.yap("football_team_crest",{p_shape:sekil,p_symbol:sembol})}catch(e){tost(hataMetni(e),"circle-\
+alert")}tost(\u00E7("{takim} kuruldu; kaptans\u0131n. \u015Eimdi arkada\u015Flar\u0131n\u0131 davet et.",{takim:ad}),"flag"),bolge=null,await yukle(),kapandi||ciz()}});ff?.form&&(ff.form.addEventListener(
+"change",()=>armaOnizle(ff.form)),armaOnizle(ff.form))}function duzenlePencere(){const t=T(),sekil0=Number(t.crest?.shape??0),sembol0=Number(t.crest?.symbol??0),ff=pencereForm({ust:mahalleTakimAdi(t),
+baslik:\u00E7("Ad, arma, renk ve taktik"),onayAd:\u00E7("Kaydet"),onayIkon:"check",govde:`<label class="alan"><span>${\u00E7("Tak\u0131m\u0131n ad\u0131")}</span><input name="ad" maxlength="${Number(R().
 team?.name?.max??24)}" value="${esc(t.name??"")}" autocomplete="off"></label>
           ${renkSecimi(t.color)}
+          ${armaSecimi(sekil0,sembol0)}
           <label class="alan"><span>${\u00E7("Taktik")}</span><select name="taktik">${["dengeli","hucum","savunma"].map(x=>`<option value="${x}" ${x===t.tactic?"selected":""}>${esc(futbolTaktikAdi(x))}\
 </option>`).join("")}</select></label>
           <p class="kucuk">${esc(\u00E7("Taktik tak\u0131m\u0131n b\xFCt\xFCn a\xE7\u0131k lig ma\xE7lar\u0131na yaz\u0131l\u0131r; kilitten \xF6nce ma\xE7\u0131n kart\u0131ndan da de\u011Fi\u015Fir."))}\
 </p>`,is:async d=>{const ad=String(d.get("ad")??"").trim().replace(/\s+/g," ");await Sunucu.yap("football_team_set",{p_name:ad&&ad!==t.name?ad:null,p_color:String(d.get("renk")??"")||null,p_tactic:String(
-d.get("taktik")??"")||null}),tost(\u00E7("Tak\u0131m\u0131n g\xFCncellendi."),"check"),await yukle(),kapandi||ciz()}})}async function davetPencere(){let liste;try{liste=await Sunucu.cagir("football_te\
-am_invitable")}catch(e){tost(hataMetni(e),"circle-alert");return}if(kapandi)return;const kalan=Math.max(0,Number(liste?.max??8)-Number(liste?.size??0)),kisiler=(liste?.people??[]).filter(x=>!x.in_team);
-pencereForm({ust:mahalleTakimAdi(T()),baslik:\u00E7("Tak\u0131m\u0131na davet et"),onayAd:\u00E7("Davet et"),onayIkon:"user-round-plus",govde:kisiler.length?`<div class="futbol-adaylar">${kisiler.map(
-x=>`<div class="futbol-aday"><label class="futbol-aday-kim"><input type="checkbox" name="davetli" value="${esc(x.character_id)}" ${x.invited?"checked disabled":""}>
+d.get("taktik")??"")||null});const sekil=Number(d.get("sekil")??sekil0),sembol=Number(d.get("sembol")??sembol0);R().crest&&(sekil!==sekil0||sembol!==sembol0)&&await Sunucu.yap("football_team_crest",{p_shape:sekil,
+p_symbol:sembol}),tost(\u00E7("Tak\u0131m\u0131n g\xFCncellendi."),"check"),await yukle(),kapandi||ciz()}});ff?.form&&(ff.form.addEventListener("change",()=>armaOnizle(ff.form)),armaOnizle(ff.form))}function ertelePencere(f){
+const P=R().postpone??{},ops=Array.isArray(f.postpone_options)?f.postpone_options:[];ops.length&&pencereForm({ust:`${mahalleTakimAdi(f.home)} \u2013 ${mahalleTakimAdi(f.away)}`,baslik:\u00E7("Ma\xE7\u0131 ert\
+ele"),onayAd:\u00E7("\xD6ner"),onayIkon:"calendar-clock",govde:`<p class="aciklama">${esc(\u00E7("Ma\xE7\u0131n saati: {zaman}. Yeni saati se\xE7; rakip tak\u0131m\u0131n kaptan\u0131 ma\xE7tan {dk} dakika \xF6ncesine dek kabul eder\
+ ya da geri \xE7evirir.",{zaman:saatYaz(f.starts_at),dk:sayi(P.answerLeadMinutes??30)}))}</p>
+          <div class="lig-ertele-sec" role="radiogroup" aria-label="${esc(\u00E7("Yeni saat"))}">${ops.map((x,i)=>`<label><input type="radio" name="saat" value="${esc(x)}" ${i===0?"checked":""}><span>${esc(
+saatYaz(x))}</span></label>`).join("")}</div>
+          <p class="kucuk">${esc(\u00E7("Kabul edilirse ma\xE7 o saatte, saha doluysa sonraki \xE7eyrek saatte oynan\u0131r; iki tak\u0131ma haber gider. Bir ma\xE7 bir kez ertelenir; tak\u0131m\u0131n ligde bir ma\xE7\u0131n\u0131 erteleyebi\
+lir ve en \xE7ok {n} \xF6neri yapar.",{n:sayi(P.requestsPerTeam??2)}))}</p>`,is:async d=>{const saat=String(d.get("saat")??"");if(!saat)throw new Error(\u00E7("Yeni saati se\xE7."));await Sunucu.yap("\
+football_league_postpone",{p_fixture:f.id,p_to:saat}),tost(\u00E7("Erteleme \xF6nerin rakip tak\u0131m\u0131n kaptan\u0131na gitti."),"calendar-clock"),await yukle(),kapandi||ciz()}})}async function davetPencere(){
+let liste;try{liste=await Sunucu.cagir("football_team_invitable")}catch(e){tost(hataMetni(e),"circle-alert");return}if(kapandi)return;const kalan=Math.max(0,Number(liste?.max??8)-Number(liste?.size??0)),
+kisiler=(liste?.people??[]).filter(x=>!x.in_team);pencereForm({ust:mahalleTakimAdi(T()),baslik:\u00E7("Tak\u0131m\u0131na davet et"),onayAd:\u00E7("Davet et"),onayIkon:"user-round-plus",govde:kisiler.
+length?`<div class="futbol-adaylar">${kisiler.map(x=>`<div class="futbol-aday"><label class="futbol-aday-kim"><input type="checkbox" name="davetli" value="${esc(x.character_id)}" ${x.invited?"checked \
+disabled":""}>
             <span><b>${esc(x.name)}</b><span class="kucuk">${ikon(BAG_IK[x.tier]??"users-round")} ${esc(BAG_TUR[x.tier]??"")}${x.invited?" \xB7 "+esc(\u00E7("davet edildi")):""}</span></span></label><\
 /div>`).join("")}</div>
             <p class="kucuk">${esc(\u00E7("{n} ki\u015Fi daha davet edebilirsin. Davet {s} saat ge\xE7erli.",{n:sayi(kalan),s:sayi(R().team?.inviteHours??72)}))}</p>`:`<p class="bos">${esc(\u00E7("Dav\
@@ -180,7 +217,13 @@ g-ben-kaydet",kap);bk&&(bk.onclick=()=>yap("football_team_me",{p_pos:$("#lig-mev
 ay&&(ay.onclick=()=>{const t=T(),tek=(t.members??[]).length<=1;onay(\u00E7("Tak\u0131mdan ayr\u0131l"),tek?\u00E7("Tak\u0131mda tek ki\u015Fisin: ayr\u0131l\u0131rsan tak\u0131m da\u011F\u0131l\u0131r (gelecek haftan\u0131n kayd\u0131 varsa geri al\u0131n\
 \u0131r, bedel d\xF6ner)."):t.captain?\u00E7("Kaptans\u0131n: ayr\u0131l\u0131rsan kaptanl\u0131k tak\u0131m\u0131n en eski \xFCyesine ge\xE7er. A\xE7\u0131k lig ma\xE7lar\u0131ndaki kayd\u0131n d\xFC\u015Fer."):
 \u00E7("A\xE7\u0131k lig ma\xE7lar\u0131ndaki kayd\u0131n d\xFC\u015Fer; yeniden kat\u0131lmak i\xE7in davet gerekir."),\u00E7("Ayr\u0131l"),"mercan","door-open",()=>yap("football_team_leave",{},\u00E7(
-"Tak\u0131mdan ayr\u0131ld\u0131n."),"door-open"))});const yz=$("#lig-yaz",kap);yz&&(yz.onclick=()=>yap("football_league_register",{p_register:!0},\u00E7("Tak\u0131m\u0131n gelecek haftan\u0131n ligine yaz\u0131ld\u0131; bede\
-l hesab\u0131nda ayr\u0131ld\u0131."),"clipboard-check"));const gr=$("#lig-geri",kap);gr&&(gr.onclick=()=>yap("football_league_register",{p_register:!1},\u00E7("Kay\u0131t geri al\u0131nd\u0131; bedel serbest."),
-"undo-2"))}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()});if(await yukle(),!kap.isConnected)return()=>{};ciz(),zaman=setInterval(()=>{document.
-hidden||tazele()},6e4);const b1=Durum.dinle("olay",({olay})=>{/^football\./.test(olay)&&tazele()});return()=>{kapandi=!0,clearInterval(zaman),b1()}}}),Parcalar.tamam("ek_98zzg_mahalle_ligi");
+"Tak\u0131mdan ayr\u0131ld\u0131n."),"door-open"))});for(const b of $$("[data-lig-ertele]",kap))b.onclick=()=>{const f=(v.league?.fixtures??[]).find(x=>x.id===b.dataset.ligErtele);f&&ertelePencere(f)};
+for(const b of $$("[data-lig-ertele-kabul]",kap))b.onclick=()=>onay(\u00E7("Ma\xE7\u0131 ertele"),\u00E7("Ma\xE7 ertelenir; yeni saat: {zaman} (saha doluysa sonraki \xE7eyrek saat). \u0130ki tak\u0131m\u0131n \xFCyelerine ha\
+ber gider; yeni saatte kul\xFCp ma\xE7\u0131 olan ma\xE7tan \xE7\u0131kar.",{zaman:saatYaz(b.dataset.zaman)}),\u00E7("Kabul et"),"altin","calendar-check",()=>yap("football_league_postpone_answer",{p_request:b.
+dataset.ligErteleKabul,p_accept:!0},\u00E7("Ma\xE7 ertelendi; iki tak\u0131ma haber gitti."),"calendar-check"));for(const b of $$("[data-lig-ertele-red]",kap))b.onclick=()=>yap("football_league_postpo\
+ne_answer",{p_request:b.dataset.ligErteleRed,p_accept:!1},\u00E7("Erteleme \xF6nerisini geri \xE7evirdin; ma\xE7 yerinde."),"x");for(const b of $$("[data-lig-ertele-geri]",kap))b.onclick=()=>yap("foot\
+ball_league_postpone_cancel",{p_request:b.dataset.ligErteleGeri},\u00E7("Erteleme \xF6nerini geri ald\u0131n."),"undo-2");const yz=$("#lig-yaz",kap);yz&&(yz.onclick=()=>yap("football_league_register",
+{p_register:!0},\u00E7("Tak\u0131m\u0131n gelecek haftan\u0131n ligine yaz\u0131ld\u0131; bedel hesab\u0131nda ayr\u0131ld\u0131."),"clipboard-check"));const gr=$("#lig-geri",kap);gr&&(gr.onclick=()=>yap(
+"football_league_register",{p_register:!1},\u00E7("Kay\u0131t geri al\u0131nd\u0131; bedel serbest."),"undo-2"))}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&!document.querySelector(
+".perde")&&ciz()});if(await yukle(),!kap.isConnected)return()=>{};ciz(),zaman=setInterval(()=>{document.hidden||tazele()},6e4);const b1=Durum.dinle("olay",({olay})=>{/^football\./.test(olay)&&tazele()});
+return()=>{kapandi=!0,clearInterval(zaman),b1()}}}),Parcalar.tamam("ek_98zzg_mahalle_ligi");

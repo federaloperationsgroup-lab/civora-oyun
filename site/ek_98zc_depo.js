@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_98zc_depo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zc_depo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/depo",{async ac(kap){let v=null,harita=null,teklif=null,teklifNo=0,teklifSaat=null,durdur=()=>{},geriZaman=null,yoldaAnahtar="";const bekleme={n:0},form={kaynak:"bag",varlik:null,hedef:null,
 miktar:"1",yol:"kargo"};try{const x=JSON.parse(sessionStorage.getItem("civora.depo")??"null");sessionStorage.removeItem("civora.depo"),x?.kaynak&&Object.assign(form,x,{yol:"kargo"})}catch{}async function yukle(){
 [v,harita]=await Promise.all([Sunucu.cagir("logistics_me"),Durum.harita(),Durum.ozet()]);const a=(v.in_transit??[]).map(s=>s.shipment_id).join(",");a!==yoldaAnahtar&&(yoldaAnahtar=a,bekleme.n=0)}const depoBul=id=>(v.

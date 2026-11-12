@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-11-4846b754-5664247 (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("dunya/harita",{async ac(kap){const[veriTam]=await Promise.all([haritaVerisi(),Durum.ozet(),Durum.kurallar()]);let harita=await Durum.harita(!0);Devletler.haritaya(veriTam);let yolDurum=await Sunucu.
 cagir("travel_status").catch(()=>null),isb=await Sunucu.cagir("coop_map").catch(()=>null),trafik=await Sunucu.cagir("world_pulse").catch(()=>null);const filmIstek=HaritaFilm.bekleyen;HaritaFilm.bekleyen=
 null;let filmVeri=filmIstek?.veri??null;if(filmIstek&&!filmVeri&&(filmVeri=await Sunucu.cagir("season_film",{p_season:filmIstek.no??null}).catch(e=>(tost(hataMetni(e),"circle-alert"),null))),filmVeri)
@@ -42,7 +42,7 @@ character??{};kap.innerHTML=`<div class="harita-ekran">
 location,ulkem:ch().citizenship,yol:yolDurum?.travel??null,saatFarki,isbirligi:isb,trafik,isgaller:harita.occupations??[],hasar:harita.damage??{}}),durumNesnesi=()=>{const d=canliDurum();return film?.
 an?{...d,sahip:film.an.sahip,savaslar:film.an.savaslar,girisimler:[],ozerkler:[],ozkSurecler:[],devletler:[],isgaller:[],hasar:{},yol:null,trafik:null,konum:null,filmIgneleri:film.an.igneler}:d};function rota2b(y){
 const r=[...y.route??[]];return r[0]!==y.from&&r.unshift(y.from),r[r.length-1]!==y.to&&r.push(y.to),r.map(id=>bolgeById.get(id)).filter(Boolean).map(b=>b.etiket)}function aracNoktasi2b(y){return kirikNokta(
-rota2b(y),(Date.now()+saatFarki-Date.parse(y.departs_at))/Math.max(1,Date.parse(y.arrives_at)-Date.parse(y.departs_at)))}const yolPlaka=y=>[y?.vehicle?.land?.plate,y?.vehicle?.sea?.plate].filter(Boolean)[0]??
+rota2b(y),yolOrani(Date.parse(y.departs_at),Date.parse(y.arrives_at),Date.now()+saatFarki,yolDuruslari(y.pauses)))}const yolPlaka=y=>[y?.vehicle?.land?.plate,y?.vehicle?.sea?.plate].filter(Boolean)[0]??
 null;function yolKendiArac2b(y){if(!y?.vehicle)return null;const v=yolculukVerisi({ys:{travel:y},harita:null}),an=yolculukAni(v,Date.now()+saatFarki);return an.kendi?an.vapur?v.aracD:v.aracK:null}function canliYaz(){
 const el=$("#harita-canli",kap);if(!el)return;if(!trafik){el.hidden=!0;return}const yolda=Number(trafik.travel_total??0),tic=(trafik.trade??[]).reduce((s,x)=>s+Number(x.trades??0),0),kon=(trafik.convoys??
 []).length,oto=(trafik.tour_buses??[]).length,kargo=Number(trafik.cargo_total??0),parca=[yolda?\u00E7("{n} ki\u015Fi yolda",{n:sayi(yolda)}):\u00E7("\u015Eu an yolda kimse yok")];tic&&parca.push(\u00E7(
@@ -297,23 +297,39 @@ film.fv.season_no),el.innerHTML=`<div class="film-bas"><span class="film-baslik"
           <button class="dugme kucuk-d ikincil" type="button" id="film-bastan" aria-label="${\u00E7("Ba\u015Ftan")}" title="${\u00E7("Ba\u015Ftan")}">${ikon("rotate-ccw")}</button>
           <button class="dugme kucuk-d ikincil" type="button" id="film-hiz" aria-label="${\u00E7("H\u0131z")}" title="${\u00E7("H\u0131z")}">1\xD7</button>
           <button class="dugme kucuk-d ikincil" type="button" id="film-paylas" title="${\u00E7("Bu an\u0131 Kare olarak payla\u015F")}">${ikon("share-2")}${\u00E7("Payla\u015F")}</button>
-          <span class="film-olay" id="film-olay" aria-live="polite"></span></div>`,el.hidden=!1,$("[data-film-kapat]",el).onclick=()=>filmKapat(),$("#film-oynat",el).onclick=()=>{film.sn>=film.o.uzunluk&&
-(film.sn=0),film.oynuyor=!film.oynuyor,filmCiz()},$("#film-bastan",el).onclick=()=>{film.sn=0,film.oynuyor=!0,filmCiz()},$("#film-hiz",el).onclick=()=>{film.hiz=FILM_HIZ[(FILM_HIZ.indexOf(film.hiz)+1)%
-FILM_HIZ.length],bantYaz()},$("#film-paylas",el).onclick=()=>{film.oynuyor=!1,filmCiz(),HaritaFilm.paylas(film.fv.season_no,film.an.t)},$("#film-cubuk",el).oninput=e=>{film.sn=Number(e.target.value)/1e3*
-film.o.uzunluk,film.oynuyor=!1,filmCiz()}}async function filmBaslat(no=null,hazir=null,an=null){let fv=hazir;if(!fv)try{fv=await Sunucu.cagir("season_film",{p_season:no})}catch(e){tost(hataMetni(e),"c\
-ircle-alert");return}if(kapandi)return;const eksik=HaritaFilm.ulkeler(fv).filter(u=>!haritaAcilan.has(u)&&!veri.bolgeler.some(b=>b.ulke===u)&&veriTam.bolgeler.some(b=>b.ulke===u));if(eksik.length&&!hazir){
-for(const u of eksik)haritaAcilan.add(u);HaritaFilm.bekleyen={no,veri:fv,an},Kabuk.git("dunya/harita",{gecmis:!1});return}clearInterval(filmSaat),secimYap(null),film={fv,o:HaritaFilm.kur(fv,harita.sahip),
-sn:0,oynuyor:!0,hiz:1,an:null},an!=null&&(film.sn=film.o.snOf(an),film.oynuyor=!1),$(".harita-ekran",kap).dataset.film="1",bantKur(),filmCiz(!0);let once=performance.now(),sonCizim=0;filmSaat=setInterval(
-()=>{const simdi=performance.now(),dt=Math.min(.5,(simdi-once)/1e3);if(once=simdi,!(!film||document.hidden||!film.oynuyor)){if(film.sn=Math.min(film.o.uzunluk,film.sn+dt*film.hiz),film.sn>=film.o.uzunluk&&
-(film.oynuyor=!1),mod==="2b"&&film.oynuyor&&simdi-sonCizim<330){bantYaz();return}sonCizim=simdi,filmCiz()}},100)}function filmKapat(){clearInterval(filmSaat),filmSaat=null,film=null,delete $(".harita-\
-ekran",kap).dataset.film;const el=$("#film-bant",kap);el.hidden=!0,el.replaceChildren(),mod==="3b"?harita3bOrnek?.durumYaz(durumNesnesi()):mod==="2b"&&ciz2b()}$("#harita-film-ac",kap).onclick=()=>filmBaslat(
-null);for(const b of $$("[data-kip]",kap))b.onclick=()=>{kip=b.dataset.kip;for(const x of $$("[data-kip]",kap))x.setAttribute("aria-pressed",String(x===b));mod==="3b"?harita3bOrnek?.kipAyarla(kip):mod===
-"2b"&&ciz2b(),ipucuYaz()};for(const b of $$("[data-yakin]",kap))b.onclick=()=>{const k=b.dataset.yakin;if(mod==="3b"&&harita3bOrnek)k==="ev"?harita3bOrnek.eveDon():harita3bOrnek.yakinlas(k==="yakin"?.6:
-1.6);else if(mod==="2b")if(k==="ev"){g2=baslangic2b();const kn=bolgeById.get(ch().location);kn?odakla2b(kn.id):gorunumUygula()}else yakinlas2b(k==="yakin"?.65:1.5)};$("#harita-mod",kap).onclick=()=>Gorunum.
-ayarla(mod==="3b"?"2b":"3b");const yenile=tazeleyici(async()=>{[harita,yolDurum,isb,trafik]=await Promise.all([Durum.harita(!0),Sunucu.cagir("travel_status").catch(()=>yolDurum),Sunucu.cagir("coop_map").
-catch(()=>isb),Sunucu.cagir("world_pulse").catch(()=>trafik)]),harita.server_time&&(saatFarki=Date.parse(harita.server_time)-Date.now()),await Durum.ozet(),!kapandi&&(mod==="3b"?harita3bOrnek?.durumYaz(
-durumNesnesi()):mod==="2b"&&ciz2b(),kartCiz(),listeCiz(),canliYaz())});listeCiz(),canliYaz(),await modKur(),filmVeri&&!kapandi&&filmBaslat(filmIstek.no??null,filmVeri,filmIstek.an??null);const birakGorunum=Gorunum.
-dinle(()=>{kapandi||modKur()}),b1=Durum.dinle("ulke-olay",({olay})=>{/^(country\.war_|seizure\.(struggle|result)|autonomy\.(started|ended|drive_opened|drive_closed|referendum_opened|governor_elected)|occupation\.(started|ended)|resistance\.(opened|vote_closed|closed))/.
+          ${kolajEnCok()>1?`<button class="dugme kucuk-d ikincil" type="button" id="film-an-ekle">${ikon("plus")}${\u00E7("An\u0131 ekle")}</button>`:""}
+          <span class="film-olay" id="film-olay" aria-live="polite"></span></div>
+        <div class="film-kolaj" id="film-kolaj" hidden></div>`,el.hidden=!1,$("[data-film-kapat]",el).onclick=()=>filmKapat(),$("#film-oynat",el).onclick=()=>{film.sn>=film.o.uzunluk&&(film.sn=0),film.
+oynuyor=!film.oynuyor,filmCiz()},$("#film-bastan",el).onclick=()=>{film.sn=0,film.oynuyor=!0,filmCiz()},$("#film-hiz",el).onclick=()=>{film.hiz=FILM_HIZ[(FILM_HIZ.indexOf(film.hiz)+1)%FILM_HIZ.length],
+bantYaz()},$("#film-paylas",el).onclick=()=>{film.oynuyor=!1,filmCiz(),HaritaFilm.paylas(film.fv.season_no,film.an.t)},$("#film-cubuk",el).oninput=e=>{film.sn=Number(e.target.value)/1e3*film.o.uzunluk,
+film.oynuyor=!1,filmCiz()};const ekle=$("#film-an-ekle",el);ekle&&(ekle.onclick=()=>kolajEkle()),$("#film-kolaj",el).onclick=e=>{const git=e.target.closest("[data-film-kolaj-git]"),cikar=e.target.closest(
+"[data-film-kolaj-cikar]");if(git){const x=film.kolaj[Number(git.dataset.filmKolajGit)];x&&(film.sn=film.o.snOf(x.t),film.oynuyor=!1,filmCiz())}else cikar?(film.kolaj=film.kolaj.filter((_,i)=>i!==Number(
+cikar.dataset.filmKolajCikar)),kolajYaz()):e.target.closest("#film-kolaj-paylas")&&film.kolaj.length>1&&(film.oynuyor=!1,filmCiz(),HaritaFilm.paylas(film.fv.season_no,film.kolaj.map(x=>x.t)))},kolajYaz()}
+const kolajEnCok=()=>Math.max(1,Number(Durum.v.kurallar?.data?.media?.photo?.maxFilmMoments??1));function kolajEkle(){if(!film?.an)return;const t=film.an.t,en=kolajEnCok();if(film.kolaj.some(x=>Math.abs(
+x.t-t)<6e4)){tost(\u00E7("Bu an zaten kolajda."),"circle-alert");return}if(film.kolaj.length>=en){tost(\u00E7("Kolajda en \xE7ok {n} an olur.",{n:en}),"circle-alert");return}film.kolaj=[...film.kolaj,
+{t,hafta:film.an.hafta}].sort((a,b)=>a.t-b.t),kolajYaz()}function kolajYaz(){const el=$("#film-kolaj",kap),ekle=$("#film-an-ekle",kap);if(!el||!film)return;const k=film.kolaj,en=kolajEnCok(),ekran=$("\
+.harita-ekran",kap);if(k.length?ekran.dataset.filmKolaj="1":delete ekran.dataset.filmKolaj,ekle&&(ekle.disabled=k.length>=en,ekle.title=k.length>=en?\u00E7("Kolajda en \xE7ok {n} an olur.",{n:en}):\u00E7(
+"Bu an\u0131 kolaja ekle")),el.hidden=!k.length,el.dataset.filmKolajSay=String(k.length),!k.length){el.replaceChildren();return}el.innerHTML=`<span class="film-kolaj-bas">${ikon("layout-grid")}<b>${esc(
+\u00E7("Kolaj {n}/{en}",{n:k.length,en}))}</b></span>
+        <span class="film-kolaj-anlar">${k.map((x,i)=>`<span class="film-kolaj-an" data-film-kolaj-an="${x.t}"><button type="button" class="film-kolaj-git" data-film-kolaj-git="${i}"
+            title="${esc(\u00E7("Bu ana git"))}">${esc(\u00E7("{i} \xB7 {h}. hafta",{i:String(i+1),h:String(x.hafta)}))}</button><button type="button" class="film-kolaj-cikar"
+            data-film-kolaj-cikar="${i}" aria-label="${esc(\u00E7("Kolajdan \xE7\u0131kar"))}" title="${esc(\u00E7("Kolajdan \xE7\u0131kar"))}">${ikon("x")}</button></span>`).join("")}</span>
+        <button class="dugme kucuk-d altin" type="button" id="film-kolaj-paylas" ${k.length<2?"disabled":""}
+          title="${esc(k.length<2?\u00E7("Kolaj i\xE7in en az iki an ekle."):\u00E7("Kolaj\u0131 tek Kare olarak payla\u015F"))}">${ikon("layout-grid")}${\u00E7("Kolaj\u0131 payla\u015F")}</button>`}async function filmBaslat(no=null,hazir=null,an=null,anlar=null){
+let fv=hazir;if(!fv)try{fv=await Sunucu.cagir("season_film",{p_season:no})}catch(e){tost(hataMetni(e),"circle-alert");return}if(kapandi)return;const eksik=HaritaFilm.ulkeler(fv).filter(u=>!haritaAcilan.
+has(u)&&!veri.bolgeler.some(b=>b.ulke===u)&&veriTam.bolgeler.some(b=>b.ulke===u));if(eksik.length&&!hazir){for(const u of eksik)haritaAcilan.add(u);HaritaFilm.bekleyen={no,veri:fv,an,anlar},Kabuk.git(
+"dunya/harita",{gecmis:!1});return}clearInterval(filmSaat),secimYap(null),film={fv,o:HaritaFilm.kur(fv,harita.sahip),sn:0,oynuyor:!0,hiz:1,an:null,kolaj:[]},an!=null&&(film.sn=film.o.snOf(an),film.oynuyor=
+!1),Array.isArray(anlar)&&(film.kolaj=anlar.slice(0,kolajEnCok()).map(t=>({t:Number(t),hafta:film.o.anT(Number(t)).hafta}))),$(".harita-ekran",kap).dataset.film="1",bantKur(),filmCiz(!0);let once=performance.
+now(),sonCizim=0;filmSaat=setInterval(()=>{const simdi=performance.now(),dt=Math.min(.5,(simdi-once)/1e3);if(once=simdi,!(!film||document.hidden||!film.oynuyor)){if(film.sn=Math.min(film.o.uzunluk,film.
+sn+dt*film.hiz),film.sn>=film.o.uzunluk&&(film.oynuyor=!1),mod==="2b"&&film.oynuyor&&simdi-sonCizim<330){bantYaz();return}sonCizim=simdi,filmCiz()}},100)}function filmKapat(){clearInterval(filmSaat),filmSaat=
+null,film=null,delete $(".harita-ekran",kap).dataset.film,delete $(".harita-ekran",kap).dataset.filmKolaj;const el=$("#film-bant",kap);el.hidden=!0,el.replaceChildren(),mod==="3b"?harita3bOrnek?.durumYaz(
+durumNesnesi()):mod==="2b"&&ciz2b()}$("#harita-film-ac",kap).onclick=()=>filmBaslat(null);for(const b of $$("[data-kip]",kap))b.onclick=()=>{kip=b.dataset.kip;for(const x of $$("[data-kip]",kap))x.setAttribute(
+"aria-pressed",String(x===b));mod==="3b"?harita3bOrnek?.kipAyarla(kip):mod==="2b"&&ciz2b(),ipucuYaz()};for(const b of $$("[data-yakin]",kap))b.onclick=()=>{const k=b.dataset.yakin;if(mod==="3b"&&harita3bOrnek)
+k==="ev"?harita3bOrnek.eveDon():harita3bOrnek.yakinlas(k==="yakin"?.6:1.6);else if(mod==="2b")if(k==="ev"){g2=baslangic2b();const kn=bolgeById.get(ch().location);kn?odakla2b(kn.id):gorunumUygula()}else
+yakinlas2b(k==="yakin"?.65:1.5)};$("#harita-mod",kap).onclick=()=>Gorunum.ayarla(mod==="3b"?"2b":"3b");const yenile=tazeleyici(async()=>{[harita,yolDurum,isb,trafik]=await Promise.all([Durum.harita(!0),
+Sunucu.cagir("travel_status").catch(()=>yolDurum),Sunucu.cagir("coop_map").catch(()=>isb),Sunucu.cagir("world_pulse").catch(()=>trafik)]),harita.server_time&&(saatFarki=Date.parse(harita.server_time)-
+Date.now()),await Durum.ozet(),!kapandi&&(mod==="3b"?harita3bOrnek?.durumYaz(durumNesnesi()):mod==="2b"&&ciz2b(),kartCiz(),listeCiz(),canliYaz())});listeCiz(),canliYaz(),await modKur(),filmVeri&&!kapandi&&
+filmBaslat(filmIstek.no??null,filmVeri,filmIstek.an??null,filmIstek.anlar??null);const birakGorunum=Gorunum.dinle(()=>{kapandi||modKur()}),b1=Durum.dinle("ulke-olay",({olay})=>{/^(country\.war_|seizure\.(struggle|result)|autonomy\.(started|ended|drive_opened|drive_closed|referendum_opened|governor_elected)|occupation\.(started|ended)|resistance\.(opened|vote_closed|closed))/.
 test(olay)&&yenile()}),b2=Durum.dinle("olay",({olay})=>{/^travel\.(started|arrived|cancelled)/.test(olay)&&yenile()}),b3=Durum.dinle("diplomasi",({olay})=>{olay==="diplomacy.in_force"&&yenile()}),b5=Durum.
 dinle("koalisyon",()=>yenile());let hatSaat=null;const b4=Durum.dinle("hat",({olay})=>{/^coop\.line_(building|built|closed|progress)/.test(olay)&&(clearTimeout(hatSaat),hatSaat=setTimeout(()=>{kapandi||
 yenile()},olay==="coop.line_progress"?4e3:300))}),zamanlayici=setInterval(()=>{document.hidden||yenile()},6e4),aracSaat=setInterval(()=>{const y=yolDurum?.travel,el=$("#harita-2b .arac2b",kap);if(mod!==
