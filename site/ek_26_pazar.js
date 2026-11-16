@@ -1,6 +1,7 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_26_pazar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_26_pazar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/pazar",{async ac(kap){let secili="erzak@1",yalnizBurada=!1;try{secili=sessionStorage.getItem("civora.pazar")||"erzak@1",yalnizBurada=sessionStorage.getItem("civora.pazar.burada")===
-"1"}catch{}PAZAR_URUNLER.includes(secili)||(secili="erzak@1");let kaynak="";try{kaynak=sessionStorage.getItem("civora.pazar.kaynak")||"",sessionStorage.removeItem("civora.pazar.kaynak")}catch{}let ozetler=[],
+"1"}catch{}PAZAR_URUNLER.includes(secili)||(secili="erzak@1");let kaynak="",satisHatasi=null,satisTaslak=null;const taslakOku=f=>({varlik:f.elements.namedItem("varlik")?.value??"",miktar:f.elements.namedItem(
+"miktar")?.value??"1",fiyat:f.elements.namedItem("fiyat")?.value??""});try{kaynak=sessionStorage.getItem("civora.pazar.kaynak")||"",sessionStorage.removeItem("civora.pazar.kaynak")}catch{}let ozetler=[],
 ilanlar=[],benim={open:[],recent:[]},nabiz=null,sehir=null,gorunus,lojistik=null,fisler=[],sozlesmeler={open:[],recent:[],rules:null},ilanHata=!1,ilanIstek=0;const carsi=CarsiSahnesi.ac(),benVerisi=()=>{
 const ch=Durum.v.ozet?.character;return ch?{anahtar:ch.id,ad:ch.name??"",gorunus:gorunus??null,ulke:ch.citizenship??null,rutbe:{sira:Durum.v.askerlik?.soldier?.rank??0,sayi:12}}:null},carsiYaz=()=>carsi.
 yaz({ozetler,nabiz,sehir,secili,ben:benVerisi()});carsi.dinle("sec",a=>{if(a==="pano"){Kabuk.git("ulke/ekonomi");return}const b=$(`[data-urun="${CSS.escape(a)}"]`,kap);b&&(b.click(),$("#pazar-ilanlar",
@@ -34,7 +35,17 @@ if(await Kabuk.git("sehir/is"),Kabuk.etkin!=="sehir/is")return;$("#depo-kart")?.
 "#pazar-burada",kap);s&&(s.onchange=async()=>{yalnizBurada=s.checked;try{sessionStorage.setItem("civora.pazar.burada",yalnizBurada?"1":"0")}catch{}await ilanTazele()})}async function ilanTazele(){const istek=++ilanIstek,
 urun=secili;let yeni=[],hata=!1;try{yeni=await ilanOku(urun)}catch{hata=!0}if(istek!==ilanIstek||urun!==secili)return;ilanlar=yeni,ilanHata=hata;const yer=$("#pazar-ilanlar",kap);yer&&(yer.innerHTML=ilanlarHtml(
 new Map(ozetler.map(x=>[x.asset,x]))),ilanlarBagla())}function kaynakStoklari(k){return k?(depo(k)?.balances??[]).filter(b=>Number(b.spendable)>0):(Durum.v.ozet?.balances??[]).filter(b=>b.asset!=="CR"&&
-b.spendable>0)}function kaynakNotu(k){const w=depo(k);return w?\u00E7("\u0130lan deponun yerinde ({yer}) a\xE7\u0131l\u0131r; sat\u0131\u015F vergisini {ulke} al\u0131r. Para \xE7antana gelir.",{yer:bolgeAdi(
+b.spendable>0)}let onSira=0,onZaman=0;function onHesap(f){clearTimeout(onZaman),onZaman=setTimeout(()=>onHesapIste(f),250)}const enCokFiyat=()=>Number(Durum.v.kurallar?.data?.market?.maxUnitPrice??1e11),
+enCokMiktar=()=>Number(Durum.v.kurallar?.data?.market?.maxQtyPerOrder??1e6);async function onHesapIste(f){const yer=$("#sat-on",f);if(!yer)return;const v=new FormData(f),[urun,q]=String(v.get("varlik")??
+"").split("@");if(!urun||!q){yer.innerHTML="";return}const miktar=adetAl(v.get("miktar")),fiyat=krediAlt(v.get("fiyat")),tam=miktar>0&&fiyat>0&&miktar<=enCokMiktar()&&fiyat<=enCokFiyat(),sira=++onSira;
+let r=null,hata=null;try{r=await Sunucu.cagir("market_sell_quote",{p_product:urun,p_quality:Number(q),...tam?{p_qty:miktar,p_unit_price:fiyat}:{},...kaynak?{p_warehouse:kaynak}:{}})}catch(e){hata=e}if(sira!==
+onSira||!yer.isConnected)return;if(hata){yer.innerHTML=`<span class="satir">${esc(hataMetni(hata))}</span>`;return}const ref=[r.depot_unit_price!=null?\u00E7("Devlet deposu {kr} kr",{kr:kr(r.depot_unit_price)}):
+null,r.min_unit_price!=null?\u00E7("En d\xFC\u015F\xFCk ilan {kr} kr",{kr:kr(r.min_unit_price)}):\u00E7("A\xE7\u0131k sat\u0131\u015F ilan\u0131 yok")].filter(Boolean);yer.innerHTML=`<span class="sati\
+r">${ref.map(x=>esc(x)).join(" \xB7 ")}</span>
+        ${r.seller_net!=null?`<span class="net" data-net="${Number(r.seller_net)}">${\u00E7("Eline ge\xE7ecek: <b>{kr} kr</b>",{kr:kr(r.seller_net)})}</span>
+          <span class="satir">${esc(\u00E7("Toplam {t} kr \xB7 sat\u0131\u015F vergisi {vo} ({v} kr, {ulke}) \xB7 hizmet bedeli {ho} ({h} kr)",{t:kr(r.total),vo:ppmYuzde(r.tax_rate_ppm),v:kr(r.tax_total),
+ulke:ulkeAdi(r.tax_country_id),ho:ppmYuzde(r.fee_rate_ppm),h:kr(r.fee)}))}</span>`:`<span class="satir">${esc(\u00E7("Miktar\u0131 ve fiyat\u0131 yaz\u0131nca eline ge\xE7ecek tutar burada g\xF6r\xFCn\xFCr."))}\
+</span>`}`}function kaynakNotu(k){const w=depo(k);return w?\u00E7("\u0130lan deponun yerinde ({yer}) a\xE7\u0131l\u0131r; sat\u0131\u015F vergisini {ulke} al\u0131r. Para \xE7antana gelir.",{yer:bolgeAdi(
 w.region_id),ulke:ulkeAdi(w.country_id)}):\u00E7("\u0130lan bulundu\u011Fun yerde ({yer}) a\xE7\u0131l\u0131r; sat\u0131\u015F vergisini o \xFClke al\u0131r.",{yer:bolgeAdi(Durum.v.ozet?.character?.location??
 lojistik?.location)})}function urunSecenekleri(k,sec){return kaynakStoklari(k).map(b=>`<option value="${b.asset}" ${b.asset===sec?"selected":""}>${esc(varlikAdi(b.asset))} (${sayi(b.spendable)})</opti\
 on>`).join("")}function satisKarti(sec){kaynak&&!depo(kaynak)&&(kaynak="");const stok=kaynakStoklari(kaynak),depoVar=depolar().some(w=>(w.balances??[]).some(b=>Number(b.spendable)>0));return`<section \
@@ -47,14 +58,17 @@ class="kart" id="pazar-satis">
             ${depolar().map(w=>`<option value="${esc(w.warehouse_id)}" ${w.warehouse_id===kaynak?"selected":""}>${esc(\u00E7("{ulke} deposu ({yer})",{ulke:ulkeAdi(w.country_id),yer:bolgeAdi(w.region_id)}))}\
 </option>`).join("")}
           </select></label>`:""}
-          <label class="alan"><span>${\u00E7("\xDCr\xFCn")}</span><select name="varlik">${urunSecenekleri(kaynak,secili)}</select></label>
+          <label class="alan"><span>${\u00E7("\xDCr\xFCn")}</span><select name="varlik">${urunSecenekleri(kaynak,satisTaslak?.varlik||secili)}</select></label>
           <div class="izgara" style="grid-template-columns:1fr 1fr;gap:12px">
-            <label class="alan"><span>${\u00E7("Miktar")}</span><input name="miktar" inputmode="numeric" value="1"></label>
-            <label class="alan"><span>${\u00E7("Birim fiyat (kredi)")}</span><input name="fiyat" inputmode="decimal" value="${sec?(sec.min_unit_price/100).toLocaleString(DIL.yerel):""}"></label>
+            <label class="alan"><span>${\u00E7("Miktar")}</span><input name="miktar" inputmode="numeric" value="${esc(satisTaslak?.miktar??"1")}"></label>
+            <label class="alan"><span>${\u00E7("Birim fiyat (kredi)")}</span><input name="fiyat" inputmode="decimal" value="${satisTaslak?esc(satisTaslak.fiyat):sec?(sec.min_unit_price/100).toLocaleString(
+DIL.yerel):""}"></label>
           </div>
+          <div class="satis-on" id="sat-on" aria-live="polite"></div>
           <p class="kucuk" id="sat-kaynak">${esc(kaynakNotu(kaynak))}</p>
           <p class="kucuk" id="sat-ozet">${\u00E7("\u0130lan 72 saat a\xE7\u0131k kal\u0131r. Sat\u0131\u015Ftan sat\u0131\u015F vergisi ve %3 hizmet bedeli d\xFC\u015F\xFCl\xFCr.")}</p>
-          <div class="form-mesaj"></div>
+          <div class="form-mesaj">${satisHatasi?`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(satisHatasi.metin)}</span></div>${satisHatasi.bayat?`<p class="kucuk">${\u00E7("\xC7antandaki \
+say\u0131lar tazelendi.")}</p>`:""}`:""}</div>
           <button class="dugme altin" type="submit">${ikon("store")}${\u00E7("\u0130lana koy")}</button></form>`:`<p class="bos">${\u00E7("\xC7antanda sat\u0131lacak \xFCr\xFCn yok.")}</p>`}
       </section>`}function ilanlarimKarti(){return`<section class="kart">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("\u0130lanlar\u0131n")}</p><h2 class="b2">${benim.open.length?\u00E7("{n} a\xE7\u0131k ilan",{n:benim.open.length}):\u00E7("A\xE7\u0131k ilan\u0131n \
@@ -135,14 +149,19 @@ e),"circle-alert")}await tazele()}function bagla(){for(const b of $$("[data-urun
 dataset.depodan==="1"?\u00E7("\u0130lan geri \xE7ekildi; \xFCr\xFCnler depoya d\xF6nd\xFC."):\u00E7("\u0130lan geri \xE7ekildi; \xFCr\xFCnler \xE7antana d\xF6nd\xFC."));for(const b of $$("[data-fis]",
 kap))b.onclick=()=>{const f2=fisler[Number(b.dataset.fis)];f2&&fisPenceresi(f2)};sozlesmeBagla();const f=$("#sat-form",kap);if(!f)return;const ks=$("select[name=kaynak]",f);ks&&(ks.onchange=()=>{kaynak=
 ks.value;const vs=$("select[name=varlik]",f);vs.innerHTML=urunSecenekleri(kaynak,secili)||`<option value="">${esc(\u00E7("Bu kaynakta sat\u0131lacak mal yok"))}</option>`,$("#sat-kaynak",f).textContent=
-kaynakNotu(kaynak)}),f.addEventListener("submit",async e=>{e.preventDefault();const v=new FormData(f),[urun,q]=String(v.get("varlik")??"").split("@"),miktar=adetAl(v.get("miktar")),fiyat=krediAlt(v.get(
-"fiyat")),yer=$(".form-mesaj",f),dugme=$("button[type=submit]",f);if(!urun||!q||!(miktar>0)||!(fiyat>0)){formSerbest(f),yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("M\
-iktar ve fiyat\u0131 denetle.")}</span></div>`;return}dugme&&(dugme.disabled=!0);try{await Sunucu.yap("market_create_order",{p_product:urun,p_quality:Number(q),p_qty:miktar,p_unit_price:fiyat,...kaynak?
-{p_warehouse:kaynak}:{}}),tost(\u00E7("\u0130lan\u0131n pazarda."),"store"),secili=`${urun}@${q}`,await tazele()}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(
-err))}</span></div>`}finally{dugme&&(dugme.disabled=!1),formSerbest(f)}})}const sozBul=id=>[...sozlesmeler.open??[],...sozlesmeler.recent??[]].find(k=>k.contract_id===id);function sozlesmeBagla(){$("#\
-ozel-yeni",kap)?.addEventListener("click",yeniSozlesme);for(const b of $$("[data-soz-kabul]",kap))b.onclick=()=>{const k=sozBul(b.dataset.sozKabul);pencere({ust:\u00E7("\xD6zel sipari\u015F"),baslik:\u00E7(
-"Sipari\u015Fi kabul et"),govde:`<p class="aciklama">${\u00E7("{n} {urun} teslim edeceksin; birimi {kr} kredi. Teslim {ulke} i\xE7inde: orada bulunmal\u0131s\u0131n ya da mal oradaki deponda olmal\u0131. S\xFCre kabulden \
-itibaren {gun} g\xFCn.",{n:sayi(k?.qty_total??0),urun:esc(varlikAdi(k?.asset??"")),kr:kr(k?.unit_price??0),ulke:esc(ulkeAdi(k?.country_id)),gun:sayi(k?.days??0)})}</p>
+kaynakNotu(kaynak),onHesap(f)}),f.addEventListener("input",e=>{e.isTrusted&&(satisHatasi=null,satisTaslak&&(satisTaslak=taslakOku(f))),onHesap(f)}),f.addEventListener("change",()=>onHesap(f)),onHesapIste(
+f),f.addEventListener("submit",async e=>{e.preventDefault();const v=new FormData(f),[urun,q]=String(v.get("varlik")??"").split("@"),miktar=adetAl(v.get("miktar")),fiyat=krediAlt(v.get("fiyat")),yer=$(
+".form-mesaj",f),dugme=$("button[type=submit]",f),elde=Number(kaynakStoklari(kaynak).find(b=>b.asset===`${urun}@${q}`)?.spendable??0),h=[...urun&&q?[]:[["varlik",\u00E7("Sat\u0131lacak \xFCr\xFCn\xFC se\xE7.")]],
+...miktar>0?urun&&miktar>elde?[["miktar",\u00E7("Elinde {n} tane var.",{n:sayi(elde)})]]:miktar>enCokMiktar()?[["miktar",\u00E7("Bir ilanda en \xE7ok {n} tane sat\u0131l\u0131r.",{n:sayi(enCokMiktar())})]]:
+[]:[["miktar",\u00E7("Miktar 1 ya da daha b\xFCy\xFCk bir tam say\u0131 olmal\u0131.")]],...fiyat>0?fiyat>enCokFiyat()?[["fiyat",\u00E7("Birim fiyat en \xE7ok {kr} kredi olabilir.",{kr:kr(enCokFiyat())})]]:
+[]:[["fiyat",\u00E7("Birim fiyat\u0131 yaz (\xF6r. 1,50).")]]];if(yer.innerHTML="",alanHatalari(f,h)){formSerbest(f);return}dugme&&(dugme.disabled=!0);try{await Sunucu.yap("market_create_order",{p_product:urun,
+p_quality:Number(q),p_qty:miktar,p_unit_price:fiyat,...kaynak?{p_warehouse:kaynak}:{}}),tost(\u00E7("\u0130lan\u0131n pazarda."),"store"),secili=`${urun}@${q}`,satisHatasi=null,satisTaslak=null,await tazele()}catch(err){
+const bayat=/^INSUFFICIENT_/.test(String(err?.kod??""));satisHatasi={metin:hataMetni(err),bayat},bayat?(satisTaslak=taslakOku(f),await tazele()):yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-\
+alert")}<span>${esc(satisHatasi.metin)}</span></div>`}finally{dugme&&(dugme.disabled=!1),formSerbest(f)}})}const sozBul=id=>[...sozlesmeler.open??[],...sozlesmeler.recent??[]].find(k=>k.contract_id===
+id);function sozlesmeBagla(){$("#ozel-yeni",kap)?.addEventListener("click",yeniSozlesme);for(const b of $$("[data-soz-kabul]",kap))b.onclick=()=>{const k=sozBul(b.dataset.sozKabul);pencere({ust:\u00E7(
+"\xD6zel sipari\u015F"),baslik:\u00E7("Sipari\u015Fi kabul et"),govde:`<p class="aciklama">${\u00E7("{n} {urun} teslim edeceksin; birimi {kr} kredi. Teslim {ulke} i\xE7inde: orada bulunmal\u0131s\u0131n ya da mal \
+oradaki deponda olmal\u0131. S\xFCre kabulden itibaren {gun} g\xFCn.",{n:sayi(k?.qty_total??0),urun:esc(varlikAdi(k?.asset??"")),kr:kr(k?.unit_price??0),ulke:esc(ulkeAdi(k?.country_id)),gun:sayi(k?.days??
+0)})}</p>
             <p class="kucuk">${\u00E7("Her teslim pazar sat\u0131\u015F\u0131 gibi vergilenir ({oran} vergi ve hizmet bedeli). B\u0131rak\u0131rsan kalan bedel isteyene d\xF6ner.",{oran:ppmYuzde(k?.tax_rate_ppm??
 0)})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Kabul et"),sinif:"altin",ikon:"check",is:()=>islem("contract_respond",{p_contract:b.dataset.sozKabul,p_accept:!0},\u00E7("Sipari\u015Fi kabul ettin\
 ; teslim edebilirsin."),"notebook-pen")}]})};for(const b of $$("[data-soz-ret]",kap))b.onclick=()=>islem("contract_respond",{p_contract:b.dataset.sozRet,p_accept:!1},\u00E7("Sipari\u015Fi reddettin."),
@@ -189,15 +208,16 @@ anda {n} adet var.",{yer:esc(bolgeAdi(o.region_id)),ulke:esc(ulkeAdi(ulke)),n:Nu
           <div id="al-teslim" style="margin-top:12px">${o.local?`<p class="kucuk">${ikon("check")} ${\u00E7("\u0130lan bulundu\u011Fun \xFClkede: mal hemen \xE7antana girer.")}</p>`:`<p class="kucuk">${\u00E7(
 "Teslim \u015Fart\u0131 okunuyor\u2026")}</p>`}</div>
           <p class="kucuk" id="al-toplam" style="margin-top:8px">${\u00E7("Toplam: {kr} kredi",{kr:kr(o.unit_price)})}</p>
-          <p class="kucuk" id="al-indirim" style="margin-top:4px" hidden></p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Sat\u0131n al"),sinif:"altin",is:async()=>{try{const t=await Sunucu.cagir(
-"market_quote",{p_order_id:o.order_id,p_qty:miktar}),mod=t.delivery?.local?null:teslim??(t.delivery?.modes?.includes("ship")?"ship":"warehouse"),beklenen=mod==="ship"?t.ship_total:t.total,r=await Sunucu.
-yap("market_buy",{p_order_id:o.order_id,p_qty:miktar,p_expected_total:beklenen,...mod?{p_delivery:mod}:{}});mod==="ship"?tost(\u00E7("{n} {urun} ald\u0131n ({kr} kredi); kargo {dk} dakikada gelir (\u015Eehrim \u2192\
- Depo).",{n:miktar,urun:varlikAdi(o.asset),kr:kr(beklenen),dk:sayi(r?.shipment?.minutes??0)}),"truck"):mod==="warehouse"?tost(\u00E7("{n} {urun} ald\u0131n ({kr} kredi); {ulke} deposunda (\u015Eehrim \u2192 Depo).",
-{n:miktar,urun:varlikAdi(o.asset),kr:kr(beklenen),ulke:ulkeAdi(ulke)}),"warehouse"):tost(\u00E7("{n} {urun} ald\u0131n ({kr} kredi).",{n:miktar,urun:varlikAdi(o.asset),kr:kr(t.total)}),"store")}catch(e){
-tost(hataMetni(e),"circle-alert")}await tazele()}}]});const toplamYaz=t=>{const top=document.getElementById("al-toplam");if(!top)return;const mal=t?Number(t.total):miktar*o.unit_price,navlun=teslim===
-"ship"?Number(sonTeklif?.delivery?.ship?.fee_cr??0):0;top.textContent=navlun>0?\u00E7("Toplam: {kr} kredi (mal {mal} + navlun {navlun})",{kr:kr(mal+navlun),mal:kr(mal),navlun:kr(navlun)}):\u00E7("Topl\
-am: {kr} kredi",{kr:kr(mal)})},teslimYaz=t=>{const yer=document.getElementById("al-teslim"),dl=t?.delivery;if(!yer||!dl||dl.local)return;const gemi=dl.modes?.includes("ship");(!teslim||teslim==="ship"&&
-!gemi)&&(teslim=gemi?"ship":"warehouse");const s=dl.ship??{};yer.innerHTML=`<p class="ust-yazi" style="margin:0 0 6px">${\u00E7("Teslim \u015Fart\u0131")}</p><div class="radyo-liste">
+          <p class="kucuk" id="al-indirim" style="margin-top:4px" hidden></p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Sat\u0131n al"),sinif:"altin",bekleAd:\u00E7("Sat\u0131n al\u0131n\u0131yor\u2026"),
+is:async()=>{try{await al()}catch(e){throw tazele(),e}}}]});async function al(){try{await alis()}catch(e){throw tazele(),e}}async function alis(){const t=await Sunucu.cagir("market_quote",{p_order_id:o.
+order_id,p_qty:miktar}),mod=t.delivery?.local?null:teslim??(t.delivery?.modes?.includes("ship")?"ship":"warehouse"),beklenen=mod==="ship"?t.ship_total:t.total,r=await Sunucu.yap("market_buy",{p_order_id:o.
+order_id,p_qty:miktar,p_expected_total:beklenen,...mod?{p_delivery:mod}:{}});mod==="ship"?tost(\u00E7("{n} {urun} ald\u0131n ({kr} kredi); kargo {dk} dakikada gelir (\u015Eehrim \u2192 Depo).",{n:miktar,
+urun:varlikAdi(o.asset),kr:kr(beklenen),dk:sayi(r?.shipment?.minutes??0)}),"truck"):mod==="warehouse"?tost(\u00E7("{n} {urun} ald\u0131n ({kr} kredi); {ulke} deposunda (\u015Eehrim \u2192 Depo).",{n:miktar,
+urun:varlikAdi(o.asset),kr:kr(beklenen),ulke:ulkeAdi(ulke)}),"warehouse"):tost(\u00E7("{n} {urun} ald\u0131n ({kr} kredi).",{n:miktar,urun:varlikAdi(o.asset),kr:kr(t.total)}),"store"),tazele()}const toplamYaz=t=>{
+const top=document.getElementById("al-toplam");if(!top)return;const mal=t?Number(t.total):miktar*o.unit_price,navlun=teslim==="ship"?Number(sonTeklif?.delivery?.ship?.fee_cr??0):0;top.textContent=navlun>
+0?\u00E7("Toplam: {kr} kredi (mal {mal} + navlun {navlun})",{kr:kr(mal+navlun),mal:kr(mal),navlun:kr(navlun)}):\u00E7("Toplam: {kr} kredi",{kr:kr(mal)})},teslimYaz=t=>{const yer=document.getElementById(
+"al-teslim"),dl=t?.delivery;if(!yer||!dl||dl.local)return;const gemi=dl.modes?.includes("ship");(!teslim||teslim==="ship"&&!gemi)&&(teslim=gemi?"ship":"warehouse");const s=dl.ship??{};yer.innerHTML=`<\
+p class="ust-yazi" style="margin:0 0 6px">${\u00E7("Teslim \u015Fart\u0131")}</p><div class="radyo-liste">
           <label class="radyo"><input type="radio" name="teslim" value="ship" ${teslim==="ship"?"checked":""} ${gemi?"":"disabled"}>
             <span><b>${ikon("truck")} ${\u00E7("Bana g\xF6nder")}</b><span class="kucuk">${gemi?\u00E7("Kargoyla {dk} dakikada bulundu\u011Fun yere ({yer}) gelir; navlun {kr} kredi.",{dk:sayi(s.minutes??
 0),yer:esc(bolgeAdi(Durum.v.ozet?.character?.location)),kr:kr(s.fee_cr??0)})+(s.trade_discount?" "+\u00E7("Ticaret anla\u015Fmas\u0131yla navlun yar\u0131."):"")+((s.lines??[]).length?" "+\u00E7("Yol \
@@ -211,6 +231,6 @@ const no=++teklifNo,t=await Sunucu.cagir("market_quote",{p_order_id:o.order_id,p
 {kr:kr(t.tax_discount)}):\u00E7("Ticaret anla\u015Fmas\u0131: sat\u0131\u015F vergisinin {oran} kadar\u0131n\u0131 \xF6demezsin (\u2212{kr} kredi).",{oran:ppmYuzde(t.tax_discount_ppm),kr:kr(t.tax_discount)}):
 "")};teklifYaz();const g=document.getElementById("al-miktar");g?.addEventListener("input",()=>{miktar=Math.max(1,Math.min(o.qty_remaining,adetAl(g.value)||1)),toplamYaz(null),clearTimeout(teklifSaat),
 teklifSaat=setTimeout(teklifYaz,250)})}async function tazele(){try{await yukle(),ciz()}catch(e){tost(hataMetni(e),"circle-alert")}}await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(market\.|contract\.|shipment\.)/.
-test(olay)&&tazele()}),nabizZaman=setInterval(async()=>{if(document.visibilityState!=="visible")return;const[oz,nb,sh]=await Promise.all([Sunucu.cagir("market_overview").catch(()=>null),Sunucu.cagir("\
-market_pulse").catch(()=>null),Sunucu.cagir("city_pulse").catch(()=>null)]);oz&&(ozetler=oz),nb&&(nabiz=nb),sh&&(sehir=sh),carsiYaz()},6e4);return()=>{b1(),clearInterval(nabizZaman),carsi.kapat()}}}),
-Parcalar.tamam("ek_26_pazar");
+test(olay)&&tazele()}),b2=Durum.dinle("bayat",()=>tazele()),nabizZaman=setInterval(async()=>{if(document.visibilityState!=="visible")return;const[oz,nb,sh]=await Promise.all([Sunucu.cagir("market_over\
+view").catch(()=>null),Sunucu.cagir("market_pulse").catch(()=>null),Sunucu.cagir("city_pulse").catch(()=>null)]);oz&&(ozetler=oz),nb&&(nabiz=nb),sh&&(sehir=sh),carsiYaz()},6e4);return()=>{b1(),b2(),clearInterval(
+nabizZaman),carsi.kapat()}}}),Parcalar.tamam("ek_26_pazar","2026-11-16-8043284a-fd6cffc");

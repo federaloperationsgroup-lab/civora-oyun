@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_41_harita3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_41_harita3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function harita3bKur(THREE,MapControls,cizici,veri){if(!cizici.kur())throw new Error("webgl-yok");const S=.1,YUK_KAPALI=.32,YUK_ACIK=.62,YUK_NOTR=.22,SIS=new THREE.Color("#E8E4D6"),[W,H]=veri.tuval,sahne=new THREE.
 Scene,kamera=new THREE.PerspectiveCamera(36,1,.5,1200);let kontrol=null,kap=null,etiketKap=null,ipucuEl=null,boyutW=1,boyutH=1;const isinci=new THREE.Raycaster,isaretci=new THREE.Vector2,secilebilir=[],
 bolgeMesh=new Map,ulkeMesh=new Map,sehirKume=new Map,baskentEtiket=new Map,etiketler=[],surekli=[];let kip="siyasi",secili=null,uzerinde=null;const zaman={value:0};let kameraDegisti=!0,ciz=!0,kaliteAdi="\
@@ -12,24 +12,24 @@ Vector2((x-W/2)*S,-(y-H/2)*S),s=new THREE.Shape(dis.map(v));for(const d of delik
 map(sekil),{depth:yuk,bevelEnabled:!1,curveSegments:1});return g.rotateX(-Math.PI/2),g.computeBoundingSphere(),g}function cizgiler(poligonlar,yuk,renk,saydam){const noktalar=[];for(const p of poligonlar)
 for(const h of p){const c=coz(h);for(let i=0;i<c.length;i++){const a=c[i],b=c[(i+1)%c.length];noktalar.push((a[0]-W/2)*S,yuk,(a[1]-H/2)*S,(b[0]-W/2)*S,yuk,(b[1]-H/2)*S)}}const g=new THREE.BufferGeometry;
 return g.setAttribute("position",new THREE.Float32BufferAttribute(noktalar,3)),new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:renk,transparent:!0,opacity:saydam,depthWrite:!1}))}function ekranKonumu(nokta){
-return _yansit.copy(nokta).project(kamera),{x:(_yansit.x*.5+.5)*boyutW,y:(-_yansit.y*.5+.5)*boyutH,arkada:_yansit.z>1,disarida:Math.abs(_yansit.x)>1.15||Math.abs(_yansit.y)>1.15}}function kameraDurdur(){
-ucusNesli++,kameraKaresi!==null&&cancelAnimationFrame(kameraKaresi),kameraKaresi=null,ucuyor=!1}function kameraUc(hedef,konum,sure=1.2){if(yokEdildi)return;kameraDurdur();const benim=ucusNesli,h0=kontrol.
-target.clone(),k0=kamera.position.clone(),t0=performance.now();ucuyor=!0;const adim=()=>{if(yokEdildi||benim!==ucusNesli)return;kameraKaresi=null;const t=Math.min(1,(performance.now()-t0)/(hareketAzalt?
-1:sure*1e3)),e=yumusak.girisCikis(t);kontrol.target.lerpVectors(h0,hedef,e),kamera.position.lerpVectors(k0,konum,e),kontrol.update(),kameraDegisti=!0,t<1?kameraKaresi=requestAnimationFrame(adim):ucuyor=
-!1};kameraKaresi=requestAnimationFrame(adim)}const KUM=["#E9DFC6","#E3D7BB","#EDE4CF","#E0D3B5","#E6DBC1"].map(c=>new THREE.Color(c)),KAYNAK_RENK={tahil:"#D9A548",cevher:"#7C8A94",lif:"#93B27E"},ulkeRengi=id=>new THREE.
-Color(ulkeById.get(id)?.u.renk??DUNYA.ulkeler?.[id]?.renk??"#B9A98A"),sahibi=b=>durum.sahip[b.id]??b.ulke;function ulkeRenk(u){const renk=durum.acik.has(u.id)?new THREE.Color(u.renk).lerp(new THREE.Color(
-"#FFFFFF"),.12):KUM[ulkeById.get(u.id).i%KUM.length].clone().lerp(new THREE.Color(u.renk),.17);return durum.uyuyan?.has(u.id)&&renk.lerp(new THREE.Color("#EDE6D4"),.5),kip!=="siyasi"&&renk.lerp(new THREE.
-Color("#ECE8DD"),.55),renk}function bolgeRenk(b){if(kip==="kaynak"){const a=Object.keys(b.avantaj??{})[0];return new THREE.Color(a?KAYNAK_RENK[a]:"#CDB991").lerp(new THREE.Color("#F1EDE2"),zenginlikSoluklugu(
-b))}if(kip==="cephe"){const s=durum.savaslar.find(x=>x.target_region_id===b.id||x.origin_region_id===b.id);return s?new THREE.Color(s.target_region_id===b.id?"#C65A3B":"#E08F70"):new THREE.Color("#D8D\
-2C2")}const r=rastgele(ozet(b.id)),renk=ulkeRengi(sahibi(b)).offsetHSL(0,(r()-.5)*.08,(r()-.5)*.09),kar=havaAn(b.id,Date.now()+(durum.saatFarki??0)).kar;return kar&&renk.lerp(KAR_RENK,kar),durum.uyuyan?.
-has(sahibi(b))?renk.lerp(new THREE.Color("#EDE6D4"),.45):renk}const malzeme=renk=>new THREE.MeshStandardMaterial({color:renk,roughness:.93,metalness:0}),KAR_RENK=new THREE.Color("#F4F7FA");function kiyiDokusu(){
-const gw=telefon()?1280:2048,gh=Math.round(gw*H/W),c=document.createElement("canvas");c.width=gw,c.height=gh;const x=c.getContext("2d");x.fillStyle="#000",x.fillRect(0,0,gw,gh);const o=gw/W,yol=new Path2D,
-ekle=poligonlar=>{for(const p of poligonlar)for(const h of p)coz(h).forEach(([px,py],i)=>i?yol.lineTo(px*o,py*o):yol.moveTo(px*o,py*o)),yol.closePath()};veri.ulkeler.forEach(u=>ekle(u.p)),ekle(veri.notr),
-x.lineJoin="round","filter"in x&&(x.filter=`blur(${Math.round(14*o*1)}px)`,x.strokeStyle="rgba(255,255,255,0.55)",x.lineWidth=34*o,x.stroke(yol),x.filter=`blur(${Math.max(1,Math.round(4*o))}px)`,x.strokeStyle=
-"rgba(255,255,255,0.5)",x.lineWidth=8*o,x.stroke(yol),x.filter="none"),x.fillStyle="#fff",x.fill(yol,"evenodd");const t=new THREE.CanvasTexture(c);return t.colorSpace=THREE.NoColorSpace,t.anisotropy=4,
-t}function okyanusKur(){const mat=new THREE.ShaderMaterial({uniforms:{uKiyi:{value:kiyiDokusu()},uZaman:zaman,uBoyut:{value:new THREE.Vector2(W*S,H*S)},uDerin:{value:new THREE.Color("#3A6C7C")},uSig:{
-value:new THREE.Color("#8CC3BA")},uKopuk:{value:new THREE.Color("#F4F1E4")},uSis:{value:SIS},uSisYakin:{value:120},uSisUzak:{value:420}},vertexShader:"varying vec3 vD; void main(){ vec4 w = modelMatri\
-x * vec4(position,1.0); vD = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }",fragmentShader:`
+return _yansit.copy(nokta).project(kamera),{x:(_yansit.x*.5+.5)*boyutW,y:(-_yansit.y*.5+.5)*boyutH,arkada:_yansit.z>1}}function kameraDurdur(){ucusNesli++,kameraKaresi!==null&&cancelAnimationFrame(kameraKaresi),
+kameraKaresi=null,ucuyor=!1}function kameraUc(hedef,konum,sure=1.2){if(yokEdildi)return;kameraDurdur();const benim=ucusNesli,h0=kontrol.target.clone(),k0=kamera.position.clone(),t0=performance.now();ucuyor=
+!0;const adim=()=>{if(yokEdildi||benim!==ucusNesli)return;kameraKaresi=null;const t=Math.min(1,(performance.now()-t0)/(hareketAzalt?1:sure*1e3)),e=yumusak.girisCikis(t);kontrol.target.lerpVectors(h0,hedef,
+e),kamera.position.lerpVectors(k0,konum,e),kontrol.update(),kameraDegisti=!0,t<1?kameraKaresi=requestAnimationFrame(adim):ucuyor=!1};kameraKaresi=requestAnimationFrame(adim)}const KUM=["#E9DFC6","#E3D\
+7BB","#EDE4CF","#E0D3B5","#E6DBC1"].map(c=>new THREE.Color(c)),KAYNAK_RENK={tahil:"#D9A548",cevher:"#7C8A94",lif:"#93B27E"},ulkeRengi=id=>new THREE.Color(ulkeById.get(id)?.u.renk??DUNYA.ulkeler?.[id]?.
+renk??"#B9A98A"),sahibi=b=>durum.sahip[b.id]??b.ulke;function ulkeRenk(u){const renk=durum.acik.has(u.id)?new THREE.Color(u.renk).lerp(new THREE.Color("#FFFFFF"),.12):KUM[ulkeById.get(u.id).i%KUM.length].
+clone().lerp(new THREE.Color(u.renk),.17);return durum.uyuyan?.has(u.id)&&renk.lerp(new THREE.Color("#EDE6D4"),.5),kip!=="siyasi"&&renk.lerp(new THREE.Color("#ECE8DD"),.55),renk}function bolgeRenk(b){
+if(kip==="kaynak"){const a=Object.keys(b.avantaj??{})[0];return new THREE.Color(a?KAYNAK_RENK[a]:"#CDB991").lerp(new THREE.Color("#F1EDE2"),zenginlikSoluklugu(b))}if(kip==="cephe"){const s=durum.savaslar.
+find(x=>x.target_region_id===b.id||x.origin_region_id===b.id);return s?new THREE.Color(s.target_region_id===b.id?"#C65A3B":"#E08F70"):new THREE.Color("#D8D2C2")}const r=rastgele(ozet(b.id)),renk=ulkeRengi(
+sahibi(b)).offsetHSL(0,(r()-.5)*.08,(r()-.5)*.09),kar=havaAn(b.id,Date.now()+(durum.saatFarki??0)).kar;return kar&&renk.lerp(KAR_RENK,kar),durum.uyuyan?.has(sahibi(b))?renk.lerp(new THREE.Color("#EDE6\
+D4"),.45):renk}const malzeme=renk=>new THREE.MeshStandardMaterial({color:renk,roughness:.93,metalness:0}),KAR_RENK=new THREE.Color("#F4F7FA");function kiyiDokusu(){const gw=telefon()?1280:2048,gh=Math.
+round(gw*H/W),c=document.createElement("canvas");c.width=gw,c.height=gh;const x=c.getContext("2d");x.fillStyle="#000",x.fillRect(0,0,gw,gh);const o=gw/W,yol=new Path2D,ekle=poligonlar=>{for(const p of poligonlar)
+for(const h of p)coz(h).forEach(([px,py],i)=>i?yol.lineTo(px*o,py*o):yol.moveTo(px*o,py*o)),yol.closePath()};veri.ulkeler.forEach(u=>ekle(u.p)),ekle(veri.notr),x.lineJoin="round","filter"in x&&(x.filter=
+`blur(${Math.round(14*o*1)}px)`,x.strokeStyle="rgba(255,255,255,0.55)",x.lineWidth=34*o,x.stroke(yol),x.filter=`blur(${Math.max(1,Math.round(4*o))}px)`,x.strokeStyle="rgba(255,255,255,0.5)",x.lineWidth=
+8*o,x.stroke(yol),x.filter="none"),x.fillStyle="#fff",x.fill(yol,"evenodd");const t=new THREE.CanvasTexture(c);return t.colorSpace=THREE.NoColorSpace,t.anisotropy=4,t}function okyanusKur(){const mat=new THREE.
+ShaderMaterial({uniforms:{uKiyi:{value:kiyiDokusu()},uZaman:zaman,uBoyut:{value:new THREE.Vector2(W*S,H*S)},uDerin:{value:new THREE.Color("#3A6C7C")},uSig:{value:new THREE.Color("#8CC3BA")},uKopuk:{value:new THREE.
+Color("#F4F1E4")},uSis:{value:SIS},uSisYakin:{value:120},uSisUzak:{value:420}},vertexShader:"varying vec3 vD; void main(){ vec4 w = modelMatrix * vec4(position,1.0); vD = w.xyz; gl_Position = projecti\
+onMatrix * viewMatrix * w; }",fragmentShader:`
         uniform sampler2D uKiyi; uniform float uZaman; uniform vec2 uBoyut;
         uniform vec3 uDerin, uSig, uKopuk, uSis; uniform float uSisYakin, uSisUzak;
         varying vec3 vD;
@@ -66,15 +66,15 @@ userData.parilti?.material.dispose());const grup=miniSehir(seviye,b.baskent,ozet
 geceSehir(b.id,grup);const et=baskentEtiket.get(b.id);et&&(et.el.querySelector("small").textContent=\u00E7("BA\u015EKENT \xB7 SV {n}",{n:seviye}))}ciz=!0}function etiketEkle(html,sinif,konum,oncelik,kosul,carpisma=!0){
 const el=document.createElement("div");el.className="etiket sakli "+sinif,el.innerHTML=html,etiketKap?.appendChild(el);const e={el,konum,oncelik,kosul,carpisma,w:0,h:0,gorunur:!1};return etiketler.push(
 e),etiketler.sort((a,b)=>b.oncelik-a.oncelik),kameraDegisti=!0,e}function etiketSil(e){const i=etiketler.indexOf(e);i>=0&&etiketler.splice(i,1),e.el.remove()}function etiketleriGuncelle(){if(!kontrol)
-return;const mesafe=kamera.position.distanceTo(kontrol.target),dolu=[];for(const e of etiketler){let goster=!e.kosul||e.kosul(mesafe),px=0,py=0;if(goster){const k=ekranKonumu(e.konum);if(k.arkada||k.disarida)
-goster=!1;else{e.w||(e.w=e.el.offsetWidth,e.h=e.el.offsetHeight),px=k.x-e.w/2,py=k.y-e.h/2;const kutu=[px-4,py-2,px+e.w+4,py+e.h+2];e.carpisma&&dolu.some(d=>!(kutu[2]<d[0]||kutu[0]>d[2]||kutu[3]<d[1]||
-kutu[1]>d[3]))?goster=!1:dolu.push(kutu)}}goster&&(e.el.style.transform=`translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0)`),goster!==e.gorunur&&(e.el.classList.toggle("sakli",!goster),e.gorunur=
-goster)}}function savaslariKur(){const anahtar=JSON.stringify(durum.savaslar);if(anahtar!==savasAnahtar){savasAnahtar=anahtar;for(const o of[...savasGrubu.children])savasGrubu.remove(o),o.geometry?.dispose(),
-o.material?.dispose();for(const e of savasEtiketleri)etiketSil(e);savasEtiketleri=[];for(const a of savasAnim){const i=surekli.indexOf(a);i>=0&&surekli.splice(i,1)}savasAnim=[];for(const s of durum.savaslar){
-const a=bolgeById.get(s.origin_region_id),b=bolgeById.get(s.target_region_id);if(!a||!b)continue;const p0=dunyaNokta(a.etiket[0],a.etiket[1],YUK_ACIK+.05),p1=dunyaNokta(b.etiket[0],b.etiket[1],YUK_ACIK+
-.05);if(a!==b){const orta=p0.clone().lerp(p1,.5);orta.y+=1.2+p0.distanceTo(p1)*.45;const egri=new THREE.QuadraticBezierCurve3(p0,orta,p1),mat=new THREE.ShaderMaterial({transparent:!0,depthWrite:!1,uniforms:{
-uZaman:zaman,uRenk:{value:new THREE.Color(s.paused?"#9A8F80":"#E0603B")}},vertexShader:"varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); \
-}",fragmentShader:`varying vec2 vUv; uniform float uZaman; uniform vec3 uRenk;
+return;const mesafe=kamera.position.distanceTo(kontrol.target),dolu=[];for(const e of etiketler){let goster=!e.kosul||e.kosul(mesafe),px=0,py=0;if(goster){const k=ekranKonumu(e.konum);if(k.arkada||k.x<
+0||k.x>boyutW||k.y<0||k.y>boyutH)goster=!1;else{e.w||(e.w=e.el.offsetWidth,e.h=e.el.offsetHeight),px=Math.max(4,Math.min(boyutW-e.w-4,k.x-e.w/2)),py=Math.max(4,Math.min(boyutH-e.h-4,k.y-e.h/2));const kutu=[
+px-4,py-2,px+e.w+4,py+e.h+2];e.carpisma&&dolu.some(d=>!(kutu[2]<d[0]||kutu[0]>d[2]||kutu[3]<d[1]||kutu[1]>d[3]))?goster=!1:dolu.push(kutu)}}goster&&(e.el.style.transform=`translate3d(${px.toFixed(1)}p\
+x, ${py.toFixed(1)}px, 0)`),goster!==e.gorunur&&(e.el.classList.toggle("sakli",!goster),e.gorunur=goster)}}function savaslariKur(){const anahtar=JSON.stringify(durum.savaslar);if(anahtar!==savasAnahtar){
+savasAnahtar=anahtar;for(const o of[...savasGrubu.children])savasGrubu.remove(o),o.geometry?.dispose(),o.material?.dispose();for(const e of savasEtiketleri)etiketSil(e);savasEtiketleri=[];for(const a of savasAnim){
+const i=surekli.indexOf(a);i>=0&&surekli.splice(i,1)}savasAnim=[];for(const s of durum.savaslar){const a=bolgeById.get(s.origin_region_id),b=bolgeById.get(s.target_region_id);if(!a||!b)continue;const p0=dunyaNokta(
+a.etiket[0],a.etiket[1],YUK_ACIK+.05),p1=dunyaNokta(b.etiket[0],b.etiket[1],YUK_ACIK+.05);if(a!==b){const orta=p0.clone().lerp(p1,.5);orta.y+=1.2+p0.distanceTo(p1)*.45;const egri=new THREE.QuadraticBezierCurve3(
+p0,orta,p1),mat=new THREE.ShaderMaterial({transparent:!0,depthWrite:!1,uniforms:{uZaman:zaman,uRenk:{value:new THREE.Color(s.paused?"#9A8F80":"#E0603B")}},vertexShader:"varying vec2 vUv; void main(){ \
+vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }",fragmentShader:`varying vec2 vUv; uniform float uZaman; uniform vec3 uRenk;
             void main(){ float f = fract(vUv.x * 5.0 - uZaman * 0.9); float p = smoothstep(0.0, 0.25, f) * (1.0 - smoothstep(0.45, 0.7, f));
             float uc = smoothstep(0.0, 0.08, vUv.x) * (1.0 - smoothstep(0.92, 1.0, vUv.x));
             gl_FragColor = vec4(mix(uRenk, vec3(1.0, 0.92, 0.8), p * 0.6), (0.45 + p * 0.55) * uc);
@@ -300,4 +300,4 @@ if(!(!m||birakilan.has(m))){for(const deger of Object.values(m))dokuBirak(deger)
 for(const m of[].concat(o.material??[]))gerecBirak(m);o.isInstancedMesh&&birak(o),o.shadow&&birak(o.shadow)});for(const g of[KUTU,PARILTI_GEO,BASKENT_NOKTA])birak(g);for(const m of[DUVAR,CATI,KUBBE,kapaliYan,
 BASKENT_MAT,...yanMalzeme.values()])gerecBirak(m);for(const t of[PENCERE,PARILTI])birak(t);for(const e of etiketler)e.el.remove();etiketler.length=0,ipucuEl?.remove(),ipucuEl=null,kap=null,etiketKap=null,
 kontrol=null;for(const ad of Object.keys(dinleyici))delete dinleyici[ad];sahne.clear(),secilebilir.length=0,surekli.length=0,bolgeMesh.clear(),ulkeMesh.clear(),sehirKume.clear(),baskentEtiket.clear(),
-yanMalzeme.clear()}};return api}Parcalar.tamam("uc_41_harita3b");
+yanMalzeme.clear()}};return api}Parcalar.tamam("uc_41_harita3b","2026-11-16-8043284a-fd6cffc");

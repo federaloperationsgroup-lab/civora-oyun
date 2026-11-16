@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98h_konser3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98h_konser3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const KONSER_OLCEK=.66,KONSER_SEYIRCI_OLCEK=.92,KONSER_CALGI_OLCEK=.85;function konserSeyirciYeri(mekan,n,tohum){const y=KONSER_YER[mekan]??KONSER_YER.kahvehane,s=konserSahneYeri(y),r=rastgele(tohum),
 zc=(s.zArka+s.zOn)/2,yon=(x,z)=>Math.atan2(-x*.55,zc-z),x0=-y.W/2+.55,x1=y.W/2-.55,z0=s.zOn+.75,z1=y.D/2-.45,oturaklar=[];if(y.duzen==="masa")for(const z of[z0+.75,z0+2.25])for(const x of[-y.W*.3,0,y.
 W*.3])for(const[dx,dz]of[[-.55,0],[.55,0],[0,.55]])oturaklar.push([x+dx,z+dz,x,z]);else if(y.duzen==="sira")for(let z=z0+.3;z<=z1-1.25;z+=.82)for(let x=.62;x<=x1;x+=.62)oturaklar.push([x,z]),oturaklar.
@@ -136,4 +136,4 @@ traverseVisible(o=>{o.isMesh&&n++}),n},get durum(){return{hal:d.hal,mekan:d.meka
 yv=>{if(!yv.kok.visible)return;const sure=yv.fp.eylemSuresi(yv.eylem)||3;yv.fp.pozla(yv.eylem,(t+yv.faz*sure)%sure/sure,t+yv.faz*7,hareketAzalt,!0),hareketAzalt||yv.fp.canli(t+yv.faz*5)}),kalabalik.guncelle(
 hareketAzalt?0:t),konserCanliHal(d.hal)&&!hareketAzalt&&(davulGovde.forEach((m,i)=>{m.scale.y=1+Math.max(0,Math.sin(t*9+i*1.7))*.03}),isiklariYonelt(t),mk?.g.userData.top&&(mk.g.userData.top.rotation.
 y=t*.8),mk?.g.userData.neon&&(mk.g.userData.neon.emissiveIntensity=1.2+Math.sin(t*3.2)*.3),temaGuncelle(t)),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98h_k\
-onser3b");
+onser3b","2026-11-16-8043284a-fd6cffc");

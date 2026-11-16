@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_49b_magaza3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_49b_magaza3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function magaza3bAraclar(THREE){const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.7,...ek}),golge=m=>(m.castShadow=!0,m.receiveShadow=!0,m);return{M,kutu:(gx,gy,gz,mat,x=0,y=0,z=0)=>{
 const m=golge(new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat));return m.position.set(x,y+gy/2,z),m},silindir:(r1,r2,y0,boy,mat,x=0,z=0,n=14)=>{const m=golge(new THREE.Mesh(new THREE.CylinderGeometry(
 r1,r2,boy,n),mat));return m.position.set(x,y0+boy/2,z),m},kure:(r,mat,x=0,y=0,z=0,n=14)=>{const m=golge(new THREE.Mesh(new THREE.SphereGeometry(r,n,Math.max(6,n-4)),mat));return m.position.set(x,y,z),
@@ -89,4 +89,4 @@ eksen.rotation.z=.4,eksen.add(kure),g.add(eksen);const yay=new THREE.Mesh(new TH
 yay),g},esya_bayrak:(A,c,c2,THREE)=>{const g=new THREE.Group,m=A.M(c,{roughness:.3,metalness:.6});g.add(A.silindir(.18,.22,0,.08,A.M("#5E534B"),0,0,14),A.silindir(.022,.022,.08,1.95,m,0,0,8),A.kure(.04,
 m,0,2.05,0,10));const geo=new THREE.PlaneGeometry(.46,.32,8,1),pos=geo.attributes.position;for(let i=0;i<pos.count;i++)pos.setZ(i,Math.sin((pos.getX(i)+.23)*10)*.025);geo.computeVertexNormals();const bez=new THREE.
 Mesh(geo,A.M(c2,{roughness:.85,side:THREE.DoubleSide}));return bez.position.set(.25,1.82,0),bez.castShadow=!0,g.add(bez),g}};function magazaEsya3b(THREE,id,urun){const yap=MAGAZA_ESYA_3B[id];if(!yap)return null;
-const d=urun?.data??{};return yap(magaza3bAraclar(THREE),d.color??"#8E6A4A",d.color2??"#2B2724",THREE)}Parcalar.tamam("uc_49b_magaza3b");
+const d=urun?.data??{};return yap(magaza3bAraclar(THREE),d.color??"#8E6A4A",d.color2??"#2B2724",THREE)}Parcalar.tamam("uc_49b_magaza3b","2026-11-16-8043284a-fd6cffc");

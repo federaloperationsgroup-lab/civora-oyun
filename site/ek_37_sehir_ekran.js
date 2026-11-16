@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_37_sehir_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_37_sehir_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/sehir",{async ac(kap){let v=null,mod=null,hata3b=!1,kapandi=!1,secili=null,havaOnizle=null,tumIsletmeler=!1;async function yukle(tam){const o=tam||!Durum.v.ozet?await Durum.ozet():
 Durum.v.ozet,bolge=o.character.location,kapali=e=>{if(e.kod==="RULE_NOT_ACTIVE")return null;throw e},[sh,ic,harita,kurallar,un,dedikodu]=await Promise.all([Sunucu.cagir("city",{p_region:bolge}),Sunucu.
 cagir("city_companies",{p_region:bolge}),Durum.harita().catch(()=>Durum.v.harita),Durum.kurallar(),Sunucu.cagir("fame_board",{p_region:bolge}).catch(kapali),Sunucu.cagir("gossip",{p_region:bolge}).catch(
@@ -135,7 +135,7 @@ class="bolge-karti cam" data-sehir-kart="proje" data-sehir-proje="${esc(p.tur)}"
           <h2 class="b2">${esc(p.ad)}</h2>
           <p class="cip ${p.durum==="active"?"yesil":p.durum==="suspended"?"mercan":"altin"}" style="margin-top:8px">${ikon(p.durum==="active"?"check":p.durum==="suspended"?"pause":"hammer")}${esc(p.durumYazi)}\
 </p>
-          ${k?`<p class="aciklama" style="font-size:14px">${esc(bldEtki(k))}</p>`:""}
+          ${k?`<p class="aciklama" style="font-size:0.875rem">${esc(bldEtki(k))}</p>`:""}
           <div class="bilgi-izgara">
             <div><small>${\u00E7("Ba\u015Flatan")}</small><b>${esc(p.baslatan??"\u2014")}</b></div>
             ${p.durum==="building"&&p.hazir?`<div><small>${\u00E7("Haz\u0131r olur")}</small><b>${esc(saatYaz(p.hazir))}</b></div>`:""}
@@ -185,7 +185,7 @@ v.isgal?.occupation?"megaphone":"hammer")}${v.isgal?.occupation?\u00E7("Direni\u
         <p class="ust-yazi">${ikon(y.ik)} ${esc(y.ulkenin?ulkeAdi(v.sahip):bolgeAdi(v.bolge))}</p>
         <h2 class="b2">${esc(y.ad)}</h2>
         ${dur?`<p class="cip${secili.id==="kisla"&&v.ulke?.campaigns?.length?" mercan":""}" style="margin-top:8px">${esc(dur)}</p>`:""}
-        <p class="aciklama" style="font-size:14px">${esc(y.aciklama)}</p>${ek}
+        <p class="aciklama" style="font-size:0.875rem">${esc(y.aciklama)}</p>${ek}
         ${kapali?`<p class="kucuk">${\u00E7("Bu \u015Fehir {ulke} topra\u011F\u0131; {yer} o \xFClkenin vatanda\u015Flar\u0131n\u0131nd\u0131r.",{ulke:esc(ulkeAdi(v.sahip)),yer:esc(y.ad.toLocaleLowerCase(
 DIL.yerel))})}</p>`:""}
         ${dugmeler?`<div class="satir" style="flex-wrap:wrap;gap:8px;margin-top:10px">${dugmeler}</div>`:""}
@@ -248,8 +248,8 @@ rank)}):\u00E7("Bu \u015Fehirde hen\xFCz \xFCn\xFCn yok.")}${u.my_cities?.length
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Gazete")} \xB7 ${\u00E7("son {n} saat",{n:sayi(d.hours)})}</p><h2 class="b2">${\u00E7("Dedikodu k\xF6\u015Fesi")}</h2></div><span class\
 ="ik-kutu">${ikon("newspaper")}</span></div>
         ${d.items.length?`<div class="liste">${d.items.map(x=>{const[ik,metin]=dedikoduMetni(x);return`<div class="liste-satir" data-dedikodu="${esc(x.kind)}"><span class="liste-ikon">${ik}</span>
-            <div><span class="tur">${esc(saatYaz(x.at))}</span><div class="alt" style="font-size:13.5px">${metin}</div></div><span></span></div>`}).join("")}</div>`:`<p class="bos">${\u00E7("\u015Eehirde b\
-ug\xFCnlerde konu\u015Fulacak bir \u015Fey olmad\u0131.")}</p>`}
+            <div><span class="tur">${esc(saatYaz(x.at))}</span><div class="alt" style="font-size:0.84375rem">${metin}</div></div><span></span></div>`}).join("")}</div>`:`<p class="bos">${\u00E7("\u015Eehir\
+de bug\xFCnlerde konu\u015Fulacak bir \u015Fey olmad\u0131.")}</p>`}
         <p class="kucuk" style="margin-top:8px">${\u00E7("Dedikodu yaln\u0131z oyunun herkese a\xE7\u0131k olaylar\u0131d\u0131r: ki\u015Fisel veri ve sicil yer almaz, g\xF6lgedeki olaylar ads\u0131zd\u0131r.")}\
 </p>`;for(const b of $$("[data-un-profil]",kap))b.onclick=()=>profilAc(b.dataset.unProfil)}function ciz2b(){const kutu=$("#sehir-2b",kap),b=bolgeBilgi(),kiyi=limanMi(),L=Number(v.sh.level)||1,P=SEHIR_PALET[b.
 iklim]??SEHIR_PALET.bozkir,g=gunesNe(),f=n=>n.toFixed(2),cizim=[],hv=havaGoster(),zemin=renkKaristir(renkKaristir(P.zemin,"#F4F7F8",Math.min(.85,hv.kar*1.1)),"#4E5A63",hv.tur==="yagmur"?hv.guclu?.2:.12:
@@ -328,4 +328,4 @@ el_up"&&tost(\u00E7("{sehir} b\xFCy\xFCd\xFC: art\u0131k {seviye}!",{sehir:bolge
 Canli.dinle("public:company",(olay,yuk)=>{olay==="company.founded"&&v&&yuk?.data?.region_id===v.bolge&&yenile()}),b4=Durum.dinle("ulke-olay",({olay})=>{/^(parliament\.motion_(opened|closed)|country\.war_|municipal\.|mayor\.)/.
 test(olay)&&yenile()}),b5=Sunucu.Canli.dinle("public:region",(olay,yuk)=>{v&&yuk?.data?.region_id===v.bolge&&/^(occupation|resistance|damage)\./.test(olay)&&yenile()}),zamanlayici=setInterval(()=>{document.
 hidden||yenile()},6e4);return()=>{kapandi=!0,clearInterval(zamanlayici),b0(),b1(),b2(),b3(),b4(),b5(),savasSay(),gozlem.disconnect(),sehir3bOrnek&&Uc.cizici?.birak(sehir3bOrnek)}}}),Parcalar.tamam("ek\
-_37_sehir_ekran");
+_37_sehir_ekran","2026-11-16-8043284a-fd6cffc");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zzd_futbol.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzd_futbol.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/futbol",{async ac(kap){let v=null,mac=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=futbolIzlenecek;futbolIzlenecek=null;let sonCanli=0,sonGenel=0,yoklamaZaman=null,sonEvre=null;
 const saha=HaliSaha.ac(),spiker=MacSpikeri.ac("futbol-spiker"),ben=()=>Durum.v.ozet?.character??{},R=()=>futbolKurali()??v?.rule??{},simdi=()=>Date.now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.
 scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});saha.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad==="ben"){git("#futbol-ben");return}git("#futbol-macim")});
@@ -352,4 +352,5 @@ querySelector(".perde")&&ciz()});function sonrakiYoklama(){if(clearTimeout(yokla
 el+300,Z.son-el+1500])x>150&&x<bekle&&(bekle=x)}yoklamaZaman=setTimeout(async()=>{if(kapandi)return;if(document.hidden){sonrakiYoklama();return}const evre=mac?.phase;canli?(await canliYukle(),mac?.phase!==
 evre||mac?.phase==="finished"||Date.now()-sonGenel>3e4?(await yukle(),!kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()):canliCiz()):(await yukle(),!kapandi&&!mesgul&&!document.querySelector(
 ".perde")&&ciz()),sonEvre=mac?.phase??null,sonrakiYoklama()},Math.max(150,bekle))}if(await yukle(),!kap.isConnected)return saha.kapat(),()=>{};ciz(),sonrakiYoklama();const b1=Durum.dinle("olay",({olay})=>{
-/^football\./.test(olay)&&tazele().then(()=>sonrakiYoklama())});return()=>{kapandi=!0,b1(),clearTimeout(yoklamaZaman),kararKapat(),saha.kapat(),spiker.kapat()}}}),Parcalar.tamam("ek_98zzd_futbol");
+/^football\./.test(olay)&&tazele().then(()=>sonrakiYoklama())});return()=>{kapandi=!0,b1(),clearTimeout(yoklamaZaman),kararKapat(),saha.kapat(),spiker.kapat()}}}),Parcalar.tamam("ek_98zzd_futbol","202\
+6-11-16-8043284a-fd6cffc");

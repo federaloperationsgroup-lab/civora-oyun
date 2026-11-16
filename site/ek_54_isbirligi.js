@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_54_isbirligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_54_isbirligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/isbirligi",{async ac(kap){let v=null,sekme="ortaklar";const akisKart=AkisKarti.ac();akisKart.dinle("sec",async(ad,ulke)=>{ad!=="ortak"||!ulke||(sekme="ortaklar",await tazele(),$(`[d\
 ata-is-ortak="${CSS.escape(ulke)}"]`,kap)?.scrollIntoView({behavior:"smooth",block:"center"}))});let akisVeri=null,akisAn=0,hatId=null,hat=null,kanal=null,kanalVeri=null,elcilikSec=null,sonMesaj=0,kapandi=!1,
 durdur=()=>{},elcilikMod=Gorunum.uc()?"3b":"2b",santiyeMod=Gorunum.uc()?"3b":"2b",elcilikHata=!1,santiyeHata=!1,santiyeOynat=!1;const form={ulke:null,maddeler:new Set(["embassy","trade"]),yardimUlke:null,
@@ -368,4 +368,4 @@ test(olay)&&tazele()}),b4=Durum.dinle("olay",({olay,yuk})=>{if(olay==="chat.mess
 kanal)?tazele():sekme==="ortaklar"&&elcilik3bOrnek?.durumYaz?.(elcilikDurumu());return}/^coop\./.test(olay)&&tazele()}),b5=Gorunum.dinle(()=>{const e=Gorunum.uc()&&!elcilikHata?"3b":"2b",s=Gorunum.uc()&&
 !santiyeHata?"3b":"2b";(e!==elcilikMod||s!==santiyeMod)&&v&&(elcilikMod=e,santiyeMod=s,ciz())}),akisSaat=setInterval(async()=>{if(!(kapandi||sekme!=="akis"||document.hidden||!akisKart.el.isConnected||
 Date.now()-akisAn<55e3)){akisAn=Date.now();try{akisVeri=await Sunucu.cagir("coop_flow"),akisKart.yaz({biz:biz(),status:v.d,akis:akisVeri})}catch{}}},15e3);return()=>{kapandi=!0,durdur(),clearInterval(
-akisSaat),b1(),b2(),b3(),b4(),b5(),elcilikBirak(),santiyeBirak(),akisKart.kapat()}}}),Parcalar.tamam("ek_54_isbirligi");
+akisSaat),b1(),b2(),b3(),b4(),b5(),elcilikBirak(),santiyeBirak(),akisKart.kapat()}}}),Parcalar.tamam("ek_54_isbirligi","2026-11-16-8043284a-fd6cffc");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (app.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (app.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const DUNYA={ulkeler:{AFG:{ad:"Afganistan",en:"Afghanistan",baskent:"AFG-01",tz:"Asia/Kabul",renk:"#7F9FCB",iso2:"AF"},DEU:{ad:"Almanya",en:"Germany",baskent:"DEU-01",tz:"Europe/Berlin",renk:"#D9A441",
 iso2:"DE"},USA:{ad:"Amerika Birle\u015Fik Devletleri",en:"United States of America",baskent:"USA-01",tz:"America/New_York",renk:"#79A86F",iso2:"US"},AGO:{ad:"Angola",baskent:"AGO-01",tz:"Africa/Luanda",
 renk:"#79A86F",iso2:"AO"},ARG:{ad:"Arjantin",en:"Argentina",baskent:"ARG-01",tz:"America/Argentina/Buenos_Aires",renk:"#7F9FCB",iso2:"AR"},ALB:{ad:"Arnavutluk",en:"Albania",baskent:"ALB-01",tz:"Europe\
@@ -810,32 +810,35 @@ sw",CHN:"zh"},DIL_ULKE=new Map(Object.entries(ULKE_DILI).flatMap(([id,d])=>d.spl
 iso2).map(([id,u])=>[u.iso2,id])),diller=[...navigator.languages??[],navigator.language].filter(Boolean).map(String);for(const d of diller){const m=/^[a-z]{2,3}[-_]([a-z]{2})\b/i.exec(d),id=m&&iso2.get(
 m[1].toUpperCase());if(id&&acik.has(id))return id}let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone??""}catch{}const tzUlke=Object.entries(DUNYA.ulkeler??{}).filter(([id,u])=>u.tz===tz&&
 acik.has(id)).map(([id])=>id);if(tzUlke.length===1)return tzUlke[0];for(const d of diller){const id=DIL_ULKE.get(d.split(/[-_]/)[0].toLowerCase());if(id&&acik.has(id))return id}return null}const KarakterEkrani=(()=>{
-async function ac(){$("#uygulama").innerHTML=`<div class="giris-sahne"><picture><source media="(max-width: 700px)" srcset="img/acilis_dikey.webp">
+async function ac(onceden=null){$("#uygulama").innerHTML=`<div class="giris-sahne"><picture><source media="(max-width: 700px)" srcset="img/acilis_dikey.webp">
       <img src="img/acilis_yatay.webp" alt="" class="giris-resim"></picture>
-      <section class="giris-kart genis"><div class="yuk-kart">${\u00E7("\xDClkeler y\xFCkleniyor\u2026")}</div></section></div>`;let s;try{s=await Sunucu.cagir("character_options")}catch(e){$(".giris-\
-kart").innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(e))}</span></div>
-        <button class="dugme ikincil tam" style="margin-top:14px" id="yeniden">${\u00E7("Yeniden dene")}</button>`,$("#yeniden").onclick=ac;return}if(s.has_character)return Uygulama.oturumAcildi();const ulkeler=s.
-countries.map(c=>({...c,ad:DUNYA.ulkeler?.[c.id]?.ad??c.name})),byId=new Map(ulkeler.map(c=>[c.id,c])),yerel=ulkeOnerisi(new Set(byId.keys())),oneri=yerel??s.suggested??ulkeler[0]?.id??null;let secili=oneri,
-arama="",suzgec="hepsi";const esik=Number(s.dormancy?.minActiveCitizens??5),katla=x=>x.toLocaleLowerCase(DIL.yerel).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ı/g,"i"),durumCip=c=>c.awake?
-`<span class="cip yesil">${ikon("sun")}${\u00E7("Uyan\u0131k")}</span>`:`<span class="cip">${ikon("moon")}${\u00E7("Uyuyan \xB7 {n}/{esik} etkin",{n:Number(c.active),esik})}</span>`;function seciliKart(){
-const c=byId.get(secili);return c?`<div class="ulke-secili-ust"><span class="ulke-bayrak" style="background:${ulkeRenk(c.id)}"></span>
+      <section class="giris-kart genis"><div class="yuk-kart">${\u00E7("\xDClkeler y\xFCkleniyor\u2026")}</div></section></div>`;let s;try{s=onceden??await Sunucu.cagir("character_options")}catch(e){$(
+".giris-kart").innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(e))}</span></div>
+        <button class="dugme ikincil tam" style="margin-top:14px" id="yeniden">${\u00E7("Yeniden dene")}</button>`,$("#yeniden").onclick=()=>ac();return}if(s.has_character)return Uygulama.oturumAcildi();
+const ulkeler=s.countries.map(c=>({...c,ad:DUNYA.ulkeler?.[c.id]?.ad??c.name})),byId=new Map(ulkeler.map(c=>[c.id,c])),yerel=ulkeOnerisi(new Set(byId.keys())),oneri=yerel??s.suggested??ulkeler[0]?.id??
+null;let secili=oneri,arama="",suzgec="hepsi";const esik=Number(s.dormancy?.minActiveCitizens??5),katla=x=>x.toLocaleLowerCase(DIL.yerel).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ı/g,
+"i"),durumCip=c=>c.awake?`<span class="cip yesil">${ikon("sun")}${\u00E7("Uyan\u0131k")}</span>`:`<span class="cip">${ikon("moon")}${\u00E7("Uyuyan \xB7 {n}/{esik} etkin",{n:Number(c.active),esik})}</\
+span>`;function seciliKart(){const c=byId.get(secili);return c?`<div class="ulke-secili-ust"><span class="ulke-bayrak" style="background:${ulkeRenk(c.id)}"></span>
           <b>${esc(c.ad)}</b>${durumCip(c)}</div>
         ${c.id===oneri?`<p class="oneri-yazi">${ikon("sparkles")}${yerel?\u00E7("Dilinden ve saat diliminden \xF6nerildi"):\u00E7("\xD6nerilen")}</p>`:""}
         <p class="kucuk">${\u00E7("{n} vatanda\u015F \xB7 {k} etkin",{n:Number(c.citizens),k:Number(c.active)})}${c.founders_left>0?" \xB7 "+\u00E7("Kurucu Vatanda\u015F Rozeti i\xE7in {n} yer kald\u0131",
 {n:Number(c.founders_left)}):""}</p>
-        <p class="kucuk">${c.awake?\u00E7("Uyan\u0131k \xFClkede se\xE7imler ve sava\u015F a\xE7\u0131k."):\u00E7("Uyuyan \xFClke: {esik} etkin vatanda\u015Fa ula\u015F\u0131nca uyan\u0131r ve Kurucu Meclis se\xE7imi kendili\u011Fi\
-nden ba\u015Flar. Uyurken sava\u015F a\xE7amaz, ona da sava\u015F a\xE7\u0131lamaz.",{esik})}</p>`:`<p class="kucuk">${\u00E7("Haritadan ya da listeden bir \xFClke se\xE7.")}</p>`}function liste(){const q=katla(
-arama.trim()),l=ulkeler.filter(c=>(suzgec==="hepsi"||suzgec==="uyanik"===c.awake)&&(!q||katla(c.ad).includes(q)||c.id.toLowerCase()===q)).sort((a,b)=>a.id===oneri?-1:b.id===oneri?1:a.ad.localeCompare(
-b.ad,DIL.yerel));return l.length?l.map(c=>`<button type="button" class="ulke-satir" data-ulke="${esc(c.id)}" aria-pressed="${c.id===secili}">
+        <p class="kucuk">${c.awake&&c.exempt?\u00E7("A\xE7\u0131l\u0131\u015F \xFClkesi: etkin vatanda\u015F say\u0131s\u0131ndan ba\u011F\u0131ms\u0131z hep uyan\u0131k; se\xE7imler ve sava\u015F a\xE7\u0131k."):
+c.awake?\u00E7("Uyan\u0131k \xFClkede se\xE7imler ve sava\u015F a\xE7\u0131k."):\u00E7("Uyuyan \xFClke: {esik} etkin vatanda\u015Fa ula\u015F\u0131nca uyan\u0131r ve Kurucu Meclis se\xE7imi kendili\u011Finden ba\u015Flar. Uyurken sava\u015F \
+a\xE7amaz, ona da sava\u015F a\xE7\u0131lamaz.",{esik})}</p>`:`<p class="kucuk">${\u00E7("Haritadan ya da listeden bir \xFClke se\xE7.")}</p>`}function liste(){const q=katla(arama.trim()),l=ulkeler.filter(
+c=>(suzgec==="hepsi"||suzgec==="uyanik"===c.awake)&&(!q||katla(c.ad).includes(q)||c.id.toLowerCase()===q)).sort((a,b)=>a.id===oneri?-1:b.id===oneri?1:a.ad.localeCompare(b.ad,DIL.yerel));return l.length?
+l.map(c=>`<button type="button" class="ulke-satir" data-ulke="${esc(c.id)}" aria-pressed="${c.id===secili}">
           <span class="ulke-nokta" style="background:${ulkeRenk(c.id)}"></span>
           <span class="ulke-satir-ad"><b>${esc(c.ad)}</b><span class="kucuk">${\u00E7("{n} vatanda\u015F \xB7 {k} etkin",{n:Number(c.citizens),k:Number(c.active)})}</span></span>
           ${c.id===oneri?`<span class="cip altin">${\u00E7("\xD6nerilen")}</span>`:""}
           ${c.awake?`<span class="cip yesil">${\u00E7("Uyan\u0131k")}</span>`:`<span class="cip">${\u00E7("Uyuyan")}</span>`}
-        </button>`).join(""):`<p class="bos">${\u00E7("Bu aramayla \xFClke bulunamad\u0131.")}</p>`}$(".giris-kart").innerHTML=`
+        </button>`).join(""):`<p class="bos">${\u00E7("Bu aramayla \xFClke bulunamad\u0131.")}</p>`}const dunyadaki=Object.keys(DUNYA.ulkeler??{}).length,uyuyanVar=ulkeler.some(c=>!c.awake),uyanikVar=ulkeler.
+some(c=>c.awake),muafVar=ulkeler.some(c=>c.exempt),acikYazi=dunyadaki>0&&ulkeler.length>=dunyadaki?\u00E7("D\xFCnyadaki b\xFCt\xFCn \xFClkeler a\xE7\u0131k; istedi\u011Fini se\xE7."):\u00E7("\u015Eimdilik \
+{n} \xFClke a\xE7\u0131k; birini se\xE7. \xD6teki \xFClkeler sonra a\xE7\u0131l\u0131r.",{n:ulkeler.length});$(".giris-kart").innerHTML=`
       <div class="giris-logo"><img src="img/amblem.png" alt="" width="52" height="52"><div><small>${\u00E7("\xC7EVR\u0130M\u0130\xC7\u0130 D\xDCNYA")}</small><b>C\u0130VORA</b></div></div>
       <h1>${\u00E7("Karakterini olu\u015Ftur")}</h1>
-      <p class="aciklama">${\u00E7("Ad\u0131n oyunda herkese g\xF6r\xFCn\xFCr. \xDClken, oy verece\u011Fin ve u\u011Fruna sava\u015Faca\u011F\u0131n yerdir; d\xFCnyadaki b\xFCt\xFCn \xFClkeler a\xE7\u0131k, istedi\u011Fini se\xE7. Sonra de\u011Fi\u015Ftirebilirsin ama sava\u015F s\u0131ras\
-\u0131nda beklemen gerekir.")}</p>
+      <p class="aciklama" id="karakter-aciklama">${\u00E7("Ad\u0131n oyunda herkese g\xF6r\xFCn\xFCr. \xDClken, oy verece\u011Fin ve u\u011Fruna sava\u015Faca\u011F\u0131n yerdir.")} ${acikYazi} ${\u00E7(
+"Sonra de\u011Fi\u015Ftirebilirsin ama sava\u015F s\u0131ras\u0131nda beklemen gerekir.")}</p>
       <form class="form" id="karakter-form" novalidate>
         <label class="alan"><span>${\u00E7("Karakter ad\u0131")}</span><input name="ad" required minlength="${s.name.min}" maxlength="${s.name.max}" autocomplete="nickname" autocapitalize="words">
           <small>${\u00E7("{min}\u2013{max} karakter. Ger\xE7ek ad\u0131n\u0131 yazmak zorunda de\u011Filsin.",{min:s.name.min,max:s.name.max})}</small></label>
@@ -843,14 +846,14 @@ b.ad,DIL.yerel));return l.length?l.map(c=>`<button type="button" class="ulke-sat
           <div class="ulke-secili" id="ulke-secili" aria-live="polite">${seciliKart()}</div>
           <div class="ulke-harita" id="ulke-harita"><p class="kucuk">${\u00E7("Harita y\xFCkleniyor\u2026")}</p></div>
           <input type="search" id="ulke-ara" placeholder="${\u00E7("\xDClke ara")}" aria-label="${\u00E7("\xDClke ara")}" autocomplete="off">
-          <div class="secim-sec" id="ulke-suzgec" role="group" aria-label="${\u00E7("\xDClkeleri s\xFCz")}">
+          ${uyuyanVar&&uyanikVar?`<div class="secim-sec" id="ulke-suzgec" role="group" aria-label="${\u00E7("\xDClkeleri s\xFCz")}">
             <button type="button" class="secim-cip" data-suzgec="hepsi" aria-pressed="true">${\u00E7("Hepsi \xB7 {n}",{n:ulkeler.length})}</button>
             <button type="button" class="secim-cip" data-suzgec="uyanik" aria-pressed="false">${\u00E7("Uyan\u0131k \xB7 {n}",{n:ulkeler.filter(c=>c.awake).length})}</button>
             <button type="button" class="secim-cip" data-suzgec="uyuyan" aria-pressed="false">${\u00E7("Uyuyan \xB7 {n}",{n:ulkeler.filter(c=>!c.awake).length})}</button>
-          </div>
+          </div>`:""}
           <div class="ulke-liste" id="ulkeler">${liste()}</div>
-          <small>${\u00E7("Uyuyan \xFClke: {esik} etkin vatanda\u015Ftan az\u0131 olan \xFClke. Bir \xFClkenin ilk 50 vatanda\u015F\u0131 kal\u0131c\u0131 Kurucu Vatanda\u015F Rozeti al\u0131r.",{esik})}\
-</small></div>
+          <small id="ulke-not">${uyuyanVar?\u00E7("Uyuyan \xFClke: {esik} etkin vatanda\u015Ftan az\u0131 olan \xFClke.",{esik})+" ":""}${muafVar?\u00E7("A\xE7\u0131l\u0131\u015F \xFClkeleri etkin vatanda\u015F say\u0131s\u0131ndan ba\u011F\u0131\
+ms\u0131z hep uyan\u0131kt\u0131r.")+" ":""}${\u00E7("Bir \xFClkenin ilk 50 vatanda\u015F\u0131 kal\u0131c\u0131 Kurucu Vatanda\u015F Rozeti al\u0131r.")}</small></div>
         <div class="form-mesaj"></div>
         <button class="dugme altin tam" type="submit">${ikon("sparkles")}${\u00E7("Karakteri a\xE7")}</button>
       </form>
@@ -865,7 +868,7 @@ byId.get(u.id)?.ad??u.ad)}</title></path>`).join("")}
       </svg>`,haritaHazir=!0,haritaCiz())}).catch(()=>{const k=$("#ulke-harita");k&&(k.innerHTML=`<p class="kucuk">${\u00E7("Harita y\xFCklenemedi; listeden se\xE7ebilirsin.")}</p>`)});function sec(id){
 if(byId.has(id)){secili=id,$("#ulke-secili").innerHTML=seciliKart();for(const x of $$("#ulkeler [data-ulke]"))x.setAttribute("aria-pressed",String(x.dataset.ulke===secili));haritaCiz()}}$("#ulke-harit\
 a").addEventListener("click",e=>{const p=e.target.closest("[data-ulke]");p&&sec(p.dataset.ulke)}),$("#ulkeler").addEventListener("click",e=>{const b=e.target.closest("[data-ulke]");b&&sec(b.dataset.ulke)}),
-$("#ulke-ara").addEventListener("input",e=>{arama=e.target.value,$("#ulkeler").innerHTML=liste()}),$("#ulke-suzgec").addEventListener("click",e=>{const b=e.target.closest("[data-suzgec]");if(b){suzgec=
+$("#ulke-ara").addEventListener("input",e=>{arama=e.target.value,$("#ulkeler").innerHTML=liste()}),$("#ulke-suzgec")?.addEventListener("click",e=>{const b=e.target.closest("[data-suzgec]");if(b){suzgec=
 b.dataset.suzgec;for(const x of $$("#ulke-suzgec [data-suzgec]"))x.setAttribute("aria-pressed",String(x===b));$("#ulkeler").innerHTML=liste()}}),$("#cikis").onclick=()=>Uygulama.cikis(),$("#karakter-f\
 orm").addEventListener("submit",async e=>{e.preventDefault();const ad=String(new FormData(e.target).get("ad")??"").trim().replace(/\s+/g," "),yer=$(".form-mesaj"),d=$("button[type=submit]",e.target);if(ad.
 length<s.name.min||ad.length>s.name.max){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("Ad {min}\u2013{max} karakter olmal\u0131.",{min:s.name.min,max:s.name.max})}</sp\
@@ -917,14 +920,14 @@ b?"1":".25")};canliNokta(Sunucu.Canli.bagli),kabukDinle(f=>Sunucu.Canli.durum(f)
 hash.slice(1);(ekranlar[r]&&r!==etkin||r==="meydan/sohbet"||r.startsWith("konusma/"))&&git(r,{gecmis:!1})})),ustGuncelle()}let adresDinleniyor=!1,kopmaZamani=null,bant=null;function baglantiIzle(){let baglanmisti=Sunucu.
 Canli.bagli;kabukDinle(f=>Sunucu.Canli.durum(f),(b,bilgi)=>{if(b){baglanmisti=!0,clearTimeout(kopmaZamani),kopmaZamani=null,(bant||bilgi?.sagir||(bilgi?.kopukMs??0)>4e3)&&(bant?.remove(),bant=null,tost(
 \u00E7("Ba\u011Flant\u0131 geri geldi; ekran tazelendi."),"wifi"),Durum.ozet().catch(()=>{}),Durum.askerlik().catch(()=>{}),Durum.yay("baglanti",{geri:!0}),kurulu&&etkin&&!document.querySelector(".per\
-de")&&git(etkin,{gecmis:!1}));return}!baglanmisti||kopmaZamani||bant||(kopmaZamani=setTimeout(kurulumla(()=>{kopmaZamani=null,!(Sunucu.Canli.bagli||!kurulu)&&(bant=document.createElement("div"),bant.className=
-"baglanti-bant",bant.id="baglanti-bant",bant.setAttribute("role","status"),bant.innerHTML=`${ikon("wifi-off")}<span>${\u00E7("Ba\u011Flant\u0131 koptu; yeniden ba\u011Flan\u0131yor\u2026 Yapt\u0131klar\u0131n kaydedilir, ekran ba\u011Flan\u0131n\
-ca tazelenir.")}</span>`,document.body.appendChild(bant))}),4e3))})}let gunSonuSaat=null;const gunSonuAn=()=>{const t=new Date;return Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()+1)},gunSonuSaati=()=>new Date(
-gunSonuAn()).toLocaleTimeString(DIL.yerel,{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Istanbul"});function gunSonuYaz(){const b=$("#gun-sonu span");if(!b)return;const kalanSn=Math.max(0,(gunSonuAn()-
-Date.now())/1e3);b.textContent=kalanSn>=3600?\u00E7("{s} sa",{s:Math.floor(kalanSn/3600)}):\u00E7("{d} dk",{d:Math.max(1,Math.ceil(kalanSn/60))}),$("#gun-sonu").dataset.gunSonu=new Date(gunSonuAn()).toISOString()}
-function gunSonuAc(){const bitis=new Date(gunSonuAn());pencere({ust:\u00E7("Oyun g\xFCn\xFC"),baslik:\u00E7("G\xFCn {saat} saatinde biter (T\xFCrkiye saati)",{saat:gunSonuSaati()}),govde:`<p class="ac\
-iklama">${\u00E7('Oyun g\xFCn\xFC her g\xFCn T\xFCrkiye saatiyle {saat} itibar\u0131yla de\u011Fi\u015Fir (d\xFCnyan\u0131n her yerinde ayn\u0131 an: UTC gece yar\u0131s\u0131). Kalan: <b data-bitis="{iso}"></b>.',
-{saat:gunSonuSaati(),iso:esc(bitis.toISOString())})}</p>
+de")&&git(etkin,{gecmis:!1}));return}!baglanmisti||kopmaZamani||bant||(kopmaZamani=setTimeout(kurulumla(()=>{if(kopmaZamani=null,Sunucu.Canli.bagli||!kurulu)return;bant=document.createElement("div"),bant.
+className="baglanti-bant",bant.id="baglanti-bant",bant.setAttribute("role","status"),bant.innerHTML=`${ikon("wifi-off")}<span>${\u00E7("Ba\u011Flant\u0131 koptu; yeniden ba\u011Flan\u0131yor\u2026 Sunucudaki i\u015Flerin s\xFCr\xFCyor; \
+ba\u011Flan\u0131nca ekran tazelenir.")}</span>`;const ana=$("main.icerik");ana?ana.prepend(bant):document.body.appendChild(bant)}),4e3))})}let gunSonuSaat=null;const gunSonuAn=()=>{const t=new Date;return Date.
+UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()+1)},gunSonuSaati=()=>new Date(gunSonuAn()).toLocaleTimeString(DIL.yerel,{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Istanbul"});function gunSonuYaz(){
+const b=$("#gun-sonu span");if(!b)return;const kalanSn=Math.max(0,(gunSonuAn()-Date.now())/1e3);b.textContent=kalanSn>=3600?\u00E7("{s} sa",{s:Math.floor(kalanSn/3600)}):\u00E7("{d} dk",{d:Math.max(1,
+Math.ceil(kalanSn/60))}),$("#gun-sonu").dataset.gunSonu=new Date(gunSonuAn()).toISOString()}function gunSonuAc(){const bitis=new Date(gunSonuAn());pencere({ust:\u00E7("Oyun g\xFCn\xFC"),baslik:\u00E7(
+"G\xFCn {saat} saatinde biter (T\xFCrkiye saati)",{saat:gunSonuSaati()}),govde:`<p class="aciklama">${\u00E7('Oyun g\xFCn\xFC her g\xFCn T\xFCrkiye saatiyle {saat} itibar\u0131yla de\u011Fi\u015Fir (d\xFCnyan\u0131n her yerinde ayn\u0131 an\
+: UTC gece yar\u0131s\u0131). Kalan: <b data-bitis="{iso}"></b>.',{saat:gunSonuSaati(),iso:esc(bitis.toISOString())})}</p>
         <ul class="kucuk" style="margin:8px 0 0 18px;padding:0">
           <li>${\u00E7("G\xFCnl\xFCk haklar o an yenilenir: i\u015F birimleri ve devlet deposu, g\xFCn\xFCn g\xF6revleri, spor salonu ve hobi seanslar\u0131, pazar ve e\u011Fitim deneyim tavanlar\u0131, \u015Fehir etkinlikleri.")}\
 </li>
@@ -935,15 +938,16 @@ let gozaltiZaman=null;function gozaltiCipi(o){clearTimeout(gozaltiZaman);const b
 Math.min(bitis-Date.now()+1e3,2**31-1));const saat=new Date(bitis).toLocaleTimeString(DIL.yerel,{hour:"2-digit",minute:"2-digit"});return`<span class="deger-ayrac"></span><a class="deger d-gozalti" hr\
 ef="#sehir/golge" title="${\u00E7("G\xF6zalt\u0131ndas\u0131n; dokununca ayr\u0131nt\u0131")}">${ikon("lock")}<span><span class="deger-sayi">${esc(saat)}</span><span class="deger-ad"> ${\u00E7("g\xF6zalt\
 \u0131")}</span></span></a>`}function ustGuncelle(){if(!kurulu)return;const o=Durum.v.ozet,a=Durum.v.askerlik;if(!o||!$("#ust-degerler"))return;const kredi=o.balances?.find(b=>b.asset==="CR")?.spendable??
-0,s=a?.soldier;$("#ust-degerler").innerHTML=`
-      <div class="deger" title="${\u00E7("Kredi")}">${ikon("coins")}<span><span class="deger-sayi">${kr(kredi)}</span><span class="deger-ad"> ${\u00E7("kr")}</span></span></div>
+0,s=a?.soldier,krTam=Number(kredi)>=0?kr(Math.floor(Number(kredi)/100)*100):kr(kredi),krKurus=kr(kredi).slice(krTam.length);$("#ust-degerler").innerHTML=`
+      <div class="deger" title="${esc(\u00E7("Kredi")+": "+kr(kredi))}">${ikon("coins")}<span><span class="deger-sayi">${krTam}${krKurus?`<span class="deger-kurus">${krKurus}</span>`:""}</span><span c\
+lass="deger-ad"> ${\u00E7("kr")}</span></span></div>
       <span class="deger-ayrac"></span>
       <div class="deger" title="${\u00E7("Enerji")}">${ikon("zap")}<span><span class="deger-sayi">${s?sayi(s.energy):"\u2014"}</span><span class="deger-ad">${s?" / "+sayi(s.energy_max):""}</span></spa\
 n></div>
       <span class="deger-ayrac"></span>
       <div class="deger d-erzak" title="${\u00E7("Erzak")}">${ikon("croissant")}<span><span class="deger-sayi">${sayi(Durum.stok("erzak@1"))}</span></span></div>${keyifCipi(a?.mood)}${gozaltiCipi(o)}`;
-const ad=o.character?.name??"";o.character?.id&&Gorunus.iste([o.character.id]),$("#oyuncu-cip").innerHTML=`<span class="avatar" aria-hidden="true">${avatarSvg(ad,...avatarSecim(o.character?.id))}</spa\
-n>
+const ad=o.character?.name??"";o.character?.id&&Gorunus.iste([o.character.id]),$("#oyuncu-cip").setAttribute("aria-label",\u00E7("Profilim: {ad}",{ad})),$("#oyuncu-cip").innerHTML=`<span class="avatar\
+" aria-hidden="true">${avatarSvg(ad,...avatarSecim(o.character?.id))}</span>
       <span><span class="kabuk-ust-ad">${esc(ad)}</span><br><span class="kabuk-ust-alt">${esc([s?\u00E7("{n}. seviye \xB7 {r}",{n:Number(s.level),r:\u00E7v(s.rank_name)}):"",Sunucu.Giris.misafirMi?\u00E7(
 "Misafir"):""].filter(Boolean).join(" \xB7 "))}</span></span>`}let nesil=0;const ORTAM_SESI={"sehir/stadyum":"stadyum","sehir/futbol":"stadyum","sehir/lig":"stadyum","sehir/etkinlikler":"meydan","sehi\
 r/sehir":"sehir","sehir/mekanlar":"sehir","sehir/yol":"sehir","sehir/belediye":"sehir","sehir/uretim":"sehir","sehir/pazar":"sehir","sehir/mekan":"salon","sehir/mekanim":"salon","sehir/saglik":"salon",
@@ -953,19 +957,22 @@ null,"","#meydan/akis")),kurulu||kur(),ekranlar[rota]||(rota=VARSAYILAN);{const[
 body.dataset.rota=rota,birak){try{birak()}catch(e){console.error(e)}birak=null}const benim=++nesil,oturumKusagi=Sunucu.Giris.kusak,onceki=etkin;etkin=rota;const[bolum]=rota.split("/"),b=bolumler().find(
 x=>x.id===bolum);for(const d of $$("[data-bolum]"))d.setAttribute("aria-current",d.dataset.bolum===bolum?"page":"false");const R=typeof Rehber=="object"?Rehber:null;$("#altsekmeler-yer").innerHTML=b&&
 b.alt.length>1?`<div class="altsekmeler" role="tablist">${b.alt.map(([a,ad,ik])=>`<button class="altsekme${R?.rotaKilidi(`${bolum}/${a}`)?" kilitli":""}" data-rota="${bolum}/${a}" aria-pressed="${rota===
-`${bolum}/${a}`}">${ikon(R?.rotaKilidi(`${bolum}/${a}`)?"lock":ik)}${esc(ad)}</button>`).join("")}</div>`:"",typeof Gelen=="object"&&Gelen.rozet(),gecmis&&location.hash.slice(1)!==rota&&history.pushState(
-null,"","#"+rota);const kap=document.createElement("div");kap.className="ekran"+(hareketAzalt?"":" ekran-giris"),kap.innerHTML=`<div class="sayfa"><div class="kart yuk-kart">${\u00E7("Y\xFCkleniyor\u2026")}\
-</div></div>`,$("#ipucu-yer").innerHTML="",$("#icerik").replaceChildren(kap);let devir=null;try{onceki===rota&&(devir=koruBirak?.devret?.()??null),koruBirak?.()}catch(e){console.error(e)}koruBirak=typeof YaziKoru==
+`${bolum}/${a}`}">${ikon(R?.rotaKilidi(`${bolum}/${a}`)?"lock":ik)}${esc(ad)}</button>`).join("")}</div>`:"",typeof Gelen=="object"&&Gelen.rozet(),gecmis&&location.hash.slice(1)!==rota&&(typeof GeriKatman==
+"object"?GeriKatman.yaz("#"+rota):history.pushState(null,"","#"+rota));const kap=document.createElement("div");kap.className="ekran"+(hareketAzalt?"":" ekran-giris"),kap.innerHTML=`<div class="sayfa">\
+<div class="kart yuk-kart">${\u00E7("Y\xFCkleniyor\u2026")}</div></div>`,setTimeout(()=>{const y=$(".yuk-kart",kap);y&&kap.isConnected&&(y.textContent=\u00E7("Y\xFCkleniyor\u2026 ba\u011Flant\u0131n yava\u015F g\xF6r\xFCn\xFCyor."))},
+1e4),$("#ipucu-yer").innerHTML="",$("#icerik").replaceChildren(kap);let devir=null;try{onceki===rota&&(devir=koruBirak?.devret?.()??null),koruBirak?.()}catch(e){console.error(e)}koruBirak=typeof YaziKoru==
 "object"?YaziKoru.bagla(kap,devir):null,window.scrollTo(0,0),typeof Ses=="object"&&Ses.ortam(ORTAM_SESI[rota]??ORTAM_SESI[bolum]??null);const kilit=R?.rotaKilidi(rota);if(kilit){kap.innerHTML=`<div cl\
 ass="sayfa sayfa-dar">${R.kilitKarti(kilit)}</div>`,R.kilitBagla(kap);return}try{if(typeof Dunya=="object"&&Dunya.gerekli(rota)&&(await Dunya.yukle(),!kurulu||benim!==nesil||oturumKusagi!==Sunucu.Giris.
 kusak||!kap.isConnected))return;const cik=await ekranlar[rota].ac(kap)??null;if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak){try{cik?.()}catch(e){console.error(e)}return}birak=cik;try{R?.ekranAcildi(
-rota)}catch(e){console.error(e)}}catch(e){if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak)return;console.error(e),kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}\
-<span>${esc(hataMetni(e))}</span></div>
-        <button class="dugme ikincil" style="margin-top:14px" id="ekran-yenile">${\u00E7("Yeniden dene")}</button></div>`,$("#ekran-yenile",kap).onclick=()=>git(rota,{gecmis:!1})}}function sifirla(){kurulu=
-!1,kurulumNesli++,nesil++,etkin=null;for(const dur of kabukBiraklar.splice(0))try{dur?.()}catch(e){console.error(e)}if(clearInterval(gunSonuSaat),gunSonuSaat=null,clearTimeout(kopmaZamani),kopmaZamani=
-null,clearTimeout(gozaltiZaman),gozaltiZaman=null,bant?.remove(),bant=null,birak){try{birak()}catch(e){console.error(e)}birak=null}try{koruBirak?.()}catch{}koruBirak=null,typeof Ses=="object"&&Ses.ortam(
-null)}return{kaydet,gecikmeli:gecikmeli2,git,kur,ustGuncelle,sifirla,VARSAYILAN,get etkin(){return etkin}}})(),YaziKoru=(()=>{const ALAN="input, textarea, select",DISARI=new Set(["password","file","hi\
-dden","button","submit","reset","image"]),TEK_SATIR=new Set(["text","number","search","email","tel","url"]),ISLEM_PAYI=1e3,OLAY_SINIRI=3,ATA_DISARI=/^data-(mod|kisi|tam|yaya|cay|kamera|ben-?eylem|kursu|kursu-?sira|durum|acik|secili|yukleniyor|gorunur|yazi-koru)$/,
+rota)}catch(e){console.error(e)}}catch(e){if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak)return;console.error(e);const parca=/^PARCA_YUKLENEMEDI/.test(String(e?.message??"")),yeni=parca?await Parcalar.
+denetle({zorla:!0}).catch(()=>null):null;if(benim!==nesil||oturumKusagi!==Sunucu.Giris.kusak||!kap.isConnected)return;const metin=yeni?\u00E7("Oyunun yeni s\xFCr\xFCm\xFC yay\u0131mland\u0131; bu ekran\u0131 a\xE7mak i\xE7in sayfa\
+y\u0131 yenile."):parca?\u00E7("Bu ekran y\xFCklenemedi; ba\u011Flant\u0131n\u0131 denetleyip yeniden dene."):hataMetni(e);kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-ale\
+rt")}<span>${esc(metin)}</span></div>
+        <button class="dugme ikincil" style="margin-top:14px" id="ekran-yenile">${yeni?\u00E7("Yenile"):\u00E7("Yeniden dene")}</button></div>`,$("#ekran-yenile",kap).onclick=()=>yeni?location.reload():
+git(rota,{gecmis:!1})}}function sifirla(){kurulu=!1,kurulumNesli++,nesil++,etkin=null;for(const dur of kabukBiraklar.splice(0))try{dur?.()}catch(e){console.error(e)}if(clearInterval(gunSonuSaat),gunSonuSaat=
+null,clearTimeout(kopmaZamani),kopmaZamani=null,clearTimeout(gozaltiZaman),gozaltiZaman=null,bant?.remove(),bant=null,birak){try{birak()}catch(e){console.error(e)}birak=null}try{koruBirak?.()}catch{}koruBirak=
+null,typeof Ses=="object"&&Ses.ortam(null)}return{kaydet,gecikmeli:gecikmeli2,git,kur,ustGuncelle,sifirla,VARSAYILAN,get etkin(){return etkin}}})(),YaziKoru=(()=>{const ALAN="input, textarea, select",
+DISARI=new Set(["password","file","hidden","button","submit","reset","image"]),TEK_SATIR=new Set(["text","number","search","email","tel","url"]),ISLEM_PAYI=1e3,OLAY_SINIRI=3,ATA_DISARI=/^data-(mod|kisi|tam|yaya|cay|kamera|ben-?eylem|kursu|kursu-?sira|durum|acik|secili|yukleniyor|gorunur|yazi-koru)$/,
 tutulur=el=>!!el?.matches?.(ALAN)&&!DISARI.has(el.type)&&!el.disabled&&!el.closest("[data-yazi-koru='kapali']"),secimli=el=>el.type==="checkbox"||el.type==="radio",metinli=el=>el.localName==="textarea"||
 el.localName==="input"&&TEK_SATIR.has(el.type),degeri=el=>secimli(el)?el.checked:el.value,secimi=el=>{try{return el.selectionStart==null?{}:{bas:el.selectionStart,son:el.selectionEnd}}catch{return{}}};
 function kimlik(el,kap){const ad=el.getAttribute("name")||(el.id?`#${el.id}`:null)||[...el.attributes].filter(a=>a.name.startsWith("data-")&&!ATA_DISARI.test(a.name)).map(a=>`${a.name}=${a.value}`)[0]||
@@ -1012,6 +1019,7 @@ ehir/is"},...ch.terms_accepted?[]:[{bitti:!1,ik:"scroll-text",ad:\u00E7("Toplulu
             <p class="aciklama">${\u00E7("Kasanda <b>{kr} kredi</b> var.",{kr:kr(kredi)})} ${a?.live_war?\u00E7("\xDClkenin s\xFCren bir sava\u015F\u0131 var; Cephe'ye bak."):\u00E7("\u015Eu an \xFClkenin s\xFCr\
 en bir sava\u015F\u0131 yok.")}</p>
           </div></div>
+          ${rehber?.serit??""}
           <div id="hayat-yer"></div>
           <div class="izgara iki">
             <div class="yigin">
@@ -1061,7 +1069,7 @@ vitrin.kapat()}}});function kurallariKabul(){toplulukKurallari({kabul:!0})}const
 id,bolgeAdi=id=>DUNYA.bolgeler?.[id]?.ad??id,KESIM={left:{ad:\u00E7("Sol kanat"),agirlik:3},center:{ad:\u00E7("Merkez"),agirlik:4},right:{ad:\u00E7("Sa\u011F kanat"),agirlik:3}},DURUS={assault:{ad:\u00E7(
 "Taarruz"),yener:\u00E7("Mevziyi yener")},hold:{ad:\u00E7("Mevzi"),yener:\u00E7("Yan manevray\u0131 yener")},flank:{ad:\u00E7("Yan manevra"),yener:\u00E7("Taarruzu yener")}},payYuzde=ppm=>\u00E7("%{n}",
 {n:Math.round(Number(ppm)/1e4)});Kabuk.gecikmeli("ulke/cephe","ek_22_cephe");const GB_TUR={bug:\u00E7("Hata"),balance:\u00E7("Denge"),idea:\u00E7("\xD6neri"),other:\u00E7("Di\u011Fer")},SURUM="2026-11\
--12-8094c592-475d08f";Kabuk.gecikmeli("hayat/ayarlar","ek_23_ayarlar"),Kabuk.gecikmeli("hayat/egitim","ek_24_egitim");const BECERI={military:{ad:\u00E7("Askerlik"),ik:"shield"},production:{ad:\u00E7("\
+-16-8043284a-fd6cffc";Kabuk.gecikmeli("hayat/ayarlar","ek_23_ayarlar"),Kabuk.gecikmeli("hayat/egitim","ek_24_egitim");const BECERI={military:{ad:\u00E7("Askerlik"),ik:"shield"},production:{ad:\u00E7("\
 \xDCretim"),ik:"hammer"},logistics:{ad:\u00E7("Lojistik"),ik:"truck"},management:{ad:\u00E7("Y\xF6netim"),ik:"briefcase-business"},music:{ad:\u00E7("M\xFCzik"),ik:"guitar"},content:{ad:\u00E7("\u0130\xE7erik \
 \xFCretimi"),ik:"clapperboard"},medicine:{ad:\u00E7("T\u0131p"),ik:"stethoscope"}},beceriAdi=b=>BECERI[b]?.ad??String(b??"");Kabuk.gecikmeli("sehir/is","ek_25_calis");const TARIF_AD={tarla:\u00E7("Tar\
 la"),maden:\u00E7("Maden oca\u011F\u0131"),lif:\u00E7("Lif bah\xE7esi"),gida:\u00E7("F\u0131r\u0131n"),metal:\u00E7("Demirhane"),dokuma:\u00E7("Dokuma at\xF6lyesi"),dokuma2:\u00E7("Dokuma at\xF6lyesi (2.\
@@ -1149,7 +1157,8 @@ elerini partinin aday\u0131 g\xF6sterir. Partisiz de aday olabilirsin.",{takvim:
 createElement("div");perde.className="perde";const odakDon=pencereOdak(perde);let kapali=!1;const kapat=sonuc=>{kapali||(kapali=!0,perde.remove(),document.removeEventListener("keydown",tus),odakDon(),
 bitti(sonuc))},tus=e=>{e.key==="Escape"&&pencereUstteMi(perde,e)&&kapat(!1)},bk=pencereBaslikKimligi(),ciz=()=>{const x=sayfalar[i],son=i===sayfalar.length-1;perde.innerHTML=`<div class="pencere" role\
 ="dialog" aria-modal="true" aria-labelledby="${bk}">
-        <p class="ust-yazi">${\u00E7("Vatanda\u015Fl\u0131k \xF6\u011Freticisi \xB7 {n} / {toplam}",{n:i+1,toplam:sayfalar.length})}</p>
+        <div class="ogretici-ust"><p class="ust-yazi">${\u00E7("Vatanda\u015Fl\u0131k \xF6\u011Freticisi \xB7 {n} / {toplam}",{n:i+1,toplam:sayfalar.length})}</p>
+          ${i>0?`<button class="dugme sade kucuk-d" data-kapat>${\u00E7("Sonra")}</button>`:""}</div>
         <div class="ogretici-noktalar" aria-hidden="true">${sayfalar.map((_,j)=>`<i class="${j<=i?"etkin":""}"></i>`).join("")}</div>
         <span class="ogretici-ikon">${ikon(x.ik)}</span>
         <h2 class="b2" id="${bk}">${esc(x.baslik)}</h2>
@@ -1160,10 +1169,11 @@ bitti(sonuc))},tus=e=>{e.key==="Escape"&&pencereUstteMi(perde,e)&&kapat(!1)},bk=
           <button class="dugme ${son?"altin":""}" data-ileri>${son?`${ikon("badge-check")}${\u00E7("Anlad\u0131m, bitir")}`:`${\u00E7("\u0130leri")}${ikon("arrow-right")}`}</button>
         </div></div>`,$("[data-geri]",perde)?.addEventListener("click",()=>{i--,ciz()}),$("[data-kapat]",perde)?.addEventListener("click",()=>kapat(!1));const ileri=$("[data-ileri]",perde);ileri.addEventListener(
 "click",async()=>{if(!son){i++,ciz();return}ileri.disabled=!0;try{await Sunucu.cagir("tutorial_complete",{p_kind:"civic"}),await Durum.ozet().catch(()=>{}),tost(\u00E7("Vatanda\u015Fl\u0131k \xF6\u011Freticisini bitird\
-in. Se\xE7imlerde oy verebilirsin."),"badge-check"),kapat(!0)}catch(e){$(".form-mesaj",perde).innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(e))}</span></div>`,ileri.
-disabled=!1}}),ileri.focus()};perde.addEventListener("click",e=>{e.target===perde&&kapat(!1)}),document.addEventListener("keydown",tus),document.body.appendChild(perde),ciz()})}function ogreticiBandi(secim){
-if(Durum.v.ozet?.character?.civic_tutorial_done)return"";const once=secim&&secim.stage==="scheduled";return`<div class="yasa-bant uyari">${ikon("graduation-cap")}<span><b>${\u00E7("Oy vermek i\xE7in vata\
-nda\u015Fl\u0131k \xF6\u011Freticisini bitir.")}</b>
+in. Oy vermek i\xE7in se\xE7men listesi donarken hesab\u0131n ve vatanda\u015Fl\u0131\u011F\u0131n en az {n} saatlik olmal\u0131.",{n:Math.max(Number(w.accountAgeH),Number(w.citizenshipH))}),"badge-ch\
+eck"),kapat(!0)}catch(e){$(".form-mesaj",perde).innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(e))}</span></div>`,ileri.disabled=!1}}),ileri.focus()};perde.addEventListener(
+"click",e=>{e.target===perde&&kapat(!1)}),document.addEventListener("keydown",tus),document.body.appendChild(perde),ciz()})}function ogreticiBandi(secim){if(Durum.v.ozet?.character?.civic_tutorial_done)
+return"";const once=secim&&secim.stage==="scheduled";return`<div class="yasa-bant uyari">${ikon("graduation-cap")}<span><b>${\u00E7("Oy vermek i\xE7in vatanda\u015Fl\u0131k \xF6\u011Freticisini bitir.")}\
+</b>
     ${once?" "+\u00E7("Se\xE7men listesinin donma zaman\u0131: <b>{zaman}</b>.",{zaman:esc(saatYaz(secim.freeze_at))}):" "+\u00E7("Bu se\xE7imin listesi dondu; s\u0131radaki se\xE7imde oy verebilirsin.")}\
 </span>
     <button class="dugme kucuk-d" data-ogretici>${\u00E7("\xD6\u011Freticiyi a\xE7")}</button></div>`}function ogreticiBagla(kap,sonra){for(const b of $$("[data-ogretici]",kap))b.onclick=async()=>{await vatandaslikOgreticisi()&&
@@ -1366,6 +1376,7 @@ bekleBagla(),spikerYerles(),sahneBirak();const ky=$("#karargah-yer",yer);ky&&S.s
         ${S.front&&!S.front.at_front?yolKarti():""}
         ${S.front&&!S.front.basic_training_done?`<div class="hata-kutusu" style="margin-bottom:12px">${ikon("target")}<span>${\u00E7("Ger\xE7ek cepheye kat\u0131lmadan \xF6nce tatbikatta temel e\u011Fitimi tamamla (a\
 \u015Fa\u011F\u0131da).")}</span></div>`:""}
+        <p class="ar-yatay-not" role="note">${ikon("rotate-ccw")}<span>${\u00E7("Telefonunu dik tut: arenan\u0131n d\xFC\u011Fmeleri dikey ekrana g\xF6re dizildi.")}</span></p>
         <div class="arena sahne3b" data-iki="${!uc}" id="arena" style="--biz:${rb};--onlar:${ro}">
           ${uc?`<div class="yukleniyor${arena3bOrnek?" bitti":""}" id="ar-yukleniyor"><div class="yukleniyor-ic"><img src="img/amblem.png" alt=""><span>${\u00E7("Cephe haz\u0131rlan\u0131yor\u2026")}<\
 /span></div></div>
@@ -1494,24 +1505,25 @@ a.weapon_max)})),$("#ar-guc",yer).textContent=a?puan(a.power):"\u2014",$("#ar-ru
 durus===b.dataset.durus));const hak=W().hitsPerTick-S.tickVurus-S.bekleyen,vur2=$("#ar-vur",yer),durum=S.kapandi?"bitti":hak<=0?"dolu":e<W().energy.perHit*(S.bekleyen+1)?"enerji":lojistikYok()&&S.tickVurus===
 0?"mermi":"hazir";vur2.dataset.durum=durum,$("#ar-vur-yazi",yer).textContent={hazir:\u00E7("VUR"),dolu:\u00E7("DOLDU"),enerji:\u00E7("ENERJ\u0130"),mermi:\u00E7("LOJ\u0130ST\u0130K"),bitti:\u00E7("B\u0130T\
 T\u0130")}[durum],$("#ar-hak",yer).textContent=`${sayi(S.tickVurus+S.bekleyen)} / ${sayi(W().hitsPerTick)}`,$("#ar-halka",yer).style.strokeDashoffset=String(301.6*(1-(S.tickVurus+S.bekleyen)/W().hitsPerTick));
-const d=$("#ar-durum",yer),metin=S.durumMetni||(durum==="dolu"?\u00E7("Bu dakikan\u0131n hakk\u0131 doldu; yeni dakikay\u0131 bekle."):durum==="enerji"?\u00E7("Enerjin yetmiyor: ye ya da birka\xE7 saniye\
- bekle."):durum==="mermi"?\u00E7("Lojistik paketin yok; vuru\u015F yap\u0131lamaz."):"");if(d.textContent=metin,d.classList.toggle("uyari",S.uyari||!S.durumMetni&&durum!=="hazir"),S.bekleyen>0&&!S.gonderiliyor){
-const t0=Date.now();(t0-S.sonDokunus>1200||t0-S.ilkBekleyen>(W().batchMs??3e3)||kalan<2500)&&gonder()}}function tahtaCiz(){const b=S.board;if(!b||!$("#ar-biz5",yer))return;const biz=b.round?.[benimTaraf()]??
-[],onlar=b.round?.[benimTaraf()==="attacker"?"defender":"attacker"]??[],sat=(x,i)=>`<li class="${x.character_id===benimKimlik()?"ben":""}"${x.ally?` data-muttefik="${esc(x.country_id)}" title="${esc(\u00E7(
-"{ulke} m\xFCttefik",{ulke:ulkeAdi(x.country_id)}))}"`:""}><i>${i+1}</i><span>${x.ally?`<span class="ulke-nokta" style="background:${ulkeRenk(x.country_id)}"></span> `:""}${esc(x.name)}</span><b>${puan(
-x.damage)}</b></li>`;$("#ar-biz5",yer).innerHTML=biz.map(sat).join("")||`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}</span><b></b></li>`,$("#ar-onlar5",yer).innerHTML=onlar.map(sat).join("")||
-`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}</span><b></b></li>`;const me=b.me?.round;$("#ar-sen",yer).textContent=me?\u00E7("Sen: {n}. s\u0131ra / {toplam} \xB7 {puan} puan",{n:Number(me.position),
-toplam:Number(me.of),puan:puan(me.damage)}):""}function akis(metin,sinif=""){const k=$("#ar-akis",yer);if(!k)return;const el=document.createElement("div");for(el.className=sinif,el.textContent=metin,k.
-appendChild(el);k.children.length>4;)k.firstChild.remove();setTimeout(()=>el.remove(),6e3)}function hasar(kesim,metin){const a=ar3();if(a){hareketAzalt||a.hasar(kesim,metin);return}const el=$(`[data-k\
-esim="${kesim}"]`,yer);if(!el||hareketAzalt)return;const h=document.createElement("span");h.className="ar-hasar",h.textContent=metin,h.style.left="50%",h.style.top="45%",el.style.position="relative",el.
-appendChild(h),setTimeout(()=>h.remove(),950)}function baglaArena(){const klavyeTiki=e=>e.detail===0&&!e.pointerType;for(const b of $$("[data-kesim]",yer))b.addEventListener("pointerdown",e=>{e.preventDefault(),
-kesimSec(b.dataset.kesim),vur()}),b.addEventListener("click",e=>{klavyeTiki(e)&&(kesimSec(b.dataset.kesim),vur())});$("#ar-vur",yer).addEventListener("pointerdown",e=>{e.preventDefault(),vur()}),$("#a\
-r-vur",yer).addEventListener("click",e=>{klavyeTiki(e)&&vur()});for(const b of $$("[data-durus]",yer))b.addEventListener("click",()=>durusSec(b.dataset.durus));$("#ar-ye",yer).addEventListener("click",
-ye),$("#ar-gorunum",yer)?.addEventListener("click",()=>{hata3b=!1;const yeni=mod==="3b"?"2b":"3b";Gorunum.ayarla(yeni),tost(yeni==="2b"?\u00E7("Hafif g\xF6r\xFCn\xFCm (2B) se\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsi\
-n."):\u00E7("3B g\xF6r\xFCn\xFCm se\xE7ildi."),"layers")}),$("#yol-git",yer)?.addEventListener("click",yolaCik),$("#yol-teklif",yer)&&teklifGoster();for(const b of $$("[data-onar]",yer))b.onclick=()=>onar(
-Number(b.dataset.onar));$("#ar-silah-sec",yer)?.addEventListener("click",silahSec)}function silahSec(){const a=S.asker;if(!a)return;const simdiki=a.weapon_max==null?"":String(a.weapon_max),silahlar=[...a.
-weapons??[]].sort((x,y)=>Number(y.quality)-Number(x.quality)),satir=(deger,baslik,altyazi,simge)=>`<button type="button" class="ilk-adim secenek-satir" data-silah="${deger}" aria-pressed="${String(deger===
-simdiki)}">
+const d=$("#ar-durum",yer),sv=S.sonVurus&&S.durumMetni===S.sonVurus.metin?S.sonVurus:null,vurusMetni=!sv||sv.tur!==S.tickTur?"":sv.dk===S.tick?\u00E7("Bu dakika: {sonuc}",{sonuc:sv.metin}):sv.dk===S.tick-
+1?\u00E7("Ge\xE7en dakika: {sonuc}",{sonuc:sv.metin}):"",metin=(sv?vurusMetni:S.durumMetni)||(durum==="dolu"?\u00E7("Bu dakikan\u0131n hakk\u0131 doldu; yeni dakikay\u0131 bekle."):durum==="enerji"?\u00E7(
+"Enerjin yetmiyor: ye ya da birka\xE7 saniye bekle."):durum==="mermi"?\u00E7("Lojistik paketin yok; vuru\u015F yap\u0131lamaz."):"");if(d.textContent=metin,d.classList.toggle("uyari",S.uyari||!(sv?vurusMetni:
+S.durumMetni)&&durum!=="hazir"),S.bekleyen>0&&!S.gonderiliyor){const t0=Date.now();(t0-S.sonDokunus>1200||t0-S.ilkBekleyen>(W().batchMs??3e3)||kalan<2500)&&gonder()}}function tahtaCiz(){const b=S.board;
+if(!b||!$("#ar-biz5",yer))return;const biz=b.round?.[benimTaraf()]??[],onlar=b.round?.[benimTaraf()==="attacker"?"defender":"attacker"]??[],sat=(x,i)=>`<li class="${x.character_id===benimKimlik()?"ben":
+""}"${x.ally?` data-muttefik="${esc(x.country_id)}" title="${esc(\u00E7("{ulke} m\xFCttefik",{ulke:ulkeAdi(x.country_id)}))}"`:""}><i>${i+1}</i><span>${x.ally?`<span class="ulke-nokta" style="backgrou\
+nd:${ulkeRenk(x.country_id)}"></span> `:""}${esc(x.name)}</span><b>${puan(x.damage)}</b></li>`;$("#ar-biz5",yer).innerHTML=biz.map(sat).join("")||`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}\
+</span><b></b></li>`,$("#ar-onlar5",yer).innerHTML=onlar.map(sat).join("")||`<li><i></i><span>${\u00E7("Hen\xFCz vuru\u015F yok")}</span><b></b></li>`;const me=b.me?.round;$("#ar-sen",yer).textContent=
+me?\u00E7("Sen: {n}. s\u0131ra / {toplam} \xB7 {puan} puan",{n:Number(me.position),toplam:Number(me.of),puan:puan(me.damage)}):""}function akis(metin,sinif=""){const k=$("#ar-akis",yer);if(!k)return;const el=document.
+createElement("div");for(el.className=sinif,el.textContent=metin,k.appendChild(el);k.children.length>4;)k.firstChild.remove();setTimeout(()=>el.remove(),6e3)}function hasar(kesim,metin){const a=ar3();
+if(a){hareketAzalt||a.hasar(kesim,metin);return}const el=$(`[data-kesim="${kesim}"]`,yer);if(!el||hareketAzalt)return;const h=document.createElement("span");h.className="ar-hasar",h.textContent=metin,
+h.style.left="50%",h.style.top="45%",el.style.position="relative",el.appendChild(h),setTimeout(()=>h.remove(),950)}function baglaArena(){const klavyeTiki=e=>e.detail===0&&!e.pointerType;for(const b of $$(
+"[data-kesim]",yer))b.addEventListener("pointerdown",e=>{e.preventDefault(),kesimSec(b.dataset.kesim),vur()}),b.addEventListener("click",e=>{klavyeTiki(e)&&(kesimSec(b.dataset.kesim),vur())});$("#ar-v\
+ur",yer).addEventListener("pointerdown",e=>{e.preventDefault(),vur()}),$("#ar-vur",yer).addEventListener("click",e=>{klavyeTiki(e)&&vur()});for(const b of $$("[data-durus]",yer))b.addEventListener("cl\
+ick",()=>durusSec(b.dataset.durus));$("#ar-ye",yer).addEventListener("click",ye),$("#ar-gorunum",yer)?.addEventListener("click",()=>{hata3b=!1;const yeni=mod==="3b"?"2b":"3b";Gorunum.ayarla(yeni),tost(
+yeni==="2b"?\u00E7("Hafif g\xF6r\xFCn\xFCm (2B) se\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsin."):\u00E7("3B g\xF6r\xFCn\xFCm se\xE7ildi."),"layers")}),$("#yol-git",yer)?.addEventListener("click",
+yolaCik),$("#yol-teklif",yer)&&teklifGoster();for(const b of $$("[data-onar]",yer))b.onclick=()=>onar(Number(b.dataset.onar));$("#ar-silah-sec",yer)?.addEventListener("click",silahSec)}function silahSec(){
+const a=S.asker;if(!a)return;const simdiki=a.weapon_max==null?"":String(a.weapon_max),silahlar=[...a.weapons??[]].sort((x,y)=>Number(y.quality)-Number(x.quality)),satir=(deger,baslik,altyazi,simge)=>`\
+<button type="button" class="ilk-adim secenek-satir" data-silah="${deger}" aria-pressed="${String(deger===simdiki)}">
           <span class="ozet-ikon" style="background:var(--kagit-3)">${ikon(simge)}</span><span><b>${baslik}</b><span class="kucuk">${altyazi}</span></span>${deger===simdiki?ikon("check"):""}</button>`,
 govde=`<p class="aciklama">${\u00E7("Se\xE7im bir \xFCst s\u0131n\u0131rd\u0131r: daha iyi silah\u0131n olsa da bu kaliteden yukar\u0131s\u0131 kullan\u0131lmaz; s\u0131n\u0131r\u0131n alt\u0131nda eldeki en iyisi kullan\u0131l\u0131r. Silahs\u0131z vuru\u015F m\xFChimmat harcamaz am\
 a g\xFC\xE7 d\xFC\u015Fer.")}</p>
@@ -1537,22 +1549,23 @@ p_sector:kesim,p_stance:durus,p_hits:n});if(S.vurusSurum+=1,S.fark=Date.parse(r.
 enerji.regen=r.regen_ms??S.enerji.regen,enerjiAyarla(r.energy,r.server_time,r.energy_at,r.energy_max),S.ikmal={ammo:r.supplies.ammo,logistics:r.supplies.logistics,alloc_ammo:Number(r.supplies.alloc_ammo??
 0),alloc_logistics:Number(r.supplies.alloc_logistics??0)},S.birlik?.round?.alloc&&S.birlik.round.round_id===(r.round_id??t.round_id)&&(S.birlik.round.alloc={ammo:S.ikmal.alloc_ammo,logistics:S.ikmal.alloc_logistics}),
 S.asker&&(S.asker.rank=r.rank),r.accepted>0){S.benimCanli+=r.accepted;const m=\u00E7("{kesim}: {n} vuru\u015F \xB7 +{puan} puan",{kesim:KESIM_AD2[kesim],n:Number(r.accepted),puan:puan(r.power)});hasar(
-kesim,"+"+puan(r.power)),akis(m),S.durumMetni=m,S.uyari=!1}n>0&&r.accepted<n&&r.reason&&(S.durumMetni=NEDEN[r.reason]??"",S.uyari=!0);const as=Durum.v.askerlik?.soldier;as&&(Object.assign(as,{energy:r.
-energy,energy_max:r.energy_max,rank:r.rank}),as.supplies={...as.supplies,ammo:r.supplies.ammo,logistics:r.supplies.logistics},Kabuk.ustGuncelle()),r.xp?.leveled_up&&tost(\u00E7("Seviye atlad\u0131n: {n}. s\
-eviye; enerji bar\u0131n doldu.",{n:Number(r.xp.level)}),"sparkles"),yorgunlukVurus(r.fatigue)}catch(e){hataIsle(e)}finally{S.gonderiliyor=!1,guncelle(),S.kuyruk.length&&tur()&&gonder()}}function hataIsle(e){
-const kod=e?.kod;if(kod==="LOCATION_CONFLICT"){yenile(),tost(hataMetni(e),"route");return}if(kod==="ROUND_CLOSED"||kod==="TICK_SEALED"||kod==="CAMPAIGN_PAUSED"||kod==="ROUND_NOT_FOUND"){S.durumMetni=hataMetni(
-e),S.uyari=!0,yenile();return}S.durumMetni=hataMetni(e),S.uyari=!0,tost(hataMetni(e),"circle-alert")}async function ye(){try{const r=await Sunucu.yap("war_eat");enerjiAyarla(r.energy,r.server_time,r.energy_at,
-r.energy_max),tost(\u00E7("Erzak yedin: enerji {e}. \xC7antada {n} erzak kald\u0131.",{e:Number(r.energy),n:Number(r.food_left)}),"croissant"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"ci\
-rcle-alert")}guncelle()}async function onar(kalite){try{const r=await Sunucu.yap("war_repair",{p_quality:kalite});tost(r.wear===0?\u00E7("{n}. kalite silah\u0131n onar\u0131ld\u0131.",{n:kalite}):\u00E7(
-"Silah onar\u0131ld\u0131; a\u015F\u0131nma {a} / {b}.",{a:Number(r.wear),b:Number(r.durability)}),"wrench")}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}async function teklifGoster(){const f=S.
-front,yerT=$("#yol-teklif",yer);if(!(!f?.destination||!yerT))try{const q=await Sunucu.cagir("travel_quote",{p_to:f.destination});yerT.textContent=\u00E7("{n} dakika \xB7 {kr} kredi",{n:Number(q.minutes),
-kr:kr(q.fee_cr)}),yerT.dataset.ucret=String(q.fee_cr)}catch(e){yerT.textContent=hataMetni(e)}}async function yolaCik(){const f=S.front,ucret=Number($("#yol-teklif",yer)?.dataset.ucret??NaN);try{const r=await Sunucu.
-yap("travel_start",{p_to:f.destination,p_expected_fee:Number.isFinite(ucret)?ucret:null});tost(\u00E7("Yola \xE7\u0131kt\u0131n: {bolge}. Var\u0131\u015F {zaman}.",{bolge:bolgeAdi(f.destination),zaman:saatYaz(
-r.arrives_at??r.travel?.arrives_at??new Date().toISOString())}),"route"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}const lojistikYok=()=>S.ikmal.logistics+Number(
-S.ikmal.alloc_logistics??0)<1;function birlikIkmal(){const r=S.birlik?.round,t=tur(),ayni=!!(r&&t&&r.round_id===t.round_id);S.ikmal.alloc_ammo=ayni?Number(r.alloc?.ammo??0):0,S.ikmal.alloc_logistics=ayni?
-Number(r.alloc?.logistics??0):0}const emirMetni=e=>`${KESIM_AD2[e.sector]??e.sector} \xB7 ${DURUS2[e.stance]?.ad??e.stance}`;function emirCiz(){const el=$("#ar-emir",yer);if(!el)return;const b=S.birlik,
-r=b?.round,t=tur();if(!b||!r||!t||r.round_id!==t.round_id){el.hidden=!0,el.innerHTML="";return}const e=r.order,uy=!!r.mine?.follow,tm=Number(r.alloc?.ammo??0),tl=Number(r.alloc?.logistics??0);el.hidden=
-!1,el.dataset.emir=e?`${e.sector}:${e.stance}`:"yok",el.dataset.uy=uy?"1":"0",el.innerHTML=`<span class="birlik-amblem kucuk" style="--renk:${esc(b.color)}" aria-hidden="true">${ikon(b.icon)}</span>
+kesim,"+"+puan(r.power)),akis(m),S.durumMetni=m,S.uyari=!1,S.sonVurus={tur:r.round_id??t.round_id,dk:Number(r.tick),metin:m}}n>0&&r.accepted<n&&r.reason&&(S.durumMetni=NEDEN[r.reason]??"",S.uyari=!0);
+const as=Durum.v.askerlik?.soldier;as&&(Object.assign(as,{energy:r.energy,energy_max:r.energy_max,rank:r.rank}),as.supplies={...as.supplies,ammo:r.supplies.ammo,logistics:r.supplies.logistics},Kabuk.ustGuncelle()),
+r.xp?.leveled_up&&tost(\u00E7("Seviye atlad\u0131n: {n}. seviye; enerji bar\u0131n doldu.",{n:Number(r.xp.level)}),"sparkles"),yorgunlukVurus(r.fatigue)}catch(e){hataIsle(e)}finally{S.gonderiliyor=!1,
+guncelle(),S.kuyruk.length&&tur()&&gonder()}}function hataIsle(e){const kod=e?.kod;if(kod==="LOCATION_CONFLICT"){yenile(),tost(hataMetni(e),"route");return}if(kod==="ROUND_CLOSED"||kod==="TICK_SEALED"||
+kod==="CAMPAIGN_PAUSED"||kod==="ROUND_NOT_FOUND"){S.durumMetni=hataMetni(e),S.uyari=!0,yenile();return}S.durumMetni=hataMetni(e),S.uyari=!0,tost(hataMetni(e),"circle-alert")}async function ye(){try{const r=await Sunucu.
+yap("war_eat");enerjiAyarla(r.energy,r.server_time,r.energy_at,r.energy_max),S.durumMetni===NEDEN.energy&&(S.durumMetni="",S.uyari=!1),tost(\u00E7("Erzak yedin: enerji {e}. \xC7antada {n} erzak kald\u0131.",
+{e:Number(r.energy),n:Number(r.food_left)}),"croissant"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}guncelle()}async function onar(kalite){try{const r=await Sunucu.yap("war_\
+repair",{p_quality:kalite});tost(r.wear===0?\u00E7("{n}. kalite silah\u0131n onar\u0131ld\u0131.",{n:kalite}):\u00E7("Silah onar\u0131ld\u0131; a\u015F\u0131nma {a} / {b}.",{a:Number(r.wear),b:Number(
+r.durability)}),"wrench")}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}async function teklifGoster(){const f=S.front,yerT=$("#yol-teklif",yer);if(!(!f?.destination||!yerT))try{const q=await Sunucu.
+cagir("travel_quote",{p_to:f.destination});yerT.textContent=\u00E7("{n} dakika \xB7 {kr} kredi",{n:Number(q.minutes),kr:kr(q.fee_cr)}),yerT.dataset.ucret=String(q.fee_cr)}catch(e){yerT.textContent=hataMetni(
+e)}}async function yolaCik(){const f=S.front,ucret=Number($("#yol-teklif",yer)?.dataset.ucret??NaN);try{const r=await Sunucu.yap("travel_start",{p_to:f.destination,p_expected_fee:Number.isFinite(ucret)?
+ucret:null});tost(\u00E7("Yola \xE7\u0131kt\u0131n: {bolge}. Var\u0131\u015F {zaman}.",{bolge:bolgeAdi(f.destination),zaman:saatYaz(r.arrives_at??r.travel?.arrives_at??new Date().toISOString())}),"rou\
+te"),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}await yenile()}const lojistikYok=()=>S.ikmal.logistics+Number(S.ikmal.alloc_logistics??0)<1;function birlikIkmal(){const r=S.
+birlik?.round,t=tur(),ayni=!!(r&&t&&r.round_id===t.round_id);S.ikmal.alloc_ammo=ayni?Number(r.alloc?.ammo??0):0,S.ikmal.alloc_logistics=ayni?Number(r.alloc?.logistics??0):0}const emirMetni=e=>`${KESIM_AD2[e.
+sector]??e.sector} \xB7 ${DURUS2[e.stance]?.ad??e.stance}`;function emirCiz(){const el=$("#ar-emir",yer);if(!el)return;const b=S.birlik,r=b?.round,t=tur();if(!b||!r||!t||r.round_id!==t.round_id){el.hidden=
+!0,el.innerHTML="";return}const e=r.order,uy=!!r.mine?.follow,tm=Number(r.alloc?.ammo??0),tl=Number(r.alloc?.logistics??0);el.hidden=!1,el.dataset.emir=e?`${e.sector}:${e.stance}`:"yok",el.dataset.uy=
+uy?"1":"0",el.innerHTML=`<span class="birlik-amblem kucuk" style="--renk:${esc(b.color)}" aria-hidden="true">${ikon(b.icon)}</span>
         <span class="ar-emir-yazi">${e?`<b>${esc(emirMetni(e))}</b>${e.note?` <i>\u201C${esc(e.note)}\u201D</i>`:""}`:`<span>${\u00E7("Birli\u011Finin bu tur i\xE7in emri yok")}</span>`}
           ${tm||tl?`<small>${\u00E7("tahsis: {a} m\xFChimmat, {l} lojistik",{a:tm,l:tl})}</small>`:""}</span>
         <button class="ar-emir-uy" id="ar-emir-uy" type="button" aria-pressed="${uy}" title="${\u00E7("Emre uyarsan kesim ve duru\u015F emre g\xF6re se\xE7ilir; istedi\u011Fin an de\u011Fi\u015Ftirirsin.")}\
@@ -1788,28 +1801,28 @@ onayAd:\u00E7("Raporu g\xF6nder"),onaySinif:"mercan",onayIkon:"circle-alert",gov
 "")}</div>
       <label class="alan"><span>${\u00E7("Not (iste\u011Fe ba\u011Fl\u0131)")}</span><textarea name="not" maxlength="300" placeholder="${\u00E7("K\u0131sa a\xE7\u0131klama")}"></textarea></label>
       <p class="kucuk">${\u00E7("Acil bir tehlike varsa (\xF6r. biri kendine zarar verecekse) yetkililere de haber ver.")}</p>`,is:async d=>{const neden=d.get("neden"),not=String(d.get("not")??"").trim()||
-null;if(tur){const r=await Sunucu.yap("report_subject",{p_kind:tur,p_ref:String(ref),p_reason:neden,p_note:not});tost(r?.duplicate?\u00E7("Bunu daha \xF6nce raporlam\u0131\u015Ft\u0131n; raporun duruyor."):
-\u00E7("Raporun al\u0131nd\u0131. Te\u015Fekk\xFCrler."),"badge-check");return}post?await Sunucu.yap("report_post",{p_post:post,p_reason:neden,p_note:not}):kare?await Sunucu.yap("report_photo",{p_photo:kare,
-p_reason:neden,p_note:not}):makale?await Sunucu.yap("report_article",{p_article:makale,p_reason:neden,p_note:not}):video?await Sunucu.yap("report_video",{p_video:video,p_reason:neden,p_note:not}):kampanya?
-await Sunucu.yap("report_petition",{p_petition:kampanya,p_reason:neden,p_note:not}):await Sunucu.yap("report",{p_message:mesaj??null,p_character:kisi??null,p_reason:neden,p_note:not}),tost(\u00E7("Rap\
-orun al\u0131nd\u0131. Te\u015Fekk\xFCrler."),"badge-check")}})}let profilFigur3b=null;async function profilFiguru(kutu,kimlik,p,mad,spor=null){try{const[{THREE,cizici},looks]=await Promise.all([Uc.yukle(
-"30_meydan.js"),Sunucu.cagir("looks",{p_ids:[kimlik]}).catch(()=>[])]);if(!kutu.isConnected)return null;const l=(looks??[]).find(x=>x.character_id===kimlik);profilFigur3b??=figur3bKur(THREE,cizici);const a=profilFigur3b,
-madalyalar=(mad?.medals??[]).filter(m=>m.tier>0).sort((x,y)=>y.tier/y.tiers.length-x.tier/x.tiers.length).slice(0,3).map(m=>kademeRengi(m,m.tier));if(a.kapBagla(kutu),a.durumYaz({anahtar:kimlik,ad:p.name,
-gorunus:l?.look??null,ulke:l?.country_id??p.country_id,rutbe:{sira:mad?.rank??l?.rank??0,sayi:mad?.rank_count||12},ek:{madalyalar,kas:Number(spor?.build??figurKasi(kimlik))}}),!cizici.ustAc(a,kutu))throw new Error(
-"webgl-bagla");return kutu.dataset.madalya=String(madalyalar.length),a.elSalla(),()=>cizici.ustKapat(a)}catch(e){return console.warn("Profil fig\xFCr\xFC a\xE7\u0131lamad\u0131:",e),kutu.remove(),null}}
-const profilAcilan=new Set;async function profilAc(kimlik,sonra){if(!(profilAcilan.has(kimlik)||[...document.querySelectorAll(".perde[data-profil]")].some(x=>x.dataset.profil===String(kimlik)))){profilAcilan.
-add(kimlik);try{await profilPenceresi(kimlik,sonra)}finally{profilAcilan.delete(kimlik)}}}async function profilPenceresi(kimlik,sonra){let p,mad=null,birlik=null,grup=null,medya=null,bag=null,hediye=null,
-diller=null,oyunlar=null,araclar=null,evciller=null,spor=null,futbol=null,unvan=null,album=null,kariyer=null;try{[p,mad,birlik,grup,medya,bag,hediye,diller,oyunlar,araclar,evciller,spor,futbol,unvan,album,
-kariyer]=await Promise.all([Sunucu.cagir("square_profile",{p_character:kimlik,p_limit:10}),Sunucu.cagir("medals",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("unit_card_of",{p_character:kimlik}).
-catch(()=>null),Sunucu.cagir("band_card_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("media_profile",{p_character:kimlik}).catch(()=>null),MekanYolu.iliski(kimlik).catch(()=>null),MekanYolu.
-hediyeSayisi(kimlik).catch(()=>null),Sunucu.cagir("languages_of",{p_character:kimlik}).catch(()=>null),Masa.puanlar(kimlik).catch(()=>null),Sunucu.cagir("vehicles_of",{p_character:kimlik}).catch(()=>null),
-Sunucu.cagir("pets_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("gym_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("football_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("\
-season_titles_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("album_summary",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("career_of",{p_character:kimlik}).catch(()=>null)])}catch(e){tost(
-hataMetni(e),"circle-alert");return}spor?.character_id&&FigurKas.set(spor.character_id,Number(spor.build??0));const madalyalar=(mad?.medals??[]).filter(m=>m.tier>0),ben=p.friendship==="self",perde=document.
-createElement("div");perde.className="perde",perde.dataset.profil=String(kimlik);let figurBirak=null,kapali=!1;const odakDon=pencereOdak(perde),kapat=()=>{kapali||(kapali=!0,figurBirak?.(),figurBirak=
-null,perde.remove(),document.removeEventListener("keydown",tus),odakDon())},tus=e=>{e.key==="Escape"&&pencereUstteMi(perde,e)&&kapat()},iliski={friends:\u00E7("Arkada\u015Fs\u0131n\u0131z"),requested_by_me:\u00E7(
-"Arkada\u015Fl\u0131k iste\u011Fin bekliyor"),requested_by_them:\u00E7("Sana arkada\u015Fl\u0131k iste\u011Fi g\xF6nderdi"),none:""}[p.friendship]??"",bk=pencereBaslikKimligi();perde.innerHTML=`<div c\
-lass="pencere profil-pencere" role="dialog" aria-modal="true" aria-labelledby="${bk}">
+null;let r;tur?r=await Sunucu.yap("report_subject",{p_kind:tur,p_ref:String(ref),p_reason:neden,p_note:not}):post?r=await Sunucu.yap("report_post",{p_post:post,p_reason:neden,p_note:not}):kare?r=await Sunucu.
+yap("report_photo",{p_photo:kare,p_reason:neden,p_note:not}):makale?r=await Sunucu.yap("report_article",{p_article:makale,p_reason:neden,p_note:not}):video?r=await Sunucu.yap("report_video",{p_video:video,
+p_reason:neden,p_note:not}):kampanya?r=await Sunucu.yap("report_petition",{p_petition:kampanya,p_reason:neden,p_note:not}):r=await Sunucu.yap("report",{p_message:mesaj||null,p_character:mesaj?null:kisi??
+null,p_reason:neden,p_note:not}),tost(r?.duplicate?\u00E7("Bunu daha \xF6nce raporlam\u0131\u015Ft\u0131n; raporun duruyor."):\u00E7("Raporun al\u0131nd\u0131. Te\u015Fekk\xFCrler."),"badge-check")}})}
+let profilFigur3b=null;async function profilFiguru(kutu,kimlik,p,mad,spor=null){try{const[{THREE,cizici},looks]=await Promise.all([Uc.yukle("30_meydan.js"),Sunucu.cagir("looks",{p_ids:[kimlik]}).catch(
+()=>[])]);if(!kutu.isConnected)return null;const l=(looks??[]).find(x=>x.character_id===kimlik);profilFigur3b??=figur3bKur(THREE,cizici);const a=profilFigur3b,madalyalar=(mad?.medals??[]).filter(m=>m.
+tier>0).sort((x,y)=>y.tier/y.tiers.length-x.tier/x.tiers.length).slice(0,3).map(m=>kademeRengi(m,m.tier));if(a.kapBagla(kutu),a.durumYaz({anahtar:kimlik,ad:p.name,gorunus:l?.look??null,ulke:l?.country_id??
+p.country_id,rutbe:{sira:mad?.rank??l?.rank??0,sayi:mad?.rank_count||12},ek:{madalyalar,kas:Number(spor?.build??figurKasi(kimlik))}}),!cizici.ustAc(a,kutu))throw new Error("webgl-bagla");return kutu.dataset.
+madalya=String(madalyalar.length),a.elSalla(),()=>cizici.ustKapat(a)}catch(e){return console.warn("Profil fig\xFCr\xFC a\xE7\u0131lamad\u0131:",e),kutu.remove(),null}}const profilAcilan=new Set;async function profilAc(kimlik,sonra){
+if(!(profilAcilan.has(kimlik)||[...document.querySelectorAll(".perde[data-profil]")].some(x=>x.dataset.profil===String(kimlik)))){profilAcilan.add(kimlik);try{await profilPenceresi(kimlik,sonra)}finally{
+profilAcilan.delete(kimlik)}}}async function profilPenceresi(kimlik,sonra){let p,mad=null,birlik=null,grup=null,medya=null,bag=null,hediye=null,diller=null,oyunlar=null,araclar=null,evciller=null,spor=null,
+futbol=null,unvan=null,album=null,kariyer=null;try{[p,mad,birlik,grup,medya,bag,hediye,diller,oyunlar,araclar,evciller,spor,futbol,unvan,album,kariyer]=await Promise.all([Sunucu.cagir("square_profile",
+{p_character:kimlik,p_limit:10}),Sunucu.cagir("medals",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("unit_card_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("band_card_of",{p_character:kimlik}).
+catch(()=>null),Sunucu.cagir("media_profile",{p_character:kimlik}).catch(()=>null),MekanYolu.iliski(kimlik).catch(()=>null),MekanYolu.hediyeSayisi(kimlik).catch(()=>null),Sunucu.cagir("languages_of",{
+p_character:kimlik}).catch(()=>null),Masa.puanlar(kimlik).catch(()=>null),Sunucu.cagir("vehicles_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("pets_of",{p_character:kimlik}).catch(()=>null),
+Sunucu.cagir("gym_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("football_of",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("season_titles_of",{p_character:kimlik}).catch(()=>null),Sunucu.
+cagir("album_summary",{p_character:kimlik}).catch(()=>null),Sunucu.cagir("career_of",{p_character:kimlik}).catch(()=>null)])}catch(e){tost(hataMetni(e),"circle-alert");return}spor?.character_id&&FigurKas.
+set(spor.character_id,Number(spor.build??0));const madalyalar=(mad?.medals??[]).filter(m=>m.tier>0),ben=p.friendship==="self",perde=document.createElement("div");perde.className="perde",perde.dataset.
+profil=String(kimlik);let figurBirak=null,kapali=!1;const odakDon=pencereOdak(perde),kapat=()=>{kapali||(kapali=!0,figurBirak?.(),figurBirak=null,perde.remove(),document.removeEventListener("keydown",
+tus),odakDon())},tus=e=>{e.key==="Escape"&&pencereUstteMi(perde,e)&&kapat()},iliski={friends:\u00E7("Arkada\u015Fs\u0131n\u0131z"),requested_by_me:\u00E7("Arkada\u015Fl\u0131k iste\u011Fin bekliyor"),
+requested_by_them:\u00E7("Sana arkada\u015Fl\u0131k iste\u011Fi g\xF6nderdi"),none:""}[p.friendship]??"",bk=pencereBaslikKimligi();perde.innerHTML=`<div class="pencere profil-pencere" role="dialog" ar\
+ia-modal="true" aria-labelledby="${bk}">
       <div class="satir" style="align-items:center">${avatarKutu(p.name,kimlik)}<div><p class="ust-yazi">${esc(ulkeAdi(p.country_id))}</p><h2 class="b2" id="${bk}" style="margin:0">${esc(p.name)}</h2>\
 
         ${!ben&&p.online?`<span class="cevrimici-cip" data-cevrimici="evet"><span class="cevrimici-nokta" aria-hidden="true"></span>${\u00E7("\xE7evrimi\xE7i")}</span>`:""}</div></div>
@@ -2856,34 +2869,51 @@ ahkeme-asama="${esc(d.asama)}">
     ${avukatVar?kisi(69,166,"#2F5FA8",!1,d.rol==="lawyer","data-mahkeme-avukat"):""}
     ${itirazciVar?kisi(251,166,d.rol==="appellant"?kendiGiysiRengi():"#8C8578",!1,d.rol==="appellant","data-mahkeme-itirazci"):""}
   </svg>`}Kabuk.gecikmeli("sehir/golge","ek_39_golge");const UC_RENK={kagit:"#E9E2D2",gokDis:"#FFF6E6",yerDis:"#5A6B52",gokIc:"#FFF6E8",yerIc:"#5A5048",gunes:"#FFE9C4",gunesIc:"#FFF1D8"},Gorunum=(()=>{
-const ANAHTAR="civora.gorunum";let secim="oto";try{const x=localStorage.getItem(ANAHTAR);["oto","3b","2b"].includes(x)&&(secim=x)}catch{}let webgl=null,yavas=0;const dinleyici=new Set;function webglVar(){
+const ANAHTAR="civora.gorunum";let secim="oto";try{const x=localStorage.getItem(ANAHTAR);["oto","3b","2b"].includes(x)&&(secim=x)}catch{}let webgl=null,yavas=0,kayip=!1;const dinleyici=new Set;function webglVar(){
 if(webgl==null)try{const c=document.createElement("canvas");webgl=!!(c.getContext("webgl2")||c.getContext("webgl"))}catch{webgl=!1}return webgl}const cihazZayif=()=>(navigator.deviceMemory??4)<=2||(navigator.
-hardwareConcurrency??4)<=2,uc=()=>secim==="2b"?!1:secim==="3b"?webglVar():webglVar()&&!cihazZayif()&&yavas<2;function kalite(){const taban=telefon()?cihazZayif()?2:1:0;return["yuksek","orta","dusuk"][Math.
-min(2,taban+(secim==="oto"?Math.min(yavas,1):0))]}function yay(){for(const f of dinleyici)try{f()}catch(e){console.error(e)}}function ayarla(x){secim=x,yavas=0;try{localStorage.setItem(ANAHTAR,x)}catch{}
-yay()}function yavasBildir(){secim!=="oto"||yavas>=2||(yavas++,yavas>=2&&tost(\u00E7("Telefonun 3B g\xF6r\xFCn\xFCmde zorland\u0131; hafif g\xF6r\xFCn\xFCme ge\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsin."),
-"layers"),yay())}return{get secim(){return secim},ayarla,uc,kalite,webglVar,yavasBildir,zayif:cihazZayif,dinle(f){return dinleyici.add(f),()=>dinleyici.delete(f)}}})(),ucParcasi=kaynak=>{if(typeof Parcalar>
+hardwareConcurrency??4)<=2,uc=()=>kayip||secim==="2b"?!1:secim==="3b"?webglVar():webglVar()&&!cihazZayif()&&yavas<2;function kalite(){const taban=telefon()?cihazZayif()?2:1:0;return["yuksek","orta","d\
+usuk"][Math.min(2,taban+(secim==="oto"?Math.min(yavas,1):0))]}function yay(){for(const f of dinleyici)try{f()}catch(e){console.error(e)}}function ayarla(x){secim=x,yavas=0,kayip=!1;try{localStorage.setItem(
+ANAHTAR,x)}catch{}yay()}function yavasBildir(){secim!=="oto"||yavas>=2||(yavas++,yavas>=2&&tost(\u00E7("Telefonun 3B g\xF6r\xFCn\xFCmde zorland\u0131; hafif g\xF6r\xFCn\xFCme ge\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsin."),
+"layers"),yay())}function bagKaybi(){kayip||(kayip=!0,tost(\u00E7("3B g\xF6r\xFCn\xFCm yeniden a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCme ge\xE7ildi. Sayfay\u0131 yenileyince 3B yeniden denenir."),
+"layers"),yay())}return{get secim(){return secim},ayarla,uc,kalite,webglVar,yavasBildir,bagKaybi,zayif:cihazZayif,dinle(f){return dinleyici.add(f),()=>dinleyici.delete(f)}}})(),ucParcasi=kaynak=>{if(typeof Parcalar>
 "u")return Promise.resolve();const liste=typeof UC_PARCALARI=="object"&&kaynak?UC_PARCALARI[kaynak]:null;return liste?Promise.all(liste.map(ad=>Parcalar.bekle(ad))):Parcalar.bekle("uc")},Uc=(()=>{let soz=null,
 cizici=null;function araclar(){if(!soz){const p=Promise.all([import("three"),import("three/addons/controls/MapControls.js"),import("three/addons/utils/BufferGeometryUtils.js"),import("three/addons/controls/OrbitControls.js")]).
 then(([THREE,kontrol,araclar2,yorunge])=>(cizici??=cizicKur(THREE),{THREE,MapControls:kontrol.MapControls,OrbitControls:yorunge.OrbitControls,birlestir:araclar2.mergeGeometries,cizici}));soz=p,p.catch(
 ()=>{soz===p&&(soz=null)})}return soz}function yukle(kaynak){const dunya=typeof Dunya=="object"&&Dunya.ucGerekli(kaynak)?Dunya.yukle():Promise.resolve();return Promise.all([araclar(),ucParcasi(kaynak),
 dunya]).then(([ortam])=>ortam)}return{yukle,get cizici(){return cizici}}})(),sinamaYaz=ek=>{typeof window<"u"&&window.__civoraSinama&&typeof window.__civoraSinama=="object"&&Object.assign(window.__civoraSinama,
-ek)};sinamaYaz({uc:Uc});function cizicKur(THREE){let renderer=null,etkin=null,calisiyor=!1,sonCizim=0,olcum={n:0,top:0};const katmanlar=[],gozlemci=new ResizeObserver(()=>boyutla());function kur(){if(renderer)
-return renderer;const k=Gorunum.kalite();try{renderer=new THREE.WebGLRenderer({antialias:k!=="dusuk",alpha:!0,powerPreference:k==="dusuk"?"low-power":"default"})}catch(hata){return console.warn("WebGL\
- a\xE7\u0131lamad\u0131",hata),null}return renderer.setClearColor(0,0),renderer.shadowMap.type=THREE.PCFSoftShadowMap,renderer.outputColorSpace=THREE.SRGBColorSpace,renderer.toneMapping=THREE.NoToneMapping,
-renderer.domElement.setAttribute("tabindex","0"),kaliteUygula(),renderer}function kaliteUygula(){if(!renderer)return;const k=Gorunum.kalite();renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,
-k==="yuksek"?2:k==="orta"?1.5:1)),renderer.shadowMap.enabled=k!=="dusuk",etkin?.kalite?.(k),boyutla()}Gorunum.dinle(kaliteUygula);function bagla(modul,kap){if(!kap?.isConnected)return!0;const ust=katmanlar.
-at(-1);return ust&&modul!==ust.modul?(ust.bekleyen={modul,kap},!0):kur()?(etkin&&etkin!==modul&&etkin.etkinlestir?.(!1),etkin=modul,renderer.domElement.setAttribute("aria-label",modul.etiket??\u00E7("\
-3B sahne")),renderer.domElement.parentElement!==kap&&(gozlemci.disconnect(),kap.prepend(renderer.domElement),gozlemci.observe(kap)),modul.kalite?.(Gorunum.kalite()),boyutla(),modul.etkinlestir?.(!0),olcum=
-{n:0,top:0},firsatCizdi=!1,calisiyor||(calisiyor=!0,baslat()),!0):!1}function birak(modul){for(const k of katmanlar)k.bekleyen?.modul===modul&&(k.bekleyen=null);etkin===modul&&(etkin.etkinlestir?.(!1),
-etkin=null,calisiyor=!1,tur++)}function boyutla(){if(!renderer||!etkin)return;const kap=renderer.domElement.parentElement;if(!kap)return;const w=Math.max(1,kap.clientWidth),h=Math.max(1,kap.clientHeight);
-renderer.setSize(w,h,!1),etkin.boyut(w,h)}let sonGuncelle=0,cizdi=!1,tur=0,firsatCizdi=!1,sonKare=-1;function baslat(){const benim=++tur,adim=t=>{benim!==tur||!calisiyor||(requestAnimationFrame(adim),
-dongu(t))};requestAnimationFrame(adim)}function dongu(t){const ard=cizdi;if(cizdi=!1,!etkin||document.hidden||!renderer.domElement.isConnected){firsatCizdi=!1;return}const kare=etkin.kareMs??0;if(kare&&
-t-sonCizim<kare-2)return;const dt=Math.min(.05,Math.max(.001,(t-(sonGuncelle||t-16))/1e3));if(sonGuncelle=t,etkin.guncelle(dt,t/1e3),etkin.cizilmeli&&!etkin.cizilmeli()){firsatCizdi=!1;return}renderer.
-render(etkin.sahne,etkin.kamera);const surekli=!!etkin.surekli&&kare>0&&kare<=50;(kare?surekli&&firsatCizdi&&sonKare===kare:ard)&&(olcum.n++,olcum.top+=t-sonCizim,(olcum.n>=90||surekli&&olcum.n>=8&&olcum.
-top>=4e3)&&(olcum.top/olcum.n>Math.max(45,kare*2)&&Gorunum.yavasBildir(),olcum={n:0,top:0})),sonCizim=t,cizdi=!0,firsatCizdi=!0,sonKare=kare}function ustAc(modul,kap){const kap0=renderer?.domElement.parentElement??
-null,once=etkin&&etkin!==modul&&kap0?{modul:etkin,kap:kap0}:null,k={modul,bekleyen:null};return katmanlar.push(k),bagla(modul,kap)?(k.bekleyen=once,!0):(katmanlar.splice(katmanlar.indexOf(k),1),!1)}function ustKapat(modul){
-const i=katmanlar.findIndex(k2=>k2.modul===modul);if(i<0)return;const[k]=katmanlar.splice(i,1);if(i<katmanlar.length){katmanlar[i].bekleyen?.modul===modul&&(katmanlar[i].bekleyen=k.bekleyen);return}birak(
-modul),k.bekleyen?.kap.isConnected&&bagla(k.bekleyen.modul,k.bekleyen.kap)}return{kur,bagla,birak,boyutla,ustAc,ustKapat,get renderer(){return renderer},get etkin(){return etkin}}}function kameraSigdir(THREE,kamera,noktalar,yon,sinir={}){
+ek)};sinamaYaz({uc:Uc});function cizicKur(THREE){let renderer=null,etkin=null,calisiyor=!1,sonCizim=0,olcum={n:0,top:0};const katmanlar=[],gozlemci=new ResizeObserver(()=>boyutla()),SAKLA=5;let sakla=SAKLA;
+const sira=[];function kullanildi(modul){const i=sira.indexOf(modul);i>=0&&sira.splice(i,1),sira.push(modul),bosalt()}function bosalt(){const koru=new Set([etkin]);for(const k of katmanlar)koru.add(k.
+modul),k.bekleyen&&koru.add(k.bekleyen.modul);for(let i=0;sira.length>sakla&&i<sira.length;){if(koru.has(sira[i])){i++;continue}gpuBirak(sira.splice(i,1)[0])}}function gpuBirak(modul){const sahne=modul?.
+sahne;if(!sahne?.traverse)return;const bitti=new Set,doku=t=>{t?.isTexture&&!bitti.has(t)&&(bitti.add(t),t.dispose())},malzeme=m=>{if(!(!m||bitti.has(m))){bitti.add(m);for(const k of Object.keys(m))doku(
+m[k]);for(const u of Object.values(m.uniforms??{}))doku(u?.value);m.dispose()}};sahne.traverse(o=>{o.geometry&&!bitti.has(o.geometry)&&(bitti.add(o.geometry),o.geometry.dispose()),Array.isArray(o.material)?
+o.material.forEach(malzeme):malzeme(o.material),o.isInstancedMesh&&o.dispose(),o.isSkinnedMesh&&o.skeleton?.dispose(),o.shadow?.map&&(o.shadow.map.dispose(),o.shadow.map=null)}),doku(sahne.background),
+doku(sahne.environment),modul.gpuBirakildi?.()}const KAYIP_MS=1e4;let kayipZaman=null,zorla=!1,derleniyor=null;function kayipKatmani(kap){for(const x of $$(".uc-kayip"))x.parentElement!==kap&&x.remove();
+if(!kap||$(":scope > .uc-kayip",kap))return;const k=document.createElement("div");k.className="yukleniyor uc-kayip",k.setAttribute("role","status"),k.innerHTML=`<div class="yukleniyor-ic"><img src="im\
+g/amblem.png" alt=""><span>${\u00E7("3B yeniden y\xFCkleniyor\u2026")}</span></div>`,kap.append(k)}function kayipBasladi(){clearTimeout(kayipZaman),kayipKatmani(renderer?.domElement.parentElement??null),
+kayipZaman=setTimeout(()=>{kayipZaman=null;for(const x of $$(".uc-kayip"))x.remove();Gorunum.bagKaybi()},KAYIP_MS)}function kayipBitti(){clearTimeout(kayipZaman),kayipZaman=null;for(const x of $$(".uc\
+-kayip"))x.remove();zorla=!0}function kur(){if(renderer)return renderer;const k=Gorunum.kalite();try{renderer=new THREE.WebGLRenderer({antialias:k!=="dusuk",alpha:!0,powerPreference:k==="dusuk"?"low-p\
+ower":"default"})}catch(hata){return console.warn("WebGL a\xE7\u0131lamad\u0131",hata),null}return renderer.setClearColor(0,0),renderer.shadowMap.type=THREE.PCFSoftShadowMap,renderer.outputColorSpace=
+THREE.SRGBColorSpace,renderer.toneMapping=THREE.NoToneMapping,renderer.domElement.setAttribute("tabindex","0"),renderer.domElement.addEventListener("webglcontextlost",kayipBasladi),renderer.domElement.
+addEventListener("webglcontextrestored",kayipBitti),kaliteUygula(),renderer}function kaliteUygula(){if(!renderer)return;const k=Gorunum.kalite();renderer.setPixelRatio(Math.min(window.devicePixelRatio||
+1,k==="yuksek"?2:k==="orta"?1.5:1)),renderer.shadowMap.enabled=k!=="dusuk",etkin?.kalite?.(k),boyutla()}Gorunum.dinle(kaliteUygula);function bagla(modul,kap){if(!kap?.isConnected)return!0;const ust=katmanlar.
+at(-1);if(ust&&modul!==ust.modul)return ust.bekleyen={modul,kap},!0;if(!kur())return!1;if(etkin&&etkin!==modul&&etkin.etkinlestir?.(!1),etkin=modul,renderer.domElement.setAttribute("aria-label",modul.
+etiket??\u00E7("3B sahne")),renderer.domElement.parentElement!==kap&&(gozlemci.disconnect(),kap.prepend(renderer.domElement),gozlemci.observe(kap)),kayipZaman!==null&&kayipKatmani(kap),modul.kalite?.(
+Gorunum.kalite()),boyutla(),modul.etkinlestir?.(!0),!sira.includes(modul)&&renderer.compile&&modul.sahne&&modul.kamera){derleniyor=modul;const bitir=()=>{derleniyor===modul&&(derleniyor=null,zorla=!0)};
+Promise.race([derle(modul),new Promise(ok=>setTimeout(ok,3e3))]).catch(()=>{}).finally(bitir)}return kullanildi(modul),olcum={n:0,top:0},firsatCizdi=!1,calisiyor||(calisiyor=!0,baslat()),!0}function derle(modul){
+let malzemeler;try{malzemeler=renderer.compile(modul.sahne,modul.kamera)}catch{return Promise.resolve()}if(!malzemeler?.forEach)return Promise.resolve();const paralel=!!renderer.extensions?.has?.("KHR\
+_parallel_shader_compile");return new Promise(ok=>{const bak=()=>{if(derleniyor!==modul){ok();return}try{malzemeler.forEach(m=>{const p=renderer.properties?.get(m)?.currentProgram;(!p||p.isReady())&&malzemeler.
+delete(m)})}catch{ok();return}malzemeler.size===0?ok():setTimeout(bak,10)};paralel?bak():setTimeout(bak,10)})}function birak(modul){for(const k of katmanlar)k.bekleyen?.modul===modul&&(k.bekleyen=null);
+etkin===modul&&(etkin.etkinlestir?.(!1),etkin=null,calisiyor=!1,tur++)}function boyutla(){if(!renderer||!etkin)return;const kap=renderer.domElement.parentElement;if(!kap)return;const w=Math.max(1,kap.
+clientWidth),h=Math.max(1,kap.clientHeight);renderer.setSize(w,h,!1),etkin.boyut(w,h)}let sonGuncelle=0,cizdi=!1,tur=0,firsatCizdi=!1,sonKare=-1;function baslat(){const benim=++tur,adim=t=>{benim!==tur||
+!calisiyor||(requestAnimationFrame(adim),dongu(t))};requestAnimationFrame(adim)}function dongu(t){const ard=cizdi;if(cizdi=!1,!etkin||document.hidden||!renderer.domElement.isConnected){firsatCizdi=!1;
+return}const kare=etkin.kareMs??0;if(kare&&t-sonCizim<kare-2)return;const dt=Math.min(.05,Math.max(.001,(t-(sonGuncelle||t-16))/1e3));if(sonGuncelle=t,etkin.guncelle(dt,t/1e3),derleniyor===etkin){firsatCizdi=
+!1;return}if(etkin.cizilmeli&&!etkin.cizilmeli()&&!zorla){firsatCizdi=!1;return}renderer.render(etkin.sahne,etkin.kamera),zorla=!1;const surekli=!!etkin.surekli&&kare>0&&kare<=50;(kare?surekli&&firsatCizdi&&
+sonKare===kare:ard)&&(olcum.n++,olcum.top+=t-sonCizim,(olcum.n>=90||surekli&&olcum.n>=8&&olcum.top>=4e3)&&(olcum.top/olcum.n>Math.max(45,kare*2)&&Gorunum.yavasBildir(),olcum={n:0,top:0})),sonCizim=t,cizdi=
+!0,firsatCizdi=!0,sonKare=kare}function ustAc(modul,kap){const kap0=renderer?.domElement.parentElement??null,k={modul,bekleyen:etkin&&etkin!==modul&&kap0?{modul:etkin,kap:kap0}:null};return katmanlar.
+push(k),bagla(modul,kap)?!0:(katmanlar.splice(katmanlar.indexOf(k),1),!1)}function ustKapat(modul){const i=katmanlar.findIndex(k2=>k2.modul===modul);if(i<0)return;const[k]=katmanlar.splice(i,1);if(i<katmanlar.
+length){katmanlar[i].bekleyen?.modul===modul&&(katmanlar[i].bekleyen=k.bekleyen);return}birak(modul),k.bekleyen?.kap.isConnected&&bagla(k.bekleyen.modul,k.bekleyen.kap)}const bellek=()=>({sahne:sira.length,
+sakla,geometri:renderer?.info.memory.geometries??0,doku:renderer?.info.memory.textures??0,program:renderer?.info.programs?.length??0});function saklaAyarla(n){sakla=n>0?n:SAKLA,bosalt()}return{kur,bagla,
+birak,boyutla,ustAc,ustKapat,bellek,saklaAyarla,get kayip(){return kayipZaman!==null},get renderer(){return renderer},get etkin(){return etkin}}}function kameraSigdir(THREE,kamera,noktalar,yon,sinir={}){
 const sx=sinir.x??.94,ust=sinir.ust??.92,alt=sinir.alt??-.92,merkez=new THREE.Box3().setFromPoints(noktalar).getCenter(new THREE.Vector3),p=new THREE.Vector3,sag=new THREE.Vector3,yukari=new THREE.Vector3,
 tanY=Math.tan(THREE.MathUtils.degToRad(kamera.fov/2)),yerles=uz=>{kamera.position.copy(merkez).addScaledVector(yon,uz),kamera.lookAt(merkez),kamera.updateProjectionMatrix(),kamera.updateMatrixWorld()},
 sigiyor=()=>noktalar.every(n=>(p.copy(n).project(kamera),p.z<1&&Math.abs(p.x)<=sx&&p.y<=ust&&p.y>=alt)),ust0=kamera.far*.9;for(let tur=0;tur<4;tur++){let lo2=.5,hi2=ust0;for(let i=0;i<28;i++){const m=(lo2+
@@ -3263,9 +3293,12 @@ floor(i/2)*32,"#B07A4A",x.urun)).join("")}</g>
     <circle cx="${fx+52}" cy="${fy+14}" r="12" fill="#174A40" stroke="#E2B54A" stroke-width="2"/><text x="${fx+52}" y="${fy+18}" text-anchor="middle" class="hayat2b-seviye">${Number(d.seviye??1)}</tex\
 t>
     ${keyifRozet2b(fx-52,fy+14,d.keyif?.seviye)}
-  </svg>`}const hayatGit=yol=>yol==="keyif"?keyifKartinaGit():Kabuk.git(yol),HayatSahnesi=(()=>{function ac(){const el=document.createElement("section");el.className="kart hayat-kart",el.id="hayat-kar\
-t";let d=null,hata3b=!1,kapandi=!1,durdur=null;ProfilUc.hayat(!0);const mod3b=()=>Gorunum.uc()&&!hata3b&&ProfilUc.izin("hayat");let mod=mod3b()?"3b":"2b";function ciz(){if(!d)return;const bekliyor=Gorunum.
-uc()&&!hata3b&&!ProfilUc.izin("hayat");el.innerHTML=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131n")} \xB7 ${esc(bolgeAdi(d.bolge))}</p>
+  </svg>`}const hayatGit=yol=>yol==="keyif"?keyifKartinaGit():Kabuk.git(yol);function hayatIpucu(d){const p=[];return hayatKademe(d.erzak)>0||(d.digerleri??[]).length?p.push(\u00E7("sand\u0131k \u2192 Pazar")):
+hayatParalar(d.kredi??0)>0&&p.push(\u00E7("para \u2192 Pazar")),(d.silahlar??[]).length?p.push(\u00E7("silah \u2192 Cephe")):hayatKademe(d.muhimmat)>0&&p.push(\u00E7("m\xFChimmat \u2192 Cephe")),d.ev&&
+p.push(\u00E7("ev \u2192 Evim")),p.push(\u00E7("bayrak \u2192 \xDClkem"),\u00E7("\u015Fehir \u2192 \u015Eehrim")),\u00E7("E\u015Fyalara dokun: {liste}. Fig\xFCr\xFCne dokunursan el sallar.",{liste:p.join(
+", ")})}const HayatSahnesi=(()=>{function ac(){const el=document.createElement("section");el.className="kart hayat-kart",el.id="hayat-kart";let d=null,hata3b=!1,kapandi=!1,durdur=null;ProfilUc.hayat(!0);
+const mod3b=()=>Gorunum.uc()&&!hata3b&&ProfilUc.izin("hayat");let mod=mod3b()?"3b":"2b";function ciz(){if(!d)return;const bekliyor=Gorunum.uc()&&!hata3b&&!ProfilUc.izin("hayat");el.innerHTML=`<div cla\
+ss="kart-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131n")} \xB7 ${esc(bolgeAdi(d.bolge))}</p>
           <h2 class="b2" id="hayat-baslik">${\u00E7("\u015Eu an ne yap\u0131yorsun?")}</h2></div>
           <div class="satir" style="gap:8px">
             ${bekliyor?`<button class="dugme sade kucuk-d" id="hayat-don">${ikon("layers")}${\u00E7("3B'ye d\xF6n")}</button>`:Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="hayat-mod" ari\
@@ -3278,32 +3311,31 @@ a-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Hafif g\xF6r\xFCn\xFCme (2
           <div class="hayat-2b" id="hayat-2b"${mod==="3b"?" hidden":""}>${mod==="2b"?hayat2b(d):""}</div>
         </div>
         <p class="hayat-etkinlik" id="hayat-etkinlik" aria-live="polite">${hayatEtkinlikMetni(d)}</p>
-        <p class="kucuk">${\u00E7("E\u015Fyalara dokun: sand\u0131k Pazar'\u0131, silah Cephe'yi, ev Evim'i, bayrak \xDClkem'i a\xE7ar. Fig\xFCr\xFCne dokunursan el sallar.")}</p>`,$("#hayat-mod",el)?.
-addEventListener("click",()=>{hata3b=!1;const ikiB=mod==="3b";Gorunum.ayarla(ikiB?"2b":"3b"),tost(ikiB?\u00E7("Hafif g\xF6r\xFCn\xFCm (2B) se\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsin."):\u00E7(
-"3B g\xF6r\xFCn\xFCm se\xE7ildi."),"layers")}),$("#hayat-don",el)?.addEventListener("click",()=>ProfilUc.sec("hayat"));for(const g of $$("#hayat-2b [data-hayat-git]",el))g.addEventListener("click",()=>hayatGit(
-g.dataset.hayatGit));durdur?.(),durdur=geriSay(el,()=>el.dispatchEvent(new CustomEvent("hayat-bitti"))),sahneBagla()}function durumIsaretle(kutu,a){const x=a.durum;Object.assign(kutu.dataset,{eylem:x.
-eylem,sapka:x.sapka??"",esya:x.esya??"",erzak:x.erzak,muhimmat:x.muhimmat,silah:x.silah,para:x.para,diger:x.diger,ev:x.ev?1:0,parti:x.parti?1:0,gorev:x.gorev??"",gece:x.gece?1:0,seviye:x.seviye,keyif:x.
-keyif??"",arac:x.arac??"",hayvan:x.hayvan??0,cizim:a.cizimSayisi})}function sahneBirak(){hayat3bOrnek&&Uc.cizici?.etkin===hayat3bOrnek&&Uc.cizici.birak(hayat3bOrnek)}async function sahneBagla(){const kutu=$(
-"#hayat-sahne",el);if(!kutu||mod!=="3b"){sahneBirak();return}try{const{THREE,cizici}=await Uc.yukle("60_hayat.js");if(kapandi||mod!=="3b"||$("#hayat-sahne",el)!==kutu)return;hayat3bOrnek??=hayat3bKur(
-THREE,cizici);const a=hayat3bOrnek;if(a.dinle("git",hayatGit),a.dinle("figur",null),a.kapBagla(kutu),a.durumYaz(d),!cizici.bagla(a,kutu))throw new Error("webgl-bagla");$("#hayat-yukleniyor",kutu)?.classList.
-add("bitti"),durumIsaretle(kutu,a)}catch(e){if(console.warn("3B Hayat\u0131m sahnesi a\xE7\u0131lamad\u0131:",e),kapandi)return;hata3b=!0,mod="2b",tost(\u00E7("3B sahne bu cihazda a\xE7\u0131lamad\u0131; hafif g\xF6r\
-\xFCn\xFCm g\xF6steriliyor."),"layers"),ciz()}}function yaz(veri2){const yeni=hayatVerisi(veri2),ayni=d&&JSON.stringify({...yeni,gece:0})===JSON.stringify({...d,gece:0});if(d=yeni,!el.childElementCount||
-!ayni){ciz();return}if(mod==="3b"&&hayat3bOrnek&&Uc.cizici?.etkin===hayat3bOrnek){hayat3bOrnek.durumYaz(d);const k=$("#hayat-sahne",el);k&&durumIsaretle(k,hayat3bOrnek)}}const yenidenSec=()=>{const yeni=mod3b()?
-"3b":"2b";yeni!==mod||!el.childElementCount?(mod=yeni,ciz()):d&&ciz()},b1=Gorunum.dinle(yenidenSec),b2=ProfilUc.dinle(yenidenSec),saat=setInterval(()=>{if(!d||kapandi)return;const g=d.bolge?bolgeGecesi(
-d.bolge):0;if(!(Math.abs(g-d.gece)<.04)){if(d={...d,gece:g},mod==="3b"&&hayat3bOrnek&&Uc.cizici?.etkin===hayat3bOrnek)hayat3bOrnek.durumYaz(d);else if(mod==="2b"){const k=$("#hayat-2b",el);if(k){k.innerHTML=
-hayat2b(d);for(const g2 of $$("[data-hayat-git]",k))g2.addEventListener("click",()=>hayatGit(g2.dataset.hayatGit))}}}},6e4);function kapat(){kapandi=!0,b1(),b2(),durdur?.(),clearInterval(saat),sahneBirak(),
-ProfilUc.hayat(!1)}return{el,yaz,kapat,get d(){return d}}}return{ac}})(),KALABALIK_TEN=["#F3D2B3","#E8BC94","#D7A07A","#B97B55","#8E5A3B","#6A4029"],KALABALIK_GIYSI=["#174A40","#C65A3B","#23395B","#D9\
-A548","#367F70","#7D5FA0","#8B6B4A","#4E7A5A","#B24A5A","#5C6B7A"],ATOLYE_TEZGAH=[[-2.7,-1.25],[0,-1.25],[2.7,-1.25],[-2.7,.75],[2.7,.75]];let atolye3bOrnek=null;const ATOLYE_ISCI_RENK=["#3D5A80","#6E\
-8B3D","#C9873A","#7A5C8E","#2F6F6A"];function atolyeVerisi({is,depo,nabiz,gorunus,ozet:ozet2,asker}){const ch=ozet2?.character??{},ak=is?.active,sistem=ak?.kind==="system",hesap=Date.parse(nabiz?.computed_at??
-""),benSayildim=sistem&&hesap>=Date.parse(ak.starts_at)&&hesap<Date.parse(ak.ends_at)&&nabiz?.region_id===ak.region_id;return{anahtar:ch.id??"",ad:ch.name??"",gorunus:gorunus??null,ulke:ch.citizenship??
-null,rutbe:{sira:asker?.soldier?.rank??0,sayi:12},is:sistem?{aktif:!0,birim:Number(ak.work_units),baslangic:ak.starts_at,bitis:ak.ends_at}:null,baska:!!ak&&!sistem,bugun:Number(is?.units_today??0),sinir:Number(
-is?.daily_cap??8),calisanlar:Math.max(0,Number(nabiz?.working_system??0)-(benSayildim?1:0)),depo:depo?.here?{stok:Number(depo.left_today??0),en:Number(depo.daily_cap??8)}:null,bolge:ch.location,gece:ch.
-location?bolgeGecesi(ch.location):0}}function atolye2b(d){const g0=Math.round((d.gece??0)*20)/20,karis=(a2,b,t)=>"#"+[0,2,4].map(i=>Math.round(parseInt(a2.slice(1+i,3+i),16)*(1-t)+parseInt(b.slice(1+i,
-3+i),16)*t).toString(16).padStart(2,"0")).join(""),is=d.is,oran=is?.aktif?Math.max(0,Math.min(1,(Date.now()-Date.parse(is.baslangic))/Math.max(1,Date.parse(is.bitis)-Date.parse(is.baslangic)))):null,birim=Math.
-max(0,Math.min(8,is?.birim??0)),sandik=oran==null?0:Math.floor(oran*birim),n=Math.min(ATOLYE_TEZGAH.length,Math.max(0,d.calisanlar??0)),depoDolu=d.depo?Math.round(Math.min(1,(d.depo.stok??0)/Math.max(
-1,d.depo.en??9))*9):0,g=d.gorunus??varsayilanGorunus(d.ad||"?"),ten=TEN[g.ten]??TEN[0],kumas=g.kiyafet==="uniforma"?UNIFORMA.kumas:GIYSI[g.renk??ozet(String(d.ad))%GIYSI.length]??GIYSI[0],alan=(x,y,w,h)=>`\
-<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="transparent"/>`,kisi=(x,y,giysi,tenR,calis)=>`<g class="atolye2b-kisi"><rect x="${x-9}" y="${y-30}" width="18" height="24" rx="7" fill="${giysi}\
-"/>
+        <p class="kucuk" id="hayat-ipucu">${esc(hayatIpucu(d))}</p>`,$("#hayat-mod",el)?.addEventListener("click",()=>{hata3b=!1;const ikiB=mod==="3b";Gorunum.ayarla(ikiB?"2b":"3b"),tost(ikiB?\u00E7("\
+Hafif g\xF6r\xFCn\xFCm (2B) se\xE7ildi. Ayarlar'dan de\u011Fi\u015Ftirebilirsin."):\u00E7("3B g\xF6r\xFCn\xFCm se\xE7ildi."),"layers")}),$("#hayat-don",el)?.addEventListener("click",()=>ProfilUc.sec("\
+hayat"));for(const g of $$("#hayat-2b [data-hayat-git]",el))g.addEventListener("click",()=>hayatGit(g.dataset.hayatGit));durdur?.(),durdur=geriSay(el,()=>el.dispatchEvent(new CustomEvent("hayat-bitti"))),
+sahneBagla()}function durumIsaretle(kutu,a){const x=a.durum;Object.assign(kutu.dataset,{eylem:x.eylem,sapka:x.sapka??"",esya:x.esya??"",erzak:x.erzak,muhimmat:x.muhimmat,silah:x.silah,para:x.para,diger:x.
+diger,ev:x.ev?1:0,parti:x.parti?1:0,gorev:x.gorev??"",gece:x.gece?1:0,seviye:x.seviye,keyif:x.keyif??"",arac:x.arac??"",hayvan:x.hayvan??0,cizim:a.cizimSayisi})}function sahneBirak(){hayat3bOrnek&&Uc.
+cizici?.etkin===hayat3bOrnek&&Uc.cizici.birak(hayat3bOrnek)}async function sahneBagla(){const kutu=$("#hayat-sahne",el);if(!kutu||mod!=="3b"){sahneBirak();return}try{const{THREE,cizici}=await Uc.yukle(
+"60_hayat.js");if(kapandi||mod!=="3b"||$("#hayat-sahne",el)!==kutu)return;hayat3bOrnek??=hayat3bKur(THREE,cizici);const a=hayat3bOrnek;if(a.dinle("git",hayatGit),a.dinle("figur",null),a.kapBagla(kutu),
+a.durumYaz(d),!cizici.bagla(a,kutu))throw new Error("webgl-bagla");$("#hayat-yukleniyor",kutu)?.classList.add("bitti"),durumIsaretle(kutu,a)}catch(e){if(console.warn("3B Hayat\u0131m sahnesi a\xE7\u0131lamad\u0131:",
+e),kapandi)return;hata3b=!0,mod="2b",tost(\u00E7("3B sahne bu cihazda a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCm g\xF6steriliyor."),"layers"),ciz()}}function yaz(veri2){const yeni=hayatVerisi(veri2),
+ayni=d&&JSON.stringify({...yeni,gece:0})===JSON.stringify({...d,gece:0});if(d=yeni,!el.childElementCount||!ayni){ciz();return}if(mod==="3b"&&hayat3bOrnek&&Uc.cizici?.etkin===hayat3bOrnek){hayat3bOrnek.
+durumYaz(d);const k=$("#hayat-sahne",el);k&&durumIsaretle(k,hayat3bOrnek)}}const yenidenSec=()=>{const yeni=mod3b()?"3b":"2b";yeni!==mod||!el.childElementCount?(mod=yeni,ciz()):d&&ciz()},b1=Gorunum.dinle(
+yenidenSec),b2=ProfilUc.dinle(yenidenSec),saat=setInterval(()=>{if(!d||kapandi)return;const g=d.bolge?bolgeGecesi(d.bolge):0;if(!(Math.abs(g-d.gece)<.04)){if(d={...d,gece:g},mod==="3b"&&hayat3bOrnek&&
+Uc.cizici?.etkin===hayat3bOrnek)hayat3bOrnek.durumYaz(d);else if(mod==="2b"){const k=$("#hayat-2b",el);if(k){k.innerHTML=hayat2b(d);for(const g2 of $$("[data-hayat-git]",k))g2.addEventListener("click",
+()=>hayatGit(g2.dataset.hayatGit))}}}},6e4);function kapat(){kapandi=!0,b1(),b2(),durdur?.(),clearInterval(saat),sahneBirak(),ProfilUc.hayat(!1)}return{el,yaz,kapat,get d(){return d}}}return{ac}})(),KALABALIK_TEN=[
+"#F3D2B3","#E8BC94","#D7A07A","#B97B55","#8E5A3B","#6A4029"],KALABALIK_GIYSI=["#174A40","#C65A3B","#23395B","#D9A548","#367F70","#7D5FA0","#8B6B4A","#4E7A5A","#B24A5A","#5C6B7A"],ATOLYE_TEZGAH=[[-2.7,
+-1.25],[0,-1.25],[2.7,-1.25],[-2.7,.75],[2.7,.75]];let atolye3bOrnek=null;const ATOLYE_ISCI_RENK=["#3D5A80","#6E8B3D","#C9873A","#7A5C8E","#2F6F6A"];function atolyeVerisi({is,depo,nabiz,gorunus,ozet:ozet2,
+asker}){const ch=ozet2?.character??{},ak=is?.active,sistem=ak?.kind==="system",hesap=Date.parse(nabiz?.computed_at??""),benSayildim=sistem&&hesap>=Date.parse(ak.starts_at)&&hesap<Date.parse(ak.ends_at)&&
+nabiz?.region_id===ak.region_id;return{anahtar:ch.id??"",ad:ch.name??"",gorunus:gorunus??null,ulke:ch.citizenship??null,rutbe:{sira:asker?.soldier?.rank??0,sayi:12},is:sistem?{aktif:!0,birim:Number(ak.
+work_units),baslangic:ak.starts_at,bitis:ak.ends_at}:null,baska:!!ak&&!sistem,bugun:Number(is?.units_today??0),sinir:Number(is?.daily_cap??8),calisanlar:Math.max(0,Number(nabiz?.working_system??0)-(benSayildim?
+1:0)),depo:depo?.here?{stok:Number(depo.left_today??0),en:Number(depo.daily_cap??8)}:null,bolge:ch.location,gece:ch.location?bolgeGecesi(ch.location):0}}function atolye2b(d){const g0=Math.round((d.gece??
+0)*20)/20,karis=(a2,b,t)=>"#"+[0,2,4].map(i=>Math.round(parseInt(a2.slice(1+i,3+i),16)*(1-t)+parseInt(b.slice(1+i,3+i),16)*t).toString(16).padStart(2,"0")).join(""),is=d.is,oran=is?.aktif?Math.max(0,Math.
+min(1,(Date.now()-Date.parse(is.baslangic))/Math.max(1,Date.parse(is.bitis)-Date.parse(is.baslangic)))):null,birim=Math.max(0,Math.min(8,is?.birim??0)),sandik=oran==null?0:Math.floor(oran*birim),n=Math.
+min(ATOLYE_TEZGAH.length,Math.max(0,d.calisanlar??0)),depoDolu=d.depo?Math.round(Math.min(1,(d.depo.stok??0)/Math.max(1,d.depo.en??9))*9):0,g=d.gorunus??varsayilanGorunus(d.ad||"?"),ten=TEN[g.ten]??TEN[0],
+kumas=g.kiyafet==="uniforma"?UNIFORMA.kumas:GIYSI[g.renk??ozet(String(d.ad))%GIYSI.length]??GIYSI[0],alan=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="transparent"/>`,kisi=(x,y,giysi,tenR,calis)=>`\
+<g class="atolye2b-kisi"><rect x="${x-9}" y="${y-30}" width="18" height="24" rx="7" fill="${giysi}"/>
     <circle cx="${x}" cy="${y-40}" r="11" fill="${tenR}"/>${calis?`<rect x="${x+7}" y="${y-34}" width="4" height="16" rx="2" fill="${giysi}" transform="rotate(-35 ${x+9} ${y-32})"/>`:""}</g>`,tezgah=(x,y)=>`\
 <rect x="${x-38}" y="${y}" width="76" height="8" rx="2" fill="#A87C52"/><rect x="${x-34}" y="${y+8}" width="5" height="26" fill="#7C5333"/><rect x="${x+29}" y="${y+8}" width="5" height="26" fill="#7C5\
 333"/>`,yer2b=([x,z])=>[350+x*70,z<0?178:238],a=oran!=null?oran*Math.PI*2:0,saatIbre=oran!=null?`<path d="M350 74 L350 44 A30 30 0 ${oran>.5?1:0} 1 ${(350+Math.sin(a)*30).toFixed(1)} ${(74-Math.cos(a)*
@@ -3316,11 +3348,11 @@ max(0,Math.min(8,is?.birim??0)),sandik=oran==null?0:Math.floor(oran*birim),n=Mat
       <path d="M${x} 34 V100 M${x-r} 67 H${x+r}" stroke="#6B4A32" stroke-width="3"/>`).join("")}
     <rect x="14" y="66" width="44" height="84" fill="#7C5333"/><circle cx="50" cy="110" r="3" fill="#C9A06A"/>
     <rect x="262" y="4" width="176" height="24" rx="3" fill="#2F4A3E" stroke="#D9B865" stroke-width="2"/>
-    <text x="350" y="21" text-anchor="middle" class="atolye2b-levha">${esc(\u00E7("Devlet at\xF6lyesi"))}</text>
+    <text x="350" y="21" text-anchor="middle" class="atolye2b-levha" data-ayrinti>${esc(\u00E7("Devlet at\xF6lyesi"))}</text>
     <circle cx="350" cy="74" r="36" fill="#FBF6EA" stroke="#6B4A32" stroke-width="5"/>${saatIbre}<circle cx="350" cy="74" r="3" fill="#3B2A1C"/>
     <rect x="174" y="46" width="80" height="46" fill="#2E3B33" stroke="#6B4A32" stroke-width="3"/>
-    <text x="214" y="66" text-anchor="middle" class="atolye2b-tahta">${esc(\u00E7("{n} / {en} birim",{n:Number(d.bugun??0),en:Number(d.sinir??8)}))}</text>
-    <text x="214" y="82" text-anchor="middle" class="atolye2b-tahta">${d.calisanlar>0?esc(\u00E7("{n} ki\u015Fi",{n:sayi(d.calisanlar)})):"\u2014"}</text>
+    <text x="214" y="66" text-anchor="middle" class="atolye2b-tahta" data-ayrinti>${esc(\u00E7("{n} / {en} birim",{n:Number(d.bugun??0),en:Number(d.sinir??8)}))}</text>
+    <text x="214" y="82" text-anchor="middle" class="atolye2b-tahta" data-ayrinti>${d.calisanlar>0?esc(\u00E7("{n} ki\u015Fi",{n:sayi(d.calisanlar)})):"\u2014"}</text>
     <g data-atolye-git="depo" class="atolye2b-tik">${alan(610,92,82,90)}<rect x="616" y="98" width="70" height="80" fill="none" stroke="#7C5333" stroke-width="4"/>
       <path d="M616 124 H686 M616 151 H686" stroke="#7C5333" stroke-width="3"/>
       ${Array.from({length:depoDolu},(_,i)=>`<rect x="${621+i%3*21}" y="${157-Math.floor(i/3)*27}" width="18" height="18" fill="#C08A55" stroke="#7C5333"/>`).join("")}</g>
@@ -3331,8 +3363,8 @@ max(0,Math.min(8,is?.birim??0)),sandik=oran==null?0:Math.floor(oran*birim),n=Mat
   </svg>`}const AtolyeSahnesi=(()=>{function ac(){const el=document.createElement("section");el.className="kart atolye-kart",el.id="atolye-kart";let d=null,hata3b=!1,kapandi=!1,oncekiIs=null;const mod3b=()=>Gorunum.
 uc()&&!hata3b;let mod=mod3b()?"3b":"2b";const dinleyici={},git=ne=>dinleyici.git?.(ne),ikiBBagla=kok=>{for(const g of $$("[data-atolye-git]",kok))g.addEventListener("click",()=>git(g.dataset.atolyeGit))},
 yazi=x=>`${x.calisanlar>0?\u00E7("\u015Eehrinde \u015Fu an {n} ki\u015Fi sistem i\u015Finde \xE7al\u0131\u015F\u0131yor; yan tezg\xE2hlarda onlar var.",{n:sayi(x.calisanlar)}):\u00E7("\u015Eehrinde \u015Fu an s\
-istem i\u015Finde ba\u015Fka \xE7al\u0131\u015Fan yok.")} ${\u00E7("Tezg\xE2h\u0131na dokununca i\u015F kart\u0131na, rafa dokununca depoya gidersin.")}`;function ciz(){d&&(el.innerHTML=`<div class="k\
-art-bas"><div><p class="ust-yazi">${\u00E7("Devlet at\xF6lyesi")} \xB7 ${esc(bolgeAdi(d.bolge))}</p>
+istem i\u015Finde ba\u015Fka \xE7al\u0131\u015Fan yok.")} ${\u00E7("Bug\xFCnk\xFC sistem i\u015Fin: {n} / {en} birim.",{n:Number(x.bugun??0),en:Number(x.sinir??8)})} ${\u00E7("Tezg\xE2h\u0131na dokununca i\u015F k\
+art\u0131na, rafa dokununca depoya gidersin.")}`;function ciz(){d&&(el.innerHTML=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Devlet at\xF6lyesi")} \xB7 ${esc(bolgeAdi(d.bolge))}</p>
           <h2 class="b2">${d.is?.aktif?\u00E7("Tezg\xE2h\u0131nda \xE7al\u0131\u015F\u0131yorsun"):d.baska?\u00E7("Bug\xFCn i\u015Fletmede \xE7al\u0131\u015F\u0131yorsun"):\u00E7("Tezg\xE2h\u0131n seni bekliy\
 or")}</h2></div>
           <div class="kart-bas-dugmeler">${meydanaDonDugme("atolye")}${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="atolye-mod" aria-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("H\
@@ -3481,14 +3513,14 @@ benX,262,benRenk.giysi,benRenk.ten,!1)}<title>${esc(\u00E7("Sen"))}</title></g>`
 from({length:Math.min(10,d.musteri)},(_,k)=>kisi(90+k*55+k%2*12,272-k%3*6,KALABALIK_GIYSI[k%KALABALIK_GIYSI.length],TEN[k%TEN.length],!1)).join(""),kamyon=d.kamyon?`<g><rect x="12" y="236" width="40" \
 height="30" fill="#C65A3B"/><rect x="52" y="230" width="62" height="36" fill="#E9E0CE"/>
     <circle cx="28" cy="270" r="8" fill="#2E2A26"/><circle cx="96" cy="270" r="8" fill="#2E2A26"/><rect x="70" y="206" width="2" height="26" fill="#5B6168"/>
-    <rect x="72" y="206" width="22" height="14" fill="${ulkeRenk(d.kamyon.ulke)}"/></g>`:"",panoSatir=d.urunler.slice(0,5).map((u,i)=>`<text x="268" y="${46+i*15}" class="carsi2b-pano">${esc(URUN[u.asset.
-split("@")[0]]?varlikAdi(u.asset):u.asset)}</text>
-    <text x="432" y="${46+i*15}" text-anchor="end" class="carsi2b-pano${u.son>0?" yesil":""}">${u.fiyat!=null?esc(\u00E7("{kr} kr",{kr:kr(u.fiyat)})):"\u2014"}</text>`).join("");return`<svg viewBox="0\
- 0 700 300" role="img" aria-label="${\u00E7("Canl\u0131 \xE7ar\u015F\u0131 (2B)")}" data-tezgah="${n}" data-hamal="${Math.min(6,d.alisveris.length)}"
+    <rect x="72" y="206" width="22" height="14" fill="${ulkeRenk(d.kamyon.ulke)}"/></g>`:"",panoSatir=d.urunler.slice(0,5).map((u,i)=>`<text x="268" y="${46+i*15}" class="carsi2b-pano" data-ayrinti>${esc(
+URUN[u.asset.split("@")[0]]?varlikAdi(u.asset):u.asset)}</text>
+    <text x="432" y="${46+i*15}" text-anchor="end" class="carsi2b-pano${u.son>0?" yesil":""}" data-ayrinti>${u.fiyat!=null?esc(\u00E7("{kr} kr",{kr:kr(u.fiyat)})):"\u2014"}</text>`).join("");return`<s\
+vg viewBox="0 0 700 300" role="img" aria-label="${\u00E7("Canl\u0131 \xE7ar\u015F\u0131 (2B)")}" data-tezgah="${n}" data-hamal="${Math.min(6,d.alisveris.length)}"
       data-musteri="${Math.min(10,d.musteri)}" data-kamyon="${d.kamyon?.ulke??""}" data-secili="${esc(d.secili??"")}" data-ben="${d.ben?1:0}">
     <rect width="700" height="120" fill="${karis("#BFE3F1","#1C2747",g0)}"/><rect y="120" width="700" height="180" fill="#B9AA92"/>
     <g data-carsi-sec="pano" class="carsi2b-tik"><rect x="256" y="10" width="188" height="104" rx="3" fill="#2E3B33" stroke="#7C5333" stroke-width="4"/>
-    <text x="350" y="28" text-anchor="middle" class="carsi2b-baslik">${esc(\u00E7("\xC7ar\u015F\u0131 fiyatlar\u0131"))}</text>${panoSatir}</g>
+    <text x="350" y="28" text-anchor="middle" class="carsi2b-baslik" data-ayrinti>${esc(\u00E7("\xC7ar\u015F\u0131 fiyatlar\u0131"))}</text>${panoSatir}</g>
     ${tezgahlar}${kamyon}${musteriler}${hamallar}${ben}
   </svg>`}const CarsiSahnesi=(()=>{function ac(){const el=document.createElement("section");el.className="kart carsi-kart",el.id="carsi-kart";let d=null,hata3b=!1,kapandi=!1;const mod3b=()=>Gorunum.uc()&&
 !hata3b;let mod=mod3b()?"3b":"2b";const dinleyici={},sec=a=>dinleyici.sec?.(a),ikiBBagla=kok=>{for(const g of $$("[data-carsi-sec]",kok))g.addEventListener("click",()=>sec(g.dataset.carsiSec))},yazi=x=>{
@@ -3683,8 +3715,8 @@ toFixed(1)} ${y.toFixed(1)} h10 l-5 11 Z" fill="${[esc(d.renk),"#F7F2E6","#D9B86
       <circle cx="120" cy="140" r="6" fill="#D9A548"/>
       <rect x="92" y="214" width="62" height="32" fill="#4A5560"/><rect x="96" y="218" width="54" height="26" fill="#2F3740"/>${altin}
       ${d.paraGeldi?`<g class="baskent2b-paralar">${[0,1,2].map(i=>`<circle cx="${108+i*10}" cy="200" r="4" fill="#E2B54A" style="animation-delay:${-i*.4}s"/>`).join("")}</g>
-        <g transform="translate(119 112)"><rect x="-42" y="-13" width="84" height="22" rx="8" fill="#174A40"/><text y="3" text-anchor="middle" font-size="12" font-weight="700" fill="#FBE6A2">${esc(d.paraYazi)}\
-</text></g>`:""}</g>`,kogusSvg=Array.from({length:kogus},(_,i)=>`<g transform="translate(${540+i%2*64} ${150-Math.floor(i/2)*26})">
+        <g transform="translate(119 112)" data-ayrinti><rect x="-42" y="-13" width="84" height="22" rx="8" fill="#174A40"/><text y="3" text-anchor="middle" font-size="12" font-weight="700" fill="#FBE6\
+A2">${esc(d.paraYazi)}</text></g>`:""}</g>`,kogusSvg=Array.from({length:kogus},(_,i)=>`<g transform="translate(${540+i%2*64} ${150-Math.floor(i/2)*26})">
       <rect width="56" height="30" fill="#B9A57E"/><path d="M-3 2 L28 -10 L59 2 Z" fill="#5F6B4B"/>${[8,22,36].map(x=>pencere2(x,9)).join("")}</g>`).join(""),talimSvg=Array.from({length:talim},(_,i)=>`\
 <g transform="translate(${546+i%4*26} ${210+Math.floor(i/4)*18})"><g class="baskent2b-asker" style="animation-delay:${-(i%4)*.1}s">
       <rect x="-3" y="-10" width="6" height="10" fill="#5B6B3A"/><circle cy="-13" r="3.5" fill="#E8BC94"/><rect x="-4" y="-17" width="8" height="2.5" fill="#4A5532"/></g></g>`).join(""),kisla=`<g data\
@@ -3697,7 +3729,7 @@ toFixed(1)} ${y.toFixed(1)} h10 l-5 11 Z" fill="${[esc(d.renk),"#F7F2E6","#D9B86
       ${d.depo?`<g class="baskent2b-kamyon"><g transform="translate(0 326)"><rect x="-26" y="-22" width="34" height="20" fill="#D9C9A8"/><rect x="8" y="-17" width="15" height="15" fill="#367F70"/>
         <circle cx="-17" cy="0" r="4.5" fill="#2A2724"/><circle cx="15" cy="0" r="4.5" fill="#2A2724"/></g></g>`:""}</g>`,anit=`<g data-baskent-sec="anit" class="baskent2b-tik">
       <rect x="56" y="326" width="96" height="12" fill="#BDB3A0"/><rect x="70" y="270" width="68" height="56" fill="#D8D0BF" stroke="#A69C86" stroke-width="2"/>
-      <text x="104" y="284" text-anchor="middle" font-size="8" font-weight="700" fill="#4E4636">${esc(\u00E7("KURUCULAR"))}</text>
+      <text x="104" y="284" text-anchor="middle" font-size="8" font-weight="700" fill="#4E4636" data-ayrinti>${esc(\u00E7("KURUCULAR"))}</text>
       ${Array.from({length:Math.min(7,Math.ceil(d.kurucular.length/3))},(_,i)=>`<rect x="78" y="${291+i*5}" width="52" height="1.6" fill="#8C826E"/>`).join("")}</g>`,yayalar=Array.from({length:yaya},(_,i)=>{
 const x=230+i*53%240,y=240+i*29%70;return`<g class="baskent2b-yaya" style="animation-delay:${-(i*.77%6)}s;animation-duration:${6+i%4}s"><circle cx="${x}" cy="${y}" r="4" fill="${KALABALIK_GIYSI[i%KALABALIK_GIYSI.
 length]}"/><circle cx="${x}" cy="${y-6}" r="2.6" fill="${KALABALIK_TEN[i%KALABALIK_TEN.length]}"/></g>`}).join("");return`<svg viewBox="0 0 700 360" role="img" aria-label="${\u00E7("Canl\u0131 ba\u015Fkent (2B)")}\
@@ -4284,12 +4316,12 @@ kimlik)}"`}
 kisi="${kisiler.length}" data-cevrimici="${kisiler.filter(k=>k.cevrimici).length}">
     ${sol.map(k=>kart(k,!1)).join("")}${kart(ben,!0)}${sag.map(k=>kart(k,!1)).join("")}
     ${d.arkadaslar.length>10?`<span class="foto2b-fazla">+${sayi(d.arkadaslar.length-10)}</span>`:""}</div>`}const ArkadasFoto=(()=>{function ac(){const el=document.createElement("section");el.className=
-"kart foto-kart",el.id="foto-kart";let d=null,hata3b=!1,kapandi=!1;const mod3b=()=>Gorunum.uc()&&!hata3b;let mod=mod3b()?"3b":"2b";const yazi=x=>{if(!x.arkadaslar.length)return \u00E7("Arkada\u015F ekledik\
-\xE7e foto\u011Frafta yan\u0131nda durur.");const n=x.arkadaslar.filter(k=>k.cevrimici).length,kanka=x.arkadaslar.filter(k=>k.bag==="kanka").map(k=>k.ad),yakin=x.arkadaslar.filter(k=>k.bag==="close").
-map(k=>k.ad);return[n?\u00E7("{n} arkada\u015F\u0131n \u015Fu an \xE7evrimi\xE7i; sana el sall\u0131yor.",{n}):\u00E7("\u015Eu an \xE7evrimi\xE7i arkada\u015F\u0131n yok."),kanka.length?\u00E7("Kankal\
-ar\u0131n: {adlar}.",{adlar:kanka.join(", ")}):"",yakin.length?\u00E7("Yak\u0131n dostlar\u0131n: {adlar}.",{adlar:yakin.join(", ")}):""].filter(Boolean).join(" ")};function ciz(){if(d){el.innerHTML=`\
-<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Arkada\u015Flar foto\u011Fraf\u0131")}</p>
-          <h2 class="b2" id="foto-baslik">${d.arkadaslar.length?\u00E7("{n} arkada\u015F",{n:d.arkadaslar.length}):\u00E7("Hen\xFCz arkada\u015F\u0131n yok")}</h2></div>
+"kart foto-kart",el.id="foto-kart";let d=null,hata3b=!1,kapandi=!1;const mod3b=()=>Gorunum.uc()&&!hata3b;let mod=mod3b()?"3b":"2b";const baslik=x=>x.arkadaslar.length?\u00E7("{n} arkada\u015F",{n:x.arkadaslar.
+length}):\u00E7("Hen\xFCz arkada\u015F\u0131n yok"),yazi=x=>{if(!x.arkadaslar.length)return \u00E7("Arkada\u015F ekledik\xE7e foto\u011Frafta yan\u0131nda durur.");const n=x.arkadaslar.filter(k=>k.cevrimici).
+length,kanka=x.arkadaslar.filter(k=>k.bag==="kanka").map(k=>k.ad),yakin=x.arkadaslar.filter(k=>k.bag==="close").map(k=>k.ad);return[n?\u00E7("{n} arkada\u015F\u0131n \u015Fu an \xE7evrimi\xE7i; sana el sall\u0131yor.",
+{n}):\u00E7("\u015Eu an \xE7evrimi\xE7i arkada\u015F\u0131n yok."),kanka.length?\u00E7("Kankalar\u0131n: {adlar}.",{adlar:kanka.join(", ")}):"",yakin.length?\u00E7("Yak\u0131n dostlar\u0131n: {adlar}.",
+{adlar:yakin.join(", ")}):""].filter(Boolean).join(" ")};function ciz(){if(d){el.innerHTML=`<div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Arkada\u015Flar foto\u011Fraf\u0131")}</p>
+          <h2 class="b2" id="foto-baslik">${esc(baslik(d))}</h2></div>
           ${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="foto-mod" aria-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Hafif g\xF6r\xFCn\xFCme (2B) ge\xE7"):\u00E7("3B g\xF6r\xFCn\xFCme ge\xE7")}\
 ">${ikon("layers")}${mod==="3b"?\u00E7("2B"):\u00E7("3B")}</button>`:""}</div>
         <div class="foto-sahne sahne3b" id="foto-sahne" data-mod="${mod}">
@@ -4304,18 +4336,18 @@ cizici.birak(foto3bOrnek)}async function sahneBagla(){const kutu=$("#foto-sahne"
 b"||$("#foto-sahne",el)!==kutu)return;foto3bOrnek??=foto3bKur(THREE,cizici);const a=foto3bOrnek;if(a.dinle("profil",k=>profilAc(k)),a.kapBagla(kutu),a.durumYaz(d),!cizici.bagla(a,kutu))throw new Error(
 "webgl-bagla");$("#foto-yukleniyor",kutu)?.classList.add("bitti")}catch(e){if(console.warn("3B foto\u011Fraf a\xE7\u0131lamad\u0131:",e),kapandi)return;hata3b=!0,mod="2b",tost(\u00E7("3B sahne bu ciha\
 zda a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCm g\xF6steriliyor."),"layers"),ciz()}}function yaz(veri2){if(d=fotoVerisi(veri2),!el.isConnected||!el.childElementCount){ciz();return}const y=$("#foto-\
-yazi",el);y&&(y.textContent=yazi(d)),etkin3b()?foto3bOrnek.durumYaz(d):mod==="2b"?ciz():sahneBagla()}const b1=Gorunum.dinle(()=>{const yeni=mod3b()?"3b":"2b";yeni!==mod&&d&&(mod=yeni,ciz())});function birak(){
-sahneBirak()}function kapat(){kapandi=!0,b1(),sahneBirak()}return{el,yaz,birak,kapat}}return{ac}})(),EK_DURUM={forming:[\u00E7("Kurulu\u015Fta"),""],preparing:[\u00E7("Haz\u0131rl\u0131kta"),"altin"],
-struggle:[\u00E7("Ba\u015Fkentte m\xFCcadele"),"mercan"],succeeded:[\u00E7("Y\xF6netime el kondu"),"mercan"],repelled:[\u00E7("P\xFCsk\xFCrt\xFCld\xFC"),"yesil"],exposed:[\u00E7("S\u0131zd\u0131 ve \xF6nlendi"),
-"yesil"],abandoned:[\u00E7("Da\u011F\u0131ld\u0131"),""]},ekDurum=st=>EK_DURUM[st]??[String(st??""),""],ekKat=r=>(Number(r.defense.num)/Number(r.defense.den)).toLocaleString(DIL.yerel,{maximumFractionDigits:2}),
-ekEsik=r=>Number(r.defense.num)/(Number(r.defense.num)+Number(r.defense.den)),ekGecti=(r,j,d)=>BigInt(j)*BigInt(r.defense.den)>BigInt(d)*BigInt(r.defense.num);function ekUygunluk(kod,r){return kod==="\
-SEIZURE_NOT_VOTER"?\u00E7("Oy hakk\u0131n yok: hesab\u0131n ve vatanda\u015Fl\u0131\u011F\u0131n en az 7 g\xFCnl\xFCk olmal\u0131 ve vatanda\u015Fl\u0131k \xF6\u011Freticisini bitirmelisin."):kod==="S\
-EIZURE_CITIZEN_DAYS"?\u00E7("Giri\u015Fime en az {n} g\xFCnd\xFCr bu \xFClkenin vatanda\u015F\u0131 olanlar kat\u0131l\u0131r.",{n:sayi(r.citizenDays)}):kod==="SEIZURE_RECENT_CHANGE"?\u00E7("Son {n} g\
-\xFCnde vatanda\u015Fl\u0131k de\u011Fi\u015Ftiren giri\u015Fime kat\u0131lamaz.",{n:sayi(r.noChangeDays)}):kod==="SEIZURE_RANK"?\u00E7("Giri\u015Fime en az {rutbe} r\xFCtbesindekiler ya da askerlik becerisi \
-en az {n} olanlar kat\u0131l\u0131r.",{rutbe:esc(\u00E7v(r.minRankName)),n:sayi(r.minMilitarySkill)}):""}function ekKayitSatiri(x){const[ad,sinif]=ekDurum(x.status),uyeler=(x.members??[]).map(u=>u.name),
-metin=x.status==="succeeded"?\u00E7("Giri\u015Fim ba\u015Far\u0131l\u0131: {ad} ge\xE7ici y\xF6netim ba\u015Fkan\u0131 oldu.",{ad:esc(x.founder??"")}):x.status==="repelled"?\u00E7("Giri\u015Fim ba\u015Fkentte p\
-\xFCsk\xFCrt\xFCld\xFC."):\u00E7("Giri\u015Fim haz\u0131rl\u0131kta s\u0131zd\u0131 ve \xF6nlendi.");return`<div class="liste-satir" data-ek-kayit="${esc(x.seizure_id)}" data-ek-kayit-durum="${esc(x.status)}\
-">
+yazi",el);y&&(y.textContent=yazi(d));const b=$("#foto-baslik",el);b&&(b.textContent=baslik(d)),etkin3b()?foto3bOrnek.durumYaz(d):mod==="2b"?ciz():sahneBagla()}const b1=Gorunum.dinle(()=>{const yeni=mod3b()?
+"3b":"2b";yeni!==mod&&d&&(mod=yeni,ciz())});function birak(){sahneBirak()}function kapat(){kapandi=!0,b1(),sahneBirak()}return{el,yaz,birak,kapat}}return{ac}})(),EK_DURUM={forming:[\u00E7("Kurulu\u015Fta"),
+""],preparing:[\u00E7("Haz\u0131rl\u0131kta"),"altin"],struggle:[\u00E7("Ba\u015Fkentte m\xFCcadele"),"mercan"],succeeded:[\u00E7("Y\xF6netime el kondu"),"mercan"],repelled:[\u00E7("P\xFCsk\xFCrt\xFCld\xFC"),
+"yesil"],exposed:[\u00E7("S\u0131zd\u0131 ve \xF6nlendi"),"yesil"],abandoned:[\u00E7("Da\u011F\u0131ld\u0131"),""]},ekDurum=st=>EK_DURUM[st]??[String(st??""),""],ekKat=r=>(Number(r.defense.num)/Number(
+r.defense.den)).toLocaleString(DIL.yerel,{maximumFractionDigits:2}),ekEsik=r=>Number(r.defense.num)/(Number(r.defense.num)+Number(r.defense.den)),ekGecti=(r,j,d)=>BigInt(j)*BigInt(r.defense.den)>BigInt(
+d)*BigInt(r.defense.num);function ekUygunluk(kod,r){return kod==="SEIZURE_NOT_VOTER"?\u00E7("Oy hakk\u0131n yok: hesab\u0131n ve vatanda\u015Fl\u0131\u011F\u0131n en az 7 g\xFCnl\xFCk olmal\u0131 ve vatanda\u015Fl\u0131k \xF6\u011Freticisini bitirmelisin."):
+kod==="SEIZURE_CITIZEN_DAYS"?\u00E7("Giri\u015Fime en az {n} g\xFCnd\xFCr bu \xFClkenin vatanda\u015F\u0131 olanlar kat\u0131l\u0131r.",{n:sayi(r.citizenDays)}):kod==="SEIZURE_RECENT_CHANGE"?\u00E7("S\
+on {n} g\xFCnde vatanda\u015Fl\u0131k de\u011Fi\u015Ftiren giri\u015Fime kat\u0131lamaz.",{n:sayi(r.noChangeDays)}):kod==="SEIZURE_RANK"?\u00E7("Giri\u015Fime en az {rutbe} r\xFCtbesindekiler ya da askerlik b\
+ecerisi en az {n} olanlar kat\u0131l\u0131r.",{rutbe:esc(\u00E7v(r.minRankName)),n:sayi(r.minMilitarySkill)}):""}function ekKayitSatiri(x){const[ad,sinif]=ekDurum(x.status),uyeler=(x.members??[]).map(
+u=>u.name),metin=x.status==="succeeded"?\u00E7("Giri\u015Fim ba\u015Far\u0131l\u0131: {ad} ge\xE7ici y\xF6netim ba\u015Fkan\u0131 oldu.",{ad:esc(x.founder??"")}):x.status==="repelled"?\u00E7("Giri\u015Fim \
+ba\u015Fkentte p\xFCsk\xFCrt\xFCld\xFC."):\u00E7("Giri\u015Fim haz\u0131rl\u0131kta s\u0131zd\u0131 ve \xF6nlendi.");return`<div class="liste-satir" data-ek-kayit="${esc(x.seizure_id)}" data-ek-kayit-\
+durum="${esc(x.status)}">
     <span class="liste-ikon ${sinif}">${ikon(x.status==="succeeded"?"crown":x.status==="exposed"?"eye":"shield")}</span>
     <div><span class="tur">${esc(saatYaz(x.resolved_at))}</span><b>${metin}</b>
       <div class="alt">${\u00E7("Giri\u015Fimi ba\u015Flatan {ad}",{ad:esc(x.founder??"")})}${uyeler.length?" \xB7 "+\u00E7("\xDCyeler: {liste}",{liste:esc(uyeler.join(", "))}):""}</div></div>
@@ -4660,89 +4692,89 @@ l\u0131k sava\u015F\u0131 ba\u015Flatt\u0131 ({devlet}). \u0130lk tur {zaman}; \
 "Oturdu\u011Fun b\xF6lge ba\u011F\u0131ms\u0131z oldu: {devlet} kuruldu! {gun} g\xFCn i\xE7inde yeni devletin vatanda\u015F\u0131 olmay\u0131 se\xE7ebilirsin (\xDClkem \u2192 B\xF6lge).",{devlet:ad,gun:sayi(
 gun)}),"castle"]:d.insurgent_since?[\u00E7("{bolge} ba\u011F\u0131ms\u0131zl\u0131k sava\u015F\u0131n\u0131 kazand\u0131: {devlet} kuruldu.",{bolge,devlet:ad}),"castle"]:[\u00E7("{bolge} referandumla \
 ba\u011F\u0131ms\u0131z oldu: {devlet} kuruldu.",{bolge,devlet:ad}),"castle"]}return[\u00E7("{devlet} da\u011F\u0131ld\u0131: ba\u015Fkenti {bolge} korumas\u0131z d\xF6nemde el de\u011Fi\u015Ftirdi; vatanda\u015Flar\u0131 \xF6nceki vatanda\u015Fl\u0131klar\u0131na d\
-\xF6nd\xFC.",{devlet:ad,bolge}),"swords"]}const Konusma=(()=>{const SEKMELER=[["burasi",\u00E7("Buras\u0131"),"map-pin"],["ulke",\u00E7("\xDClke"),"landmark"],["yeni",\u00E7("Yeniler"),"sprout"],["par\
-ti",\u00E7("Parti"),"users-round"],["birlik",\u00E7("Birlik"),"shield"],["grup",\u00E7("Grup"),"eighth-notes"],["ozel",\u00E7("\xD6zel"),"message-circle"]],TUR={burasi:"place",ulke:"country",yeni:"new\
-comers",parti:"party",birlik:"unit",grup:"band"};let calisiyor=!1,acik=!1,sekme="burasi",genel=null,ck={maxLength:500};const liste={burasi:null,ulke:null,yeni:null,parti:null,birlik:null,grup:null};let yeniBilgi=null,
-yer=null,konusmalar=null,secili=null,gruplar=null;const grupKanallari=new Map;let engelli=new Set,kanalYer=null,kanalParti=null,birakYer=null,birakParti=null,kanalBirlik=null,birakBirlik=null,kanalGrup=null,
-birakGrup=null,kalabalikKanal="",birakKalabalik=[],kalabalikSaat=null,dinleyiciler=[],sonKonum=null,yukleniyor=0,bekleyen=null;const isaretBekleyen=new Map,ben=()=>Durum.v.ozet?.character??{},cap=()=>Number(
-genel?.cap??99),sayiYaz=n=>n>cap()?`${cap()}+`:String(n),gorunur=()=>acik&&document.visibilityState==="visible",elcilikler=()=>genel?.embassy??[],grupSayilari=()=>(genel?.groups??[]).reduce((t,g)=>t+Number(
-g.unread??0),0),yeniAcik=()=>!!genel?.newcomers?.eligible;function sayilar(){const g=genel??{};return{burasi:Number(g.here?.unread??0),ulke:Number(g.country?.unread??0),yeni:Number(g.newcomers?.unread??
-0),parti:Number(g.party?.unread??0),birlik:Number(g.unit?.unread??0),grup:Number(g.band?.unread??0),ozel:Number(g.dm?.unread??0)+elcilikler().reduce((t,e)=>t+Number(e.unread??0),0)+grupSayilari()+Number(
-g.mentions_unread??0)+Number(g.group_invites??0)}}function arttir(s,ref){if(!genel)return;const sinir=n=>Math.min(cap()+1,Number(n??0)+1);if(s==="burasi"&&genel.here)genel.here.unread=sinir(genel.here.
-unread);else if(s==="ulke"&&genel.country)genel.country.unread=sinir(genel.country.unread);else if(s==="yeni"&&genel.newcomers)genel.newcomers.unread=sinir(genel.newcomers.unread);else if(s==="parti"&&
-genel.party)genel.party.unread=sinir(genel.party.unread);else if(s==="birlik"&&genel.unit)genel.unit.unread=sinir(genel.unit.unread);else if(s==="grup"&&genel.band)genel.band.unread=sinir(genel.band.unread);else if(s===
-"dm"&&genel.dm)genel.dm.unread=sinir(genel.dm.unread);else if(s==="elcilik"){const e=elcilikler().find(x=>x.partner_id===ref);e&&(e.unread=sinir(e.unread))}else if(s==="grup-sohbet"){const x=(genel.groups??
-[]).find(y=>y.group_id===ref);x&&(x.unread=sinir(x.unread))}rozet()}function sifirla(s,ref,kalan=0){if(genel){if(s==="place"&&genel.here)genel.here.unread=kalan;else if(s==="country"&&genel.country)genel.
-country.unread=kalan;else if(s==="newcomers"&&genel.newcomers)genel.newcomers.unread=kalan;else if(s==="party"&&genel.party)genel.party.unread=kalan;else if(s==="unit"&&genel.unit)genel.unit.unread=kalan;else if(s===
-"band"&&genel.band)genel.band.unread=kalan;else if(s==="embassy"){const e=elcilikler().find(x=>x.partner_id===ref);e&&(e.unread=kalan)}else if(s==="group"){const x=(genel.groups??[]).find(y=>y.group_id===
-ref);x&&(x.unread=kalan)}else if(s==="dm"){const t=konusmalar?.find(x=>x.thread_id===ref);t&&genel.dm?(genel.dm.unread=Math.max(0,Number(genel.dm.unread??0)-Number(t.unread??0)+kalan),t.unread=kalan):
-ozetYukle().catch(()=>{})}rozet()}}function rozet(){const s=sayilar(),toplam=s.burasi+s.ulke+s.yeni+s.parti+s.birlik+s.grup+s.ozel,d=$("#konusma-dugme");if(d){const b=$(".konusma-sayi",d);b.hidden=toplam===
-0,b.textContent=sayiYaz(toplam),d.dataset.okunmamis=String(toplam),d.setAttribute("aria-label",toplam?\u00E7("Sohbet ve mesajlar: {n} okunmam\u0131\u015F",{n:sayiYaz(toplam)}):\u00E7("Sohbet ve mesajl\
-ar"))}for(const[id]of SEKMELER){const r=$(`#konusma [data-ks="${id}"] .sayi-rozet`);r&&(r.hidden=!s[id],r.textContent=sayiYaz(s[id]))}const y=$('#konusma [data-ks="yeni"]');y&&(y.hidden=!yeniAcik())}function okundu(tur,ref,upto){
-if(!upto&&tur!=="place"&&tur!=="country"&&tur!=="newcomers"&&tur!=="party"&&tur!=="unit"&&tur!=="band")return;const a=`${tur}:${ref??""}`;clearTimeout(isaretBekleyen.get(a)),isaretBekleyen.set(a,setTimeout(
-async()=>{if(isaretBekleyen.delete(a),!!calisiyor)try{const r=await Sunucu.cagir("chat_read",{p_kind:tur,p_ref:ref??null,p_upto:upto??null});sifirla(tur,ref,Number(r?.unread??0))}catch{}},350))}const sonId=dizi=>dizi?.
-length?Number(dizi[dizi.length-1].message_id):null;async function ozetYukle(){try{genel=await Sunucu.cagir("chat_overview")}catch(e){if(e.kod==="API_MISSING"||e.kod==="RULE_NOT_ACTIVE")return;throw e}
-if(!calisiyor)return;const y=genel.here?.place_id??null;if(y!==kanalYer){birakYer?.(),birakYer=null,kanalYer=y,y&&(birakYer=Sunucu.Canli.dinle("place:"+y,yerOlayi)),liste.burasi=null;const d=$("#konus\
-ma-dugme");d&&(d.dataset.yer=y??"")}const p=genel.party?.party_id??null;p!==kanalParti&&(birakParti?.(),birakParti=null,kanalParti=p,p&&(birakParti=Sunucu.Canli.dinle("party:"+p,partiOlayi)),liste.parti=
-null);const b=genel.unit?.unit_id??null;b!==kanalBirlik&&(birakBirlik?.(),birakBirlik=null,kanalBirlik=b,b&&(birakBirlik=Sunucu.Canli.dinle("unit:"+b,birlikOlayi)),liste.birlik=null);const gr=genel.band?.
-band_id??null;gr!==kanalGrup&&(birakGrup?.(),birakGrup=null,kanalGrup=gr,gr&&(birakGrup=Sunucu.Canli.dinle("band:"+gr,grupOlayi)),liste.grup=null);const yeni=new Set((genel.groups??[]).map(x=>x.group_id));
-for(const[id,birak]of grupKanallari)yeni.has(id)||(birak(),grupKanallari.delete(id));for(const id of yeni)grupKanallari.has(id)||grupKanallari.set(id,Sunucu.Canli.dinle("group:"+id,(olay,yuk)=>sohbetGrubuOlayi(
-id,olay,yuk)));yeniAcik()||(liste.yeni=null,sekme==="yeni"&&(sekme="ulke",acik&&!secili&&sekmeYukle("ulke"))),rozet(),acik&&sekmeleriCiz(),kalabalikGuncelle()}function kalabalikGuncelle(){const istenen=calisiyor&&
-acik&&genel?.crowded?[genel.country_channel,yeniAcik()?genel.newcomers_channel:null].filter(Boolean):[],anahtar=istenen.join(",");if(anahtar!==kalabalikKanal){for(const b of birakKalabalik)b();birakKalabalik=
-istenen.map(id=>Sunucu.Canli.dinle("chat:"+id,(olay,yuk)=>ulkeOlayi({olay,yuk}),{katilinca:kalabalikKatildi})),kalabalikKanal=anahtar}const sayac=calisiyor&&!!genel?.crowded&&!acik;sayac&&!kalabalikSaat?
-kalabalikSaat=setInterval(()=>{document.visibilityState==="visible"&&ozetYukle().catch(()=>{})},12e4):!sayac&&kalabalikSaat&&(clearInterval(kalabalikSaat),kalabalikSaat=null)}function kalabalikKatildi(){
-calisiyor&&acik&&!secili&&(sekme==="ulke"||sekme==="yeni")&&sekmeYukle(sekme)}const kalabalikNotu=()=>genel?.crowded?`<p class="kucuk konusma-not konusma-kalabalik" data-kalabalik="evet">${ikon("hourg\
-lass")}<span>${\u00E7("\xDClke \xE7ok kalabal\u0131k: sohbet yava\u015F kipte (herkes i\xE7in toplam dakikada en \xE7ok {n} ileti).",{n:sayi(Number(genel.slow_per_minute??60))})}</span></p>`:"";async function engelleriYukle(){
-try{engelli=new Set((await Sunucu.cagir("my_blocks")).map(b=>b.character_id))}catch{}}function gelen(s,d){if(!d?.message_id||d.redacted)return;const benim=d.author_id&&d.author_id===ben().id;if(!benim&&
-engelli.has(d.author_id))return;const l=liste[s];l&&!l.some(m=>m.message_id===d.message_id)&&l.push(d),gorunur()&&sekme===s&&!secili?(mesajEkle(d),benim||okundu(TUR[s],null,d.message_id)):benim||arttir(
-s)}function gizlendi(s,d){const l=liste[s];l&&(liste[s]=l.filter(m=>m.message_id!==d.message_id),acik&&sekme===s&&!secili&&$(`#konusma-mesajlar [data-mesaj="${d.message_id}"]`)?.remove())}function yerOlayi(olay,yuk){
-const d=yuk?.data??{};olay==="chat.message"&&d.channel==="place"?gelen("burasi",d):olay==="chat.hidden"&&gizlendi("burasi",d)}function partiOlayi(olay,yuk){const d=yuk?.data??{};if(olay==="chat.messag\
-e"&&d.channel==="party")gelen("parti",d);else if(olay==="chat.hidden")gizlendi("parti",d);else if(/^party\./.test(olay)){Durum.yay("parti-olay",{olay,d});const b=partiBildirim(olay,d);b&&tost(b[0],b[1])}}
-function partiBildirim(olay,d){return olay==="party.join_request"?d.status==="pending"&&d.leader_id&&d.leader_id===ben().id?[\u00E7("Partine \xFCyelik iste\u011Fi: {ad} (\xDClkem \u2192 Parti).",{ad:d.
-name??""}),"user-round-plus"]:null:olay!=="party.leader_election"?null:d.change==="opened"?d.opened_by&&d.opened_by===ben().name?null:[\u00E7("Partinde ba\u015Fkanl\u0131k se\xE7imi a\xE7\u0131ld\u0131; adayl\u0131k {zaman} biter (\
-\xDClkem \u2192 Parti).",{zaman:saatYaz(d.voting_start)}),"vote"]:d.change==="voting"?[\u00E7("Partinin ba\u015Fkanl\u0131k se\xE7iminde oylama ba\u015Flad\u0131; {zaman} biter (\xDClkem \u2192 Parti).",
-{zaman:saatYaz(d.voting_end)}),"vote"]:d.change==="installed"?[d.lot?\u00E7("{ad} parti ba\u015Fkan\u0131 se\xE7ildi ({n} oy; e\u015Fitlikte kurayla).",{ad:d.winner??"",n:Number(d.winner_votes??0)}):\u00E7(
-"{ad} parti ba\u015Fkan\u0131 se\xE7ildi ({n} oy).",{ad:d.winner??"",n:Number(d.winner_votes??0)}),"crown"]:d.change==="void"&&d.void_reason!=="dissolved"?[d.void_reason==="no_votes"?\u00E7("Parti i\xE7i\
- se\xE7imde oy kullan\u0131lmad\u0131; ba\u015Fkan de\u011Fi\u015Fmedi."):\u00E7("Parti i\xE7i se\xE7imde aday kalmad\u0131; ba\u015Fkan de\u011Fi\u015Fmedi."),"hourglass"]:null}function birlikOlayi(olay,yuk){
-const d=yuk?.data??{};olay==="chat.message"&&d.channel==="unit"?gelen("birlik",d):olay==="chat.hidden"?gizlendi("birlik",d):olay==="unit.dissolved"?(tost(\u00E7("Birli\u011Fin da\u011F\u0131ld\u0131: {birlik}. Kasas\u0131 ve \
-deposu \xFClkenin hazinesine ge\xE7ti.",{birlik:d.name??""}),"shield"),ozetYukle().then(()=>{acik&&sekme==="birlik"&&!secili&&sekmeYukle("birlik")}).catch(()=>{})):olay==="unit.member"&&d.character_id&&
-d.character_id===ben().id?d.change==="leader"?tost(\u00E7("Birli\u011Fin lideri oldun."),"crown"):d.change==="role"&&tost(\u00E7("Birlikteki rol\xFCn de\u011Fi\u015Fti: {rol}.",{rol:BIRLIK_ROL[d.role]??
-d.role??""}),"star"):olay==="unit.updated"&&genel?.unit&&(Object.assign(genel.unit,{name:d.name??genel.unit.name,color:d.color??genel.unit.color,icon:d.icon??genel.unit.icon}),acik&&sekme==="birlik"&&
-!secili&&ciz())}function grupOlayi(olay,yuk){const d=yuk?.data??{};if(olay==="chat.message"&&d.channel==="band"){gelen("grup",d);return}if(olay==="chat.hidden"){gizlendi("grup",d);return}const ekranda=Kabuk.
-etkin==="hayat/muzik";if(olay==="band.dissolved")tost(\u00E7("Grubun da\u011F\u0131ld\u0131: {grup}.",{grup:d.name??""}),"eighth-notes"),ozetYukle().then(()=>{acik&&sekme==="grup"&&!secili&&sekmeYukle(
-"grup")}).catch(()=>{});else if(olay==="band.member"&&d.character_id&&d.character_id===ben().id)d.change==="manager"?tost(\u00E7("Grubun y\xF6neticisi oldun."),"crown"):d.change==="role"&&tost(\u00E7(
-"Gruptaki rol\xFCn de\u011Fi\u015Fti: {rol}.",{rol:MUZIK_YETKI[d.role]??d.role??""}),"star");else if(olay==="band.updated"&&genel?.band)Object.assign(genel.band,{name:d.name??genel.band.name,genre:d.genre??
-genel.band.genre}),acik&&sekme==="grup"&&!secili&&ciz();else{if(ekranda)return;if(olay==="band.pay"&&d.status==="pending")tost(\u00E7("Grubunda yeni pay plan\u0131 \xF6nerildi; kabul\xFCn bekleniyor (Hayat\u0131m \u2192 M\
-\xFCzik)."),"percent");else if(olay==="band.rehearsal"&&d.change==="booked")tost(\u00E7("Grubun ortak prova ay\u0131rd\u0131: {zaman}. Kat\u0131lacaksan i\u015Faretle (Hayat\u0131m \u2192 M\xFCzik).",
-{zaman:saatYaz(d.starts_at)}),"calendar");else if(olay==="band.rehearsal"&&d.change==="done")tost(\u00E7("Ortak prova yap\u0131ld\u0131: {a} / {m} ki\u015Fi kat\u0131ld\u0131, koordinasyon {k}.",{a:Number(
-d.attended??0),m:Number(d.members??0),k:Number(d.coordination??0)}),"repeat-2");else if(olay==="band.concert"&&d.change==="booked")tost(\u00E7("Grubun konser ay\u0131rd\u0131: {mekan}, {sehir}, {zaman}. Konser \
-saatinde orada ol (Hayat\u0131m \u2192 M\xFCzik).",{mekan:konserYeri(d),sehir:bolgeAdi(d.region_id),zaman:saatYaz(d.starts_at)}),"calendar");else if(olay==="band.concert"&&d.change==="done")tost(Number(
-d.loss_cr??0)>0?\u00E7("Grubun konseri yap\u0131ld\u0131: kalite {q}, seyirci {n}; gelir masraf\u0131 kar\u015F\u0131lamad\u0131 ({kr} kredi zarar).",{q:Number(d.quality??0),n:sayi(d.audience??0),kr:kr(
-d.loss_cr)}):\u00E7("Grubun konseri yap\u0131ld\u0131: kalite {q}, seyirci {n}; kadroya {kr} kredi k\xE2r.",{q:Number(d.quality??0),n:sayi(d.audience??0),kr:kr(d.profit_cr??0)}),"party-popper");else if(olay===
-"band.concert"&&d.change==="cancelled")tost(\u00E7("Grubunun konseri iptal edildi: {neden}",{neden:KONSER_IPTAL[d.reason]??""}),"x");else if(olay==="band.concert"&&d.change==="no_show")tost(\u00E7("Ko\
-nser saatinde kadrodan kimse \u015Fehirde de\u011Fildi: konser yap\u0131lamad\u0131, biletler iade edildi."),"circle-alert");else if(olay==="song.updated"&&d.change==="finished")tost(\u00E7("Grubunun \
-\u015Fark\u0131s\u0131 bitti: {ad}, kalite {q}.",{ad:d.title??"",q:Number(d.quality??0)}),"star");else if(olay==="band.tour"){const ad=d.name??"";d.change==="planned"?tost(\u00E7("Grubun turne planlad\
-\u0131: {ad}, {n} durak; ilk durak {zaman}. Durak saatlerinde orada ol; otob\xFCs seni ta\u015F\u0131r (Hayat\u0131m \u2192 M\xFCzik).",{ad,n:Number(d.stops??0),zaman:saatYaz(d.first_at)}),"bus"):d.change===
-"bus_departed"?tost(\u00E7("Turne otob\xFCs\xFC kalkt\u0131: {nereden} \u2192 {nereye}, {n} yolcu; var\u0131\u015F {zaman}.",{nereden:bolgeAdi(d.from),nereye:bolgeAdi(d.to),n:Number(d.riders??0),zaman:saatYaz(
-d.arrives_at)}),"bus"):d.change==="bus_arrived"?tost(\u00E7("Turne otob\xFCs\xFC {sehir} \u015Fehrine vard\u0131.",{sehir:bolgeAdi(d.to)}),"bus"):d.change==="cut"?tost(\u00E7("Turnenin kalan {n} dura\u011F\
-\u0131 iptal edildi; olan duraklar olur.",{n:Number(d.stops_cancelled_now??0)}),"x"):d.change==="cancelled"?tost(\u00E7("Turne iptal edildi: {ad} ({neden}).",{ad,neden:TURNE_IPTAL_NEDEN[d.reason]??""}),
-"x"):d.change==="finished"&&tost(\u00E7("Turne bitti: {ad} \u2014 {d} durak oldu, seyirci {n}, ortalama kalite {q}{m}.",{ad,d:Number(d.stops_done??0),n:sayi(d.audience??0),q:Number(d.quality_avg??0),m:Array.
-isArray(d.medals)&&d.medals.length?"; "+\u00E7("turne madalyas\u0131: {k}",{k:d.medals.join(", ")}):""}),"party-popper")}else if(olay==="band.festival"){const tur=MUZIK_TUR[d.genre]??d.genre??"";d.change===
-"applied"?tost(\u00E7("Grubun {sezon}. sezon {tur} festivaline ba\u015Fvurdu.",{sezon:Number(d.season??0),tur}),"tent"):d.change==="withdrawn"?tost(\u00E7("Grubunun festival ba\u015Fvurusu \xE7ekildi."),
-"x"):d.change==="selected"?tost(\u00E7("Grubun festival kadrosunda! Slot: {zaman}, {sehir}. O saatte orada ol (\u015Eehrim \u2192 Sahne \u2192 Festival alan\u0131).",{zaman:saatYaz(d.slot_at),sehir:bolgeAdi(
-d.host_region_id)}),"tent"):d.change==="not_selected"?tost(\u00E7("Grubun bu sezon festival kadrosuna giremedi ({tur}).",{tur}),"circle-alert"):d.change==="cancelled"?tost(\u00E7("{tur} festivali bu s\
-ezon yap\u0131lm\u0131yor: {n} ba\u015Fvuru yetmedi.",{tur,n:Number(d.entries??0)}),"circle-alert"):d.change==="performed"?tost(\u00E7("Grubun festivalde \xE7ald\u0131: kalite {q}, {p} ki\u015Fi sahnede, seyirci {\
-n}, {f} yeni hayran.",{q:Number(d.quality??0),p:Number(d.present??0),n:sayi(d.audience??0),f:sayi(d.fans_gained??0)}),"party-popper"):d.change==="no_show"?tost(\u00E7("Festival slotunda kadrodan kimse\
- ev sahibi \u015Fehirde de\u011Fildi: grubun sahneye \xE7\u0131kmad\u0131."),"circle-alert"):d.change==="awarded"&&tost(Number(d.rank)<=3?\u00E7("\xD6d\xFCl gecesi: grubun {tur} festivalinde {n}. oldu; kasa\
-ya {kr} kredi.",{tur,n:Number(d.rank??0),kr:kr(d.payout_cr??0)}):\u00E7("\xD6d\xFCl gecesi: grubun {tur} festivalinde {n}. s\u0131rada; kasaya {kr} kredi.",{tur,n:Number(d.rank??0),kr:kr(d.payout_cr??
-0)}),"trophy")}else olay==="band.recording"&&d.done&&d.character_id!==ben().id?tost(\u00E7("Grubunun \u015Fark\u0131s\u0131n\u0131n kayd\u0131 bitti: {ad}, kay\u0131t kalitesi {q} ({kim}).",{ad:d.title??
-"",q:Number(d.quality??0),kim:d.name??""}),"disc-3"):olay==="band.ep"&&d.change==="released"?tost(\u00E7("Grubun EP yay\u0131mlad\u0131: {ad}. Oyuncular Plak raf\u0131ndan alabilir.",{ad:d.name??""}),
-"disc-album"):olay==="band.ep"&&d.change==="sale"?tost(\u00E7("{kim} EP'nizi ald\u0131: {ad} ({n}. sat\u0131\u015F); pay\u0131n hesab\u0131na ge\xE7ti.",{kim:d.buyer??"",ad:d.name??"",n:Number(d.sales??
-0)}),"shopping-bag"):olay==="band.ep"&&d.change==="sim"&&Number(d.sold??0)>0?tost(\u00E7("EP'niz bug\xFCn {n} dinleyiciye sat\u0131ld\u0131: {ad} ({kr} kredi).",{n:sayi(d.sold??0),ad:d.name??"",kr:kr(
-d.gross_cr??0)}),"disc-album"):olay==="band.ep"&&d.change==="withdrawn"&&tost(\u00E7("EP sat\u0131\u015Ftan \xE7ekildi: {ad}.",{ad:d.name??""}),"x")}}function sohbetGrubuOlayi(id,olay,yuk){const d=yuk?.
-data??{},acikMi=secili?.tur==="grup"&&secili.id===id;if(olay==="chat.message"&&d.channel==="group"){if(!d.message_id)return;const benim=d.author_id===ben().id;if(!benim&&engelli.has(d.author_id))return;
-if(acikMi&&(secili.veri.messages.some(m=>m.message_id===d.message_id)||secili.veri.messages.push(d),gorunur()&&sekme==="ozel")){mesajEkle(d),benim||okundu("group",id,d.message_id);return}if(!benim){arttir(
-"grup-sohbet",id);const x=gruplar?.groups?.find(y=>y.group_id===id);x&&(x.unread=Number(x.unread??0)+1),acik&&sekme==="ozel"&&!secili&&ciz()}}else if(olay==="chat.hidden")acikMi&&(secili.veri.messages=
+\xF6nd\xFC.",{devlet:ad,bolge}),"swords"]}const Konusma=(()=>{const SEKMELER=[["burasi",\u00E7("Buras\u0131"),"map-pin"],["ulke",\u00E7("\xDClke"),"landmark"],["yeni",\u00E7("Yeni gelenler"),"sprout"],
+["parti",\u00E7("Parti"),"users-round"],["birlik",\u00E7("Birlik"),"shield"],["grup",\u00E7("Grup"),"eighth-notes"],["ozel",\u00E7("\xD6zel"),"message-circle"]],TUR={burasi:"place",ulke:"country",yeni:"\
+newcomers",parti:"party",birlik:"unit",grup:"band"};let calisiyor=!1,acik=!1,sekme="burasi",genel=null,ck={maxLength:500};const liste={burasi:null,ulke:null,yeni:null,parti:null,birlik:null,grup:null};
+let yeniBilgi=null,yer=null,konusmalar=null,secili=null,gruplar=null;const grupKanallari=new Map;let engelli=new Set,kanalYer=null,kanalParti=null,birakYer=null,birakParti=null,kanalBirlik=null,birakBirlik=null,
+kanalGrup=null,birakGrup=null,kalabalikKanal="",birakKalabalik=[],kalabalikSaat=null,dinleyiciler=[],sonKonum=null,yukleniyor=0,bekleyen=null;const isaretBekleyen=new Map,ben=()=>Durum.v.ozet?.character??
+{},cap=()=>Number(genel?.cap??99),sayiYaz=n=>n>cap()?`${cap()}+`:String(n),gorunur=()=>acik&&document.visibilityState==="visible",elcilikler=()=>genel?.embassy??[],grupSayilari=()=>(genel?.groups??[]).
+reduce((t,g)=>t+Number(g.unread??0),0),yeniAcik=()=>!!genel?.newcomers?.eligible;function sayilar(){const g=genel??{};return{burasi:Number(g.here?.unread??0),ulke:Number(g.country?.unread??0),yeni:Number(
+g.newcomers?.unread??0),parti:Number(g.party?.unread??0),birlik:Number(g.unit?.unread??0),grup:Number(g.band?.unread??0),ozel:Number(g.dm?.unread??0)+elcilikler().reduce((t,e)=>t+Number(e.unread??0),0)+
+grupSayilari()+Number(g.mentions_unread??0)+Number(g.group_invites??0)}}function arttir(s,ref){if(!genel)return;const sinir=n=>Math.min(cap()+1,Number(n??0)+1);if(s==="burasi"&&genel.here)genel.here.unread=
+sinir(genel.here.unread);else if(s==="ulke"&&genel.country)genel.country.unread=sinir(genel.country.unread);else if(s==="yeni"&&genel.newcomers)genel.newcomers.unread=sinir(genel.newcomers.unread);else if(s===
+"parti"&&genel.party)genel.party.unread=sinir(genel.party.unread);else if(s==="birlik"&&genel.unit)genel.unit.unread=sinir(genel.unit.unread);else if(s==="grup"&&genel.band)genel.band.unread=sinir(genel.
+band.unread);else if(s==="dm"&&genel.dm)genel.dm.unread=sinir(genel.dm.unread);else if(s==="elcilik"){const e=elcilikler().find(x=>x.partner_id===ref);e&&(e.unread=sinir(e.unread))}else if(s==="grup-s\
+ohbet"){const x=(genel.groups??[]).find(y=>y.group_id===ref);x&&(x.unread=sinir(x.unread))}rozet()}function sifirla(s,ref,kalan=0){if(genel){if(s==="place"&&genel.here)genel.here.unread=kalan;else if(s===
+"country"&&genel.country)genel.country.unread=kalan;else if(s==="newcomers"&&genel.newcomers)genel.newcomers.unread=kalan;else if(s==="party"&&genel.party)genel.party.unread=kalan;else if(s==="unit"&&
+genel.unit)genel.unit.unread=kalan;else if(s==="band"&&genel.band)genel.band.unread=kalan;else if(s==="embassy"){const e=elcilikler().find(x=>x.partner_id===ref);e&&(e.unread=kalan)}else if(s==="group"){
+const x=(genel.groups??[]).find(y=>y.group_id===ref);x&&(x.unread=kalan)}else if(s==="dm"){const t=konusmalar?.find(x=>x.thread_id===ref);t&&genel.dm?(genel.dm.unread=Math.max(0,Number(genel.dm.unread??
+0)-Number(t.unread??0)+kalan),t.unread=kalan):ozetYukle().catch(()=>{})}rozet()}}function rozet(){const s=sayilar(),toplam=s.burasi+s.ulke+s.yeni+s.parti+s.birlik+s.grup+s.ozel;for(const d of[$("#konu\
+sma-dugme"),$("#ust-sohbet")]){if(!d)continue;const b=$(".konusma-sayi",d);b.hidden=toplam===0,b.textContent=sayiYaz(toplam),d.dataset.okunmamis=String(toplam),d.setAttribute("aria-label",toplam?\u00E7(
+"Sohbet ve mesajlar: {n} okunmam\u0131\u015F",{n:sayiYaz(toplam)}):\u00E7("Sohbet ve mesajlar"))}for(const[id]of SEKMELER){const r=$(`#konusma [data-ks="${id}"] .sayi-rozet`);r&&(r.hidden=!s[id],r.textContent=
+sayiYaz(s[id]))}const y=$('#konusma [data-ks="yeni"]');y&&(y.hidden=!yeniAcik())}function okundu(tur,ref,upto){if(!upto&&tur!=="place"&&tur!=="country"&&tur!=="newcomers"&&tur!=="party"&&tur!=="unit"&&
+tur!=="band")return;const a=`${tur}:${ref??""}`;clearTimeout(isaretBekleyen.get(a)),isaretBekleyen.set(a,setTimeout(async()=>{if(isaretBekleyen.delete(a),!!calisiyor)try{const r=await Sunucu.cagir("ch\
+at_read",{p_kind:tur,p_ref:ref??null,p_upto:upto??null});sifirla(tur,ref,Number(r?.unread??0))}catch{}},350))}const sonId=dizi=>dizi?.length?Number(dizi[dizi.length-1].message_id):null;async function ozetYukle(){
+try{genel=await Sunucu.cagir("chat_overview")}catch(e){if(e.kod==="API_MISSING"||e.kod==="RULE_NOT_ACTIVE")return;throw e}if(!calisiyor)return;const y=genel.here?.place_id??null;if(y!==kanalYer){birakYer?.(),
+birakYer=null,kanalYer=y,y&&(birakYer=Sunucu.Canli.dinle("place:"+y,yerOlayi)),liste.burasi=null;const d=$("#konusma-dugme");d&&(d.dataset.yer=y??"")}const p=genel.party?.party_id??null;p!==kanalParti&&
+(birakParti?.(),birakParti=null,kanalParti=p,p&&(birakParti=Sunucu.Canli.dinle("party:"+p,partiOlayi)),liste.parti=null);const b=genel.unit?.unit_id??null;b!==kanalBirlik&&(birakBirlik?.(),birakBirlik=
+null,kanalBirlik=b,b&&(birakBirlik=Sunucu.Canli.dinle("unit:"+b,birlikOlayi)),liste.birlik=null);const gr=genel.band?.band_id??null;gr!==kanalGrup&&(birakGrup?.(),birakGrup=null,kanalGrup=gr,gr&&(birakGrup=
+Sunucu.Canli.dinle("band:"+gr,grupOlayi)),liste.grup=null);const yeni=new Set((genel.groups??[]).map(x=>x.group_id));for(const[id,birak]of grupKanallari)yeni.has(id)||(birak(),grupKanallari.delete(id));
+for(const id of yeni)grupKanallari.has(id)||grupKanallari.set(id,Sunucu.Canli.dinle("group:"+id,(olay,yuk)=>sohbetGrubuOlayi(id,olay,yuk)));yeniAcik()||(liste.yeni=null,sekme==="yeni"&&(sekme="ulke",acik&&
+!secili&&sekmeYukle("ulke"))),rozet(),acik&&sekmeleriCiz(),kalabalikGuncelle()}function kalabalikGuncelle(){const istenen=calisiyor&&acik&&genel?.crowded?[genel.country_channel,yeniAcik()?genel.newcomers_channel:
+null].filter(Boolean):[],anahtar=istenen.join(",");if(anahtar!==kalabalikKanal){for(const b of birakKalabalik)b();birakKalabalik=istenen.map(id=>Sunucu.Canli.dinle("chat:"+id,(olay,yuk)=>ulkeOlayi({olay,
+yuk}),{katilinca:kalabalikKatildi})),kalabalikKanal=anahtar}const sayac=calisiyor&&!!genel?.crowded&&!acik;sayac&&!kalabalikSaat?kalabalikSaat=setInterval(()=>{document.visibilityState==="visible"&&ozetYukle().
+catch(()=>{})},12e4):!sayac&&kalabalikSaat&&(clearInterval(kalabalikSaat),kalabalikSaat=null)}function kalabalikKatildi(){calisiyor&&acik&&!secili&&(sekme==="ulke"||sekme==="yeni")&&sekmeYukle(sekme)}
+const kalabalikNotu=()=>genel?.crowded?`<p class="kucuk konusma-not konusma-kalabalik" data-kalabalik="evet">${ikon("hourglass")}<span>${\u00E7("\xDClke \xE7ok kalabal\u0131k: sohbet yava\u015F kipte (herkes i\xE7in top\
+lam dakikada en \xE7ok {n} ileti).",{n:sayi(Number(genel.slow_per_minute??60))})}</span></p>`:"";async function engelleriYukle(){try{engelli=new Set((await Sunucu.cagir("my_blocks")).map(b=>b.character_id))}catch{}}
+function gelen(s,d){if(!d?.message_id||d.redacted)return;const benim=d.author_id&&d.author_id===ben().id;if(!benim&&engelli.has(d.author_id))return;const l=liste[s];l&&!l.some(m=>m.message_id===d.message_id)&&
+l.push(d),gorunur()&&sekme===s&&!secili?(mesajEkle(d),benim||okundu(TUR[s],null,d.message_id)):benim||arttir(s)}function gizlendi(s,d){const l=liste[s];l&&(liste[s]=l.filter(m=>m.message_id!==d.message_id),
+acik&&sekme===s&&!secili&&$(`#konusma-mesajlar [data-mesaj="${d.message_id}"]`)?.remove())}function yerOlayi(olay,yuk){const d=yuk?.data??{};olay==="chat.message"&&d.channel==="place"?gelen("burasi",d):
+olay==="chat.hidden"&&gizlendi("burasi",d)}function partiOlayi(olay,yuk){const d=yuk?.data??{};if(olay==="chat.message"&&d.channel==="party")gelen("parti",d);else if(olay==="chat.hidden")gizlendi("par\
+ti",d);else if(/^party\./.test(olay)){Durum.yay("parti-olay",{olay,d});const b=partiBildirim(olay,d);b&&tost(b[0],b[1])}}function partiBildirim(olay,d){return olay==="party.join_request"?d.status==="p\
+ending"&&d.leader_id&&d.leader_id===ben().id?[\u00E7("Partine \xFCyelik iste\u011Fi: {ad} (\xDClkem \u2192 Parti).",{ad:d.name??""}),"user-round-plus"]:null:olay!=="party.leader_election"?null:d.change===
+"opened"?d.opened_by&&d.opened_by===ben().name?null:[\u00E7("Partinde ba\u015Fkanl\u0131k se\xE7imi a\xE7\u0131ld\u0131; adayl\u0131k {zaman} biter (\xDClkem \u2192 Parti).",{zaman:saatYaz(d.voting_start)}),
+"vote"]:d.change==="voting"?[\u00E7("Partinin ba\u015Fkanl\u0131k se\xE7iminde oylama ba\u015Flad\u0131; {zaman} biter (\xDClkem \u2192 Parti).",{zaman:saatYaz(d.voting_end)}),"vote"]:d.change==="inst\
+alled"?[d.lot?\u00E7("{ad} parti ba\u015Fkan\u0131 se\xE7ildi ({n} oy; e\u015Fitlikte kurayla).",{ad:d.winner??"",n:Number(d.winner_votes??0)}):\u00E7("{ad} parti ba\u015Fkan\u0131 se\xE7ildi ({n} oy).",
+{ad:d.winner??"",n:Number(d.winner_votes??0)}),"crown"]:d.change==="void"&&d.void_reason!=="dissolved"?[d.void_reason==="no_votes"?\u00E7("Parti i\xE7i se\xE7imde oy kullan\u0131lmad\u0131; ba\u015Fkan de\u011Fi\u015Fmedi."):
+\u00E7("Parti i\xE7i se\xE7imde aday kalmad\u0131; ba\u015Fkan de\u011Fi\u015Fmedi."),"hourglass"]:null}function birlikOlayi(olay,yuk){const d=yuk?.data??{};olay==="chat.message"&&d.channel==="unit"?gelen(
+"birlik",d):olay==="chat.hidden"?gizlendi("birlik",d):olay==="unit.dissolved"?(tost(\u00E7("Birli\u011Fin da\u011F\u0131ld\u0131: {birlik}. Kasas\u0131 ve deposu \xFClkenin hazinesine ge\xE7ti.",{birlik:d.
+name??""}),"shield"),ozetYukle().then(()=>{acik&&sekme==="birlik"&&!secili&&sekmeYukle("birlik")}).catch(()=>{})):olay==="unit.member"&&d.character_id&&d.character_id===ben().id?d.change==="leader"?tost(
+\u00E7("Birli\u011Fin lideri oldun."),"crown"):d.change==="role"&&tost(\u00E7("Birlikteki rol\xFCn de\u011Fi\u015Fti: {rol}.",{rol:BIRLIK_ROL[d.role]??d.role??""}),"star"):olay==="unit.updated"&&genel?.
+unit&&(Object.assign(genel.unit,{name:d.name??genel.unit.name,color:d.color??genel.unit.color,icon:d.icon??genel.unit.icon}),acik&&sekme==="birlik"&&!secili&&ciz())}function grupOlayi(olay,yuk){const d=yuk?.
+data??{};if(olay==="chat.message"&&d.channel==="band"){gelen("grup",d);return}if(olay==="chat.hidden"){gizlendi("grup",d);return}const ekranda=Kabuk.etkin==="hayat/muzik";if(olay==="band.dissolved")tost(
+\u00E7("Grubun da\u011F\u0131ld\u0131: {grup}.",{grup:d.name??""}),"eighth-notes"),ozetYukle().then(()=>{acik&&sekme==="grup"&&!secili&&sekmeYukle("grup")}).catch(()=>{});else if(olay==="band.member"&&
+d.character_id&&d.character_id===ben().id)d.change==="manager"?tost(\u00E7("Grubun y\xF6neticisi oldun."),"crown"):d.change==="role"&&tost(\u00E7("Gruptaki rol\xFCn de\u011Fi\u015Fti: {rol}.",{rol:MUZIK_YETKI[d.
+role]??d.role??""}),"star");else if(olay==="band.updated"&&genel?.band)Object.assign(genel.band,{name:d.name??genel.band.name,genre:d.genre??genel.band.genre}),acik&&sekme==="grup"&&!secili&&ciz();else{
+if(ekranda)return;if(olay==="band.pay"&&d.status==="pending")tost(\u00E7("Grubunda yeni pay plan\u0131 \xF6nerildi; kabul\xFCn bekleniyor (Hayat\u0131m \u2192 M\xFCzik)."),"percent");else if(olay==="b\
+and.rehearsal"&&d.change==="booked")tost(\u00E7("Grubun ortak prova ay\u0131rd\u0131: {zaman}. Kat\u0131lacaksan i\u015Faretle (Hayat\u0131m \u2192 M\xFCzik).",{zaman:saatYaz(d.starts_at)}),"calendar");else if(olay===
+"band.rehearsal"&&d.change==="done")tost(\u00E7("Ortak prova yap\u0131ld\u0131: {a} / {m} ki\u015Fi kat\u0131ld\u0131, koordinasyon {k}.",{a:Number(d.attended??0),m:Number(d.members??0),k:Number(d.coordination??
+0)}),"repeat-2");else if(olay==="band.concert"&&d.change==="booked")tost(\u00E7("Grubun konser ay\u0131rd\u0131: {mekan}, {sehir}, {zaman}. Konser saatinde orada ol (Hayat\u0131m \u2192 M\xFCzik).",{mekan:konserYeri(
+d),sehir:bolgeAdi(d.region_id),zaman:saatYaz(d.starts_at)}),"calendar");else if(olay==="band.concert"&&d.change==="done")tost(Number(d.loss_cr??0)>0?\u00E7("Grubun konseri yap\u0131ld\u0131: kalite {q}, seyirci\
+ {n}; gelir masraf\u0131 kar\u015F\u0131lamad\u0131 ({kr} kredi zarar).",{q:Number(d.quality??0),n:sayi(d.audience??0),kr:kr(d.loss_cr)}):\u00E7("Grubun konseri yap\u0131ld\u0131: kalite {q}, seyirci {n}; kadro\
+ya {kr} kredi k\xE2r.",{q:Number(d.quality??0),n:sayi(d.audience??0),kr:kr(d.profit_cr??0)}),"party-popper");else if(olay==="band.concert"&&d.change==="cancelled")tost(\u00E7("Grubunun konseri iptal e\
+dildi: {neden}",{neden:KONSER_IPTAL[d.reason]??""}),"x");else if(olay==="band.concert"&&d.change==="no_show")tost(\u00E7("Konser saatinde kadrodan kimse \u015Fehirde de\u011Fildi: konser yap\u0131lamad\u0131, biletler ia\
+de edildi."),"circle-alert");else if(olay==="song.updated"&&d.change==="finished")tost(\u00E7("Grubunun \u015Fark\u0131s\u0131 bitti: {ad}, kalite {q}.",{ad:d.title??"",q:Number(d.quality??0)}),"star");else if(olay===
+"band.tour"){const ad=d.name??"";d.change==="planned"?tost(\u00E7("Grubun turne planlad\u0131: {ad}, {n} durak; ilk durak {zaman}. Durak saatlerinde orada ol; otob\xFCs seni ta\u015F\u0131r (Hayat\u0131m \u2192 M\xFCzik).",
+{ad,n:Number(d.stops??0),zaman:saatYaz(d.first_at)}),"bus"):d.change==="bus_departed"?tost(\u00E7("Turne otob\xFCs\xFC kalkt\u0131: {nereden} \u2192 {nereye}, {n} yolcu; var\u0131\u015F {zaman}.",{nereden:bolgeAdi(
+d.from),nereye:bolgeAdi(d.to),n:Number(d.riders??0),zaman:saatYaz(d.arrives_at)}),"bus"):d.change==="bus_arrived"?tost(\u00E7("Turne otob\xFCs\xFC {sehir} \u015Fehrine vard\u0131.",{sehir:bolgeAdi(d.to)}),
+"bus"):d.change==="cut"?tost(\u00E7("Turnenin kalan {n} dura\u011F\u0131 iptal edildi; olan duraklar olur.",{n:Number(d.stops_cancelled_now??0)}),"x"):d.change==="cancelled"?tost(\u00E7("Turne iptal e\
+dildi: {ad} ({neden}).",{ad,neden:TURNE_IPTAL_NEDEN[d.reason]??""}),"x"):d.change==="finished"&&tost(\u00E7("Turne bitti: {ad} \u2014 {d} durak oldu, seyirci {n}, ortalama kalite {q}{m}.",{ad,d:Number(
+d.stops_done??0),n:sayi(d.audience??0),q:Number(d.quality_avg??0),m:Array.isArray(d.medals)&&d.medals.length?"; "+\u00E7("turne madalyas\u0131: {k}",{k:d.medals.join(", ")}):""}),"party-popper")}else if(olay===
+"band.festival"){const tur=MUZIK_TUR[d.genre]??d.genre??"";d.change==="applied"?tost(\u00E7("Grubun {sezon}. sezon {tur} festivaline ba\u015Fvurdu.",{sezon:Number(d.season??0),tur}),"tent"):d.change===
+"withdrawn"?tost(\u00E7("Grubunun festival ba\u015Fvurusu \xE7ekildi."),"x"):d.change==="selected"?tost(\u00E7("Grubun festival kadrosunda! Slot: {zaman}, {sehir}. O saatte orada ol (\u015Eehrim \u2192 Sahne \u2192 \
+Festival alan\u0131).",{zaman:saatYaz(d.slot_at),sehir:bolgeAdi(d.host_region_id)}),"tent"):d.change==="not_selected"?tost(\u00E7("Grubun bu sezon festival kadrosuna giremedi ({tur}).",{tur}),"circle-\
+alert"):d.change==="cancelled"?tost(\u00E7("{tur} festivali bu sezon yap\u0131lm\u0131yor: {n} ba\u015Fvuru yetmedi.",{tur,n:Number(d.entries??0)}),"circle-alert"):d.change==="performed"?tost(\u00E7("\
+Grubun festivalde \xE7ald\u0131: kalite {q}, {p} ki\u015Fi sahnede, seyirci {n}, {f} yeni hayran.",{q:Number(d.quality??0),p:Number(d.present??0),n:sayi(d.audience??0),f:sayi(d.fans_gained??0)}),"part\
+y-popper"):d.change==="no_show"?tost(\u00E7("Festival slotunda kadrodan kimse ev sahibi \u015Fehirde de\u011Fildi: grubun sahneye \xE7\u0131kmad\u0131."),"circle-alert"):d.change==="awarded"&&tost(Number(
+d.rank)<=3?\u00E7("\xD6d\xFCl gecesi: grubun {tur} festivalinde {n}. oldu; kasaya {kr} kredi.",{tur,n:Number(d.rank??0),kr:kr(d.payout_cr??0)}):\u00E7("\xD6d\xFCl gecesi: grubun {tur} festivalinde {n}. s\u0131ra\
+da; kasaya {kr} kredi.",{tur,n:Number(d.rank??0),kr:kr(d.payout_cr??0)}),"trophy")}else olay==="band.recording"&&d.done&&d.character_id!==ben().id?tost(\u00E7("Grubunun \u015Fark\u0131s\u0131n\u0131n kayd\u0131 bitti: {ad}, k\
+ay\u0131t kalitesi {q} ({kim}).",{ad:d.title??"",q:Number(d.quality??0),kim:d.name??""}),"disc-3"):olay==="band.ep"&&d.change==="released"?tost(\u00E7("Grubun EP yay\u0131mlad\u0131: {ad}. Oyuncular Plak raf\u0131nd\
+an alabilir.",{ad:d.name??""}),"disc-album"):olay==="band.ep"&&d.change==="sale"?tost(\u00E7("{kim} EP'nizi ald\u0131: {ad} ({n}. sat\u0131\u015F); pay\u0131n hesab\u0131na ge\xE7ti.",{kim:d.buyer??"",
+ad:d.name??"",n:Number(d.sales??0)}),"shopping-bag"):olay==="band.ep"&&d.change==="sim"&&Number(d.sold??0)>0?tost(\u00E7("EP'niz bug\xFCn {n} dinleyiciye sat\u0131ld\u0131: {ad} ({kr} kredi).",{n:sayi(
+d.sold??0),ad:d.name??"",kr:kr(d.gross_cr??0)}),"disc-album"):olay==="band.ep"&&d.change==="withdrawn"&&tost(\u00E7("EP sat\u0131\u015Ftan \xE7ekildi: {ad}.",{ad:d.name??""}),"x")}}function sohbetGrubuOlayi(id,olay,yuk){
+const d=yuk?.data??{},acikMi=secili?.tur==="grup"&&secili.id===id;if(olay==="chat.message"&&d.channel==="group"){if(!d.message_id)return;const benim=d.author_id===ben().id;if(!benim&&engelli.has(d.author_id))
+return;if(acikMi&&(secili.veri.messages.some(m=>m.message_id===d.message_id)||secili.veri.messages.push(d),gorunur()&&sekme==="ozel")){mesajEkle(d),benim||okundu("group",id,d.message_id);return}if(!benim){
+arttir("grup-sohbet",id);const x=gruplar?.groups?.find(y=>y.group_id===id);x&&(x.unread=Number(x.unread??0)+1),acik&&sekme==="ozel"&&!secili&&ciz()}}else if(olay==="chat.hidden")acikMi&&(secili.veri.messages=
 secili.veri.messages.filter(m=>m.message_id!==d.message_id),$(`#konusma-mesajlar [data-mesaj="${d.message_id}"]`)?.remove());else if(olay==="group.closed")tost(\u00E7("Sohbet grubu kapand\u0131: {ad}.",
 {ad:d.name??""}),"users-round"),gruplar=null,acikMi&&(secili=null),ozetYukle().then(()=>{acik&&sekme==="ozel"&&sekmeYukle("ozel")}).catch(()=>{});else if(olay==="group.updated"||olay==="group.member"){
 const x=(genel?.groups??[]).find(y=>y.group_id===id);x&&d.name&&(x.name=d.name),olay==="group.member"&&d.character_id===ben().id&&d.change==="owner"&&tost(\u00E7("{ad} grubunun kurucusu art\u0131k sensin.",
@@ -4760,33 +4792,35 @@ secili.veri.messages.push(d),gorunur()&&sekme==="ozel")){mesajEkle(d),benim||oku
 d"&&secili?.tur==="grup"&&secili.id===d.group_id&&(secili=null),ozetYukle().then(()=>{acik&&sekme==="ozel"&&!secili&&sekmeYukle("ozel")}).catch(()=>{})):olay==="social.mention"?(genel&&(genel.mentions_unread=
 Number(genel.mentions_unread??0)+1),rozet(),acik&&sekme==="ozel"&&!secili&&ciz()):/^(travel\.|citizenship\.changed|party\.(expelled|join_decided)|unit\.(expelled|request_answered)|band\.expelled)/.test(
 olay)&&(liste.burasi=null,olay==="citizenship.changed"&&(liste.ulke=null,liste.yeni=null,liste.parti=null,liste.birlik=null),/^party\./.test(olay)&&(liste.parti=null),/^unit\./.test(olay)&&(liste.birlik=
-null),/^band\./.test(olay)&&(liste.grup=null),ozetYukle().then(()=>{acik&&!secili&&sekmeYukle(sekme)}).catch(()=>{}))}function kur(){if($("#konusma-dugme"))return;const d=document.createElement("butto\
-n");d.id="konusma-dugme",d.className="konusma-dugme",d.type="button",d.setAttribute("aria-expanded","false"),d.setAttribute("aria-controls","konusma"),d.setAttribute("aria-label",\u00E7("Sohbet ve mes\
-ajlar")),d.innerHTML=`${ikon("message-circle")}<b class="konusma-sayi" hidden></b>`,d.onclick=()=>acik?kapat():ac();const perde=document.createElement("div");perde.className="konusma-perde",perde.hidden=
-!0,perde.onclick=()=>kapat();const p=document.createElement("section");p.id="konusma",p.className="konusma-panel",p.hidden=!0,p.setAttribute("role","dialog"),p.setAttribute("aria-label",\u00E7("Sohbet")),
-p.innerHTML=`<div class="konusma-bas"><h2 class="b2">${\u00E7("Sohbet")}</h2>
+null),/^band\./.test(olay)&&(liste.grup=null),ozetYukle().then(()=>{acik&&!secili&&sekmeYukle(sekme)}).catch(()=>{}))}function ustDugme(){const yer2=$(".ust-sag");if(!yer2||$("#ust-sohbet"))return;const u=document.
+createElement("button");u.id="ust-sohbet",u.className="ust-sohbet",u.type="button",u.setAttribute("aria-expanded",String(acik)),u.setAttribute("aria-controls","konusma"),u.setAttribute("aria-label",\u00E7(
+"Sohbet ve mesajlar")),u.innerHTML=`${ikon("message-circle")}<b class="konusma-sayi" hidden></b>`,u.onclick=()=>acik?kapat():ac(),yer2.insertBefore(u,$("#oyuncu-cip",yer2))}function kur(){if(ustDugme(),
+$("#konusma-dugme"))return;const d=document.createElement("button");d.id="konusma-dugme",d.className="konusma-dugme",d.type="button",d.setAttribute("aria-expanded","false"),d.setAttribute("aria-contro\
+ls","konusma"),d.setAttribute("aria-label",\u00E7("Sohbet ve mesajlar")),d.innerHTML=`${ikon("message-circle")}<b class="konusma-sayi" hidden></b>`,d.onclick=()=>acik?kapat():ac();const perde=document.
+createElement("div");perde.className="konusma-perde",perde.hidden=!0,perde.onclick=()=>kapat();const p=document.createElement("section");p.id="konusma",p.className="konusma-panel",p.hidden=!0,p.setAttribute(
+"role","dialog"),p.setAttribute("aria-label",\u00E7("Sohbet")),p.innerHTML=`<div class="konusma-bas"><h2 class="b2">${\u00E7("Sohbet")}</h2>
         <button class="konusma-kapat" type="button" aria-label="${\u00E7("Kapat")}">${ikon("x")}</button></div>
       <div class="konusma-sekmeler" role="tablist">${SEKMELER.map(([id,ad,ik])=>`<button class="konusma-sekme" role="tab" type="button" data-ks="${id}"
         aria-selected="false">${ikon(ik)}<span>${esc(ad)}</span><b class="sayi-rozet" hidden></b></button>`).join("")}</div>
       <div class="konusma-govde" id="konusma-govde"></div>`,$(".konusma-kapat",p).onclick=()=>kapat();for(const b of $$("[data-ks]",p))b.onclick=()=>degistir(b.dataset.ks);document.body.append(perde,d,
 p),document.addEventListener("keydown",tus)}const tus=e=>{e.key==="Escape"&&acik&&!document.querySelector(".perde")&&kapat()};function ac(s,{konusma,elcilik,grup}={}){if(!calisiyor){bekleyen=s??sekme;
-return}s&&SEKMELER.some(([id])=>id===s)&&(sekme=s),acik=!0,secili=null,kalabalikGuncelle(),$("#konusma").hidden=!1,$(".konusma-perde").hidden=!1,$("#konusma-dugme").setAttribute("aria-expanded","true"),
-document.body.classList.add("konusma-acik");try{sessionStorage.setItem("civora.konusma",sekme)}catch{}sekmeleriCiz(),$("#konusma [data-ks][aria-selected='true']")?.focus({preventScroll:!0}),konusma?konusmaAc(
-"dm",konusma):elcilik?konusmaAc("elcilik",elcilik):grup?konusmaAc("grup",grup):sekmeYukle(sekme),ozetYukle().catch(()=>{})}function kapat(){acik&&(acik=!1,secili=null,$("#konusma").hidden=!0,$(".konus\
-ma-perde").hidden=!0,$("#konusma-dugme")?.setAttribute("aria-expanded","false"),document.body.classList.remove("konusma-acik"),$("#konusma-dugme")?.focus(),kalabalikGuncelle())}function degistir(s){sekme=
-s,secili=null;try{sessionStorage.setItem("civora.konusma",s)}catch{}sekmeleriCiz(),sekmeYukle(s)}function sekmeleriCiz(){for(const b of $$("#konusma [data-ks]"))b.setAttribute("aria-selected",String(b.
-dataset.ks===sekme));rozet()}async function sekmeYukle(s){const benim=++yukleniyor,govde=$("#konusma-govde");if(!govde)return;(s==="ozel"?konusmalar:liste[s])?ciz():govde.innerHTML=`<p class="bos">${\u00E7(
-"Y\xFCkleniyor\u2026")}</p>`;try{const kural=await Durum.kurallar().catch(()=>null);if(kural?.data?.social?.chat&&(ck=kural.data.social.chat),s==="burasi"){const h=await Sunucu.cagir("place_chat_histo\
-ry",{p_limit:60});yer={place_id:h.place_id,on_road:h.on_road,present:h.present,country_id:h.country_id,home:h.home??null,venue:h.venue??null},liste.burasi=h.messages}else if(s==="ulke")liste.ulke=(await Sunucu.
-cagir("chat_history",{p_limit:60})).messages;else if(s==="yeni")if(yeniAcik()){const h=await Sunucu.cagir("newcomers_history",{p_limit:60});liste.yeni=h.messages,yeniBilgi={guides:Number(h.guides??0)}}else
-liste.yeni=[];else s==="parti"?liste.parti=genel?.party?(await Sunucu.cagir("party_chat_history",{p_limit:60})).messages:[]:s==="birlik"?liste.birlik=genel?.unit?(await Sunucu.cagir("unit_chat_history",
-{p_limit:60})).messages:[]:s==="grup"?liste.grup=genel?.band?(await Sunucu.cagir("band_chat_history",{p_limit:60})).messages:[]:[konusmalar,gruplar]=await Promise.all([Sunucu.cagir("dm_threads"),Sunucu.
-cagir("groups").catch(e=>e.kod==="API_MISSING"||e.kod==="RULE_NOT_ACTIVE"?null:Promise.reject(e))])}catch(e){if(benim!==yukleniyor||sekme!==s)return;if(e.kod==="NOT_IN_PARTY")liste.parti=[],genel&&(genel.
-party=null);else if(e.kod==="NEWCOMERS_CLOSED")liste.yeni=[],genel&&(genel.newcomers={eligible:!1,unread:0});else if(e.kod==="NOT_IN_UNIT")liste.birlik=[],genel&&(genel.unit=null);else if(e.kod==="NOT\
-_IN_BAND")liste.grup=[],genel&&(genel.band=null);else{govde.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(e))}</span></div>`;return}}if(!(benim!==yukleniyor||sekme!==
-s||secili||!acik)&&(ciz(),s!=="ozel"&&gorunur())){const u=sonId(liste[s]);u&&!(s==="burasi"&&!yer?.place_id)&&okundu(TUR[s],null,u)}}const ulkeEtiketi=m=>m.author_country_id&&m.author_country_id!==ben().
-citizenship?` <span class="mesaj-ulke" title="${esc(ulkeAdi(m.author_country_id))}">${esc(ulkeAdi(m.author_country_id))}</span>`:"",mesajHtml=(m,{ulke=!1}={})=>{const benim=m.author_id===ben().id;return`\
-<div class="mesaj ${benim?"benim":""}" data-mesaj="${m.message_id}">
+return}s&&SEKMELER.some(([id])=>id===s)&&(sekme=s),acik=!0,secili=null,kalabalikGuncelle(),$("#konusma").hidden=!1,$(".konusma-perde").hidden=!1;for(const d of[$("#konusma-dugme"),$("#ust-sohbet")])d?.
+setAttribute("aria-expanded","true");document.body.classList.add("konusma-acik");try{sessionStorage.setItem("civora.konusma",sekme)}catch{}sekmeleriCiz(),$("#konusma [data-ks][aria-selected='true']")?.
+focus({preventScroll:!0}),konusma?konusmaAc("dm",konusma):elcilik?konusmaAc("elcilik",elcilik):grup?konusmaAc("grup",grup):sekmeYukle(sekme),ozetYukle().catch(()=>{})}function kapat(){if(acik){acik=!1,
+secili=null,$("#konusma").hidden=!0,$(".konusma-perde").hidden=!0;for(const d of[$("#konusma-dugme"),$("#ust-sohbet")])d?.setAttribute("aria-expanded","false");document.body.classList.remove("konusma-\
+acik"),[$("#konusma-dugme"),$("#ust-sohbet")].find(d=>d&&d.getClientRects().length)?.focus(),kalabalikGuncelle()}}function degistir(s){sekme=s,secili=null;try{sessionStorage.setItem("civora.konusma",s)}catch{}
+sekmeleriCiz(),sekmeYukle(s)}function sekmeleriCiz(){for(const b of $$("#konusma [data-ks]"))b.setAttribute("aria-selected",String(b.dataset.ks===sekme));rozet()}async function sekmeYukle(s){const benim=++yukleniyor,
+govde=$("#konusma-govde");if(!govde)return;(s==="ozel"?konusmalar:liste[s])?ciz():govde.innerHTML=`<p class="bos">${\u00E7("Y\xFCkleniyor\u2026")}</p>`;try{const kural=await Durum.kurallar().catch(()=>null);
+if(kural?.data?.social?.chat&&(ck=kural.data.social.chat),s==="burasi"){const h=await Sunucu.cagir("place_chat_history",{p_limit:60});yer={place_id:h.place_id,on_road:h.on_road,present:h.present,country_id:h.
+country_id,home:h.home??null,venue:h.venue??null},liste.burasi=h.messages}else if(s==="ulke")liste.ulke=(await Sunucu.cagir("chat_history",{p_limit:60})).messages;else if(s==="yeni")if(yeniAcik()){const h=await Sunucu.
+cagir("newcomers_history",{p_limit:60});liste.yeni=h.messages,yeniBilgi={guides:Number(h.guides??0)}}else liste.yeni=[];else s==="parti"?liste.parti=genel?.party?(await Sunucu.cagir("party_chat_histor\
+y",{p_limit:60})).messages:[]:s==="birlik"?liste.birlik=genel?.unit?(await Sunucu.cagir("unit_chat_history",{p_limit:60})).messages:[]:s==="grup"?liste.grup=genel?.band?(await Sunucu.cagir("band_chat_\
+history",{p_limit:60})).messages:[]:[konusmalar,gruplar]=await Promise.all([Sunucu.cagir("dm_threads"),Sunucu.cagir("groups").catch(e=>e.kod==="API_MISSING"||e.kod==="RULE_NOT_ACTIVE"?null:Promise.reject(
+e))])}catch(e){if(benim!==yukleniyor||sekme!==s)return;if(e.kod==="NOT_IN_PARTY")liste.parti=[],genel&&(genel.party=null);else if(e.kod==="NEWCOMERS_CLOSED")liste.yeni=[],genel&&(genel.newcomers={eligible:!1,
+unread:0});else if(e.kod==="NOT_IN_UNIT")liste.birlik=[],genel&&(genel.unit=null);else if(e.kod==="NOT_IN_BAND")liste.grup=[],genel&&(genel.band=null);else{govde.innerHTML=`<div class="hata-kutusu">${ikon(
+"circle-alert")}<span>${esc(hataMetni(e))}</span></div>`;return}}if(!(benim!==yukleniyor||sekme!==s||secili||!acik)&&(ciz(),s!=="ozel"&&gorunur())){const u=sonId(liste[s]);u&&!(s==="burasi"&&!yer?.place_id)&&
+okundu(TUR[s],null,u)}}const ulkeEtiketi=m=>m.author_country_id&&m.author_country_id!==ben().citizenship?` <span class="mesaj-ulke" title="${esc(ulkeAdi(m.author_country_id))}">${esc(ulkeAdi(m.author_country_id))}\
+</span>`:"",mesajHtml=(m,{ulke=!1}={})=>{const benim=m.author_id===ben().id;return`<div class="mesaj ${benim?"benim":""}" data-mesaj="${m.message_id}">
       <span class="mesaj-ust"><button class="baglanti" type="button" data-profil="${esc(m.author_id)}">${esc(m.author_name)}</button>${m.guide?` <span class="cip yesil mesaj-rehber">${ikon("hand-helpi\
 ng")}${\u00E7("Rehber")}</span>`:""}${ulke?ulkeEtiketi(m):""} \xB7 ${esc(zamanOnce(m.at))}${benim?"":` <button class="mesaj-rapor" type="button" data-rapor="${m.message_id}|${esc(m.author_id)}" aria-l\
 abel="${\u00E7("Raporla")}" title="${\u00E7("Raporla")}">${ikon("circle-alert")}</button>`}</span>
@@ -4930,10 +4964,10 @@ document.visibilityState!=="visible"||!calisiyor||ozetYukle().then(()=>{acik&&!s
 try{f()}catch{}dinleyiciler=[],birakYer?.(),birakParti?.(),birakBirlik?.(),birakGrup?.(),kalabalikGuncelle();for(const b of grupKanallari.values())b();grupKanallari.clear(),gruplar=null,birakYer=birakParti=
 kanalYer=kanalParti=birakBirlik=kanalBirlik=birakGrup=kanalGrup=null,genel=null,yer=null,konusmalar=null,secili=null,liste.burasi=liste.ulke=liste.yeni=liste.parti=liste.birlik=liste.grup=null,yeniBilgi=
 null;for(const t of isaretBekleyen.values())clearTimeout(t);isaretBekleyen.clear(),document.removeEventListener("visibilitychange",gorunurlukDegisti),document.removeEventListener("keydown",tus);for(const el of $$(
-"#konusma-dugme, #konusma, .konusma-perde"))el.remove();document.body.classList.remove("konusma-acik")}async function yerYenile(){calisiyor&&(await ozetYukle().catch(()=>{}),acik&&sekme==="burasi"&&!secili&&
-sekmeYukle("burasi"))}async function grupKur(secilenler=[]){let a;try{a=await Sunucu.cagir("friends")}catch(e){tost(hataMetni(e),"circle-alert");return}const kural=Durum.v.kurallar?.data?.social?.groups??
-{nameMin:3,nameMax:40,maxMembers:12},ark=a.friends??[];pencereForm({ust:\u00E7("Sohbet"),baslik:\u00E7("Yeni sohbet grubu"),onayAd:\u00E7("Grubu kur"),onayIkon:"users-round",govde:`<p class="aciklama"\
->${\u00E7("Arkada\u015Flar\u0131ndan en \xE7ok {n} ki\u015Fiyi \xE7a\u011F\u0131r; davetler kabul edilince gruba kat\u0131l\u0131rlar.",{n:Number(kural.maxMembers)-1})}</p>
+"#konusma-dugme, #ust-sohbet, #konusma, .konusma-perde"))el.remove();document.body.classList.remove("konusma-acik")}async function yerYenile(){calisiyor&&(await ozetYukle().catch(()=>{}),acik&&sekme===
+"burasi"&&!secili&&sekmeYukle("burasi"))}async function grupKur(secilenler=[]){let a;try{a=await Sunucu.cagir("friends")}catch(e){tost(hataMetni(e),"circle-alert");return}const kural=Durum.v.kurallar?.
+data?.social?.groups??{nameMin:3,nameMax:40,maxMembers:12},ark=a.friends??[];pencereForm({ust:\u00E7("Sohbet"),baslik:\u00E7("Yeni sohbet grubu"),onayAd:\u00E7("Grubu kur"),onayIkon:"users-round",govde:`\
+<p class="aciklama">${\u00E7("Arkada\u015Flar\u0131ndan en \xE7ok {n} ki\u015Fiyi \xE7a\u011F\u0131r; davetler kabul edilince gruba kat\u0131l\u0131rlar.",{n:Number(kural.maxMembers)-1})}</p>
         <label class="alan"><span>${\u00E7("Grubun ad\u0131")}</span><input name="ad" minlength="${Number(kural.nameMin)}" maxlength="${Number(kural.nameMax)}" required autocomplete="off" placeholder=\
 "${\u00E7("\xD6rn. Hafta sonu ekibi")}"></label>
         <p class="ust-yazi">${\u00E7("Arkada\u015Flar\u0131n")}</p>
@@ -4983,7 +5017,7 @@ ozel",{konusma:id}),grupAc:id=>ac("ozel",{grup:id}),grupKur,get acik(){return ac
 MEYDAN_OYUNCU=40,MEYDAN_FIGUR_OLCEK=.7,MEYDAN_ALAN={minX:-20,maxX:20,minZ:-15,maxZ:15},MEYDAN_DOSEME={minX:-21.2,maxX:21.2,minZ:-15.6,maxZ:15.8},MEYDAN_ON=18,meydanAlani=w=>w?.area?{minX:w.area.minX/100,
 maxX:w.area.maxX/100,minZ:w.area.minZ/100,maxZ:w.area.maxZ/100}:MEYDAN_ALAN,MEYDAN_KAPI_YER={atolye:{x:-2e3,z:-700},carsi:{x:2e3,z:300},meclis:{x:0,z:-1500},egitim:{x:-2e3,z:300},ev:{x:-2e3,z:1100},sahne:{
 x:2e3,z:-700},studyo:{x:2e3,z:1100},mekan:{x:-1300,z:-1500},saglik:{x:2e3,z:-1300},odalar:{x:-2e3,z:-1300}},MEYDAN_YER={sahne:{x:0,z:-11,yx:5.2,yz:1.5,yuk:.6},havuz:{x:0,z:0,r:4},cay:{x0:8.6,x1:17.4,z0:5.6,
-z1:12.4},pano:{x:-12.5,z:4.2,en:4.8},kursu:{x:-12.5,z:9.6,yx:1.6,yz:.9,yuk:.9,ust:[-12.5,9.45],dip:[-12.5,11.2]},bufe:{x:-6.2,z:12.6},tellal:{x:-3,z:6.4},hatira:{x:18.2,z:13.4},gundem:{x:15,z:-16.1,en:7.4,
+z1:12.4},pano:{x:-12.5,z:4.2,en:4.8},kursu:{x:-12.5,z:9.6,yx:1.6,yz:.9,yuk:.9,ust:[-12.5,9.45],dip:[-12.5,11.2]},bufe:{x:-17.2,z:-4.6},tellal:{x:-3,z:6.4},hatira:{x:18.2,z:13.4},gundem:{x:15,z:-16.1,en:7.4,
 boy:3.9,alt:2.6},kayitlar:{x:-8.4,z:-15.25},devekran:{x:8.4,z:-15.25},agac:[[-10.5,-5.2],[10.5,-5.2],[-6.8,5],[6.4,3.9]],fener:[[-15.2,-12.8],[15.2,-12.8],[-17.6,-2],[17.6,-2],[-17.6,7.2],[-8.6,14.4],
 [8.6,14.4]]},MEYDAN_MASA_X=[10.4,11.8,13.2,14.6,16],MEYDAN_MASA_Z=[7.3,10.7],MEYDAN_MASA=MEYDAN_MASA_Z.flatMap(z=>MEYDAN_MASA_X.map(x=>[x,z])),MEYDAN_SANDALYE_ARA=.72,MEYDAN_SANDALYE=MEYDAN_MASA.flatMap(
 ([x,z],masa)=>[{masa,x,z:z-MEYDAN_SANDALYE_ARA,yon:0},{masa,x,z:z+MEYDAN_SANDALYE_ARA,yon:Math.PI}]),MEYDAN_CAY_KORIDOR=9,MEYDAN_CAY_KAPI={dis:[MEYDAN_YER.cay.x0-.5,MEYDAN_CAY_KORIDOR],ic:[MEYDAN_YER.
@@ -5085,22 +5119,22 @@ s.sebep).toLocaleLowerCase(DIL.yerel),imza:sayi(s.imza),esik:sayi(s.esik)})];cas
 asama]??""})];default:return[ikon("drama"),\u00E7("Sahne bo\u015F; bayraklar dalgalan\u0131yor.")]}}const M2B={x0:230,y0:210,k:10},m2x=x=>M2B.x0+x*M2B.k,m2y=z=>M2B.y0+z*M2B.k,meydan2bYer=(xcm,zcm)=>[m2x(
 xcm/100),m2y(zcm/100)];function meydan2b(d){const g=Math.round((d.gece??0)*20)/20,cimen=((a,b,t)=>"#"+[0,2,4].map(i=>Math.round(parseInt(a.slice(1+i,3+i),16)*(1-t)+parseInt(b.slice(1+i,3+i),16)*t).toString(
 16).padStart(2,"0")).join(""))("#9DB97E","#1E2A26",g*.7),renk=d.ulke?ulkeRenk(d.ulke):"#87938C",S=meydanSeviye(d.seviye),s=d.sahne,Y=MEYDAN_YER,dikd=(x0,z0,x1,z1,sinif,ek2="")=>`<rect x="${m2x(x0).toFixed(
-1)}" y="${m2y(z0).toFixed(1)}" width="${((x1-x0)*M2B.k).toFixed(1)}" height="${((z1-z0)*M2B.k).toFixed(1)}" class="${sinif}" ${ek2}/>`,yazi=(x,z,t,sinif="meydan2b-yazi",ek2="")=>`<text x="${m2x(x).toFixed(
-1)}" y="${m2y(z).toFixed(1)}" class="${sinif}" ${ek2}>${esc(t)}</text>`,kisi=(x,z,giysi,ten="#E0B089",ek2="")=>`<g class="meydan2b-kisi" transform="translate(${m2x(x).toFixed(1)} ${m2y(z).toFixed(1)})\
-">${ek2}<rect x="-2.6" y="-6" width="5.2" height="6" rx="1.6" fill="${giysi}"/><circle cx="0" cy="-8" r="2.4" fill="${ten}"/></g>`,binalar=[[-22,-26,-10.6,-16.4],[10.6,-26,22,-16.4],[21.4,-16.4,33,-.8],
-[21.4,5.6,33,15.6],[-33,-16.4,-21.4,-1.4],[-33,13.2,-21.4,16.2],[-33,7.6,-21.4,9.4]].map(([a,b,c,e],i)=>dikd(a,b,c,e,"meydan2b-bina c"+i%5)).join(""),meclis=dikd(-9.5,-26,9.5,-18.2,"meydan2b-meclis")+
-dikd(-6.5,-18.2,6.5,-15.2,"meydan2b-merdiven")+Array.from({length:8},(_,i)=>`<circle cx="${m2x(-7.7+i*2.2).toFixed(1)}" cy="${m2y(-18.6).toFixed(1)}" r="3" class="meydan2b-sutun"/>`).join("")+(S.kule?
-`<rect x="${m2x(-17.8)}" y="${m2y(-22.5)}" width="30" height="30" class="meydan2b-kule"/>`:""),doseme=dikd(MEYDAN_DOSEME.minX,MEYDAN_DOSEME.minZ,MEYDAN_DOSEME.maxX,MEYDAN_DOSEME.maxZ,S.tas?"meydan2b-z\
-emin":"meydan2b-zemin toprak"),sz=Y.sahne.z;let sahneEk="";s.tur==="devlet"&&(sahneEk=`<rect x="${m2x(-1.6)}" y="${m2y(sz-3)}" width="32" height="18" rx="2" fill="${s.ulke?ulkeRenk(s.ulke):renk}" clas\
-s="meydan2b-bayrak"/><rect x="${m2x(-1.6)}" y="${m2y(sz-3)+7}" width="32" height="4" class="meydan2b-serit"/>`),s.tur==="yemin"&&(sahneEk=kisi(-1.2,sz+.4,"#1F2A44","#E0B089",`<line x1="-2" y1="-6" x2=\
-"2" y2="-1" class="meydan2b-kusak" stroke="${renk}"/>`)+kisi(-3,sz-.2,"#3A3F45")+kisi(3,sz-.2,"#3A3F45")),s.tur==="sonuc"&&(sahneEk=(s.baskan?`<rect x="${m2x(-3)}" y="${m2y(sz-.8)}" width="14" height=\
-"16" fill="${renk}" class="meydan2b-afis"><title>${esc(s.baskan)}</title></rect>`:"")+(s.koltuk?`<rect x="${m2x(1.6)}" y="${m2y(sz-.8)}" width="14" height="16" fill="#3D5A80" class="meydan2b-afis"><ti\
-tle>${esc(\u00E7("Meclis: {n}",{n:s.koltuk}))}</title></rect>`:""));const afisler=s.tur==="afis"?(s.adaylar??[]).slice(0,MEYDAN_AFIS).map((a,i)=>{const x=[-9.6,-8.4,-7.2,7.2,8.4,9.6][i];return`<rect x\
-="${(m2x(x)-5).toFixed(1)}" y="${m2y(-12.6)}" width="10" height="13" rx="1" fill="${a.renk}" class="meydan2b-afis"><title>${esc(a.ad)}</title></rect>`}).join(""):"",mn=s.tur==="hareket"?meydanMiting(s.
-imza,s.esik,18):0;let miting="";for(let i=0;i<mn;i++){const sira=i<6?0:i<13?1:2,k=i<6?i:i<13?i-6:i-13,adet=[6,7,5][sira],x=(k/Math.max(1,adet-1)-.5)*(6+sira*2.6),z=sz+2.8+sira*1.3;miting+=kisi(x,z,KALABALIK_GIYSI[i%
-KALABALIK_GIYSI.length],KALABALIK_TEN[i%KALABALIK_TEN.length]),i%3===0&&(miting+=`<rect x="${(m2x(x)+2).toFixed(1)}" y="${(m2y(z)-16).toFixed(1)}" width="9" height="6" rx="1" fill="${MITING_SEBEP_RENK[s.
-sebep]??MITING_SEBEP_RENK.other}" class="meydan2b-pankart"/>`)}const sahne=`<g data-meydan-git="sahne" class="meydan2b-tik">${dikd(-Y.sahne.yx,sz-Y.sahne.yz,Y.sahne.yx,sz+Y.sahne.yz,"meydan2b-kursu")}\
-
+1)}" y="${m2y(z0).toFixed(1)}" width="${((x1-x0)*M2B.k).toFixed(1)}" height="${((z1-z0)*M2B.k).toFixed(1)}" class="${sinif}" ${ek2}/>`,yazi=(x,z,t,sinif="meydan2b-yazi",ek2="",kisa=null)=>`<text x="${m2x(
+x).toFixed(1)}" y="${m2y(z).toFixed(1)}" class="${sinif}"${kisa?` data-kisa="${esc(kisa)}"`:""} ${ek2}>${esc(t)}</text>`,kisi=(x,z,giysi,ten="#E0B089",ek2="")=>`<g class="meydan2b-kisi" transform="tra\
+nslate(${m2x(x).toFixed(1)} ${m2y(z).toFixed(1)})">${ek2}<rect x="-2.6" y="-6" width="5.2" height="6" rx="1.6" fill="${giysi}"/><circle cx="0" cy="-8" r="2.4" fill="${ten}"/></g>`,binalar=[[-22,-26,-10.6,
+-16.4],[10.6,-26,22,-16.4],[21.4,-16.4,33,-.8],[21.4,5.6,33,15.6],[-33,-16.4,-21.4,-1.4],[-33,13.2,-21.4,16.2],[-33,7.6,-21.4,9.4]].map(([a,b,c,e],i)=>dikd(a,b,c,e,"meydan2b-bina c"+i%5)).join(""),meclis=dikd(
+-9.5,-26,9.5,-18.2,"meydan2b-meclis")+dikd(-6.5,-18.2,6.5,-15.2,"meydan2b-merdiven")+Array.from({length:8},(_,i)=>`<circle cx="${m2x(-7.7+i*2.2).toFixed(1)}" cy="${m2y(-18.6).toFixed(1)}" r="3" class=\
+"meydan2b-sutun"/>`).join("")+(S.kule?`<rect x="${m2x(-17.8)}" y="${m2y(-22.5)}" width="30" height="30" class="meydan2b-kule"/>`:""),doseme=dikd(MEYDAN_DOSEME.minX,MEYDAN_DOSEME.minZ,MEYDAN_DOSEME.maxX,
+MEYDAN_DOSEME.maxZ,S.tas?"meydan2b-zemin":"meydan2b-zemin toprak"),sz=Y.sahne.z;let sahneEk="";s.tur==="devlet"&&(sahneEk=`<rect x="${m2x(-1.6)}" y="${m2y(sz-3)}" width="32" height="18" rx="2" fill="${s.
+ulke?ulkeRenk(s.ulke):renk}" class="meydan2b-bayrak"/><rect x="${m2x(-1.6)}" y="${m2y(sz-3)+7}" width="32" height="4" class="meydan2b-serit"/>`),s.tur==="yemin"&&(sahneEk=kisi(-1.2,sz+.4,"#1F2A44","#E\
+0B089",`<line x1="-2" y1="-6" x2="2" y2="-1" class="meydan2b-kusak" stroke="${renk}"/>`)+kisi(-3,sz-.2,"#3A3F45")+kisi(3,sz-.2,"#3A3F45")),s.tur==="sonuc"&&(sahneEk=(s.baskan?`<rect x="${m2x(-3)}" y="${m2y(
+sz-.8)}" width="14" height="16" fill="${renk}" class="meydan2b-afis"><title>${esc(s.baskan)}</title></rect>`:"")+(s.koltuk?`<rect x="${m2x(1.6)}" y="${m2y(sz-.8)}" width="14" height="16" fill="#3D5A80\
+" class="meydan2b-afis"><title>${esc(\u00E7("Meclis: {n}",{n:s.koltuk}))}</title></rect>`:""));const afisler=s.tur==="afis"?(s.adaylar??[]).slice(0,MEYDAN_AFIS).map((a,i)=>{const x=[-9.6,-8.4,-7.2,7.2,
+8.4,9.6][i];return`<rect x="${(m2x(x)-5).toFixed(1)}" y="${m2y(-12.6)}" width="10" height="13" rx="1" fill="${a.renk}" class="meydan2b-afis"><title>${esc(a.ad)}</title></rect>`}).join(""):"",mn=s.tur===
+"hareket"?meydanMiting(s.imza,s.esik,18):0;let miting="";for(let i=0;i<mn;i++){const sira=i<6?0:i<13?1:2,k=i<6?i:i<13?i-6:i-13,adet=[6,7,5][sira],x=(k/Math.max(1,adet-1)-.5)*(6+sira*2.6),z=sz+2.8+sira*
+1.3;miting+=kisi(x,z,KALABALIK_GIYSI[i%KALABALIK_GIYSI.length],KALABALIK_TEN[i%KALABALIK_TEN.length]),i%3===0&&(miting+=`<rect x="${(m2x(x)+2).toFixed(1)}" y="${(m2y(z)-16).toFixed(1)}" width="9" heig\
+ht="6" rx="1" fill="${MITING_SEBEP_RENK[s.sebep]??MITING_SEBEP_RENK.other}" class="meydan2b-pankart"/>`)}const sahne=`<g data-meydan-git="sahne" class="meydan2b-tik">${dikd(-Y.sahne.yx,sz-Y.sahne.yz,Y.
+sahne.yx,sz+Y.sahne.yz,"meydan2b-kursu")}
       ${dikd(-4.8,sz-1.5,4.8,sz-1,"meydan2b-perde",`fill="${renk}"`)}
       <circle cx="${m2x(-6.2)}" cy="${m2y(sz-.6)}" r="2.6" fill="${renk}" class="meydan2b-bayrak"/><circle cx="${m2x(6.2)}" cy="${m2y(sz-.6)}" r="2.6" fill="${renk}" class="meydan2b-bayrak"/>
       ${sahneEk}</g>`,im=d.imza??null,imzaKalan=im?Math.max(0,im.tavan-im.alinan):0,imzaEsya=im&&im.durum==="live"?Math.min(6,Math.ceil(imzaKalan/Math.max(1,im.tavan/6))):0,imza=im?`<g data-meydan-git\
@@ -5122,7 +5156,7 @@ fz+dz*.6)}" class="meydan2b-etk-ip"/>
 vekran" class="meydan2b-tik meydan2b-devekran${dv.canli?" canli":dv.video?" video":""}">
       ${dikd(E.x-2.2,E.z-.32,E.x+2.2,E.z+.32,"meydan2b-ekran")}
       ${dv.canli?`<circle cx="${m2x(E.x-1.7)}" cy="${m2y(E.z)}" r="1.6" class="meydan2b-canli-nokta"/>`:""}
-      ${yazi(E.x,E.z-1.3,dv.canli?\u00E7("CANLI"):\u00E7("Dev ekran"),"meydan2b-yazi beyaz")}
+      ${yazi(E.x,E.z-1.3,dv.canli?\u00E7("CANLI"):\u00E7("Dev ekran"),"meydan2b-yazi beyaz","",dv.canli?null:\u00E7("Ekran"))}
       <title>${esc(devEkranMetni(dv))}</title></g>`,havuz=`<circle cx="${m2x(0)}" cy="${m2y(0)}" r="${(Y.havuz.r+2.4)*M2B.k}" class="meydan2b-halka"/><circle cx="${m2x(0)}" cy="${m2y(0)}" r="${Y.havuz.
 r*M2B.k}" class="meydan2b-havuz"/>
     <circle cx="${m2x(0)}" cy="${m2y(0)}" r="${(Y.havuz.r-.35)*M2B.k}" class="meydan2b-su"/><circle cx="${m2x(0)}" cy="${m2y(0)}" r="${S.havuzKat>=2?15:10}" class="meydan2b-havuz"/>`,agaclar=Y.agac.slice(
@@ -5135,27 +5169,28 @@ z+.25,"meydan2b-ekran")}
 -satir${i===0?" ilk":""}"/>`).join("")}</g>`,P=Y.pano,kagitlar=Array.from({length:Math.min(MEYDAN_KAGIT,d.pano)},(_,i)=>`<rect x="${(m2x(P.x-P.en/2)+2+i%6*7.6).toFixed(1)}" y="${(m2y(P.z)-5+Math.floor(
 i/6)*4.5).toFixed(1)}" width="6" height="4" class="meydan2b-kagit"/>`).join(""),pano=`<g data-meydan-git="pano" class="meydan2b-tik">${dikd(P.x-P.en/2,P.z-.55,P.x+P.en/2,P.z+.35,"meydan2b-pano")}${kagitlar}\
 
-      ${yazi(P.x,P.z+1.6,\u00E7("\u015Eehrin panosu"))}</g>`,K=Y.kursu,kursu=`<g data-meydan-git="kursu" class="meydan2b-tik meydan2b-kursu-yer${d.kursuVar?" dolu":""}">${dikd(K.x-K.yx,K.z-K.yz,K.x+K.
-yx,K.z+K.yz,"meydan2b-kursu-taban")}
-      ${dikd(K.x-.5,K.z-.6,K.x+.5,K.z-.1,"meydan2b-kursu-masa")}${yazi(K.x,K.z+2.6,\u00E7("Hatip k\xFCrs\xFCs\xFC"))}</g>`,bufe=`<g data-meydan-git="bufe" class="meydan2b-tik">${dikd(Y.bufe.x-1.2,Y.bufe.
-z-.8,Y.bufe.x+1.2,Y.bufe.z+.8,"meydan2b-bufe")}
-      ${yazi(Y.bufe.x,Y.bufe.z+2.2,\u00E7("Gazete b\xFCfesi"))}</g>`,tellal=`<g data-meydan-git="tellal" class="meydan2b-tik meydan2b-tellal${d.tellal?" var":""}">${kisi(Y.tellal.x,Y.tellal.z,"#7A2E2E",
-"#E0B089",'<rect x="-3" y="-12" width="6" height="2.4" fill="#7A2E2E"/>')}
+      ${yazi(P.x,P.z+1.6,\u00E7("\u015Eehrin panosu"),void 0,"",\u00E7("Pano"))}</g>`,K=Y.kursu,kursu=`<g data-meydan-git="kursu" class="meydan2b-tik meydan2b-kursu-yer${d.kursuVar?" dolu":""}">${dikd(
+K.x-K.yx,K.z-K.yz,K.x+K.yx,K.z+K.yz,"meydan2b-kursu-taban")}
+      ${dikd(K.x-.5,K.z-.6,K.x+.5,K.z-.1,"meydan2b-kursu-masa")}${yazi(K.x,K.z+2.6,\u00E7("Hatip k\xFCrs\xFCs\xFC"),void 0,"",\u00E7("K\xFCrs\xFC"))}</g>`,bufe=`<g data-meydan-git="bufe" class="meydan\
+2b-tik">${dikd(Y.bufe.x-1.2,Y.bufe.z-.8,Y.bufe.x+1.2,Y.bufe.z+.8,"meydan2b-bufe")}
+      ${yazi(Y.bufe.x,Y.bufe.z+2.2,\u00E7("Gazete b\xFCfesi"),void 0,"",\u00E7("B\xFCfe"))}</g>`,tellal=`<g data-meydan-git="tellal" class="meydan2b-tik meydan2b-tellal${d.tellal?" var":""}">${kisi(Y.
+tellal.x,Y.tellal.z,"#7A2E2E","#E0B089",'<rect x="-3" y="-12" width="6" height="2.4" fill="#7A2E2E"/>')}
       <path d="M${m2x(Y.tellal.x)+4} ${m2y(Y.tellal.z)-6} l2.5 -4 l2.5 4 Z" class="meydan2b-can"/>
       ${d.tellal?`<path d="M${m2x(Y.tellal.x)+4} ${m2y(Y.tellal.z)-26} h20 a3 3 0 0 1 3 3 v7 a3 3 0 0 1 -3 3 h-13 l-5 4 v-4 h-2 a3 3 0 0 1 -3 -3 v-7 a3 3 0 0 1 3 -3 Z" class="meydan2b-balon tellal"/>`:
 ""}</g>`,C=Y.cay,masalar=MEYDAN_MASA.map(([x,z])=>{const mx=m2x(x),my=m2y(z);return`<circle cx="${mx}" cy="${my}" r="4.6" class="meydan2b-masa"/>${[-1,1].map(s2=>`<rect x="${(m2x(x)-2.6).toFixed(1)}" \
 y="${(m2y(z+s2*MEYDAN_SANDALYE_ARA)-2).toFixed(1)}" width="5.2" height="4" rx="1" class="meydan2b-sandalye"/>`).join("")}`}).join(""),kapi=`<rect x="${(m2x(C.x0)-1.5).toFixed(1)}" y="${(m2y(MEYDAN_CAY_KORIDOR)-
 7).toFixed(1)}" width="3" height="14" class="meydan2b-cay-kapi"/>`,cay=`<g data-meydan-git="cay" class="meydan2b-tik">${dikd(C.x0,C.z0,C.x1,C.z1,"meydan2b-cay")}${masalar}${kapi}${yazi((C.x0+C.x1)/2,C.
-z1+1.4,\u00E7("\xC7ay bah\xE7esi"))}</g>`,fotolar=Array.from({length:Math.min(MEYDAN_FOTO,d.foto)},(_,i)=>`<rect x="${(m2x(Y.hatira.x)-8+i%3*5.6).toFixed(1)}" y="${(m2y(Y.hatira.z)-6+Math.floor(i/3)*4).
-toFixed(1)}" width="4.6" height="3.2" class="meydan2b-foto${i<d.cevrimici?" parlak":""}"/>`).join(""),hatira=`<g data-meydan-git="hatira" class="meydan2b-tik">${dikd(Y.hatira.x-1.1,Y.hatira.z-.8,Y.hatira.
-x+1.1,Y.hatira.z+.8,"meydan2b-cerceve")}${fotolar}</g>`,kusN=d.kus&&d.kus.yanki>=3?Math.min(MEYDAN_KUS,Math.floor(d.kus.yanki/3)):0,kuslar=kusN?`<g data-meydan-git="kus" class="meydan2b-tik meydan2b-k\
-uslar">${Array.from({length:kusN},(_,i)=>{const a=i/kusN*Math.PI*2,x=m2x(P.x+Math.cos(a)*3.2),y=m2y(P.z+1.4+Math.sin(a)*2.2);return`<path d="M${x.toFixed(1)} ${y.toFixed(1)} l-4 -2 l4 4 l4 -4 Z" class\
-="meydan2b-kus"/>`}).join("")}</g>`:"",yaya=Math.max(0,Math.min(MEYDAN_YAYA,d.bulunan)-(d.oyuncuSayi??0)),yayalar=Array.from({length:yaya},(_,i)=>{const x=-15+i*47%300/10,z=-8+i*29%210/10;return kisi(
-x,z,KALABALIK_GIYSI[(i+4)%KALABALIK_GIYSI.length],KALABALIK_TEN[i%KALABALIK_TEN.length])}).join(""),kapiYer=d.kapiYer??MEYDAN_KAPI_YER,kapilar=(d.kapiListe??[]).map(k=>{const n=kapiYer[k.kapi];if(!n)return"";
-const y=meydanKapiYeri(n),gx=m2x(y.kemer[0]),gy=m2y(y.kemer[1]),sx=y.kenar==="bati"?-1:y.kenar==="dogu"?1:0,yaz=sx<0?'x="10" y="3" text-anchor="start"':sx>0?'x="-10" y="3" text-anchor="end"':y.kenar===
-"kuzey"?'y="17"':'y="-11"',ae=Math.max(10,String(k.kisa??"").length*3.4),ye=Math.max(8,ae/2+1),vur=sx<0?`x="-8" y="-9.5" width="${(ae+20).toFixed(1)}" height="19"`:sx>0?`x="${(-ae-12).toFixed(1)}" y="\
--9.5" width="${(ae+20).toFixed(1)}" height="19"`:y.kenar==="kuzey"?`x="${(-ye).toFixed(1)}" y="-9.5" width="${(2*ye).toFixed(1)}" height="29.5"`:`x="${(-ye).toFixed(1)}" y="-18" width="${(2*ye).toFixed(
-1)}" height="26"`;return`<g class="meydan2b-kapi meydan2b-tik${k.kilitli?" kilitli":""}${d.kapiHedef===k.kapi?" yuruyor":""}" data-meydan-git="kapi:${k.kapi}" data-kapi="${k.kapi}"
+z1+1.4,\u00E7("\xC7ay bah\xE7esi"),void 0,"",\u00E7("\xC7ay"))}</g>`,fotolar=Array.from({length:Math.min(MEYDAN_FOTO,d.foto)},(_,i)=>`<rect x="${(m2x(Y.hatira.x)-8+i%3*5.6).toFixed(1)}" y="${(m2y(Y.hatira.
+z)-6+Math.floor(i/3)*4).toFixed(1)}" width="4.6" height="3.2" class="meydan2b-foto${i<d.cevrimici?" parlak":""}"/>`).join(""),hatira=`<g data-meydan-git="hatira" class="meydan2b-tik">${dikd(Y.hatira.x-
+1.1,Y.hatira.z-.8,Y.hatira.x+1.1,Y.hatira.z+.8,"meydan2b-cerceve")}${fotolar}</g>`,kusN=d.kus&&d.kus.yanki>=3?Math.min(MEYDAN_KUS,Math.floor(d.kus.yanki/3)):0,kuslar=kusN?`<g data-meydan-git="kus" cla\
+ss="meydan2b-tik meydan2b-kuslar">${Array.from({length:kusN},(_,i)=>{const a=i/kusN*Math.PI*2,x=m2x(P.x+Math.cos(a)*3.2),y=m2y(P.z+1.4+Math.sin(a)*2.2);return`<path d="M${x.toFixed(1)} ${y.toFixed(1)}\
+ l-4 -2 l4 4 l4 -4 Z" class="meydan2b-kus"/>`}).join("")}</g>`:"",yaya=Math.max(0,Math.min(MEYDAN_YAYA,d.bulunan)-(d.oyuncuSayi??0)),yayalar=Array.from({length:yaya},(_,i)=>{const x=-15+i*47%300/10,z=-8+
+i*29%210/10;return kisi(x,z,KALABALIK_GIYSI[(i+4)%KALABALIK_GIYSI.length],KALABALIK_TEN[i%KALABALIK_TEN.length])}).join(""),kapiYer=d.kapiYer??MEYDAN_KAPI_YER,kapilar=(d.kapiListe??[]).map(k=>{const n=kapiYer[k.
+kapi];if(!n)return"";const y=meydanKapiYeri(n),gx=m2x(y.kemer[0]),gy=m2y(y.kemer[1]),sx=y.kenar==="bati"?-1:y.kenar==="dogu"?1:0,yaz=sx<0?'x="10" y="0" text-anchor="start" dominant-baseline="central"':
+sx>0?'x="-10" y="0" text-anchor="end" dominant-baseline="central"':y.kenar==="kuzey"?'y="10" dominant-baseline="hanging"':'y="-11"',ae=Math.max(10,String(k.kisa??"").length*3.4),ye=Math.max(8,ae/2+1),
+vur=sx<0?`x="-8" y="-9.5" width="${(ae+20).toFixed(1)}" height="19"`:sx>0?`x="${(-ae-12).toFixed(1)}" y="-9.5" width="${(ae+20).toFixed(1)}" height="19"`:y.kenar==="kuzey"?`x="${(-ye).toFixed(1)}" y="\
+-9.5" width="${(2*ye).toFixed(1)}" height="29.5"`:`x="${(-ye).toFixed(1)}" y="-18" width="${(2*ye).toFixed(1)}" height="26"`;return`<g class="meydan2b-kapi meydan2b-tik${k.kilitli?" kilitli":""}${d.kapiHedef===
+k.kapi?" yuruyor":""}" data-meydan-git="kapi:${k.kapi}" data-kapi="${k.kapi}"
         transform="translate(${gx.toFixed(1)} ${gy.toFixed(1)})"><rect ${vur} class="meydan2b-vur"/><path d="M-7 8 V-1.5 a7 7 0 0 1 14 0 V8 Z" fill="${k.renk}" class="meydan2b-kapi-kemer"/>
       <g transform="translate(-4.8 -3.6) scale(0.4)" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${IKON[k.kilitli?"lock":k.ik]??""}</g>
       <text ${yaz} class="meydan2b-kapi-ad">${esc(k.kisa)}</text><title>${esc(k.ad+" \xB7 "+k.uzun)}</title></g>`}).join(""),tn=d.havaGuclu?96:60,hava=d.hava==="yagmur"?Array.from({length:tn},(_,i)=>`\
@@ -8017,20 +8052,30 @@ band:{ad:\u00E7("M\xFCzik grubu"),ik:"eighth-notes",ne:\u00E7("Grup kurmak, best
  \xFCcretini ve g\xFCnl\xFCk erzak tay\u0131n\u0131n\u0131 kazan."),ik:"briefcase-business",git:"sehir/is"},market:{ad:\u00E7("Pazardan bir \u015Fey al"),ne:\u00E7("\u015Eehrim \u2192 Pazar: bir ilandan al; ila\
 n yoksa \xC7al\u0131\u015F b\xF6l\xFCm\xFCndeki devlet erzak deposunu kullan."),ik:"store",git:"sehir/pazar"},country:{ad:\u00E7("\xDClkeni tan\u0131"),ne:\u00E7("Vatanda\u015Fl\u0131k \xF6\u011Freticisi: ba\u015Fkan, mecli\
 s, partiler; birka\xE7 dakika s\xFCrer, oy i\xE7in \u015Fart."),ik:"vote",is:()=>vatandaslikOgreticisi()},drill:{ad:\u00E7("Tatbikatta ilk vuru\u015Funu yap"),ne:\u00E7("\xDClkem \u2192 Cephe: bota kar\u015F\u0131 k\u0131sa\
- tatbikat; bir \u015Fey kaybetmezsin, sava\u015F\u0131 a\xE7ar."),ik:"target",git:"ulke/cephe"}},ROL={soldier:{ad:\u00E7("Asker"),ik:"shield",ne:\u00E7("Cephe, birlik, r\xFCtbe: \xFClkeni savun.")},business:{
-ad:\u00E7("\u0130\u015F insan\u0131"),ik:"factory",ne:\u00E7("\u0130\u015Fletme, pazar, sevkiyat: para kazan.")},politician:{ad:\u00E7("Siyaset\xE7i"),ik:"landmark",ne:\u00E7("Parti, meclis, se\xE7im: \xFCl\
-keyi y\xF6net.")},artist:{ad:\u00E7("Sanat\xE7\u0131"),ik:"eighth-notes",ne:\u00E7("M\xFCzik, konser, medya: sahneye \xE7\u0131k.")},shadow:{ad:\u00E7("G\xF6lge"),ik:"eye-off",ne:\u00E7("Ka\xE7ak\xE7\u0131l\u0131k, k\
-ara borsa, vurgun: risk al.")}},ONERI={first_day:x=>({ad:\u00E7("\u0130lk g\xFCn yolu: {adim}",{adim:ADIM[x.step]?.ad??""}),ik:"route",git:"hayat/profil",is:()=>adimaGit(x.step)}),war:()=>({ad:\u00E7(
-"Enerjin dolu ve \xFClkenin sava\u015F\u0131 var: cepheye git"),ik:"swords",git:"ulke/cephe"}),vote:()=>({ad:\u00E7("\xDClkende oylama a\xE7\u0131k: oyunu ver"),ik:"vote",git:"ulke/secim"}),job:()=>({
-ad:\u00E7("S\xFCren i\u015Fin yok: bir i\u015F al"),ik:"briefcase-business",git:"sehir/is"}),mission:x=>({ad:\u00E7("G\xFCn\xFCn g\xF6revi: {ad}",{ad:\u00E7v(x.title??"")}),ik:"list-checks",git:"hayat\
-/gorevler"}),train:()=>({ad:\u00E7("S\xFCren e\u011Fitimin yok: bir beceri \xE7al\u0131\u015F"),ik:"graduation-cap",git:"hayat/egitim"})},IPUCU={"hayat/profil":[\u00E7("Buras\u0131 senin sayfan: kasan, \xE7an\
-tan, asker kart\u0131n ve g\xFCn\xFCn \xF6nerileri. Sol \xFCstteki kart sana ne yapaca\u011F\u0131n\u0131 s\xF6yler."),\u00E7("Her sekmenin \xFCst\xFCndeki soru i\u015Fareti o ekran\u0131n k\u0131sa yard\u0131m\u0131n\u0131 a\xE7ar. G\xFCnl\xFCk\
- g\xF6revler Hayat\u0131m \u2192 G\xF6revler'de; ayarlar ve geri bildirim Hayat\u0131m \u2192 Ayarlar'da.")],"hayat/gorevler":[\u00E7('Her g\xFCn d\xF6rt k\u0131sa g\xF6rev; biten g\xF6revin \xF6d\xFCl\xFCn\xFC "Al" ile toplars\u0131n\
-. Ka\xE7\u0131rman\u0131n cezas\u0131 yok.'),\u00E7("G\xF6revler seni oyunun bir k\xF6\u015Fesine g\xF6t\xFCr\xFCr; se\xE7ti\u011Fin yolun g\xF6revleri \xF6nce gelir. Al\u0131nan her g\xF6rev deneyim verir ve G\xF6rev Madalyas\u0131'n\u0131 sayar.")],
-"hayat/egitim":[\u00E7("E\u011Fitim becerini y\xFCkseltir: bir beceri se\xE7, s\xFCre dolunca kendili\u011Finden biter."),\u00E7("Askerlik vuru\u015F g\xFCc\xFCn\xFC, \xFCretim i\u015Fteki verimi, lojistik sevkiyat\u0131, y\xF6net\
-im i\u015Fletmeyi, m\xFCzik besteyi etkiler. Yorgunluk s\xFCreyi uzat\u0131r; sa\u011Fl\u0131k oca\u011F\u0131 dinlendirir.")],"hayat/gunluk":[\u00E7("Ya\u015Fam g\xFCnl\xFC\u011F\xFCn: yapt\u0131klar\u0131n burada birikir; ba\u015Fka\
-lar\u0131 profilinde g\xF6r\xFCr."),\u00E7("\u0130stemedi\u011Fin sat\u0131r\u0131 gizleyebilirsin.")],"hayat/gorunum":[\u00E7("Fig\xFCr\xFCn\xFC burada giydirirsin: sa\xE7, y\xFCz, beden ve k\u0131yafet; 3B \xF6nizleme."),
-\u00E7("K\u0131yafetler terziden, butikten ve ma\u011Fazadan gelir; \xFCniforma r\xFCtbeyle.")],"hayat/ayarlar":[\u00E7("Dil, g\xF6r\xFCn\xFCm (3B ya da hafif), ses, t\xF6renler ve ba\u015Flang\u0131\xE7 rehberi burada."),
+ tatbikat; bir \u015Fey kaybetmezsin, sava\u015F\u0131 a\xE7ar."),ik:"target",git:"ulke/cephe"}},HEDEF={friend:{ad:\u00E7("Bir arkada\u015F edin"),ne:\u00E7("Meydan \u2192 Arkada\u015Flar: istek g\xF6nder ya da ge\
+len iste\u011Fi kabul et."),ik:"user-round-plus",git:"meydan/arkadas"},post:{ad:\u00E7("Ak\u0131\u015F'a bir payla\u015F\u0131m yaz"),ne:\u00E7("Meydan \u2192 Ak\u0131\u015F: \xFClkene ya da d\xFCnyaya bir \u015Fey s\xF6yle."),
+ik:"megaphone",git:"meydan/akis"},board:{ad:\u00E7("Kahvehanede bir oyun bitir"),ne:\u00E7("\u015Eehrim \u2192 Oyunlar: tavla, satran\xE7 ya da okey; m\xFCdavime kar\u015F\u0131 da oynan\u0131r."),ik:"\
+dices",git:"sehir/oyunlar"},sell:{ad:\u00E7("Pazarda bir ilan a\xE7"),ne:\u00E7("\u015Eehrim \u2192 Pazar: \xE7antandan bir \u015Fey sat."),ik:"store",git:"sehir/pazar"},party:{ad:\u00E7("Bir partiye \
+kat\u0131l ya da parti kur"),ne:\u00E7("\xDClkem \u2192 Parti: programlar\u0131 oku; aday olmak i\xE7in parti gerekir."),ik:"users-round",git:"ulke/parti"},unit:{ad:\u00E7("Bir asker\xEE birli\u011Fe ba\u015Fvur y\
+a da birlik kur"),ne:\u00E7("\xDClkem \u2192 Birlik: birlik cepheyi besler; katk\u0131lar\u0131n madalya sayar."),ik:"shield",git:"ulke/birlik"},concert:{ad:\u00E7("Bir konsere bilet al"),ne:\u00E7("\u015E\
+ehrim \u2192 Sahne: yakla\u015Fan bir konser se\xE7."),ik:"ticket",git:"sehir/sahne"},company:{ad:\u00E7("\u0130\u015Fletme kur"),ne:\u00E7("\u015Eehrim \u2192 \xDCretim: bir tarif se\xE7, i\u015F ilan\u0131 ver; \xE7al\u0131\u015Fanlar \xFCr\
+etir."),ik:"factory",git:"sehir/uretim"},band:{ad:\u00E7("M\xFCzik grubunu kur"),ne:\u00E7("Hayat\u0131m \u2192 M\xFCzik: grup kur, beste yap, provaya ba\u015Fla."),ik:"eighth-notes",git:"hayat/muzik"},
+shadow:{ad:\u00E7("Kara borsada bir ilan a\xE7"),ne:\u00E7("\u015Eehrim \u2192 G\xF6lge \u2192 Kara borsa: ilan ver; yakalanma riski var."),ik:"eye-off",git:"sehir/golge"},travel:{ad:\u00E7("Ba\u015Fka bir\
+ \u015Fehre yolculuk yap"),ne:\u00E7("\u015Eehrim \u2192 Seyahat: kom\u015Fu \u015Fehre git; var\u0131nca say\u0131l\u0131r."),ik:"route",git:"sehir/yol"}},ROL={soldier:{ad:\u00E7("Asker"),ik:"shield",
+ne:\u00E7("Cephe, birlik, r\xFCtbe: \xFClkeni savun.")},business:{ad:\u00E7("\u0130\u015F insan\u0131"),ik:"factory",ne:\u00E7("\u0130\u015Fletme, pazar, sevkiyat: para kazan.")},politician:{ad:\u00E7(
+"Siyaset\xE7i"),ik:"landmark",ne:\u00E7("Parti, meclis, se\xE7im: \xFClkeyi y\xF6net.")},artist:{ad:\u00E7("Sanat\xE7\u0131"),ik:"eighth-notes",ne:\u00E7("M\xFCzik, konser, medya: sahneye \xE7\u0131k.")},
+shadow:{ad:\u00E7("G\xF6lge"),ik:"eye-off",ne:\u00E7("Ka\xE7ak\xE7\u0131l\u0131k, kara borsa, vurgun: risk al.")}},ONERI={first_day:x=>({ad:\u00E7("\u0130lk g\xFCn yolu: {adim}",{adim:ADIM[x.step]?.ad??
+""}),ik:"route",git:"hayat/profil",is:()=>adimaGit(x.step)}),war:()=>({ad:\u00E7("Enerjin dolu ve \xFClkenin sava\u015F\u0131 var: cepheye git"),ik:"swords",git:"ulke/cephe"}),vote:()=>({ad:\u00E7("\xDCl\
+kende oylama a\xE7\u0131k: oyunu ver"),ik:"vote",git:"ulke/secim"}),job:()=>({ad:\u00E7("S\xFCren i\u015Fin yok: bir i\u015F al"),ik:"briefcase-business",git:"sehir/is"}),mission:x=>({ad:\u00E7("G\xFCn\xFCn\
+ g\xF6revi: {ad}",{ad:\u00E7v(x.title??"")}),ik:"list-checks",git:"hayat/gorevler"}),train:()=>({ad:\u00E7("S\xFCren e\u011Fitimin yok: bir beceri \xE7al\u0131\u015F"),ik:"graduation-cap",git:"hayat/e\
+gitim"})},IPUCU={"hayat/profil":[\u00E7("Buras\u0131 senin sayfan: kasan, \xE7antan, asker kart\u0131n ve g\xFCn\xFCn \xF6nerileri. En \xFCstteki \u015Ferit s\u0131radaki ad\u0131m\u0131n\u0131 g\xF6sterir."),
+\u00E7("Her sekmenin \xFCst\xFCndeki soru i\u015Fareti o ekran\u0131n k\u0131sa yard\u0131m\u0131n\u0131 a\xE7ar. G\xFCnl\xFCk g\xF6revler Hayat\u0131m \u2192 G\xF6revler'de; ayarlar ve geri bildirim Hayat\u0131m \u2192 Ayarlar'da.")],
+"hayat/gorevler":[\u00E7('Her g\xFCn d\xF6rt k\u0131sa g\xF6rev; biten g\xF6revin \xF6d\xFCl\xFCn\xFC "Al" ile toplars\u0131n. Ka\xE7\u0131rman\u0131n cezas\u0131 yok.'),\u00E7("G\xF6revler seni oyunun b\
+ir k\xF6\u015Fesine g\xF6t\xFCr\xFCr; se\xE7ti\u011Fin yolun g\xF6revleri \xF6nce gelir. Al\u0131nan her g\xF6rev deneyim verir ve G\xF6rev Madalyas\u0131'n\u0131 sayar.")],"hayat/egitim":[\u00E7("E\u011Fi\
+tim becerini y\xFCkseltir: bir beceri se\xE7, s\xFCre dolunca kendili\u011Finden biter."),\u00E7("Askerlik vuru\u015F g\xFCc\xFCn\xFC, \xFCretim i\u015Fteki verimi, lojistik sevkiyat\u0131, y\xF6netim i\u015Fletmeyi, m\xFCzik besteyi etki\
+ler. Yorgunluk s\xFCreyi uzat\u0131r; sa\u011Fl\u0131k oca\u011F\u0131 dinlendirir.")],"hayat/gunluk":[\u00E7("Ya\u015Fam g\xFCnl\xFC\u011F\xFCn: yapt\u0131klar\u0131n burada birikir; ba\u015Fkalar\u0131 profilinde g\xF6r\xFCr."),
+\u00E7("\u0130stemedi\u011Fin sat\u0131r\u0131 gizleyebilirsin.")],"hayat/gorunum":[\u00E7("Fig\xFCr\xFCn\xFC burada giydirirsin: sa\xE7, y\xFCz, beden ve k\u0131yafet; 3B \xF6nizleme."),\u00E7("K\u0131yaf\
+etler terziden, butikten ve ma\u011Fazadan gelir; \xFCniforma r\xFCtbeyle.")],"hayat/ayarlar":[\u00E7("Dil, g\xF6r\xFCn\xFCm (3B ya da hafif), ses, t\xF6renler ve ba\u015Flang\u0131\xE7 rehberi burada."),
 \u00E7("Rehberli ba\u015Flang\u0131c\u0131 kapat\u0131rsan kilitli sistemler hemen a\xE7\u0131l\u0131r. Hesab\u0131n\u0131 kal\u0131c\u0131 yapmak ve silmek de burada.")],"sehir/sehir":[\u00E7("\u015Eehrin\
  canl\u0131 maketi: i\u015Fletmeler, belediye, meydan. Binaya dokununca gidersin."),\u00E7("Gece ve g\xFCnd\xFCz ger\xE7ek saate g\xF6re. Yeni i\u015Fletmeler ve projeler \u015Fehirde g\xF6r\xFCn\xFCr.")],
 "sehir/is":[\u00E7("Sistem i\u015Fi her zaman var: bir birim \xE7al\u0131\u015F, \xFCcret ve g\xFCnl\xFCk erzak tay\u0131n\u0131 al."),\u00E7("\u0130\u015Fletmelerin ilanlar\u0131 daha iyi \xF6der ama rekabetlidir. G\xFCn\
@@ -8078,13 +8123,22 @@ ler kal\u0131r. Ayarlar'dan yeniden a\xE7abilirsin.")}</p>`,dugmeler:[{ad:\u00E7
 \u00E7("Rehberli ba\u015Flang\u0131\xE7 kapand\u0131; b\xFCt\xFCn sistemler a\xE7\u0131k."),"lock-open"),Kabuk.git(Kabuk.etkin,{gecmis:!1})}catch(e){tost(hataMetni(e),"circle-alert")}}}]})}async function ayarla(args){
 const s=await Sunucu.cagir("onboarding_set",args);return Durum.v.ozet&&(Durum.v.ozet.onboarding=s,Durum.yay("ozet",Durum.v.ozet)),await Durum.ozet().catch(()=>{}),typeof Konusma=="object"&&Konusma.ozetYukle().
 catch(()=>{}),s}function adimaGit(step){const a=ADIM[step];a&&(a.is?a.is():Kabuk.git(a.git))}async function profilKartlari(){let s=null;try{s=await Sunucu.cagir("onboarding")}catch(e){return e.kod!=="\
-API_MISSING"&&console.error(e),{html:"",bagla(){}}}Durum.v.ozet&&(Durum.v.ozet.onboarding={...Durum.v.ozet.onboarding??{},...s,today:void 0});const sira=s.step_order??[],yapilan=s.steps??{},sonraki=s.
-next_step,bugun=(s.today??[]).map(x=>({...ONERI[x.key]?.(x)??{ad:x.key,ik:"sparkles"},x})),yolHtml=s.completed?`<section class="kart" id="ilk-gun-karti" data-tamam="1">
+API_MISSING"&&console.error(e),{html:"",bagla(){}}}Durum.v.ozet&&(Durum.v.ozet.onboarding={...Durum.v.ozet.onboarding??{},...s,today:void 0,next_goals:void 0});const sira=s.step_order??[],yapilan=s.steps??
+{},sonraki=s.next_step,hedefler=s.completed?(s.next_goals??[]).filter(x=>HEDEF[x.key]).map(x=>({...HEDEF[x.key],key:x.key})):[],biten=sira.filter(k=>yapilan[k]).length,serit=!s.completed&&ADIM[sonraki]?
+seritHtml({ust:\u00E7("\u0130lk g\xFCn yolu \xB7 {n}/{toplam}",{n:biten,toplam:sira.length}),a:ADIM[sonraki],veri:`data-adim="${esc(sonraki)}"`,oran:biten/Math.max(1,sira.length),dugme:`<button class=\
+"dugme altin" type="button" data-adim-git="${esc(sonraki)}">${\u00E7("Ba\u015Fla")}</button>`}):hedefler.length?seritHtml({ust:\u00E7("S\u0131radaki hedef"),a:hedefler[0],veri:`data-hedef="${hedefler[0].
+key}"`,dugme:`<button class="dugme altin" type="button" data-hedef-git="${hedefler[0].key}">${\u00E7("Git")}</button>`}):"",bugun=(s.today??[]).filter(x=>!(serit&&x.key==="first_day")).map(x=>({...ONERI[x.
+key]?.(x)??{ad:x.key,ik:"sparkles"},x})),yolHtml=s.completed?`<section class="kart" id="ilk-gun-karti" data-tamam="1">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("\u0130lk g\xFCn yolu")}</p><h2 class="b2">${\u00E7("Tamamland\u0131")}</h2></div><span class="ik-kutu">${ikon("badge-check")}</span></d\
 iv>
         <p class="aciklama">${s.reward_at?\u00E7("\xD6d\xFCl\xFCn verildi: {kr} kredi ve {xp} deneyim; vitrinde \u0130lk G\xFCn Ni\u015Fan\u0131.",{kr:kr(s.reward_cr??0),xp:Number(s.reward_xp??0)}):\u00E7(
 "\xD6d\xFCl haz\u0131rlan\u0131yor\u2026")}
           ${s.guided_active?" "+\u00E7("Sistemler g\xFCnler ilerledik\xE7e a\xE7\u0131l\u0131r; s\u0131radaki a\xE7\u0131l\u0131\u015Flar kilitli ekranlarda yazar."):""}</p>
+        ${hedefler.length?`<h3 class="b3 hedef-baslik">${\u00E7("S\u0131radaki hedefler")}</h3>
+        <ol class="ilk-adimlar hedefler">${hedefler.map(h=>`<li class="ilk-adim" data-hedef="${h.key}">
+            <span class="ozet-ikon" style="background:var(--orman-acik);color:var(--orman)">${ikon(h.ik)}</span>
+            <span><b>${esc(h.ad)}</b><span class="kucuk">${esc(h.ne)}</span></span>
+            <button class="dugme kucuk-d" type="button" data-hedef-git="${h.key}">${\u00E7("Git")}</button></li>`).join("")}</ol>`:""}
         <div class="oneri-dugmeler"><button class="dugme ikincil kucuk-d" type="button" data-git="hayat/gorevler">${ikon("list-checks")}${\u00E7("G\xFCn\xFCn g\xF6revleri")}</button></div></section>`:
 `<section class="kart" id="ilk-gun-karti">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("\u0130lk g\xFCn yolu")}</p><h2 class="b2">${\u00E7("Be\u015F ad\u0131mda oyuna gir")}</h2></div><span class="ik-kutu">${ikon("route")}<\
@@ -8099,11 +8153,16 @@ p">${\u00E7("S\u0131rada")}</span>`}</li>`}).join("")}</ol></section>`;return{ht
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Bug\xFCn ne yapmal\u0131y\u0131m?")}</p><h2 class="b2">${bugun.length?\u00E7("{n} \xF6neri",{n:bugun.length}):\u00E7("Her \u015Fey yolunda")}\
 </h2></div><span class="ik-kutu">${ikon("lightbulb")}</span></div>
         ${bugun.length?`<div class="yigin">${bugun.map((o,i)=>`<button class="oneri-satir" type="button" data-oneri="${i}">${ikon(o.ik)}<span>${esc(o.ad)}</span>${ikon("chevron-right")}</button>`).join(
-"")}</div>`:`<p class="bos">${\u00E7("\u015Eimdilik \xF6neri yok; keyfine bak, meydana u\u011Fra.")}</p>`}</section>`+yolHtml,s,bagla(kap){for(const b of $$("[data-adim-git]",kap))b.onclick=()=>adimaGit(
-b.dataset.adimGit);for(const b of $$("[data-oneri]",kap))b.onclick=()=>{const o=bugun[Number(b.dataset.oneri)];o.is?o.is():Kabuk.git(o.git)};for(const b of $$("#ilk-gun-karti [data-git]",kap))b.onclick=
-()=>Kabuk.git(b.dataset.git)}}}function rolSec({ilk=!1}={}){const secili=durum()?.role??null,{form}=pencereForm({ust:ilk?\u00E7("Ho\u015F geldin"):\u00E7("Oyun yolu"),baslik:\u00E7("Nas\u0131l oynamak iste\
-rsin?"),onayAd:\u00E7("B\xF6yle ba\u015Flayay\u0131m"),onayIkon:"signpost",govde:`<p class="aciklama">${\u00E7("Se\xE7ti\u011Fin yol \xF6ne \xE7\u0131kar: g\xFCn\xFCn g\xF6revleri ve \xF6neriler ona g\xF6re gelir. Her \u015Fey yine a\xE7\u0131k; s\
-onradan Ayarlar'dan de\u011Fi\u015Ftirirsin.")}</p>
+"")}</div>`:`<p class="bos">${\u00E7("\u015Eimdilik \xF6neri yok; keyfine bak, meydana u\u011Fra.")}</p>`}</section>`+yolHtml,serit,s,bagla(kap){for(const b of $$("[data-adim-git]",kap))b.onclick=()=>adimaGit(
+b.dataset.adimGit);for(const b of $$("[data-hedef-git]",kap))b.onclick=()=>{const h=HEDEF[b.dataset.hedefGit];h&&Kabuk.git(h.git)};for(const b of $$("[data-oneri]",kap))b.onclick=()=>{const o=bugun[Number(
+b.dataset.oneri)];o.is?o.is():Kabuk.git(o.git)};for(const b of $$("#ilk-gun-karti [data-git]",kap))b.onclick=()=>Kabuk.git(b.dataset.git)}}}function seritHtml({ust,a,veri:veri2,dugme,oran=null}){return`\
+<section class="ilk-serit" id="ilk-serit" ${veri2} aria-label="${esc(ust)}">
+      <span class="ozet-ikon">${ikon(a.ik)}</span>
+      <span class="ilk-serit-yazi"><span class="ust-yazi">${esc(ust)}</span><b>${esc(a.ad)}</b><span class="kucuk">${esc(a.ne)}</span></span>
+      ${dugme}${oran==null?"":`<span class="ilk-serit-cubuk" aria-hidden="true"><i style="width:${Math.round(oran*100)}%"></i></span>`}</section>`}function rolSec({ilk=!1}={}){const secili=durum()?.role??
+null,{form}=pencereForm({ust:ilk?\u00E7("Ho\u015F geldin"):\u00E7("Oyun yolu"),baslik:\u00E7("Nas\u0131l oynamak istersin?"),onayAd:\u00E7("B\xF6yle ba\u015Flayay\u0131m"),onayIkon:"signpost",govde:`<\
+p class="aciklama">${\u00E7("Se\xE7ti\u011Fin yol \xF6ne \xE7\u0131kar: g\xFCn\xFCn g\xF6revleri ve \xF6neriler ona g\xF6re gelir. Her \u015Fey yine a\xE7\u0131k; sonradan Ayarlar'dan de\u011Fi\u015Ftirirsin.")}\
+</p>
         <div class="radyo-liste" id="rol-secim">${Object.entries(ROL).map(([k,r])=>`<label class="radyo"><input type="radio" name="rol" value="${k}" ${secili===k?"checked":""}>
           <span><b>${ikon(r.ik)} ${esc(r.ad)}</b><span class="kucuk">${esc(r.ne)}</span></span></label>`).join("")}
           <label class="radyo"><input type="radio" name="rol" value="" ${secili?"":"checked"}><span><b>${\u00E7("Hen\xFCz karar vermedim")}</b><span class="kucuk">${\u00E7("G\xF6revler kar\u0131\u015F\u0131k gelir; ist\
@@ -8116,8 +8175,8 @@ bulb")}<span>${esc(ip[0])}</span><button type="button" class="dugme sade kucuk-d
 apat]",bant).onclick=()=>{bant.remove(),gorulen.add(rota),gorulduYaz()}}cihazOnerisi(yer)}function yardimAc(){const rota=Kabuk.etkin??"",ip=IPUCU[rota],d=durum();pencere({ust:\u00E7("Yard\u0131m"),baslik:ip?
 ip[0]:\u00E7("Bu ekran"),govde:`${ip?`<p>${esc(ip[1])}</p>`:`<p class="aciklama">${\u00E7("Bu ekran i\xE7in ayr\u0131 bir ipucu yok.")}</p>`}
         <hr class="ayrac">
-        <p class="kucuk">${\u00E7(`Genel: Hayat\u0131m \u2192 Profil'deki "Bug\xFCn ne yapmal\u0131y\u0131m?" kart\u0131 sana ne yapaca\u011F\u0131n\u0131 s\xF6yler; g\xFCnl\xFCk g\xF6revler Hayat\u0131m \u2192 G\xF6revler'de. Tak\u0131l\u0131rsan Konu\u015Fma d\xFC\u011Fmesindeki Yeni gele\
-nler kanal\u0131na yaz; rehberler yan\u0131tlar.`)}</p>
+        <p class="kucuk">${\u00E7(`Genel: Hayat\u0131m \u2192 Profil'deki "Bug\xFCn ne yapmal\u0131y\u0131m?" kart\u0131 sana ne yapaca\u011F\u0131n\u0131 s\xF6yler; g\xFCnl\xFCk g\xF6revler Hayat\u0131m \u2192 G\xF6revler'de. Tak\u0131l\u0131rsan Sohbet \u2192 Yeni gelenler kanal\u0131n\
+a yaz; rehberler yan\u0131tlar.`)}</p>
         ${d?.guided_active?`<p class="kucuk">${\u00E7("Rehberli ba\u015Flang\u0131\xE7 a\xE7\u0131k: baz\u0131 sistemler g\xFCnler ilerledik\xE7e a\xE7\u0131l\u0131r; kilitli ekranda ne zaman a\xE7\u0131laca\u011F\u0131 yazar.")}\
 </p>`:""}`,dugmeler:[{ad:\u00E7("Kapat")},...ip&&goruldu(rota)?[{ad:\u00E7("\u0130pucunu yeniden g\xF6ster"),ikon:"lightbulb",is:()=>{gorulen.delete(rota),gorulen.delete("*"),gorulduYaz(),Kabuk.git(rota,
 {gecmis:!1})}}]:[]]})}function yardimDugmesi(){if($("#yardim-dugme"))return;const b=document.createElement("button");b.id="yardim-dugme",b.type="button",b.className="yardim-dugme",b.setAttribute("aria\
@@ -8127,23 +8186,24 @@ className="ipucu-bant cihaz-bant",bant.innerHTML=`${ikon("layers")}<span>${\u00E
 </span>
       <button type="button" class="dugme kucuk-d" data-uc-dene>${\u00E7("3B'yi dene")}</button><button type="button" class="dugme sade kucuk-d" data-ipucu-kapat aria-label="${\u00E7("Kapat")}">${ikon(
 "x")}</button>`,yer.prepend(bant),$("[data-uc-dene]",bant).onclick=()=>{Gorunum.ayarla("3b"),bant.remove(),tost(\u00E7("3B g\xF6r\xFCn\xFCm a\xE7\u0131ld\u0131; Ayarlar'dan de\u011Fi\u015Ftirebilirsin."),
-"layers")},$("[data-ipucu-kapat]",bant).onclick=()=>bant.remove()}return{ROL,ADIM,SISTEM,kilitli,rotaKilidi,kilitKarti,kilitIcerik,kilitBagla,rehberiKapatSor,ayarla,profilKartlari,rolSec,rolSorusu,ekranAcildi,
-yardimDugmesi,yardimAc,acilisMetni}})();Kabuk.gecikmeli("hayat/gorevler","ek_98zc_rehber");const ekonomiKamyon=(alt,en)=>Number(alt)>0?Math.min(en,1+Math.floor(Math.log2(Number(alt)/100+1)/2)):0,ekonomiAltin=alt=>Number(
-alt)>0?Math.min(6,1+Math.floor(Math.log10(Math.max(1,Number(alt)/1e3)))):0,SEZON_DAL={genel:\u00E7("Genel"),asker:\u00E7("Asker"),isci:\u00E7("\xDCretici"),tuccar:\u00E7("T\xFCccar"),sporcu:\u00E7("Sp\
-orcu"),sanatci:\u00E7("Sanat\xE7\u0131"),siyasetci:\u00E7("Siyaset\xE7i")},SEZON_DAL_IK={genel:"trophy",asker:"swords",isci:"factory",tuccar:"store",sporcu:"biceps-flexed",sanatci:"eighth-notes",siyasetci:"\
-vote"},SEZON_DAL_PUAN={genel:\u00E7("B\xFCt\xFCn deneyim puanlar\u0131n (i\u015F, e\u011Fitim, cephe, pazar, spor, g\xF6rev)."),asker:\u00E7("Cephede vuru\u015F puan\u0131."),isci:\u00E7("\u0130\u015F birimleri\
-nden gelen puan."),tuccar:\u00E7("Pazarda al\u0131\u015Fveri\u015F puan\u0131."),sporcu:\u00E7("Spor salonu, hal\u0131 saha ve kul\xFCp ma\xE7lar\u0131."),sanatci:\u00E7("Oynad\u0131\u011F\u0131n her konser 10 puan,\
- her sat\u0131lan bilet 1 puan."),siyasetci:\u00E7("Sonu\xE7lanm\u0131\u015F se\xE7imlerde ald\u0131\u011F\u0131n oylar.")},BILDIRIM_KAT={mesaj:\u00E7("Mesajlar ve arkada\u015Fl\u0131k"),savas:\u00E7(
-"Sava\u015F"),siyaset:\u00E7("Se\xE7im, meclis ve vatanda\u015Fl\u0131k"),is:\u00E7("\u0130\u015F, e\u011Fitim ve yolculuk"),sosyal:\u00E7("Mek\xE2n, ev, evcil hayvan, kul\xFCp"),sistem:\u00E7("Sezon \
-ve sunucu")},Gelen=(()=>{let okunmamis=0;const ETIKET={"season.ended":\u00E7("Sezon bitti."),"vacation.started":\u00E7("Tatilin ba\u015Flad\u0131."),"vacation.ended":\u00E7("Tatilin bitti."),"progress\
-.level_up":\u00E7("Seviye atlad\u0131n."),"mission.claimed":\u00E7("G\xF6rev \xF6d\xFCl\xFCn\xFC ald\u0131n.")};function metin(x){let b=null;try{b=BILDIRIM[x.type]?.(x.data??{})}catch{b=null}return b?
-{yazi:b[0],ik:b[1]}:{yazi:ETIKET[x.type]??\u00E7("Oyun olay\u0131: {tur}",{tur:x.type}),ik:"bell"}}const bakiyor=()=>typeof Kabuk=="object"&&Kabuk.etkin==="hayat/gelen"&&!document.hidden;function rozet(){
-const n=bakiyor()?0:okunmamis;for(const el of $$("[data-rota='hayat/gelen'], #sekmeler [data-bolum=hayat], #alt-sekmeler [data-bolum=hayat]")){let r=el.querySelector(".sayi-rozet.gelen-rozet");if(!n){
-r?.remove();continue}r||(r=document.createElement("span"),r.className="sayi-rozet gelen-rozet",el.appendChild(r)),r.textContent=n>99?"99+":String(n),r.setAttribute("aria-label",\u00E7("{n} okunmam\u0131\u015F b\
-ildirim",{n}))}}function ayarla(n){okunmamis=bakiyor()?0:Math.max(0,Number(n)||0),rozet()}return Durum.dinle("ozet",o=>{o&&"inbox_unread"in o&&ayarla(o.inbox_unread)}),Durum.dinle("olay",({olay})=>{/^(chat|dm)\./.
-test(olay)||ayarla(okunmamis+1)}),Kabuk.kaydet("hayat/gelen",{async ac(kap){let veri2=await Sunucu.cagir("inbox"),liste=veri2.items??[];const ciz=()=>{kap.innerHTML=`<div class="sayfa sayfa-dar">
+"layers")},$("[data-ipucu-kapat]",bant).onclick=()=>bant.remove()}return{ROL,ADIM,HEDEF,SISTEM,kilitli,rotaKilidi,kilitKarti,kilitIcerik,kilitBagla,rehberiKapatSor,ayarla,profilKartlari,rolSec,rolSorusu,
+ekranAcildi,yardimDugmesi,yardimAc,acilisMetni}})();Kabuk.gecikmeli("hayat/gorevler","ek_98zc_rehber");const ekonomiKamyon=(alt,en)=>Number(alt)>0?Math.min(en,1+Math.floor(Math.log2(Number(alt)/100+1)/
+2)):0,ekonomiAltin=alt=>Number(alt)>0?Math.min(6,1+Math.floor(Math.log10(Math.max(1,Number(alt)/1e3)))):0,SEZON_DAL={genel:\u00E7("Genel"),asker:\u00E7("Asker"),isci:\u00E7("\xDCretici"),tuccar:\u00E7(
+"T\xFCccar"),sporcu:\u00E7("Sporcu"),sanatci:\u00E7("Sanat\xE7\u0131"),siyasetci:\u00E7("Siyaset\xE7i")},SEZON_DAL_IK={genel:"trophy",asker:"swords",isci:"factory",tuccar:"store",sporcu:"biceps-flexed",
+sanatci:"eighth-notes",siyasetci:"vote"},SEZON_DAL_PUAN={genel:\u00E7("B\xFCt\xFCn deneyim puanlar\u0131n (i\u015F, e\u011Fitim, cephe, pazar, spor, g\xF6rev)."),asker:\u00E7("Cephede vuru\u015F puan\u0131."),
+isci:\u00E7("\u0130\u015F birimlerinden gelen puan."),tuccar:\u00E7("Pazarda al\u0131\u015Fveri\u015F puan\u0131."),sporcu:\u00E7("Spor salonu, hal\u0131 saha ve kul\xFCp ma\xE7lar\u0131."),sanatci:\u00E7(
+"Oynad\u0131\u011F\u0131n her konser 10 puan, her sat\u0131lan bilet 1 puan."),siyasetci:\u00E7("Sonu\xE7lanm\u0131\u015F se\xE7imlerde ald\u0131\u011F\u0131n oylar.")},BILDIRIM_KAT={mesaj:\u00E7("Mes\
+ajlar ve arkada\u015Fl\u0131k"),savas:\u00E7("Sava\u015F"),siyaset:\u00E7("Se\xE7im, meclis ve vatanda\u015Fl\u0131k"),is:\u00E7("\u0130\u015F, e\u011Fitim ve yolculuk"),sosyal:\u00E7("Mek\xE2n, ev, evci\
+l hayvan, kul\xFCp"),sistem:\u00E7("Sezon ve sunucu")},Gelen=(()=>{let okunmamis=0;const ETIKET={"season.ended":\u00E7("Sezon bitti."),"vacation.started":\u00E7("Tatilin ba\u015Flad\u0131."),"vacation\
+.ended":\u00E7("Tatilin bitti."),"progress.level_up":\u00E7("Seviye atlad\u0131n."),"mission.claimed":\u00E7("G\xF6rev \xF6d\xFCl\xFCn\xFC ald\u0131n.")};function metin(x){let b=null;try{b=BILDIRIM[x.
+type]?.(x.data??{})}catch{b=null}return b?{yazi:b[0],ik:b[1]}:{yazi:ETIKET[x.type]??\u00E7("Oyun olay\u0131: {tur}",{tur:x.type}),ik:"bell"}}const bakiyor=()=>typeof Kabuk=="object"&&Kabuk.etkin==="ha\
+yat/gelen"&&!document.hidden;function rozet(){const n=bakiyor()?0:okunmamis;for(const el of $$("[data-rota='hayat/gelen'], #sekmeler [data-bolum=hayat], #alt-sekmeler [data-bolum=hayat]")){let r=el.querySelector(
+".sayi-rozet.gelen-rozet");if(!n){r?.remove();continue}r||(r=document.createElement("span"),r.className="sayi-rozet gelen-rozet",el.appendChild(r)),r.textContent=n>99?"99+":String(n),r.setAttribute("a\
+ria-label",\u00E7("{n} okunmam\u0131\u015F bildirim",{n}))}}function ayarla(n){okunmamis=bakiyor()?0:Math.max(0,Number(n)||0),rozet()}return Durum.dinle("ozet",o=>{o&&"inbox_unread"in o&&ayarla(o.inbox_unread)}),
+Durum.dinle("olay",({olay})=>{/^(chat|dm)\./.test(olay)||ayarla(okunmamis+1)}),Kabuk.kaydet("hayat/gelen",{async ac(kap){let veri2=await Sunucu.cagir("inbox"),liste=veri2.items??[];const ciz=()=>{kap.
+innerHTML=`<div class="sayfa sayfa-dar">
           <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("Gelen kutusu")}</h1>
-            <p class="aciklama">${\u00E7("Son {n} g\xFCn\xFCn bildirimleri. Mesajlar Konu\u015Fma d\xFC\u011Fmesinde.",{n:veri2.days??30})}</p></div>
+            <p class="aciklama">${\u00E7("Son {n} g\xFCn\xFCn bildirimleri. Mesajlar Sohbet'te.",{n:veri2.days??30})}</p></div>
             <span class="ik-kutu">${ikon("inbox")}</span></div>
           <section class="kart" id="gelen-liste">
             ${liste.length?`<ul class="liste">${liste.map(x=>{const m=metin(x);return`<li class="liste-satir${x.unread?" okunmamis":""}" data-gelen="${x.id}" data-tur="${esc(x.type)}">
@@ -10693,43 +10753,43 @@ mv&&(md.dataset.futbolMadalya=mv,md.setAttribute("opacity",mv))}const[tx,ty]=fut
 toFixed(1)})`),svg.querySelector("[data-futbol-top-yuk]")?.setAttribute("cy",(-Math.max(0,A.top[1]-.085)*40).toFixed(1));const hk=svg.querySelector("[data-futbol-hakem]");if(hk){const hv=A.hakem?"1":"\
 0";if(A.hakem){const[hx,hy]=futbol2bP(A.hakem.x,A.hakem.z);hk.setAttribute("transform",`translate(${hx.toFixed(1)} ${hy.toFixed(1)})`)}hk.dataset.futbolHakem!==hv&&(hk.dataset.futbolHakem=hv,hk.setAttribute(
 "opacity",hv))}const T=futbolTabela(d,A,el),s=svg.querySelector('[data-futbol-tabela="skor"]'),z=svg.querySelector('[data-futbol-tabela="zaman"]');s&&s.textContent!==T.orta&&(s.textContent=T.orta),z&&
-z.textContent!==T.alt&&(z.textContent=T.alt);const sigAnahtar=T.alt+"|"+T.orta+"|"+(document.fonts?.status??"");z&&z.dataset.sigdi!==sigAnahtar&&futbolTabelaSigdir(z,56,s)&&(z.dataset.sigdi=sigAnahtar);
-const vy=futbolVurguYazi(A.vurgu),ve=svg.querySelector("[data-futbol-vurgu]");ve&&(ve.textContent!==vy&&(ve.textContent=vy),ve.setAttribute("opacity",vy?"1":"0")),svg.dataset.futbolSkor!==A.skor.join(
-"-")&&(svg.dataset.futbolSkor=A.skor.join("-")),futbol2bKupaYaz(svg,A,el)}function dongu(){kapandi||(zamanlayici=null,!document.hidden&&kap.isConnected&&!kap.closest("[hidden]")&&guncelle(),zamanlayici=
-hareketAzalt?setTimeout(dongu,1e3):requestAnimationFrame(()=>dongu()))}return{yaz(veri2){d=veri2;const yeni=JSON.stringify([d.id,d.bos,d.evre==="open"||d.evre==="closing"?d.oyuncular.map(o=>o.anahtar+
-(o.ad??"")):d.oyuncular.map(o=>o.anahtar),DIL.kod,Math.round((d.gece??0)*20),d.yolda,d.sonrakiMac,!!d.kupa?.toren]);yeni!==imza||!kap.firstElementChild?(imza=yeni,ciz()):guncelle(),!zamanlayici&&!kapandi&&
-dongu()},kapat(){kapandi=!0,zamanlayici&&(clearTimeout(zamanlayici),cancelAnimationFrame(zamanlayici)),zamanlayici=null},get kare(){return kare}}}function futbolAnTam(motor,d,el){const A=motor.an(el);
-return A.vurgu=d?.bos?null:futbolVurgu(motor,el),A}let futbol3bOrnek=null,stadyum3bOrnek=null;const FutbolKart=(()=>{function ac(secenek={}){const kulup=!!secenek.kulup,on=kulup?"stadyum":"futbol",ornek=()=>kulup?
-stadyum3bOrnek:futbol3bOrnek,el=document.createElement("section");el.className="kart hobi-kart futbol-kart"+(kulup?" stadyum-kart":""),el.id=`${on}-saha`;let d=null,hata3b=!1,kapandi=!1,tahta=null,vurguZaman=null,
-marsMac=null;const motor=futbolMotoru(),mod3b=()=>Gorunum.uc()&&!hata3b;let mod=mod3b()?"3b":"2b";const dinleyici={},sec=(ad,id)=>dinleyici.sec?.(ad,id),ikiBBagla=kok=>{kok?.addEventListener("click",e=>{
-const k=e.target.closest?.("[data-futbol-kisi]");if(k){e.stopPropagation(),sec("kisi",k.dataset.futbolKisi);return}const g=e.target.closest?.("[data-futbol-sec]");g&&(e.stopPropagation(),sec(g.dataset.
-futbolSec))})},baslik=x=>{if(x.bos)return x.yolda?\u00E7("Yoldas\u0131n"):kulup?\u00E7("Stadyumda \u015Fu an ma\xE7 yok"):\u00E7("Sahada \u015Fu an ma\xE7 yok");if(x.durum==="cancelled")return \u00E7(
-"Ma\xE7 iptal edildi");const A=motor.an(futbolEl(x)),[a,b]=A.skor;if(kulup){const ev=futbolTakimAdi(x,"a"),dep=futbolTakimAdi(x,"b"),K=A.kupa;return K&&K.evre==="madalya"?\u00E7("G\xFCm\xFC\u015F madalyalar: {ta\
-kim}",{takim:futbolTakimAdi(x,futbolKarsi(K.taraf))}):K&&K.evre==="kaldir"?\u00E7("Kupa t\xF6reni: {takim} \u015Fampiyon!",{takim:futbolTakimAdi(x,K.taraf)}):K&&K.evre==="tur"?\u00E7("Zafer turu: {tak\
-im}",{takim:futbolTakimAdi(x,K.taraf)}):K&&K.evre==="son"?\u00E7("{takim} \u015Fampiyon!",{takim:futbolTakimAdi(x,K.taraf)}):x.evre==="open"||x.evre==="closing"?\u00E7("{ev} \u2013 {dep}, {saat}",{ev,
-dep,saat:saatKisa(x.bas)}):x.evre==="locked"?\u00E7("Kadrolar haz\u0131r: {ev} \u2013 {dep}, {saat}",{ev,dep,saat:saatKisa(x.bas)}):x.evre==="finished"||A.bitti?\u00E7("Ma\xE7 bitti: {ev} {a}\u2013{b} {dep}",
-{ev,dep,a,b}):A.ara?\u00E7("Devre aras\u0131: {ev} {a}\u2013{b} {dep}",{ev,dep,a,b}):\u00E7("{ev} {a}\u2013{b} {dep}, {dk}. dakika",{ev,dep,a,b,dk:A.dakika})}return x.evre==="open"||x.evre==="closing"?
-\u00E7("Ma\xE7 saati {saat}; kadro toplan\u0131yor",{saat:saatKisa(x.bas)}):x.evre==="locked"?\u00E7("Kadrolar haz\u0131r; ba\u015Flama saati {saat}",{saat:saatKisa(x.bas)}):x.evre==="finished"||A.bitti?
-\u00E7("Ma\xE7 bitti: {a}\u2013{b}",{a,b}):A.ara?\u00E7("Devre aras\u0131: {a}\u2013{b}",{a,b}):\u00E7("Ma\xE7 s\xFCr\xFCyor: {a}\u2013{b}, {dk}. dakika",{a,b,dk:A.dakika})},yazi=x=>{if(kulup){if(x.bos)
-return x.yolda?\u00E7("Yoldas\u0131n; \u015Fehrin stadyumunu vard\u0131\u011F\u0131nda g\xF6r\xFCrs\xFCn."):x.sonrakiMac?\u00E7("S\u0131radaki ma\xE7 {saat}. Biletini a\u015Fa\u011F\u0131dan alabilirsin.",
-{saat:saatKisa(x.sonrakiMac)}):\u00E7("\u015Eehirde yak\u0131nda kul\xFCp ma\xE7\u0131 yok. Kul\xFCpler ve lig a\u015Fa\u011F\u0131da.");if(!x.izler)return \u00E7("Ma\xE7\u0131 izlemek i\xE7in \u015Fehirde olmal\u0131s\u0131n;\
- sonucu ma\xE7 bitince g\xF6r\xFCn\xFCr.");if(["open","closing"].includes(x.evre))return \u00E7("Kadrolar ma\xE7tan {dk} dakika \xF6nce belli olur; o an \u015Fehirde olan haz\u0131r oyuncular sahaya \xE7\u0131kar.",
-{dk:sayi(kulupKurali()?.lockMinutes??10)});const K=x.bos?null:motor.an(futbolEl(x)).kupa;if(K&&K.evre!=="dizil"){const kap=x.oyuncular.find(o=>o.anahtar===K.kaptan),ad=kap?kap.ben?\u00E7("Sen"):kap.ad||
-"":"",ben3=x.oyuncular.find(o=>o.ben),benKaybeden=!!ben3&&ben3.taraf!==K.taraf;return K.evre==="toplan"?\u00E7("\u015Eampiyonlar k\xFCrs\xFCn\xFCn \xF6n\xFCnde toplan\u0131yor; hakem finalistlerin g\xFCm\xFC\u015F madalyalar\u0131n\u0131 getiriyo\
-r."):K.evre==="madalya"?benKaybeden?K.madalya?.includes(ben3.anahtar)?\u00E7("G\xFCm\xFC\u015F madalyan boynunda: kupa finalisti oldun."):\u00E7("Hakem g\xFCm\xFC\u015F madalyan\u0131 takmaya geliyor."):
-\u00E7("Hakem finalistlere g\xFCm\xFC\u015F madalyalar\u0131n\u0131 tak\u0131yor; \u015Fampiyonlar alk\u0131\u015Fl\u0131yor."):K.evre==="kaldir"?kap?.ben?\u00E7("Kupay\u0131 sen kald\u0131r\u0131yorsun!"):
-ad?\u00E7("Kaptan {ad} kupay\u0131 kald\u0131r\u0131yor.",{ad}):\u00E7("Kaptan kupay\u0131 kald\u0131r\u0131yor."):K.evre==="tur"?\u00E7("\u015Eampiyonlar kupayla sahan\u0131n \xE7evresinde zafer turu at\u0131yor."):
-\u00E7("Kupa k\xFCrs\xFCde; \u015Fampiyonlar kutluyor.")}const ben2=x.oyuncular.find(o=>o.ben);return[ben2?\u00E7("{kulup} formas\u0131yla oynuyorsun ({mevki}); alt\u0131n halka sensin.",{kulup:futbolTakimAdi(
-x,ben2.taraf),mevki:futbolPosAdi(ben2.mevki)}):\u00E7("Ma\xE7\u0131 trib\xFCnden izliyorsun."),\u00E7("Formalar kul\xFCplerin renginde, dairedeki say\u0131 forma numaras\u0131; kesik \xE7izgili daire altyap\u0131dan gelen\
- oyuncu.")].join(" ")}if(x.bos)return x.yolda?\u00E7("Yoldas\u0131n; vard\u0131\u011F\u0131n \u015Fehrin sahas\u0131nda oynars\u0131n."):x.sonrakiMac?\u00E7("S\u0131radaki ma\xE7 {saat}. A\u015Fa\u011F\u0131dan kat\u0131labilir \
-ya da yeni ma\xE7 kurabilirsin.",{saat:saatKisa(x.sonrakiMac)}):\u00E7("A\u015Fa\u011F\u0131dan yeni bir ma\xE7 kurabilirsin; \u015Fehirdeki herkes kat\u0131labilir.");if(!x.izler)return \u00E7("Ma\xE7\u0131 \
-izlemek i\xE7in \u015Fehirde olmal\u0131s\u0131n; sonucu ma\xE7 bitince g\xF6r\xFCn\xFCr.");const ben=x.oyuncular.find(o=>o.ben);return[ben?\u00E7("{taraf} tak\u0131m\u0131ndas\u0131n ({mevki}); alt\u0131n halka sensin.",
-{taraf:futbolTakimAdi(x,ben.taraf),mevki:futbolPosAdi(ben.mevki)}):\u00E7("Ma\xE7\u0131 izliyorsun."),x.lig?\u00E7("Mahalle ligi ma\xE7\u0131: formalar tak\u0131mlar\u0131n renginde, kaleciler ayr\u0131 renkte. Kesik \xE7izgil\
-i daire mahalleden gelen yedek."):\u00E7("Turuncular turuncu, Maviler mavi formada; kaleciler sar\u0131 ve mor. Kesik \xE7izgili daire mahalleden gelen yedek.")].join(" ")},ustYazi=x=>x.bos?kulup?\u00E7(
-"Stadyum"):\u00E7("Hal\u0131 saha"):kulup?[x.stadyum?.kendi?\u00E7("{kulup} stadyumu",{kulup:futbolTakimAdi(x,"a")}):\u00E7("{sehir} Belediye Stadyumu",{sehir:x.sehir}),x.stadyum?.seyirci!=null?\u00E7(
-"{n} seyirci",{n:sayi(x.stadyum.seyirci)}):null].filter(Boolean).join(" \xB7 "):x.lig?\u00E7("{sehir} hal\u0131 sahas\u0131 \xB7 Mahalle ligi, {n}. tur",{sehir:x.sehir,n:sayi(x.lig.tur)}):\u00E7("{seh\
-ir} hal\u0131 sahas\u0131 \xB7 saha {n}",{sehir:x.sehir,n:sayi(x.saha??1)});function ciz(){if(!d)return;tahta?.kapat(),tahta=null;const o3=ornek();el.innerHTML=`<div class="kart-bas"><div><p class="us\
-t-yazi" id="${on}-saha-ust">${esc(ustYazi(d))}</p>
+z.textContent!==T.alt&&(z.textContent=T.alt);const sigAnahtar=T.alt+"|"+T.orta+"|"+(document.fonts?.status??"")+"|"+(z?.style.fontSize??"")+"|"+(s?.style.fontSize??"");z&&z.dataset.sigdi!==sigAnahtar&&
+futbolTabelaSigdir(z,56,s)&&(z.dataset.sigdi=sigAnahtar);const vy=futbolVurguYazi(A.vurgu),ve=svg.querySelector("[data-futbol-vurgu]");ve&&(ve.textContent!==vy&&(ve.textContent=vy),ve.setAttribute("op\
+acity",vy?"1":"0")),svg.dataset.futbolSkor!==A.skor.join("-")&&(svg.dataset.futbolSkor=A.skor.join("-")),futbol2bKupaYaz(svg,A,el)}function dongu(){kapandi||(zamanlayici=null,!document.hidden&&kap.isConnected&&
+!kap.closest("[hidden]")&&guncelle(),zamanlayici=hareketAzalt?setTimeout(dongu,1e3):requestAnimationFrame(()=>dongu()))}return{yaz(veri2){d=veri2;const yeni=JSON.stringify([d.id,d.bos,d.evre==="open"||
+d.evre==="closing"?d.oyuncular.map(o=>o.anahtar+(o.ad??"")):d.oyuncular.map(o=>o.anahtar),DIL.kod,Math.round((d.gece??0)*20),d.yolda,d.sonrakiMac,!!d.kupa?.toren]);yeni!==imza||!kap.firstElementChild?
+(imza=yeni,ciz()):guncelle(),!zamanlayici&&!kapandi&&dongu()},kapat(){kapandi=!0,zamanlayici&&(clearTimeout(zamanlayici),cancelAnimationFrame(zamanlayici)),zamanlayici=null},get kare(){return kare}}}function futbolAnTam(motor,d,el){
+const A=motor.an(el);return A.vurgu=d?.bos?null:futbolVurgu(motor,el),A}let futbol3bOrnek=null,stadyum3bOrnek=null;const FutbolKart=(()=>{function ac(secenek={}){const kulup=!!secenek.kulup,on=kulup?"\
+stadyum":"futbol",ornek=()=>kulup?stadyum3bOrnek:futbol3bOrnek,el=document.createElement("section");el.className="kart hobi-kart futbol-kart"+(kulup?" stadyum-kart":""),el.id=`${on}-saha`;let d=null,hata3b=!1,
+kapandi=!1,tahta=null,vurguZaman=null,marsMac=null;const motor=futbolMotoru(),mod3b=()=>Gorunum.uc()&&!hata3b;let mod=mod3b()?"3b":"2b";const dinleyici={},sec=(ad,id)=>dinleyici.sec?.(ad,id),ikiBBagla=kok=>{
+kok?.addEventListener("click",e=>{const k=e.target.closest?.("[data-futbol-kisi]");if(k){e.stopPropagation(),sec("kisi",k.dataset.futbolKisi);return}const g=e.target.closest?.("[data-futbol-sec]");g&&
+(e.stopPropagation(),sec(g.dataset.futbolSec))})},baslik=x=>{if(x.bos)return x.yolda?\u00E7("Yoldas\u0131n"):kulup?\u00E7("Stadyumda \u015Fu an ma\xE7 yok"):\u00E7("Sahada \u015Fu an ma\xE7 yok");if(x.
+durum==="cancelled")return \u00E7("Ma\xE7 iptal edildi");const A=motor.an(futbolEl(x)),[a,b]=A.skor;if(kulup){const ev=futbolTakimAdi(x,"a"),dep=futbolTakimAdi(x,"b"),K=A.kupa;return K&&K.evre==="mada\
+lya"?\u00E7("G\xFCm\xFC\u015F madalyalar: {takim}",{takim:futbolTakimAdi(x,futbolKarsi(K.taraf))}):K&&K.evre==="kaldir"?\u00E7("Kupa t\xF6reni: {takim} \u015Fampiyon!",{takim:futbolTakimAdi(x,K.taraf)}):
+K&&K.evre==="tur"?\u00E7("Zafer turu: {takim}",{takim:futbolTakimAdi(x,K.taraf)}):K&&K.evre==="son"?\u00E7("{takim} \u015Fampiyon!",{takim:futbolTakimAdi(x,K.taraf)}):x.evre==="open"||x.evre==="closin\
+g"?\u00E7("{ev} \u2013 {dep}, {saat}",{ev,dep,saat:saatKisa(x.bas)}):x.evre==="locked"?\u00E7("Kadrolar haz\u0131r: {ev} \u2013 {dep}, {saat}",{ev,dep,saat:saatKisa(x.bas)}):x.evre==="finished"||A.bitti?
+\u00E7("Ma\xE7 bitti: {ev} {a}\u2013{b} {dep}",{ev,dep,a,b}):A.ara?\u00E7("Devre aras\u0131: {ev} {a}\u2013{b} {dep}",{ev,dep,a,b}):\u00E7("{ev} {a}\u2013{b} {dep}, {dk}. dakika",{ev,dep,a,b,dk:A.dakika})}
+return x.evre==="open"||x.evre==="closing"?\u00E7("Ma\xE7 saati {saat}; kadro toplan\u0131yor",{saat:saatKisa(x.bas)}):x.evre==="locked"?\u00E7("Kadrolar haz\u0131r; ba\u015Flama saati {saat}",{saat:saatKisa(
+x.bas)}):x.evre==="finished"||A.bitti?\u00E7("Ma\xE7 bitti: {a}\u2013{b}",{a,b}):A.ara?\u00E7("Devre aras\u0131: {a}\u2013{b}",{a,b}):\u00E7("Ma\xE7 s\xFCr\xFCyor: {a}\u2013{b}, {dk}. dakika",{a,b,dk:A.
+dakika})},yazi=x=>{if(kulup){if(x.bos)return x.yolda?\u00E7("Yoldas\u0131n; \u015Fehrin stadyumunu vard\u0131\u011F\u0131nda g\xF6r\xFCrs\xFCn."):x.sonrakiMac?\u00E7("S\u0131radaki ma\xE7 {saat}. Biletini a\u015Fa\
+\u011F\u0131dan alabilirsin.",{saat:saatKisa(x.sonrakiMac)}):\u00E7("\u015Eehirde yak\u0131nda kul\xFCp ma\xE7\u0131 yok. Kul\xFCpler ve lig a\u015Fa\u011F\u0131da.");if(!x.izler)return \u00E7("Ma\xE7\u0131 i\
+zlemek i\xE7in \u015Fehirde olmal\u0131s\u0131n; sonucu ma\xE7 bitince g\xF6r\xFCn\xFCr.");if(["open","closing"].includes(x.evre))return \u00E7("Kadrolar ma\xE7tan {dk} dakika \xF6nce belli olur; o an \u015Fehir\
+de olan haz\u0131r oyuncular sahaya \xE7\u0131kar.",{dk:sayi(kulupKurali()?.lockMinutes??10)});const K=x.bos?null:motor.an(futbolEl(x)).kupa;if(K&&K.evre!=="dizil"){const kap=x.oyuncular.find(o=>o.anahtar===
+K.kaptan),ad=kap?kap.ben?\u00E7("Sen"):kap.ad||"":"",ben3=x.oyuncular.find(o=>o.ben),benKaybeden=!!ben3&&ben3.taraf!==K.taraf;return K.evre==="toplan"?\u00E7("\u015Eampiyonlar k\xFCrs\xFCn\xFCn \xF6n\xFCnde toplan\u0131yor; h\
+akem finalistlerin g\xFCm\xFC\u015F madalyalar\u0131n\u0131 getiriyor."):K.evre==="madalya"?benKaybeden?K.madalya?.includes(ben3.anahtar)?\u00E7("G\xFCm\xFC\u015F madalyan boynunda: kupa finalisti oldun."):
+\u00E7("Hakem g\xFCm\xFC\u015F madalyan\u0131 takmaya geliyor."):\u00E7("Hakem finalistlere g\xFCm\xFC\u015F madalyalar\u0131n\u0131 tak\u0131yor; \u015Fampiyonlar alk\u0131\u015Fl\u0131yor."):K.evre===
+"kaldir"?kap?.ben?\u00E7("Kupay\u0131 sen kald\u0131r\u0131yorsun!"):ad?\u00E7("Kaptan {ad} kupay\u0131 kald\u0131r\u0131yor.",{ad}):\u00E7("Kaptan kupay\u0131 kald\u0131r\u0131yor."):K.evre==="tur"?\u00E7(
+"\u015Eampiyonlar kupayla sahan\u0131n \xE7evresinde zafer turu at\u0131yor."):\u00E7("Kupa k\xFCrs\xFCde; \u015Fampiyonlar kutluyor.")}const ben2=x.oyuncular.find(o=>o.ben);return[ben2?\u00E7("{kulup\
+} formas\u0131yla oynuyorsun ({mevki}); alt\u0131n halka sensin.",{kulup:futbolTakimAdi(x,ben2.taraf),mevki:futbolPosAdi(ben2.mevki)}):\u00E7("Ma\xE7\u0131 trib\xFCnden izliyorsun."),\u00E7("Formalar \
+kul\xFCplerin renginde, dairedeki say\u0131 forma numaras\u0131; kesik \xE7izgili daire altyap\u0131dan gelen oyuncu.")].join(" ")}if(x.bos)return x.yolda?\u00E7("Yoldas\u0131n; vard\u0131\u011F\u0131n \u015Fehrin sahas\u0131nda o\
+ynars\u0131n."):x.sonrakiMac?\u00E7("S\u0131radaki ma\xE7 {saat}. A\u015Fa\u011F\u0131dan kat\u0131labilir ya da yeni ma\xE7 kurabilirsin.",{saat:saatKisa(x.sonrakiMac)}):\u00E7("A\u015Fa\u011F\u0131dan yeni bir ma\xE7\
+ kurabilirsin; \u015Fehirdeki herkes kat\u0131labilir.");if(!x.izler)return \u00E7("Ma\xE7\u0131 izlemek i\xE7in \u015Fehirde olmal\u0131s\u0131n; sonucu ma\xE7 bitince g\xF6r\xFCn\xFCr.");const ben=x.
+oyuncular.find(o=>o.ben);return[ben?\u00E7("{taraf} tak\u0131m\u0131ndas\u0131n ({mevki}); alt\u0131n halka sensin.",{taraf:futbolTakimAdi(x,ben.taraf),mevki:futbolPosAdi(ben.mevki)}):\u00E7("Ma\xE7\u0131 izl\
+iyorsun."),x.lig?\u00E7("Mahalle ligi ma\xE7\u0131: formalar tak\u0131mlar\u0131n renginde, kaleciler ayr\u0131 renkte. Kesik \xE7izgili daire mahalleden gelen yedek."):\u00E7("Turuncular turuncu, Mav\
+iler mavi formada; kaleciler sar\u0131 ve mor. Kesik \xE7izgili daire mahalleden gelen yedek.")].join(" ")},ustYazi=x=>x.bos?kulup?\u00E7("Stadyum"):\u00E7("Hal\u0131 saha"):kulup?[x.stadyum?.kendi?\u00E7(
+"{kulup} stadyumu",{kulup:futbolTakimAdi(x,"a")}):\u00E7("{sehir} Belediye Stadyumu",{sehir:x.sehir}),x.stadyum?.seyirci!=null?\u00E7("{n} seyirci",{n:sayi(x.stadyum.seyirci)}):null].filter(Boolean).join(
+" \xB7 "):x.lig?\u00E7("{sehir} hal\u0131 sahas\u0131 \xB7 Mahalle ligi, {n}. tur",{sehir:x.sehir,n:sayi(x.lig.tur)}):\u00E7("{sehir} hal\u0131 sahas\u0131 \xB7 saha {n}",{sehir:x.sehir,n:sayi(x.saha??
+1)});function ciz(){if(!d)return;tahta?.kapat(),tahta=null;const o3=ornek();el.innerHTML=`<div class="kart-bas"><div><p class="ust-yazi" id="${on}-saha-ust">${esc(ustYazi(d))}</p>
           <h2 class="b2" id="${on}-saha-baslik">${esc(baslik(d))}</h2></div>
           ${Gorunum.webglVar()?`<button class="dugme sade kucuk-d" id="${on}-mod" aria-pressed="${mod==="2b"}" title="${mod==="3b"?\u00E7("Hafif g\xF6r\xFCn\xFCme (2B) ge\xE7"):\u00E7("3B g\xF6r\xFCn\xFCme ge\xE7")}\
 ">${ikon("layers")}${mod==="3b"?\u00E7("2B"):\u00E7("3B")}</button>`:""}</div>
@@ -12253,4 +12313,4 @@ score)}):"";return`${satirlar?`<ol class="oyunlar-siralama kahve-sezon-liste" da
 u sezon hen\xFCz kimse yok: en az {n} puanl\u0131 oyun gerekir.",{yer,n:min}))}</p>`}
     <p class="kucuk" data-sezon-ben>${esc(benYazi)}</p>
     ${usta?`<p class="kucuk" data-sezon-usta>${ikon("award")} ${esc(usta)}</p>`:""}`}function kahveSezonUst(l){if(!l?.season_no)return \u00E7("Bu sezon");const kalan=Math.max(0,Math.ceil((new Date(l.ends_at).
-getTime()-Date.now())/864e5));return \u00E7("{n}. sezon \xB7 {g} g\xFCn kald\u0131",{n:sayi(l.season_no),g:sayi(kalan)})}Parcalar.tamam("app");
+getTime()-Date.now())/864e5));return \u00E7("{n}. sezon \xB7 {g} g\xFCn kald\u0131",{n:sayi(l.season_no),g:sayi(kalan)})}Parcalar.tamam("app","2026-11-16-8043284a-fd6cffc");

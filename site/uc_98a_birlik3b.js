@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98a_birlik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98a_birlik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const BIRLIK_TAM=[6,4],BIRLIK_OLCEK=.7;function birlikIkonCiz(g,ad,x,y,boy,renk,kalinlik=2){const kaynak=IKON[ad]??"";g.save(),g.translate(x,y),g.scale(boy/24,boy/24),g.strokeStyle=renk,g.lineWidth=kalinlik,
 g.lineCap="round",g.lineJoin="round";for(const m of kaynak.matchAll(/<path[^>]*\sd="([^"]+)"/g))try{g.stroke(new Path2D(m[1]))}catch{}for(const m of kaynak.matchAll(/<circle[^>]*cx="([\d.]+)"[^>]*cy="([\d.]+)"[^>]*r="([\d.]+)"/g))
 g.beginPath(),g.arc(Number(m[1]),Number(m[2]),Number(m[3]),0,Math.PI*2),g.stroke();g.restore()}function birlikDurusCiz(g,durus,cx,cy,s,renk){g.save(),g.translate(cx,cy),g.scale(s,s),g.lineCap="round",
@@ -77,4 +77,4 @@ gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),kisiAnahtar
 n++}),n},durumYaz(y){d={...d,...y},yaz()},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){gorunur&&(tamlar.forEach(
 y=>{if(!y.kok.visible)return;const sure=y.fp.eylemSuresi(y.eylem)||3;y.fp.pozla(y.eylem,(t+y.faz*sure)%sure/sure,t+y.faz*7,hareketAzalt,!0),hareketAzalt||y.fp.canli(t+y.faz*5)}),hareketAzalt?kalabalik.
 guncelle(0):(kalabalik.guncelle(t),sancak.rotation.x=Math.sin(t*1.1)*.025,fenerIsik.intensity=(.4+(d.gece??0)*5.5)*(.94+Math.sin(t*7.3)*.03+Math.sin(t*13.1)*.03),bayrak.visible&&(bayrak.children[1].rotation.
-y=Math.sin(t*2.4)*.25)),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98a_birlik3b");
+y=Math.sin(t*2.4)*.25)),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98a_birlik3b","2026-11-16-8043284a-fd6cffc");

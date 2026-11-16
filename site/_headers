@@ -37,3 +37,6 @@
   Cache-Control: public, max-age=31536000, immutable
 /img/*
   Cache-Control: public, max-age=86400
+# 3B motoru (three.js; D-240): klasör adı sürümü taşır, içerik değişmez
+/three/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zzg_mahalle_ligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzg_mahalle_ligi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/lig",{async ac(kap){let v=null,hata=null,kapandi=!1,mesgul=!1,bolge=null,zaman=null;const R=()=>v?.rule??futbolKurali()?.neighborhood??{},T=()=>v?.my_team??null;async function yukle(){
 try{v=await Sunucu.cagir("football_neighborhood",bolge?{p_region:bolge}:{}),hata=null}catch(e){hata=e}}async function yap(fn,p,mesaj,ik="badge-check"){if(!mesgul){mesgul=!0;try{await Sunucu.yap(fn,p),
 mesaj&&tost(mesaj,ik),Durum.ozet().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert")}finally{mesgul=!1,await yukle(),kapandi||ciz()}}}const gunAdi=iso=>new Date(iso).toLocaleDateString(DIL.yerel,
@@ -226,4 +226,4 @@ ball_league_postpone_cancel",{p_request:b.dataset.ligErteleGeri},\u00E7("Ertelem
 {p_register:!0},\u00E7("Tak\u0131m\u0131n gelecek haftan\u0131n ligine yaz\u0131ld\u0131; bedel hesab\u0131nda ayr\u0131ld\u0131."),"clipboard-check"));const gr=$("#lig-geri",kap);gr&&(gr.onclick=()=>yap(
 "football_league_register",{p_register:!1},\u00E7("Kay\u0131t geri al\u0131nd\u0131; bedel serbest."),"undo-2"))}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&!document.querySelector(
 ".perde")&&ciz()});if(await yukle(),!kap.isConnected)return()=>{};ciz(),zaman=setInterval(()=>{document.hidden||tazele()},6e4);const b1=Durum.dinle("olay",({olay})=>{/^football\./.test(olay)&&tazele()});
-return()=>{kapandi=!0,clearInterval(zaman),b1()}}}),Parcalar.tamam("ek_98zzg_mahalle_ligi");
+return()=>{kapandi=!0,clearInterval(zaman),b1()}}}),Parcalar.tamam("ek_98zzg_mahalle_ligi","2026-11-16-8043284a-fd6cffc");

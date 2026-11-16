@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98w_parti.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98w_parti.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/parti",{async ac(kap){let v=null,durdur=()=>{},uyeGoster=50,istekGoster=30,bagisTaslak="",bagisOdak=!1;const merkez=PartiMerkezi.ac(),liderIsaret={e:null,id:null};async function yukle(){
 const[p,liste,kurallar]=await Promise.all([Sunucu.cagir("my_party"),Sunucu.cagir("parties").catch(()=>null),Durum.kurallar(),Durum.ozet()]);v={p,liste,c:kurallar.data.civic}}function uyelikHtml(p,lider){
 const mr=p.membership_rule;if(!mr)return"";const tumIstekler=p.requests??[],istekler=tumIstekler.slice(0,istekGoster);return`<section class="kart" id="parti-uyelik"><div class="kart-bas"><div><p class\
@@ -164,4 +164,4 @@ $("#parti-ayril",kap)?.addEventListener("click",()=>pencere({ust:\u00E7("Parti")
 {ad:\u00E7("Ayr\u0131l"),sinif:"mercan",is:()=>islem("party_leave",{},\u00E7("Partiden ayr\u0131ld\u0131n."),"door-open")}]}))}async function islem(fn,args,mesaj,ik){try{await Sunucu.yap(fn,args),tost(
 mesaj,ik)}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("parti-olay",()=>tazele()),b2=Durum.
 dinle("olay",({olay})=>{/^party\./.test(olay)&&tazele()}),b3=Durum.dinle("ulke-olay",({olay})=>{/^party\./.test(olay)&&tazele()});return()=>{durdur(),b1(),b2(),b3(),merkez.kapat()}}}),Parcalar.tamam("\
-ek_98w_parti");
+ek_98w_parti","2026-11-16-8043284a-fd6cffc");

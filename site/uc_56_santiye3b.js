@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_56_santiye3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_56_santiye3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function santiye3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,140);let w=1,h=1,kirli=!0,ciz=!1,d={anahtar:"",
 tur:"rail",durum:"building",ilerleme:0,malzeme:{},isci:0,ben:!1,savas:!1,bakimsiz:!1,ulkeA:null,ulkeB:null,oynat:!1};const azHareket=()=>matchMedia("(prefers-reduced-motion: reduce)").matches,M=(renk,ek={})=>new THREE.
 MeshStandardMaterial({color:renk,roughness:.85,...ek}),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.
@@ -46,4 +46,4 @@ y=-1.32)}else{const u=Math.min(1,s/4.5);tren.position.set(X0+1.2+(X1-X0-1)*u,.08
 Vector3(.1,.78,1).normalize();function kameraKur(){kamera.aspect=w/h;const n=[[-6.2,0,2.6],[6.2,0,2.6],[-6.2,0,-2.4],[6.2,0,-2.4],[0,3.6,-1.4],[-3,1.2,0],[3,1.2,0]].map(([x,y,z])=>new THREE.Vector3(x,
 y,z));kameraSigdir(THREE,kamera,n,YON,{x:.96,ust:.92,alt:-.95}),kirli=!0}return{etiket:\u00E7("Ortak hat \u015Fantiyesi (3B): ilerleme, malzeme ve i\u015F\xE7iler"),sahne,kamera,get kareMs(){return anim?
 50:1e3},durumYaz(y){d={...d,...y},yaz()},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk2){w=gen,h=yuk2,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(){canlandir(performance.
-now()),ciz=kirli,kirli=!1},cizilmeli(){return ciz}}}Parcalar.tamam("uc_56_santiye3b");
+now()),ciz=kirli,kirli=!1},cizilmeli(){return ciz}}}Parcalar.tamam("uc_56_santiye3b","2026-11-16-8043284a-fd6cffc");

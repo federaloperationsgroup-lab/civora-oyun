@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98_misafir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98_misafir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/misafir",{async ac(kap){let kapandi=!1,zy=null,odaKapat=null;const harita=await Durum.harita().catch(()=>null),birak=()=>{odaKapat?.(),odaKapat=null,zy?.kapat(),zy=null};async function liste(bildiri=null){
 birak(),EvYolu.hedefUnut();let r=null,hata=null;try{r=await EvYolu.komsular()}catch(e){hata=e}if(kapandi)return;const evler=r?.homes??[];kap.innerHTML=`<div class="sayfa">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("\u015Eehrim")}</p><h1 class="b1">${\u00E7("Misafirlik")}</h1>
@@ -19,4 +19,4 @@ if(!s){liste(hata?hataMetni(hata):\u00E7("Bu eve \u015Fu an girilemiyor."));retu
 "Misafirlik \xB7 ev"):\u00E7("Misafirlik \xB7 pansiyon odas\u0131"),s.owner_name??"",[bolgeAdi(h2.region_id),ev&&h2.zone?MAHALLE_TUR[h2.zone]??h2.zone:null].filter(Boolean).join(" \xB7 "));kap.innerHTML=
 `<div class="sayfa">${bant}<div id="oda-yer"></div></div>`,odaKapat=OdaPaneli.ac($("#oda-yer",kap),odaZiyaretten(h2),{sehir:Number(harita?.cities?.[h2.region_id]??1),ziyaret:zy,misafir:!0,sahip:s.owner_id,
 sahipAd:s.owner_name,cik:()=>liste(MISAFIR_NEDEN.cikti),bitti:(neden,e)=>dustu(neden,e)})}function dustu(neden,e){if(kapandi)return;const metin=MISAFIR_NEDEN[neden]??(e?hataMetni(e):MISAFIR_NEDEN.cikti);
-tost(metin,"door-open"),liste(metin)}const h=EvYolu.hedefAl();return h?await ziyaret(h.sahip,h.ad):await liste(),()=>{kapandi=!0,birak()}}}),Parcalar.tamam("ek_98_misafir");
+tost(metin,"door-open"),liste(metin)}const h=EvYolu.hedefAl();return h?await ziyaret(h.sahip,h.ad):await liste(),()=>{kapandi=!0,birak()}}}),Parcalar.tamam("ek_98_misafir","2026-11-16-8043284a-fd6cffc");

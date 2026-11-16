@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_39_golge.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_39_golge.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/golge",{async ac(kap){let v=null,k=null,p=null,vg=null,sc=null,sekme="kacak";try{const s=sessionStorage.getItem("civora.golge");["kara","kolluk","vurgun","sicil"].includes(s)&&(sekme=
 s)}catch{}let durdur=()=>{},varisDeneme=0,sinirMod=Gorunum.uc()?"3b":"2b",sinirHata=!1,kapandi=!1,sinirSaat=0,karakolMod=Gorunum.uc()?"3b":"2b",karakolHata=!1,karakolSaat=0,masaMod=Gorunum.uc()?"3b":"\
 2b",masaHata=!1,vgBekleT=0,mahkemeMod=Gorunum.uc()?"3b":"2b",mahkemeHata=!1,scBekleT=0;const scSayac={n:0},davadaGorulen=new Set,vgSayac={n:0},yoldaGorulen=new Set,planlandaGorulen=new Set,oynanan=new Set;
@@ -851,4 +851,4 @@ test(olay)&&(varisDeneme=0,tazele())}),b2=Gorunum.dinle(()=>{const yeni=Gorunum.
 uc()&&!mahkemeHata?"3b":"2b";(yeni!==sinirMod||yeniKarakol!==karakolMod||yeniMasa!==masaMod||yeniMahkeme!==mahkemeMod)&&v&&(sinirMod=yeni,karakolMod=yeniKarakol,masaMod=yeniMasa,mahkemeMod=yeniMahkeme,
 ciz())});return sokakSaat=setInterval(()=>{document.hidden||sekme!=="kara"||!k||Sunucu.cagir("city_pulse").then(x=>{kapandi||!x||(nabiz=x,sokak.yaz({k,nabiz,run:v.run}))}).catch(()=>{})},6e4),()=>{kapandi=
 !0,durdur(),b1(),b2(),clearInterval(sinirSaat),clearInterval(karakolSaat),clearInterval(sokakSaat),clearTimeout(vgBekleT),clearTimeout(scBekleT),sinirBirak(),karakolBirak(),masaBirak(),mahkemeBirak(),
-sokak.kapat()}}}),Parcalar.tamam("ek_39_golge");
+sokak.kapat()}}}),Parcalar.tamam("ek_39_golge","2026-11-16-8043284a-fd6cffc");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("dunya/harita",{async ac(kap){const[veriTam]=await Promise.all([haritaVerisi(),Durum.ozet(),Durum.kurallar()]);let harita=await Durum.harita(!0);Devletler.haritaya(veriTam);let yolDurum=await Sunucu.
 cagir("travel_status").catch(()=>null),isb=await Sunucu.cagir("coop_map").catch(()=>null),trafik=await Sunucu.cagir("world_pulse").catch(()=>null);const filmIstek=HaritaFilm.bekleyen;HaritaFilm.bekleyen=
 null;let filmVeri=filmIstek?.veri??null;if(filmIstek&&!filmVeri&&(filmVeri=await Sunucu.cagir("season_film",{p_season:filmIstek.no??null}).catch(e=>(tost(hataMetni(e),"circle-alert"),null))),filmVeri)
@@ -52,8 +52,8 @@ yor",{n:sayi(kon)})),oto&&parca.push(oto===1?\u00E7("turne otob\xFCs\xFC yolda: 
 "Kapat")}">${ikon("x")}</button>`;if(secili.tur==="ulke"){const u=ulkeById.get(secili.id)?.u;if(!u)return"";const acik=(harita.open_countries??[]).includes(u.id),uyuyor=(harita.dormant_countries??[]).
 includes(u.id),ayrintili=veri.bolgeler.some(b6=>b6.ulke===u.id);return`<section class="bolge-karti cam">${kapat}
           <p class="ust-yazi">${acik?uyuyor?\u00E7("Oyunda \xB7 uyuyan \xFClke"):\u00E7("Oyunda \xB7 uyan\u0131k"):\u00E7("Hen\xFCz a\xE7\u0131lmad\u0131")}</p><h2 class="b2">${esc(u.ad)}</h2>
-          <p class="aciklama" style="font-size:14px">${acik?uyuyor?\u00E7("Etkin vatanda\u015F\u0131 az oldu\u011Fu i\xE7in uyuyor: sava\u015F a\xE7amaz, ona sava\u015F a\xE7\u0131lamaz. Yeterli etkin vatanda\u015Fa ula\u015F\u0131nca uyan\u0131r ve Kurucu Me\
-clis se\xE7imi ba\u015Flar."):\u00E7("Uyan\u0131k \xFClke: se\xE7imler ve sava\u015F a\xE7\u0131k."):\u00E7("Bu \xFClke hen\xFCz oyuna a\xE7\u0131lmad\u0131; s\u0131n\u0131rlar bug\xFCnk\xFC haritadan.")}\
+          <p class="aciklama" style="font-size:0.875rem">${acik?uyuyor?\u00E7("Etkin vatanda\u015F\u0131 az oldu\u011Fu i\xE7in uyuyor: sava\u015F a\xE7amaz, ona sava\u015F a\xE7\u0131lamaz. Yeterli etkin vatanda\u015Fa ula\u015F\u0131nca uyan\u0131r ve Kuruc\
+u Meclis se\xE7imi ba\u015Flar."):\u00E7("Uyan\u0131k \xFClke: se\xE7imler ve sava\u015F a\xE7\u0131k."):\u00E7("Bu \xFClke hen\xFCz oyuna a\xE7\u0131lmad\u0131; s\u0131n\u0131rlar bug\xFCnk\xFC haritadan.")}\
 </p>
           ${koalisyonOf(harita,u.id)?`<p class="cip lacivert" style="margin:0 0 10px" data-kart-koalisyon="${esc(koalisyonOf(harita,u.id).coalition_id)}">${ikon("shield")}${\u00E7("Savunma koalisyonu:\
  {uyeler}",{uyeler:esc(koalisyonUyeleri(koalisyonOf(harita,u.id)))})}</p>`:""}
@@ -337,4 +337,4 @@ yenile()},olay==="coop.line_progress"?4e3:300))}),zamanlayici=setInterval(()=>{d
 "")){el.dataset.yolArac=kendi?.tur??"",$(".arac2b-govde",el)?.setAttribute("style",kendi?`fill:${aracRengi(kendi.renk)}`:"");const ik=$(".arac2b-ikon",el);ik&&(ik.setAttribute("style",kendi?`fill:${aracKarsit(
 kendi.renk)};stroke:${aracKarsit(kendi.renk)}`:""),ik.innerHTML=aracMini2b(kendi?.tur??""))}gorunumUygula()},5e3),trafikSaat=setInterval(()=>{mod!=="2b"||!trafik2b.length||document.hidden||(trafik2bYerlestir(),
 gorunumUygula())},1500);return()=>{kapandi=!0,clearInterval(zamanlayici),clearInterval(aracSaat),clearInterval(trafikSaat),clearInterval(filmSaat),birakGorunum(),b1(),b2(),b3(),b4(),b5(),clearTimeout(
-hatSaat),gozlem2b?.disconnect(),harita3bOrnek&&Uc.cizici?.birak(harita3bOrnek)}}}),Parcalar.tamam("ek_42_harita");
+hatSaat),gozlem2b?.disconnect(),harita3bOrnek&&Uc.cizici?.birak(harita3bOrnek)}}}),Parcalar.tamam("ek_42_harita","2026-11-16-8043284a-fd6cffc");

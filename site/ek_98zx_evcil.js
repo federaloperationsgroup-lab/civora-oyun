@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zx_evcil.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zx_evcil.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/evcil",{async ac(kap){let v=null,yuklendi=0,kapandi=!1,mesgul=!1,gorunus,tur="kedi",cins="tekir";const sahne=EvcilSahnesi.ac();sahne.dinle("sec",ad=>{const ilk=(v?.pets??[]).find(p=>p.
 state==="ac"||p.state==="acikti")??(v?.pets??[])[0],esyadaki=ad==="kafes"||ad==="akvaryum"?(v?.pets??[]).find(p=>p.species===(ad==="kafes"?"kus":"balik")):null,sec=ad.startsWith("hayvan:")?`#evcil-${ad.
 slice(7)}`:esyadaki?`#evcil-${esyadaki.id}`:ad==="mama"&&ilk?`#evcil-${ilk.id}`:ad==="ben"?"#evcil-dost":(v?.pets??[]).length?`#evcil-${v.pets[0].id}`:"#evcil-barinak",el=$(sec,kap);el&&(el.scrollIntoView(
@@ -167,4 +167,4 @@ b.dataset.evcilCins,ciz()};$("#evcil-sahiplen",kap)?.addEventListener("click",()
 {cins:evcilCinsAdi(cins)}),onay:\u00E7("Sahiplen"),is:async ad=>sonuc(await Sunucu.yap("pet_adopt",{p_species:tur,p_breed:cins,p_name:ad}),y=>{tost(\u00E7("{ad} art\u0131k evinde! Bar\u0131na\u011Fa {kr} kredi ba\u011F\u0131\u015F\
 lad\u0131n.",{ad,kr:kr(Number(y?.fee_cr??ucret))}),"heart"),y?.adopted?.id&&setTimeout(()=>sahne.oyna("sev",y.adopted.id),400)})})})}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&
 !document.querySelector(".perde")&&ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^pet\./.test(olay)&&tazele()}),saat=setInterval(()=>{kapandi||tazele()},3e4);return()=>{kapandi=!0,
-b1(),clearInterval(saat),sahne.kapat()}}}),Parcalar.tamam("ek_98zx_evcil");
+b1(),clearInterval(saat),sahne.kapat()}}}),Parcalar.tamam("ek_98zx_evcil","2026-11-16-8043284a-fd6cffc");

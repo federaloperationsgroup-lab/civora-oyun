@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98ze_ekonomi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98ze_ekonomi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ekonomi",{async ac(kap){let pano=null,kamu=null,stok=null,lojistik=null,kapandi=!1,para=null,paraSehir=null;try{paraSehir=sessionStorage.getItem("civora.ekonomi.sehir")||null,sessionStorage.
 removeItem("civora.ekonomi.sehir")}catch{}let ulkeSec=null;try{ulkeSec=sessionStorage.getItem("civora.ekonomi.ulke")||null}catch{}const sahne=EkonomiSahnesi.ac();sahne.dinle("sec",ad=>{if(ad==="pano"){
 $("#ekonomi-akis",kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});return}const rota={pazar:"sehir/pazar",hazine:"ulke/ozet",belediye:"sehir/belediye"}[ad];rota&&Kabuk.git(rota)});
@@ -140,4 +140,5 @@ store"),await tazele()}}),yaz=()=>{const m=adetAl(new FormData(p.form).get("mikt
 para hazineye).",{kr:kr(top)}):\u00E7("Miktar\u0131 denetle.")};p.form.addEventListener("input",yaz),yaz()}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await yukle(),ciz();const b1=Durum.
 dinle("ulke-olay",({olay})=>{/^procurement\./.test(olay)&&tazele()}),b2=Sunucu.Canli.dinle("public:procurement",(olay,yuk)=>{yuk?.data?.country_id===biz()&&tazele()}),b3=Durum.dinle("olay",({olay})=>{
 /^(shipment\.|market\.)/.test(olay)&&tazele()}),zaman=setInterval(async()=>{if(document.visibilityState!=="visible")return;const ulke=biz(),yeni=await Sunucu.cagir("economy_board",ulke?{p_country:ulke}:
-{}).catch(()=>null);yeni&&!kapandi&&(pano=yeni,sahne.yaz(pano))},6e4);return()=>{kapandi=!0,b1(),b2(),b3(),clearInterval(zaman),sahne.kapat()}}}),Parcalar.tamam("ek_98ze_ekonomi");
+{}).catch(()=>null);yeni&&!kapandi&&(pano=yeni,sahne.yaz(pano))},6e4);return()=>{kapandi=!0,b1(),b2(),b3(),clearInterval(zaman),sahne.kapat()}}}),Parcalar.tamam("ek_98ze_ekonomi","2026-11-16-8043284a-\
+fd6cffc");

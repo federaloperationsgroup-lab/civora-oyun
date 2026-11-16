@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_86_toren3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_86_toren3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function toren3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,60);let w=1,h=1,kirli=!0,kapEl=null,d={tur:"seviy\
 e",anahtar:"",ad:"",gorunus:null,ulke:null,rutbe:{sira:0,sayi:12},onceki:null,seviye:1,makam:null},t0=performance.now(),asama="";const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.75,
 ...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m};sahne.add(new THREE.
@@ -38,4 +38,5 @@ eylem);const sure=fp.eylemSuresi(eylem)||2.4;fp.pozla(eylem,t%sure/sure,t,azalt,
 .2+.7*(azalt?1:hk)),halka.position.y=2.85+(azalt?0:Math.sin(t*2)*.04);const pk=d.tur==="rutbe"?Math.max(0,1-Math.abs(g-1.1)/.5):0;for(const[p,yan]of[[parilti,-1],[parilti2,1]])p.visible=pk>0&&!azalt,p.
 position.set(figur.position.x+yan*.24*.72,.5+(1.3-.62+FIGUR_KALCA)*.72,-.2),p.material.opacity=pk,p.scale.setScalar(.7+pk*.9);for(const b of bayraklar)b.rotation.y=Math.sin(t*2.2+b.position.x)*.12;let n=0;
 if(!azalt&&g>1.2&&g<9)for(const p of parcalar){const u=g-1.2-p.gec;if(u<0)continue;const y=4.2-u*p.hiz;y<.02||(v.set(p.x+Math.sin(u*2+p.sal)*.25,y,p.z),q.setFromEuler(e.set(u*p.don,u*p.don*.7,p.sal)),
-mt.compose(v,q,s1),konfeti.setMatrixAt(n++,mt))}konfeti.count=n,konfeti.instanceMatrix.needsUpdate=!0,kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}}}Parcalar.tamam("uc_86_toren3b");
+mt.compose(v,q,s1),konfeti.setMatrixAt(n++,mt))}konfeti.count=n,konfeti.instanceMatrix.needsUpdate=!0,kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}}}Parcalar.tamam("uc_86_toren3b","2026-11-16\
+-8043284a-fd6cffc");

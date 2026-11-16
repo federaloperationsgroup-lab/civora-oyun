@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_23_ayarlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_23_ayarlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/ayarlar",{async ac(kap){const[liste,silme,dog,guven]=await Promise.all([Sunucu.cagir("my_feedback").catch(()=>null),Sunucu.cagir("account_deletion_status").catch(()=>null),Sunucu.cagir(
 "verification_status").catch(()=>null),Sunucu.cagir("trust_status").catch(()=>null)]),email=Sunucu.Giris.kullanici?.email??"",misafir=Sunucu.Giris.misafirMi,gbler=Array.isArray(liste)?liste:liste?.items??
 [],bekleyenSilme=silme?.status==="pending",baslangicKarti=()=>{const o=Durum.v.ozet?.onboarding;if(!o||typeof Rehber!="object")return"";const rol=o.role?Rehber.ROL[o.role]:null;return`<section class="\
@@ -16,16 +16,16 @@ pan></div>
 \xE7\u0131l\u0131r.",{n:Number(o.guided_days)}):\u00E7("Kapal\u0131: b\xFCt\xFCn sistemler a\xE7\u0131k. A\xE7arsan kilitler yeniden gelir (ilk {n} g\xFCn).",{n:Number(o.guided_days)})}</span></span><\
 /label>
             <label class="radyo" style="margin-top:10px"><input type="checkbox" id="rehberlik-ayar" ${o.guide?"checked":""} ${o.can_guide?"":"disabled"}>
-              <span><b>${\u00E7("Rehber olmak istiyorum")}</b><span class="kucuk">${o.can_guide?\u00E7("Yeni gelenler kanal\u0131n\u0131 g\xF6r\xFCr, sorular\u0131 yan\u0131tlars\u0131n (Konu\u015Fma d\xFC\u011Fmesi). Mesajlar\u0131nda rehber i\u015Faret\
-i \xE7\u0131kar."):\u00E7("Hesab\u0131n en az bir haftal\u0131k olunca a\xE7\u0131l\u0131r; o zamana dek Yeni gelenler kanal\u0131 senin de sorular\u0131n\u0131 bekler.")}</span></span></label>
+              <span><b>${\u00E7("Rehber olmak istiyorum")}</b><span class="kucuk">${o.can_guide?\u00E7("Sohbet'teki Yeni gelenler kanal\u0131n\u0131 g\xF6r\xFCr, sorular\u0131 yan\u0131tlars\u0131n. Mesajlar\u0131nda rehber i\u015Fareti \xE7\u0131ka\
+r."):\u00E7("Hesab\u0131n en az bir haftal\u0131k olunca a\xE7\u0131l\u0131r; o zamana dek Yeni gelenler kanal\u0131 senin de sorular\u0131n\u0131 bekler.")}</span></span></label>
           </section>`},baslangicBagla=()=>{const k=$("#baslangic-kart",kap);k&&($("#rol-degistir",k).onclick=()=>Rehber.rolSec(),$("#rehber-ayar",k).addEventListener("change",async e=>{try{await Rehber.
 ayarla({p_guided:e.target.checked}),tost(e.target.checked?\u00E7("Rehberli ba\u015Flang\u0131\xE7 a\xE7\u0131k."):\u00E7("Rehberli ba\u015Flang\u0131\xE7 kapand\u0131; b\xFCt\xFCn sistemler a\xE7\u0131k."),
 "lock-open")}catch(err){e.target.checked=!e.target.checked,tost(hataMetni(err),"circle-alert")}}),$("#rehberlik-ayar",k).addEventListener("change",async e=>{try{await Rehber.ayarla({p_guide:e.target.checked}),
-tost(e.target.checked?\u00E7("Rehbersin: Yeni gelenler kanal\u0131 Konu\u015Fma d\xFC\u011Fmesinde."):\u00E7("Rehberlik kapand\u0131."),"hand-helping")}catch(err){e.target.checked=!e.target.checked,tost(
-hataMetni(err),"circle-alert")}}))},KAPI_AD={mayor:\u00E7("belediye ba\u015Fkanl\u0131\u011F\u0131"),governor:\u00E7("valilik"),autonomy:\u00E7("\xF6zerklik ve ba\u011F\u0131ms\u0131zl\u0131k"),petition:\u00E7(
-"imza kampanyalar\u0131"),resistance:\u00E7("direni\u015F"),federation:\u00E7("futbol federasyonu")},telefonKarti=d=>{const ekler=(d.gates??[]).filter(g=>KAPI_AD[g]).map(g=>KAPI_AD[g]);return(d.gates??
-[]).includes("transfer")&&d.big_transfer_cr&&ekler.push(\u00E7("ba\u015Fka oyunculara bir seferde {n} kredi ve \xFCst\xFC aktar\u0131m",{n:kr(d.big_transfer_cr)})),`<section class="kart" id="telefon-d\
-ogrulama" data-telefon="${d.phone_verified?"dogrulandi":d.phone_required?"gerekli":"kapali"}">
+tost(e.target.checked?\u00E7("Rehbersin: Yeni gelenler kanal\u0131 Sohbet'te."):\u00E7("Rehberlik kapand\u0131."),"hand-helping")}catch(err){e.target.checked=!e.target.checked,tost(hataMetni(err),"cir\
+cle-alert")}}))},KAPI_AD={mayor:\u00E7("belediye ba\u015Fkanl\u0131\u011F\u0131"),governor:\u00E7("valilik"),autonomy:\u00E7("\xF6zerklik ve ba\u011F\u0131ms\u0131zl\u0131k"),petition:\u00E7("imza kam\
+panyalar\u0131"),resistance:\u00E7("direni\u015F"),federation:\u00E7("futbol federasyonu")},telefonKarti=d=>{const ekler=(d.gates??[]).filter(g=>KAPI_AD[g]).map(g=>KAPI_AD[g]);return(d.gates??[]).includes(
+"transfer")&&d.big_transfer_cr&&ekler.push(\u00E7("ba\u015Fka oyunculara bir seferde {n} kredi ve \xFCst\xFC aktar\u0131m",{n:kr(d.big_transfer_cr)})),`<section class="kart" id="telefon-dogrulama" dat\
+a-telefon="${d.phone_verified?"dogrulandi":d.phone_required?"gerekli":"kapali"}">
             <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("G\xFCvenlik")}</p><h2 class="b2">${\u00E7("Telefon do\u011Frulamas\u0131")}</h2></div><span class="ik-kutu">${ikon(d.phone_verified?
 "badge-check":"id-card")}</span></div>
             ${d.phone_verified?`<div class="bilgi-kutusu">${ikon("badge-check")}<span>${\u00E7("Telefonun do\u011Fruland\u0131 ({zaman}).",{zaman:esc(saatYaz(d.phone_verified_at))})}</span></div>`:d.phone_required?
@@ -135,6 +135,15 @@ put type="radio" name="gorunum" value="${k}" ${Gorunum.secim===k?"checked":""}>
               <span><b>${\u00E7("T\xF6renler")}</b><span class="kucuk">${\u00E7("Seviye ya da r\xFCtbe atlay\u0131nca, ba\u015Fkan ya da milletvekili olunca k\u0131sa t\xF6ren; oy verince zarf\u0131n sand\u0131\u011Fa d\xFC\u015F\xFC\u015F\xFC; \xFClken bir \
 sava\u015F\u0131 kazan\u0131nca zafer ge\xE7idi, kaybedince anma.")}</span></span></label>
           </section>
+          <section class="kart">
+            <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Okunurluk")}</p><h2 class="b2">${\u00E7("Yaz\u0131 boyu")}</h2></div><span class="ik-kutu">${ikon("zoom-in")}</span></div>
+            <div class="radyo-liste" id="yazi-secim">${[["100",\u00E7("Ola\u011Fan"),\u00E7("Oyunun ola\u011Fan yaz\u0131 boyu.")],["112.5",\u00E7("B\xFCy\xFCk"),\u00E7("Yaz\u0131lar sekizde bir b\xFCy\xFCr.")],
+["125",\u00E7("Daha b\xFCy\xFCk"),\u00E7("Yaz\u0131lar d\xF6rtte bir b\xFCy\xFCr; kartlar biraz uzar.")]].map(([k,ad,a])=>`<label class="radyo"><input type="radio" name="yazi" value="${k}" ${YaziBoyu.
+secim===k?"checked":""}>
+              <span><b>${ad}</b><span class="kucuk">${a}</span></span></label>`).join("")}</div>
+            <p class="kucuk" style="margin-top:8px">${\u00E7("Bu cihazda saklan\u0131r. Taray\u0131c\u0131n\u0131n yaz\u0131 boyu ayar\u0131 da oyunun yaz\u0131lar\u0131n\u0131 b\xFCy\xFCt\xFCr.")}</p\
+>
+          </section>
           <div id="tatil-yer"></div>
           <div id="bildirim-yer"></div>
           <section class="kart">
@@ -174,33 +183,33 @@ starter_granted&&!dog?.starter_granted?\u00E7("Telefonun do\u011Fruland\u0131; b
 catch(()=>{}),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){telHata(f,telMetni(err))}finally{d.disabled=!1,formSerbest(f)}}),$("#telefon-geri",kap)?.addEventListener("click",()=>{$("#telefon-kod-f\
 orm",kap).hidden=!0,$("#telefon-form",kap).hidden=!1}),$("#topluluk-kurallar",kap).onclick=()=>toplulukKurallari({kabul:!Durum.v.ozet?.character?.terms_accepted}),$("#moderasyon-kayitlarim",kap).onclick=
 ()=>yaptirimlarimAc(),$("#dil-secim",kap).addEventListener("change",async e=>{await Promise.all([Sunucu.cagir("locale_set",{p_locale:e.target.value}).catch(()=>{}),Sunucu.Giris.dilYaz(e.target.value)]),
-DIL.ayarla(e.target.value)}),$("#gorunum-secim",kap).addEventListener("change",e=>{Gorunum.ayarla(e.target.value),tost(\u00E7("G\xF6r\xFCn\xFCm kaydedildi."),"layers")}),$("#toren-ayar",kap).addEventListener(
-"change",e=>{Toren.ayarla(e.target.checked),tost(e.target.checked?\u00E7("T\xF6renler a\xE7\u0131k."):\u00E7("T\xF6renler kapal\u0131."),"party-popper")}),$("#ortam-secim",kap).addEventListener("chang\
-e",e=>{Ses.ayarlaOrtam(e.target.value),tost(e.target.value==="kapali"?\u00E7("Ortam sesi kapal\u0131."):\u00E7("Ortam sesi kaydedildi."),"volume-2")}),typeof Sezon=="object"&&(Sezon.tatilKarti($("#tat\
-il-yer",kap)),Sezon.bildirimKarti($("#bildirim-yer",kap))),$("#ses-secim",kap).addEventListener("change",e=>{Ses.ayarla(e.target.value),tost(e.target.value==="kapali"?\u00E7("Ses kapal\u0131."):\u00E7(
-"Ses kaydedildi."),"volume-2"),e.target.value!=="kapali"&&Ses.bildir()}),$("#gb-form",kap).addEventListener("submit",async e=>{e.preventDefault();const v=new FormData(e.target),yer=$(".form-mesaj",e.target),
-metin=String(v.get("metin")??"").trim();if(metin.length<10){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("En az 10 karakter yaz.")}</span></div>`;return}try{await Sunucu.
-yap("feedback_send",{p_kind:String(v.get("tur")),p_body:metin,p_context:{screen:(Kabuk.etkin??"hayat/ayarlar").slice(0,60),app_version:SURUM.slice(0,60),platform:(navigator.platform||"web").slice(0,60)}}),
-tost(\u00E7("Geri bildirimin al\u0131nd\u0131. Te\u015Fekk\xFCrler!"),"badge-check"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<s\
-pan>${esc(hataMetni(err))}</span></div>`}}),$("#parola-form",kap)?.addEventListener("submit",async e=>{e.preventDefault();const p=String(new FormData(e.target).get("parola")??""),yer=$(".form-mesaj",e.
-target);if(p.length<8){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("Parola en az 8 karakter olmal\u0131.")}</span></div>`;return}try{await Sunucu.Giris.parolaDegistir(
-p),tost(\u00E7("Parolan de\u011Fi\u015Ftirildi."),"lock"),e.target.reset()}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`}}),$("#c\
-ikis",kap).onclick=()=>{if(!Sunucu.Giris.misafirMi){Uygulama.cikis();return}pencere({ust:\u00E7("Misafir hesab\u0131"),baslik:\u00E7("\xC7\u0131k\u0131ls\u0131n m\u0131?"),govde:`<p class="aciklama">${esc(
-\u00E7("Misafir hesab\u0131ndan \xE7\u0131karsan bu karaktere bir daha giremezsin. \xD6nce Ayarlar'dan e-posta ve parola ekleyerek hesab\u0131 kal\u0131c\u0131 yapabilirsin."))}</p>`,dugmeler:[{ad:\u00E7(
-"Vazge\xE7")},{ad:\u00E7("Yine de \xE7\u0131k"),sinif:"mercan",ikon:"door-open",is:()=>Uygulama.cikis()}]})},$("#kalici-form",kap)?.addEventListener("submit",async e=>{e.preventDefault();const f=e.target,
-v=new FormData(f),yer=$(".form-mesaj",f),d=$("button[type=submit]",f),ePosta=String(v.get("email")??"").trim(),p=String(v.get("parola")??"");if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(ePosta)){yer.innerHTML=
-`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("E-posta adresini denetle.")}</span></div>`,formSerbest(f);return}if(p.length<8){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-\
-alert")}<span>${\u00E7("Parola en az 8 karakter olmal\u0131.")}</span></div>`,formSerbest(f);return}d.disabled=!0;try{await Sunucu.Giris.kaliciYap(ePosta,p),yer.innerHTML=`<div class="bilgi-kutusu">${ikon(
-"send")}<span>${esc(\u00E7("{email} adresine do\u011Frulama ba\u011Flant\u0131s\u0131 g\xF6nderildi. Ba\u011Flant\u0131ya t\u0131klay\u0131nca hesab\u0131n kal\u0131c\u0131 olur; sonra bu e-posta ve parolayla her cihazdan girebilirsin.",
-{email:ePosta}))}</span></div>`,f.querySelectorAll("input").forEach(g=>{g.disabled=!0})}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></d\
-iv>`,d.disabled=!1}finally{formSerbest(f)}}),$("#veri-indir",kap).onclick=async()=>{try{const v=await Sunucu.cagir("my_data_export"),url=URL.createObjectURL(new Blob([JSON.stringify(v,null,2)],{type:"\
-application/json"})),a=document.createElement("a");a.href=url,a.download="civora-verilerim.json",a.click(),setTimeout(()=>URL.revokeObjectURL(url),5e3)}catch(err){tost(hataMetni(err),"circle-alert")}},
-$("#silme-vazgec",kap)?.addEventListener("click",async()=>{try{await Sunucu.yap("account_deletion_cancel"),tost(\u00E7("Hesap silme talebin iptal edildi."),"check"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){
-tost(hataMetni(err),"circle-alert")}}),$("#silme-baslat",kap)?.addEventListener("click",async()=>{let on;try{on=await Sunucu.cagir("account_deletion_preview")}catch(err){tost(hataMetni(err),"circle-al\
-ert");return}const ad=Durum.v.ozet?.character?.name??"";let onay="";pencere({ust:\u00E7("Hesab\u0131 sil"),baslik:\u00E7("Emin misin?"),govde:`<p class="aciklama">${\u00E7("Karakterin, mesajlar\u0131n ve k\
-i\u015Fisel verilerin silinir; ba\u015Fka oyuncular\u0131n haklar\u0131 korunur.")} ${on?.summary?esc(\u00E7v(on.summary)):""}</p>
+DIL.ayarla(e.target.value)}),$("#gorunum-secim",kap).addEventListener("change",e=>{Gorunum.ayarla(e.target.value),tost(\u00E7("G\xF6r\xFCn\xFCm kaydedildi."),"layers")}),$("#yazi-secim",kap).addEventListener(
+"change",e=>{YaziBoyu.ayarla(e.target.value),tost(\u00E7("Yaz\u0131 boyu kaydedildi."),"zoom-in")}),$("#toren-ayar",kap).addEventListener("change",e=>{Toren.ayarla(e.target.checked),tost(e.target.checked?
+\u00E7("T\xF6renler a\xE7\u0131k."):\u00E7("T\xF6renler kapal\u0131."),"party-popper")}),$("#ortam-secim",kap).addEventListener("change",e=>{Ses.ayarlaOrtam(e.target.value),tost(e.target.value==="kapa\
+li"?\u00E7("Ortam sesi kapal\u0131."):\u00E7("Ortam sesi kaydedildi."),"volume-2")}),typeof Sezon=="object"&&(Sezon.tatilKarti($("#tatil-yer",kap)),Sezon.bildirimKarti($("#bildirim-yer",kap))),$("#ses\
+-secim",kap).addEventListener("change",e=>{Ses.ayarla(e.target.value),tost(e.target.value==="kapali"?\u00E7("Ses kapal\u0131."):\u00E7("Ses kaydedildi."),"volume-2"),e.target.value!=="kapali"&&Ses.bildir()}),
+$("#gb-form",kap).addEventListener("submit",async e=>{e.preventDefault();const v=new FormData(e.target),yer=$(".form-mesaj",e.target),metin=String(v.get("metin")??"").trim();if(metin.length<10){yer.innerHTML=
+`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("En az 10 karakter yaz.")}</span></div>`;return}try{await Sunucu.yap("feedback_send",{p_kind:String(v.get("tur")),p_body:metin,p_context:{
+screen:(Kabuk.etkin??"hayat/ayarlar").slice(0,60),app_version:SURUM.slice(0,60),platform:(navigator.platform||"web").slice(0,60)}}),tost(\u00E7("Geri bildirimin al\u0131nd\u0131. Te\u015Fekk\xFCrler!"),
+"badge-check"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`}}),$("#parola-form",kap)?.addEventListener(
+"submit",async e=>{e.preventDefault();const p=String(new FormData(e.target).get("parola")??""),yer=$(".form-mesaj",e.target);if(yer.innerHTML="",!alanHatalari(e.target,p.length<8?[["parola",\u00E7("Pa\
+rola en az 8 karakter olmal\u0131.")]]:[]))try{await Sunucu.Giris.parolaDegistir(p),tost(\u00E7("Parolan de\u011Fi\u015Ftirildi."),"lock"),e.target.reset()}catch(err){yer.innerHTML=`<div class="hata-k\
+utusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`}}),$("#cikis",kap).onclick=()=>{if(!Sunucu.Giris.misafirMi){Uygulama.cikis();return}pencere({ust:\u00E7("Misafir hesab\u0131"),
+baslik:\u00E7("\xC7\u0131k\u0131ls\u0131n m\u0131?"),govde:`<p class="aciklama">${esc(\u00E7("Misafir hesab\u0131ndan \xE7\u0131karsan bu karaktere bir daha giremezsin. \xD6nce Ayarlar'dan e-posta ve parola ekleyerek\
+ hesab\u0131 kal\u0131c\u0131 yapabilirsin."))}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Yine de \xE7\u0131k"),sinif:"mercan",ikon:"door-open",is:()=>Uygulama.cikis()}]})},$("#kalici-form",
+kap)?.addEventListener("submit",async e=>{e.preventDefault();const f=e.target,v=new FormData(f),yer=$(".form-mesaj",f),d=$("button[type=submit]",f),ePosta=String(v.get("email")??"").trim(),p=String(v.
+get("parola")??"");if(yer.innerHTML="",alanHatalari(f,[.../^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(ePosta)?[]:[["email",\u00E7("E-posta adresini denetle.")]],...p.length<8?[["parola",\u00E7("Parola en az \
+8 karakter olmal\u0131.")]]:[]])){formSerbest(f);return}d.disabled=!0;try{await Sunucu.Giris.kaliciYap(ePosta,p),yer.innerHTML=`<div class="bilgi-kutusu">${ikon("send")}<span>${esc(\u00E7("{email} adr\
+esine do\u011Frulama ba\u011Flant\u0131s\u0131 g\xF6nderildi. Ba\u011Flant\u0131ya t\u0131klay\u0131nca hesab\u0131n kal\u0131c\u0131 olur; sonra bu e-posta ve parolayla her cihazdan girebilirsin.",{email:ePosta}))}\
+</span></div>`,f.querySelectorAll("input").forEach(g=>{g.disabled=!0})}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`,d.disabled=!1}finally{
+formSerbest(f)}}),$("#veri-indir",kap).onclick=async()=>{try{const v=await Sunucu.cagir("my_data_export"),url=URL.createObjectURL(new Blob([JSON.stringify(v,null,2)],{type:"application/json"})),a=document.
+createElement("a");a.href=url,a.download="civora-verilerim.json",a.click(),setTimeout(()=>URL.revokeObjectURL(url),5e3)}catch(err){tost(hataMetni(err),"circle-alert")}},$("#silme-vazgec",kap)?.addEventListener(
+"click",async()=>{try{await Sunucu.yap("account_deletion_cancel"),tost(\u00E7("Hesap silme talebin iptal edildi."),"check"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){tost(hataMetni(err),"circl\
+e-alert")}}),$("#silme-baslat",kap)?.addEventListener("click",async()=>{let on;try{on=await Sunucu.cagir("account_deletion_preview")}catch(err){tost(hataMetni(err),"circle-alert");return}const ad=Durum.
+v.ozet?.character?.name??"";let onay="";pencere({ust:\u00E7("Hesab\u0131 sil"),baslik:\u00E7("Emin misin?"),govde:`<p class="aciklama">${\u00E7("Karakterin, mesajlar\u0131n ve ki\u015Fisel verilerin silinir; ba\
+\u015Fka oyuncular\u0131n haklar\u0131 korunur.")} ${on?.summary?esc(\u00E7v(on.summary)):""}</p>
           <label class="alan" style="margin-top:12px"><span>${\u00E7("Onay i\xE7in karakter ad\u0131n\u0131 yaz:")} <b>${esc(ad)}</b></span><input id="silme-onay" autocomplete="off"></label>`,dugmeler:[
 {ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Silme talebini g\xF6nder"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("account_deletion_request",{p_confirm:onay}),tost(\u00E7("Silme talebin al\u0131nd\u0131."),
 "circle-alert"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){if(err.kod==="REAUTH_REQUIRED"){tost(\u00E7("G\xFCvenlik i\xE7in \xE7\u0131k\u0131\u015F yap\u0131p yeniden giri\u015F yap, sonra tekrar dene."),
 "lock");return}tost(hataMetni(err),"circle-alert")}}}]}),document.getElementById("silme-onay")?.addEventListener("input",e=>{onay=e.target.value})});const b1=Durum.dinle("ozet",()=>{const k=$("#baslan\
-gic-kart",kap);k&&(k.outerHTML=baslangicKarti(),baslangicBagla())});return()=>b1()}}),Parcalar.tamam("ek_23_ayarlar");
+gic-kart",kap);k&&(k.outerHTML=baslangicKarti(),baslangicBagla())});return()=>b1()}}),Parcalar.tamam("ek_23_ayarlar","2026-11-16-8043284a-fd6cffc");

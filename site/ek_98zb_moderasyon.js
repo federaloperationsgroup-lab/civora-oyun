@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zb_moderasyon.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/moderasyon",{async ac(kap){const roller=Durum.v.ozet?.character?.staff??[],moderator=roller.some(r=>r==="moderator"||r==="admin"),teknik=roller.some(r=>["admin","release","support"].
 includes(r)),v={genel:null,sekme:moderator?"rapor":"sunucu",tur:null,kuyruk:null,bekleyen:null,arama:"",sonuc:null,kayit:null,kayitSonu:!1,sunucu:null,isler:!1,guven:null,guvenTur:null};try{const s=sessionStorage.
 getItem("civora.moderasyon");(moderator&&["rapor","bekleyen","inceleme","oyuncu","kayit"].includes(s)||teknik&&s==="sunucu")&&(v.sekme=s)}catch{}await Durum.kurallar().catch(()=>null);async function yukle(){
@@ -136,4 +136,4 @@ rt");return}try{v.sonuc=await Sunucu.cagir("mod_player_search",{p_query:v.arama}
 b.dataset.modOyuncu,sonra);$("#ops-isler-ac",kap)?.addEventListener("click",()=>{v.isler=!v.isler,ciz()}),$("#mod-kayit-daha",kap)?.addEventListener("click",async()=>{const son=(v.kayit??[]).at(-1);try{
 const x=await Sunucu.cagir("mod_log",{p_before:son?Number(son.id):null,p_limit:50});v.kayit=[...v.kayit??[],...x],v.kayitSonu=x.length<50,ciz()}catch(err){tost(hataMetni(err),"circle-alert")}})}const tazele=tazeleyici(
 async()=>{await yukle(),ciz()});await yukle(),ciz();const saat=setInterval(()=>{!document.hidden&&kap.isConnected&&!document.querySelector(".perde")&&tazele()},6e4);return()=>clearInterval(saat)}}),Parcalar.
-tamam("ek_98zb_moderasyon");
+tamam("ek_98zb_moderasyon","2026-11-16-8043284a-fd6cffc");

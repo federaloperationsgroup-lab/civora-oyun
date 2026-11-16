@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_61_kalabalik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_61_kalabalik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function kalabalikKur(THREE,en){const grup=new THREE.Group,M=(ek={})=>new THREE.MeshStandardMaterial({color:"#FFFFFF",roughness:.75,...ek}),G={bacak:new THREE.CapsuleGeometry(.075,.3,3,8).translate(0,
 -.22,0),govde:new THREE.CapsuleGeometry(.19,.24,4,12),bas:new THREE.SphereGeometry(.27,16,12),kol:new THREE.CapsuleGeometry(.055,.26,3,8).translate(0,-.18,0),sapka:new THREE.CylinderGeometry(.2,.25,.12,
 14),kapuson:new THREE.SphereGeometry(.31,16,10,Math.PI/2+.85,Math.PI*2-1.7,0,Math.PI*.78),goz:new THREE.SphereGeometry(.034,8,6),semsiye:new THREE.ConeGeometry(.56,.24,12,1,!0).translate(0,.12,0),sap:new THREE.
@@ -32,4 +32,4 @@ v.set(0,.24,0),q.identity(),s1),sapkalar.setMatrixAt(k._sapka,mSap.multiplyMatri
 multiplyMatrices(mb,mParca))),k._semsiye>=0&&(mParca.compose(v.set(.2,govY+1.08,.24),q.setFromEuler(e.set(-.1,0,Math.sin(t*3+(k.faz??0)*6.283)*.04)),s1),m4.multiplyMatrices(mKisi,mParca),semsiyeler.setMatrixAt(
 k._semsiye,m4),saplar.setMatrixAt(k._semsiye,m4));const omuzY=govY+.2,omuzZ=Math.sin(d.egim)*.2;for(const[j,yan,ax,az]of[[0,-1,d.kolS,d.kolSz],[1,1,d.kolD,d.kolDz]])mParca.compose(v.set(yan*.24,omuzY,
 omuzZ),q.setFromEuler(e.set(ax,0,az)),s1),kollar.setMatrixAt(i*2+j,m4.multiplyMatrices(mKisi,mParca))});for(const m of[bacaklar,govdeler,baslar,kollar,sapkalar,gozler,kapusonlar,semsiyeler,saplar])m.instanceMatrix.
-needsUpdate=!0}};return api}Parcalar.tamam("uc_61_kalabalik3b");
+needsUpdate=!0}};return api}Parcalar.tamam("uc_61_kalabalik3b","2026-11-16-8043284a-fd6cffc");

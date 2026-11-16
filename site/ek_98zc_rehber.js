@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zc_rehber.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zc_rehber.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/gorevler",{async ac(kap){let g=null;const yukle=async()=>{g=await Sunucu.cagir("missions")};await yukle();const ciz=()=>{const rol=g.role?Rehber.ROL[g.role]:null;kap.innerHTML=`<di\
 v class="sayfa sayfa-dar">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("G\xFCn\xFCn g\xF6revleri")}</h1>
@@ -21,4 +21,4 @@ n)"></i></span>
 </p></div>`,$("#gorev-yenile",kap).onclick=async()=>{await yukle(),ciz()};for(const b of $$("[data-gorev-al]",kap))b.onclick=async()=>{b.disabled=!0;try{const r=await Sunucu.yap("mission_claim",{p_key:b.
 dataset.gorevAl});g=r.missions??g,tost(\u00E7("G\xF6rev al\u0131nd\u0131: +{xp} deneyim.",{xp:Number(r.xp??0)}),"gift"),typeof Ses=="object"&&Ses.kutla(),ciz(),Durum.askerlik().catch(()=>{})}catch(e){
 tost(hataMetni(e),"circle-alert"),b.disabled=!1}}};ciz();const b1=Durum.dinle("olay",({olay})=>{(olay==="mission.claimed"||olay==="progress.level_up")&&yukle().then(ciz).catch(()=>{})});return()=>b1()}}),
-Parcalar.tamam("ek_98zc_rehber");
+Parcalar.tamam("ek_98zc_rehber","2026-11-16-8043284a-fd6cffc");

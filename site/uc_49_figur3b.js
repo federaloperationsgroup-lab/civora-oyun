@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_49_figur3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_49_figur3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const FIGUR_KALCA=.62,FIGUR_BEDEN={ince:{gen:.84,der:.88,kol:.9,bacak:.9,ara:.92,boyun:.92},orta:{gen:1,der:1,kol:1,bacak:1,ara:1,boyun:1},iri:{gen:1.2,der:1.16,kol:1.16,bacak:1.16,ara:1.12,boyun:1.14}};
 function figurIfade(Y,keyif){return keyif==="happy"?{...Y,agiz:"gulumse",agizR:Math.max(Y.agizR??.07,.092),yanak:Math.max(Y.yanak??0,.62),kasA:Math.max(Y.kasA??0,.16)}:keyif==="good"&&["duz","kucuk","\
 sert"].includes(Y.agiz)?{...Y,agiz:"gulumse",yanak:Math.max(Y.yanak??0,.38)}:Y}const figurKeyfi=y=>y?.keyif!=null?y.keyif:y?.anahtar&&typeof Durum=="object"&&y.anahtar===Durum.v?.ozet?.character?.id?Durum.
@@ -326,4 +326,5 @@ g/.6):g<2.1?figur.rotation.y=aynaBak.d0+f:g<2.8?figur.rotation.y=aynaBak.d0+f*(1
 rotation.y=donus;if(oda)for(const a of oda.askilar.values()){if(!a.salla||!a.giysi)continue;const s=(simdi-a.salla)/1e3;s>1.6||hareketAzalt?(a.giysi.rotation.z=0,a.salla=0):a.giysi.rotation.z=.2*Math.
 exp(-2.6*s)*Math.sin(9*s),kirli=!0}const p=fp.parcalar;if(!p)return;const canli=simdi<canliBitis&&!hareketAzalt;if(oynayan||canli||p.kirliPoz){if(p.kirliPoz=!1,oynayan){const E=EYLEM[oynayan.ad],gecen=(simdi-
 oynayan.t0)/1e3;gecen>=E.sure?(oynayan=null,fp.dinlen(),kapEl&&(kapEl.dataset.eylem=""),dinleyici.eylemBitti?.()):fp.pozla(oynayan.ad,gecen/E.sure,gecen,hareketAzalt),p.kirliPoz=!0}else tutulan?fp.pozla(
-tutulan.ad,tutulan.u,tutulan.t):fp.dinlen();canli&&(fp.canli(t),p.kirliPoz=!0),kirli=!0}},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_49_figur3b");
+tutulan.ad,tutulan.u,tutulan.t):fp.dinlen();canli&&(fp.canli(t),p.kirliPoz=!0),kirli=!0}},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_49_figur3b","2026-11-16-8043284a-f\
+d6cffc");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98zzzf_tahta3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zzzf_tahta3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function tahta3bKur(THREE,ortak){const{M,dokuCiz,ahsapKoyu}=ortak,_mo=new THREE.Object3D,MG={pul:new THREE.CylinderGeometry(.0145,.0145,.008,14),zar:new THREE.BoxGeometry(.014,.014,.014),tasDik:new THREE.
 BoxGeometry(.016,.024,.006),tasYatik:new THREE.BoxGeometry(.016,.005,.022),istaka:new THREE.BoxGeometry(.27,.014,.034),satranc:new THREE.BoxGeometry(.34,.004,.34),atBas:new THREE.BoxGeometry(.008,.016,
 .016),hacDik:new THREE.BoxGeometry(.0025,.011,.0025),hacYan:new THREE.BoxGeometry(.008,.0025,.0025)},pulBeyazMat=M("#F3EBDD",{roughness:.4}),pulSiyahMat=M("#3A2A22",{roughness:.4}),okeyTasMat=M("#F2EA\
@@ -87,4 +87,4 @@ alt:-.95}),kirli=!0}let yazilan={kayan:"",konum:""};function kapYaz(){if(!kap)re
 "Oyunu izle (3B masa)")},sahne,kamera,get kareMs(){return oyn.kayiyor?0:250},get kayan(){return oyn.konum},kapBagla(el){kap=el??null,yazilan={kayan:"",konum:""},kapYaz(),kirli=!0},durumYaz(y){y.oyun!==
 oyun&&(oyun=y.oyun,tavlaMasa.visible=oyun!=="okey",okeyMasa.visible=oyun==="okey",kameraKur()),hiz=Number(y.hiz)||1,oyn.yaz(oyun,{durum:"playing",s:y.s??{}},y.hamleler,!!y.anim),kapYaz(),kirli=!0},kalite(){
 kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt){oyn.guncelle(dt,hiz)&&(kirli=!0),kapYaz()},cizilmeli(){const c=kirli;return kirli=!1,c}}}Parcalar.tamam(
-"uc_98zzzf_tahta3b");
+"uc_98zzzf_tahta3b","2026-11-16-8043284a-fd6cffc");

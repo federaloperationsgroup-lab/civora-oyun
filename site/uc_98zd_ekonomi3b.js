@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98zd_ekonomi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zd_ekonomi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const EKONOMI_TEZGAH=[[-5.4,-.95,.35],[-4.05,-1.5,.15],[-2.75,-1.8,.06]],EKONOMI_RENK={hazine:"#D9A548",belediye:"#367F70",ithalat:"#23395B",ihracat:"#C65A3B"};function ekonomi3bKur(THREE,cizici){if(!cizici.
 kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,90);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={
 ulke:null,alisveris:0,hacim:0,sonSaat:0,enCok:[],son:[],hazine:0,belediye:0,vergiGun:{},vergiSaat:{},kamyonHazine:0,kamyonBelediye:0,ithalat:0,ihracat:0,ortaklar:[],siparis:0,stok:[],gece:0};const dinleyici={},
@@ -81,4 +81,4 @@ x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),kirli=!0},get durum(){retu
 Math.min(4,d.ithalat)),ihracat:String(Math.min(4,d.ihracat)),altin:String(ekonomiAltin(d.hazine)),hazine:String(d.hazine),enCok:d.enCok[0]?.asset??""}},get cizimSayisi(){let n=0;return sahne.traverseVisible(
 o=>{o.isMesh&&n++}),n},durumYaz(y){d={...d,...y},yaz()},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){gorunur&&
 (hareketAzalt||(kalabalik.guncelle(t),kayan.t.offset.x=t*.035%1,belediyeBayrak.rotation.y=Math.sin(t*2.6)*.25),araclariYerlestir(t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}
-Parcalar.tamam("uc_98zd_ekonomi3b");
+Parcalar.tamam("uc_98zd_ekonomi3b","2026-11-16-8043284a-fd6cffc");

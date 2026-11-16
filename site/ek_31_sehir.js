@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_31_sehir.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/ev",{async ac(kap){let v=null,odaKapat=null,zy=null;const partiEl=document.createElement("div");partiEl.id="parti-yer",partiEl.style.marginTop="20px";const partiKapat=EvPartisiKart.
 ac(partiEl);async function yukle(){const[ev,kurallar,,oda,harita,kariyer]=await Promise.all([Sunucu.cagir("my_home"),Durum.kurallar(),Durum.ozet(),Sunucu.cagir("home_layout"),Durum.harita().catch(()=>null),
 Sunucu.cagir("media_career").catch(()=>null)]),burasi=await Sunucu.cagir("city",{p_region:ev.location_region_id});v={ev,burasi,kurallar,oda,harita,kariyer}}function evimKarti(ev,kurallar){const h=ev.house;
@@ -167,4 +167,4 @@ ad:\u00E7("\u0130ptal et"),sinif:"mercan",ikon:"x",is:iptal}]}))}async function 
 varisDeneme>=6||!kap.isConnected)){varisDeneme++;try{await Sunucu.cagir("travel_arrive")}catch(e){e.kod!=="TRAVEL_NOT_DUE"&&e.kod!=="NOT_TRAVELING"&&tost(hataMetni(e),"circle-alert")}await tazele()}}const tazele=tazeleyici(
 async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(travel\.|vehicle\.accident$)/.test(olay)&&(varisDeneme=0,tazele())});return istZaman=setInterval(()=>{document.
 hidden||!kap.isConnected||!v?.ist||Sunucu.cagir("station_board").then(b=>{b&&kap.isConnected&&(v.ist=b,istasyon.yaz(b))}).catch(()=>{})},3e4),()=>{durdur(),b1(),clearInterval(istZaman),sira.kapat(),yolculuk.
-kapat(),istasyon.kapat()}}}),Parcalar.tamam("ek_31_sehir");
+kapat(),istasyon.kapat()}}}),Parcalar.tamam("ek_31_sehir","2026-11-16-8043284a-fd6cffc");

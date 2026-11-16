@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_82_terzi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_82_terzi3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const TERZI_KIYAFETLER=["gunluk","takim","tulum","kazak","spor","yelek","uniforma"];function terziAynaKur(THREE,gen,yuk,cozunurluk=512){const dokuMatrisi=new THREE.Matrix4,hedef=new THREE.WebGLRenderTarget(
 cozunurluk,cozunurluk,{type:THREE.HalfFloatType}),yansiyan=new THREE.ShaderMaterial({uniforms:{renk:{value:new THREE.Color("#B4BBBE")},doku:{value:hedef.texture},dokuMatrisi:{value:dokuMatrisi}},vertexShader:`\
 uniform mat4 dokuMatrisi;
@@ -64,4 +64,4 @@ AG+.02,AY+.02,.02,"#3A3633",0,AA+AY/2,-.03);const ayna=terziAynaKur(THREE,AG,AY)
 2.45,-.74],[2.28,Y0,-.15],[2.28,2.6,-.2],[0,2.55,0],[0,Y0,1.1]]).map(p=>new THREE.Vector3(...p));let anahtar="";function giydir({kiyafet,renk,uniformaAcik}){const k=`${renk}|${uniformaAcik?1:0}`;if(k!==
 anahtar){anahtar=k;for(const[id,a]of askilar)a.giysi&&a.kanca.remove(a.giysi),a.giysi=terziGiysiKur(THREE,mat,id,renk),a.giysi.userData.kilit.visible=id==="uniforma"&&!uniformaAcik,a.kanca.add(a.giysi)}
 for(const[id,a]of askilar){const bos=id===kiyafet;a.giysi.visible===bos&&(a.salla=performance.now()),a.giysi.visible=!bos}}return{grup,askilar,ayna,aynaGrup,aynaNokta,noktalar,giydir,tiklanir:()=>[...askilar.
-values()].map(a=>a.giysi).filter(g=>g?.visible)}}Parcalar.tamam("uc_82_terzi3b");
+values()].map(a=>a.giysi).filter(g=>g?.visible)}}Parcalar.tamam("uc_82_terzi3b","2026-11-16-8043284a-fd6cffc");

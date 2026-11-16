@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zp_hobi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zp_hobi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/hobiler",{async ac(kap){let v=null,kapandi=!1,durdur=()=>{};const sahne=HobiSahnesi.ac();sahne.dinle("sec",ad=>{const el=$({mutfak:"#hobi-mutfak",diller:"#hobi-diller",kiler:"#hobi\
 -kiler",terzi:"#hobi-terzi"}[ad]??"#hobi-seans",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vu\
 rgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let gorunus,bekleyenZaman=null,kirli=!1,bekleyen=!1,kapaliAcik=!1,terziKapaliAcik=!1,takiKapaliAcik=!1,sonRenk=[5,1],sonKumas=1,sonDesen=0;kap.addEventListener(
@@ -231,4 +231,4 @@ r?.meal?.recipe)}),"undo-2"),await tazele()});const f=$("#hobi-dil-form",kap);f?
 ype=submit]",f),()=>basla("language",dil))})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()}),arkaTazele=tazeleyici(async()=>{if(await yukle(),!kapandi){if(kirli){bekleyen=!0;return}ciz()}});
 await Promise.all([Durum.kurallar().catch(()=>null),Durum.ozet().catch(()=>null)]),await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(hobby\.|meal\.|travel\.arrived|mood\.|venue\.meal_|homeparty\.)/.
 test(olay)&&yakinda()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazeleIste()},3e4);return()=>{kapandi=!0,durdur(),b1(),clearInterval(saat),clearTimeout(bekleyenZaman),
-sahne.kapat()}}}),Parcalar.tamam("ek_98zp_hobi");
+sahne.kapat()}}}),Parcalar.tamam("ek_98zp_hobi","2026-11-16-8043284a-fd6cffc");

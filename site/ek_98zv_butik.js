@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zv_butik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zv_butik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/butik",{async ac(kap){let v=null,w=null,moda=null,kapsam="world",model=null,kapandi=!1,gorunus;try{kapsam=sessionStorage.getItem("civora.butik.kapsam")==="city"?"city":"world",model=
 sessionStorage.getItem("civora.butik.model")||null}catch{}model&&!GIYSI_MODELLER.includes(model)&&!BUTIK_YUVA_SUZGEC[model]&&(model=null);const ben=()=>Durum.v.ozet?.character??{},sahne=ButikSahnesi.ac();
 async function yukle(){const[b,g,bak,m]=await Promise.all([Sunucu.cagir("boutique",{p_scope:kapsam,p_model:model}),Sunucu.cagir("wardrobe").catch(()=>null),gorunus===void 0?Sunucu.cagir("my_look").catch(
@@ -119,4 +119,4 @@ setItem("civora.butik.model",model):sessionStorage.removeItem("civora.butik.mode
 for(const b of $$("[data-butik-cek]",kap))b.onclick=()=>isle(b,async()=>{await Sunucu.yap("boutique_unlist",{p_garment:b.dataset.butikCek}),tost(\u00E7("Sat\u0131\u015Ftan \xE7ekildi; giysi gard\u0131robunda."),
 "undo-2"),await tazele()})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await Durum.kurallar().catch(()=>null),await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(boutique\.|hobby\.completed|garment\.gift|travel\.arrived)/.
 test(olay)&&tazele()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazele()},3e4);return()=>{kapandi=!0,b1(),clearInterval(saat),sahne.kapat()}}}),Parcalar.tamam("ek_98z\
-v_butik");
+v_butik","2026-11-16-8043284a-fd6cffc");

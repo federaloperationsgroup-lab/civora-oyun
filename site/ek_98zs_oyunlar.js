@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zs_oyunlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zs_oyunlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/oyunlar",{async ac(kap){let r=null,hata=null,sistem=null,kapandi=!1,kart=null,kartOyun=null;const sec={oyun:"tavla",kapsam:"dunya",sezonOyun:"tavla",sezonKapsam:"ulke"};try{const s=JSON.
 parse(localStorage.getItem("civora.oyunlar")??"null");s?.oyun&&OYUN_AD[s.oyun]&&(sec.oyun=s.oyun),s?.kapsam==="ulke"&&(sec.kapsam="ulke"),s?.sezonOyun&&OYUN_AD[s.sezonOyun]&&(sec.sezonOyun=s.sezonOyun),
 s?.sezonKapsam==="sehir"&&(sec.sezonKapsam="sehir")}catch{}const siralamalar=new Map,sezonlar=new Map,sehrim=()=>Durum.v.ozet?.character?.residence??null,ulkem=()=>Durum.v.ozet?.character?.citizenship??
@@ -112,4 +112,4 @@ m]",kap)){const a=b.dataset.oyunlarKapsam===sec.kapsam;b.classList.toggle("ikinc
 "Y\xFCkleniyor\u2026")}</p>`),siralamaCiz()}const tazele=tazeleyici(async()=>{await yukle(),siralamalar.clear(),sezonlar.clear(),ciz()});if(await yukle(),!kap.isConnected)return()=>{};ciz();const durumlar=new Map,
 b1=Durum.dinle("olay",({olay,yuk})=>{if(olay==="board.invited"||olay==="board.ended"){tazele();return}if(olay==="board.update"){const d=yuk?.data??{},once=durumlar.get(d.game_id)??(r?.active?.game_id===
 d.game_id?r.active.status:void 0);durumlar.set(d.game_id,d.status),d.game_id!==kartOyun&&once!==d.status&&tazele()}}),saat=setInterval(()=>{!document.hidden&&!kart&&tazele()},3e4);return()=>{kapandi=!0,
-b1(),clearInterval(saat),kartBirak()}}}),Parcalar.tamam("ek_98zs_oyunlar");
+b1(),clearInterval(saat),kartBirak()}}}),Parcalar.tamam("ek_98zs_oyunlar","2026-11-16-8043284a-fd6cffc");

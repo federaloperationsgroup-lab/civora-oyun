@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_52_masa3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_52_masa3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function masa3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,120);let w=1,h=1,kirli=!0,ciz=!1,d={anahtar:"",hedef:"\
 cashbox",roller:[],kesif:0,devriye:!1,sonuc:null,oynat:!1};const azHareket=()=>matchMedia("(prefers-reduced-motion: reduce)").matches,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,
 ...ek}),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,m},yari=new THREE.HemisphereLight(
@@ -38,4 +38,4 @@ sonuc==="failed"){const yan=Math.floor(s*3)%2===0;kirmiziMat.emissiveIntensity=y
 normalize();function kameraKur(){kamera.aspect=w/h;const n=[[-5.5,0,3.2],[5.5,0,3.2],[-5.5,0,-3.2],[5.5,0,-3.2],[3.9,1.6,-1.9],[.9,1.5,-.6]].map(([x,y,z])=>new THREE.Vector3(x,y,z));kameraSigdir(THREE,
 kamera,n,YON,{x:.95,ust:.95,alt:-.95}),kirli=!0}return{etiket:\u00E7("Planlama masas\u0131 (3B): hedef, ekip ve ke\u015Fif"),sahne,kamera,get kareMs(){return anim?83:1e3},kapBagla(){kirli=!0},durumYaz(y){
 d={...d,...y},yaz()},kalite(k){lamba.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(){canlandir(performance.now()),ciz=kirli,kirli=
-!1},cizilmeli(){return ciz}}}Parcalar.tamam("uc_52_masa3b");
+!1},cizilmeli(){return ciz}}}Parcalar.tamam("uc_52_masa3b","2026-11-16-8043284a-fd6cffc");

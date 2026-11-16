@@ -1,14 +1,15 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98r_magaza.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98r_magaza.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/magaza",{async ac(kap){let v=null,l=null,tur="cerceve",suzgec="hepsi",hedefUrun=null,kapandi=!1,mesgul=!1;try{const s=JSON.parse(sessionStorage.getItem("civora.magaza")??"null");sessionStorage.
 removeItem("civora.magaza"),s&&MAGAZA_TURLER.some(([k])=>k===s.tur)&&(tur=s.tur,hedefUrun=typeof s.urun=="string"?s.urun:null)}catch{}async function yukle(){const[s,m]=await Promise.all([Sunucu.cagir(
 "store_view"),Sunucu.cagir("my_look"),Durum.kurallar()]);v=s,l=m,v.pass?.pending>0&&(v=await Sunucu.yap("store_sync"))}const urunler=()=>v.products??[],urun=id=>urunler().find(p=>p.id===id)??null,gorunus=()=>l?.
 look??varsayilanGorunus(l?.name??""),ek=()=>({ulke:l?.country_id,rutbe:l?.rank}),yuvasi=p=>Object.keys(MAGAZA_YUVALAR).find(k=>MAGAZA_YUVALAR[k]===p.kind)??null,turu=p=>MAGAZA_TURLER.find(t=>t[1]===p.
 kind)?.[0]??null,kullanilir=p=>p.owned||p.free,vitrinde=p=>(v.showcase?.products??[]).includes(p.id),onizleme=(p,kucuk=!1)=>{const svg=magazaOnizlemeSvg(p);if(svg)return`<span class="magaza-resim${kucuk?
 " kucuk-o":""}">${svg}</span>`;const y=yuvasi(p),g={...gorunus(),...p.kind==="uniform"?{kiyafet:"uniforma",giysi:null}:{},urunler:{...gorunus().urunler??{},...y?{[y]:p.id}:{}}};return`<span class="ava\
-tar magaza-onizleme${kucuk?" kucuk-o":""}">${avatarSvg(l?.name??"",g,ek())}</span>`},giyili=p=>{const y=yuvasi(p);return!!y&&gorunus().urunler?.[y]===p.id},fiyatYazisi=p=>{if(p.owned)return"";if(p.free)
-return \u00E7("Herkese a\xE7\u0131k");if(p.priceHonor!=null)return \u00E7("{n} \u015Feref puan\u0131",{n:p.priceHonor});if(p.id===v.gift?.product)return \u00E7("A\xE7\u0131l\u0131\u015F hediyesi");const odul=(v.
-pass?.rewards??[]).find(r=>r.product===p.id);if(odul)return odul.track==="premium"?\u00E7("Sezon kart\u0131 \xB7 se\xE7kin yol, {n}. seviye",{n:odul.level}):\u00E7("Sezon kart\u0131 \xB7 {n}. seviye",
-{n:odul.level});const kurucu=(v.founder?.tiers??[]).find(t=>t.products.includes(p.id));return kurucu?\u00E7v(kurucu.name):p.priceTry!=null?v.sales_open?tlYaz(p.priceTry):\u00E7("{tl} (sat\u0131\u015F a\xE7\u0131l\u0131nca)",
+tar magaza-onizleme${kucuk?" kucuk-o":""}">${avatarSvg(l?.name??"",g,ek())}</span>`},giyili=p=>{const y=yuvasi(p);return!!y&&gorunus().urunler?.[y]===p.id},eksikPuan=p=>!p.owned&&!p.free&&p.priceHonor!=
+null&&(v.honor?.balance??0)<p.priceHonor,fiyatYazisi=p=>{if(p.owned)return"";if(p.free)return \u00E7("Herkese a\xE7\u0131k");if(p.priceHonor!=null)return eksikPuan(p)?\u00E7("{n} / {m} \u015Feref puan\u0131",
+{n:sayi(v.honor?.balance??0),m:sayi(p.priceHonor)}):\u00E7("{n} \u015Feref puan\u0131",{n:p.priceHonor});if(p.id===v.gift?.product)return \u00E7("A\xE7\u0131l\u0131\u015F hediyesi");const odul=(v.pass?.
+rewards??[]).find(r=>r.product===p.id);if(odul)return odul.track==="premium"?\u00E7("Sezon kart\u0131 \xB7 se\xE7kin yol, {n}. seviye",{n:odul.level}):\u00E7("Sezon kart\u0131 \xB7 {n}. seviye",{n:odul.
+level});const kurucu=(v.founder?.tiers??[]).find(t=>t.products.includes(p.id));return kurucu?\u00E7v(kurucu.name):p.priceTry!=null?v.sales_open?tlYaz(p.priceTry):\u00E7("{tl} (sat\u0131\u015F a\xE7\u0131l\u0131nca)",
 {tl:tlYaz(p.priceTry)}):\u00E7("Sat\u0131\u015Fta de\u011Fil")};kap.innerHTML=`<div class="sayfa">
       <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("Ma\u011Faza")}</h1>
         <p class="aciklama">${\u00E7("G\xF6r\xFCn\xFCm s\xFCsleri: \xE7er\xE7eve, zemin, kuma\u015F, \u015Fapka, g\xF6zl\xFCk, \xFCniforma, silah g\xF6r\xFCn\xFCm\xFC, vuru\u015F efekti, sahne temas\u0131, amblem, \xE7\u0131kartma ve ev e\u015Fyas\u0131. Hi\xE7bir \xFCr\xFCn g\xFC\xE7, gelir\
@@ -60,21 +61,22 @@ urun).filter(Boolean);if(!liste.length){kutu.hidden=!0;return}kutu.hidden=!1,kut
             <span class="kucuk">${kullanilir(p)?`${ikon("check")}${\u00E7("Sende")}`:esc(fiyatYazisi(p))}</span></button>`).join("")}</div>`;for(const b of $$("[data-vitrin]",kutu))b.onclick=()=>{const p=urun(
 b.dataset.vitrin);p&&(tur=turu(p),suzgec="hepsi",hedefUrun=p.id,katalogCiz())}}function urunDugmeleri(p){const u=v.uses??{},bakiye=v.honor?.balance??0,l2=[];if(!p.owned&&!p.free&&p.priceHonor!=null){const yeter=bakiye>=
 p.priceHonor;l2.push(`<button type="button" class="dugme ${yeter?"altin":"ikincil"} kucuk-d" data-al="${esc(p.id)}" ${yeter&&!mesgul?"":"disabled"} title="${yeter?"":esc(\u00E7("\u015Eeref puan\u0131n yetmiyor"))}\
-">${ikon("medal")}${\u00E7("Al")}</button>`)}const y=yuvasi(p);p.owned&&y&&l2.push(giyili(p)?`<button type="button" class="dugme sade kucuk-d" data-cikar="${esc(p.id)}" ${mesgul?"disabled":""}>${ikon(
-"undo-2")}${\u00E7("\xC7\u0131kar")}</button>`:`<button type="button" class="dugme ikincil kucuk-d" data-giy="${esc(p.id)}" ${mesgul?"disabled":""}>${ikon("shirt")}${\u00E7("Tak")}</button>`);const tak=(hedef,ad,ik)=>{
-const h=u[hedef];if(!h?.can)return"";const takili=h.product===p.id;return`<button type="button" class="dugme ${takili?"sade":"ikincil"} kucuk-d" data-kullan="${hedef}|${takili?"":esc(p.id)}" ${mesgul?
-"disabled":""}>${ikon(takili?"undo-2":ik)}${takili?\u00E7("{yer}: \xE7\u0131kar",{yer:ad}):\u00E7("{yer}: tak",{yer:ad})}</button>`};if(p.owned&&p.kind==="stage"&&l2.push(tak("band",\u00E7("Sahne"),"d\
-rama")),p.owned&&p.kind==="emblem"&&l2.push(tak("party",\u00E7("Parti"),"users-round"),tak("unit",\u00E7("Birlik"),"shield")),p.owned&&MAGAZA_KULUP_HEDEF[p.kind]&&l2.push(tak(MAGAZA_KULUP_HEDEF[p.kind],
-\u00E7("Kul\xFCp"),"shield")),p.kind==="anthem"){const calan=typeof Ezgi=="object"&&Ezgi.calan==="mars:"+p.id;l2.push(`<button type="button" class="dugme sade kucuk-d" data-mars-dinle="${esc(p.id)}" a\
-ria-pressed="${calan}">${ikon(calan?"pause":"play")}${calan?\u00E7("Durdur"):\u00E7("Dinle")}</button>`)}return p.kind==="furniture"&&l2.push(p.owned?`<button type="button" class="dugme ikincil kucuk-\
-d" data-evim="${esc(p.id)}">${ikon("house")}${\u00E7("Evimde yerle\u015Ftir")}</button>`:`<button type="button" class="dugme sade kucuk-d" data-evim="${esc(p.id)}">${ikon("eye")}${\u00E7("Odada dene")}\
-</button>`),l2.filter(Boolean).join("")}function kullanimNotu(p){const u=v.uses??{},yerler=[];p.kind==="stage"&&u.band?.product===p.id&&yerler.push(\u00E7("{ad} grubunun sahnesinde",{ad:u.band.name})),
-p.kind==="emblem"&&u.party?.product===p.id&&yerler.push(\u00E7("{ad} partisinde",{ad:u.party.name})),p.kind==="emblem"&&u.unit?.product===p.id&&yerler.push(\u00E7("{ad} birli\u011Finde",{ad:u.unit.name}));
-const kh=MAGAZA_KULUP_HEDEF[p.kind];return kh&&u[kh]?.product===p.id&&yerler.push(\u00E7("{ad} kul\xFCb\xFCnde",{ad:u[kh].name})),yerler.length?yerler.join(" \xB7 "):p.owned&&p.kind==="stage"&&!u.band?.
-can?u.band?\u00E7("Sahne temas\u0131n\u0131 grubun y\xF6neticisi takar."):\u00E7("Bir m\xFCzik grubunun y\xF6neticisi olunca takars\u0131n."):p.owned&&p.kind==="emblem"&&!u.party?.can&&!u.unit?.can?\u00E7(
-"Amblemi parti ba\u015Fkan\u0131 ya da birlik lideri takar."):p.owned&&kh&&!u[kh]?.can?u[kh]?\u00E7("Kul\xFCb\xFCn g\xF6r\xFCn\xFCm\xFCn\xFC ba\u015Fkan takar."):\u00E7("Bir kul\xFCb\xFCn ba\u015Fkan\u0131 olunca tak\
-ars\u0131n."):MAGAZA_KULLANIM[p.kind]??""}function katalogCiz(){const liste=urunler().filter(p=>p.kind===(MAGAZA_TURLER.find(t=>t[0]===tur)?.[1]??"frame")).filter(p=>suzgec==="hepsi"||suzgec==="vitrin"&&
-vitrinde(p)||suzgec==="sezon"&&p.season!=null),sezonlar=[...new Set(urunler().map(p=>p.season).filter(x=>x!=null))].sort((a,b)=>b-a);$("#magaza-katalog",kap).innerHTML=`
+" aria-describedby="fiyat-${esc(p.id)}">${ikon("medal")}${\u00E7("Al")}</button>`)}const y=yuvasi(p);p.owned&&y&&l2.push(giyili(p)?`<button type="button" class="dugme sade kucuk-d" data-cikar="${esc(p.
+id)}" ${mesgul?"disabled":""}>${ikon("undo-2")}${\u00E7("\xC7\u0131kar")}</button>`:`<button type="button" class="dugme ikincil kucuk-d" data-giy="${esc(p.id)}" ${mesgul?"disabled":""}>${ikon("shirt")}${\u00E7(
+"Tak")}</button>`);const tak=(hedef,ad,ik)=>{const h=u[hedef];if(!h?.can)return"";const takili=h.product===p.id;return`<button type="button" class="dugme ${takili?"sade":"ikincil"} kucuk-d" data-kulla\
+n="${hedef}|${takili?"":esc(p.id)}" ${mesgul?"disabled":""}>${ikon(takili?"undo-2":ik)}${takili?\u00E7("{yer}: \xE7\u0131kar",{yer:ad}):\u00E7("{yer}: tak",{yer:ad})}</button>`};if(p.owned&&p.kind==="\
+stage"&&l2.push(tak("band",\u00E7("Sahne"),"drama")),p.owned&&p.kind==="emblem"&&l2.push(tak("party",\u00E7("Parti"),"users-round"),tak("unit",\u00E7("Birlik"),"shield")),p.owned&&MAGAZA_KULUP_HEDEF[p.
+kind]&&l2.push(tak(MAGAZA_KULUP_HEDEF[p.kind],\u00E7("Kul\xFCp"),"shield")),p.kind==="anthem"){const calan=typeof Ezgi=="object"&&Ezgi.calan==="mars:"+p.id;l2.push(`<button type="button" class="dugme \
+sade kucuk-d" data-mars-dinle="${esc(p.id)}" aria-pressed="${calan}">${ikon(calan?"pause":"play")}${calan?\u00E7("Durdur"):\u00E7("Dinle")}</button>`)}return p.kind==="furniture"&&l2.push(p.owned?`<bu\
+tton type="button" class="dugme ikincil kucuk-d" data-evim="${esc(p.id)}">${ikon("house")}${\u00E7("Evimde yerle\u015Ftir")}</button>`:`<button type="button" class="dugme sade kucuk-d" data-evim="${esc(
+p.id)}">${ikon("eye")}${\u00E7("Odada dene")}</button>`),l2.filter(Boolean).join("")}function kullanimNotu(p){const u=v.uses??{},yerler=[];p.kind==="stage"&&u.band?.product===p.id&&yerler.push(\u00E7(
+"{ad} grubunun sahnesinde",{ad:u.band.name})),p.kind==="emblem"&&u.party?.product===p.id&&yerler.push(\u00E7("{ad} partisinde",{ad:u.party.name})),p.kind==="emblem"&&u.unit?.product===p.id&&yerler.push(
+\u00E7("{ad} birli\u011Finde",{ad:u.unit.name}));const kh=MAGAZA_KULUP_HEDEF[p.kind];return kh&&u[kh]?.product===p.id&&yerler.push(\u00E7("{ad} kul\xFCb\xFCnde",{ad:u[kh].name})),yerler.length?yerler.
+join(" \xB7 "):p.owned&&p.kind==="stage"&&!u.band?.can?u.band?\u00E7("Sahne temas\u0131n\u0131 grubun y\xF6neticisi takar."):\u00E7("Bir m\xFCzik grubunun y\xF6neticisi olunca takars\u0131n."):p.owned&&
+p.kind==="emblem"&&!u.party?.can&&!u.unit?.can?\u00E7("Amblemi parti ba\u015Fkan\u0131 ya da birlik lideri takar."):p.owned&&kh&&!u[kh]?.can?u[kh]?\u00E7("Kul\xFCb\xFCn g\xF6r\xFCn\xFCm\xFCn\xFC ba\u015Fkan takar."):
+\u00E7("Bir kul\xFCb\xFCn ba\u015Fkan\u0131 olunca takars\u0131n."):MAGAZA_KULLANIM[p.kind]??""}function katalogCiz(){const liste=urunler().filter(p=>p.kind===(MAGAZA_TURLER.find(t=>t[0]===tur)?.[1]??
+"frame")).filter(p=>suzgec==="hepsi"||suzgec==="vitrin"&&vitrinde(p)||suzgec==="sezon"&&p.season!=null),sezonlar=[...new Set(urunler().map(p=>p.season).filter(x=>x!=null))].sort((a,b)=>b-a);$("#magaza\
+-katalog",kap).innerHTML=`
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Katalog")}</p><h2 class="b2">${\u00E7("\xDCr\xFCnler")}</h2></div>
           <span class="cip">${\u00E7("{n} \xFCr\xFCn",{n:urunler().length})} \xB7 ${v.sales_open?\u00E7("Sat\u0131\u015F a\xE7\u0131k"):\u00E7("Sat\u0131\u015F kapal\u0131 (pilot)")}</span></div>
         <div class="secim-sec magaza-yuvalar" role="tablist" aria-label="${\u00E7("\xDCr\xFCn t\xFCr\xFC")}">${MAGAZA_TURLER.map(([k,t,ad,ik,grup],i)=>{const hepsi=urunler().filter(p=>p.kind===t);return`${grup===
@@ -91,7 +93,8 @@ cip" role="tab" data-tur="${k}" aria-pressed="${k===tur}">${ikon(ik)}${esc(ad)}<
             <div class="magaza-urun-bilgi"><b>${esc(\u00E7v(p.name))}</b>
               <span class="satir" style="gap:4px;flex-wrap:wrap"><span class="cip ${p.rarity==="epic"?"altin":p.rarity==="rare"?"yesil":""}">${esc(MAGAZA_NADIRLIK[p.rarity]??p.rarity)}</span>
                 ${p.season!=null?`<span class="cip">${\u00E7("{n}. sezon",{n:p.season})}</span>`:""}${vitrinde(p)?`<span class="cip altin">${\u00E7("Vitrinde")}</span>`:""}</span>
-              <span class="kucuk">${p.owned?`${ikon("check")}${\u00E7("Sende")}${giyili(p)?" \xB7 "+\u00E7("tak\u0131l\u0131"):""}`:esc(fiyatYazisi(p))}</span>
+              <span class="kucuk${eksikPuan(p)?" magaza-eksik":""}" id="fiyat-${esc(p.id)}">${p.owned?`${ikon("check")}${\u00E7("Sende")}${giyili(p)?" \xB7 "+\u00E7("tak\u0131l\u0131"):""}`:esc(fiyatYazisi(
+p))}</span>
               ${!p.owned&&p.priceTry!=null&&p.priceHonor!=null?`<span class="kucuk magaza-tl">${v.sales_open?\u00E7("ya da {tl}",{tl:tlYaz(p.priceTry)}):\u00E7("ya da {tl} (sat\u0131\u015F a\xE7\u0131l\u0131nca)",
 {tl:tlYaz(p.priceTry)})}</span>`:""}
               ${kullanimNotu(p)?`<span class="kucuk magaza-kullanim">${esc(kullanimNotu(p))}</span>`:""}</div>
@@ -158,4 +161,4 @@ er}.",{ad:\u00E7v(urun(id)?.name??id),yer}):\u00E7("\xC7\u0131kar\u0131ld\u0131:
 }); \xF6deme do\u011Frulan\u0131nca \xFCr\xFCnler eklenir.",{tl:tlYaz(r.price_try)}),"hourglass")})}]});await yukle(),ciz();const sayac=setInterval(()=>{const n=v?.showcase?.next_at?Date.parse(v.showcase.
 next_at):0;n&&Date.now()>=n&&!mesgul&&!kapandi&&Sunucu.cagir("store_view").then(x=>{v=x,kapandi||ciz()}).catch(()=>{})},6e4),b0=Gorunus.dinle(k=>{if(!kapandi&&l&&k.includes(l.character_id)){const x=Gorunus.
 al(l.character_id);x?.look&&(l={...l,look:x.look},ciz())}}),b1=typeof Ezgi=="object"?Ezgi.dinle(()=>{!kapandi&&tur==="mars"&&katalogCiz()}):()=>{};return()=>{kapandi=!0,b0(),b1(),clearInterval(sayac),
-typeof Ezgi=="object"&&String(Ezgi.calan??"").startsWith("mars:")&&Ezgi.durdur()}}}),Parcalar.tamam("ek_98r_magaza");
+typeof Ezgi=="object"&&String(Ezgi.calan??"").startsWith("mars:")&&Ezgi.durdur()}}}),Parcalar.tamam("ek_98r_magaza","2026-11-16-8043284a-fd6cffc");

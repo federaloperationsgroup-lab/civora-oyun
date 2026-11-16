@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_58_hareket.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_58_hareket.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/hareket",{async ac(kap){let s=null,es=null,kapandi=!1,durdur=()=>{};const ek=ElKoyma.ekran({kap,tazele:()=>tazele(),ciz:()=>{!kapandi&&s&&ciz()},kapandi:()=>kapandi});let mod=Gorunum.
 uc()?"3b":"2b",hata3b=!1;const form={sebep:"economy",metin:"",yanit:""};async function yukle(){[s,es]=await Promise.all([Sunucu.cagir("movement_status"),Sunucu.cagir("seizure_status").catch(()=>null),
 Durum.ozet()]),ek.durumYaz(es)}const r=()=>s.rules,p=()=>s.petition,acik=()=>p()?.status==="open";function mitingDurumu(){const x=p(),durum=x?x.status==="open"?"acik":x.status==="succeeded"?"basarili":
@@ -170,4 +170,4 @@ try{await Sunucu.yap("motion_propose_no_confidence",{}),tost(\u00E7("G\xFCvensiz
 const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay,yuk})=>{if(olay==="seizure.live"){ek.canli(yuk?.data);return}/^(movement\.|parliament\.motion_|election\.|office\.installed|country\.(war_|awoke|dormant)|seizure\.)/.
 test(olay)&&tazele()}),b3=Durum.dinle("olay",({olay})=>{/^seizure\./.test(olay)&&tazele()}),ulke=Durum.v.ozet?.character?.citizenship;let katildi=!1;const b4=ulke?Sunucu.Canli.dinle("movement:"+ulke,olay=>{
 /^movement\./.test(olay)&&tazele()},{katilinca:()=>{katildi&&tazele(),katildi=!0}}):()=>{},b2=Gorunum.dinle(()=>{const m=Gorunum.uc()&&!hata3b?"3b":"2b";m!==mod&&s&&(mod=m,ciz())});return()=>{kapandi=
-!0,durdur(),b1(),b2(),b3(),b4(),ek.birak(),mitingBirak()}}}),Parcalar.tamam("ek_58_hareket");
+!0,durdur(),b1(),b2(),b3(),b4(),ek.birak(),mitingBirak()}}}),Parcalar.tamam("ek_58_hareket","2026-11-16-8043284a-fd6cffc");

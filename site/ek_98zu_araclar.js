@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zu_araclar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zu_araclar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/araclar",{async ac(kap){let v=null,kapandi=!1,mesgul=!1,gorunus;const sahne=AracSahnesi.ac();sahne.dinle("sec",ad=>{const el=$({land:"#arac-yer-land",sea:"#arac-yer-sea",kit:"#arac\
 -kurallar",ben:"#arac-bayi"}[ad]??"#arac-bayi",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vur\
 gu-yan"))});const ben=()=>Durum.v.ozet?.character??{};async function yukle(){const[x,bak]=await Promise.all([Sunucu.cagir("vehicles"),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);v=
@@ -272,4 +272,4 @@ c-hurda]",kap))b.onclick=()=>{const u=(v.garage??[]).find(x=>x.medium===b.datase
 ss="aciklama">${esc(\u00E7("{arac} t\xFCkenir; geri al\u0131nmaz.",{arac:aracAdi(u?.kind)}))}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Hurdaya ay\u0131r"),sinif:"mercan",ikon:"trash",is:()=>isle(
 ()=>Sunucu.yap("vehicle_scrap",{p_medium:b.dataset.aracHurda}),()=>tost(\u00E7("Arac\u0131n hurdaya ayr\u0131ld\u0131."),"trash"))}]})}}const tazele=tazeleyici(async()=>{await yukle(),!kapandi&&!mesgul&&
 ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(vehicle\.|travel\.|shipment\.)/.test(olay)&&tazele()});return()=>{kapandi=!0,b1(),sahne.kapat()}}}),Parcalar.tamam("ek_98zu_aracla\
-r");
+r","2026-11-16-8043284a-fd6cffc");

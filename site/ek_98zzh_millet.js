@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zzh_millet.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzh_millet.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/tarih",{async ac(kap){let t=null,h=null,sekme="tarih",kapandi=!1,hata3b=!1,muzeAyr="",ulke=null,acikUlkeler=[],kars=null,karsB=null,karsHata=null;const muzeMod=()=>Gorunum.uc()&&!hata3b?
 "3b":"2b";try{sekme=sessionStorage.getItem("civora.tarih")||"tarih"}catch{}try{ulke=sessionStorage.getItem(TARIH_ULKE)||null,sessionStorage.removeItem(TARIH_ULKE)}catch{}try{karsB=sessionStorage.getItem(
 TARIH_KARSI)||null,sessionStorage.removeItem(TARIH_KARSI)}catch{}const benimUlke=()=>Durum.v.ozet?.character?.citizenship??null,baskasi=()=>!!t&&t.country_id!==benimUlke(),ulkeYaz=u=>{ulke=u&&u!==benimUlke()?
@@ -141,4 +141,4 @@ t.country_id)&&karsAc()};$("#karsi-ulke",kap)?.addEventListener("change",e=>{kar
 muzeBirak()}async function ulkeDegistir(u){ulkeYaz(u),muzeAyr="";try{await yukle()}catch(e){tost(hataMetni(e),"circle-alert")}sekme==="karsilastir"&&t&&await karsYukle(),kapandi||ciz()}async function karsAc(){
 kars=null,karsHata=null,!kapandi&&sekme==="karsilastir"&&ciz(),await karsYukle(),!kapandi&&sekme==="karsilastir"&&ciz()}const tazele=tazeleyici(async()=>{await yukle(),sekme==="karsilastir"&&await karsYukle(),
 ciz()});await Promise.all([yukle(),ulkeleriYukle(),Durum.kurallar().catch(()=>null)]),sekme==="karsilastir"&&await karsYukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{!baskasi()&&/^(nation\.(goal_|drill_|holiday|anthem)|office\.installed|country\.war_closed|region\.annexed)/.
-test(olay)&&tazele()}),b2=Gorunum.dinle(()=>{sekme==="muze"&&t&&h&&ciz()});return()=>{kapandi=!0,b1(),b2(),muzeBirak()}}}),Parcalar.tamam("ek_98zzh_millet");
+test(olay)&&tazele()}),b2=Gorunum.dinle(()=>{sekme==="muze"&&t&&h&&ciz()});return()=>{kapandi=!0,b1(),b2(),muzeBirak()}}}),Parcalar.tamam("ek_98zzh_millet","2026-11-16-8043284a-fd6cffc");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98t_kabin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98t_kabin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const KABIN_ZARF=[90,40];function kabinZarfYeri(i){const r=rastgele(9100+i);return{x:(r()-.5)*.4,z:(r()-.5)*.24,y:.012+i*.0042+r()*.002,don:(r()-.5)*1.4,egik:(r()-.5)*.18}}function kabin3bKur(THREE,cizici){
 if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,40);let w=1,h=1,kirli=!0,kapEl=null,d={secim:"",pusula:[],renk:"#C65A3B",oy:0,secmen:null},
 asama="pusula",tAt=0,yiginSayi=0;const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.78,...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(
@@ -57,4 +57,5 @@ sin(t*1.6)*.08),asama!=="atiliyor"){hareketAzalt||(kirli=!0);return}const u=(per
 opacity=1-k1,kagit.visible=k1<1,u<.45)zarf.position.copy(basla);else if(u<1.55){const k2=kolay((u-.45)/1.1);bez(basla,tepe,yariK,k2,dunyaZarf),zarf.position.copy(dunyaZarf),zarf.rotation.set(k2*Math.PI/
 2,.25*(1-k2),0)}else if(u<2){const k3=kolay((u-1.55)/.45);zarf.position.set(yariK.x+(hedef.x-yariK.x)*k3,yariK.y+(hedef.y-yariK.y)*k3,yariK.z+(hedef.z-yariK.z)*k3),zarf.rotation.set(Math.PI/2*(1-Math.
 max(0,(k3-.6)/.4)),0,0)}else zarf.visible=!1,yiginKur(d.oy);parilti.material.opacity=u>1.9?Math.max(0,.9-(u-1.9)*3):0,parilti.scale.setScalar(1+Math.max(0,u-1.9)*.8),u>=KABIN_SURE&&(parilti.material.opacity=
-0,asama="atildi",kapEl&&(kapEl.dataset.asama=asama)),kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return yazilarBoya(),yerlestir(),api}Parcalar.tamam("uc_98t_kabin3b");
+0,asama="atildi",kapEl&&(kapEl.dataset.asama=asama)),kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return yazilarBoya(),yerlestir(),api}Parcalar.tamam("uc_98t_kabin3b","2026-11-16-8043284a-f\
+d6cffc");

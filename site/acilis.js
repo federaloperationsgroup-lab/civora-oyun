@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (acilis.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (acilis.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const IKON={activity:'<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />',anchor:'<path d="M12 6v16" /> <path d="m1\
 9 13 2-1a9 9 0 0 1-18 0l2 1" /> <path d="M9 11h6" /> <circle cx="12" cy="4" r="2" />',anvil:'<path d="M7 10H6a4 4 0 0 1-4-4 1 1 0 0 1 1-1h4" /> <path d="M7 5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1 7 7 0 0 1-7\
  7H8a1 1 0 0 1-1-1z" /> <path d="M9 12v5" /> <path d="M15 12v5" /> <path d="M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1" />',armchair:'<path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-\
@@ -281,49 +281,78 @@ kod}catch{}return kod==="en"&&typeof DIL_EN!="object"&&console.warn("\u0130ngili
 let s=metin.includes("::")?metin.replace(/^[a-z_]+::/,""):metin;if(DIL.kod!=="tr"){const k=DIL.katalog[metin];typeof k=="string"?s=k:k&&typeof k=="object"&&(s=k[DIL.cogul.select(Number(d?.n??(typeof d?.
 kr=="string"?d.kr.replace(/[^\d.-]/g,""):0)))]??k.other??metin)}return d?s.replace(/\{(\w+)\}/g,(m,a)=>a in d?typeof d[a]=="number"?d[a].toLocaleString(DIL.yerel):String(d[a]??""):m):s}const \u00E7v=(metin,d)=>metin==
 null?"":\u00E7(String(metin),d),veri=x=>x,listeYaz=l=>new Intl.ListFormat(DIL.yerel,{type:"conjunction"}).format(l.map(String));function dunyaAdlariniDileUydur(dunya){if(DIL.kod==="en"&&dunya)for(const grup of[
-dunya.ulkeler,dunya.bolgeler])for(const x of Object.values(grup??{}))x.en&&(x.ad=x.en)}const Parcalar=(()=>{const SURUM="2026-11-12-8094c592-475d08f";let dunyaYolu=null;const sozler=new Map;function kayit(ad){
-if(!sozler.has(ad)){let tamam2,ret;const soz=new Promise((r,j)=>{tamam2=r,ret=j});soz.catch(()=>{}),sozler.set(ad,{soz,tamam:tamam2,ret,bitti:!1,hata:!1,yukleniyor:!1})}return sozler.get(ad)}function tamam(ad){
-const k=kayit(ad);k.hata||(k.bitti=!0,k.yukleniyor=!1,k.tamam())}function yuklenemedi(ad,beklenen=kayit(ad)){sozler.get(ad)!==beklenen||beklenen.bitti||beklenen.hata||(beklenen.hata=!0,beklenen.yukleniyor=
-!1,beklenen.ret(new Error("PARCA_YUKLENEMEDI:"+ad)))}function ekle(ad,k){if(sozler.get(ad)!==k||k.bitti||k.hata)return;let s=document.querySelector(`script[data-parca="${ad}"]`);s?.dataset.parcaDurum===
-"hata"&&(s.remove(),s=null);const yeni=!s;s??=document.createElement("script"),s.dataset.parca=ad,s.addEventListener("error",()=>{s.dataset.parcaDurum="hata",yuklenemedi(ad,k)}),s.addEventListener("lo\
-ad",()=>{ad==="en"?tamam(ad):ad!=="uc"&&!k.bitti&&yuklenemedi(ad,k)}),yeni&&(s.src=ad==="dunya"?dunyaYolu:`${ad==="en"?"veri/en":ad}.js?v=${SURUM}`,s.async=ad==="dunya"||ad.startsWith("ek_")||ad.startsWith(
-"uc_"),document.head.append(s))}function bekle(ad){let k=kayit(ad);return k.hata&&(document.querySelector(`script[data-parca="${ad}"]`)?.remove(),sozler.delete(ad),k=kayit(ad)),k.bitti||k.yukleniyor||
-(k.yukleniyor=!0,(ad==="app"&&DIL.kod==="en"?bekle("en"):Promise.resolve()).then(()=>ekle(ad,k),()=>yuklenemedi(ad,k))),k.soz}const hazir=ad=>kayit(ad).bitti;function dunya(yol){return typeof yol!="st\
-ring"||!/^veri\/dunya\.[a-f0-9]{64}\.js$/.test(yol)||dunyaYolu&&dunyaYolu!==yol?Promise.reject(new Error("DUNYA_YOLU_GECERSIZ")):(dunyaYolu=yol,bekle("dunya"))}return{SURUM,tamam,bekle,hazir,yuklenemedi,
-dunya}})();for(const s of document.querySelectorAll("script[data-parca]"))s.dataset.parcaDurum==="hata"&&Parcalar.yuklenemedi(s.dataset.parca),s.addEventListener("error",()=>Parcalar.yuklenemedi(s.dataset.
-parca));const $=(s,el=document)=>el.querySelector(s),$$=(s,el=document)=>[...el.querySelectorAll(s)],esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#\
-39;"})[c]),ikon=(ad,sinif="")=>`<svg class="ik ${sinif}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IKON[ad]??
-""}</svg>`,sayi=n=>Number(n).toLocaleString(DIL.yerel),kr=alt=>(alt/100).toLocaleString(DIL.yerel,{minimumFractionDigits:alt%100?2:0,maximumFractionDigits:2}),yuzde=p=>\u00E7("%{n}",{n:Math.round(p*100)}),
-sure=sn=>{sn=Math.max(0,Math.round(sn));const s=Math.floor(sn/3600),d=Math.floor(sn%3600/60),n=sn%60;return s>=48?s%24?\u00E7("{g} g\xFCn {s} sa",{g:Math.floor(s/24),s:s%24}):\u00E7("{g} g\xFCn",{g:Math.
-floor(s/24)}):s>0?\u00E7("{s} sa {d} dk",{s,d}):d>0?\u00E7("{d} dk {n} sn",{d,n:String(n).padStart(2,"0")}):\u00E7("{n} sn",{n})},kisalt=ad=>ad.split(/\s+/).map(p=>p[0]).join("").slice(0,2).toLocaleUpperCase(
-DIL.yerel);function rastgele(tohum){let a=tohum>>>0;return()=>{a=a+1831565813|0;let t=Math.imul(a^a>>>15,1|a);return t=t+Math.imul(t^t>>>7,61|t)^t,((t^t>>>14)>>>0)/4294967296}}const ozet=s=>{let h=2166136261;
-for(const c of String(s))h^=c.codePointAt(0),h=Math.imul(h,16777619);return h>>>0},yumusak={cikis:t=>1-Math.pow(1-t,3),girisCikis:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,geri:t=>1+2.5*Math.pow(t-1,3)+1.5*
-Math.pow(t-1,2)},hareketAzalt=matchMedia("(prefers-reduced-motion: reduce)").matches,telefon=()=>matchMedia("(max-width: 860px)").matches,FORM_KILIT_MS=1500;document.addEventListener("submit",e=>{const f=e.
-target;if(!(f instanceof HTMLFormElement))return;const t=Date.now();if(f._mesgul&&t-f._mesgul<FORM_KILIT_MS){e.preventDefault(),e.stopImmediatePropagation();return}f._mesgul=t,f.addEventListener("inpu\
-t",()=>{f._mesgul=0},{once:!0})},!0);const formSerbest=f=>{f&&(f._mesgul=0)};function tost(metin,ik="sparkles"){const kutu=$("#tostlar"),eski=[...kutu.children].filter(x=>!x.classList.contains("cikis"));
-for(const x of eski.slice(0,Math.max(0,eski.length-1)))x.classList.add("cikis"),setTimeout(()=>x.remove(),320);const el=document.createElement("div");el.className="tost",el.innerHTML=`${ikon(ik)}<span\
->${esc(metin)}</span>`,kutu.appendChild(el),setTimeout(()=>{el.classList.add("cikis"),setTimeout(()=>el.remove(),320)},3600),typeof Ses=="object"&&Ses.bildir(ik==="circle-alert")}const pencereOlayKatmani=new WeakMap,
-pencereOdakKaydi=new WeakMap,pencereUstKatman=()=>[...document.querySelectorAll(".perde")].filter(p=>p.getClientRects().length).at(-1)??null,pencereUstteMi=(perde,olay)=>(olay&&pencereOlayKatmani.has(
-olay)?pencereOlayKatmani.get(olay):pencereUstKatman())===perde;document.addEventListener("keydown",e=>{(e.key==="Escape"||e.key==="Tab")&&pencereOlayKatmani.set(e,pencereUstKatman())},!0),document.addEventListener(
-"keydown",e=>{if(e.key!=="Tab"||e.defaultPrevented)return;const perde=pencereOlayKatmani.get(e),kayit=pencereOdakKaydi.get(perde);if(!perde?.isConnected||!kayit)return;const l=kayit.alanlar(),ilk=l[0],
-son=l.at(-1);l.length?e.shiftKey&&(document.activeElement===ilk||!perde.contains(document.activeElement))?(e.preventDefault(),son.focus()):!e.shiftKey&&(document.activeElement===son||!perde.contains(document.
-activeElement))&&(e.preventDefault(),ilk.focus()):(e.preventDefault(),kayit.odakla())}),document.addEventListener("focusin",e=>{const perde=pencereUstKatman(),kayit=pencereOdakKaydi.get(perde);kayit&&
-(perde.contains(e.target)?kayit.son=e.target:kayit.odakla(kayit.son))});function pencereOdak(perde){const acan=document.activeElement instanceof HTMLElement?document.activeElement:null;let kapali=!1;const alanlar=()=>[
-...perde.querySelectorAll("a[href], button, input, select, textarea, [tabindex]")].filter(el=>!el.matches(":disabled")&&el.tabIndex>=0&&el.getClientRects().length&&getComputedStyle(el).visibility!=="h\
-idden"),odakla=hedef=>{if(kapali||!perde.isConnected||!pencereUstteMi(perde))return;const l=alanlar(),el=l.includes(hedef)?hedef:l[0]??perde.querySelector("[role=dialog]")??perde;l.includes(el)||(el.tabIndex=
--1),el.focus({preventScroll:!0})},kayit={alanlar,odakla,son:null};pencereOdakKaydi.set(perde,kayit),queueMicrotask(()=>{perde.contains(document.activeElement)||odakla()});const don=()=>{if(kapali)return;
-kapali=!0,pencereOdakKaydi.delete(perde);const ust=pencereUstKatman();acan?.isConnected&&(!ust||ust.contains(acan))&&acan.focus({preventScroll:!0}),ust&&!ust.contains(document.activeElement)&&pencereOdakKaydi.
-get(ust)?.odakla()};return don.odakla=odakla,don}let pencereSayaci=0;const pencereBaslikKimligi=()=>"pencere-baslik-"+ ++pencereSayaci;function pencere({ust,baslik,govde,dugmeler}){const perde=document.
-createElement("div");perde.className="perde";const bk=pencereBaslikKimligi();perde.innerHTML=`<div class="pencere" role="dialog" aria-modal="true" aria-labelledby="${bk}">
+dunya.ulkeler,dunya.bolgeler])for(const x of Object.values(grup??{}))x.en&&(x.ad=x.en)}const Parcalar=(()=>{const SURUM="2026-11-16-8043284a-fd6cffc";let dunyaYolu=null,yeniSurum=null,sonDenetim=0,denetimSozu=null;
+const sozler=new Map;function surumBulundu(s){if(!(typeof s!="string"||!s||s===SURUM||s===yeniSurum)){yeniSurum=s;try{dispatchEvent(new CustomEvent("civora-surum",{detail:{surum:s}}))}catch{}}}function denetle({
+zorla=!1}={}){if(denetimSozu)return denetimSozu;if(!zorla&&Date.now()-sonDenetim<6e4)return Promise.resolve(yeniSurum);sonDenetim=Date.now();try{denetimSozu=fetch(`surum.json?t=${Date.now()}`,{cache:"\
+no-store"}).then(r=>r.ok?r.json():null).then(j=>(surumBulundu(j?.surum),yeniSurum),()=>yeniSurum).finally(()=>{denetimSozu=null})}catch{return denetimSozu=null,Promise.resolve(yeniSurum)}return denetimSozu}
+function kayit(ad){if(!sozler.has(ad)){let tamam2,ret;const soz=new Promise((r,j)=>{tamam2=r,ret=j});soz.catch(()=>{}),sozler.set(ad,{soz,tamam:tamam2,ret,bitti:!1,hata:!1,yukleniyor:!1})}return sozler.
+get(ad)}function tamam(ad,surum){const k=kayit(ad);k.hata||(surum&&surumBulundu(surum),k.bitti=!0,k.yukleniyor=!1,k.tamam())}function yuklenemedi(ad,beklenen=kayit(ad)){sozler.get(ad)!==beklenen||beklenen.
+bitti||beklenen.hata||(beklenen.hata=!0,beklenen.yukleniyor=!1,beklenen.ret(new Error("PARCA_YUKLENEMEDI:"+ad)),denetle({zorla:!0}))}function ekle(ad,k){if(sozler.get(ad)!==k||k.bitti||k.hata)return;let s=document.
+querySelector(`script[data-parca="${ad}"]`);s?.dataset.parcaDurum==="hata"&&(s.remove(),s=null);const yeni=!s;s??=document.createElement("script"),s.dataset.parca=ad,s.addEventListener("error",()=>{s.
+dataset.parcaDurum="hata",yuklenemedi(ad,k)}),s.addEventListener("load",()=>{ad==="en"?tamam(ad):ad!=="uc"&&!k.bitti&&yuklenemedi(ad,k)}),yeni&&(s.src=ad==="dunya"?dunyaYolu:`${ad==="en"?"veri/en":ad}\
+.js?v=${SURUM}`,s.async=ad==="dunya"||ad.startsWith("ek_")||ad.startsWith("uc_"),document.head.append(s))}function bekle(ad){let k=kayit(ad);return k.hata&&(document.querySelector(`script[data-parca="${ad}\
+"]`)?.remove(),sozler.delete(ad),k=kayit(ad)),k.bitti||k.yukleniyor||(k.yukleniyor=!0,(ad==="app"&&DIL.kod==="en"?bekle("en"):Promise.resolve()).then(()=>ekle(ad,k),()=>yuklenemedi(ad,k))),k.soz}const hazir=ad=>kayit(
+ad).bitti;function dunya(yol){return typeof yol!="string"||!/^veri\/dunya\.[a-f0-9]{64}\.js$/.test(yol)||dunyaYolu&&dunyaYolu!==yol?Promise.reject(new Error("DUNYA_YOLU_GECERSIZ")):(dunyaYolu=yol,bekle(
+"dunya"))}return{SURUM,tamam,bekle,hazir,yuklenemedi,dunya,denetle,get yeniSurum(){return yeniSurum}}})();for(const s of document.querySelectorAll("script[data-parca]"))s.dataset.parcaDurum==="hata"&&
+Parcalar.yuklenemedi(s.dataset.parca),s.addEventListener("error",()=>Parcalar.yuklenemedi(s.dataset.parca));const $=(s,el=document)=>el.querySelector(s),$$=(s,el=document)=>[...el.querySelectorAll(s)],
+esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]),ikon=(ad,sinif="")=>`<svg class="ik ${sinif}" viewBox="0 0 24 24" fill="none" stroke="curr\
+entColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IKON[ad]??""}</svg>`,sayi=n=>Number(n).toLocaleString(DIL.yerel),kr=alt=>(alt/100).toLocaleString(DIL.yerel,
+{minimumFractionDigits:alt%100?2:0,maximumFractionDigits:2}),yuzde=p=>\u00E7("%{n}",{n:Math.round(p*100)}),sure=sn=>{sn=Math.max(0,Math.round(sn));const s=Math.floor(sn/3600),d=Math.floor(sn%3600/60),
+n=sn%60;return s>=48?s%24?\u00E7("{g} g\xFCn {s} sa",{g:Math.floor(s/24),s:s%24}):\u00E7("{g} g\xFCn",{g:Math.floor(s/24)}):s>0?\u00E7("{s} sa {d} dk",{s,d}):d>0?\u00E7("{d} dk {n} sn",{d,n:String(n).
+padStart(2,"0")}):\u00E7("{n} sn",{n})},kisalt=ad=>ad.split(/\s+/).map(p=>p[0]).join("").slice(0,2).toLocaleUpperCase(DIL.yerel);function rastgele(tohum){let a=tohum>>>0;return()=>{a=a+1831565813|0;let t=Math.
+imul(a^a>>>15,1|a);return t=t+Math.imul(t^t>>>7,61|t)^t,((t^t>>>14)>>>0)/4294967296}}const ozet=s=>{let h=2166136261;for(const c of String(s))h^=c.codePointAt(0),h=Math.imul(h,16777619);return h>>>0},
+yumusak={cikis:t=>1-Math.pow(1-t,3),girisCikis:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,geri:t=>1+2.5*Math.pow(t-1,3)+1.5*Math.pow(t-1,2)},hareketAzalt=matchMedia("(prefers-reduced-motion: reduce)").matches,
+YaziBoyu=(()=>{const SECENEK=["100","112.5","125"],oku=()=>{try{const v=localStorage.getItem("civora.yazi");return SECENEK.includes(v)?v:"100"}catch{return"100"}},uygula=v=>{document.documentElement.style.
+fontSize=v==="100"?"":v+"%"};function ayarla(v){const d=SECENEK.includes(v)?v:"100";try{d==="100"?localStorage.removeItem("civora.yazi"):localStorage.setItem("civora.yazi",d)}catch{}uygula(d)}return{SECENEK,
+ayarla,get secim(){return document.documentElement.style.fontSize?document.documentElement.style.fontSize.replace("%",""):oku()}}})(),telefon=()=>matchMedia("(max-width: 860px)").matches,PlanYazisi=(()=>{
+const ozgun=new WeakMap,kendi=new WeakMap,bekleyen=new Map;let istek=0;const kucuk=(hedef,o)=>hedef>o*1.001;function uygula(svg,yeniden=!1){if(svg.isConnected)for(const t of svg.querySelectorAll("text")){
+const ayr=t.closest("[data-ayrinti]");kendi.has(t)||kendi.set(t,t.style.fontSize);const k=kendi.get(t);let o=yeniden?void 0:ozgun.get(t);if(o===void 0&&(!ayr&&t.style.fontSize!==k&&(t.style.fontSize=k),
+o=parseFloat(getComputedStyle(t).fontSize)||0,ozgun.set(t,o)),ayr&&svg.contains(ayr)){const m2=o?(ayr.parentElement??svg).getScreenCTM?.():null,olcek2=m2?Math.hypot(m2.a,m2.b):0;if(!olcek2)continue;const gizle=kucuk(
+11/olcek2,o)?"none":"";ayr.style.display!==gizle&&(ayr.style.display=gizle);continue}const m=o?t.getScreenCTM?.():null,olcek=m?Math.hypot(m.a,m.b):0;if(!olcek)continue;const hedef=11/olcek,buyut=kucuk(
+hedef,o),yeni=buyut?`${Number((hedef*1.0005).toPrecision(4))}px`:k;if(t.style.fontSize!==yeni&&(t.style.fontSize=yeni),t.dataset.kisa!==void 0){t.dataset.uzun??=t.textContent;const ad=buyut?t.dataset.
+kisa:t.dataset.uzun;t.textContent!==ad&&(t.textContent=ad)}}}function sirala(svg,yeniden=!1){bekleyen.set(svg,yeniden||!!bekleyen.get(svg)),istek||=requestAnimationFrame(()=>{istek=0;const l=[...bekleyen];
+bekleyen.clear();for(const[x,y]of l)uygula(x,y)})}const boyGozu=typeof ResizeObserver=="function"?new ResizeObserver(l=>{for(const x of l)x.target.isConnected?sirala(x.target,!0):boyGozu.unobserve(x.target)}):
+null,izle=svg=>{boyGozu?.observe(svg),sirala(svg)},SECICI="svg[role='img'][viewBox]";return typeof MutationObserver=="function"&&new MutationObserver(kayitlar=>{for(const k of kayitlar)for(const n of k.
+addedNodes){if(n.nodeType!==1)continue;const ust=n.closest?.(SECICI);if(ust){ust===n?izle(n):sirala(ust);continue}for(const svg of n.querySelectorAll?.(SECICI)??[])izle(svg)}}).observe(document.documentElement,
+{childList:!0,subtree:!0}),{uygula,EN_AZ:11}})(),FORM_KILIT_MS=1500;document.addEventListener("submit",e=>{const f=e.target;if(!(f instanceof HTMLFormElement))return;const t=Date.now();if(f._mesgul&&t-
+f._mesgul<FORM_KILIT_MS){e.preventDefault(),e.stopImmediatePropagation();return}f._mesgul=t,f.addEventListener("input",()=>{f._mesgul=0},{once:!0})},!0);const formSerbest=f=>{f&&(f._mesgul=0)};let alanHataNo=0;
+function alanHataSil(f,m){const el=f.querySelector(`[aria-describedby~="${m.id}"]`);if(el){const kalan=(el.getAttribute("aria-describedby")??"").split(/\s+/).filter(x=>x&&x!==m.id);kalan.length?el.setAttribute(
+"aria-describedby",kalan.join(" ")):el.removeAttribute("aria-describedby"),el.removeAttribute("aria-invalid")}m.remove()}function alanHatalari(f,hatalar){for(const m of $$(".alan-hata",f))alanHataSil(
+f,m);let ilk=null;for(const[ad,ileti]of hatalar){const el=f.querySelector(`[name="${ad}"]`);if(!el)continue;const m=document.createElement("small");m.className="alan-hata",m.id=`alan-hata-${++alanHataNo}`,
+m.setAttribute("aria-hidden","true"),m.innerHTML=`${ikon("circle-alert")}<span>${esc(ileti)}</span>`;const etiket=el.closest("label");etiket?.classList.contains("alan")?etiket.append(m):(etiket??el).after(
+m),el.setAttribute("aria-invalid","true"),el.setAttribute("aria-describedby",[el.getAttribute("aria-describedby"),m.id].filter(Boolean).join(" "));const temizle=()=>{el.removeEventListener("input",temizle),
+el.removeEventListener("change",temizle),m.isConnected&&alanHataSil(f,m)};el.addEventListener("input",temizle),el.addEventListener("change",temizle),ilk??=el}return ilk?.focus(),hatalar.length>0}function tost(metin,ik="\
+sparkles"){const kutu=$("#tostlar"),eski=[...kutu.children].filter(x=>!x.classList.contains("cikis"));for(const x of eski.slice(0,Math.max(0,eski.length-1)))x.classList.add("cikis"),setTimeout(()=>x.remove(),
+320);const el=document.createElement("div");el.className="tost",el.innerHTML=`${ikon(ik)}<span>${esc(metin)}</span>`,kutu.appendChild(el),setTimeout(()=>{el.classList.add("cikis"),setTimeout(()=>el.remove(),
+320)},3600),typeof Ses=="object"&&Ses.bildir(ik==="circle-alert")}const pencereOlayKatmani=new WeakMap,pencereOdakKaydi=new WeakMap,pencereUstKatman=()=>[...document.querySelectorAll(".perde")].filter(
+p=>p.getClientRects().length).at(-1)??null,pencereUstteMi=(perde,olay)=>(olay&&pencereOlayKatmani.has(olay)?pencereOlayKatmani.get(olay):pencereUstKatman())===perde;document.addEventListener("keydown",
+e=>{(e.key==="Escape"||e.key==="Tab")&&pencereOlayKatmani.set(e,pencereUstKatman())},!0),document.addEventListener("keydown",e=>{if(e.key!=="Tab"||e.defaultPrevented)return;const perde=pencereOlayKatmani.
+get(e),kayit=pencereOdakKaydi.get(perde);if(!perde?.isConnected||!kayit)return;const l=kayit.alanlar(),ilk=l[0],son=l.at(-1);l.length?e.shiftKey&&(document.activeElement===ilk||!perde.contains(document.
+activeElement))?(e.preventDefault(),son.focus()):!e.shiftKey&&(document.activeElement===son||!perde.contains(document.activeElement))&&(e.preventDefault(),ilk.focus()):(e.preventDefault(),kayit.odakla())}),
+document.addEventListener("focusin",e=>{const perde=pencereUstKatman(),kayit=pencereOdakKaydi.get(perde);kayit&&(perde.contains(e.target)?kayit.son=e.target:kayit.odakla(kayit.son))});function pencereOdak(perde){
+const acan=document.activeElement instanceof HTMLElement?document.activeElement:null;let kapali=!1;const alanlar=()=>[...perde.querySelectorAll("a[href], button, input, select, textarea, [tabindex]")].
+filter(el=>!el.matches(":disabled")&&el.tabIndex>=0&&el.getClientRects().length&&getComputedStyle(el).visibility!=="hidden"),odakla=hedef=>{if(kapali||!perde.isConnected||!pencereUstteMi(perde))return;
+const l=alanlar(),el=l.includes(hedef)?hedef:l[0]??perde.querySelector("[role=dialog]")??perde;l.includes(el)||(el.tabIndex=-1),el.focus({preventScroll:!0})},kayit={alanlar,odakla,son:null};pencereOdakKaydi.
+set(perde,kayit),queueMicrotask(()=>{perde.contains(document.activeElement)||odakla()});const don=()=>{if(kapali)return;kapali=!0,pencereOdakKaydi.delete(perde);const ust=pencereUstKatman();acan?.isConnected&&
+(!ust||ust.contains(acan))&&acan.focus({preventScroll:!0}),ust&&!ust.contains(document.activeElement)&&pencereOdakKaydi.get(ust)?.odakla()};return don.odakla=odakla,don}let pencereSayaci=0;const pencereBaslikKimligi=()=>"\
+pencere-baslik-"+ ++pencereSayaci,PENCERE_BEKLE_MS=2e4,ASENKRON_ISLEV=(async()=>{}).constructor;function pencere({ust,baslik,govde,dugmeler}){const perde=document.createElement("div");perde.className=
+"perde";const bk=pencereBaslikKimligi();perde.innerHTML=`<div class="pencere" role="dialog" aria-modal="true" aria-labelledby="${bk}">
       ${ust?`<p class="ust-yazi">${esc(ust)}</p>`:""}
       <h2 class="b2" id="${bk}">${esc(baslik)}</h2>
       <div>${govde}</div>
+      <div class="form-mesaj"></div>
       <div class="pencere-dugmeler"></div>
-    </div>`;const kutu=$(".pencere-dugmeler",perde),odakDon=pencereOdak(perde);let kapali=!1;const kapat=()=>kapali?!1:(kapali=!0,perde.remove(),document.removeEventListener("keydown",tus),odakDon(),!0),
-tus=e=>{e.key==="Escape"&&pencereUstteMi(perde,e)&&kapat()};for(const d of dugmeler??[{ad:\u00E7("Kapat")}]){const b=document.createElement("button");b.className="dugme "+(d.sinif??"ikincil"),b.innerHTML=
-(d.ikon?ikon(d.ikon):"")+esc(d.ad),b.onclick=()=>{kapat()&&d.is?.()},kutu.appendChild(b)}perde.addEventListener("click",e=>{e.target===perde&&kapat()}),document.addEventListener("keydown",tus),document.
-body.appendChild(perde),odakDon.odakla($(".pencere-dugmeler button:last-child",perde))}function pencereForm({ust,baslik,govde,onayAd,onaySinif="altin",onayIkon,is}){const perde=document.createElement(
-"div");perde.className="perde";const bk=pencereBaslikKimligi();perde.innerHTML=`<form class="pencere" role="dialog" aria-modal="true" aria-labelledby="${bk}" novalidate>
+    </div>`;const kutu=$(".pencere-dugmeler",perde),odakDon=pencereOdak(perde);let kapali=!1,mesgul=!1;const kapat=()=>kapali?!1:(kapali=!0,perde.remove(),document.removeEventListener("keydown",tus),odakDon(),
+!0),tus=e=>{e.key==="Escape"&&!mesgul&&pencereUstteMi(perde,e)&&kapat()},bekle=async(b,d)=>{if(kapali||mesgul)return;mesgul=!0;const dugmeListesi=[...kutu.querySelectorAll("button")],eski=b.innerHTML;
+for(const x of dugmeListesi)x.disabled=!0;b.setAttribute("aria-busy","true"),b.innerHTML=ikon("hourglass")+esc(d.bekleAd??\u00E7("\u0130\u015Fleniyor\u2026")),$(".form-mesaj",perde).innerHTML="";const izle=new MutationObserver(
+l=>{l.some(m=>[...m.addedNodes].some(n=>n.classList?.contains("perde")))&&kapat()});izle.observe(document.body,{childList:!0});const sure2=setTimeout(kapat,PENCERE_BEKLE_MS);try{await d.is(),kapat()}catch(err){
+if(kapali){console.error(err);return}const metin=err instanceof SunucuHatasi?hataMetni(err):err?.message||hataMetni(err);$(".form-mesaj",perde).innerHTML=`<div class="hata-kutusu" role="alert" style="\
+margin-top:12px">${ikon("circle-alert")}<span>${esc(metin)}</span></div>`;for(const x of dugmeListesi)x.disabled=!1;b.removeAttribute("aria-busy"),b.innerHTML=eski,kapali||b.focus({preventScroll:!0})}finally{
+mesgul=!1,izle.disconnect(),clearTimeout(sure2)}};for(const d of dugmeler??[{ad:\u00E7("Kapat")}]){const b=document.createElement("button");b.className="dugme "+(d.sinif??"ikincil"),b.innerHTML=(d.ikon?
+ikon(d.ikon):"")+esc(d.ad),b.onclick=()=>{mesgul||(d.is instanceof ASENKRON_ISLEV?bekle(b,d):kapat()&&d.is?.())},kutu.appendChild(b)}perde.addEventListener("click",e=>{e.target===perde&&!mesgul&&kapat()}),
+document.addEventListener("keydown",tus),document.body.appendChild(perde),odakDon.odakla($(".pencere-dugmeler button:last-child",perde))}function pencereForm({ust,baslik,govde,onayAd,onaySinif="altin",
+onayIkon,is}){const perde=document.createElement("div");perde.className="perde";const bk=pencereBaslikKimligi();perde.innerHTML=`<form class="pencere" role="dialog" aria-modal="true" aria-labelledby="${bk}\
+" novalidate>
       ${ust?`<p class="ust-yazi">${esc(ust)}</p>`:""}
       <h2 class="b2" id="${bk}">${esc(baslik)}</h2>
       <div class="form pencere-govde">${govde}</div>
@@ -336,16 +365,21 @@ async e=>{if(e.preventDefault(),kapali||gonderiliyor)return;gonderiliyor=!0;cons
 if(kapali)return;const metin=err instanceof SunucuHatasi?hataMetni(err):err?.message||hataMetni(err);$(".form-mesaj",f).innerHTML=`<div class="hata-kutusu" role="alert" style="margin-top:12px">${ikon(
 "circle-alert")}<span>${esc(metin)}</span></div>`,d.disabled=!1}finally{gonderiliyor=!1,formSerbest(f)}}),document.addEventListener("keydown",tus),document.body.appendChild(perde);const ilkAlan=[...f.
 querySelectorAll("input, select, textarea")].find(el=>!el.matches(":disabled")&&el.type!=="hidden"&&el.getClientRects().length&&getComputedStyle(el).visibility!=="hidden");return odakDon.odakla(ilkAlan??
-$("button[type=submit]",f)),{perde,form:f,kapat}}const yuzdePpm=metin=>{const s=String(metin??"").replace(/[%\s]/g,"").replace(",",".");return/^\d+(\.\d{1,4})?$/.test(s)?Math.round(Number(s)*1e4):NaN},
-adetAl=metin=>{const s=String(metin??"").trim();return/^\d{1,9}$/.test(s)?Number(s):NaN},krediGirdi=alt=>(Number(alt??0)/100).toLocaleString(DIL.yerel,{useGrouping:!1,maximumFractionDigits:2}),krediAlt=metin=>{
-let s=String(metin??"").replace(/\s/g,"");return s=DIL.kod==="en"?s.replace(/,/g,""):s.replace(/\./g,"").replace(",","."),/^\d+(\.\d{1,2})?$/.test(s)?Math.round(Number(s)*100):NaN},TEN=["#F3D2B3","#E8\
-BC94","#D7A07A","#B97B55","#8E5A3B","#6A4029"],SAC=["#2B211C","#4A3326","#7A4E2D","#B07A43","#D9B26A","#8A8580"],GIYSI=["#174A40","#C65A3B","#23395B","#D9A548","#367F70","#7D5FA0","#8B6B4A"],ZEMIN=["#\
-F6E3BE","#DCEBE3","#F6E1D8","#DFE5EF","#ECE4F3","#EDE7D6"],AVATAR_BEDEN={ince:{o:.86,boyun:8.4,rx:10.8},orta:{o:1,boyun:9.2,rx:11.2},iri:{o:1.16,boyun:10.6,rx:11.7}};let magazaSvgSayac=0;const AVATAR_KIVIR=[
-[20.7,26,3],[21.9,22.3,3.4],[24.7,18.9,3.7],[28.5,16.8,3.9],[32,16.2,3.9],[35.5,16.8,3.9],[39.3,18.9,3.7],[42.1,22.3,3.4],[43.3,26,3]];function avatarDefne(tur){const[renk,koyu]=tur==="world"?["#E8BE4\
-F","#9C7424"]:["#86AE5E","#46632F"],R=Math.PI/180,nokta=(a,r)=>[32+Math.cos(a*R)*r,32+Math.sin(a*R)*r],yaprak=[];for(let i=0;i<7;i++){const a=104+i*17,dis=i%2===1,r=dis?28.4:26.2,[x,y]=nokta(a,r),don=a+
-90+(dis?-26:26);yaprak.push(`<ellipse cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" rx="3.3" ry="1.45" transform="rotate(${don.toFixed(1)} ${x.toFixed(2)} ${y.toFixed(2)})"/>`,`<ellipse cx="${(64-x).toFixed(
-2)}" cy="${y.toFixed(2)}" rx="3.3" ry="1.45" transform="rotate(${(180-don).toFixed(1)} ${(64-x).toFixed(2)} ${y.toFixed(2)})"/>`)}const[x0,y0]=nokta(100,27.3),[x1,y1]=nokta(214,27.3);return`<g class="\
-avatar-defne" data-defne="${tur==="world"?"world":"country"}" fill="${renk}" stroke="${koyu}" stroke-width=".45">
+$("button[type=submit]",f)),{perde,form:f,kapat}}const GeriKatman=(()=>{const acik=()=>[...document.querySelectorAll(".perde")].some(p=>p.getClientRects().length)||!!document.body?.classList.contains(
+"konusma-acik"),bekciMi=()=>history.state?.civoraKatman===!0;let sonBekci=!1,sonAdres=location.href;function yokla(){if(acik()&&!bekciMi())try{history.pushState({civoraKatman:!0},"",location.href)}catch{}
+sonBekci=bekciMi(),sonAdres=location.href}function yaz(adres){try{bekciMi()?history.replaceState(null,"",adres):history.pushState(null,"",adres)}catch{}sonBekci=!1,sonAdres=location.href,yokla()}addEventListener(
+"popstate",()=>{const ayniAdres=location.href===sonAdres,oncekiBekci=sonBekci;if(sonBekci=bekciMi(),sonAdres=location.href,!ayniAdres){queueMicrotask(yokla);return}if(acik()){document.dispatchEvent(new KeyboardEvent(
+"keydown",{key:"Escape",bubbles:!0})),queueMicrotask(yokla);return}oncekiBekci&&!sonBekci&&history.back()});const kur=()=>new MutationObserver(yokla).observe(document.body,{childList:!0,attributes:!0,
+attributeFilter:["class"]});return document.body?kur():addEventListener("DOMContentLoaded",kur,{once:!0}),{yokla,yaz,bekciMi}})(),yuzdePpm=metin=>{const s=String(metin??"").replace(/[%\s]/g,"").replace(
+",",".");return/^\d+(\.\d{1,4})?$/.test(s)?Math.round(Number(s)*1e4):NaN},adetAl=metin=>{const s=String(metin??"").trim();return/^\d{1,9}$/.test(s)?Number(s):NaN},krediGirdi=alt=>(Number(alt??0)/100).
+toLocaleString(DIL.yerel,{useGrouping:!1,maximumFractionDigits:2}),krediAlt=metin=>{let s=String(metin??"").replace(/\s/g,"");return s=DIL.kod==="en"?s.replace(/,/g,""):s.replace(/\./g,"").replace(",",
+"."),/^\d+(\.\d{1,2})?$/.test(s)?Math.round(Number(s)*100):NaN},TEN=["#F3D2B3","#E8BC94","#D7A07A","#B97B55","#8E5A3B","#6A4029"],SAC=["#2B211C","#4A3326","#7A4E2D","#B07A43","#D9B26A","#8A8580"],GIYSI=[
+"#174A40","#C65A3B","#23395B","#D9A548","#367F70","#7D5FA0","#8B6B4A"],ZEMIN=["#F6E3BE","#DCEBE3","#F6E1D8","#DFE5EF","#ECE4F3","#EDE7D6"],AVATAR_BEDEN={ince:{o:.86,boyun:8.4,rx:10.8},orta:{o:1,boyun:9.2,
+rx:11.2},iri:{o:1.16,boyun:10.6,rx:11.7}};let magazaSvgSayac=0;const AVATAR_KIVIR=[[20.7,26,3],[21.9,22.3,3.4],[24.7,18.9,3.7],[28.5,16.8,3.9],[32,16.2,3.9],[35.5,16.8,3.9],[39.3,18.9,3.7],[42.1,22.3,
+3.4],[43.3,26,3]];function avatarDefne(tur){const[renk,koyu]=tur==="world"?["#E8BE4F","#9C7424"]:["#86AE5E","#46632F"],R=Math.PI/180,nokta=(a,r)=>[32+Math.cos(a*R)*r,32+Math.sin(a*R)*r],yaprak=[];for(let i=0;i<
+7;i++){const a=104+i*17,dis=i%2===1,r=dis?28.4:26.2,[x,y]=nokta(a,r),don=a+90+(dis?-26:26);yaprak.push(`<ellipse cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" rx="3.3" ry="1.45" transform="rotate(${don.toFixed(
+1)} ${x.toFixed(2)} ${y.toFixed(2)})"/>`,`<ellipse cx="${(64-x).toFixed(2)}" cy="${y.toFixed(2)}" rx="3.3" ry="1.45" transform="rotate(${(180-don).toFixed(1)} ${(64-x).toFixed(2)} ${y.toFixed(2)})"/>`)}
+const[x0,y0]=nokta(100,27.3),[x1,y1]=nokta(214,27.3);return`<g class="avatar-defne" data-defne="${tur==="world"?"world":"country"}" fill="${renk}" stroke="${koyu}" stroke-width=".45">
     <path d="M${x0.toFixed(2)} ${y0.toFixed(2)} A27.3 27.3 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}M${(64-x0).toFixed(2)} ${y0.toFixed(2)} A27.3 27.3 0 0 0 ${(64-x1).toFixed(2)} ${y1.toFixed(2)}" fill=\
 "none" stroke-width=".9"/>
     ${yaprak.join("")}</g>`}function avatarSvg(ad,gorunus=null,ek={}){const g=gorunus??varsayilanGorunus(ad),K=gorunusKurali(),sec=(dizi,yedek,i)=>(dizi??yedek)[i]??yedek[0],U=typeof gorunusUrunleri==
@@ -519,11 +553,13 @@ deneme===0&&(await Giris.yenile().catch(yenilemeHatasiniKoru),kusakDogrula(kusak
 cu \u015Fu an yo\u011Fun; birka\xE7 saniye sonra yeniden dene."),v.message??"",r.durum)}throw v.code==="P0001"?(v.message==="ACCOUNT_SUSPENDED"&&setTimeout(()=>{kusak===oturumKusagi&&dispatchEvent(new CustomEvent(
 "civora:aski"))}),Olcum.kaydet(fn,"game",/^[A-Z][A-Z0-9_]{0,39}$/.test(String(v.message??""))?v.message:"P0001"),new SunucuHatasi(v.message,sunucuIletisi(v.message,v.hint),v.details??"",r.durum)):r.durum===
 401||v.code==="42501"?(Olcum.kaydet(fn,r.durum===401?"game":"system",r.durum===401?"HTTP_401":"42501"),new SunucuHatasi("NOT_AUTHENTICATED",\u00E7("Bu i\u015Flem i\xE7in giri\u015F yapmal\u0131s\u0131n."),
-"",r.durum)):(Olcum.kaydet(fn,"system",v.code??"HTTP_"+r.durum),v.code==="PGRST202"?new SunucuHatasi("API_MISSING",\u00E7("Uygulama sunucudan yeni; sayfay\u0131 yenile."),v.message??"",r.durum):new SunucuHatasi(
-v.code??"HATA_"+r.durum,\u00E7("Beklenmeyen bir sorun oldu; biraz sonra yeniden dene."),v.message??"",r.durum))}const ucusta=new Map;function yap(fn,args={}){const imza=oturumKusagi+"|"+fn+"|"+JSON.stringify(
-args),suren=ucusta.get(imza);if(suren)return suren;if(!dispatchEvent(new CustomEvent("civora:yazma",{cancelable:!0,detail:{fn}})))return Promise.reject(new SunucuHatasi("CLIENT_REFUSED",\u00E7("\u0130\u015Flem \
-kendili\u011Finden ba\u015Flat\u0131lmad\u0131; d\xFC\u011Fmeye yeniden bas."),fn));const p=cagir(fn,{p_idempotency_key:anahtar(),...args}).finally(()=>{ucusta.get(imza)===p&&ucusta.delete(imza)});return ucusta.
-set(imza,p),p}const Canli=(()=>{let ws=null,ref=0,kalp=null,kalpBekleyen=null,yoklama=null,sonDuyulan=0,kopusAn=null,kopanSagir=!1,yenidenZaman=null;const KALP_MS=Number(globalThis.__CIVORA_KALP_MS)||
+"",r.durum)):v.code==="22003"||v.code==="22P02"?(Olcum.kaydet(fn,"game","AMOUNT_OUT_OF_RANGE"),new SunucuHatasi("AMOUNT_OUT_OF_RANGE",\u00E7("Say\u0131 izin verilen s\u0131n\u0131r\u0131n d\u0131\u015F\u0131nda; daha k\xFC\xE7\xFCk bir de\u011Fer ya\
+z."),v.message??"",r.durum)):(Olcum.kaydet(fn,"system",v.code??"HTTP_"+r.durum),v.code==="PGRST202"?(Parcalar.denetle({zorla:!0}),new SunucuHatasi("API_MISSING",\u00E7("Uygulama sunucudan yeni; sayfay\
+\u0131 yenile."),v.message??"",r.durum)):new SunucuHatasi(v.code??"HATA_"+r.durum,\u00E7("Beklenmeyen bir sorun oldu; biraz sonra yeniden dene."),v.message??"",r.durum))}const ucusta=new Map;function yap(fn,args={}){
+const imza=oturumKusagi+"|"+fn+"|"+JSON.stringify(args),suren=ucusta.get(imza);if(suren)return suren;if(!dispatchEvent(new CustomEvent("civora:yazma",{cancelable:!0,detail:{fn}})))return Promise.reject(
+new SunucuHatasi("CLIENT_REFUSED",\u00E7("\u0130\u015Flem kendili\u011Finden ba\u015Flat\u0131lmad\u0131; d\xFC\u011Fmeye yeniden bas."),fn));const p=cagir(fn,{p_idempotency_key:anahtar(),...args}).catch(
+e=>{throw/^INSUFFICIENT_(STOCK|FUNDS|FOOD)$/.test(String(e?.kod??""))&&dispatchEvent(new CustomEvent("civora:bayat",{detail:{fn,kod:e.kod}})),e}).finally(()=>{ucusta.get(imza)===p&&ucusta.delete(imza)});
+return ucusta.set(imza,p),p}const Canli=(()=>{let ws=null,ref=0,kalp=null,kalpBekleyen=null,yoklama=null,sonDuyulan=0,kopusAn=null,kopanSagir=!1,yenidenZaman=null;const KALP_MS=Number(globalThis.__CIVORA_KALP_MS)||
 25e3,YOKLAMA_MS=Math.min(5e3,KALP_MS);let bekleme=1e3,kapatildi=!0;const kanallar=new Map,durumDinleyici=new Set;let bagliMi=!1;const gonder=m=>{ws?.readyState===1&&ws.send(JSON.stringify(m))},durumBildir=(b,bilgi={})=>{
 bagliMi=b;for(const f of durumDinleyici)try{f(b,bilgi)}catch(e){console.error(e)}};function katil(konu){const k=kanallar.get(konu);!k||!oturum||(k.joinRef=String(++ref),gonder({topic:"realtime:"+konu,
 event:"phx_join",ref:k.joinRef,join_ref:k.joinRef,payload:{config:{broadcast:{ack:!1,self:!1},presence:{key:"",enabled:!1},postgres_changes:[],private:!0},access_token:oturum.access_token}}))}function ac(){
@@ -1111,18 +1147,19 @@ d.coalition_id))return;haritaAn=0,yay("koalisyon",{olay,yuk});const b=KOALISYON_
 Canli.dinle("public:coop_line",(olay,yuk)=>{const d=yuk?.data??{};yay("hat",{olay,yuk}),olay==="coop.line_building"&&(d.country_a===ulke||d.country_b===ulke)&&tost(\u00E7("\u015Eantiye a\xE7\u0131ld\u0131: {hat} ({tur}\
 ). Malzeme ve i\u015F\xE7i bekleniyor (\xDClkem \u2192 \u0130\u015Fbirli\u011Fi \u2192 Hatlar).",{hat:hatAdi(d),tur:hatTurAd(d.kind).toLocaleLowerCase(DIL.yerel)}),"hammer")}))}function canliBitir(){for(const f of kanallar)
 f();kanallar=[]}function temizle(){temizlikKusagi++,canliBitir(),v.ozet=v.askerlik=v.kurallar=v.secenekler=v.harita=null,haritaAn=0}return{v,dinle,yay,kimlik,kurallar,ozet:ozet2,askerlik,harita,stok,canliBaslat,
-canliBitir,temizle}})();function bolgeAvantaji(id){const b=DUNYA.bolgeler?.[id];if(!b?.avantaj)return{};const k=Durum.v.kurallar?.data?.economy?.production?.regionWealth?.tiers?.[b.zenginlik],y=k&&Number.
-isFinite(Number(k.advantagePct))?Number(k.advantagePct):null;return Object.fromEntries(Object.entries(b.avantaj).map(([u,n])=>[u,y??Number(n)]))}const hataMetni=e=>e instanceof SunucuHatasi?e.message:
-\u00E7("Beklenmeyen bir sorun oldu; sayfay\u0131 yenileyip yeniden dene.");function yolDuruslari(liste){return(Array.isArray(liste)?liste:[]).map(p=>({atMs:Date.parse(p?.at),ms:Number(p?.ms)||0})).filter(
-p=>Number.isFinite(p.atMs)&&p.ms>0)}const durusYaz=liste=>yolDuruslari(liste).map(p=>`${p.atMs}:${p.ms}`).join(","),durusOku=yazi=>String(yazi??"").split(",").filter(Boolean).map(x=>{const[a,m]=x.split(
-":").map(Number);return{atMs:a,ms:m}}).filter(p=>Number.isFinite(p.atMs)&&p.ms>0);function yolOrani(bas,son,simdi,duruslar=[]){let top=0,v=simdi;for(const p of duruslar)top+=p.ms,v-=Math.min(p.ms,Math.
-max(0,simdi-p.atMs));const hareket=son-top-bas;return hareket>0?Math.max(0,Math.min(1,(v-bas)/hareket)):simdi>=son?1:0}const gecikmeYaz=ms=>Number(ms)%6e4?sure(Number(ms)/1e3):\u00E7("{n} dk",{n:sayi(
-Number(ms)/6e4)});function geriSay(kok,bitince){let bitti=!1;const adim=()=>{const simdi=Date.now();let dolan=!1;for(const el of $$("[data-bitis]",kok)){const kalan=(Date.parse(el.dataset.bitis)-simdi)/
-1e3;el.textContent=kalan>0?sure(kalan):\u00E7("bitti"),kalan<=0&&(dolan=!0)}for(const el of $$("[data-ilerleme]",kok)){const[bas,son]=el.dataset.ilerleme.split("|").map(Date.parse);!Number.isFinite(bas)||
-!Number.isFinite(son)||(el.style.width=Math.round(yolOrani(bas,son,simdi,durusOku(el.dataset.duruslar))*100)+"%")}dolan&&!bitti&&bitince&&(bitti=!0,setTimeout(bitince,1500))};adim();const t=setInterval(
-adim,1e3);return()=>clearInterval(t)}function tazeleyici(is){let calisan=null,tekrar=!1;return async function(){if(calisan)return tekrar=!0,calisan;calisan=(async()=>{do{tekrar=!1;try{await is()}catch(e){
-tost(hataMetni(e),"circle-alert")}}while(tekrar)})();try{await calisan}finally{calisan=null}}}function gecikmeli(sayac){const ms=Math.min(6e4,4e3*2**sayac.n);return sayac.n++,ms}const saatYaz=iso=>new Date(
-iso).toLocaleString(DIL.yerel,{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}),GirisEkrani=(()=>{let yenidenGonderSon=0;function sahne(icerik){$("#uygulama").innerHTML=`
+canliBitir,temizle}})();{let bekliyor=!1;addEventListener("civora:bayat",e=>{bekliyor||!Sunucu.Giris.oturum||(bekliyor=!0,Durum.ozet().catch(()=>{}).finally(()=>{bekliyor=!1,Durum.yay("bayat",e.detail??
+{})}))})}function bolgeAvantaji(id){const b=DUNYA.bolgeler?.[id];if(!b?.avantaj)return{};const k=Durum.v.kurallar?.data?.economy?.production?.regionWealth?.tiers?.[b.zenginlik],y=k&&Number.isFinite(Number(
+k.advantagePct))?Number(k.advantagePct):null;return Object.fromEntries(Object.entries(b.avantaj).map(([u,n])=>[u,y??Number(n)]))}const hataMetni=e=>e instanceof SunucuHatasi?e.message:\u00E7("Beklenme\
+yen bir sorun oldu; sayfay\u0131 yenileyip yeniden dene.");function yolDuruslari(liste){return(Array.isArray(liste)?liste:[]).map(p=>({atMs:Date.parse(p?.at),ms:Number(p?.ms)||0})).filter(p=>Number.isFinite(
+p.atMs)&&p.ms>0)}const durusYaz=liste=>yolDuruslari(liste).map(p=>`${p.atMs}:${p.ms}`).join(","),durusOku=yazi=>String(yazi??"").split(",").filter(Boolean).map(x=>{const[a,m]=x.split(":").map(Number);
+return{atMs:a,ms:m}}).filter(p=>Number.isFinite(p.atMs)&&p.ms>0);function yolOrani(bas,son,simdi,duruslar=[]){let top=0,v=simdi;for(const p of duruslar)top+=p.ms,v-=Math.min(p.ms,Math.max(0,simdi-p.atMs));
+const hareket=son-top-bas;return hareket>0?Math.max(0,Math.min(1,(v-bas)/hareket)):simdi>=son?1:0}const gecikmeYaz=ms=>Number(ms)%6e4?sure(Number(ms)/1e3):\u00E7("{n} dk",{n:sayi(Number(ms)/6e4)});function geriSay(kok,bitince){
+let bitti=!1;const adim=()=>{const simdi=Date.now();let dolan=!1;for(const el of $$("[data-bitis]",kok)){const kalan=(Date.parse(el.dataset.bitis)-simdi)/1e3;el.textContent=kalan>0?sure(kalan):\u00E7(
+"bitti"),kalan<=0&&(dolan=!0)}for(const el of $$("[data-ilerleme]",kok)){const[bas,son]=el.dataset.ilerleme.split("|").map(Date.parse);!Number.isFinite(bas)||!Number.isFinite(son)||(el.style.width=Math.
+round(yolOrani(bas,son,simdi,durusOku(el.dataset.duruslar))*100)+"%")}dolan&&!bitti&&bitince&&(bitti=!0,setTimeout(bitince,1500))};adim();const t=setInterval(adim,1e3);return()=>clearInterval(t)}function tazeleyici(is){
+let calisan=null,tekrar=!1;return async function(){if(calisan)return tekrar=!0,calisan;calisan=(async()=>{do{tekrar=!1;try{await is()}catch(e){tost(hataMetni(e),"circle-alert")}}while(tekrar)})();try{
+await calisan}finally{calisan=null}}}function gecikmeli(sayac){const ms=Math.min(6e4,4e3*2**sayac.n);return sayac.n++,ms}const saatYaz=iso=>new Date(iso).toLocaleString(DIL.yerel,{weekday:"short",day:"\
+numeric",month:"short",hour:"2-digit",minute:"2-digit"}),GirisEkrani=(()=>{let yenidenGonderSon=0;function sahne(icerik){$("#uygulama").innerHTML=`
       <div class="giris-sahne">
         <picture>
           <source media="(max-width: 700px)" srcset="img/acilis_dikey.webp">
@@ -1133,11 +1170,14 @@ iso).toLocaleString(DIL.yerel,{weekday:"short",day:"numeric",month:"short",hour:
             <button class="baglanti dil-sec" id="dil-sec" type="button" lang="${DIL.kod==="tr"?"en":"tr"}">${DIL.kod==="tr"?"English":"T\xFCrk\xE7e"}</button></div>
           ${icerik}
         </section>
-      </div>`,$("#dil-sec").onclick=()=>DIL.ayarla(DIL.kod==="tr"?"en":"tr")}const kutu=(tur,metin)=>metin?`<div class="${tur==="hata"?"hata-kutusu":"bilgi-kutusu"}" role="${tur==="hata"?"alert":"stat\
-us"}">
-    ${ikon(tur==="hata"?"circle-alert":"info")}<span>${esc(metin)}</span></div>`:"";function formBagla(sec,is){const f=$(sec);f.addEventListener("submit",async e=>{e.preventDefault();const d=$("button\
-[type=submit]",f),yer=$(".form-mesaj",f);d.disabled=!0,yer.innerHTML="";try{await is(new FormData(f),yer)}catch(err){yer.innerHTML=kutu("hata",hataMetni(err))}finally{d.disabled=!1,formSerbest(f)}})}const epostaGecerli=e=>/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.
-test(e);function giris({mesaj="",hata=""}={}){sahne(`
+      </div>`,$("#dil-sec").onclick=()=>DIL.ayarla(DIL.kod==="tr"?"en":"tr")}const kutu=(tur,metin)=>metin?`<div class="${tur==="hata"?"hata-kutusu":tur==="uyari"?"bilgi-kutusu uyari-kutusu":"bilgi-ku\
+tusu"}" role="${tur==="bilgi"?"status":"alert"}">
+    ${ikon(tur==="bilgi"?"info":"circle-alert")}<span>${esc(metin)}</span></div>`:"";function depoKapali(){try{const k="civora.depo-sinama";return localStorage.setItem(k,"1"),localStorage.removeItem(k),
+!1}catch{return!0}}function formBagla(sec,is){const f=$(sec);f.addEventListener("submit",async e=>{e.preventDefault();const d=$("button[type=submit]",f),yer=$(".form-mesaj",f);d.disabled=!0,yer.innerHTML=
+"";try{await is(new FormData(f),yer)}catch(err){yer.innerHTML=kutu("hata",hataMetni(err))}finally{d.disabled=!1,formSerbest(f)}})}const epostaGecerli=e=>/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(e),onayHatalari=v=>[
+...v.get("yas")?[]:[["yas",\u00E7("18 ya\u015F\u0131ndan b\xFCy\xFCk oldu\u011Funu onayla.")]],...v.get("kural")?[]:[["kural",\u00E7("Gizlilik ve oyun kurallar\u0131n\u0131 kabul etmelisin.")]]],parolaHatalari=(p1,p2)=>p1.
+length<8?[["parola",\u00E7("Parola en az 8 karakter olmal\u0131.")]]:p1!==p2?[["parola2",\u00E7("\u0130ki parola ayn\u0131 de\u011Fil.")]]:[],hataOzeti=h=>kutu("hata",\u00E7("Formda {n} yer d\xFCzeltilme\
+li.",{n:h.length}));function giris({mesaj="",hata=""}={}){const depo=depoKapali();sahne(`
       <h1>${\u00E7("Ho\u015F geldin")}</h1>
       <p class="aciklama">${\u00E7("\xDClkeni kur, \u015Fehrini b\xFCy\xFCt, tarihini birlikte yaz.")}</p>
       <form class="form" id="giris-form" novalidate>
@@ -1150,25 +1190,29 @@ test(e);function giris({mesaj="",hata=""}={}){sahne(`
         <button class="baglanti" id="kayit-git" type="button">${\u00E7("Hesab\u0131n yok mu? Kay\u0131t ol")}</button>
         <button class="baglanti" id="sifirla-git" type="button">${\u00E7("Parolam\u0131 unuttum")}</button>
       </div>
+      ${depo?kutu("uyari",\u00E7("Taray\u0131c\u0131n bu sitenin verisini saklam\u0131yor: sayfay\u0131 yenileyince ya da kapat\u0131nca yeniden giri\u015F yapman gerekir.")):""}
       <div class="misafir-kutu">
         <button class="dugme ikincil tam" id="misafir-gir" type="button">${ikon("footprints")}${\u00E7("Misafir olarak dene")}</button>
         <small>${\u00E7("Hesap a\xE7madan bakmak i\xE7in. \u0130lerlemen yaln\u0131z bu taray\u0131c\u0131da kal\u0131r; \xE7\u0131k\u0131\u015F yaparsan geri d\xF6nemezsin. Be\u011Fenirsen Ayarlar'dan e-posta ekleyip kal\u0131c\u0131 yapabilirsin.")}\
 </small>
+        ${depo?`<div id="misafir-depo">${kutu("uyari",\u00E7("Bu taray\u0131c\u0131da misafir hesab\u0131n yaln\u0131z bu sekmede ya\u015Far: sayfay\u0131 yenileyince ya da kapat\u0131nca kaybolur ve geri d\xF6n\xFClemez. Kal\u0131c\u0131 olsun istiyo\
+rsan e-postayla kay\u0131t ol ya da taray\u0131c\u0131n\u0131n ayarlar\u0131ndan bu siteye veri saklama izni ver."))}</div>`:""}
         <form class="form" id="misafir-form" novalidate hidden>
           <label class="onay"><input type="checkbox" name="yas" required><span>${\u00E7("18 ya\u015F\u0131ndan b\xFCy\xFC\u011F\xFCm.")}</span></label>
-          <label class="onay"><input type="checkbox" name="kural" required><span>${\u00E7("<a>Gizlilik ve oyun kurallar\u0131n\u0131</a> okudum, kabul ediyorum.").replace("<a>",'<a href="gizlilik.html\
-" target="_blank" rel="noopener">')}</span></label>
+          <label class="onay"><input type="checkbox" name="kural" required><span>${\u00E7("Gizlilik ve oyun kurallar\u0131n\u0131 okudum, kabul ediyorum.")}</span></label>
+          <p class="kucuk onay-baglanti"><a href="gizlilik.html" target="_blank" rel="noopener">${\u00E7("Gizlilik ve oyun kurallar\u0131n\u0131 oku")}</a></p>
           <p class="kucuk"><button class="baglanti" type="button" data-topluluk-kural>${\u00E7("Topluluk kurallar\u0131n\u0131 oku")}</button></p>
           <div class="form-mesaj"></div>
           <button class="dugme altin tam" type="submit">${ikon("footprints")}${\u00E7("Misafir olarak ba\u015Fla")}</button>
         </form>
       </div>
       <p class="giris-dipnot"><a href="gizlilik.html">${\u00E7("Gizlilik ve oyun kurallar\u0131")}</a></p>`),$("#kayit-git").onclick=()=>kayit(),$("#sifirla-git").onclick=()=>sifirla(),$("#misafir-gir").
-onclick=()=>{$("#misafir-gir").style.display="none";const f=$("#misafir-form");f.hidden=!1,$("input[name=yas]",f).focus()},formBagla("#misafir-form",async(v,yer)=>{if(!v.get("yas")||!v.get("kural")){yer.
-innerHTML=kutu("hata",\u00E7("Devam etmek i\xE7in iki onay\u0131 da i\u015Faretlemelisin."));return}await Sunucu.Giris.misafir(),await Uygulama.oturumAcildi()}),formBagla("#giris-form",async(v,yer)=>{
-const email=String(v.get("email")).trim();if(!epostaGecerli(email)){yer.innerHTML=kutu("hata",\u00E7("E-posta adresini denetle."));return}try{await Sunucu.Giris.giris(email,String(v.get("parola")))}catch(e){
-if(e.kod==="email_not_confirmed")return dogrula(email,\u00E7("\xD6nce e-postana gelen ba\u011Flant\u0131ya t\u0131klayarak adresini do\u011Frulamal\u0131s\u0131n."));throw e}await Uygulama.oturumAcildi()}),
-$("#giris-form input[name=email]").focus()}function kayit(){sahne(`
+onclick=()=>{$("#misafir-gir").style.display="none";const f=$("#misafir-form");f.hidden=!1,$("input[name=yas]",f).focus()},formBagla("#misafir-form",async(v,yer)=>{if(alanHatalari($("#misafir-form"),onayHatalari(
+v))){yer.innerHTML=kutu("hata",\u00E7("Devam etmek i\xE7in iki onay\u0131 da i\u015Faretlemelisin."));return}await Sunucu.Giris.misafir(),await Uygulama.oturumAcildi()}),formBagla("#giris-form",async(v,yer)=>{
+const email=String(v.get("email")).trim(),h=[...epostaGecerli(email)?[]:[["email",\u00E7("E-posta adresini denetle.")]],...String(v.get("parola")??"")?[]:[["parola",\u00E7("Parolan\u0131 yaz.")]]];if(alanHatalari(
+$("#giris-form"),h)){h.length>1&&(yer.innerHTML=hataOzeti(h));return}try{await Sunucu.Giris.giris(email,String(v.get("parola")))}catch(e){if(e.kod==="email_not_confirmed")return dogrula(email,\u00E7("\
+\xD6nce e-postana gelen ba\u011Flant\u0131ya t\u0131klayarak adresini do\u011Frulamal\u0131s\u0131n."));throw e}await Uygulama.oturumAcildi()}),$("#giris-form input[name=email]").focus()}function kayit(){
+sahne(`
       <h1>${\u00E7("Hesap a\xE7")}</h1>
       <p class="aciklama">${\u00E7("\xDCcretsiz. E-posta adresine bir do\u011Frulama ba\u011Flant\u0131s\u0131 gelecek.")}</p>
       <form class="form" id="kayit-form" novalidate>
@@ -1177,17 +1221,16 @@ $("#giris-form input[name=email]").focus()}function kayit(){sahne(`
           <small>${\u00E7("En az 8 karakter.")}</small></label>
         <label class="alan"><span>${\u00E7("Parola (yeniden)")}</span><input name="parola2" type="password" autocomplete="new-password" required minlength="8"></label>
         <label class="onay"><input type="checkbox" name="yas" required><span>${\u00E7("18 ya\u015F\u0131ndan b\xFCy\xFC\u011F\xFCm.")}</span></label>
-        <label class="onay"><input type="checkbox" name="kural" required><span>${\u00E7("<a>Gizlilik ve oyun kurallar\u0131n\u0131</a> okudum, kabul ediyorum.").replace("<a>",'<a href="gizlilik.html" \
-target="_blank" rel="noopener">')}</span></label>
+        <label class="onay"><input type="checkbox" name="kural" required><span>${\u00E7("Gizlilik ve oyun kurallar\u0131n\u0131 okudum, kabul ediyorum.")}</span></label>
+          <p class="kucuk onay-baglanti"><a href="gizlilik.html" target="_blank" rel="noopener">${\u00E7("Gizlilik ve oyun kurallar\u0131n\u0131 oku")}</a></p>
           <p class="kucuk"><button class="baglanti" type="button" data-topluluk-kural>${\u00E7("Topluluk kurallar\u0131n\u0131 oku")}</button></p>
         <div class="form-mesaj"></div>
         <button class="dugme altin tam" type="submit">${ikon("user-round-plus")}${\u00E7("Kay\u0131t ol")}</button>
       </form>
       <div class="giris-alt"><button class="baglanti" id="giris-git" type="button">${\u00E7("Hesab\u0131n var m\u0131? Giri\u015F yap")}</button></div>`),$("#giris-git").onclick=()=>giris(),formBagla(
-"#kayit-form",async(v,yer)=>{const email=String(v.get("email")).trim(),p1=String(v.get("parola")),p2=String(v.get("parola2"));if(!epostaGecerli(email)){yer.innerHTML=kutu("hata",\u00E7("E-posta adresi\
-ni denetle."));return}if(p1.length<8){yer.innerHTML=kutu("hata",\u00E7("Parola en az 8 karakter olmal\u0131."));return}if(p1!==p2){yer.innerHTML=kutu("hata",\u00E7("\u0130ki parola ayn\u0131 de\u011Fil."));
-return}if(!v.get("yas")||!v.get("kural")){yer.innerHTML=kutu("hata",\u00E7("Devam etmek i\xE7in iki onay\u0131 da i\u015Faretlemelisin."));return}if((await Sunucu.Giris.kayit(email,p1)).dogrulamaGerekli)
-return dogrula(email);await Uygulama.oturumAcildi()})}function dogrula(email,ust=""){sahne(`
+"#kayit-form",async(v,yer)=>{const email=String(v.get("email")).trim(),p1=String(v.get("parola")),p2=String(v.get("parola2")),h=[...epostaGecerli(email)?[]:[["email",\u00E7("E-posta adresini denetle.")]],
+...parolaHatalari(p1,p2),...onayHatalari(v)];if(alanHatalari($("#kayit-form"),h)){yer.innerHTML=hataOzeti(h);return}if((await Sunucu.Giris.kayit(email,p1)).dogrulamaGerekli)return dogrula(email);await Uygulama.
+oturumAcildi()})}function dogrula(email,ust=""){sahne(`
       <h1>${\u00E7("E-postan\u0131 denetle")}</h1>
       <p class="aciklama">${ust?esc(ust)+" ":""}${\u00E7("<b>{email}</b> adresine bir ba\u011Flant\u0131 g\xF6nderdik. Ba\u011Flant\u0131ya t\u0131klay\u0131nca hesab\u0131n a\xE7\u0131l\u0131r ve oyuna d\xF6nersin.",
 {email:esc(email)})}</p>
@@ -1208,8 +1251,8 @@ iden g\xF6nderildi."))}catch(e){yer.innerHTML=kutu("hata",hataMetni(e))}finally{
         <button class="dugme altin tam" type="submit">${ikon("send")}${\u00E7("Ba\u011Flant\u0131 g\xF6nder")}</button>
       </form>
       <div class="giris-alt"><button class="baglanti" id="giris-git" type="button">${\u00E7("Giri\u015Fe d\xF6n")}</button></div>`),$("#giris-git").onclick=()=>giris(),formBagla("#sifirla-form",async(v,yer)=>{
-const email=String(v.get("email")).trim();if(!epostaGecerli(email)){yer.innerHTML=kutu("hata",\u00E7("E-posta adresini denetle."));return}await Sunucu.Giris.sifirlamaIste(email),yer.innerHTML=kutu("bi\
-lgi",\u00E7("Bu adresle bir hesap varsa ba\u011Flant\u0131 g\xF6nderildi. E-postan\u0131 denetle."))})}function yeniParola(){sahne(`
+const email=String(v.get("email")).trim();alanHatalari($("#sifirla-form"),epostaGecerli(email)?[]:[["email",\u00E7("E-posta adresini denetle.")]])||(await Sunucu.Giris.sifirlamaIste(email),yer.innerHTML=
+kutu("bilgi",\u00E7("Bu adresle bir hesap varsa ba\u011Flant\u0131 g\xF6nderildi. E-postan\u0131 denetle.")))})}function yeniParola(){sahne(`
       <h1>${\u00E7("Yeni parola")}</h1>
       <p class="aciklama">${\u00E7("Hesab\u0131n i\xE7in yeni bir parola belirle.")}</p>
       <form class="form" id="parola-form" novalidate>
@@ -1218,34 +1261,50 @@ lgi",\u00E7("Bu adresle bir hesap varsa ba\u011Flant\u0131 g\xF6nderildi. E-post
         <label class="alan"><span>${\u00E7("Yeni parola (yeniden)")}</span><input name="parola2" type="password" autocomplete="new-password" required minlength="8"></label>
         <div class="form-mesaj"></div>
         <button class="dugme altin tam" type="submit">${ikon("lock")}${\u00E7("Parolay\u0131 de\u011Fi\u015Ftir")}</button>
-      </form>`),formBagla("#parola-form",async(v,yer)=>{const p1=String(v.get("parola")),p2=String(v.get("parola2"));if(p1.length<8){yer.innerHTML=kutu("hata",\u00E7("Parola en az 8 karakter olmal\u0131."));
-return}if(p1!==p2){yer.innerHTML=kutu("hata",\u00E7("\u0130ki parola ayn\u0131 de\u011Fil."));return}await Sunucu.Giris.parolaDegistir(p1);try{sessionStorage.removeItem("civora.kurtarma")}catch{}tost(
-\u00E7("Parolan de\u011Fi\u015Ftirildi."),"lock"),await Uygulama.oturumAcildi()})}return{giris,kayit,dogrula,sifirla,yeniParola}})(),Uygulama=(()=>{let sonlanmaGosterilenKusak=-1;function sonlananOturumuGoster(hata=Sunucu.
+      </form>`),formBagla("#parola-form",async(v,yer)=>{const p1=String(v.get("parola")),p2=String(v.get("parola2"));if(!alanHatalari($("#parola-form"),parolaHatalari(p1,p2))){await Sunucu.Giris.parolaDegistir(
+p1);try{sessionStorage.removeItem("civora.kurtarma")}catch{}tost(\u00E7("Parolan de\u011Fi\u015Ftirildi."),"lock"),await Uygulama.oturumAcildi()}})}return{giris,kayit,dogrula,sifirla,yeniParola}})(),SurumUyarisi=(()=>{
+let bant=null;function goster(){bant?.isConnected||(bant=document.createElement("div"),bant.className="surum-bant",bant.setAttribute("role","alert"),bant.innerHTML=`${ikon("rotate-cw")}<span>${\u00E7(
+"Oyunun yeni s\xFCr\xFCm\xFC yay\u0131mland\u0131. Devam etmek i\xE7in sayfay\u0131 yenile.")}</span>
+      <button class="dugme altin kucuk-d" type="button" data-surum-yenile>${\u00E7("Yenile")}</button>`,bant.querySelector("[data-surum-yenile]").addEventListener("click",()=>location.reload()),document.
+body.append(bant))}addEventListener("civora-surum",goster),Parcalar.yeniSurum&&goster();const bak=()=>{document.visibilityState==="visible"&&Parcalar.denetle()};return document.addEventListener("visib\
+ilitychange",bak),addEventListener("online",()=>Parcalar.denetle({zorla:!0})),setInterval(bak,600*1e3),{goster}})(),Uygulama=(()=>{let sonlanmaGosterilenKusak=-1;function sonlananOturumuGoster(hata=Sunucu.
 Giris.sonlanmaHatasi){const kusak=Sunucu.Giris.kusak;return Sunucu.Giris.oturum||hata?.oturumSonlandiKusagi!==kusak?!1:(sonlanmaGosterilenKusak===kusak||(sonlanmaGosterilenKusak=kusak,typeof Konusma==
 "object"&&Konusma.bitir(),typeof Durum=="object"&&Durum.temizle(),typeof Gorunus=="object"&&Gorunus.temizle(),typeof Kabuk=="object"&&Kabuk.sifirla(),history.replaceState(null,"",location.pathname),GirisEkrani.
 giris({hata:\u00E7("Oturumun sona erdi; yeniden giri\u015F yap.")})),!0)}function acilisHatasi(metin){$("#uygulama").innerHTML=`<div class="baslangic"><img src="img/amblem.png" alt="" width="72" heigh\
 t="72">
-      <p>${esc(metin)}</p><button class="dugme ikincil" type="button" id="acilis-yenile">${\u00E7("Yeniden dene")}</button></div>`,$("#acilis-yenile").addEventListener("click",()=>location.reload())}async function parcaBekle(gecerli){
-if(Parcalar.hazir("app"))return!0;const b=$("#baslangic-yazi");b?b.textContent=\u00E7("Oyun y\xFCkleniyor\u2026"):$("#uygulama").innerHTML=`<div class="baslangic" id="baslangic"><img src="img/amblem.p\
-ng" alt="" width="72" height="72"><p id="baslangic-yazi">${\u00E7("Oyun y\xFCkleniyor\u2026")}</p></div>`;try{return await Parcalar.bekle("app"),!0}catch{return gecerli()&&acilisHatasi(\u00E7("Oyun y\xFC\
-klenemedi; ba\u011Flant\u0131n\u0131 denetleyip yeniden dene.")),!1}}async function basla(){try{await Sunucu.yukle()}catch(e){return acilisHatasi(hataMetni(e))}const donus=Sunucu.Giris.adresiIsle();if(donus?.
-hata)return GirisEkrani.giris({hata:donus.hata.message});let kurtarma=donus?.tur==="recovery";try{kurtarma?sessionStorage.setItem("civora.kurtarma","1"):kurtarma=sessionStorage.getItem("civora.kurtarm\
-a")==="1"}catch{}if(kurtarma&&Sunucu.Giris.oturum)return GirisEkrani.yeniParola();try{sessionStorage.removeItem("civora.kurtarma")}catch{}return Sunucu.Giris.oturum?(donus?.tur==="signup"&&tost(\u00E7(
-"E-posta adresin do\u011Fruland\u0131. Ho\u015F geldin!"),"badge-check"),donus?.tur==="email_change"&&tost(\u00E7("E-posta adresin do\u011Fruland\u0131; hesab\u0131n art\u0131k kal\u0131c\u0131. Bundan sonra bu e-posta ve parolayl\
-a her cihazdan girebilirsin."),"badge-check"),oturumAcildi()):GirisEkrani.giris()}async function oturumAcildi(){const kusak=Sunucu.Giris.kusak,gecerli=()=>kusak===Sunucu.Giris.kusak?!0:(sonlananOturumuGoster(),
-!1);if(!await parcaBekle(gecerli)||!gecerli())return;let devletler=null;try{if(await Sunucu.Giris.gecerliJeton(),!gecerli()||(Sunucu.Giris.kullanici?.email||await Sunucu.Giris.kullaniciGetir().catch(()=>{}),
-!gecerli())||(devletler=Devletler.yukle(),await Durum.ozet(),!gecerli()))return}catch(e){if(sonlananOturumuGoster(e)||!gecerli()||e.kod==="SESSION_CHANGED")return;if(e.kod==="NO_CHARACTER")return await devletler,
-gecerli()?KarakterEkrani.ac():void 0;if(e.kod==="ACCOUNT_SUSPENDED")return AskiEkrani.ac();if(!Sunucu.Giris.oturum||e.kod==="NOT_AUTHENTICATED"||String(e.kod).startsWith("refresh_token")){const kapanis=Sunucu.
-Giris.cikis(),kapanisKusagi=Sunucu.Giris.kusak;return await kapanis,kapanisKusagi!==Sunucu.Giris.kusak?void 0:GirisEkrani.giris({hata:\u00E7("Oturumun sona erdi; yeniden giri\u015F yap.")})}return acilisHatasi(
-hataMetni(e))}Sunucu.cagir("ping").catch(()=>{}),Durum.kurallar().then(()=>{gecerli()&&(Kabuk.ustGuncelle(),Gorunus.yenile())}).catch(e=>{sonlananOturumuGoster(e)}),await Durum.askerlik().catch(e=>{sonlananOturumuGoster(
-e)}),gecerli()&&(await devletler,gecerli()&&(Durum.canliBaslat(),Kabuk.sifirla(),await Kabuk.git(location.hash.slice(1)||Kabuk.VARSAYILAN,{gecmis:!1}),gecerli()&&(Konusma.baslat().catch(e=>console.warn(
-"Konu\u015Fma d\xFC\u011Fmesi a\xE7\u0131lamad\u0131:",e)),typeof Sezon=="object"&&Sezon.acilis(),typeof Gelen=="object"&&Gelen.ayarla(Durum.v.ozet?.inbox_unread??0),adYenileIste(),toplulukSurumDenetle())))}
-function aski(){AskiEkrani.acik||!Sunucu.Giris.oturum||(Konusma.bitir(),Durum.canliBitir(),Kabuk.sifirla(),AskiEkrani.ac())}addEventListener("civora:aski",aski);async function cikis(){Konusma.bitir(),
-Durum.temizle(),Gorunus.temizle();const kapanis=Sunucu.Giris.cikis(),kapanisKusagi=Sunucu.Giris.kusak;await kapanis,kapanisKusagi===Sunucu.Giris.kusak&&(Kabuk.sifirla(),history.replaceState(null,"",location.
-pathname),GirisEkrani.giris({mesaj:\u00E7("\xC7\u0131k\u0131\u015F yapt\u0131n.")}))}return addEventListener("storage",e=>{if(e.key!=="civora.oturum")return;const eski=Sunucu.Giris.oturum;let yeni=null;
-try{if(yeni=e.newValue?JSON.parse(e.newValue):null,yeni&&(typeof yeni!="object"||typeof yeni.access_token!="string"||!yeni.access_token))return}catch{return}!yeni&&eski?(typeof Konusma=="object"&&Konusma.
-bitir(),Durum.temizle(),typeof Gorunus=="object"&&Gorunus.temizle(),Sunucu.Giris.yereldenCik(),typeof Kabuk=="object"&&Kabuk.sifirla(),history.replaceState(null,"",location.pathname),GirisEkrani.giris(
-{mesaj:\u00E7("Ba\u015Fka bir sekmede \xE7\u0131k\u0131\u015F yap\u0131ld\u0131.")})):yeni&&!eski||yeni&&eski&&yeni.user?.id&&eski.user?.id&&yeni.user.id!==eski.user.id?location.reload():yeni&&eski&&Sunucu.
-Giris.yereldenAl(yeni)}),document.addEventListener("visibilitychange",()=>{document.visibilityState==="visible"&&Sunucu.Giris.oturum&&Durum.v.ozet&&(Sunucu.cagir("ping").catch(()=>{}),Durum.ozet().catch(
-()=>{}),Durum.v.askerlik&&Durum.askerlik().catch(()=>{}))}),setInterval(()=>{document.visibilityState==="visible"&&Sunucu.Giris.oturum&&Durum.v.ozet&&(Sunucu.cagir("ping").catch(()=>{}),Durum.v.askerlik&&
-Durum.askerlik().catch(()=>{}))},600*1e3),{basla,oturumAcildi,cikis,aski}})();Uygulama.basla(),Parcalar.tamam("acilis");
+      <p>${esc(metin)}</p><button class="dugme ikincil" type="button" id="acilis-yenile">${\u00E7("Yeniden dene")}</button></div>`,$("#acilis-yenile").addEventListener("click",()=>location.reload())}function parcaBoyutu(){
+return({"app":658393,"en":437096})}const mb=n=>\u00E7("{n} MB",{n:(Number(n||0)/1048576).toLocaleString(DIL.yerel,{minimumFractionDigits:1,maximumFractionDigits:1})});function yavasIlerleme(){const t0=Date.now(),
+zaman=setInterval(()=>{const kap=$("#baslangic");if(!kap||Parcalar.hazir("app")){clearInterval(zaman);return}const sn=Math.round((Date.now()-t0)/1e3);if(sn<10)return;const B=parcaBoyutu(),liste=[...DIL.
+kod==="en"?[["en",\u00E7("Dil katalo\u011Fu")]]:[],["app",\u00E7("Oyun dosyas\u0131")]],toplam=liste.reduce((t,[a])=>t+Number(B?.[a]??0),0)||1,oran=Math.round(liste.reduce((t,[a])=>t+(Parcalar.hazir(a)?
+Number(B?.[a]??0):0),0)/toplam*100);let yer=$("#baslangic-ilerleme",kap);yer||(yer=document.createElement("div"),yer.id="baslangic-ilerleme",yer.className="baslangic-ilerleme",yer.innerHTML=`<p>${\u00E7(
+"Ba\u011Flant\u0131n yava\u015F g\xF6r\xFCn\xFCyor; oyun indiriliyor.")} <span class="sn" aria-hidden="true"></span></p>
+          <div class="baslangic-cubuk" role="progressbar" aria-label="${esc(\u00E7("\u0130ndirilen"))}" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+          <ul>${liste.map(([a,ad])=>`<li data-parca-ilerleme="${a}"><span class="ik-yer"></span><span>${esc(ad)} \xB7 ${mb(B?.[a])}</span></li>`).join("")}</ul>`,kap.append(yer)),$(".sn",yer).textContent=
+\u00E7("{sn} sn",{sn});const cubuk=$(".baslangic-cubuk",yer);cubuk.getAttribute("aria-valuenow")!==String(oran)&&(cubuk.setAttribute("aria-valuenow",String(oran)),$("i",cubuk).style.width=Math.max(4,oran)+
+"%");for(const li of $$("[data-parca-ilerleme]",yer)){const durum=Parcalar.hazir(li.dataset.parcaIlerleme)?"tamam":"iniyor";li.dataset.durum!==durum&&(li.dataset.durum=durum,$(".ik-yer",li).innerHTML=
+ikon(durum==="tamam"?"check":"hourglass"))}},1e3)}async function parcaBekle(gecerli){if(Parcalar.hazir("app"))return!0;const b=$("#baslangic-yazi");b?b.textContent=\u00E7("Oyun y\xFCkleniyor\u2026"):$(
+"#uygulama").innerHTML=`<div class="baslangic" id="baslangic"><img src="img/amblem.png" alt="" width="72" height="72"><p id="baslangic-yazi">${\u00E7("Oyun y\xFCkleniyor\u2026")}</p></div>`,yavasIlerleme();
+try{return await Parcalar.bekle("app"),!0}catch{return gecerli()&&acilisHatasi(\u00E7("Oyun y\xFCklenemedi; ba\u011Flant\u0131n\u0131 denetleyip yeniden dene.")),!1}}async function basla(){try{await Sunucu.
+yukle()}catch(e){return acilisHatasi(hataMetni(e))}const donus=Sunucu.Giris.adresiIsle();if(donus?.hata)return GirisEkrani.giris({hata:donus.hata.message});let kurtarma=donus?.tur==="recovery";try{kurtarma?
+sessionStorage.setItem("civora.kurtarma","1"):kurtarma=sessionStorage.getItem("civora.kurtarma")==="1"}catch{}if(kurtarma&&Sunucu.Giris.oturum)return GirisEkrani.yeniParola();try{sessionStorage.removeItem(
+"civora.kurtarma")}catch{}return Sunucu.Giris.oturum?(donus?.tur==="signup"&&tost(\u00E7("E-posta adresin do\u011Fruland\u0131. Ho\u015F geldin!"),"badge-check"),donus?.tur==="email_change"&&tost(\u00E7(
+"E-posta adresin do\u011Fruland\u0131; hesab\u0131n art\u0131k kal\u0131c\u0131. Bundan sonra bu e-posta ve parolayla her cihazdan girebilirsin."),"badge-check"),oturumAcildi()):GirisEkrani.giris()}async function oturumAcildi(){
+const kusak=Sunucu.Giris.kusak,gecerli=()=>kusak===Sunucu.Giris.kusak?!0:(sonlananOturumuGoster(),!1);if(!await parcaBekle(gecerli)||!gecerli())return;let devletler=null;try{if(await Sunucu.Giris.gecerliJeton(),
+!gecerli()||(Sunucu.Giris.kullanici?.email||await Sunucu.Giris.kullaniciGetir().catch(()=>{}),!gecerli()))return;devletler=Devletler.yukle();const uid=Sunucu.Giris.oturum?.user?.id??"";let goruldu=!1;
+try{goruldu=!!uid&&localStorage.getItem("civora.karakter")===uid}catch{}if(!goruldu){const sec=await Sunucu.cagir("character_options").catch(()=>null);if(!gecerli())return;if(sec&&sec.has_character===
+!1)return await devletler,gecerli()?KarakterEkrani.ac(sec):void 0}if(await Durum.ozet(),!gecerli())return;try{uid&&localStorage.setItem("civora.karakter",uid)}catch{}}catch(e){if(sonlananOturumuGoster(
+e)||!gecerli()||e.kod==="SESSION_CHANGED")return;if(e.kod==="NO_CHARACTER")return await devletler,gecerli()?KarakterEkrani.ac():void 0;if(e.kod==="ACCOUNT_SUSPENDED")return AskiEkrani.ac();if(!Sunucu.
+Giris.oturum||e.kod==="NOT_AUTHENTICATED"||String(e.kod).startsWith("refresh_token")){const kapanis=Sunucu.Giris.cikis(),kapanisKusagi=Sunucu.Giris.kusak;return await kapanis,kapanisKusagi!==Sunucu.Giris.
+kusak?void 0:GirisEkrani.giris({hata:\u00E7("Oturumun sona erdi; yeniden giri\u015F yap.")})}return acilisHatasi(hataMetni(e))}Sunucu.cagir("ping").catch(()=>{}),Durum.kurallar().then(()=>{gecerli()&&
+(Kabuk.ustGuncelle(),Gorunus.yenile())}).catch(e=>{sonlananOturumuGoster(e)}),await Durum.askerlik().catch(e=>{sonlananOturumuGoster(e)}),gecerli()&&(await devletler,gecerli()&&(Durum.canliBaslat(),Kabuk.
+sifirla(),await Kabuk.git(location.hash.slice(1)||Kabuk.VARSAYILAN,{gecmis:!1}),gecerli()&&(Konusma.baslat().catch(e=>console.warn("Sohbet a\xE7\u0131lamad\u0131:",e)),typeof Sezon=="object"&&Sezon.acilis(),
+typeof Gelen=="object"&&Gelen.ayarla(Durum.v.ozet?.inbox_unread??0),adYenileIste(),toplulukSurumDenetle())))}function aski(){AskiEkrani.acik||!Sunucu.Giris.oturum||(Konusma.bitir(),Durum.canliBitir(),
+Kabuk.sifirla(),AskiEkrani.ac())}addEventListener("civora:aski",aski);async function cikis(){Konusma.bitir(),Durum.temizle(),Gorunus.temizle();const kapanis=Sunucu.Giris.cikis(),kapanisKusagi=Sunucu.Giris.
+kusak;await kapanis,kapanisKusagi===Sunucu.Giris.kusak&&(Kabuk.sifirla(),history.replaceState(null,"",location.pathname),GirisEkrani.giris({mesaj:\u00E7("\xC7\u0131k\u0131\u015F yapt\u0131n.")}))}return addEventListener(
+"storage",e=>{if(e.key!=="civora.oturum")return;const eski=Sunucu.Giris.oturum;let yeni=null;try{if(yeni=e.newValue?JSON.parse(e.newValue):null,yeni&&(typeof yeni!="object"||typeof yeni.access_token!=
+"string"||!yeni.access_token))return}catch{return}!yeni&&eski?(typeof Konusma=="object"&&Konusma.bitir(),Durum.temizle(),typeof Gorunus=="object"&&Gorunus.temizle(),Sunucu.Giris.yereldenCik(),typeof Kabuk==
+"object"&&Kabuk.sifirla(),history.replaceState(null,"",location.pathname),GirisEkrani.giris({mesaj:\u00E7("Ba\u015Fka bir sekmede \xE7\u0131k\u0131\u015F yap\u0131ld\u0131.")})):yeni&&!eski||yeni&&eski&&
+yeni.user?.id&&eski.user?.id&&yeni.user.id!==eski.user.id?location.reload():yeni&&eski&&Sunucu.Giris.yereldenAl(yeni)}),document.addEventListener("visibilitychange",()=>{document.visibilityState==="vi\
+sible"&&Sunucu.Giris.oturum&&Durum.v.ozet&&(Sunucu.cagir("ping").catch(()=>{}),Durum.ozet().catch(()=>{}),Durum.v.askerlik&&Durum.askerlik().catch(()=>{}))}),setInterval(()=>{document.visibilityState===
+"visible"&&Sunucu.Giris.oturum&&Durum.v.ozet&&(Sunucu.cagir("ping").catch(()=>{}),Durum.v.askerlik&&Durum.askerlik().catch(()=>{}))},600*1e3),{basla,oturumAcildi,cikis,aski}})();Uygulama.basla(),Parcalar.
+tamam("acilis");

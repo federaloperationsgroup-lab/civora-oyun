@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,yv=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ul\
 ke/cephe",depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek,yv]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(
 ()=>null),Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Sunucu.
@@ -29,7 +29,7 @@ mi")}</span></div>
         <div id="baskent-yer"></div>
         <div class="izgara dort" style="margin-top:16px">
           <section class="kart"><p class="ust-yazi">${\u00E7("Ba\u015Fkan")}</p>
-            ${l.president?`<div class="satir" style="margin-top:12px">${avatarKutu(l.president.name,l.president.character_id)}<div><b style="font-size:16px">${esc(l.president.name)}</b>
+            ${l.president?`<div class="satir" style="margin-top:12px">${avatarKutu(l.president.name,l.president.character_id)}<div><b style="font-size:1rem">${esc(l.president.name)}</b>
               <div class="kucuk">${\u00E7("D\xF6nem sonu {zaman}",{zaman:esc(saatYaz(l.president.term_end))})}</div></div></div>`:`<p class="b3" style="margin-top:8px">${\u00E7("Ba\u015Fkanl\u0131k bo\u015F")}\
 </p><p class="kucuk" style="margin:4px 0 0">${l.acting?.kind==="deputy"?\u00E7("Ba\u015Fkan vekili {ad} y\xF6netiyor ({yetki}).",{ad:esc(l.acting.name),yetki:\u00E7("vergi \xF6nerisi; sava\u015F \xF6nerisi ve il\
 an\u0131 yok")}):\u00E7("Se\xE7ilmi\u015F ba\u015Fkan yok: temel bak\u0131m ve savunma s\xFCrer, yeni karar al\u0131nmaz.")}</p>`}
@@ -578,4 +578,5 @@ yetki);pencereForm({ust:\u00E7("Sava\u015F ilan\u0131"),baslik:bolgeAdi(hedef),o
           <p class="kucuk">${\u00E7("\u0130lk turdan {n} saat \xF6ncesine kadar iptal edebilirsin; ilan bedeli geri gelmez.",{n:Number(v.w.cancel_cutoff_h??6)})}</p>`,is:async()=>{const s=await Sunucu.
 yap("campaign_declare",{p_authorization:yetki,p_target_region:hedef,p_origin_region:koken});tost(\u00E7("Sava\u015F ilan edildi. \u0130lk tur: {zaman}.",{zaman:saatYaz(s.first_round_at)}),"swords"),Durum.
 askerlik().catch(()=>{}),await tazele()}})}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay,yuk})=>{olay==="parliament.motion_voted"&&
-salon.oy(yuk?.data),/^(parliament\.|office\.|tax\.|citizenship\.policy|country\.war_)/.test(olay)&&tazele()});return()=>{durdur(),b1(),salon.kapat()}}}),Parcalar.tamam("ek_27_ulke");
+salon.oy(yuk?.data),/^(parliament\.|office\.|tax\.|citizenship\.policy|country\.war_)/.test(olay)&&tazele()});return()=>{durdur(),b1(),salon.kapat()}}}),Parcalar.tamam("ek_27_ulke","2026-11-16-8043284\
+a-fd6cffc");

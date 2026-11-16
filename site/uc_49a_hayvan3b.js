@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_49a_hayvan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_49a_hayvan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const HAYVAN_EYLEM_SURE={bekle:4,yuru:.6,otur:4,yat:5,uyu:6,ye:2.8,oyna:1.6,sevin:2.2,kus:5,pati:2.4,yuvarlan:2.4,dans:3,sarki:3.2};function hayvanParcasi(THREE){const grup=new THREE.Group;let anahtar="",
 p=null;const malzeme=new Map,M=(renk,ek={})=>{const k=renk+JSON.stringify(ek);return malzeme.has(k)||malzeme.set(k,new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek})),malzeme.get(k)},golgeli=m=>(m.
 castShadow=!0,m.receiveShadow=!0,m),kur=h=>{const a=`${h?.species}|${h?.breed}`;if(a===anahtar)return;anahtar=a;for(const c of[...grup.children])grup.remove(c);if(h?.species==="kus"){p=kusKur(h);return}
@@ -80,4 +80,4 @@ h-c*s*Math.cos(a),0),p.kuyrukG.rotation.y=salla(10,.4);break}case"dans":{p.govde
 p.bacaklar[0].position.z=p.bacaklar[1].position.z=0,p.bacaklar[0].rotation.x=p.bacaklar[1].rotation.x=-1.6,p.bacaklar[0].rotation.z=salla(8,.4),p.bacaklar[1].rotation.z=-salla(8,.4),p.basG.rotation.x=
 1,p.kuyruk.rotation.x=-.1,p.kok.rotation.y=(azalt?0:u)*Math.PI*2,p.kuyrukG.rotation.y=salla(12,.5);break}default:p.govde.scale.y=1+Math.sin(t*2.2)*.02*kipir,p.kuyrukG.rotation.y=salla(p.kedi?1.3:3,p.kedi?
 .25:.3),p.basG.rotation.y=salla(.45,.4),p.basG.rotation.x=salla(.3,.08)}}return{grup,kur,pozla,get parcalar(){return p},get tur(){return p?.tur??null},eylemSuresi:ad=>HAYVAN_EYLEM_SURE[ad]??4}}Parcalar.
-tamam("uc_49a_hayvan3b");
+tamam("uc_49a_hayvan3b","2026-11-16-8043284a-fd6cffc");

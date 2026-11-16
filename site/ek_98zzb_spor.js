@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zzb_spor.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzb_spor.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/spor",{async ac(kap){let v=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,gorunus,secilen=null,rekorSekme="sehir";const siralama={country:null,world:null},siralamaHata={country:null,
 world:null},salon=SporSalonu.ac(),ben=()=>Durum.v.ozet?.character??{},R=()=>sporKurali()??v?.rule??{},simdi=()=>Date.now()+saatFarki,me=()=>v?.me??{},git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?
 "auto":"smooth",block:"start"});salon.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}if(ad==="alet"){git(me().active?"#spor-antrenman":`#spor-kart-${id}`);return}if(ad==="tablo"){git("#\
@@ -288,4 +288,4 @@ ld":null)===kapsam&&ciz()}const tazele=tazeleyici(async()=>{await yukle();const 
 !kapandi&&!mesgul&&!document.querySelector(".perde")&&ciz()});if(await yukle(),!kap.isConnected)return salon.kapat(),()=>{};ciz();const b1=Durum.dinle("olay",({olay,yuk})=>{/^gym\./.test(olay)&&tazele().
 then(()=>{olay==="gym.completed"&&!kapandi&&salon.oyna(yuk?.data?.record_taken||yuk?.data?.city_record?"rekor":"bitti")})});let son=Date.now();const saat=setInterval(()=>{if(kapandi||document.hidden)return;
 sayacYaz();const a=me().active,bitti=a&&Date.parse(a.ends_at)<=simdi();Date.now()-son>=(bitti?1e4:3e4)&&(son=Date.now(),tazele())},1e3);return()=>{kapandi=!0,b1(),clearInterval(saat),salon.kapat()}}}),
-Parcalar.tamam("ek_98zzb_spor");
+Parcalar.tamam("ek_98zzb_spor","2026-11-16-8043284a-fd6cffc");

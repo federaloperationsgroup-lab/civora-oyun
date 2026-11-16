@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (ek_98zc_depo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zc_depo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/depo",{async ac(kap){let v=null,harita=null,teklif=null,teklifNo=0,teklifSaat=null,durdur=()=>{},geriZaman=null,yoldaAnahtar="";const bekleme={n:0},form={kaynak:"bag",varlik:null,hedef:null,
 miktar:"1",yol:"kargo"};try{const x=JSON.parse(sessionStorage.getItem("civora.depo")??"null");sessionStorage.removeItem("civora.depo"),x?.kaynak&&Object.assign(form,x,{yol:"kargo"})}catch{}async function yukle(){
 [v,harita]=await Promise.all([Sunucu.cagir("logistics_me"),Durum.harita(),Durum.ozet()]);const a=(v.in_transit??[]).map(s=>s.shipment_id).join(",");a!==yoldaAnahtar&&(yoldaAnahtar=a,bekleme.n=0)}const depoBul=id=>(v.
@@ -126,4 +126,4 @@ form.kaynak,!1),p_to:ucJson(form.hedef,!0),p_asset:form.varlik,p_qty:m,p_expecte
 form.varlik),yer:ucAdi(form.hedef)}),"package"):tost(\u00E7("Kargo yola \xE7\u0131kt\u0131: {n} {urun}, {dk} dakikada var\u0131r.",{n:sayi(m),urun:varlikAdi(form.varlik),dk:sayi(r?.minutes??t.minutes)}),
 "truck"),form.miktar="1",await tazele()}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`,dugme.disabled=!1,teklifIste()}finally{formSerbest(
 f)}}))}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(shipment\.|market\.|contract\.|job\.|vehicle\.)/.test(olay)&&tazele()});return()=>{
-b1(),durdur(),clearTimeout(teklifSaat),clearTimeout(geriZaman)}}}),Parcalar.tamam("ek_98zc_depo");
+b1(),durdur(),clearTimeout(teklifSaat),clearTimeout(geriZaman)}}}),Parcalar.tamam("ek_98zc_depo","2026-11-16-8043284a-fd6cffc");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98zy_etkinlik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zy_etkinlik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const ETK_W=12,ETK_D=7,ETK_KALABALIK=64,ETK_K=.62,etkOtur=yuk=>yuk/.62-.3;function etkinlik3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.
 Scene,kamera=new THREE.PerspectiveCamera(34,1,.1,160);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,sonGrup,d=etkinlikVerisi(null,null);const dinleyici={},etkinMi=()=>cizici.etkin===api,malzeme=new Map,
 M=(renk,ek={})=>{const k=renk+JSON.stringify(ek);return malzeme.has(k)||malzeme.set(k,new THREE.MeshStandardMaterial({color:renk,roughness:.8,...ek})),malzeme.get(k)},golgeli=m=>(m.castShadow=!0,m.receiveShadow=
@@ -112,4 +112,5 @@ olay.son?olay.tur:null);fisek.noktalar.visible=fisekAcik,fisekAcik&&fisek.guncel
 d.kind)})},sahne,kamera,surekli:!0,get kareMs(){return!gorunur||hareketAzalt?1e3:telefon()?50:33},dinle(ad,fn){dinleyici[ad]=fn},kapBagla(el){kapEl=el??null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<
 "u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),panoDoku.son="",agacDoku.son="",saatDoku.son="",yaz()},get cizimSayisi(){let n=0;return sahne.
 traverseVisible(o=>{(o.isMesh||o.isPoints)&&n++}),n},durumYaz(y){d=y,yaz()},olay(tur){olay={tur,son:performance.now()+9e3},kirli=!0},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,
-h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){gorunur&&(guncelle(t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zy_etkinlik3b");
+h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){gorunur&&(guncelle(t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zy_etkinlik3b","202\
+6-11-16-8043284a-fd6cffc");

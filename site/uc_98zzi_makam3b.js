@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-12-8094c592-475d08f (uc_98zzi_makam3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zzi_makam3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const makamYil=an=>an?new Date(an).getUTCFullYear():"";function makam3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(34,
 1,.1,60),tuval=cizici.renderer.domElement;let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null;const dinleyici={};let d=makamVerisi(null);const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,
 roughness:.8,...ek}),KUTU=new THREE.BoxGeometry(1,1,1).translate(0,.5,0),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(KUTU,typeof mat=="string"?M(mat):mat);return m.scale.set(gx,gy,gz),
@@ -75,4 +75,4 @@ fon, evrak, g\xFCn\xFCn emri, haftal\u0131k hedef ve eski ba\u015Fkanlar")},sahn
 kapEl=el??null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<"u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),kapEl&&yaz()},
 durumYaz(y){d={...d,...y},yaz()},kalite(k){isik.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(saatYazdir(),kirli=!0)},guncelle(dt,t){if(gorunur){if(saatYazdir(),
 !hareketAzalt){baskan.guncelle(t),kure.rotation.y=t*.25;for(const[i,b]of bayraklar.entries())b.rotation.y=Math.sin(t*1.6+i)*.06;d.savas&&(telLambaMat.emissiveIntensity=Math.sin(t*5)>0?1.6:.15)}kirli=!0}},
-cizilmeli(){const x=kirli;return kirli=!1,x}};return yaz(),api}Parcalar.tamam("uc_98zzi_makam3b");
+cizilmeli(){const x=kirli;return kirli=!1,x}};return yaz(),api}Parcalar.tamam("uc_98zzi_makam3b","2026-11-16-8043284a-fd6cffc");
