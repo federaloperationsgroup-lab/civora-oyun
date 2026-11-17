@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zv_butik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_98zv_butik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const BUTIK_OLCEK=.62,BUTIK_DOKU={en:160,boy:224,gen:.6,yuk:.84},BUTIK_MANKEN={ten:0,sacRenk:0,sac:"kel",sakal:"yok",yuz:"sakin",beden:"orta",kiyafet:"gunluk",renk:0,zemin:0};function butik3bKur(THREE,cizici){
 if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,120);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,
 d={anahtar:"",bolge:null,sehir:"",gece:0,kapsam:"world",askilar:[],raf:[],vitrin:null,toplam:0,ben:{id:"",ad:"",gorunus:null}};const dinleyici={},etkinMi=()=>cizici.etkin===api,malzeme=new Map,M=(renk,ek={})=>{
@@ -98,4 +98,4 @@ ben")&&(o={satici,vitrin:manken,ben:benYuva}[ne].kok,_n.set(0,ne==="satici"?1.15
 x:(p.x*.5+.5)*w,y:(-p.y*.5+.5)*h,disarida:p.z>1||Math.abs(p.x)>1.05||Math.abs(p.y)>1.05}},guncelle(dt,t){if(gorunur){{const dongu=(t+satici.faz*12)%12,sallar=!hareketAzalt&&dongu>10.4,eylem=sallar?"se\
 lamla":"bekle",sure=satici.fp.eylemSuresi(eylem)||3;satici.fp.pozla(eylem,sallar?(dongu-10.4)/1.6:(t+satici.faz*sure)%sure/sure,t,hareketAzalt,!sallar),hareketAzalt||satici.fp.canli(t+satici.faz*5)}if(benYuva.
 kok.visible){const sure=benYuva.fp.eylemSuresi("bekle")||3;benYuva.fp.pozla("bekle",(t+benYuva.faz*sure)%sure/sure,t+benYuva.faz*7,hareketAzalt,!0),hareketAzalt||benYuva.fp.canli(t+benYuva.faz*5)}for(const y of askiYuva)
-y.g.visible&&(y.g.rotation.z=hareketAzalt?0:Math.sin(t*.9+y.faz)*.014);kirli=!0}},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zv_butik3b","2026-11-16-8043284a-fd6cffc");
+y.g.visible&&(y.g.rotation.z=hareketAzalt?0:Math.sin(t*.9+y.faz)*.014);kirli=!0}},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zv_butik3b","2026-11-17-53cc619b-0b92b6e");

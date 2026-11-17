@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_25_calis.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_25_calis.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/is",{async ac(kap){let durdur=()=>{},birimler=1,depoAdet=1;const atolye=AtolyeSahnesi.ac(),isletmeKart=IsletmeSahnesi.ac({calisan:!0});let veri=null,nabiz=null,gorunus,isletme=null;
 async function yukle(){const[is,ilan,depo,kurallar,hatlar,nb,bak,,onarim]=await Promise.all([Sunucu.cagir("my_work"),Sunucu.cagir("job_offers"),Sunucu.cagir("depot_status"),Durum.kurallar(),Sunucu.cagir(
 "coop_map").catch(()=>null),Sunucu.cagir("city_pulse").catch(()=>null),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null,Durum.askerlik(),Sunucu.cagir("repair_status").catch(()=>null)]);nb&&
@@ -91,5 +91,5 @@ git("ulke/ekonomi");$("#depo-al",kap)?.addEventListener("click",()=>islem("depot
 -santiyeye]",kap))b.onclick=()=>santiyeyeGit(b.dataset.santiyeye)}async function islem(fn,args,mesaj,ik,askerlik=!1){for(const b of $$("button",kap))b.disabled=!0;try{await Sunucu.yap(fn,args),tost(mesaj,
 ik),await Promise.all([Durum.ozet(),askerlik?Durum.askerlik():null])}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}async function tazele(){try{ciz(await yukle())}catch(e){tost(hataMetni(e),
 "circle-alert")}}ciz(await yukle());const b1=Durum.dinle("olay",({olay})=>{/^(job\.|repair\.)/.test(olay)&&tazele()}),nabizZaman=setInterval(async()=>{if(document.visibilityState!=="visible")return;const nb=await Sunucu.
-cagir("city_pulse").catch(()=>null);nb&&(nabiz=nb,atolyeYaz())},6e4);return()=>{durdur(),b1(),clearInterval(nabizZaman),atolye.kapat(),isletmeKart.kapat()}}}),Parcalar.tamam("ek_25_calis","2026-11-16-\
-8043284a-fd6cffc");
+cagir("city_pulse").catch(()=>null);nb&&(nabiz=nb,atolyeYaz())},6e4);return()=>{durdur(),b1(),clearInterval(nabizZaman),atolye.kapat(),isletmeKart.kapat()}}}),Parcalar.tamam("ek_25_calis","2026-11-17-\
+53cc619b-0b92b6e");

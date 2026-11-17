@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_42_harita.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("dunya/harita",{async ac(kap){const[veriTam]=await Promise.all([haritaVerisi(),Durum.ozet(),Durum.kurallar()]);let harita=await Durum.harita(!0);Devletler.haritaya(veriTam);let yolDurum=await Sunucu.
 cagir("travel_status").catch(()=>null),isb=await Sunucu.cagir("coop_map").catch(()=>null),trafik=await Sunucu.cagir("world_pulse").catch(()=>null);const filmIstek=HaritaFilm.bekleyen;HaritaFilm.bekleyen=
 null;let filmVeri=filmIstek?.veri??null;if(filmIstek&&!filmVeri&&(filmVeri=await Sunucu.cagir("season_film",{p_season:filmIstek.no??null}).catch(e=>(tost(hataMetni(e),"circle-alert"),null))),filmVeri)
@@ -240,8 +240,8 @@ uclu="1"':""}><g class="bulut${h==="yagmur"?" yagmur":""}${hv.guclu?" guclu":""}
 id]??b.ulke)!==b.ulke),desenler=[...new Set(isgaller.map(b=>b.ulke))].map(u=>`<pattern id="isgal2b-${esc(u)}" patternUnits="userSpaceOnUse" width="2.4" height="2.4"
         patternTransform="rotate(45)"><rect width="1.1" height="2.4" fill="${esc(ulkeRenk(u))}" opacity="0.75"/></pattern>`).join(""),isgalSvg=isgaller.map(b=>`<path class="isgal2b" data-isgal2b="${esc(
 b.id)}" d="${y.bolge.get(b.id)}" fill="url(#isgal2b-${esc(b.ulke)})"/>`).join(""),trafikSvg=trafik2b.map((a,k)=>`<g class="olcekli trafik2b-${a.tur}${a.sinif?" "+a.sinif:""}" data-trafik2b="${k}" data\
--x="0" data-y="0">${a.svg}</g>`).join(""),trafikSay=tur=>trafik2b.filter(a=>a.tur===tur).length;sonOlcek=0,kutu.innerHTML=`<svg viewBox="0 0 10 10" preserveAspectRatio="none" role="img" aria-label="${\u00E7(
-"D\xFCnya haritas\u0131, hafif g\xF6r\xFCn\xFCm")}"
+-x="0" data-y="0">${a.svg}</g>`).join(""),trafikSay=tur=>trafik2b.filter(a=>a.tur===tur).length;sonOlcek=0,kutu.innerHTML=`<svg viewBox="0 0 10 10" preserveAspectRatio="none" role="img" data-dokunma="\
+harita" aria-label="${\u00E7("D\xFCnya haritas\u0131, hafif g\xF6r\xFCn\xFCm")}"
         data-trafik-araba="${trafikSay("araba")}" data-trafik-ticaret="${trafikSay("ticaret")}" data-trafik-konvoy="${trafikSay("konvoy")}" data-trafik-otobus="${trafikSay("otobus")}" data-trafik-karg\
 o="${trafikSay("kargo")}" data-isgal="${isgaller.length}"
         data-direnis="${(d.isgaller??[]).filter(([,,,st])=>st).length}" data-hasar="${Object.values(d.hasar??{}).filter(x=>Number(x)>0).length}">
@@ -337,4 +337,4 @@ yenile()},olay==="coop.line_progress"?4e3:300))}),zamanlayici=setInterval(()=>{d
 "")){el.dataset.yolArac=kendi?.tur??"",$(".arac2b-govde",el)?.setAttribute("style",kendi?`fill:${aracRengi(kendi.renk)}`:"");const ik=$(".arac2b-ikon",el);ik&&(ik.setAttribute("style",kendi?`fill:${aracKarsit(
 kendi.renk)};stroke:${aracKarsit(kendi.renk)}`:""),ik.innerHTML=aracMini2b(kendi?.tur??""))}gorunumUygula()},5e3),trafikSaat=setInterval(()=>{mod!=="2b"||!trafik2b.length||document.hidden||(trafik2bYerlestir(),
 gorunumUygula())},1500);return()=>{kapandi=!0,clearInterval(zamanlayici),clearInterval(aracSaat),clearInterval(trafikSaat),clearInterval(filmSaat),birakGorunum(),b1(),b2(),b3(),b4(),b5(),clearTimeout(
-hatSaat),gozlem2b?.disconnect(),harita3bOrnek&&Uc.cizici?.birak(harita3bOrnek)}}}),Parcalar.tamam("ek_42_harita","2026-11-16-8043284a-fd6cffc");
+hatSaat),gozlem2b?.disconnect(),harita3bOrnek&&Uc.cizici?.birak(harita3bOrnek)}}}),Parcalar.tamam("ek_42_harita","2026-11-17-53cc619b-0b92b6e");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzu_usta.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zzu_usta.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/usta",{async ac(kap){let b=null,kapandi=!1;const yukle=async()=>{b=await Sunucu.cagir("mentor_board")},yap=async(ad,p,mesaj,ik="hand-heart")=>{try{await Sunucu.yap(ad,p),mesaj&&tost(
 mesaj,ik)}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()},kisi=k=>`<button class="baglanti" type="button" data-profil="${esc(k.character_id)}"><b>${esc(k.name??"")}</b></button>`;function bagKarti(x,r){
 const karsi=x.role==="mentor"?x.apprentice:x.mentor;return`<div class="usta-bag" data-bag="${esc(x.mentorship_id)}" data-rol="${esc(x.role??"")}">
@@ -87,4 +87,4 @@ data-usta-geri]",kap))x.onclick=()=>yap("mentor_cancel",{p_mentorship:x.dataset.
 {ust:\u00E7("Usta-\xE7\u0131rak"),baslik:\u00E7("Ba\u011F bitirilsin mi?"),govde:`<p>${\u00E7("{ad} ile usta-\xE7\u0131rak ba\u011F\u0131 biter; ula\u015F\u0131lan basamaklar\u0131n \xF6d\xFClleri sende kal\u0131r. Sonra ba\u015Fka bir ba\u011F kurulabil\
 ir.",{ad:esc(x.dataset.ad??"")})}</p>`,dugmeler:[{ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Ba\u011F\u0131 bitir"),sinif:"mercan",is:()=>yap("mentor_end",{p_mentorship:x.dataset.ustaBitir},\u00E7("Ba\u011F bitti\
 ."),"x")}]});for(const x of $$("[data-usta-mesaj]",kap))x.onclick=()=>mesajBaslat(x.dataset.ustaMesaj,x.dataset.ad??"")}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await yukle(),ciz();
-const b1=Durum.dinle("olay",({olay})=>{/^mentor\./.test(olay)&&tazele()});return()=>{kapandi=!0,b1()}}}),Parcalar.tamam("ek_98zzu_usta","2026-11-16-8043284a-fd6cffc");
+const b1=Durum.dinle("olay",({olay})=>{/^mentor\./.test(olay)&&tazele()});return()=>{kapandi=!0,b1()}}}),Parcalar.tamam("ek_98zzu_usta","2026-11-17-53cc619b-0b92b6e");

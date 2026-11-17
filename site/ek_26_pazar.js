@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_26_pazar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_26_pazar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/pazar",{async ac(kap){let secili="erzak@1",yalnizBurada=!1;try{secili=sessionStorage.getItem("civora.pazar")||"erzak@1",yalnizBurada=sessionStorage.getItem("civora.pazar.burada")===
 "1"}catch{}PAZAR_URUNLER.includes(secili)||(secili="erzak@1");let kaynak="",satisHatasi=null,satisTaslak=null;const taslakOku=f=>({varlik:f.elements.namedItem("varlik")?.value??"",miktar:f.elements.namedItem(
 "miktar")?.value??"1",fiyat:f.elements.namedItem("fiyat")?.value??""});try{kaynak=sessionStorage.getItem("civora.pazar.kaynak")||"",sessionStorage.removeItem("civora.pazar.kaynak")}catch{}let ozetler=[],
@@ -233,4 +233,4 @@ const no=++teklifNo,t=await Sunucu.cagir("market_quote",{p_order_id:o.order_id,p
 teklifSaat=setTimeout(teklifYaz,250)})}async function tazele(){try{await yukle(),ciz()}catch(e){tost(hataMetni(e),"circle-alert")}}await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(market\.|contract\.|shipment\.)/.
 test(olay)&&tazele()}),b2=Durum.dinle("bayat",()=>tazele()),nabizZaman=setInterval(async()=>{if(document.visibilityState!=="visible")return;const[oz,nb,sh]=await Promise.all([Sunucu.cagir("market_over\
 view").catch(()=>null),Sunucu.cagir("market_pulse").catch(()=>null),Sunucu.cagir("city_pulse").catch(()=>null)]);oz&&(ozetler=oz),nb&&(nabiz=nb),sh&&(sehir=sh),carsiYaz()},6e4);return()=>{b1(),b2(),clearInterval(
-nabizZaman),carsi.kapat()}}}),Parcalar.tamam("ek_26_pazar","2026-11-16-8043284a-fd6cffc");
+nabizZaman),carsi.kapat()}}}),Parcalar.tamam("ek_26_pazar","2026-11-17-53cc619b-0b92b6e");

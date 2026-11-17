@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_68_yolculuk3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_68_yolculuk3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const YOL_KESIM=9;function yolculuk3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,160);let w=1,h=1,kirli=!0,kapEl=null,
 gorunur=!0,gozcu=null,d={rota:[],deniz:[],bas:null,bit:null,seviye:{},ulke:null,gece:0,aracK:null,aracD:null};const dinleyici={},M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,
 ...ek}),golgeli=m=>(m.castShadow=!0,m.receiveShadow=!0,m),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=golgeli(new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat));return m.position.set(x,y+gy/2,z),m},tuvalDoku=(gen,yuk)=>{
@@ -84,5 +84,5 @@ sahne,kamera,surekli:!0,get kareMs(){return!gorunur||hareketAzalt?1e3:telefon()?
 "u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),kirli=!0},get durum(){return{durum,ilerleme:Math.round(ilerleme*100),arac:aracTur,bolge:bolgeSimdi??
 "",tabela:tabelalar.length,yoldas:yanSayi}},get cizimSayisi(){let n=0;return sahne.traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){const geceDegisti=y.gece!==d.gece;d={...d,...y},seritKur(),ozelKur(),
 seritMat.color.set(d.ulke?ulkeRenk(d.ulke):"#C65A3B"),geceDegisti&&geceUygula(),yerYaz(sonT,.016),kirli=!0},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){
-acik&&(kirli=!0)},guncelle(dt,t){sonT=t,gorunur&&(yerYaz(t,dt),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return geceUygula(),api}Parcalar.tamam("uc_68_yolculuk3b","2026-11-16-8043284a-f\
-d6cffc");
+acik&&(kirli=!0)},guncelle(dt,t){sonT=t,gorunur&&(yerYaz(t,dt),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return geceUygula(),api}Parcalar.tamam("uc_68_yolculuk3b","2026-11-17-53cc619b-0\
+b92b6e");

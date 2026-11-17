@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zg_mekan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zg_mekan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/mekanlar",{async ac(kap){let r=null,hata=null;const bildiri=mekanBildiri;mekanBildiri=null,await Durum.kurallar().catch(()=>null);async function yukle(){try{r=await MekanYolu.burada(),
 hata=null}catch(e){hata=e}}function ciz(){if(hata&&!r){kap.innerHTML=`<div class="sayfa"><div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(hata))}</span></div>
           <button class="dugme ikincil" style="margin-top:14px" id="mekan-yeniden">${\u00E7("Yeniden dene")}</button></div>`,$("#mekan-yeniden",kap).onclick=()=>tazele();return}const sis=r.system,venues=r.
@@ -301,4 +301,4 @@ name,govde:`<p class="aciklama">${\u00E7("Mek\xE2n kapan\u0131r ve geri a\xE7\u0
 {ad:\u00E7("Kapat"),sinif:"mercan",ikon:"x",is:()=>mekanIsle(null,async()=>{await MekanYolu.kapat(v.venue_id),tost(\u00E7("Mek\xE2n\u0131n kapand\u0131: {ad}.",{ad:v.name}),"x"),Durum.ozet().catch(()=>{});
 try{sessionStorage.removeItem("civora.mekanim")}catch{}Kabuk.git("sehir/mekanlar")})}]})})}const tazele=tazeleyici(async()=>{await yukle(),ciz()}),arkaTazele=tazeleyici(async()=>{if(await yukle(),kirli){
 bekleyen=!0;return}ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^venue\./.test(olay)&&tazeleIste()}),saat=setInterval(()=>{!document.hidden&&!$(":focus",kap)&&tazeleIste()},6e4);
-return()=>{b1(),clearInterval(saat),kap.removeEventListener("input",degisti),kap.removeEventListener("change",degisti)}}}),Parcalar.tamam("ek_98zg_mekan","2026-11-16-8043284a-fd6cffc");
+return()=>{b1(),clearInterval(saat),kap.removeEventListener("input",degisti),kap.removeEventListener("change",degisti)}}}),Parcalar.tamam("ek_98zg_mekan","2026-11-17-53cc619b-0b92b6e");

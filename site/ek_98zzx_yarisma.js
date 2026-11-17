@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzx_yarisma.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zzx_yarisma.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/yarisma",{async ac(kap){const kusak=Sunucu.Giris.kusak,rota=Kabuk.etkin;let kapandi=!1,v=null,sonuc=null,gecmis=null,mesgul=!1,gecikme=null,pencereSon=null;function formAc(o){return pencereSon?.
 kapat(),pencereSon=pencereForm(o),pencereSon}const gece=YarismaGecesi.ac(),yasiyor=()=>!kapandi&&kusak===Sunucu.Giris.kusak&&rota===Kabuk.etkin&&kap.isConnected;async function yukle(){if(!yasiyor())return;
 const s=await Sunucu.cagir("contest_status");if(!yasiyor())return;const r=await Sunucu.cagir("contest_results",{p_season:gecmis??Number(s.season)});yasiyor()&&(v=s,sonuc=r)}const basvurum=()=>{const e=Yarisma.
@@ -48,4 +48,4 @@ v,e));await yap("contest_vote",{p_entry:e.entry_id},\u00E7("Gizli oyun kaydedild
 dinle("olay",({olay})=>{!/^contest\./.test(olay)||!yasiyor()||(clearTimeout(gecikme),gecikme=setTimeout(()=>{tazele().catch(()=>{})},250))}),saat=setInterval(()=>{yasiyor()&&tazele().catch(()=>{})},6e4),
 kapat=()=>{kapandi||(kapandi=!0,removeEventListener("pagehide",kapat),birak(),clearTimeout(gecikme),clearInterval(saat),pencereSon?.kapat(),gece.kapat(),Yarisma.liste(v).some(e=>Yarisma.sarki(e).song_id===
 Ezgi.calan)&&Ezgi.durdur())};addEventListener("pagehide",kapat,{once:!0});try{await yukle(),yasiyor()?ciz():kapat()}catch(e){const etkin=yasiyor();if(kapat(),etkin)throw e}return kapat}}),Parcalar.tamam(
-"ek_98zzx_yarisma","2026-11-16-8043284a-fd6cffc");
+"ek_98zzx_yarisma","2026-11-17-53cc619b-0b92b6e");

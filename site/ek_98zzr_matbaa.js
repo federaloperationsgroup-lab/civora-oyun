@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzr_matbaa.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zzr_matbaa.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/matbaa",{async ac(kap){let n=null,b=null,kapandi=!1,hata3b=!1,ayr="",okunuyor=!1;const mod=()=>Gorunum.uc()&&!hata3b?"3b":"2b",makaleler=new Map;async function yukle(){[n,b]=await Promise.
 all([Sunucu.cagir("news_feed",{p_mode:"recent",p_limit:20}).catch(()=>({articles:[]})),Sunucu.cagir("morning_bulletin").catch(()=>null)]),makaleler.clear();for(const a of n?.articles??[])makaleler.set(
 a.article_id,a)}const veri=()=>matbaaVerisi(n,b),bultenSatirlari=()=>{const l=gundemBultenSatirlari(b,{sabah:!0}),kayit=(b?.records??[]).map(r=>resmiMetin(r)[1]).filter(m=>m&&m!==\u00E7("Resm\xEE kay\u0131t")),
@@ -47,4 +47,4 @@ THREE,cizici);const a=matbaa3bOrnek;if(a.dinle("sec",sec),a.kapBagla(kutu),a.dur
 if(console.warn("3B matbaa a\xE7\u0131lamad\u0131:",e),kapandi)return;hata3b=!0,tost(\u00E7("3B sahne bu cihazda a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCm g\xF6steriliyor."),"layers"),ciz()}}const tazele=tazeleyici(
 async()=>{await yukle(),kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{(olay==="news.article_published"||/^(issue|gov)\./.test(olay))&&tazele()}),b2=Gorunum.dinle(()=>{
 n&&ciz()}),saat=setInterval(()=>{document.hidden||tazele()},3e5);return()=>{kapandi=!0,b1(),b2(),clearInterval(saat),birak(),okunuyor&&Seslendirme.dur()}}}),Parcalar.tamam("ek_98zzr_matbaa","2026-11-1\
-6-8043284a-fd6cffc");
+7-53cc619b-0b92b6e");

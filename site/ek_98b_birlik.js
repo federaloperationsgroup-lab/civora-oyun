@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98b_birlik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98b_birlik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/birlik",{async ac(kap){let v=null,secTur=null,kanal=null,kanalBirak=null,kapandi=!1,durdur=()=>{};const arama={q:"",sonuc:null},karargah=BirlikKarargah.ac();karargah.dinle("sec",(ad,id)=>{
 if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}const el=$({takvim:"#birlik-takvim",depo:"#birlik-depo",duyuru:"#birlik-duyuru"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"au\
 to":"smooth",block:"start"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{},R=()=>birlikKurali()??{};async function yukle(){
@@ -316,4 +316,4 @@ lerine, tahsisler kayna\u011F\u0131na d\xF6ner; kasa ve depo \xFClkenin hazinesi
 ikon:"trash",is:async()=>{await islem("unit_dissolve",{},\u00E7("Birli\u011Fi da\u011F\u0131tt\u0131n."),"trash")&&(secTur=null,konusmaTazele())}}]})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||
 ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^(unit\.|citizenship\.changed)/.test(olay)&&(yakinda(),olay!=="unit.invited"&&konusmaTazele())}),b2=Durum.dinle("ulke-olay",({olay})=>{
 /^unit\.(founded|dissolved)$/.test(olay)&&!v?.mine?.unit&&yakinda()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazele()},6e4);return()=>{kapandi=!0,durdur(),b1(),b2(),
-clearInterval(saat),clearTimeout(bekleyen),kanalBirak?.(),kanalBirak=null,kanal=null,karargah.kapat()}}}),Parcalar.tamam("ek_98b_birlik","2026-11-16-8043284a-fd6cffc");
+clearInterval(saat),clearTimeout(bekleyen),kanalBirak?.(),kanalBirak=null,kanal=null,karargah.kapat()}}}),Parcalar.tamam("ek_98b_birlik","2026-11-17-53cc619b-0b92b6e");

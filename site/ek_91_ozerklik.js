@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_91_ozerklik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_91_ozerklik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/bolge",{async ac(kap){let s=null,bolge=ozkBakilan;ozkBakilan=null;let kapandi=!1,durdur=()=>{};const sandik=SandikBasi.ac();sandik.dinle("sec",ad=>{(ad==="adaylar"?$("#ozk-adaylar",
 kap):$("#ozk-oy",kap)??$("#ozk-adaylar",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const odeme={q:"",sonuc:null,secilen:null,tutar:"",amac:"aid"};let secilenAd=null;
 async function yukle(){[s]=await Promise.all([Sunucu.cagir("autonomy_status",{p_region:bolge}),Durum.ozet(),Durum.kurallar()])}const r=()=>s.rule,bk=()=>s.independence?.rule??(()=>{const c=Durum.v.kurallar?.
@@ -398,4 +398,4 @@ kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>
 const b5=ulke?Sunucu.Canli.dinle("movement:"+ulke,olay=>{/^autonomy\./.test(olay)&&tazele()},{katilinca:()=>{katildi&&tazele(),katildi=!0}}):()=>{},b2=Durum.dinle("devlet",()=>tazele()),b3=Sunucu.Canli.
 dinle("public:campaign",(olay,yuk)=>{const x=yuk?.data??{},w=s?.drive?.war;!w?.campaign_id||x.campaign_id!==w.campaign_id||/^(independence\.war_|war\.(round_closed|campaign_closed|paused|resuming|cancelled))/.
 test(olay)&&tazele()}),saat=setInterval(()=>{!kapandi&&document.visibilityState==="visible"&&sandik.el.isConnected&&tazele()},6e4);return()=>{kapandi=!0,durdur(),b1(),b2(),b3(),b5(),clearInterval(saat),
-sandik.kapat()}}}),Parcalar.tamam("ek_91_ozerklik","2026-11-16-8043284a-fd6cffc");
+sandik.kapat()}}}),Parcalar.tamam("ek_91_ozerklik","2026-11-17-53cc619b-0b92b6e");

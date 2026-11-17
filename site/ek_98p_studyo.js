@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98p_studyo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98p_studyo.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/studyo",{async ac(kap){let v=null,m=null,kapandi=!1,durdur=()=>{};const sahne=StudyoSahnesi.ac();sahne.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}if(ad===
 "ep"){id&&epKartiAc(id,()=>tazele());return}const el=$({masa:"#studyo-kayitta",levha:"#studyo-son"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"}),el.classList.
 remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let bekleyen=null;const yakinda=()=>{clearTimeout(bekleyen),bekleyen=setTimeout(()=>{kapandi||
@@ -79,4 +79,4 @@ b.dataset.git);for(const b of $$("[data-grup-ac]",kap))b.onclick=()=>muzikKartiA
 e),"circle-alert")}finally{b.disabled=!1}}}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await Promise.all([Durum.kurallar().catch(()=>null),Durum.ozet().catch(()=>null)]),await yukle(),
 ciz();const b1=Durum.dinle("olay",({olay})=>{/^travel\.arrived/.test(olay)&&yakinda()}),b2=Sunucu.Canli.dinle("public:city",(olay,yuk)=>{olay==="city.ep"&&yuk?.data?.region_id===v?.region_id&&yakinda()}),
 saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazele()},3e4);return()=>{kapandi=!0,durdur(),b1(),b2(),kanalBirak?.(),clearInterval(saat),clearTimeout(bekleyen),sahne.kapat()}}}),
-Parcalar.tamam("ek_98p_studyo","2026-11-16-8043284a-fd6cffc");
+Parcalar.tamam("ek_98p_studyo","2026-11-17-53cc619b-0b92b6e");

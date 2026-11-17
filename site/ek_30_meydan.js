@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_30_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_30_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("meydan/akis",{async ac(kap){const TUR={all:\u00E7("Hepsi"),post:\u00E7("Payla\u015F\u0131mlar"),photo:\u00E7("Kare"),video:\u00E7("Kanal"),article:\u00E7("Gazete")};let v={kapsam:"all",kip:"\
 recent",tur:"all",posts:[],photos:[],videos:[],streams:[],articles:[],official:[],trends:[],sonu:!1,yeni:0,kurallar:null,partim:null};try{const k=JSON.parse(sessionStorage.getItem("civora.akis")??"{}");
 KAPSAM[k.kapsam]&&(v.kapsam=k.kapsam),k.kip&&(v.kip=k.kip),TUR[k.tur]&&(v.tur=k.tur)}catch{}const kareler=new Map,makaleler=new Map,videolar=new Map;let gundemDur=()=>{};const kareKipi=()=>({friends:"\
@@ -181,4 +181,4 @@ yap(fn,args):Sunucu.cagir(fn,args)),tost(\u00E7("Ayar kaydedildi."),"badge-check
 Sunucu.yap(fn,args):Sunucu.cagir(fn,args)),tost(mesaj,"users-round")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();
 const saat=setInterval(async()=>{document.hidden||!foto.el.isConnected||(v.foto=await Sunucu.cagir("friends_photo").catch(()=>v.foto),foto.yaz({foto:v.foto,gorunus:v.gorunus,ozet:Durum.v.ozet,asker:v.
 asker,baglar:v.baglar}))},12e4),b1=Durum.dinle("olay",({olay})=>{/^(friend\.|bond\.|homeparty\.)/.test(olay)&&tazele()});return()=>{b1(),clearInterval(saat),foto.kapat(),davetSayac?.()}}}),Parcalar.tamam(
-"ek_30_meydan","2026-11-16-8043284a-fd6cffc");
+"ek_30_meydan","2026-11-17-53cc619b-0b92b6e");

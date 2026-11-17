@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzf_kulup.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zzf_kulup.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/stadyum",{async ac(kap){let v=null,kul=null,mac=null,lig=null,hata=null,kapandi=!1,mesgul=!1,saatFarki=0,izlenen=null,kulupId=null,ligSecili=null,arama={q:"",sonuc:null},sonGenel=0,
 yoklamaZaman=null;const saha=FutbolKart.ac({kulup:!0}),spiker=MacSpikeri.ac("stadyum-spiker"),ben=()=>Durum.v.ozet?.character??{},KR=()=>kulupKurali()??v?.rule?.club??{},simdi=()=>Date.now()+saatFarki,
 git=sec=>$(sec,kap)?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"});saha.dinle("sec",(ad,id)=>{if(ad==="kisi"&&id){profilAc(id);return}git("#stadyum-mac")});let saat={rtt:1/0,an:0};
@@ -489,4 +489,4 @@ yari-el+300,Z.ikinci-el+300,Z.son-el+1500])x>150&&x<bekle&&(bekle=x)}yoklamaZama
 !mesgul&&!document.querySelector(".perde")&&ciz()),sonrakiYoklama()},Math.max(150,bekle))}if(kulupAcilacak&&(kulupId=kulupAcilacak,kulupAcilacak=null),await yukle(),!kap.isConnected)return saha.kapat(),
 ()=>{};ciz(),sonrakiYoklama();const b1=Durum.dinle("olay",({olay})=>{!/^(club|cup|federation|national|transfer|sponsor)\./.test(olay)&&olay!=="football.award"||tazele().then(()=>sonrakiYoklama())}),b2=typeof Ezgi==
 "object"?Ezgi.dinle(()=>{!kapandi&&kul&&$("#kulup-gorunum",kap)&&ciz()}):()=>{};return()=>{kapandi=!0,b1(),b2(),clearTimeout(yoklamaZaman),KP.kapat(),saha.kapat(),spiker.kapat(),typeof Ezgi=="object"&&
-/^(kulup|stadyum)-mars:/.test(String(Ezgi.calan??""))&&Ezgi.durdur()}}}),Parcalar.tamam("ek_98zzf_kulup","2026-11-16-8043284a-fd6cffc");
+/^(kulup|stadyum)-mars:/.test(String(Ezgi.calan??""))&&Ezgi.durdur()}}}),Parcalar.tamam("ek_98zzf_kulup","2026-11-17-53cc619b-0b92b6e");

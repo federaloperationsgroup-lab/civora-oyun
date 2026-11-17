@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_86a_zafer3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_86a_zafer3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function zafer3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,80);let w=1,h=1,kirli=!0,kapEl=null,d={tur:"zafer",
 ulke:null,dusman:null,hedef:null,vuran:0,dusmanVuran:0},t0=performance.now(),asama="";const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.8,...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{
 const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y+gy/2,z),m.castShadow=!0,m.receiveShadow=!0,ust.add(m),m},gok=new THREE.HemisphereLight(UC_RENK.gokDis,UC_RENK.yerDis,
@@ -43,4 +43,4 @@ acik&&(kirli=!0)},guncelle(dt,t){const g=(performance.now()-t0)/1e3,yeni=g<1?"gi
 a,a.s0+g*YURU_HIZ))),kalabalik.guncelle(hareketAzalt?0:g);for(const b of bayraklar)b.rotation.y=hareketAzalt?0:Math.sin(t*2.2+b.parent.position.z)*.14;d.tur==="anma"&&!hareketAzalt&&(yariBez.rotation.
 y=Math.sin(t*1.3)*.08,mumIsik.intensity=1.2+Math.sin(t*9)*.15+Math.sin(t*13.7)*.1,anmaCelenk.rotation.z=Math.sin(t*.6)*.02);let n=0;if(d.tur!=="anma"&&!hareketAzalt&&g>1.2&&g<10)for(const p of parcalar){
 const u=g-1.2-p.gec;if(u<0)continue;const y=5-u*p.hiz;y<.02||(v.set(p.x+Math.sin(u*2+p.sal)*.3,y,p.z),q.setFromEuler(e.set(u*p.don,u*p.don*.7,p.sal)),mt.compose(v,q,s1),konfeti.setMatrixAt(n++,mt))}konfeti.
-count=n,konfeti.instanceMatrix.needsUpdate=!0,kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}}}Parcalar.tamam("uc_86a_zafer3b","2026-11-16-8043284a-fd6cffc");
+count=n,konfeti.instanceMatrix.needsUpdate=!0,kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}}}Parcalar.tamam("uc_86a_zafer3b","2026-11-17-53cc619b-0b92b6e");

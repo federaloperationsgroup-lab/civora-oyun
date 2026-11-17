@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_24_egitim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_24_egitim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/egitim",{async ac(kap){let durdur=()=>{},kapandi=!1;const saha=EgitimSahasi.ac();let sahne=null,gorunus,asker=null,sahneAn=0;async function sahaYukle(){const[s,bak]=await Promise.all(
 [Sunucu.cagir("training_scene").catch(()=>sahne),gorunus===void 0?Sunucu.cagir("my_look").catch(()=>null):null]);sahne=s,sahneAn=Date.now(),gorunus===void 0&&(gorunus=bak?.look??null)}const sahaYaz=()=>saha.
 yaz({sahne,gorunus,ozet:Durum.v.ozet,asker});async function ciz(){durdur();const[a,kurallar,ben,sehir]=await Promise.all([Durum.askerlik(),Durum.kurallar(),Sunucu.cagir("coop_me").catch(()=>null),Sunucu.
@@ -51,4 +51,4 @@ geriSay(kap,()=>ciz().catch(()=>{})),clearTimeout(keyifZaman);const keyifBitis=k
 setTimeout(()=>{kapandi||ciz().catch(()=>{})},keyifBitis))}let keyifZaman=null;async function islem(fn,args,mesaj){for(const b of $$("button",kap))b.disabled=!0;try{await Sunucu.yap(fn,args),tost(mesaj,
 "graduation-cap")}catch(e){tost(hataMetni(e),"circle-alert")}await ciz()}await ciz();const b1=Durum.dinle("olay",({olay})=>{/^(training\.|clinic\.treated$|lesson\.completed|mood\.)/.test(olay)&&setTimeout(
 ()=>{kapandi||ciz().catch(()=>{})},400)}),sahaSaat=setInterval(async()=>{kapandi||document.hidden||!saha.el.isConnected||Date.now()-sahneAn<55e3||(await sahaYukle(),kapandi||sahaYaz())},15e3);return()=>{
-kapandi=!0,durdur(),b1(),clearInterval(sahaSaat),clearTimeout(keyifZaman),saha.kapat()}}}),Parcalar.tamam("ek_24_egitim","2026-11-16-8043284a-fd6cffc");
+kapandi=!0,durdur(),b1(),clearInterval(sahaSaat),clearTimeout(keyifZaman),saha.kapat()}}}),Parcalar.tamam("ek_24_egitim","2026-11-17-53cc619b-0b92b6e");

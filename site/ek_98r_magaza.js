@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98r_magaza.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98r_magaza.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/magaza",{async ac(kap){let v=null,l=null,tur="cerceve",suzgec="hepsi",hedefUrun=null,kapandi=!1,mesgul=!1;try{const s=JSON.parse(sessionStorage.getItem("civora.magaza")??"null");sessionStorage.
 removeItem("civora.magaza"),s&&MAGAZA_TURLER.some(([k])=>k===s.tur)&&(tur=s.tur,hedefUrun=typeof s.urun=="string"?s.urun:null)}catch{}async function yukle(){const[s,m]=await Promise.all([Sunucu.cagir(
 "store_view"),Sunucu.cagir("my_look"),Durum.kurallar()]);v=s,l=m,v.pass?.pending>0&&(v=await Sunucu.yap("store_sync"))}const urunler=()=>v.products??[],urun=id=>urunler().find(p=>p.id===id)??null,gorunus=()=>l?.
@@ -161,4 +161,4 @@ er}.",{ad:\u00E7v(urun(id)?.name??id),yer}):\u00E7("\xC7\u0131kar\u0131ld\u0131:
 }); \xF6deme do\u011Frulan\u0131nca \xFCr\xFCnler eklenir.",{tl:tlYaz(r.price_try)}),"hourglass")})}]});await yukle(),ciz();const sayac=setInterval(()=>{const n=v?.showcase?.next_at?Date.parse(v.showcase.
 next_at):0;n&&Date.now()>=n&&!mesgul&&!kapandi&&Sunucu.cagir("store_view").then(x=>{v=x,kapandi||ciz()}).catch(()=>{})},6e4),b0=Gorunus.dinle(k=>{if(!kapandi&&l&&k.includes(l.character_id)){const x=Gorunus.
 al(l.character_id);x?.look&&(l={...l,look:x.look},ciz())}}),b1=typeof Ezgi=="object"?Ezgi.dinle(()=>{!kapandi&&tur==="mars"&&katalogCiz()}):()=>{};return()=>{kapandi=!0,b0(),b1(),clearInterval(sayac),
-typeof Ezgi=="object"&&String(Ezgi.calan??"").startsWith("mars:")&&Ezgi.durdur()}}}),Parcalar.tamam("ek_98r_magaza","2026-11-16-8043284a-fd6cffc");
+typeof Ezgi=="object"&&String(Ezgi.calan??"").startsWith("mars:")&&Ezgi.durdur()}}}),Parcalar.tamam("ek_98r_magaza","2026-11-17-53cc619b-0b92b6e");

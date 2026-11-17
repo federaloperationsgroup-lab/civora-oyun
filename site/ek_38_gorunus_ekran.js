@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_38_gorunus_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_38_gorunus_ekran.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/gorunum",{async ac(kap){let v=null,secim=null,mod=null,hata3b=!1,kapandi=!1,gonderiliyor=!1,rutbeSayisi=12,magaza=null,gardirop=null;async function yukle(){const[l,kurallar,m,w]=await Promise.
 all([Sunucu.cagir("my_look"),Durum.kurallar(),Sunucu.cagir("store_view").catch(()=>null),Sunucu.cagir("wardrobe").catch(()=>null)]);v=l,magaza=m,gardirop=w,rutbeSayisi=kurallar?.data?.combat?.war2?.ranks?.
 length??12,secim=gorunusTaslak?.kimlik===v.character_id?{...gorunusTaslak.look}:{...kayitli()},giysiEsle()}function giysiEsle(){for(const alan of["giysi","takilar"]){const gy=v?.look?.[alan];if(gy)secim=
@@ -190,4 +190,4 @@ domElement.remove(),mod="2b",sahneEl.dataset.mod="2b",iki.hidden=!1,figur2bCiz()
 ()=>{hata3b=!1,Gorunum.ayarla(mod==="3b"?"2b":"3b")},await modKur();const b0=Gorunum.dinle(()=>{kapandi||(hata3b=!1,modKur())}),b1=Durum.dinle("olay",({olay})=>{if(/^(boutique\.|hobby\.completed|garment\.gift)/.
 test(olay)){Sunucu.cagir("wardrobe").then(w=>{kapandi||!w||(gardirop=w,gardiropCiz())}).catch(()=>{});return}/^(war\.|progress\.)/.test(olay)&&Sunucu.cagir("my_look").then(l=>{kapandi||(v=l,giysiEsle(),
 degistir())}).catch(()=>{})});return()=>{kapandi=!0,b0(),b1();for(const x of["eylemBitti","kiyafet","kilit"])figur3bOrnek?.dinle(x,null);sahneBirak()}}}),Parcalar.tamam("ek_38_gorunus_ekran","2026-11-\
-16-8043284a-fd6cffc");
+17-53cc619b-0b92b6e");

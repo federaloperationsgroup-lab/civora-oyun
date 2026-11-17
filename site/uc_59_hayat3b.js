@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_59_hayat3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_59_hayat3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function hayat3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,80);let w=1,h=1,
 kirli=!0,kapEl=null,gorunur=!0,gozcu=null,kaliteAdi="orta",d={anahtar:"",ad:"",gorunus:null,ulke:null,rutbe:{sira:0,sayi:12},seviye:1,xpOran:0,enerji:0,enerjiEn:100,etkinlik:null,egitim:null,erzak:0,muhimmat:0,
 silahlar:[],kredi:0,digerleri:[],ev:null,parti:null,gorev:null,madalyalar:[],sehir:1,gece:0};const dinleyici={},etkinMi=()=>cizici.etkin===api,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,
@@ -156,4 +156,4 @@ rotation.y=donus;const simdi=performance.now();let ad=eylem;eylem==="bekle"&&!ha
 selamBasi)/1e3,ss=fp.eylemSuresi("selamla");if(selamBasi&&s<ss&&!hareketAzalt)ad="selamla",fp.pozla(ad,s/ss,s,!1,!1);else{const sure=fp.eylemSuresi(ad)||3;fp.pozla(ad,t%sure/sure,t,hareketAzalt,!0)}if(hayvanAktor.
 size&&hayvanlarOyna(dt,t),!hareketAzalt){fp.canli(t),dalgalan(t,.7+Math.sin(t*.4)*.3),flamaBez.rotation.y=Math.sin(t*2.1)*.35;for(const b of bulutlar)b.position.x+=b.userData.hiz*dt,b.position.x>KG/2+
 1.5&&(b.position.x=-KG/2-1.5);esyalar.kulube.g.visible&&(esyalar.kulube.g.userData.lamba.material.emissiveIntensity=.6+Math.abs(Math.sin(t*3))*1.2),enerjiMat.emissiveIntensity=.3+Math.sin(t*2)*.08}kirli=
-!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_59_hayat3b","2026-11-16-8043284a-fd6cffc");
+!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_59_hayat3b","2026-11-17-53cc619b-0b92b6e");

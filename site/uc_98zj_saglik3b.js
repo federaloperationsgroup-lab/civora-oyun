@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zj_saglik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_98zj_saglik3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const SAGLIK_OLCEK=.66,SAGLIK_KALABALIK=.92,SAGLIK_SANDALYE=[[-1.2,.55],[0,.55],[1.2,.55],[-2.4,.55],[2.4,.55],[-1.8,1.75],[-.6,1.75],[.6,1.75],[1.8,1.75],[-3,1.75]],SAGLIK_OTURAK=.26,SAGLIK_SEDYE=.44;
 function saglik3bKur(THREE,cizici,odaSayisi=3){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,120);
 let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={anahtar:"",sehir:"",gece:0,doktorlar:[],fazla:0,bekleyen:0,muayenede:0,salon:0,ben:{id:"",ad:"",gorunus:null,ulke:null,sirada:!1,sedyede:!1,doktor:!1,
@@ -74,4 +74,4 @@ kamera,oda:odaSayisi,surekli:!0,get kareMs(){return!gorunur||hareketAzalt?1e3:te
 get cizimSayisi(){let n=0;return sahne.traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){d={...d,...y},d.doktorlar=(d.doktorlar??[]).slice(0,ODA_X.length),yaz()},kalite(k){gunes.castShadow=k!=="dusuk",
 kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){if(gorunur){for(const y of[...doktorYuva,benYuva]){if(!y.kok.visible)continue;const sure=y.fp.eylemSuresi(
 y.eylem)||3;y.fp.pozla(y.eylem,(t+y.faz*sure)%sure/sure,t+y.faz*7,hareketAzalt,!0),hareketAzalt||y.fp.canli(t+y.faz*5)}hareketAzalt||(kalabalik.guncelle(t),odalar.forEach((o,i)=>{d.doktorlar[i]?.muayene&&
-kalpYaz(o,!0,t)})),kirli=!0}},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zj_saglik3b","2026-11-16-8043284a-fd6cffc");
+kalpYaz(o,!0,t)})),kirli=!0}},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zj_saglik3b","2026-11-17-53cc619b-0b92b6e");

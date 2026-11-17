@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_27_ulke.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/ozet",{async ac(kap){let o=null,g=null,isb=null,hk=null,cs=null,yv=null,ek=null;const baskent=BaskentSahnesi.ac();baskent.dinle("sec",ad=>{const rota={meclis:"ulke/meclis",kisla:"ul\
 ke/cephe",depo:"sehir/is",hazine:"ulke/ekonomi"}[ad];rota&&Kabuk.git(rota)});async function yukle(){[o,g,isb,hk,cs,ek,yv]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("customs").catch(
 ()=>null),Sunucu.cagir("coop_status").catch(()=>null),Sunucu.cagir("movement_status").catch(()=>null),Sunucu.cagir("capital_scene").catch(()=>null),Sunucu.cagir("seizure_status").catch(()=>null),Sunucu.
@@ -578,5 +578,5 @@ yetki);pencereForm({ust:\u00E7("Sava\u015F ilan\u0131"),baslik:bolgeAdi(hedef),o
           <p class="kucuk">${\u00E7("\u0130lk turdan {n} saat \xF6ncesine kadar iptal edebilirsin; ilan bedeli geri gelmez.",{n:Number(v.w.cancel_cutoff_h??6)})}</p>`,is:async()=>{const s=await Sunucu.
 yap("campaign_declare",{p_authorization:yetki,p_target_region:hedef,p_origin_region:koken});tost(\u00E7("Sava\u015F ilan edildi. \u0130lk tur: {zaman}.",{zaman:saatYaz(s.first_round_at)}),"swords"),Durum.
 askerlik().catch(()=>{}),await tazele()}})}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay,yuk})=>{olay==="parliament.motion_voted"&&
-salon.oy(yuk?.data),/^(parliament\.|office\.|tax\.|citizenship\.policy|country\.war_)/.test(olay)&&tazele()});return()=>{durdur(),b1(),salon.kapat()}}}),Parcalar.tamam("ek_27_ulke","2026-11-16-8043284\
-a-fd6cffc");
+salon.oy(yuk?.data),/^(parliament\.|office\.|tax\.|citizenship\.policy|country\.war_)/.test(olay)&&tazele()});return()=>{durdur(),b1(),salon.kapat()}}}),Parcalar.tamam("ek_27_ulke","2026-11-17-53cc619\
+b-0b92b6e");

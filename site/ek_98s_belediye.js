@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98s_belediye.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98s_belediye.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/belediye",{async ac(kap){let s=null,bolge=bldBakilan;bldBakilan=null;let kapandi=!1,durdur=()=>{};const sandik=SandikBasi.ac(),oda=BelediyeOdasi.ac(),sira=sahneSirasiKur();let saatFarki=0;
 sandik.dinle("sec",ad=>{(ad==="adaylar"?$("#bld-adaylar",kap):$("#bld-oy",kap)??$("#bld-adaylar",kap))?.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"start"})});const odeme={q:"",sonuc:null,
 secilen:null,tutar:"",amac:"aid"},duzen={tur:"maraton",gun:"",saat:"15:00",havuz:""};let ev=null;async function yukle(){[s]=await Promise.all([Sunucu.cagir("municipal_status",{p_region:bolge}),Durum.ozet(),
@@ -263,4 +263,4 @@ rer.",{ad:esc(kisi.name),kr:kr(alt),amac:esc(ozkAmac(odeme.amac))})}</p>`,ad:\u0
 amac}),odeme.tutar="",odeme.q="",odeme.secilen=null,odeme.sonuc=null,tost(\u00E7("\xD6deme yap\u0131ld\u0131; resm\xEE kayda girdi."),"hand-coins")}})})}const tazele=tazeleyici(async()=>{await yukle(),
 kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("ulke-olay",({olay})=>{/^(mayor\.|municipal\.|cityevent\.)/.test(olay)&&tazele()}),saat=setInterval(()=>{kapandi||document.visibilityState!=="\
 visible"||(sandik.el.isConnected?tazele():s?.municipality&&oda.el.isConnected&&(s.projects??[]).some(p=>p.project?.status==="building")&&oda.yaz(s,saatFarki))},6e4);return()=>{kapandi=!0,durdur(),b1(),
-clearInterval(saat),sira.kapat(),oda.kapat(),sandik.kapat()}}}),Parcalar.tamam("ek_98s_belediye","2026-11-16-8043284a-fd6cffc");
+clearInterval(saat),sira.kapat(),oda.kapat(),sandik.kapat()}}}),Parcalar.tamam("ek_98s_belediye","2026-11-17-53cc619b-0b92b6e");

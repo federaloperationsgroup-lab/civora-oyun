@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_95_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_95_meydan.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("meydan/meydan",{async ac(kap){let sc=null,d=null,kapandi=!1,yer=null,dinleBirak=null,sonTellal;const kart=MeydanSahnesi.ac(),benimUlke=()=>Durum.v.ozet?.character?.citizenship??null;let ms=null,
 kanalBirak=null,kalp=null,kalpMs=0,durumZaman=null,sonEylem=0,giriyor=null,dbEylem=!1;const kisiler=new Map,yuruS={son:0,pencere:0,n:0,bekleyen:null,zaman:null};let benYerel=null;const benimki=()=>ms?
 kisiler.get(ms.presence_id)??null:null;let evcilim=null;const evcilYuruyenler=()=>(evcilim?.pets??[]).filter(p=>evcilYuruyen(p.species));async function evcilYukle(){const x=await Sunucu.cagir("pets").
@@ -277,4 +277,4 @@ kapandi||tazele()},600)};if(await yukle(),kapandi||(await Promise.all([akisYukle
 b1=Durum.dinle("ulke-olay",x=>{gecikmeliTazele(),x?.olay==="square.new"&&yeniPaylasim()}),b2=Durum.dinle("olay",({olay})=>{/^(travel\.|friend\.|signing\.)/.test(olay)&&gecikmeliTazele()}),b3=Sunucu.Canli.
 dinle("public:square",olay=>{olay==="square.new"&&(yeniPaylasim(),akisGecikmeli())}),saat=setInterval(()=>{document.hidden||tazele()},6e4);return()=>{kapandi=!0,clearInterval(saat),clearTimeout(gecikme),
 clearTimeout(akisGecikme),b1(),b2(),b3(),dinleBirak?.(),kart.kapat(),clearInterval(kalp),clearTimeout(durumZaman),clearTimeout(yuruS.zaman),clearTimeout(kapiNiyet?.zaman),clearInterval(kursuSaat),clearTimeout(
-kursuYurutZaman),document.removeEventListener("visibilitychange",gorunurluk),kanalBirak?.(),ms&&MeydanYolu.cik().catch(()=>{})}}}),Parcalar.tamam("ek_95_meydan","2026-11-16-8043284a-fd6cffc");
+kursuYurutZaman),document.removeEventListener("visibilitychange",gorunurluk),kanalBirak?.(),ms&&MeydanYolu.cik().catch(()=>{})}}}),Parcalar.tamam("ek_95_meydan","2026-11-17-53cc619b-0b92b6e");

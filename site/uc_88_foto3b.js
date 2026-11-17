@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_88_foto3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_88_foto3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const FOTO_EN=8,FOTO_EN_TEL=6,FOTO_NOKTA=1.42,FOTO_YER=[[-1.05,.35,0],[1.05,.35,0],[-2.05,.25,0],[2.05,.25,0],[-.55,-.75,.32],[.55,-.75,.32],[-1.6,-.8,.32],[1.6,-.8,.32]],FOTO_SIRA=[0,1,4,5,2,3,6,7];function foto3bKur(THREE,cizici){
 if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,60);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,
 d={ben:null,arkadaslar:[],fazla:0};const dinleyici={},etkinMi=()=>cizici.etkin===api,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.8,...ek}),kutu=(ust,gx,gy,gz,mat,x=0,y=0,z=0)=>{
@@ -29,4 +29,4 @@ boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},gunc
 !hareketAzalt?benim.pozla("selamla",(p-selamBasi)/1e3/ss,(p-selamBasi)/1e3,!1,!1):benim.pozla("bekle",t%3/3,t,hareketAzalt,!0),hareketAzalt||benim.canli(t);for(const y of yerler){if(!y.kisi)continue;const tt=t+
 y.faz;if(y.kisi.cevrimici){const sure=y.fp.eylemSuresi("selamla")||2,u=tt%4/4*(4/sure);u<1&&!hareketAzalt?y.fp.pozla("selamla",u,tt,!1,!1):y.fp.pozla("bekle",.5,tt,!0,!0),y.nokta.position.y=y.fp.grup.
 position.y+1.42+(hareketAzalt?0:Math.sin(tt*3)*.03)}else y.fp.pozla("bekle",.5,tt,!0,!0);hareketAzalt||y.fp.canli(tt)}kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam(
-"uc_88_foto3b","2026-11-16-8043284a-fd6cffc");
+"uc_88_foto3b","2026-11-17-53cc619b-0b92b6e");

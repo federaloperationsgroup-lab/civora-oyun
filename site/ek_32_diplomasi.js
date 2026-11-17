@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_32_diplomasi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_32_diplomasi.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/diplomasi",{async ac(kap){let v=null;const secim={ulke:null,tur:"non_aggression",gun:null,bolgeler:new Set,bicimler:{}},BICIM_AD={direct:\u00E7("Do\u011Frudan y\xF6netim"),autonomous:\u00E7(
 "\xD6zerk b\xF6lge")},salon=DiplomasiSalonu.ac();async function yukle(){const[ulke,liste,kurallar,harita,koal,isb]=await Promise.all([Sunucu.cagir("country_overview"),Sunucu.cagir("treaties"),Durum.kurallar(),
 Durum.harita(!0),Sunucu.cagir("coalition_status"),Sunucu.cagir("coop_status").catch(()=>null),Durum.ozet()]);v={ulke,liste,kurallar,harita,koal,isb,hedef:null};const acik=(harita.open_countries??[]).filter(
@@ -173,4 +173,4 @@ x.regime])))),await Sunucu.yap("treaty_counter",{p_treaty:t.treaty_id,p_terms:sa
 karsi)}),"repeat-2"),await tazele()}})}async function islem(fn,args,mesaj){for(const b of $$("button",kap))b.disabled=!0;try{await Sunucu.yap(fn,args),mesaj&&tost(mesaj,"handshake")}catch(e){tost(hataMetni(
 e),"circle-alert")}await tazele()}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("diplomasi",()=>tazele()),b2=Durum.dinle("ulke-olay",({olay})=>{/^(parliament\.motion_closed|country\.war_|office\.installed|coalition\.)/.
 test(olay)&&tazele()}),b3=Durum.dinle("koalisyon",()=>tazele()),salonSaat=setInterval(()=>{!document.hidden&&salon.el.isConnected&&salon.yaz({biz:biz(),liste:v.liste,kampanyalar:v.ulke.campaigns??[]})},
-3e5);return()=>{b1(),b2(),b3(),clearInterval(salonSaat),salon.kapat()}}}),Parcalar.tamam("ek_32_diplomasi","2026-11-16-8043284a-fd6cffc");
+3e5);return()=>{b1(),b2(),b3(),clearInterval(salonSaat),salon.kapat()}}}),Parcalar.tamam("ek_32_diplomasi","2026-11-17-53cc619b-0b92b6e");

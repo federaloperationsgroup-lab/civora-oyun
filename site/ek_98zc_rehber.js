@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zc_rehber.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zc_rehber.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/gorevler",{async ac(kap){let g=null;const yukle=async()=>{g=await Sunucu.cagir("missions")};await yukle();const ciz=()=>{const rol=g.role?Rehber.ROL[g.role]:null;kap.innerHTML=`<di\
 v class="sayfa sayfa-dar">
         <div class="sayfa-bas"><div><p class="ust-yazi">${\u00E7("Hayat\u0131m")}</p><h1 class="b1">${\u00E7("G\xFCn\xFCn g\xF6revleri")}</h1>
@@ -16,9 +16,10 @@ v class="sayfa sayfa-dar">
 n)"></i></span>
               <span class="kucuk">${\u00E7("{p}/{t}",{p:Number(m.progress),t:Number(m.target)})}${m.role!=="general"?" \xB7 "+esc(Rehber.ROL[m.role]?.ad??m.role):""}</span></span>
             ${m.claimed_at?`<span class="cip yesil">${\u00E7("Al\u0131nd\u0131")}</span>`:m.done?`<button class="dugme altin kucuk-d" type="button" data-gorev-al="${esc(m.key)}">${ikon("gift")}${\u00E7(
-"Al")}</button>`:`<span class="cip">${\u00E7("S\xFCr\xFCyor")}</span>`}</div>`).join("")||`<p class="bos">${\u00E7("Bug\xFCn g\xF6rev yok.")}</p>`}</div></section>
+"Al")}</button>`:Rehber.GOREV_YER[m.key]?`<button class="dugme ikincil kucuk-d" type="button" data-gorev-git="${esc(m.key)}" aria-label="${esc(\u00E7("Git: {ad}",{ad:\u00E7v(m.title)}))}">${ikon("arro\
+w-right")}${\u00E7("Git")}</button>`:`<span class="cip">${\u00E7("S\xFCr\xFCyor")}</span>`}</div>`).join("")||`<p class="bos">${\u00E7("Bug\xFCn g\xF6rev yok.")}</p>`}</div></section>
         <p class="kucuk">${\u00E7("G\xF6revler var olan kay\u0131tlardan say\u0131l\u0131r; se\xE7im oyu g\xF6rev de\u011Fildir. Tamamlanan her g\xF6rev G\xF6rev Madalyas\u0131'n\u0131 sayar (Hayat\u0131m \u2192 Profil \u2192 Vitrin).")}\
-</p></div>`,$("#gorev-yenile",kap).onclick=async()=>{await yukle(),ciz()};for(const b of $$("[data-gorev-al]",kap))b.onclick=async()=>{b.disabled=!0;try{const r=await Sunucu.yap("mission_claim",{p_key:b.
-dataset.gorevAl});g=r.missions??g,tost(\u00E7("G\xF6rev al\u0131nd\u0131: +{xp} deneyim.",{xp:Number(r.xp??0)}),"gift"),typeof Ses=="object"&&Ses.kutla(),ciz(),Durum.askerlik().catch(()=>{})}catch(e){
-tost(hataMetni(e),"circle-alert"),b.disabled=!1}}};ciz();const b1=Durum.dinle("olay",({olay})=>{(olay==="mission.claimed"||olay==="progress.level_up")&&yukle().then(ciz).catch(()=>{})});return()=>b1()}}),
-Parcalar.tamam("ek_98zc_rehber","2026-11-16-8043284a-fd6cffc");
+</p></div>`,$("#gorev-yenile",kap).onclick=async()=>{await yukle(),ciz()};for(const b of $$("[data-gorev-git]",kap))b.onclick=()=>Rehber.goreveGit(b.dataset.gorevGit);for(const b of $$("[data-gorev-al\
+]",kap))b.onclick=async()=>{b.disabled=!0;try{const r=await Sunucu.yap("mission_claim",{p_key:b.dataset.gorevAl});g=r.missions??g,tost(\u00E7("G\xF6rev al\u0131nd\u0131: +{xp} deneyim.",{xp:Number(r.xp??
+0)}),"gift"),typeof Ses=="object"&&Ses.kutla(),ciz(),Durum.askerlik().catch(()=>{})}catch(e){tost(hataMetni(e),"circle-alert"),b.disabled=!1}}};ciz();const b1=Durum.dinle("olay",({olay})=>{(olay==="mi\
+ssion.claimed"||olay==="progress.level_up")&&yukle().then(ciz).catch(()=>{})});return()=>b1()}}),Parcalar.tamam("ek_98zc_rehber","2026-11-17-53cc619b-0b92b6e");

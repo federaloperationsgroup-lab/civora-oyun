@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_84_egitim3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_84_egitim3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function egitim3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,80);let w=1,h=1,
 kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={anahtar:"",ad:"",gorunus:null,ulke:null,rutbe:{sira:0,sayi:12},madalyalar:[],beceri:"military",benim:!1,baslangic:null,bitis:null,oteki:0};const dinleyici={},
 etkinMi=()=>cizici.etkin===api,malzeme=new Map,M=(renk,ek={})=>{const k=renk+JSON.stringify(ek);return malzeme.has(k)||malzeme.set(k,new THREE.MeshStandardMaterial({color:renk,roughness:.8,...ek})),malzeme.
@@ -88,4 +88,4 @@ elamla",(p-selamBasi)/1e3/ss,(p-selamBasi)/1e3,!1,!1);else{const sure=fp.eylemSu
 t%1.3<.08;s.alev.visible=atis;const sira=s.adimlar[Math.min(EGITIM_ADIM-1,adim)];sira&&d.benim&&adim<EGITIM_ADIM&&(sira.children[1].rotation.x=hareketAzalt?0:-Math.max(0,Math.sin(t%1.3*9))*.25*Math.exp(
 -(t%1.3)*3))}s?.notalar&&s.notalar.forEach((n,i)=>{const f=(t*.45+i/s.notalar.length)%1;n.visible=d.benim&&!hareketAzalt,n.position.set(.25+Math.sin(f*6+i)*.25,1.3+f*1.1,MERKEZ_Z-.3),n.rotation.z=Math.
 sin(f*5)*.4}),s?.notaMat&&(s.notaMat.opacity=.9),hareketAzalt||(fp.canli(t),kalabalik.guncelle(t)),kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_84_egitim3b","2\
-026-11-16-8043284a-fd6cffc");
+026-11-17-53cc619b-0b92b6e");

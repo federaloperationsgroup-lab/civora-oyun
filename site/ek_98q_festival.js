@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98q_festival.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98q_festival.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/festival",{async ac(kap){let fv=null,sezon=null,kapandi=!1,durdur=()=>{},secili=FestivalHedef.al()?.basvuru??null;const salon=KonserSalonu.ac();salon.dinle("sec",(ad,id)=>{if(ad===
 "kisi"){id&&profilAc(id,()=>tazele());return}if(ad==="ekran"){const e=gosterilen();e&&festivalBasvuruKartiAc(e,fv,()=>tazele())}});const ben=()=>Durum.v.ozet?.character??{};let bekleyen=null;const yakinda=()=>{
 clearTimeout(bekleyen),bekleyen=setTimeout(()=>{kapandi||tazele()},600)};async function yukle(){fv=await Sunucu.cagir("festival_view",{p_season:sezon}),secili&&!festivalListe(fv).some(e=>e.entry_id===
@@ -97,4 +97,4 @@ addEventListener("click",()=>{sezon=null,secili=null,tazele()})}const tazele=taz
 dinle("olay",({olay})=>{/^(festival\.|travel\.arrived)/.test(olay)&&yakinda()});let kanalBirak=null;const kanal=fv?.mine?.band_id??null;kanal&&(kanalBirak=Sunucu.Canli.dinle("band:"+kanal,olay=>{olay===
 "band.festival"&&yakinda()}));const saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazele()},6e4),sarki=setInterval(()=>{!document.hidden&&fv?.now_on_stage&&salon.yaz({c:sahneKonseri(),
 sehir:sehirVerisi()})},15e3);return()=>{kapandi=!0,durdur(),b1(),b2(),b3(),kanalBirak?.(),clearInterval(saat),clearInterval(sarki),clearTimeout(bekleyen),salon.kapat()}}}),Parcalar.tamam("ek_98q_festi\
-val","2026-11-16-8043284a-fd6cffc");
+val","2026-11-17-53cc619b-0b92b6e");

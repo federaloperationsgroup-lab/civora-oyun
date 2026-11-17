@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_22_cephe.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_22_cephe.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/cephe",{async ac(kap){let a=await Durum.askerlik(),oturum=null,sonuc=null,secim={kesim:"center",durus:"assault",vurus:0},gonderiliyor=!1,bitis=null;const tatbikatKarti=()=>{const d=a.
 drill,hak=d.daily_limit-d.sessions_last_24h;return oturum?adimKarti():`<section class="kart">
         <div class="kart-bas"><div><p class="ust-yazi">${\u00E7("Tatbikat cephesi \xB7 bota kar\u015F\u0131")}</p><h2 class="b2">${\u00E7("Vurmay\u0131 \xF6\u011Fren")}</h2></div><span class="ik-kutu"\
@@ -88,4 +88,4 @@ seferlerCiz(),Millet.cepheCiz(mil);let onceki=null;try{onceki=sessionStorage.get
 "active"&&c.next_round_at&&Date.parse(c.next_round_at)<=Date.now())??kl0[0];ilk&&await arenaAc(ilk.campaign_id);const b1=Durum.dinle("askerlik",x=>{const anahtar=l=>(l??[]).map(c=>c.campaign_id+c.status+
 c.my_side+(c.ally_join_code??"")).join(),eskiSayi=anahtar(a.campaigns);a=x,!oturum&&!sonuc&&ciz(),anahtar(a.campaigns)!==eskiSayi&&(kampanyalarCiz(),seferlerCiz(),!secili&&a.campaigns?.length&&arenaAc(
 a.campaigns[0].campaign_id))}),b2=Durum.dinle("ulke-olay",({olay})=>{/^nation\.drill_tournament_ended$/.test(olay)&&Millet.cepheCiz(mil)}),b3=Durum.dinle("olay",({olay})=>{/^nation\.patrol_/.test(olay)&&
-Millet.cepheCiz(mil)});return()=>{b1(),b2(),b3(),mil._dur?.(),arenaBirak&&arenaBirak()}}}),Parcalar.tamam("ek_22_cephe","2026-11-16-8043284a-fd6cffc");
+Millet.cepheCiz(mil)});return()=>{b1(),b2(),b3(),mil._dur?.(),arenaBirak&&arenaBirak()}}}),Parcalar.tamam("ek_22_cephe","2026-11-17-53cc619b-0b92b6e");

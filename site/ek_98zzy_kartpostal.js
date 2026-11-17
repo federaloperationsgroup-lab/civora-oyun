@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzy_kartpostal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zzy_kartpostal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/kare-album",{async ac(kap){const kusak=Sunucu.Giris.kusak;let kapandi=!1,fotolar=[],ozel=0,devam=!1,sayfalaniyor=!1;const gecerli=()=>!kapandi&&kap.isConnected&&kusak===Sunucu.Giris.
 kusak,kareler=new Map;async function yukle(ekle=!1){if(!gecerli())return;const r=await Sunucu.cagir("photo_album",{p_limit:30,p_before:ekle?fotolar.at(-1)?.created_at??null:null});if(!gecerli())return;
 const yeni=r.photos??[];fotolar=ekle?[...fotolar,...yeni.filter(p=>!kareler.has(p.photo_id))]:yeni,ozel=Number(r.private_count??0),devam=yeni.length===30,kareler.clear();for(const p of fotolar)kareler.
@@ -33,4 +33,4 @@ git("hayat/medya"),$("[data-kartpostal-album]",kap).onclick=()=>Kabuk.git("hayat
 kartpostalKutu,liste=[],sira++,ciz(),tazele())};for(const b of $$("[data-kartpostal-ac]",kap))b.onclick=async()=>{const p=liste.find(x=>x.postcard_id===b.dataset.kartpostalAc);if(!(!p||b.disabled)){b.
 disabled=!0;try{await kartpostalAc(p,tazele,b)}finally{b.isConnected&&(b.disabled=!1)}}};$("[data-kartpostal-devam]",kap)?.addEventListener("click",async e=>{e.currentTarget.disabled=!0;try{await yukle(
 !0)}catch(err){gecerli()&&(tost(hataMetni(err),"circle-alert"),ciz())}}),kartpostalResimleriBagla(kap,liste)}}const tazele=tazeleyici(()=>yukle());if(await tazele(),!gecerli())return()=>{kapandi=!0};const birak=Durum.
-dinle("olay",({olay})=>{gecerli()&&/^media\.postcard/.test(olay)&&tazele()});return()=>{kapandi=!0,sira++,birak()}}}),Parcalar.tamam("ek_98zzy_kartpostal","2026-11-16-8043284a-fd6cffc");
+dinle("olay",({olay})=>{gecerli()&&/^media\.postcard/.test(olay)&&tazele()});return()=>{kapandi=!0,sira++,birak()}}}),Parcalar.tamam("ek_98zzy_kartpostal","2026-11-17-53cc619b-0b92b6e");

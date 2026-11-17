@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zm_dersler.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zm_dersler.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/dersler",{async ac(kap){let v=null,kapandi=!1,durdur=()=>{},odak=null;const sahne=SinifSahnesi.ac();sahne.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&profilAc(id,()=>tazele());return}
 const el=(ad==="tahta"&&id?$(`[data-ders-satir="${CSS.escape(id)}"]`,kap):null)??$(ad==="ben"?"#dersler-ogrenci":"#dersler-sehir",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?"auto":"smooth",block:"\
 center"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{};let gorunus,bekleyen=null;const yakinda=()=>{clearTimeout(bekleyen),
@@ -193,4 +193,4 @@ yap("lesson_open",{p_skill:dil?"language":konu,p_starts_at:zaman.toISOString(),p
 !1,odak=l?.lesson_id??null,tost(\u00E7("Ders a\xE7t\u0131n: {beceri}, {saat}.",{beceri:dersKonuAdi(l?.skill??(dil?"language":konu),l?.lang??dil),saat:saatYaz(l?.starts_at??zaman.toISOString())}),"pres\
 entation"),await tazele()})})}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await Promise.all([Durum.kurallar().catch(()=>null),Durum.ozet().catch(()=>null)]),await yukle(),ciz();const b1=Durum.
 dinle("olay",({olay})=>{/^(lesson\.|travel\.arrived|training\.|media\.stream_)/.test(olay)&&yakinda()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazeleIste()},3e4);return()=>{
-kapandi=!0,durdur(),b1(),clearInterval(saat),clearTimeout(bekleyen),sahne.kapat()}}}),Parcalar.tamam("ek_98zm_dersler","2026-11-16-8043284a-fd6cffc");
+kapandi=!0,durdur(),b1(),clearInterval(saat),clearTimeout(bekleyen),sahne.kapat()}}}),Parcalar.tamam("ek_98zm_dersler","2026-11-17-53cc619b-0b92b6e");

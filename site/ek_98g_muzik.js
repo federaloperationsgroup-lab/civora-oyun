@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98g_muzik.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/muzik",{async ac(kap){let v=null,kanal=null,kanalBirak=null,kapandi=!1,durdur=()=>{};const arama={q:"",sonuc:null},oda=ProvaOdasi.ac();oda.dinle("sec",(ad,id)=>{if(ad==="kisi"){id&&
 profilAc(id,()=>tazele());return}if(ad==="calgi"){sahneRolu();return}const el=$({afis:"#muzik-ayar",gosterge:"#muzik-provalar",pano:"#muzik-repertuvar"}[ad]??"#yok",kap);el&&(el.scrollIntoView({behavior:hareketAzalt?
 "auto":"smooth",block:"start"}),el.classList.remove("vurgu-yan"),el.offsetWidth,el.classList.add("vurgu-yan"))});const ben=()=>Durum.v.ozet?.character??{},R=()=>v?.m?.rule??Durum.v.kurallar?.data?.culture??
@@ -520,4 +520,4 @@ tost(\u00E7("Kasadan {ulke} hazinesine {kr} kredi ba\u011F\u0131\u015Fland\u0131
 kapandi||ciz()});await yukle(),ciz();const ayir=KonserHedef.ayirAl();ayir&&(B()&&yetki("rehearse")?konserAyir(ayir.bolge):tost(B()?\u00E7("Konseri y\xF6netici ya da vekil ay\u0131r\u0131r."):\u00E7("K\
 onser vermek i\xE7in \xF6nce bir gruba kat\u0131l ya da grup kur."),"circle-alert"));const b1=Durum.dinle("olay",({olay})=>{/^band\./.test(olay)?(yakinda(),konusmaTazele()):/^(concert\.|instrument\.|contest\.)/.
 test(olay)&&yakinda()}),saat=setInterval(()=>{!document.hidden&&!document.querySelector(".perde")&&tazele()},6e4);return()=>{kapandi=!0,durdur(),b1(),clearInterval(saat),clearTimeout(bekleyen),kanalBirak?.(),
-kanalBirak=null,kanal=null,oda.kapat(),Ezgi.durdur()}}}),Parcalar.tamam("ek_98g_muzik","2026-11-16-8043284a-fd6cffc");
+kanalBirak=null,kanal=null,oda.kapat(),Ezgi.durdur()}}}),Parcalar.tamam("ek_98g_muzik","2026-11-17-53cc619b-0b92b6e");

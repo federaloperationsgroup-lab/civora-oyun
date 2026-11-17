@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_47_vitrin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_47_vitrin3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function vitrin3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(28,1,.1,100),tuval=cizici.renderer.domElement;let w=1,h=1,
 kirli=!0,ciz=!1,kaliteAdi="orta",kap=null;const dinleyici={};let d={anahtar:"",rutbe:{sira:0,ad:\u00E7("Er"),sayi:12},madalyalar:[],secili:null};const M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,
 roughness:.8,...ek}),kutu=(gx,gy,gz,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(gx,gy,gz),mat);return m.position.set(x,y,z),m.castShadow=!0,m.receiveShadow=!0,m};function doku(gen,yuk,fn){
@@ -99,5 +99,5 @@ sahne,kamera,get kareMs(){return 33},dinle(ad,fn){dinleyici[ad]=fn},kapBagla(k){
 salla()},salla,kalite(k){kaliteAdi=k,spot.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik?(kirli=!0,salla()):basla=null},guncelle(dt,t){const simdi=performance.
 now(),hareket=simdi<sallanmaSonu;if(hareket){const kalan=Math.min(1,(sallanmaSonu-simdi)/1500);for(const x of nesneler.values())x.sallansin&&(x.grup.rotation.z=.06*Math.sin(t*1.7+x.faz)*kalan,x.ic.rotation.
 y=.5*Math.sin(t*.85+x.faz)*kalan);parilti.intensity=1.6*kalan,parilti.position.x=-3.4+t*.9%6.8}else if(parilti.intensity){parilti.intensity=0;for(const x of nesneler.values())x.grup.rotation.z=0,x.ic.
-rotation.y=0;kirli=!0}ciz=hareket||kirli,kirli=!1},cizilmeli(){return ciz}};return document.fonts?.ready?.then(()=>{kirli=!0}).catch(()=>{}),api}Parcalar.tamam("uc_47_vitrin3b","2026-11-16-8043284a-fd\
-6cffc");
+rotation.y=0;kirli=!0}ciz=hareket||kirli,kirli=!1},cizilmeli(){return ciz}};return document.fonts?.ready?.then(()=>{kirli=!0}).catch(()=>{}),api}Parcalar.tamam("uc_47_vitrin3b","2026-11-17-53cc619b-0b\
+92b6e");

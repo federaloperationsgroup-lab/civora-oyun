@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98j_medya.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98j_medya.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/medya",{async ac(kap){let v={m:null,sirketler:[],kurallar:null,kariyer:null,okunmamis:0};const kareler=new Map;async function yukle(){const[m,kurallar,kariyer,kartpostallar]=await Promise.
 all([Sunucu.cagir("media_overview"),Durum.kurallar(),Sunucu.cagir("media_career").catch(()=>null),Sunucu.cagir("postcards",{p_limit:1})]);v.m=m,v.kurallar=kurallar,v.kariyer=kariyer,v.okunmamis=Number(
 kartpostallar.unread??0),v.sirketler=await Promise.all((m.companies??[]).map(c=>Sunucu.cagir("company_sponsorships",{p_company:c.company_id}).catch(()=>({company_id:c.company_id,company:c.name,offers:[]})))),
@@ -102,4 +102,4 @@ b.onclick=()=>{const c=v.sirketler.find(x=>x.company_id===b.dataset.teklifVer);t
 undo-2")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()};for(const b of $$("[data-teklif-icerik]",kap))b.onclick=()=>{const[tur,id]=b.dataset.teklifIcerik.split(":");tur==="article"?makaleAc(
 id,tazele):tur==="video"?videoAc(id,tazele):kareAc(id,tazele)}}const tazele=tazeleyici(async()=>{await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{(/^media\./.test(olay)||
 olay==="news.article_published")&&tazele()}),b2=Durum.dinle("ulke-olay",({olay})=>{(olay==="media.offer_opened"||olay==="media.stream_started"||olay==="media.stream_ended")&&tazele()});return()=>{b1(),
-b2(),geriDurdur()}}}),Parcalar.tamam("ek_98j_medya","2026-11-16-8043284a-fd6cffc");
+b2(),geriDurdur()}}}),Parcalar.tamam("ek_98j_medya","2026-11-17-53cc619b-0b92b6e");

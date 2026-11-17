@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_94_meydan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_94_meydan3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";function meydan3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.3,260);let w=1,h=1,
 kirli=!0,kapEl=null,etiketKap=null,gorunur=!0,gozcu=null,kaliteAdi="orta";const hareketAzalt=matchMedia("(prefers-reduced-motion: reduce)").matches;let d={anahtar:"",ulke:null,seviye:1,bulunan:0,pano:0,
 kayitlar:[],tellal:null,sahne:{tur:"bos"},cay:[],foto:0,cevrimici:0,gece:0,hava:"acik",yolda:!1,kartlar:[],gundem:{etiketler:[],one:null},gazete:[],kus:null,imza:null,imzalar:[],medya:{canli:null,video:null},
@@ -437,4 +437,4 @@ veriYaz()}return}if(calT0){const s=(performance.now()-calT0)/1e3;canYaz(t,s<3.2?
 -1))}if(oyuncularGuncelle(gdt,t),kameraAdim(gdt),!hareketAzalt){kalabalik.guncelle(t);for(const[i,b]of[...bayraklar,devletBayrak,meclisBayrak,...damalilar].entries())b.g.visible!==!1&&dalga(b,t+i*.7,.6);
 susGrup.visible&&balonlar.forEach((b,j)=>{b.visible&&(b.position.y=b.userData.y0+Math.sin(t*1.3+j)*.05)}),(d.hava==="yagmur"||d.hava==="kar")&&havaYaz(t),kuslar.count&&kuslarYaz(t);for(const f of fiskiyeler)
 f.scale.y=1+Math.sin(t*5)*.06}etiketKonumla(),kirli=!0},cizilmeli(){const c=kirli;return kirli=!1,c}};return sinamaYaz({meydan3b:api,meydanYer:MEYDAN_YER}),api}Parcalar.tamam("uc_94_meydan3b","2026-11\
--16-8043284a-fd6cffc");
+-17-53cc619b-0b92b6e");

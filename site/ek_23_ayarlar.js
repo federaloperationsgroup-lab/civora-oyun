@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_23_ayarlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_23_ayarlar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("hayat/ayarlar",{async ac(kap){const[liste,silme,dog,guven]=await Promise.all([Sunucu.cagir("my_feedback").catch(()=>null),Sunucu.cagir("account_deletion_status").catch(()=>null),Sunucu.cagir(
 "verification_status").catch(()=>null),Sunucu.cagir("trust_status").catch(()=>null)]),email=Sunucu.Giris.kullanici?.email??"",misafir=Sunucu.Giris.misafirMi,gbler=Array.isArray(liste)?liste:liste?.items??
 [],bekleyenSilme=silme?.status==="pending",baslangicKarti=()=>{const o=Durum.v.ozet?.onboarding;if(!o||typeof Rehber!="object")return"";const rol=o.role?Rehber.ROL[o.role]:null;return`<section class="\
@@ -71,9 +71,11 @@ e (yolculuk, e\u011Fitim, bedeller) serbest. Bu, bir ki\u015Finin \xE7ok hesap a
             <label class="alan"><span>${\u00E7("Konu")}</span><select name="tur">${Object.entries(GB_TUR).map(([k,v])=>`<option value="${k}">${v}</option>`).join("")}</select></label>
             <label class="alan"><span>${\u00E7("Ne oldu?")}</span><textarea name="metin" minlength="10" maxlength="2000" required placeholder="${\u00E7("Ne yap\u0131yordun, ne bekliyordun, ne oldu?")}\
 "></textarea>
-              <small>${\u00E7("10\u20132.000 karakter. Ekran ve uygulama s\xFCr\xFCm\xFC de eklenir; ba\u015Fka bilgi g\xF6nderilmez.")}</small></label>
+              <small>${\u00E7("10\u20132.000 karakter.")}</small></label>
+            ${GeriBildirim.eklenenler(GeriBildirim.baglam(Kabuk.onceki??"hayat/ayarlar"))}
             <div class="form-mesaj"></div>
             <button class="dugme altin" type="submit">${ikon("send")}${\u00E7("G\xF6nder")}</button>
+            ${GeriBildirim.pilotVar()?`<button class="dugme ikincil" type="button" data-git-pilot>${ikon("flag")}${\u00E7("Test\xE7i rehberi")}</button>`:""}
           </form>
           ${gbler.length?`<hr class="ayrac"><div class="ayar-listesi">${gbler.slice(0,10).map(g=>`<div class="geri-bildirim-satir">
             <b>${esc(GB_TUR[g.kind]??g.kind)}</b> \xB7 ${esc(new Date(g.created_at).toLocaleString(DIL.yerel))} \xB7 ${esc(g.status==="closed"?\u00E7("kapand\u0131"):g.status==="seen"?\u00E7("g\xF6r\xFCld\xFC"):
@@ -188,9 +190,9 @@ DIL.ayarla(e.target.value)}),$("#gorunum-secim",kap).addEventListener("change",e
 \u00E7("T\xF6renler a\xE7\u0131k."):\u00E7("T\xF6renler kapal\u0131."),"party-popper")}),$("#ortam-secim",kap).addEventListener("change",e=>{Ses.ayarlaOrtam(e.target.value),tost(e.target.value==="kapa\
 li"?\u00E7("Ortam sesi kapal\u0131."):\u00E7("Ortam sesi kaydedildi."),"volume-2")}),typeof Sezon=="object"&&(Sezon.tatilKarti($("#tatil-yer",kap)),Sezon.bildirimKarti($("#bildirim-yer",kap))),$("#ses\
 -secim",kap).addEventListener("change",e=>{Ses.ayarla(e.target.value),tost(e.target.value==="kapali"?\u00E7("Ses kapal\u0131."):\u00E7("Ses kaydedildi."),"volume-2"),e.target.value!=="kapali"&&Ses.bildir()}),
-$("#gb-form",kap).addEventListener("submit",async e=>{e.preventDefault();const v=new FormData(e.target),yer=$(".form-mesaj",e.target),metin=String(v.get("metin")??"").trim();if(metin.length<10){yer.innerHTML=
-`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("En az 10 karakter yaz.")}</span></div>`;return}try{await Sunucu.yap("feedback_send",{p_kind:String(v.get("tur")),p_body:metin,p_context:{
-screen:(Kabuk.etkin??"hayat/ayarlar").slice(0,60),app_version:SURUM.slice(0,60),platform:(navigator.platform||"web").slice(0,60)}}),tost(\u00E7("Geri bildirimin al\u0131nd\u0131. Te\u015Fekk\xFCrler!"),
+$("[data-git-pilot]",kap)?.addEventListener("click",()=>Kabuk.git("hayat/pilot")),$("#gb-form",kap).addEventListener("submit",async e=>{e.preventDefault();const v=new FormData(e.target),yer=$(".form-m\
+esaj",e.target),metin=String(v.get("metin")??"").trim();if(metin.length<10){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${\u00E7("En az 10 karakter yaz.")}</span></div>`;return}
+try{await Sunucu.yap("feedback_send",{p_kind:String(v.get("tur")),p_body:metin,p_context:GeriBildirim.baglam(Kabuk.onceki??"hayat/ayarlar")}),tost(\u00E7("Geri bildirimin al\u0131nd\u0131. Te\u015Fekk\xFCrler!"),
 "badge-check"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){yer.innerHTML=`<div class="hata-kutusu">${ikon("circle-alert")}<span>${esc(hataMetni(err))}</span></div>`}}),$("#parola-form",kap)?.addEventListener(
 "submit",async e=>{e.preventDefault();const p=String(new FormData(e.target).get("parola")??""),yer=$(".form-mesaj",e.target);if(yer.innerHTML="",!alanHatalari(e.target,p.length<8?[["parola",\u00E7("Pa\
 rola en az 8 karakter olmal\u0131.")]]:[]))try{await Sunucu.Giris.parolaDegistir(p),tost(\u00E7("Parolan de\u011Fi\u015Ftirildi."),"lock"),e.target.reset()}catch(err){yer.innerHTML=`<div class="hata-k\
@@ -212,4 +214,4 @@ v.ozet?.character?.name??"";let onay="";pencere({ust:\u00E7("Hesab\u0131 sil"),b
 {ad:\u00E7("Vazge\xE7")},{ad:\u00E7("Silme talebini g\xF6nder"),sinif:"mercan",is:async()=>{try{await Sunucu.yap("account_deletion_request",{p_confirm:onay}),tost(\u00E7("Silme talebin al\u0131nd\u0131."),
 "circle-alert"),Kabuk.git("hayat/ayarlar",{gecmis:!1})}catch(err){if(err.kod==="REAUTH_REQUIRED"){tost(\u00E7("G\xFCvenlik i\xE7in \xE7\u0131k\u0131\u015F yap\u0131p yeniden giri\u015F yap, sonra tekrar dene."),
 "lock");return}tost(hataMetni(err),"circle-alert")}}}]}),document.getElementById("silme-onay")?.addEventListener("input",e=>{onay=e.target.value})});const b1=Durum.dinle("ozet",()=>{const k=$("#baslan\
-gic-kart",kap);k&&(k.outerHTML=baslangicKarti(),baslangicBagla())});return()=>b1()}}),Parcalar.tamam("ek_23_ayarlar","2026-11-16-8043284a-fd6cffc");
+gic-kart",kap);k&&(k.outerHTML=baslangicKarti(),baslangicBagla())});return()=>b1()}}),Parcalar.tamam("ek_23_ayarlar","2026-11-17-53cc619b-0b92b6e");

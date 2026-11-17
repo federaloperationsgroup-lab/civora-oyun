@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_29_uretim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_29_uretim.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/uretim",{async ac(kap){let v=null,gorunus;const sahneKart=IsletmeSahnesi.ac();sahneKart.dinle("git",({ne,id})=>{const co=v?.isletmeler.find(x=>x.company_id===id);co&&(ne==="girdi"?
 aktar(id,"in","girdi"):ne==="cikti"?co.balances.some(b=>b.asset!=="CR"&&b.amount-b.held>0)?aktar(id,"out","mal"):tost(\u00E7("Depoda \xE7ekilecek \xFCr\xFCn yok."),"package"):ne==="kasa"?aktar(id,"in",
 "CR"):ne==="ilan"&&ilanAc(id))});async function yukle(){const[isletmeler,kurallar,o,bak]=await Promise.all([Sunucu.cagir("my_companies"),Durum.kurallar(),Durum.ozet(),gorunus===void 0?Sunucu.cagir("my\
@@ -102,5 +102,5 @@ ama">${\u00E7("Bir i\u015F {n} birim \xE7al\u0131\u015Fmad\u0131r ({dk} dakika).
 $("input[name=ucret]",f).value),yer=adetAl($("input[name=yer]",f).value),cr=kasa(co,"CR");$("#ilan-ozet").textContent=ucret>0&&yer>0?\u00E7("\xC7al\u0131\u015Fana vergiden sonra {net} kredi. {n} ki\u015Fi i\xE7in kasada {\
 gerek} kredi gerekir (\u015Fu an {var}).",{net:kr(ucret-Math.floor(ucret*vergiPpm/1e6)),n:yer,gerek:kr(ucret*yer),var:kr(cr.amount-cr.held)}):""};for(const g of $$(".perde input"))g.addEventListener("\
 input",ozetYaz);ozetYaz()}async function islem(fn,args,mesaj){try{await Sunucu.yap(fn,args),tost(mesaj,"factory")}catch(e){tost(hataMetni(e),"circle-alert")}await tazele()}const tazele=tazeleyici(async()=>{
-await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^job\./.test(olay)&&tazele()});return()=>{b1(),sahneKart.kapat()}}}),Parcalar.tamam("ek_29_uretim","2026-11-16-8043284\
-a-fd6cffc");
+await yukle(),ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^job\./.test(olay)&&tazele()});return()=>{b1(),sahneKart.kapat()}}}),Parcalar.tamam("ek_29_uretim","2026-11-17-53cc619\
+b-0b92b6e");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98zzt_odalar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98zzt_odalar.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("sehir/odalar",{async ac(kap){let o=null,h=null,secili=null,kapandi=!1,hata3b=!1,ayr="";const mod=()=>Gorunum.uc()&&!hata3b?"3b":"2b";async function yukle(){o=await Sunucu.cagir("chambers"),
 secili??=o?.member_kind??o?.kinds?.find(k=>k.members>0)?.kind??"sanayi",h=await Sunucu.cagir("chamber_hall",{p_kind:secili})}const veri=()=>odaSalonVerisi(h,secili),kural=()=>Durum.v.kurallar?.data?.profession?.
 chambers??{},sec_=()=>({minMembers:2,voidRetryDays:2,...kural().election??{},...h?.chamber?.rule?.election??{}}),yazi_=()=>({minLen:10,maxLen:280,perDay:1,...kural().post??{},...h?.chamber?.rule?.post??
@@ -84,4 +84,4 @@ d)}async function sahneBagla(d){const kutu=$("#oda-sahne",kap);if(!kutu||mod()!=
 odaSalon3bOrnek??=odaSalon3bKur(THREE,cizici);const a=odaSalon3bOrnek;if(a.dinle("sec",sec),a.kapBagla(kutu),a.durumYaz(d),!cizici.bagla(a,kutu))throw new Error("webgl-bagla");$("#oda-yukleniyor",kutu)?.
 classList.add("bitti")}catch(e){if(console.warn("3B oda salonu a\xE7\u0131lamad\u0131:",e),kapandi)return;hata3b=!0,tost(\u00E7("3B sahne bu cihazda a\xE7\u0131lamad\u0131; hafif g\xF6r\xFCn\xFCm g\xF6steriliyor."),
 "layers"),ciz()}}const tazele=tazeleyici(async()=>{await yukle(),kapandi||ciz()});await yukle(),ciz();const b1=Durum.dinle("olay",({olay})=>{/^chamber\./.test(olay)&&tazele()}),b2=Gorunum.dinle(()=>{o&&
-ciz()});return()=>{kapandi=!0,b1(),b2(),birak()}}}),Parcalar.tamam("ek_98zzt_odalar","2026-11-16-8043284a-fd6cffc");
+ciz()});return()=>{kapandi=!0,b1(),b2(),birak()}}}),Parcalar.tamam("ek_98zzt_odalar","2026-11-17-53cc619b-0b92b6e");

@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (ek_98c_isgal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (ek_98c_isgal.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";Kabuk.kaydet("ulke/topraklar",{async ac(kap){let o=null,s=null,bakilan=isgBakilan;isgBakilan=null;try{const x=sessionStorage.getItem("civora.topraklar");x&&(bakilan??=x,sessionStorage.removeItem("civo\
 ra.topraklar"))}catch{}let kapandi=!1,durdur=()=>{};const depo={varlik:"muhimmat@1",miktar:""},ben=()=>Durum.v.ozet?.character??{};async function yukle(){const[ov,h]=await Promise.all([Sunucu.cagir("o\
 ccupation_overview"),Durum.harita().catch(()=>Durum.v.harita),Durum.ozet(),Durum.kurallar()]);if(o=ov,!bakilan){const yer=ben().location;bakilan=(h?.occupations??[]).some(([id])=>id===yer)||Number(h?.
@@ -242,4 +242,4 @@ x=>x.occupation.region_id),...(o?.lost??[]).map(x=>x.occupation.region_id)]),b1=
 kap),cb=$("[data-isg-katilim-cubuk]",kap);el&&(el.textContent=sayi(d.voters)),cb&&(cb.style.width=Math.round(Math.min(1,Number(d.voters)/Math.max(1,Number(d.roll_size)))*100)+"%");return}tazele()}}),b2=Durum.
 dinle("ulke-olay",({olay})=>{/^(occupation\.|resistance\.|country\.war_)/.test(olay)&&tazele()}),b3=Sunucu.Canli.dinle("public:campaign",(olay,yuk)=>{const c=s?.campaign;!c||yuk?.data?.campaign_id!==c.
 campaign_id||/^(war\.(round_closed|campaign_closed|cancelled)|resistance\.supplied)/.test(olay)&&tazele()}),b4=Durum.dinle("olay",({olay})=>{/^(travel\.arrived|repair\.)/.test(olay)&&tazele()});return()=>{
-kapandi=!0,durdur(),b1(),b2(),b3(),b4()}}}),Parcalar.tamam("ek_98c_isgal","2026-11-16-8043284a-fd6cffc");
+kapandi=!0,durdur(),b1(),b2(),b3(),b4()}}}),Parcalar.tamam("ek_98c_isgal","2026-11-17-53cc619b-0b92b6e");

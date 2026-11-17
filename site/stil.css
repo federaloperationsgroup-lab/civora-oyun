@@ -1474,9 +1474,9 @@ img { max-width: 100%; display: block; }
 .salon-lejant span { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
 .salon-lejant b { font-size: 0.8125rem; }
 .salon-lejant small { font-size: 0.75rem; color: var(--soluk); }
-.salon-lejant [data-oy="yes"] small { color: #2F8F55; font-weight: 750; }
+.salon-lejant [data-oy="yes"] small { color: #267445; font-weight: 750; }   /* kâğıt zeminde 4,5:1 (D-256; #2F8F55 3,6'ydı) */
 .salon-lejant [data-oy="no"] small { color: var(--mercan-2); font-weight: 750; }
-.salon-lejant [data-oy="abstain"] small { color: #A87414; font-weight: 750; }
+.salon-lejant [data-oy="abstain"] small { color: #8F6210; font-weight: 750; }
 .salon-lejant [data-oy="bos"] button { background: transparent; border-style: dashed; color: var(--soluk); }
 .salon-secili { margin: 10px 0 0; }
 .salon-lobi-not { margin: 8px 2px 0; }
@@ -1523,7 +1523,7 @@ img { max-width: 100%; display: block; }
 .sg2b-bas .sg2b-alan i { height: 4px; transition: none; }
 .sg2b-sayi { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
 .sg2b-sayi b { font-size: 0.9375rem; font-weight: 800; }
-.sg2b-sayi em { font-style: normal; padding: 1px 7px; border-radius: 999px; background: var(--altin-acik); color: #7A5418; font-size: 0.65625rem; font-weight: 800; }
+.sg2b-sayi em { font-style: normal; padding: 1px 7px; border-radius: 999px; background: var(--altin-acik); color: #7A5418; font-size: 0.6875rem; font-weight: 800; }
 .sg2b-sutun.kazandi .sg2b-alan i { box-shadow: 0 0 0 3px var(--altin-acik), 0 8px 18px -10px var(--renk); }
 .sg2b-ad { display: flex; flex-direction: column; align-items: center; margin-top: 6px; min-width: 0; text-align: center; }
 .sg2b-ad b, .sg2b-ad small { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -3368,7 +3368,7 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .festival-basvuru.hal-no_show { border-color: var(--mercan); }
 .festival-sira.altin { background: #D9B54A; color: var(--murekkep); }
 .festival-sira.gumus { background: #C9CED8; color: var(--murekkep); }
-.festival-sira.bronz { background: #B5744A; color: #FFF; }
+.festival-sira.bronz { background: #9A5F3B; color: #FFF; }   /* beyaz yazı 4,5:1 (D-256; 3,8'di) */
 .festival-afis { background: linear-gradient(135deg, color-mix(in srgb, var(--kagit) 70%, #F2C27B), var(--kagit)); border-color: #D9B54A; }
 .festival-tur .kart-bas .liste-ikon .muzik-afis { width: 44px; height: 44px; border-radius: 12px; }
 @media (max-width: 560px) {
@@ -3447,6 +3447,7 @@ svg.kapali .santiye2b-arazi { opacity: 0.35; }
 .avatar.magaza-onizleme.kucuk-o { width: 36px; height: 36px; }
 .magaza-yuvalar { margin: 10px 0 14px; }
 .magaza-yuvalar .secim-cip .kucuk { color: var(--soluk); font-weight: 500; }
+.magaza-yuvalar .secim-cip[aria-pressed="true"] .kucuk { color: inherit; opacity: .85; }   /* basılı (koyu) çipte okunur (D-256) */
 /* Kulüp görünümleri (D-176): sekmelerin ikinci satırının başlığı */
 .magaza-tur-grup { flex-basis: 100%; display: flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 0.75rem; font-weight: 700; color: var(--soluk); letter-spacing: .02em; }
 .magaza-tur-grup svg { width: 14px; height: 14px; }
@@ -4303,7 +4304,7 @@ button.okey-tas { cursor: pointer; }
   background: var(--kagit); color: var(--murekkep); font: inherit; cursor: pointer; min-height: 44px; }
 .evcil-cins svg { width: 92px; height: 74px; }
 .evcil-cins b { font-size: 0.84375rem; }
-.evcil-cins.secili { border-color: var(--orman); box-shadow: inset 0 0 0 2px var(--orman); background: var(--orman-3, #E7EFE9); }
+.evcil-cins.secili { border-color: var(--orman); box-shadow: inset 0 0 0 2px var(--orman); background: var(--orman-acik); }   /* açık zemin: ad okunur (D-256) */
 .evcil-cins:focus-visible { outline: 3px solid var(--altin); outline-offset: 2px; }
 .hayvan2b-kuyruk { animation: hayvan2b-kuyruk 1.6s ease-in-out infinite; }
 .hayvan2b-zipla { animation: hayvan2b-zipla 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
@@ -4763,6 +4764,13 @@ div.lig-kisi { cursor: default; }
 .oneri-satir .ik { width: 20px; height: 20px; color: var(--orman); }
 .oneri-satir span { font-weight: 700; font-size: 0.875rem; }
 .gorev-satir { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px; border-radius: 14px; background: var(--kagit-2); }
+/* Dar ekranda ya da büyük yazıda görevin yazısı daralmasın (D-258): "Git"/"Al" düğmesi yer kalmazsa alt satıra, sağa iner */
+@media (max-width: 480px) {
+  .gorev-satir { display: flex; flex-wrap: wrap; }
+  .gorev-satir > .ozet-ikon { flex: none; }
+  .gorev-satir > span:nth-child(2) { flex: 1 1 9em; min-width: 0; }
+  .gorev-satir > .dugme, .gorev-satir > .cip { margin-left: auto; }
+}
 .gorev-satir .ozet-ikon { width: 40px; height: 40px; }
 .gorev-satir b { display: block; font-size: 0.90625rem; }
 .gorev-satir .kucuk { display: block; }
@@ -4794,8 +4802,8 @@ div.lig-kisi { cursor: default; }
   .yardim-dugme { bottom: calc(var(--alt-h) + 16px + env(safe-area-inset-bottom, 0px)); width: 40px; height: 40px; }
   body.konusma-acik .yardim-dugme, body:has(.arena .ar-alt) .yardim-dugme, body:has(.futbol-karar) .yardim-dugme { display: none; }
   .ipucu-bant { grid-template-columns: 20px minmax(0, 1fr) auto; }
-  .cihaz-bant { grid-template-columns: 20px minmax(0, 1fr); }
-  .cihaz-bant .dugme { grid-column: 2; justify-self: start; }
+  .cihaz-bant { grid-template-columns: 20px minmax(0, 1fr) auto; }
+  .cihaz-bant [data-uc-dene] { grid-column: 2; grid-row: 2; justify-self: start; }   /* kapatma düğmesi sağ üstte, ipucu bandındaki gibi (D-257) */
 }
 
 /* ---------- Oyun gününün bitişi (T-49): üst bantta kalan süre ---------- */
@@ -5087,7 +5095,8 @@ ul.liste, ol.liste { list-style: none; margin: 0; padding: 0; }
 .oda-secici { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .oda-secici .cip-dugme { --oda: #5E534B; cursor: pointer; background: var(--kagit); }
 .oda-secici .cip-dugme .ik { color: var(--oda); }
-.oda-secici .cip-dugme.secili { background: var(--oda); border-color: var(--oda); color: #FFFFFF; }
+/* Seçili oda: odanın rengi biraz koyulaşır, beyaz yazı en az 4,5:1 (D-256; sekizinde de 5,6 ve üstü; Sanayi 4,26, Sağlık 4,04 idi) */
+.oda-secici .cip-dugme.secili { background: color-mix(in srgb, var(--oda) 82%, #000); border-color: color-mix(in srgb, var(--oda) 82%, #000); color: #FFFFFF; }
 .oda-secici .cip-dugme.secili .ik { color: #FFFFFF; }
 .oda-sayi { font-size: 0.75rem; opacity: .78; }
 .oda-odan { font-size: 0.71875rem; letter-spacing: .02em; }
@@ -5152,7 +5161,7 @@ ul.liste, ol.liste { list-style: none; margin: 0; padding: 0; }
 .meydan2b-canli-nokta { fill: #FF5252; stroke: rgba(255, 82, 82, 0.45); stroke-width: 2.4; }
 @media (prefers-reduced-motion: no-preference) { .meydan2b-canli-nokta { animation: canli-nabiz 1.6s ease-in-out infinite; } }
 @keyframes canli-nabiz { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-.kanal-adi { display: inline-flex; align-items: center; gap: 3px; margin-left: 4px; padding: 0 7px; border-radius: 999px; background: var(--deniz-acik); color: #22665A; font-size: 0.78em; font-weight: 600; vertical-align: middle; }
+.kanal-adi { display: inline-flex; align-items: center; gap: 3px; margin-left: 4px; padding: 0 7px; border-radius: 999px; background: var(--deniz-acik); color: #22665A; font-size: max(0.6875rem, 0.78em); font-weight: 600; vertical-align: middle; }
 .kanal-adi .ik { width: 12px; height: 12px; }
 .makale-ref { display: inline-flex; align-items: center; gap: 4px; vertical-align: middle; }
 .makale-ref .ik { width: 13px; height: 13px; }
@@ -5318,6 +5327,51 @@ body:has(.harita-ekran) .icerik, body:has(.arena .ar-alt) .icerik { padding-bott
   .giris-dipnot a, .onay-baglanti a { display: inline-flex; align-items: center; min-height: 48px; margin-block: -16px; }
   .ar-silah-d { padding-block: 17px; margin-block: -17px; }
 }
+/* Bütün ekranlarda dokunma (D-256; D-242'nin denetimi bütün ekranlara yayıldı): dokunmatik ekranda seçim çipi (meslek odaları,
+   kartpostallar), açılır başlık, bütün seçim kutuları ve yazı alanları, meclisin sandalye listesi, 2B şehrin noktaları ve görünüm
+   düğmesi en az 48 px; gardırobun askıları en az 48 px genişlikte (telefonda sırada daha az askı). Çizimin içindeki küçük hedef ancak
+   aynı iş çizimin dışında tam boy bir düğmeyle de yapılabiliyorsa ya da çizim yakınlaşabiliyorsa küçük kalır (data-dokunma: haritanın
+   bölgeleri, odanın planındaki kiler rafı → "Erzak ye") */
+@media (pointer: coarse) {
+  .cip-dugme, .salon-lejant button { min-height: 48px; }
+  summary { min-height: 48px; align-content: center; }
+  select, textarea, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]) { min-height: 48px; }
+  .nokta { min-width: 48px; min-height: 48px; justify-content: flex-end; }   /* görünüşü aynı (simge altta); 2B yerleşim görüneni ölçer */
+  .arac-kutu button, .sehir-araclar .arac-kutu button { min-width: 48px; height: 48px; }
+  /* Kendi boyunu veren seçim kutuları (Sezon, Tatil, Bildirimler, Devriye, yazı altı, meydanın formları) */
+  #sezon-sira select, #tatil-kart select, #bildirim-kart select, #millet-devriye select, .yazi-alt select,
+  .meydan-akis-form select, .meydan-kursu-form select { min-height: 48px; }
+  .renk-kutu { width: 48px; height: 48px; }   /* Görünüm'ün renk seçimi (ten, saç, giysi) */
+  .secim-cip { min-width: 48px; justify-content: center; }   /* kısa adlı seçim ("İri") */
+  .figur-eylemler .secim-cip { min-height: 48px; }   /* 3B görünümde figürün hareketleri ("Bekle", "Selamla") */
+  #tatil-kart select { min-width: 64px; }
+  /* Paragrafta tek başına duran bağlantı (Görünüm'den Mağaza'ya): dokunma yeri büyür, satır aynı kalır */
+  p.kucuk > a:only-child { display: inline-flex; align-items: center; min-height: 48px; margin-block: -16px; }
+  /* Akış'ın paylaşımı (paylaşımlı hesapla bulundu): yazarın adı, seçenekler ("⋯"; görünüşü aynı, dokunma yeri büyür) ve alttaki
+     alkış, yankı, yanıt */
+  .paylasim-yazar, .paylasim-alt button { min-height: 48px; }
+  .paylasim-alt button { min-width: 48px; justify-content: center; }   /* yalnız simgeli "Haberi oku" */
+  /* Zengin hesapla bulunanlar (toplu yayın denetimi): EP kapağı, küçük çip düğmesi (konserin turnesi; .cip.kucuk'un 24 px'ini ezer),
+     satır içinde olmayan bağlantı düğmesi (kısa ad: "Vekil Can"; dokunma yeri yanlara büyür, yerleşim aynı) */
+  .ep-kapak-dugme { min-width: 48px; }
+  .cip-dugme.kucuk { min-height: 48px; }
+  .ilk-adim .baglanti { padding-inline: 8px; margin-inline: -8px; }
+  .paylasim-menu { display: inline-grid; place-items: center; min-width: 48px; min-height: 48px; margin: -9px -12px -8px 0; }
+}
+@media (pointer: coarse) and (max-width: 560px) {
+  .terzi2b-dolap { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+}
+/* İlk on dakika (D-257; testçi gözüyle): ilk gün adımının, sıradaki hedefin ve önerinin eylemi ekran açılınca görünür yere kayar ve
+   kısa süre vurgulanır (98zc_rehber.js isaretle; üst çubuğun ve alttaki düğmelerin payı bırakılır). Pencere açıkken bildirimler
+   üstte: pencerenin seçeneklerini ve düğmelerini kapatmasın (oyun masası ve izlemesi tam ekran: eskisi gibi). */
+.eylem-isaret { outline: 3px solid var(--altin); outline-offset: 4px; scroll-margin-top: calc(var(--ust-h) + 16px);
+  scroll-margin-bottom: calc(var(--alt-h) + 84px + env(safe-area-inset-bottom, 0px)); }
+@media (prefers-reduced-motion: no-preference) { .eylem-isaret { animation: eylem-isaret 0.85s ease-in-out 3 alternate; } }
+@keyframes eylem-isaret { from { outline-color: var(--altin); } to { outline-color: rgba(217, 165, 72, 0.2); } }
+body:has(.perde:not(.masa-perde):not(.masa-izle-perde)) .tostlar { top: calc(10px + env(safe-area-inset-top, 0px)); bottom: auto; }
+/* Alt sekmelerin adı dar telefonda büyük yazıyla taşmasın (D-257; 320 px'de %125 yazıyla tek kelimelik adlar, geniş yazı tipinde
+   "Hayatım", ekrandan taşıyordu): ad yazı boyuyla büyür ama ekran genişliğinin %3,75'ini geçmez (%100'de ve 390 px'de aynı). */
+@media (max-width: 860px) { .alt-sekmeler button { font-size: min(0.71875rem, 3.75vw); } }
 /* Okunurluk (ERİ-04): ekrandaki yazılar en az 11 px (rozetler, etiketler, meydanın hızlı düğmeleri, arena ve harita etiketleri) */
 .salon-etiket small, .sg-etiket small, .sg-sayi small, .sg-sayi em, .meydan-kapi small, .album-yeni, .film-kolaj-alt { font-size: 0.6875rem; }
 .konusma-sekme .sayi-rozet, .altsekme .gelen-rozet, .alt-sekmeler .gelen-rozet { font-size: 0.6875rem; }
@@ -5387,6 +5441,18 @@ body:has(.harita-ekran) .icerik, body:has(.arena .ar-alt) .icerik { padding-bott
 .kart-bas:has(> .cip) { flex-wrap: wrap; }
 .kart-bas:has(> .cip) > div:first-child { min-width: 0; flex: 1 1 14em; }
 .kart-bas > .cip { white-space: normal; max-width: 100%; }
+/* ---------- Büyük yazıda telefonda ekranlar sığar (D-255): 320 ve 390 px'de %125 yazıyla (geniş yedek yazı tipinde de) uzun düğmeler,
+   kart başlığının düğmeleri ve çipler ekranın dışına taşıyordu (Oyunlar "İç Anadolu Kahvehanesi'ne git", Medya "Kartpostallarım",
+   Ayarlar "Hesabımı silmek istiyorum", Çalış ve Meclis salonunun "Meydana dön", Pazar "Kargoyla ya da depoda"; bir kısmı %100'de de).
+   Dar ekranda düğme ve çip kabından geniş olamaz, yazısı satır kırar; kart başlığında başlığa yer kalmazsa düğmeler alta iner ---------- */
+@media (max-width: 480px) {
+  .dugme { max-width: 100%; white-space: normal; text-align: center; overflow-wrap: break-word; }
+  .dugme:has(> .cip) { flex-wrap: wrap; row-gap: 2px; }   /* düğmenin çipi ("0 okunmamış") gerekirse alt satıra; simge yazının yanında kalır */
+  .cip { max-width: 100%; white-space: normal; overflow-wrap: break-word; }
+  .kart-bas:has(> .kart-bas-dugmeler) { flex-wrap: wrap; }
+  .kart-bas:has(> .kart-bas-dugmeler) > div:first-child { min-width: 0; flex: 1 1 7em; }   /* %100 yazıda 360–430 px'te eski düzen */
+  .kart-bas > .kart-bas-dugmeler { max-width: 100%; margin-left: auto; }
+}
 /* ---------- Küçük teknik temizlik (D-247; 9 Kasım test raporu G-10) ---------- */
 /* UX-12: puanı yetmeyen ürünün fiyatı "300 / 800 şeref puanı" diye, uyarı renginde */
 .magaza-eksik { color: var(--mercan-2); font-weight: 650; }
@@ -5410,3 +5476,30 @@ body:has(.harita-ekran) .icerik, body:has(.arena .ar-alt) .icerik { padding-bott
   .deger-sayi { font-size: 0.78125rem; }
   .deger .ik { width: 15px; height: 15px; }
 }
+/* D-254: üst çubuğun değerleri yine sığmazsa küçülür (20b_ust_sigdir.js ölçer; geniş yedek yazı tipi, %125 yazı boyu, büyük
+   bakiye, gözaltı çipi). Sırayla: kredinin kuruşu gizli; kısa yazımı ("12 B", "1,2 Mn"); sıkışık (simge, değerlerin boşluğu ve yazısı
+   biraz küçük; yazı en az 11 px; parçalar arasındaki boşluk kalır: telefonda saat çipinin dokunma kenarı oraya taşar); son çare gün
+   sonu çipi gizli, sonra gözaltı çipi yalnız simgesiyle */
+.d-kredi .kr-kisa { display: none; white-space: nowrap; }
+.ust-ic[data-sigma~="kurussuz"] .d-kredi .deger-kurus { display: none; }
+.ust-ic[data-sigma~="kisa"] .d-kredi .kr-tam { display: none; }
+.ust-ic[data-sigma~="kisa"] .d-kredi .kr-kisa { display: inline; }
+.ust-ic[data-sigma~="sikisik"] .ust-degerler { gap: 0; }
+.ust-ic[data-sigma~="sikisik"] .ust-sag { gap: 2px; }
+.ust-ic[data-sigma~="sikisik"] .deger { padding-left: 2px; padding-right: 2px; gap: 3px; }
+.ust-ic[data-sigma~="sikisik"] .deger .ik { width: 14px; height: 14px; }
+.ust-ic[data-sigma~="sikisik"] .deger-sayi { font-size: 0.71875rem; letter-spacing: 0; }
+.ust-ic[data-sigma~="gunsuz"] .gun-sonu { display: none; }
+.ust-ic[data-sigma~="simge"] .d-gozalti { min-width: 28px; justify-content: center; }
+.ust-ic[data-sigma~="simge"] .d-gozalti > span:not(.gizli-metin) { display: none; }
+
+/* Testçi rehberi ve geri bildirim (D-252): takvimde bugünün satırları vurgulu; kendiliğinden eklenenler iki sütun (uzun değer kırılır) */
+.pilot-takvim { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.pilot-takvim li { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; padding: 10px 12px; border-radius: 12px; background: var(--kagit-2); }
+.pilot-takvim li.bugun { background: var(--altin-acik); box-shadow: inset 0 0 0 1.5px var(--altin); }
+.pilot-takvim .gun { font-weight: 700; }
+.gb-eklenen { margin: 4px 0 8px; }
+.gb-eklenen > div { min-width: 0; }
+.gb-eklenen dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 10px; margin: 6px 0; }
+.gb-eklenen dt { font-weight: 600; }
+.gb-eklenen dd { margin: 0; overflow-wrap: anywhere; }

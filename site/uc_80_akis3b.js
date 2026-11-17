@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_80_akis3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_80_akis3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const AKIS_ARAC=3;function akis3bKur(THREE,cizici){if(!cizici.kur())throw new Error("webgl-yok");const tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(32,1,.1,
 120);let w=1,h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d={biz:"",bizRenk:"#87938C",ortak:null,ortakRenk:"#87938C",savas:!1,giden:0,gelen:0,ogrenciGiden:0,ogrenciGelen:0,yardim:null,hat:{rail:!1,ferry:!1,
 bridge:!1},gece:0};const dinleyici={},etkinMi=()=>cizici.etkin===api,M=(renk,ek={})=>new THREE.MeshStandardMaterial({color:renk,roughness:.85,...ek}),golgeli=m=>(m.castShadow=!0,m.receiveShadow=!0,m),
@@ -69,5 +69,5 @@ yeni))ds[k]!==v&&(ds[k]=v)}kirli=!0}const api={get etiket(){return \u00E7("\u013
 sahne,kamera,surekli:!0,get kareMs(){return!gorunur||hareketAzalt?1e3:telefon()?50:33},dinle(ad,fn){dinleyici[ad]=fn},kapBagla(el){kapEl=el??null,gozcu?.disconnect(),gozcu=null,kapEl&&typeof IntersectionObserver<
 "u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),yaz()},get cizimSayisi(){let n=0;return sahne.traverseVisible(o=>{o.isMesh&&n++}),n},durumYaz(y){
 d={...d,...y,hat:{...d.hat,...y.hat??{}}},yaz()},kalite(k){gunes.castShadow=k!=="dusuk",kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){gorunur&&(hareketAzalt||
-(dalgalan(t),suMat.color.setHSL(.54,.35,.52+Math.sin(t*1.3)*.025)),araclar(t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return dalgalan(0),api}Parcalar.tamam("uc_80_akis3b","2026-11-16-\
-8043284a-fd6cffc");
+(dalgalan(t),suMat.color.setHSL(.54,.35,.52+Math.sin(t*1.3)*.025)),araclar(t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return dalgalan(0),api}Parcalar.tamam("uc_80_akis3b","2026-11-17-\
+53cc619b-0b92b6e");

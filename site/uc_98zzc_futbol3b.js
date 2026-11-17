@@ -1,4 +1,4 @@
-// Civora istemcisi 2026-11-16-8043284a-fd6cffc (uc_98zzc_futbol3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
+// Civora istemcisi 2026-11-17-53cc619b-0b92b6e (uc_98zzc_futbol3b.js; sıkıştırılmış: esbuild, adlar korunur). Kaynak: apps/istemci/kaynak.
 "use strict";const FUTBOL_OLCEK=.52,FUTBOL_POS=["kaleci","defans","orta","forvet"];function futbol3bKur(THREE,cizici,secenek={}){if(!cizici.kur())throw new Error("webgl-yok");const stad=!!secenek.stadyum,K=stad?STADYUM_K:
 1,YK=stad?STADYUM_YK:1,OLCEK=stad?STADYUM_OLCEK:.52,YUVA=stad?22:10,TOP_R=stad?.13:.1,tuval=cizici.renderer.domElement,sahne=new THREE.Scene,kamera=new THREE.PerspectiveCamera(30,1,.1,stad?340:160);let w=1,
 h=1,kirli=!0,kapEl=null,gorunur=!0,gozcu=null,d=futbolVerisi(null,null,0,{kulup:stad}),motor=futbolMotoru();const dinleyici={},etkinMi=()=>cizici.etkin===api,kirlet=()=>{kirli=!0},malzeme=new Map,M=(renk,ek={})=>{
@@ -91,4 +91,4 @@ get kareMs(){return!gorunur||hareketAzalt?1e3:telefon()?40:33},surekli:!0,dinle(
 u"&&(gozcu=new IntersectionObserver(g=>{gorunur=g.some(x=>x.isIntersecting),kirli=!0}),gozcu.observe(kapEl)),yaz()},get cizimSayisi(){let n=0;return sahne.traverseVisible(o=>{(o.isMesh||o.isPoints||o.
 isSprite)&&n++}),n},get an(){return sonA},get ortam(){return ortam},get madalyali(){return yuvalar.filter(y=>y.anahtar&&y.madalya&&y.fp.d?.ek?.boyunMadalya===y.madalya).map(y=>y.anahtar)},durumYaz(y,m){
 d=y,m&&(motor=m),yaz()},kalite(k){gunes.castShadow=k!=="dusuk",ortam.kalite?.(k),kirli=!0},boyut(gen,yuk){w=gen,h=yuk,kameraKur()},etkinlestir(acik){acik&&(kirli=!0)},guncelle(dt,t){gorunur&&(guncelle(
-t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zzc_futbol3b","2026-11-16-8043284a-fd6cffc");
+t),kirli=!0)},cizilmeli(){const c=kirli;return kirli=!1,c}};return api}Parcalar.tamam("uc_98zzc_futbol3b","2026-11-17-53cc619b-0b92b6e");
